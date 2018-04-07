@@ -4,7 +4,7 @@
 
     \Route::group(['prefix' => 'admin', 'middleware' => ['admin.values']], function () {
 
-        \Route::get('', 'Admin\IndexController@index');
+        \Route::get('', 'Admin\DashboardController@index');
 
         \Route::group(['middleware' => ['admin.guest']], function () {
             // \Route::get('signin', 'Admin\AuthController@getSignIn');

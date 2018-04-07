@@ -1,0 +1,22 @@
+{
+  "name": "Hotdeal",
+  "authors": [
+    "Trungcheng <trungdn.dev@gmail.com>"
+  ],
+  "description": "Admin Hotdeal",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "admin-lte": "^2.4.2",
+    "sweetalert": "^2.1.0"
+  },
+  "resolutions": {
+    "jquery": ">=2.1.1"
+  }
+}
