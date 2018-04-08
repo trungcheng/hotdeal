@@ -26,6 +26,9 @@
             Route::group(['middleware' => 'admin.role:Superadmin,Admin'], function () {
 
                 $this->get('', 'Admin\DashboardController@index');
+                
+                $this->get('categories', 'Admin\CategoryController@index');
+                $this->get('categories/getAllCategories', 'Admin\CategoryController@getAllCategories');
 
             });
         });

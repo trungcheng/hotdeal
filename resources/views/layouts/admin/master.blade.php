@@ -24,6 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   	<link rel="stylesheet" href="{{ asset('components/admin-lte/dist/css/AdminLTE.min.css') }}" />
   	<link rel="stylesheet" href="{{ asset('components/admin-lte/dist/css/skins/skin-blue.min.css') }}" />
 
+  	<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}" />
+
   	<link href="{{ asset('images/favicon.ico') }}" rel="shortcut icon" />
   	<!-- Google Font -->
   	<link rel="stylesheet"
@@ -81,25 +83,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   	<script type="text/javascript">
 	    $.app.init({
-	      baseUrl: '{!! url("/") !!}',
-	      csrf   : '{!! csrf_token() !!}',
-	      // user   : {!! \Auth::user() !!},
-	      currentRoute: '{!! $current_route_name !!}'
+	      	baseUrl		 : '{!! url("/admin") !!}',
+	      	csrf   		 : '{!! csrf_token() !!}',
+	      	user   		 : '{!! $authUser !!}',
+      		currentRoute : '{!! $current_route_name !!}'
 	    });
 	    $(function () {
-	      toastr.options = {
-	          "debug": false,
-	          "positionClass": "toast-bottom-right",
-	          "onclick": null,
-	          "fadeIn": 300,
-	          "fadeOut": 1000,
-	          "timeOut": 5000,
-	          "extendedTimeOut": 1000
-	      };
+	      	toastr.options = {
+	          	"debug": false,
+	          	"positionClass": "toast-bottom-right",
+	          	"onclick": null,
+	          	"fadeIn": 300,
+	          	"fadeOut": 1000,
+	          	"timeOut": 5000,
+	          	"extendedTimeOut": 1000
+	      	};
 	    });
 
   	</script>
-
 	<script src="{{ asset('backend/js/app/app.js?').time() }}"></script>
 
 	@section('pageJs')

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 /**
  * Class AccessServiceProvider.
@@ -23,7 +24,7 @@ class AccessServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*', function($view){
-            $current_route_name = \Route::currentRouteName();
+            $current_route_name = Route::currentRouteName();
             $view->with('current_route_name', $current_route_name);
         });
         
@@ -37,7 +38,7 @@ class AccessServiceProvider extends ServiceProvider
          * Accepts either string of Role Name or Role ID
          */
         Blade::directive('superadmin', function () {
-            return "<?php if (\App\Models\User::find(\Auth::id())->is_super_admin): ?>";
+            return "<?php if (\App\Models\User::find(\Auth::id())->role->all == 1): ?>";
         });
         /*
          * Role based blade extensions

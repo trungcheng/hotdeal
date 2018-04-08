@@ -9,7 +9,7 @@
 @section('content')
     <div ng-controller="DashboardController" ng-init="">
     	<!-- Content Header (Page header) -->
-	    <section class="content-header">
+	    <section class="content-header" style="padding-top:30px;">
 	      	<h1>
 	        	Tổng quan
 	        	<!-- <small>Optional description</small> -->
