@@ -3,10 +3,8 @@
 namespace App\Traits;
 
 use Illuminate\Support\Facades\DB;
-// use App\Models\ObjectPermission;
-// use App\Models\Object;
-// use App\Models\Permission;
-// use App\Models\Role;
+use App\Models\Role;
+use App\Models\User;
 
 trait UserTrait
 {
@@ -24,7 +22,7 @@ trait UserTrait
     public static function isSuperAdmin()
     {
         if (self::user()) {
-            if (self::user()->is_super_admin === 1) return true;
+            if (User::find(self::id())->role->all === 1) return true;
         }
 
         return false;
@@ -32,24 +30,24 @@ trait UserTrait
 
     public function hasRole($nameOrId)
     {
-        // $roles = Role::all();
-        // foreach ($roles as $role) {
-        //     if ($role->all) {
-        //         return true;
-        //     }
+        $userRole = self::user()->role_id;
+        $role = Role::find($userRole);
+        
+        if ($role->all) {
+            return true;
+        }
 
-        //     if (is_numeric($nameOrId)) {
-        //         if ($role->id === $nameOrId) {
-        //             return true;
-        //         }
-        //     }
+        if (is_numeric($nameOrId)) {
+            if ($role->id === $nameOrId) {
+                return true;
+            }
+        }
 
-        //     if ($role->name === $nameOrId) {
-        //         return true;
-        //     }
-        // }
+        if ($role->name === $nameOrId) {
+            return true;
+        }
 
-        // return false;
+        return false;
     }
 
     public function hasRoles($roles, $needsAll = false)
@@ -80,15 +78,15 @@ trait UserTrait
         return false;
     }
 
-    public static function grantRole($userId, $role) {
-        // $status = false;
-        // $role = Role::where('name', $role)->first();
-        // if ($role) {
-        //     $role->users()->attach($userId);
-        //     $status = true;
-        // }
+    public static function grantRole($user, $role) {
+        $status = false;
+        $role = Role::where('name', $role)->first();
+        if ($role) {
+            $user->update('role_id', $role->id);
+            $status = true;
+        }
 
-        // return $status;
+        return $status;
     }
 
 }

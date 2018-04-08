@@ -75,6 +75,7 @@ class Kernel extends HttpKernel
         'admin.auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'admin.guest' => \App\Http\Middleware\Admin\RedirectIfAuthenticated::class,
         'admin.values' => \App\Http\Middleware\Admin\SetDefaultValues::class,
+        'admin.role' => \App\Http\Middleware\Admin\VerifyRole::class,
         
         'user.auth' => \App\Http\Middleware\User\Authenticate::class,
         'user.guest' => \App\Http\Middleware\User\RedirectIfAuthenticated::class,

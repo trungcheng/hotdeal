@@ -68,7 +68,7 @@
         <h2>Sorry, unexpected error :(</h2>
         <p class="big-font">This error has been sent to Hotdeal admin team already.<br>
         <hr>
-        <p class="big-font"><a href="{!! action('DashboardController@index') !!}">Come back</a></p>
+        <p class="big-font"><a href="{!! action('Admin\DashboardController@index') !!}">Come back</a></p>
     </div>
 </div>
 </body>

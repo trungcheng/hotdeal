@@ -10,4 +10,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            view()->share('signedIn', auth()->check());
+            view()->share('authUser',  auth()->user());
+
+            return $next($request);
+        });
+
+    }
 }

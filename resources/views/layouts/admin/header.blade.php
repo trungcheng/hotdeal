@@ -26,15 +26,15 @@
               <!-- The user image in the navbar-->
               <img src="{{ asset('components/admin-lte/dist/img/user2-160x160.jpg') }}" class="user-image" alt="Admin">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">{{ ($authUser && $authUser->username !== '' && $authUser->username !== null) ? $authUser->username : 'anonymous' }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="{{ asset('components/admin-lte/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="Admin">
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  {{ $authUser->fullname }} - Administrator
+                  <small>Member since April. 2018</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -43,8 +43,11 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div> -->
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
                 </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                    {{ csrf_field() }}
+                </form>
               </li>
             </ul>
           </li>

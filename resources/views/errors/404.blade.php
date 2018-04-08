@@ -67,7 +67,7 @@
         <p class="enormous-font bree-font"> 404 </p>
         <p class="big-font">This page does not exist... </p>
         <hr>
-        <p class="big-font"><a href="{!! action('DashboardController@index') !!}">Come back</a></p>
+        <p class="big-font"><a href="{!! action('Admin\DashboardController@index') !!}">Come back</a></p>
     </div>
 </div>
 </body>

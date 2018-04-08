@@ -100,6 +100,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   	</script>
 
+	<script src="{{ asset('backend/js/app/app.js?').time() }}"></script>
+
 	@section('pageJs')
 	@show
 

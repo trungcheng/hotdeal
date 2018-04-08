@@ -14,8 +14,9 @@ class User extends Model implements Authenticatable
     protected $table = 'users';
    
     protected $fillable = [
+        'role_id',
         'username',
-        'full_name', 
+        'fullname', 
         'email',
         'avatar',
         'password',
@@ -24,12 +25,10 @@ class User extends Model implements Authenticatable
         'birthday',
         'sex',
         'bio',
-        'is_super_admin',
         'status', 
         'confirmation_code', 
-        'confirmed',
-        'jwt_token',
-        'access_token'
+        'is_confirmed',
+        'jwt_token'
     ];
 
     /**
@@ -42,6 +41,22 @@ class User extends Model implements Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function role() {
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    public function new() {
+        return $this->hasMany('App\Models\New', 'user_id', 'id');
+    }
+
+    public function order() {
+        return $this->hasMany('App\Models\Order', 'user_id', 'id');
+    }
+
+    public function product() {
+        return $this->hasMany('App\Models\Product', 'user_id', 'id');
     }
 
 }
