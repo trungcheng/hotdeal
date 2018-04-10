@@ -35,20 +35,17 @@
                                 <div class="row" style="margin-bottom:10px;">
                                     <div class="col-sm-6">
                                         <div class="dataTables_length" id="example1_length">
-                                            <label>Show 
-                                                <select name="example1_length" aria-controls="example1" class="form-control input-sm">
-                                                    <option value="10">10</option>
-                                                    <option value="25">25</option>
-                                                    <option value="50">50</option>
-                                                    <option value="100">100</option>
-                                                </select> entries
+                                            <label>
+                                                Hiển thị
+                                                <select ng-change="getResultsPage(name, pullDownLists.selectedOption, pageNumber)" ng-model="pullDownLists.selectedOption" ng-options="item.value as item.name for item in pullDownLists.availableOption track by item.value" name="example_length" aria-controls="example" class="form-control input-sm" style="margin: 0 5px;width: 63px;">
+                                                </select> chuyên mục
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter" style="float:right;">
                                             <label>Search:
-                                                <input type="search" class="form-control input-sm" placeholder="" aria-controls="example1">
+                                                <input ng-change="searchCategoryName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
                                             </label>
                                         </div>
                                     </div>
@@ -59,24 +56,24 @@
                                         <table id="example1" class="table table-bordered table-hover table-striped dataTable" role="grid" aria-describedby="example1_info">
                                             <thead>
                                                 <tr role="row">
-                                                    <th style="text-align:center" style="width: 20px;">STT</th>
-                                                    <th style="width: 180px;">Tên danh mục</th>
-                                                    <th style="text-align:center" style="width: 199px;">Tên slug</th>
-                                                    <th style="text-align:center" style="width: 80px;">Trạng thái</th>
-                                                    <th style="text-align:center" style="width: 100px;">Hiển thị khu vực</th>
-                                                    <th style="text-align:center" style="width: 112px;">Ngày tạo</th>
-                                                    <th style="text-align:center" style="width: 112px;">Chức năng</th>
+                                                    <th style="width: 5%;">STT</th>
+                                                    <th style="text-align:left !important;width:20%">Tên danh mục</th>
+                                                    <th style="width:20%">Danh mục cha</th>
+                                                    <th style="width: 20%;">Tên slug</th>
+                                                    <th style="width: 10%;">Trạng thái</th>
+                                                    <th style="width: 10%;">Hiển thị khu vực</th>
+                                                    <th style="width: 10%">Chức năng</th>
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in categories track by $index">
-                                                    <td style="text-align:center" class="sorting_1">@{{ $index + 1 }}</td>
-                                                    <td>@{{ cate.name }}</td>
-                                                    <td style="text-align:center">@{{ cate.slug }}</td>
-                                                    <td style="text-align:center">@{{ (cate.status) ? 'Hiển thị' : 'Ẩn' }}</td>
-                                                    <td style="text-align:center">@{{ (cate.is_filter_city) ? 'Có' : 'Không' }}</td>
-                                                    <td style="text-align:center">@{{ cate.created_at }}</td>
-                                                    <td style="text-align:center">
+                                                    <td class="sorting_1">@{{ $index + 1 }}</td>
+                                                    <td style="text-align:left !important">@{{ cate.name }}</td>
+                                                    <td>@{{ (cate.parent) ? cate.parent : '' }}</td>
+                                                    <td>@{{ cate.slug }}</td>
+                                                    <td>@{{ (cate.status) ? 'Hiển thị' : 'Ẩn' }}</td>
+                                                    <td>@{{ (cate.is_filter_city) ? 'Có' : 'Không' }}</td>
+                                                    <td>
                                                         <button style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                                         <button style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
                                                     </td>
@@ -84,41 +81,22 @@
                                             </tbody>
 
                                         </table>
+                                        <div ng-cloak ng-if="loading">
+                                            <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:46%;margin-top:0%">
+                                        </div>
+                                        <div ng-cloak ng-if="!loading && categories.length === 0">
+                                            <h5 style="font-size:16px;color:#f00;">Oops! Không tìm thấy danh mục!</h5>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                                <div class="row" ng-cloak ng-if="!loading && categories.length > 0">
+                                    <div class="col-sm-5" style="padding-top:5px;">
+                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Hiển thị từ <strong>@{{ from }}</strong> đến <strong>@{{ to }}</strong> của <strong>@{{ total }}</strong> danh mục</div>
                                     </div>
                                     <div class="col-sm-7">
                                         <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style="margin-top:-20px;float:right">
-                                            <ul class="pagination">
-                                                <li class="paginate_button previous disabled" id="example1_previous">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
-                                                </li>
-                                                <li class="paginate_button active">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
-                                                </li>
-                                                <li class="paginate_button ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a>
-                                                </li>
-                                                <li class="paginate_button ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a>
-                                                </li>
-                                                <li class="paginate_button ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a>
-                                                </li>
-                                                <li class="paginate_button ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a>
-                                                </li>
-                                                <li class="paginate_button ">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a>
-                                                </li>
-                                                <li class="paginate_button next" id="example1_next">
-                                                    <a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a>
-                                                </li>
-                                            </ul>
+                                            <items-pagination></items-pagination>
                                         </div>
                                     </div>
                                 </div>

@@ -82,21 +82,6 @@ app.directive('itemsPagination', function () {
     };
 });
 
-app.directive('itemsPaginationUser', function () {
-    return {
-        restrict: 'E',
-        template: '<ul class="pagination">'+
-            '<li ng-show="currentPage != 1"><a href="javascript:void(0)" ng-click="getResultsPage(name, status, perPage, 1)">Đầu</a></li>'+
-            '<li ng-show="currentPage != 1"><a href="javascript:void(0)" ng-click="getResultsPage(name, status, perPage, currentPage-1)">Trước</a></li>'+
-            '<li ng-repeat="i in range track by $index" ng-class="{active : currentPage == i}">'+
-                '<a href="javascript:void(0)" ng-click="getResultsPage(name, status, perPage, i)">{{i}}</a>'+
-            '</li>'+
-            '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getResultsPage(name, status, perPage, currentPage+1)">Tiếp</a></li>'+
-            '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getResultsPage(name, status, perPage, totalPages)">Cuối</a></li>'+
-        '</ul>'
-    };
-});
-
 app.directive('convertToNumber', function() {
     return {
         require: 'ngModel',

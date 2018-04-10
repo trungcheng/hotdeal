@@ -42,11 +42,14 @@
                     $scope.from = response.data.from;
                     $scope.to = response.data.to;
                     $scope.total = response.data.total;
-
+                    var pages = [];
+                    for (var i = 1; i <= response.data.last_page; i++) {          
+                        pages.push(i);
+                    }
+                    $scope.range = pages;
                     if ($scope.totalPages == 0) {
                         $scope.currentPage = 0;
                     }
-
                     $scope.categories = response.data.data;
                     $scope.totalItems = response.data.total;
 

@@ -26,6 +26,11 @@ class CategoryController extends Controller
 
         if (!empty($categories)) {
             $results = Category::init($request);
+            foreach ($results as $result) {
+                if ($result->parent_id !== 0) {
+                    $result['parent'] = Category::find($result->parent_id)->name;
+                }
+            }
             
             return Response::json(['status' => true, 'data' => $results]);
         }
