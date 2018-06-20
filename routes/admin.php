@@ -8,8 +8,7 @@
             //Authentication Routes
             $this->get('login', 'Admin\Auth\LoginController@showLogin')->name('login');
             $this->post('login', 'Admin\Auth\LoginController@login');
-            $this->post('logout', 'Admin\Auth\LoginController@logout')->name('logout');
-            $this->get('logout', 'Admin\Auth\LoginController@logout');
+            $this->post('logout', 'Admin\Auth\LoginController@logoutAdmin')->name('logout');
 
             // // Register Routes...
             // $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');

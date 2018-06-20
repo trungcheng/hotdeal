@@ -43,4 +43,13 @@ class LoginController extends Controller
         return view('pages.admin.auth.login');
     }
 
+    public function logoutAdmin(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/admin');
+    }
+
 }
