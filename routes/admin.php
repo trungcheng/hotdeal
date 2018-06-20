@@ -6,7 +6,7 @@
 
         \Route::group(['middleware' => ['admin.guest']], function () {
             //Authentication Routes
-            $this->get('login', 'Admin\Auth\LoginController@showLoginForm')->name('login');
+            $this->get('login', 'Admin\Auth\LoginController@showLogin')->name('login');
             $this->post('login', 'Admin\Auth\LoginController@login');
             $this->post('logout', 'Admin\Auth\LoginController@logout')->name('logout');
             $this->get('logout', 'Admin\Auth\LoginController@logout');
