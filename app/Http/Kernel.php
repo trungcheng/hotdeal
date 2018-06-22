@@ -79,6 +79,7 @@ class Kernel extends HttpKernel
         
         'user.auth' => \App\Http\Middleware\User\Authenticate::class,
         'user.guest' => \App\Http\Middleware\User\RedirectIfAuthenticated::class,
-        'user.values' => \App\Http\Middleware\User\SetDefaultValues::class
+        'user.values' => \App\Http\Middleware\User\SetDefaultValues::class,
+        'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class
     ];
 }

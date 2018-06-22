@@ -4,12 +4,23 @@ namespace App\Http\Controllers\API;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Playlist;
+use App\Models\ListMediaPlaylist;
 use Illuminate\Http\Request;
 use JWTAuth;
 use JWTAuthException;
+use Carbon\Carbon;
+use Response;
 
 class ApiAppController extends Controller
 {
+
+    private $playlist;
+    public function __construct(
+        Playlist $playlist
+    ) {
+        $this->playlist = $playlist;
+    }
 
     public static $rules = [
         'email' => 'required|email|unique:users',
@@ -170,5 +181,104 @@ class ApiAppController extends Controller
             ]);
         }
     } 
+
+    public function getUserInfo(Request $request){
+        $user = JWTAuth::toUser($request->token);
+        return response()->json(['result' => $user]);
+    }
+
+    public function create_playlist(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), ['title' => 'required|min:2']);
+            if ($validator->fails()) {
+                return response()->json([ 
+                    'status' => false,
+                    'message' => 'Bạn phải nhập tên Playlist',
+                ], 200);
+            }
+
+            $user = JWTAuth::toUser($request->token);
+
+            $current = Carbon::now();
+            Playlist::firstOrCreate([
+                'user_id' => $user['id'],
+                'title' => $request->title, 
+                'image' => 'http://vietid.vcmedia.vn/vietid/image/avatars/default.png',
+                'description' => '',
+                'type' => 0,
+                'created_at'=> $current,
+                'updated_at'=> $current
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Creat playlist success.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 200);
+        }
+    }
+
+    public function getPlaylist(Request $request){
+        $user = JWTAuth::toUser($request->token);
+        try {
+           if($user){
+                $results = [];
+                $posts = $this->playlist->where('id', '>', 0)->get();
+                if (!empty($posts)) {
+                    $posts = $this->playlist->where('id', '>', 0);
+                    // $posts->delete()->where('user_id', $user['id']);
+                    $posts->where('user_id', $user['id']);
+
+                    $results = $posts->select(
+                        'id',
+                        'user_id',
+                        'title',
+                        'image',
+                        'description',
+                        'created_at',
+                        'updated_at'
+                    )->orderBy('created_at', 'desc')->paginate(20);
+                }
+                return Response::json($results);
+            }
+        } catch (JWTAuthException $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Failed token'
+            ], 200);
+        }
+    }
+
+    public function AddToPlaylist(Request $request){
+        try {
+            $user = JWTAuth::toUser($request->token);
+
+            $current = Carbon::now();
+            $medias = $request->media_id;
+            foreach ($medias as $media) {
+                ListMediaPlaylist::firstOrCreate([
+                    'media_id' => $media,
+                    'playlist_id' => $request->playlist_id,
+                    'created_at'=> $current,
+                    'updated_at'=> $current
+                ]);
+            }
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Add to playlist success.'
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 200);
+        }
+    }
     
 }  

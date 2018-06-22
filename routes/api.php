@@ -16,6 +16,16 @@
 	\Route::post('auth/register', 'API\ApiAppController@register');
 	\Route::post('auth/login', 'API\ApiAppController@login');
 
+	\Route::group(['middleware' => 'jwt.auth'], function () {
+	    \Route::get('user', 'API\ApiAppController@getUserInfo');
+
+	    //music
+	    \Route::post('create', 'API\ApiAppController@create_playlist');
+	    \Route::post('list/playlist', 'API\ApiAppController@getPlaylist');
+	    \Route::post('list/addplaylist', 'API\ApiAppController@AddToPlaylist');
+
+	});
+
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

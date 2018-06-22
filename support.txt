@@ -1,0 +1,6 @@
+1. composer install
+2. cp .env.example .env
+3. php artisan key:generate
+4. cd public/
+5. bower install
+6. php artisan config:cache
