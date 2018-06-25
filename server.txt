@@ -1,0 +1,13 @@
+207.148.99.125
+ssh root@207.148.99.125
+root/T?j8x)S1ACz-Vtd7
+
+cd /data/www/trungtamhotong
+git pull origin master
+git fetch origin
+git checkout development
+git branch
+
+git pull origin development
+php artisan config:cache
+

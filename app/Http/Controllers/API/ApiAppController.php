@@ -5,21 +5,29 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Playlist;
+use App\Models\Media;
 use App\Models\ListMediaPlaylist;
 use Illuminate\Http\Request;
 use JWTAuth;
 use JWTAuthException;
 use Carbon\Carbon;
 use Response;
+use Illuminate\Support\Facades\DB;
 
 class ApiAppController extends Controller
 {
 
     private $playlist;
+    private $media;
+    private $listMediaPlaylist;
     public function __construct(
-        Playlist $playlist
+        Playlist $playlist,
+        Media $media,
+        ListMediaPlaylist $listMediaPlaylist
     ) {
         $this->playlist = $playlist;
+        $this->media = $media;
+        $this->listMediaPlaylist = $listMediaPlaylist;
     }
 
     public static $rules = [
@@ -231,7 +239,6 @@ class ApiAppController extends Controller
                 $posts = $this->playlist->where('id', '>', 0)->get();
                 if (!empty($posts)) {
                     $posts = $this->playlist->where('id', '>', 0);
-                    // $posts->delete()->where('user_id', $user['id']);
                     $posts->where('user_id', $user['id']);
 
                     $results = $posts->select(
@@ -254,25 +261,197 @@ class ApiAppController extends Controller
         }
     }
 
-    public function AddToPlaylist(Request $request){
+    public function getPlaylistDetail(Request $request){
         try {
-            $user = JWTAuth::toUser($request->token);
+            $results = [];
 
-            $current = Carbon::now();
-            $medias = $request->media_id;
-            foreach ($medias as $media) {
-                ListMediaPlaylist::firstOrCreate([
-                    'media_id' => $media,
-                    'playlist_id' => $request->playlist_id,
-                    'created_at'=> $current,
-                    'updated_at'=> $current
-                ]);
+            if ($request->has(['id'])) {
+                $results = Playlist::where('id', $request->id)->first();
+                $list_song = DB::table('list_playlist_media')
+                                ->join('media', 'list_playlist_media.media_id', '=', 'media.id')
+                                ->select(
+                                    'list_playlist_media.*',
+                                    'media.parent_id',
+                                    'media.filename',
+                                    'media.filesize',
+                                    'media.filetype', 
+                                    'media.file_srt',
+                                    'media.source',
+                                    'media.duration',
+                                    'media.author',
+                                    'media.singer',
+                                    'media.image',
+                                    'media.display',
+                                    'media.ordering',
+                                    'media.created_at',
+                                    'media.updated_at'
+                                )
+                                ->where('list_playlist_media.playlist_id', $request->id)
+                                ->get();
+            } else {
+                
             }
 
             return response()->json([
-                'status' => true,
-                'message' => 'Add to playlist success.'
+                'detail' => $results,
+                'list_song' => $list_song
             ], 200);
+        } catch (JWTAuthException $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Failed token'
+            ], 200);
+        }
+    }
+
+    public function getListSongInPlaylist(Request $request){
+        try {
+            $results = [];
+            $songs = $this->listMediaPlaylist->where('id', '>', 0)->get();
+            if (!empty($songs)) {
+                $results = DB::table('list_playlist_media')
+                                ->join('media', 'list_playlist_media.media_id', '=', 'media.id')
+                                ->select(
+                                    'list_playlist_media.*',
+                                    'media.parent_id',
+                                    'media.filename',
+                                    'media.filesize',
+                                    'media.filetype', 
+                                    'media.file_srt',
+                                    'media.source',
+                                    'media.duration',
+                                    'media.author',
+                                    'media.singer',
+                                    'media.image',
+                                    'media.display',
+                                    'media.ordering',
+                                    'media.created_at',
+                                    'media.updated_at'
+                                )
+                                ->orderBy('media.created_at', 'desc')
+                                ->paginate(20);
+            }
+            return Response::json($results);
+        } catch (JWTAuthException $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Failed token'
+            ], 200);
+        }
+    }
+
+    public function AddOneSongToPlaylist(Request $request){
+        try {
+            $check_playlist = Playlist::where('id', $request->playlist_id)->first();
+            if($check_playlist){
+                $current = Carbon::now();
+                $check_song = DB::table('list_playlist_media')
+                                ->where('media_id', $request->media_id)
+                                ->where('playlist_id', $request->playlist_id)
+                                ->get();
+                if(count($check_song) > 0){
+                    return response()->json([
+                        'status' => false,
+                        'message' => "Pháp thoại này đã tồn tại trong Playlist."
+                    ], 200);
+                }else{
+                    ListMediaPlaylist::firstOrCreate([
+                        'media_id' => $request->media_id,
+                        'playlist_id' => $request->playlist_id,
+                        'created_at'=> $current,
+                        'updated_at'=> $current
+                    ]);
+                    return response()->json([
+                        'status' => true,
+                        'message' => 'Add to playlist success.'
+                    ], 200);
+                }        
+            }else{
+                return response()->json([
+                    'status' => false,
+                    'message' => "Không tồn tại Playlist trong hệ thống."
+                ], 200);
+            }
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 200);
+        }
+    }
+
+    public function editPlaylist(Request $request){
+        try {
+            $user = JWTAuth::toUser($request->token);
+            $check_playlist = Playlist::where('id', $request->playlist_id)->first();
+            if($check_playlist){
+                $current = Carbon::now();
+                DB::table('playlist')
+                    ->where('id', $request->playlist_id)
+                    ->where('user_id', $user['id'])
+                    ->update([
+                        'title' => $request->title, 
+                        'image' => $request->image,
+                        'description' => $request->description,
+                        'updated_at'=> $current
+                      ]);
+
+                if(count($request->list_song) > 0){
+                    DB::table('list_playlist_media')->where('playlist_id', $request->playlist_id)->delete();
+                    $medias = $request->list_song;
+                    foreach ($medias as $media) {
+                        ListMediaPlaylist::firstOrCreate([
+                            'media_id' => $media,
+                            'playlist_id' => $request->playlist_id,
+                            'created_at'=> $current,
+                            'updated_at'=> $current
+                        ]);
+                    }
+                }       
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Edit playlist success.'
+                ], 200);
+            }else{
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Không tồn tại Playlist trong hệ thống.'
+                ], 200);
+            }
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 200);
+        }
+    }
+
+    public function deletePlaylist(Request $request){
+        try {
+            $check_playlist = Playlist::where('id', $request->id)->first();
+            if($check_playlist){
+                $user = JWTAuth::toUser($request->token);
+                DB::table('playlist')
+                    ->where('id', $request->id)
+                    ->where('user_id', $user['id'])
+                    ->delete();
+
+                DB::table('list_playlist_media')->where('playlist_id', $request->id)
+                    ->delete();       
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Delete playlist success.'
+                ], 200);
+            }else{
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Không tồn tại Playlist trong hệ thống.'
+                ], 200);
+            }
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
