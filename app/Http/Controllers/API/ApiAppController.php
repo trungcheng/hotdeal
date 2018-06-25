@@ -311,6 +311,7 @@ class ApiAppController extends Controller
             if (!empty($songs)) {
                 $results = DB::table('list_playlist_media')
                                 ->join('media', 'list_playlist_media.media_id', '=', 'media.id')
+                                ->where('list_playlist_media.playlist_id', $request->playlist)
                                 ->select(
                                     'list_playlist_media.*',
                                     'media.parent_id',
@@ -456,6 +457,38 @@ class ApiAppController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => $e->getMessage()
+            ], 200);
+        }
+    }
+
+    public function getAllSong(Request $request){
+        try {
+            $results = [];
+            $results = DB::table('media')
+                                ->select(
+                                    'media.id',
+                                    'media.parent_id',
+                                    'media.filename',
+                                    'media.filesize',
+                                    'media.filetype', 
+                                    'media.file_srt',
+                                    'media.source',
+                                    'media.duration',
+                                    'media.author',
+                                    'media.singer',
+                                    'media.image',
+                                    'media.display',
+                                    'media.ordering',
+                                    'media.created_at',
+                                    'media.updated_at'
+                                )
+                                ->orderBy('media.created_at', 'desc')
+                                ->paginate(20);
+            return Response::json($results);
+        } catch (JWTAuthException $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Failed token'
             ], 200);
         }
     }
