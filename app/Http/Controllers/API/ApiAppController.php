@@ -36,7 +36,7 @@ class ApiAppController extends Controller
         'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
         'password_confirmation' => 'min:6',
         'fullname' => 'required|min:3|',
-        'mobile' => 'required|numeric|min:10|unique:users'
+        'mobile' => 'required|numeric|digits:10|unique:users'
     ];
 
     public static $messages = [
@@ -50,7 +50,7 @@ class ApiAppController extends Controller
         'password.same' => 'Mật khẩu và xác nhận mật khẩu chưa khớp',
         'password.min' => 'Mật khẩu ít nhất 6 ký tự trở lên',
         'mobile.required' => 'Số điện thoại không được để trống',
-        'mobile.min' => 'Số điện thoại phải ít nhất 10 số',
+        'mobile.digits' => 'Số điện thoại phải ít nhất 10 số',
         'mobile.numeric' => 'Số điện thoại chỉ được nhập số',
         'mobile.unique' => 'Số điện thoại đã tồn tại trong hệ thống',
         'fullname.required' => 'Họ tên không được để trống',

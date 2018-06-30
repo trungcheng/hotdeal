@@ -11,3 +11,5 @@ git branch
 git pull origin development
 php artisan config:cache
 
+git stash
+
