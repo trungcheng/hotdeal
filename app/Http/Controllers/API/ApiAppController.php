@@ -32,17 +32,18 @@ class ApiAppController extends Controller
 
     public static $rules = [
         'email' => 'required|email|unique:users',
-        'username' => 'required|min:3|unique:users',
+        'username' => 'required|min:3|string|max:150|alpha_num|unique:users',
         'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
         'password_confirmation' => 'min:6',
         'fullname' => 'required|min:3|',
-        'mobile' => 'required|numeric|digits:10|unique:users'
+        'mobile' => 'required|numeric|digits_between:10,11|unique:users'
     ];
 
     public static $messages = [
         'email.required' => 'Địa chỉ email không được để trống',
         'email.email' => 'Địa chỉ email chưa đúng định dạng',
         'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống',
+        'username.alpha_num' => 'Username phải viết liền và sử dụng chữ không dấu',
         'username.required' => 'Username không được để trống',
         'username.min' => 'Username ít nhất 3 ký tự trở lên',
         'username.unique' => 'Username đã tồn tại trong hệ thống',
@@ -50,7 +51,7 @@ class ApiAppController extends Controller
         'password.same' => 'Mật khẩu và xác nhận mật khẩu chưa khớp',
         'password.min' => 'Mật khẩu ít nhất 6 ký tự trở lên',
         'mobile.required' => 'Số điện thoại không được để trống',
-        'mobile.digits' => 'Số điện thoại phải ít nhất 10 số',
+        'mobile.digits_between' => 'Số điện thoại phải 10 hoặc 11 số ',
         'mobile.numeric' => 'Số điện thoại chỉ được nhập số',
         'mobile.unique' => 'Số điện thoại đã tồn tại trong hệ thống',
         'fullname.required' => 'Họ tên không được để trống',
