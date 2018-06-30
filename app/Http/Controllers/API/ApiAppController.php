@@ -32,20 +32,29 @@ class ApiAppController extends Controller
 
     public static $rules = [
         'email' => 'required|email|unique:users',
-        'username' => 'required|min:3',
+        'username' => 'required|min:3|unique:users',
         'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-        'password_confirmation' => 'min:6'
+        'password_confirmation' => 'min:6',
+        'fullname' => 'required|min:3|',
+        'mobile' => 'required|numeric|min:10|unique:users'
     ];
 
     public static $messages = [
         'email.required' => 'Địa chỉ email không được để trống',
         'email.email' => 'Địa chỉ email chưa đúng định dạng',
-        'email.unique' => 'Địa chỉ email đã tồn tại',
+        'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống',
         'username.required' => 'Username không được để trống',
         'username.min' => 'Username ít nhất 3 ký tự trở lên',
+        'username.unique' => 'Username đã tồn tại trong hệ thống',
         'password.required' => 'Mật khẩu không được để trống',
         'password.same' => 'Mật khẩu và xác nhận mật khẩu chưa khớp',
         'password.min' => 'Mật khẩu ít nhất 6 ký tự trở lên',
+        'mobile.required' => 'Số điện thoại không được để trống',
+        'mobile.min' => 'Số điện thoại phải ít nhất 10 số',
+        'mobile.numeric' => 'Số điện thoại chỉ được nhập số',
+        'mobile.unique' => 'Số điện thoại đã tồn tại trong hệ thống',
+        'fullname.required' => 'Họ tên không được để trống',
+        'fullname.min' => 'Họ tên phải ít nhất 3 ký tự',
     ];
 
     public function register(Request $request)
@@ -88,11 +97,15 @@ class ApiAppController extends Controller
     public function login(Request $request)
     {
         if ($request->has(['email', 'password'])) {
-            $credentials = $request->only('email', 'password');
-            $user = User::where('email', $request->email)->first();
-        } else {
-            $credentials = $request->only('username', 'password');
-            $user = User::where('username', $request->username)->first();
+            // $credentials = $request->only('email', 'password');
+            //$user = User::where('email', $request->email)->first();
+            $credentials = $request->only('password');
+            $user = User::where('username', $request->email)->orWhere('mobile', $request->email)->orWhere('email', $request->email)->first();
+        } else{
+            // $credentials = $request->only('username', 'password');
+            // $user = User::where('username', $request->username)->first();
+            $credentials = $request->only('password');
+            $user = User::where('username', $request->username)->orWhere('mobile', $request->username)->orWhere('email', $request->username)->first();
         }
 
         $token = null;
@@ -112,7 +125,16 @@ class ApiAppController extends Controller
 
         $payload = JWTAuth::getPayload($token);
         $expirationTime = $payload['exp'];
-        $user->update(['jwt_token' => $token]);
+
+        if($user){
+            $user->update(['jwt_token' => $token]);    
+        }else{
+            return response()->json([
+                'status' => false,
+                'message' => 'Username, Số điện thoại hoặc Email bạn nhập không đúng.'
+            ], 200);
+        }
+        
 
         return response()->json([ 
             'status' => true,
