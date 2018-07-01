@@ -98,15 +98,18 @@ class ApiAppController extends Controller
     public function login(Request $request)
     {
         if ($request->has(['email', 'password'])) {
-            // $credentials = $request->only('email', 'password');
-            //$user = User::where('email', $request->email)->first();
-            $credentials = $request->only('password');
-            $user = User::where('username', $request->email)->orWhere('mobile', $request->email)->orWhere('email', $request->email)->first();
-        } else{
-            // $credentials = $request->only('username', 'password');
-            // $user = User::where('username', $request->username)->first();
-            $credentials = $request->only('password');
-            $user = User::where('username', $request->username)->orWhere('mobile', $request->username)->orWhere('email', $request->username)->first();
+            $credentials = $request->only('email', 'password');
+            $user = User::where('email', $request->email)->first();
+            // $credentials = $request->only('password');
+            // $user = User::where('username', $request->email)->orWhere('mobile', $request->email)->orWhere('email', $request->email)->first();
+        } else if ($request->has(['username', 'password'])) {
+            $credentials = $request->only('username', 'password');
+            $user = User::where('username', $request->username)->first();
+            // $credentials = $request->only('password');
+            // $user = User::where('username', $request->username)->orWhere('mobile', $request->username)->orWhere('email', $request->username)->first();
+        } else {
+            $credentials = $request->only('mobile', 'password');
+            $user = User::where('mobile', $request->mobile)->first();
         }
 
         $token = null;
