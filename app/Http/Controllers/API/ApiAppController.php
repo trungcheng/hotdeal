@@ -97,15 +97,14 @@ class ApiAppController extends Controller
 
     public function login(Request $request)
     {
-
         if (filter_var($request->username, FILTER_VALIDATE_EMAIL)) {
-            $credentials = $request->only('email', 'password');
-            $user = User::where('email', $request->email)->first();
+            $credentials = ['email' => $request->username, 'password' => $request->password];
+            $user = User::where('email', $request->username)->first();
         } else if (is_numeric($request->username)) {
-            $credentials = $request->only('mobile', 'password');
-            $user = User::where('mobile', $request->mobile)->first();
+            $credentials = ['mobile' => $request->username, 'password' => $request->password];
+            $user = User::where('mobile', $request->username)->first();
         } else {
-            $credentials = $request->only('username', 'password');
+            $credentials = ['username' => $request->username, 'password' => $request->password];
             $user = User::where('username', $request->username)->first();
         }
 
