@@ -97,20 +97,32 @@ class ApiAppController extends Controller
 
     public function login(Request $request)
     {
-        if ($request->has(['email', 'password'])) {
+
+        if (filter_var($request->username, FILTER_VALIDATE_EMAIL)) {
             $credentials = $request->only('email', 'password');
             $user = User::where('email', $request->email)->first();
-            // $credentials = $request->only('password');
-            // $user = User::where('username', $request->email)->orWhere('mobile', $request->email)->orWhere('email', $request->email)->first();
-        } else if ($request->has(['username', 'password'])) {
-            $credentials = $request->only('username', 'password');
-            $user = User::where('username', $request->username)->first();
-            // $credentials = $request->only('password');
-            // $user = User::where('username', $request->username)->orWhere('mobile', $request->username)->orWhere('email', $request->username)->first();
-        } else {
+        } else if (is_numeric($request->username)) {
             $credentials = $request->only('mobile', 'password');
             $user = User::where('mobile', $request->mobile)->first();
+        } else {
+            $credentials = $request->only('username', 'password');
+            $user = User::where('username', $request->username)->first();
         }
+
+        // if ($request->has(['email', 'password'])) {
+        //     $credentials = $request->only('email', 'password');
+        //     $user = User::where('email', $request->email)->first();
+        //     // $credentials = $request->only('password');
+        //     // $user = User::where('username', $request->email)->orWhere('mobile', $request->email)->orWhere('email', $request->email)->first();
+        // } else if ($request->has(['username', 'password'])) {
+        //     $credentials = $request->only('username', 'password');
+        //     $user = User::where('username', $request->username)->first();
+        //     // $credentials = $request->only('password');
+        //     // $user = User::where('username', $request->username)->orWhere('mobile', $request->username)->orWhere('email', $request->username)->first();
+        // } else {
+        //     $credentials = $request->only('mobile', 'password');
+        //     $user = User::where('mobile', $request->mobile)->first();
+        // }
 
         $token = null;
         try {
@@ -130,15 +142,14 @@ class ApiAppController extends Controller
         $payload = JWTAuth::getPayload($token);
         $expirationTime = $payload['exp'];
 
-        if($user){
+        if ($user) {
             $user->update(['jwt_token' => $token]);    
-        }else{
+        } else {
             return response()->json([
                 'status' => false,
-                'message' => 'Username, Số điện thoại hoặc Email bạn nhập không đúng.'
+                'message' => 'Username, số điện thoại hoặc email bạn nhập không đúng.'
             ], 200);
         }
-        
 
         return response()->json([ 
             'status' => true,
