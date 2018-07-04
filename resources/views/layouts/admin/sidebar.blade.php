@@ -12,6 +12,8 @@
 
         <li><a data-route="/admin/categories" href="{{ url('/admin/categories') }}"><i class="fa fa-bars"></i> <span>Quản lý danh mục</span></a></li>
 
+        <li><a data-route="/admin/users" href="{{ url('/admin/users') }}"><i class="fa fa-bars"></i> <span>Quản lý Users</span></a></li>
+
         <!-- <li><a data-route="setting" href="#"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li> -->
         
         <!-- <li class="treeview">

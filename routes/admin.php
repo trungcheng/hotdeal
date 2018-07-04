@@ -26,12 +26,20 @@
 
                 $this->get('', 'Admin\DashboardController@index');
                 
+                //category
                 $this->get('categories', 'Admin\CategoryController@index');
                 $this->get('categories/getAllCategories', 'Admin\CategoryController@getAllCategories');
                 $this->get('categories/getAllParentCates', 'Admin\CategoryController@getAllParentCates');
                 $this->post('categories/add', 'Admin\CategoryController@add');
                 $this->post('categories/update', 'Admin\CategoryController@update');
                 $this->post('categories/delete', 'Admin\CategoryController@delete');
+
+                //users
+                $this->get('users', 'Admin\UsersController@index');
+                $this->get('users/getAllUser', 'Admin\UsersController@getAllUsers');
+                $this->post('users/add', 'Admin\UsersController@add');
+                $this->post('users/update', 'Admin\UsersController@update');
+                $this->post('users/delete', 'Admin\UsersController@delete');
 
             });
         });

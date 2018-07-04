@@ -59,4 +59,17 @@ class User extends Model implements Authenticatable
         return $this->hasMany('App\Models\Product', 'user_id', 'id');
     }
 
+    public static function init($request)
+    {
+        $data = self::where('id', '>', 0);
+
+        if ($request->name !== 'all-users' && $request->name !== 'undefined') {
+            $data->where("fullname", "LIKE", "%" . $request->name . "%");
+        }
+
+        $data = $data->orderBy('id', 'desc')->paginate($request->perPage);
+
+        return $data;
+    }
+
 }
