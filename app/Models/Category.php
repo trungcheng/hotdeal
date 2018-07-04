@@ -17,10 +17,6 @@ class Category extends Model
         'is_filter_city'
     ];
 
-    public function product() {
-    	return $this->hasMany('App\Models\Product', 'cat_id' , 'id');
-    }
-
     public static function init($request)
     {
         $data = self::where('id', '>', 0);
@@ -32,6 +28,34 @@ class Category extends Model
         $data = $data->orderBy('id', 'desc')->paginate($request->perPage);
 
         return $data;
+    }
+
+    public static function addAction($data)
+    {
+        self::firstOrCreate([
+            'parent_id' => (int)$data['cateParent'],
+            'name' => $data['cateName'],
+            'slug' => $data['cateSlug'],
+            'order' => 1,
+            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
+            'is_filter_city' => ($data['selectedOptionLocation'] == 'Có') ? 1 : 0
+        ]);
+
+        return true;
+    }
+
+    public static function updateAction($data)
+    {
+        self::find($data['cateId'])->update([
+            'parent_id' => (int)$data['cateParent'],
+            'name' => $data['cateName'],
+            'slug' => $data['cateSlug'],
+            'order' => 1,
+            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
+            'is_filter_city' => ($data['selectedOptionLocation'] == 'Có') ? 1 : 0
+        ]);
+
+        return true;
     }
 
 }

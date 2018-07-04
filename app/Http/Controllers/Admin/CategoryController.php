@@ -37,4 +37,86 @@ class CategoryController extends Controller
 
         return Response::json(['status' => false, 'data' => []]);
     }
+
+    public function getAllParentCates(Request $request) 
+    {
+        $categories = Category::where('parent_id', 0)->get();
+
+        if (!empty($categories)) {
+            foreach ($categories as $result) {
+                $result['childs'] = [];
+                $result['childs'] = Category::where('parent_id', $result->id)->get();
+            }
+            
+            return Response::json(['status' => true, 'data' => $categories]);
+        }
+
+        return Response::json(['status' => false, 'data' => []]);
+    }
+
+    public function add(Request $request)
+    {
+        $data = $request->only(['cateName', 'cateParent', 'cateSlug', 'selectedOptionStatus', 'selectedOptionLocation']);
+        if ($data) {
+            Category::addAction($data);
+            return Response::json([
+                'status' => true, 
+                'message' => 'Thêm danh mục thành công', 
+                'type' => 'success'
+            ]);
+        }
+
+        return Response::json([
+            'status' => false, 
+            'message' => 'Data invalid', 
+            'type' => 'error'
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->only(['cateId', 'cateName', 'cateParent', 'cateSlug', 'selectedOptionStatus', 'selectedOptionLocation']);
+        if ($data) {
+            Category::updateAction($data);
+            return Response::json([
+                'status' => true, 
+                'message' => 'Cập nhật danh mục thành công', 
+                'type' => 'success'
+            ]);
+        }
+
+        return Response::json([
+            'status' => false, 
+            'message' => 'Data invalid', 
+            'type' => 'error'
+        ]);
+    }
+
+    public function delete(Request $request)
+    {
+        $cateId = $request->cateId;
+        if ($cateId && !is_null($cateId)) {
+            $cate = Category::find($cateId);
+            if ($cate) {
+                $cate->delete();
+                return Response::json([
+                    'status' => true, 
+                    'message' => 'Xóa danh mục thành công', 
+                    'type' => 'success'
+                ]);
+            }
+
+            return Response::json([
+                'status' => false, 
+                'message' => 'Category not found', 
+                'type' => 'error'
+            ]);
+        }
+
+        return Response::json([
+            'status' => false, 
+            'message' => 'Data invalid', 
+            'type' => 'error'
+        ]);
+    }
 }

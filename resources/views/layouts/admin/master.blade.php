@@ -3,13 +3,13 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html data-ng-app="HotdealCMS">
+<html data-ng-app="HotongCMS">
 <head>
   	<meta charset="UTF-8">
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-  	<title>HotdealCMS | @yield('page')</title>
+  	<title>HotongCMS | @yield('page')</title>
   	
   	<!-- Tell the browser to be responsive to screen width -->
   	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">

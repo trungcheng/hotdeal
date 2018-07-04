@@ -11,24 +11,6 @@
         <li><a data-route="/admin" href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
 
         <li><a data-route="/admin/categories" href="{{ url('/admin/categories') }}"><i class="fa fa-bars"></i> <span>Quản lý danh mục</span></a></li>
-        
-        <li><a data-route="/admin/orders" href="{{ url('/admin/orders') }}"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li>
-        
-        <li><a data-route="/admin/products" href="{{ url('/admin/products') }}"><i class="fa fa-suitcase"></i> <span>Quản lý sản phẩm</span></a></li>
-        
-        <li><a data-route="/admin/news" href="{{ url('/admin/news') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý tin tức</span></a></li>
-        
-        <li><a data-route="/admin/advertises" href="{{ url('/admin/advertises') }}"><i class="fa fa-square-o"></i> <span>Quản lý quảng cáo</span></a></li>
-        
-        <li><a data-route="/admin/menu" href="{{ url('/admin/menu') }}"><i class="fa fa-server"></i> <span>Quản lý menu</span></a></li>
-        
-        <li><a data-route="/admin/location" href="{{ url('/admin/location') }}"><i class="fa fa-share-alt"></i> <span>Quản lý khu vực</span></a></li>
-        
-        <li><a data-route="/admin/users" href="{{ url('/admin/users') }}"><i class="fa fa-users"></i> <span>Quản lý user</span></a></li>
-        
-        <li><a data-route="/admin/company" href="{{ url('/admin/company') }}"><i class="fa fa-flag"></i> <span>Thông tin công ty</span></a></li>
-        
-        <li><a data-route="/admin/general-info" href="{{ url('/admin/general-info') }}"><i class="fa fa-info-circle"></i> <span>Thông tin chung</span></a></li>
 
         <!-- <li><a data-route="setting" href="#"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li> -->
         

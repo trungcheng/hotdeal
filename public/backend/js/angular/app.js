@@ -1,4 +1,4 @@
-var app = angular.module('HotdealCMS', [
+var app = angular.module('HotongCMS', [
 	'ui.bootstrap',
     'ngSanitize',
     'ngMessages',

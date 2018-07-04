@@ -15,6 +15,7 @@
             <h1>
                 Quản lý danh mục
                 <!-- <small>Optional description</small> -->
+                <button ng-click="openModalAdd()" class="pull-right btn btn-success btn-sm">Thêm danh mục</button>
             </h1>
         </section>
 
@@ -58,7 +59,7 @@
                                                 <tr role="row">
                                                     <th style="width: 5%;">STT</th>
                                                     <th style="text-align:left !important;width:20%">Tên danh mục</th>
-                                                    <th style="width:20%">Danh mục cha</th>
+                                                    <th style="width: 20%">Danh mục cha</th>
                                                     <th style="width: 20%;">Tên slug</th>
                                                     <th style="width: 10%;">Trạng thái</th>
                                                     <th style="width: 10%;">Hiển thị khu vực</th>
@@ -74,8 +75,8 @@
                                                     <td>@{{ (cate.status) ? 'Hiển thị' : 'Ẩn' }}</td>
                                                     <td>@{{ (cate.is_filter_city) ? 'Có' : 'Không' }}</td>
                                                     <td>
-                                                        <button style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                                        <button style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                                                        <button ng-click="openModalEdit(cate)" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                        <button ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -111,6 +112,92 @@
 
     </div>
 @stop
+
+<script type="text/ng-template" id="popup-add.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">&times;</button>
+        <h3 class="modal-title">Thêm danh mục</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Tên danh mục</label>
+            <input type="text" ng-model="modalAdd.cateName" class="form-control" placeholder="Tên danh mục...">
+        </div>
+        <div class="form-group">
+            <label>Danh mục cha</label>
+            <select ng-model="modalAdd.cateParent" class="form-control" ng-init="modalAdd.cateParent='0'">
+                <option value="0" disabled>----- Chọn danh mục cha -----</option>
+                <option value="@{{ item.id }}" style="font-weight:bold;" ng-repeat-start="item in modalAdd.parentCates">
+                    @{{ item.name }}
+                </option>
+                <option value="@{{ child.id }}" ng-repeat-end ng-repeat="child in item.childs">-- @{{ child.name }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Tên slug</label>
+            <input type="text" ng-model="modalAdd.cateSlug" class="form-control" placeholder="Tên slug...">
+        </div>
+        <div class="form-group">
+            <label>Trạng thái</label>
+            <select class="form-control" ng-model="modalAdd.selectedOptionStatus">
+                <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Hiển thị khu vực</label>
+            <select class="form-control" ng-model="modalAdd.selectedOptionLocation">
+                <option ng-repeat="value in ['Không','Có']">@{{ value }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="add()" type="button" class="btn btn-primary">Thêm</button>
+        <button ng-click="close()" type="button" class="btn btn-default">Đóng</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="popup-edit.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">&times;</button>
+        <h3 class="modal-title">Chỉnh sửa danh mục</h3>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" id="cateId" value="@{{ modalEdit.id }}">
+        <div class="form-group">
+            <label>Tên danh mục</label>
+            <input type="text" ng-model="modalEdit.name" class="form-control" placeholder="Tên danh mục...">
+        </div>
+        <div class="form-group">
+            <label>Danh mục cha</label>
+            <select id="parentCate" class="form-control">
+                <option ng-selected="item.id == modalEdit.parent_id" value="@{{ item.id }}" style="font-weight:bold;" ng-repeat-start="item in modalEdit.parentCates">
+                    @{{ item.name }}
+                </option>
+                <option ng-selected="child.id == modalEdit.parent_id" value="@{{ child.id }}" ng-repeat-end ng-repeat="child in item.childs">-- @{{ child.name }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Tên slug</label>
+            <input type="text" ng-model="modalEdit.slug" class="form-control" placeholder="Tên slug...">
+        </div>
+        <div class="form-group">
+            <label>Trạng thái</label>
+            <select class="form-control" ng-model="modalEdit.selectedOptionStatus">
+                <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Hiển thị khu vực</label>
+            <select class="form-control" ng-model="modalEdit.selectedOptionLocation">
+                <option ng-repeat="value in ['Không','Có']">@{{ value }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="update()" type="button" class="btn btn-primary">Cập nhật</button>
+        <button ng-click="close()" type="button" class="btn btn-default">Đóng</button>
+    </div>
+</script>
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/category.controller.js') !!}

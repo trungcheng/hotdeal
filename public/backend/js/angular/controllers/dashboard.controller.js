@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('HotdealCMS')
+    .module('HotongCMS')
     .controller('DashboardController', DashboardController);
 
     function DashboardController($rootScope, $scope, $http, $window, $timeout) {

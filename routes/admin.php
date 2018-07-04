@@ -28,6 +28,10 @@
                 
                 $this->get('categories', 'Admin\CategoryController@index');
                 $this->get('categories/getAllCategories', 'Admin\CategoryController@getAllCategories');
+                $this->get('categories/getAllParentCates', 'Admin\CategoryController@getAllParentCates');
+                $this->post('categories/add', 'Admin\CategoryController@add');
+                $this->post('categories/update', 'Admin\CategoryController@update');
+                $this->post('categories/delete', 'Admin\CategoryController@delete');
 
             });
         });
