@@ -21,10 +21,9 @@ class UsersController extends Controller
 
     public function getAllUsers(Request $request)
     {
-    	$users = Users::all();
-var_dump($users); die();
+    	$users = User::all();
         if (!empty($users)) {
-            $results = Users::init($request);
+            $results = User::init($request);
             //var_dump($results); die();      
             return Response::json(['status' => true, 'data' => $results]);
         }
@@ -36,7 +35,7 @@ var_dump($users); die();
     {
         $data = $request->only(['cateName', 'cateParent', 'cateSlug', 'selectedOptionStatus', 'selectedOptionLocation']);
         if ($data) {
-            Users::addAction($data);
+            User::addAction($data);
             return Response::json([
                 'status' => true, 
                 'message' => 'Thêm danh mục thành công', 
@@ -55,7 +54,7 @@ var_dump($users); die();
     {
         $data = $request->only(['cateId', 'cateName', 'cateParent', 'cateSlug', 'selectedOptionStatus', 'selectedOptionLocation']);
         if ($data) {
-            Users::updateAction($data);
+            User::updateAction($data);
             return Response::json([
                 'status' => true, 
                 'message' => 'Cập nhật danh mục thành công', 
@@ -74,7 +73,7 @@ var_dump($users); die();
     {
         $cateId = $request->cateId;
         if ($cateId && !is_null($cateId)) {
-            $cate = Users::find($cateId);
+            $cate = User::find($cateId);
             if ($cate) {
                 $cate->delete();
                 return Response::json([
@@ -86,7 +85,7 @@ var_dump($users); die();
 
             return Response::json([
                 'status' => false, 
-                'message' => 'Users not found', 
+                'message' => 'User not found', 
                 'type' => 'error'
             ]);
         }

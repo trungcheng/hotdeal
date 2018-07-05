@@ -66,11 +66,11 @@
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
-                                                <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="user in usergories track by $index">
+                                                <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="user in users track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
-                                                    <td style="text-align:left !important">@{{ user.name }}</td>
+                                                    <td style="text-align:left !important">@{{ user.fullname }}</td>
                                                     <td>@{{ user.email }}</td>
-                                                    <td>@{{ user.phone }}</td>
+                                                    <td>@{{ user.mobile }}</td>
                                                     <td>@{{ (user.status) ? 'Hiển thị' : 'Ẩn' }}</td>
                                                     <td>
                                                         <button ng-click="openModalEdit(user)" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>

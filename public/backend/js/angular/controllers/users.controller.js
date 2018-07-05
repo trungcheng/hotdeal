@@ -27,7 +27,7 @@
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/users/getAllUsers?name=' + name + '&perPage=' + perPage + '&page=' + pageNumber, {cache: false})
+            $http.get(app.vars.baseUrl + '/users/getAllUser?name=' + name + '&perPage=' + perPage + '&page=' + pageNumber, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -50,9 +50,8 @@
                     if ($scope.totalPages == 0) {
                         $scope.currentPage = 0;
                     }
-                    $scope.user = response.data.data;
+                    $scope.users = response.data.data;
                     $scope.totalItems = response.data.total;
-console.log(response.data.data);
                 });
         }
 
@@ -146,9 +145,9 @@ console.log(response.data.data);
         var ModalInstanceEditCtrl = function ($scope, $uibModalInstance, cate) {
             $scope.modalEdit = cate;
 
-            $http.get(app.vars.baseUrl + '/users/getAllParentCates').success(function (res) {
-                $scope.modalEdit.parentCates = res.data;
-            });
+            // $http.get(app.vars.baseUrl + '/users/getAllParentCates').success(function (res) {
+            //     $scope.modalEdit.parentCates = res.data;
+            // });
 
             $scope.modalEdit.selectedOptionStatus = (cate.status) ? 'Hiển thị' : 'Ẩn';
             $scope.modalEdit.selectedOptionLocation = (cate.is_filter_city) ? 'Có' : 'Không';
