@@ -59,7 +59,7 @@
             $scope.getResultsPage('all-users', 10, 1);
         }
 
-        $scope.searchCategoryName = function() {
+        $scope.searchusergoryName = function() {
             if ($scope.searchText.length >= 1) {
                 $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
             } else {
@@ -89,6 +89,11 @@
         var ModalInstanceAddCtrl = function ($scope, $uibModalInstance) {
 
             $scope.modalAdd = {};
+            
+            $http.get(app.vars.baseUrl + '/users/getAllRole').success(function (res) {
+                $scope.modalAdd.allRole = res.data;
+            });
+
             $scope.modalAdd.selectedOptionStatus = 'Hiển thị';
             $scope.modalAdd.selectedOptionLocation = 'Có';
 
@@ -128,29 +133,28 @@
             }
         }
 
-        $scope.openModalEdit = function (cate) {
+        $scope.openModalEdit = function (user) {
             var uibModalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'popup-edit.html',
                 scope: $scope,
                 controller: ModalInstanceEditCtrl,
                 resolve: {
-                    cate: function () {
-                        return cate;
+                    user: function () {
+                        return user;
                     }
                 }
             });
         }
 
-        var ModalInstanceEditCtrl = function ($scope, $uibModalInstance, cate) {
-            $scope.modalEdit = cate;
+        var ModalInstanceEditCtrl = function ($scope, $uibModalInstance, user) {
+            $scope.modalEdit = user;
 
-            // $http.get(app.vars.baseUrl + '/users/getAllParentCates').success(function (res) {
-            //     $scope.modalEdit.parentCates = res.data;
-            // });
+            $http.get(app.vars.baseUrl + '/users/getAllRole').success(function (res) {
+                $scope.modalEdit.allRole = res.data;
+            });
 
-            $scope.modalEdit.selectedOptionStatus = (cate.status) ? 'Hiển thị' : 'Ẩn';
-            $scope.modalEdit.selectedOptionLocation = (cate.is_filter_city) ? 'Có' : 'Không';
+            $scope.modalEdit.selectedOptionStatus = (user.status) ? 'Hiển thị' : 'Ẩn';
 
             $scope.close = function () {
                 $uibModalInstance.dismiss('cancel');
@@ -161,12 +165,14 @@
                     method: 'POST',
                     url: app.vars.baseUrl + '/users/update',
                     data: {
-                        cateId: $('#cateId').val(),
-                        cateName: $scope.modalEdit.name,
-                        cateParent: $('#parentCate option:selected').val(),
-                        cateSlug: $scope.modalEdit.slug,
+                        userId: $('#userId').val(),
+                        username: $scope.modalEdit.username,
+                        fullname: $scope.modalEdit.fullname,
+                        password: $scope.modalEdit.password,
+                        email: $scope.modalEdit.email,
+                        mobile: $scope.modalEdit.mobile,
                         selectedOptionStatus: $scope.modalEdit.selectedOptionStatus,
-                        selectedOptionLocation: $scope.modalEdit.selectedOptionLocation
+                        permission: $('#permission option:selected').val()
                     }
                 }).success(function (response) {
                     if (response.status) {
@@ -180,7 +186,7 @@
             }
         }
 
-        $scope.delete = function (cate, index) {
+        $scope.delete = function (user, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa user này ?",
                 type: "warning",
@@ -195,7 +201,7 @@
                     url: app.vars.baseUrl + '/users/delete',
                     method: 'POST',
                     data: {
-                        cateId: cate.id
+                        userId: user.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {

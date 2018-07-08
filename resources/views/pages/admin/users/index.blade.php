@@ -58,9 +58,10 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th style="width: 5%;">STT</th>
-                                                    <th style="text-align:left !important;width:20%">Tên User</th>
+                                                    <th style="text-align:left !important;width:15%">Username</th>
+                                                    <th style="text-align:left !important;width:15%">Họ tên</th>
                                                     <th style="width: 20%">Email</th>
-                                                    <th style="width: 20%;">Số điện thoại</th>
+                                                    <th style="width: 15%;">Số điện thoại</th>
                                                     <th style="width: 10%;">Trạng thái</th>
                                                     <th style="width: 10%">Chức năng</th>
                                                 </tr>
@@ -68,6 +69,7 @@
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="user in users track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
+                                                    <td style="text-align:left !important">@{{ user.username }}</td>
                                                     <td style="text-align:left !important">@{{ user.fullname }}</td>
                                                     <td>@{{ user.email }}</td>
                                                     <td>@{{ user.mobile }}</td>
@@ -119,21 +121,23 @@
     <div class="modal-body">
         <div class="form-group">
             <label>Tên user</label>
-            <input type="text" ng-model="modalAdd.userName" class="form-control" placeholder="Tên user...">
+            <input type="text" ng-model="modalAdd.username" class="form-control" placeholder="Username...">
         </div>
         <div class="form-group">
-            <label>user cha</label>
-            <select ng-model="modalAdd.userParent" class="form-control" ng-init="modalAdd.userParent='0'">
-                <option value="0" disabled>----- Chọn user cha -----</option>
-                <option value="@{{ item.id }}" style="font-weight:bold;" ng-repeat-start="item in modalAdd.parentusers">
-                    @{{ item.name }}
-                </option>
-                <option value="@{{ child.id }}" ng-repeat-end ng-repeat="child in item.childs">-- @{{ child.name }}</option>
-            </select>
+            <label>Họ tên</label>
+            <input type="text" ng-model="modalAdd.fullname" class="form-control" placeholder="Họ tên...">
         </div>
         <div class="form-group">
-            <label>Tên slug</label>
-            <input type="text" ng-model="modalAdd.userSlug" class="form-control" placeholder="Tên slug...">
+            <label>Password</label>
+            <input type="password" ng-model="modalAdd.password" class="form-control" placeholder="Password...">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" ng-model="modalAdd.email" class="form-control" placeholder="Email...">
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="text" ng-model="modalAdd.mobile" class="form-control" placeholder="Số điện thoại...">
         </div>
         <div class="form-group">
             <label>Trạng thái</label>
@@ -142,9 +146,12 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Hiển thị khu vực</label>
-            <select class="form-control" ng-model="modalAdd.selectedOptionLocation">
-                <option ng-repeat="value in ['Không','Có']">@{{ value }}</option>
+            <label>Permission</label>
+            <select ng-model="modalAdd.permission" class="form-control" ng-init="modalAdd.permission='0'">
+                <option value="0" disabled>----- Chọn Permission -----</option>
+                <option value="@{{ item.id }}" ng-repeat="item in modalAdd.allRole">
+                    @{{ item.name }}
+                </option>
             </select>
         </div>
     </div>
@@ -157,26 +164,29 @@
 <script type="text/ng-template" id="popup-edit.html">
     <div class="modal-header">
         <button type="button" class="close" ng-click="close()">&times;</button>
-        <h3 class="modal-title">Chỉnh sửa user</h3>
+        <h3 class="modal-title">Chỉnh sửa User</h3>
     </div>
     <div class="modal-body">
         <input type="hidden" id="userId" value="@{{ modalEdit.id }}">
         <div class="form-group">
             <label>Tên user</label>
-            <input type="text" ng-model="modalEdit.name" class="form-control" placeholder="Tên user...">
+            <input type="text" ng-model="modalEdit.username" class="form-control" placeholder="Username...">
         </div>
         <div class="form-group">
-            <label>user cha</label>
-            <select id="parentuser" class="form-control">
-                <option ng-selected="item.id == modalEdit.parent_id" value="@{{ item.id }}" style="font-weight:bold;" ng-repeat-start="item in modalEdit.parentusers">
-                    @{{ item.name }}
-                </option>
-                <option ng-selected="child.id == modalEdit.parent_id" value="@{{ child.id }}" ng-repeat-end ng-repeat="child in item.childs">-- @{{ child.name }}</option>
-            </select>
+            <label>Họ tên</label>
+            <input type="text" ng-model="modalEdit.fullname" class="form-control" placeholder="Họ tên...">
         </div>
         <div class="form-group">
-            <label>Tên slug</label>
-            <input type="text" ng-model="modalEdit.slug" class="form-control" placeholder="Tên slug...">
+            <label>Password</label>
+            <input type="password" ng-model="modalEdit.password" class="form-control" placeholder="Password...">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" ng-model="modalEdit.email" class="form-control" placeholder="Email...">
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="text" ng-model="modalEdit.mobile" class="form-control" placeholder="Số điện thoại...">
         </div>
         <div class="form-group">
             <label>Trạng thái</label>
@@ -185,9 +195,11 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Hiển thị khu vực</label>
-            <select class="form-control" ng-model="modalEdit.selectedOptionLocation">
-                <option ng-repeat="value in ['Không','Có']">@{{ value }}</option>
+            <label>Permission</label>
+            <select id="permission" class="form-control">
+                <option ng-selected="item.id == modalEdit.role_id" value="@{{ item.id }}" ng-repeat="item in modalEdit.allRole">
+                    @{{ item.name }}
+                </option>
             </select>
         </div>
     </div>

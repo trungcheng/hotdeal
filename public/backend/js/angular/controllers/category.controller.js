@@ -90,7 +90,7 @@
         var ModalInstanceAddCtrl = function ($scope, $uibModalInstance) {
 
             $scope.modalAdd = {};
-
+         
             $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
                 $scope.modalAdd.parentCates = res.data;
             });

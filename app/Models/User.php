@@ -72,4 +72,45 @@ class User extends Model implements Authenticatable
         return $data;
     }
 
+    public static function addAction($data)
+    {
+        self::firstOrCreate([
+            'role_id' => $data['permission'],
+            'username' => $data['username'],
+            'fullname' => $data['fullname'],
+            'password' => $data['password'],
+            'email' => $data['email'],
+            'mobile' => $data['mobile'],
+            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0
+        ]);
+
+        return true;
+    }
+
+    public static function updateAction($data)
+    {
+        if($data['password'] == "" || $data['password'] == null || empty($data['password'])){
+            self::find($data['userId'])->update([
+                'role_id' => $data['permission'],
+                'username' => $data['username'],
+                'fullname' => $data['fullname'],
+                'email' => $data['email'],
+                'mobile' => $data['mobile'],
+                'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0
+            ]);
+        }else{
+            self::find($data['userId'])->update([
+                'role_id' => $data['permission'],
+                'username' => $data['username'],
+                'fullname' => $data['fullname'],
+                'password' => $data['password'],
+                'email' => $data['email'],
+                'mobile' => $data['mobile'],
+                'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0
+            ]);
+        }    
+
+        return true;
+    }
+
 }

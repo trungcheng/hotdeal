@@ -37,6 +37,7 @@
                 //users
                 $this->get('users', 'Admin\UsersController@index');
                 $this->get('users/getAllUser', 'Admin\UsersController@getAllUsers');
+                $this->get('users/getAllRole', 'Admin\UsersController@getAllRole');
                 $this->post('users/add', 'Admin\UsersController@add');
                 $this->post('users/update', 'Admin\UsersController@update');
                 $this->post('users/delete', 'Admin\UsersController@delete');
