@@ -63,6 +63,7 @@
                                                     <th style="width: 20%">Email</th>
                                                     <th style="width: 15%;">Số điện thoại</th>
                                                     <th style="width: 10%;">Trạng thái</th>
+                                                    <th style="width: 10%;">Quyền</th>
                                                     <th style="width: 10%">Chức năng</th>
                                                 </tr>
                                             </thead>
@@ -73,7 +74,8 @@
                                                     <td style="text-align:left !important">@{{ user.fullname }}</td>
                                                     <td>@{{ user.email }}</td>
                                                     <td>@{{ user.mobile }}</td>
-                                                    <td>@{{ (user.status) ? 'Hiển thị' : 'Ẩn' }}</td>
+                                                    <td>@{{ (user.status) ? 'Hoạt động' : 'Khóa' }}</td>
+                                                    <td>@{{ user.role.name }}</td>
                                                     <td>
                                                         <button ng-click="openModalEdit(user)" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                                         <button ng-click="delete(user, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
@@ -120,16 +122,12 @@
     </div>
     <div class="modal-body">
         <div class="form-group">
-            <label>Tên user</label>
+            <label>Username</label>
             <input type="text" ng-model="modalAdd.username" class="form-control" placeholder="Username...">
         </div>
         <div class="form-group">
             <label>Họ tên</label>
             <input type="text" ng-model="modalAdd.fullname" class="form-control" placeholder="Họ tên...">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" ng-model="modalAdd.password" class="form-control" placeholder="Password...">
         </div>
         <div class="form-group">
             <label>Email</label>
@@ -142,13 +140,13 @@
         <div class="form-group">
             <label>Trạng thái</label>
             <select class="form-control" ng-model="modalAdd.selectedOptionStatus">
-                <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
+                <option ng-repeat="value in ['Hoạt động','Khóa']">@{{ value }}</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Permission</label>
+            <label>Quyền</label>
             <select ng-model="modalAdd.permission" class="form-control" ng-init="modalAdd.permission='0'">
-                <option value="0" disabled>----- Chọn Permission -----</option>
+                <option value="0" disabled>----- Chọn quyền -----</option>
                 <option value="@{{ item.id }}" ng-repeat="item in modalAdd.allRole">
                     @{{ item.name }}
                 </option>
@@ -169,16 +167,12 @@
     <div class="modal-body">
         <input type="hidden" id="userId" value="@{{ modalEdit.id }}">
         <div class="form-group">
-            <label>Tên user</label>
+            <label>Username</label>
             <input type="text" ng-model="modalEdit.username" class="form-control" placeholder="Username...">
         </div>
         <div class="form-group">
             <label>Họ tên</label>
             <input type="text" ng-model="modalEdit.fullname" class="form-control" placeholder="Họ tên...">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" ng-model="modalEdit.password" class="form-control" placeholder="Password...">
         </div>
         <div class="form-group">
             <label>Email</label>
@@ -191,11 +185,11 @@
         <div class="form-group">
             <label>Trạng thái</label>
             <select class="form-control" ng-model="modalEdit.selectedOptionStatus">
-                <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
+                <option ng-repeat="value in ['Hoạt động','Khóa']">@{{ value }}</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Permission</label>
+            <label>Quyền</label>
             <select id="permission" class="form-control">
                 <option ng-selected="item.id == modalEdit.role_id" value="@{{ item.id }}" ng-repeat="item in modalEdit.allRole">
                     @{{ item.name }}

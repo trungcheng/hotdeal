@@ -61,8 +61,8 @@
                                                     <th style="text-align:left !important;width:20%">Tên danh mục</th>
                                                     <th style="width: 20%">Danh mục cha</th>
                                                     <th style="width: 20%;">Tên slug</th>
-                                                    <th style="width: 10%;">Trạng thái</th>
-                                                    <th style="width: 10%;">Hiển thị khu vực</th>
+                                                    <th style="width: 10%;">Trên menu</th>
+                                                    <th style="width: 10%;">Thể loại</th>
                                                     <th style="width: 10%">Chức năng</th>
                                                 </tr>
                                             </thead>
@@ -72,8 +72,13 @@
                                                     <td style="text-align:left !important">@{{ cate.name }}</td>
                                                     <td>@{{ (cate.parent) ? cate.parent : '' }}</td>
                                                     <td>@{{ cate.slug }}</td>
-                                                    <td>@{{ (cate.status) ? 'Hiển thị' : 'Ẩn' }}</td>
-                                                    <td>@{{ (cate.is_filter_city) ? 'Có' : 'Không' }}</td>
+                                                    <td>@{{ (cate.on_menu) ? 'Hiển thị' : 'Ẩn' }}</td>
+                                                    <td ng-if="cate.type == 1">Pháp thoại</td>
+                                                    <td ng-if="cate.type == 2">Hỏi đáp</td>
+                                                    <td ng-if="cate.type == 3">Tin tức</td>
+                                                    <td ng-if="cate.type == 4">Sử liệu</td>
+                                                    <td ng-if="cate.type == 5">Hùn phước</td>
+                                                    <td ng-if="cate.type == 6">Sinh hoạt</td>
                                                     <td>
                                                         <button ng-click="openModalEdit(cate)" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                                         <button ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
@@ -138,15 +143,23 @@
             <input type="text" ng-model="modalAdd.cateSlug" class="form-control" placeholder="Tên slug...">
         </div>
         <div class="form-group">
-            <label>Trạng thái</label>
+            <label>Hiển thị trên menu</label>
             <select class="form-control" ng-model="modalAdd.selectedOptionStatus">
                 <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Hiển thị khu vực</label>
-            <select class="form-control" ng-model="modalAdd.selectedOptionLocation">
-                <option ng-repeat="value in ['Không','Có']">@{{ value }}</option>
+            <label>Thể loại</label>
+            <select class="form-control" ng-model="modalAdd.cateType" ng-init="modalAdd.cateType='0'">
+                <option value="0" disabled>----- Chọn thể loại danh mục -----</option>
+                <option value="@{{ value.id }}" ng-repeat="value in [
+                    {id:1,name:'Pháp thoại'},
+                    {id:2,name:'Hỏi đáp'},
+                    {id:3,name:'Tin tức'},
+                    {id:4,name:'Sử liệu'},
+                    {id:5,name:'Hùn phước'},
+                    {id:6,name:'Sinh hoạt'},
+                ]">@{{ value.name }}</option>
             </select>
         </div>
     </div>
@@ -181,15 +194,22 @@
             <input type="text" ng-model="modalEdit.slug" class="form-control" placeholder="Tên slug...">
         </div>
         <div class="form-group">
-            <label>Trạng thái</label>
+            <label>Hiển thị trên menu</label>
             <select class="form-control" ng-model="modalEdit.selectedOptionStatus">
                 <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Hiển thị khu vực</label>
-            <select class="form-control" ng-model="modalEdit.selectedOptionLocation">
-                <option ng-repeat="value in ['Không','Có']">@{{ value }}</option>
+            <label>Thể loại</label>
+            <select class="form-control" id="cateType">
+                <option ng-selected="value.id == modalEdit.type" value="@{{ value.id }}" ng-repeat="value in [
+                    {id:1,name:'Pháp thoại'},
+                    {id:2,name:'Hỏi đáp'},
+                    {id:3,name:'Tin tức'},
+                    {id:4,name:'Sử liệu'},
+                    {id:5,name:'Hùn phước'},
+                    {id:6,name:'Sinh hoạt'},
+                ]">@{{ value.name }}</option>
             </select>
         </div>
     </div>

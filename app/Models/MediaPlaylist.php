@@ -4,16 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ListMediaPlaylist extends Model
+class MediaPlaylist extends Model
 {
 
-    protected $table = 'list_playlist_media';
+    protected $table = 'media_playlist';
    
     protected $fillable = [
         'media_id',
-        'playlist_id',
-        'created_at',
-        'updated_at'
+        'playlist_id'
     ];
 
     /**
@@ -25,8 +23,8 @@ class ListMediaPlaylist extends Model
         return $this->belongsTo('App\Models\Playlist');
     }
 
-    public function orderDetail() {
-        return $this->hasMany('App\Models\OrderDetail', 'order_id', 'id');
+    public function media() {
+        return $this->belongsTo('App\Models\Media');
     }
 
 }

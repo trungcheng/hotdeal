@@ -96,7 +96,6 @@
             });
 
             $scope.modalAdd.selectedOptionStatus = 'Hiển thị';
-            $scope.modalAdd.selectedOptionLocation = 'Có';
 
             $scope.close = function () {
                 $uibModalInstance.dismiss('cancel');
@@ -156,7 +155,6 @@
             });
 
             $scope.modalEdit.selectedOptionStatus = (cate.status) ? 'Hiển thị' : 'Ẩn';
-            $scope.modalEdit.selectedOptionLocation = (cate.is_filter_city) ? 'Có' : 'Không';
 
             $scope.close = function () {
                 $uibModalInstance.dismiss('cancel');
@@ -172,7 +170,7 @@
                         cateParent: $('#parentCate option:selected').val(),
                         cateSlug: $scope.modalEdit.slug,
                         selectedOptionStatus: $scope.modalEdit.selectedOptionStatus,
-                        selectedOptionLocation: $scope.modalEdit.selectedOptionLocation
+                        cateType: $('#cateType').val(),
                     }
                 }).success(function (response) {
                     if (response.status) {

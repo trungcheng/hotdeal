@@ -14,7 +14,9 @@ class Category extends Model
         'slug',
         'order',
         'status',
-        'is_filter_city'
+        'is_filter_city',
+        'on_menu',
+        'type'
     ];
 
     public static function init($request)
@@ -37,8 +39,10 @@ class Category extends Model
             'name' => $data['cateName'],
             'slug' => $data['cateSlug'],
             'order' => 1,
-            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
-            'is_filter_city' => ($data['selectedOptionLocation'] == 'Có') ? 1 : 0
+            'status' => 1,
+            'is_filter_city' => 0,
+            'on_menu' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
+            'type' => $data['cateType']
         ]);
 
         return true;
@@ -51,8 +55,10 @@ class Category extends Model
             'name' => $data['cateName'],
             'slug' => $data['cateSlug'],
             'order' => 1,
-            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
-            'is_filter_city' => ($data['selectedOptionLocation'] == 'Có') ? 1 : 0
+            'status' => 1,
+            'is_filter_city' => 0,
+            'on_menu' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
+            'type' => $data['cateType']
         ]);
 
         return true;

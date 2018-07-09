@@ -3,32 +3,19 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Models\MediaPlaylist;
 use App\Models\Playlist;
 use App\Models\Media;
-use App\Models\ListMediaPlaylist;
-use Illuminate\Http\Request;
+use App\Models\User;
+use Carbon\Carbon;
 use JWTAuth;
 use JWTAuthException;
-use Carbon\Carbon;
 use Response;
-use Illuminate\Support\Facades\DB;
 
 class ApiAppController extends Controller
 {
-
-    private $playlist;
-    private $media;
-    private $listMediaPlaylist;
-    public function __construct(
-        Playlist $playlist,
-        Media $media,
-        ListMediaPlaylist $listMediaPlaylist
-    ) {
-        $this->playlist = $playlist;
-        $this->media = $media;
-        $this->listMediaPlaylist = $listMediaPlaylist;
-    }
 
     public static $rules = [
         'email' => 'required|email|unique:users',
@@ -107,21 +94,6 @@ class ApiAppController extends Controller
             $credentials = ['username' => $request->username, 'password' => $request->password];
             $user = User::where('username', $request->username)->first();
         }
-
-        // if ($request->has(['email', 'password'])) {
-        //     $credentials = $request->only('email', 'password');
-        //     $user = User::where('email', $request->email)->first();
-        //     // $credentials = $request->only('password');
-        //     // $user = User::where('username', $request->email)->orWhere('mobile', $request->email)->orWhere('email', $request->email)->first();
-        // } else if ($request->has(['username', 'password'])) {
-        //     $credentials = $request->only('username', 'password');
-        //     $user = User::where('username', $request->username)->first();
-        //     // $credentials = $request->only('password');
-        //     // $user = User::where('username', $request->username)->orWhere('mobile', $request->username)->orWhere('email', $request->username)->first();
-        // } else {
-        //     $credentials = $request->only('mobile', 'password');
-        //     $user = User::where('mobile', $request->mobile)->first();
-        // }
 
         $token = null;
         try {
@@ -231,10 +203,10 @@ class ApiAppController extends Controller
         return response()->json(['result' => $user]);
     }
 
-    public function create_playlist(Request $request)
+    public function createPlaylist(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), ['title' => 'required|min:2']);
+            $validator = Validator::make($request->all(), ['name' => 'required|min:2']);
             if ($validator->fails()) {
                 return response()->json([ 
                     'status' => false,
@@ -243,16 +215,12 @@ class ApiAppController extends Controller
             }
 
             $user = JWTAuth::toUser($request->token);
-
-            $current = Carbon::now();
             Playlist::firstOrCreate([
                 'user_id' => $user['id'],
-                'title' => $request->title, 
+                'name' => $request->title, 
+                'slug' => str_slug($request->title, '-'),
                 'image' => 'http://vietid.vcmedia.vn/vietid/image/avatars/default.png',
-                'description' => '',
-                'type' => 0,
-                'created_at'=> $current,
-                'updated_at'=> $current
+                'status' => 1
             ]);
 
             return response()->json([
@@ -267,65 +235,51 @@ class ApiAppController extends Controller
         }
     }
 
-    public function getPlaylist(Request $request){
+    public function getPlaylist(Request $request) {
+
         $user = JWTAuth::toUser($request->token);
         try {
-           if($user){
-                $results = [];
-                $posts = $this->playlist->where('id', '>', 0)->get();
-                if (!empty($posts)) {
-                    $posts = $this->playlist->where('id', '>', 0);
-                    $posts->where('user_id', $user['id']);
+            $playlists = Playlist::where('id', '>', 0)
+                ->where('user_id', $user['id'])
+                ->orderBy('created_at', 'desc')
+                ->paginate(20);
 
-                    $results = $posts->select(
-                        'id',
-                        'user_id',
-                        'title',
-                        'image',
-                        'description',
-                        'created_at',
-                        'updated_at'
-                    )->orderBy('created_at', 'desc')->paginate(20);
-                }
-                return Response::json($results);
-            }
+            return Response::json($playlists);
         } catch (JWTAuthException $e) {
             return response()->json([
                 'status' => false,
                 'message' => 'Failed token'
             ], 200);
         }
+
     }
 
-    public function getPlaylistDetail(Request $request){
+    public function getPlaylistDetail(Request $request) {
+
         try {
             $results = [];
-
             if ($request->has(['id'])) {
                 $results = Playlist::where('id', $request->id)->first();
-                $list_song = DB::table('list_playlist_media')
-                                ->join('media', 'list_playlist_media.media_id', '=', 'media.id')
-                                ->select(
-                                    'list_playlist_media.*',
-                                    'media.parent_id',
-                                    'media.filename',
-                                    'media.filesize',
-                                    'media.filetype', 
-                                    'media.file_srt',
-                                    'media.source',
-                                    'media.duration',
-                                    'media.author',
-                                    'media.singer',
-                                    'media.image',
-                                    'media.display',
-                                    'media.ordering',
-                                    'media.created_at',
-                                    'media.updated_at'
-                                )
-                                ->where('list_playlist_media.playlist_id', $request->id)
-                                ->get();
-            } else {
-                
+                $list_song = DB::table('media_playlist')
+                    ->join('media', 'media_playlist.media_id', '=', 'media.id')
+                    ->select(
+                        'media_playlist.*',
+                        'media.filename',
+                        'media.filesize',
+                        'media.filetype', 
+                        'media.file_srt',
+                        'media.source',
+                        'media.duration',
+                        'media.author',
+                        'media.singer',
+                        'media.image',
+                        'media.display',
+                        'media.ordering',
+                        'media.created_at',
+                        'media.updated_at'
+                    )
+                    ->where('media_playlist.playlist_id', $request->id)
+                    ->get();
             }
 
             return response()->json([
@@ -338,35 +292,35 @@ class ApiAppController extends Controller
                 'message' => 'Failed token'
             ], 200);
         }
+
     }
 
     public function getListSongInPlaylist(Request $request){
         try {
             $results = [];
-            $songs = $this->listMediaPlaylist->where('id', '>', 0)->get();
+            $songs = MediaPlaylist::where('id', '>', 0)->get();
             if (!empty($songs)) {
-                $results = DB::table('list_playlist_media')
-                                ->join('media', 'list_playlist_media.media_id', '=', 'media.id')
-                                ->where('list_playlist_media.playlist_id', $request->playlist)
-                                ->select(
-                                    'list_playlist_media.*',
-                                    'media.parent_id',
-                                    'media.filename',
-                                    'media.filesize',
-                                    'media.filetype', 
-                                    'media.file_srt',
-                                    'media.source',
-                                    'media.duration',
-                                    'media.author',
-                                    'media.singer',
-                                    'media.image',
-                                    'media.display',
-                                    'media.ordering',
-                                    'media.created_at',
-                                    'media.updated_at'
-                                )
-                                ->orderBy('media.created_at', 'desc')
-                                ->paginate(20);
+                $results = DB::table('media_playlist')
+                    ->join('media', 'media_playlist.media_id', '=', 'media.id')
+                    ->where('media_playlist.playlist_id', $request->playlist)
+                    ->select(
+                        'media_playlist.*',
+                        'media.filename',
+                        'media.filesize',
+                        'media.filetype', 
+                        'media.file_srt',
+                        'media.source',
+                        'media.duration',
+                        'media.author',
+                        'media.singer',
+                        'media.image',
+                        'media.display',
+                        'media.ordering',
+                        'media.created_at',
+                        'media.updated_at'
+                    )
+                    ->orderBy('media.created_at', 'desc')
+                    ->paginate(20);
             }
             return Response::json($results);
         } catch (JWTAuthException $e) {
@@ -377,36 +331,36 @@ class ApiAppController extends Controller
         }
     }
 
-    public function AddOneSongToPlaylist(Request $request){
+    public function addOneSongToPlaylist(Request $request) {
+
         try {
-            $check_playlist = Playlist::where('id', $request->playlist_id)->first();
-            if($check_playlist){
-                $current = Carbon::now();
-                $check_song = DB::table('list_playlist_media')
-                                ->where('media_id', $request->media_id)
-                                ->where('playlist_id', $request->playlist_id)
-                                ->get();
-                if(count($check_song) > 0){
+            $checkPlaylist = Playlist::where('id', $request->playlist_id)->first();
+            if ($checkPlaylist){
+                $checkSong = DB::table('media_playlist')
+                    ->where('media_id', $request->media_id)
+                    ->where('playlist_id', $request->playlist_id)
+                    ->get();
+
+                if (!empty($checkSong)) {
                     return response()->json([
                         'status' => false,
-                        'message' => "Pháp thoại này đã tồn tại trong Playlist."
+                        'message' => "Pháp thoại này đã tồn tại trong playlist."
                     ], 200);
-                }else{
-                    ListMediaPlaylist::firstOrCreate([
+                } else {
+                    MediaPlaylist::firstOrCreate([
                         'media_id' => $request->media_id,
-                        'playlist_id' => $request->playlist_id,
-                        'created_at'=> $current,
-                        'updated_at'=> $current
+                        'playlist_id' => $request->playlist_id
                     ]);
+
                     return response()->json([
                         'status' => true,
                         'message' => 'Add to playlist success.'
                     ], 200);
                 }        
-            }else{
+            } else {
                 return response()->json([
                     'status' => false,
-                    'message' => "Không tồn tại Playlist trong hệ thống."
+                    'message' => "Không tìm thấy playlist này"
                 ], 200);
             }
             
@@ -416,33 +370,30 @@ class ApiAppController extends Controller
                 'message' => $e->getMessage()
             ], 200);
         }
+
     }
 
-    public function editPlaylist(Request $request){
+    public function editPlaylist(Request $request) {
+
         try {
             $user = JWTAuth::toUser($request->token);
-            $check_playlist = Playlist::where('id', $request->playlist_id)->first();
-            if($check_playlist){
-                $current = Carbon::now();
-                DB::table('playlist')
-                    ->where('id', $request->playlist_id)
+            $checkPlaylist = Playlist::where('id', $request->playlist_id)->first();
+            if ($checkPlaylist) {
+                Playlist::where('id', $request->playlist_id)
                     ->where('user_id', $user['id'])
                     ->update([
-                        'title' => $request->title, 
-                        'image' => $request->image,
-                        'description' => $request->description,
-                        'updated_at'=> $current
+                        'name' => $request->title,
+                        'slug' => str_slug($request->title, '-'),
+                        'image' => $request->image
                       ]);
 
-                if(count($request->list_song) > 0){
-                    DB::table('list_playlist_media')->where('playlist_id', $request->playlist_id)->delete();
+                if (!empty($request->list_song)) {
+                    MediaPlaylist::where('playlist_id', $request->playlist_id)->delete();
                     $medias = $request->list_song;
                     foreach ($medias as $media) {
                         ListMediaPlaylist::firstOrCreate([
                             'media_id' => $media,
-                            'playlist_id' => $request->playlist_id,
-                            'created_at'=> $current,
-                            'updated_at'=> $current
+                            'playlist_id' => $request->playlist_id
                         ]);
                     }
                 }       
@@ -451,10 +402,10 @@ class ApiAppController extends Controller
                     'status' => true,
                     'message' => 'Edit playlist success.'
                 ], 200);
-            }else{
+            } else {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Không tồn tại Playlist trong hệ thống.'
+                    'message' => 'Không tồn tại playlist trong hệ thống.'
                 ], 200);
             }
             
@@ -464,29 +415,28 @@ class ApiAppController extends Controller
                 'message' => $e->getMessage()
             ], 200);
         }
+
     }
 
-    public function deletePlaylist(Request $request){
+    public function deletePlaylist(Request $request) {
+
         try {
-            $check_playlist = Playlist::where('id', $request->id)->first();
-            if($check_playlist){
+            $checkPlaylist = Playlist::where('id', $request->id)->first();
+            if ($checkPlaylist) {
                 $user = JWTAuth::toUser($request->token);
-                DB::table('playlist')
-                    ->where('id', $request->id)
+                Playlist::where('id', $request->id)
                     ->where('user_id', $user['id'])
                     ->delete();
-
-                DB::table('list_playlist_media')->where('playlist_id', $request->id)
-                    ->delete();       
+                MediaPlaylist::where('playlist_id', $request->id)->delete();       
 
                 return response()->json([
                     'status' => true,
                     'message' => 'Delete playlist success.'
                 ], 200);
-            }else{
+            } else {
                 return response()->json([
                     'status' => false,
-                    'message' => 'Không tồn tại Playlist trong hệ thống.'
+                    'message' => 'Không tồn tại playlist trong hệ thống.'
                 ], 200);
             }
         } catch (\Exception $e) {
@@ -495,31 +445,31 @@ class ApiAppController extends Controller
                 'message' => $e->getMessage()
             ], 200);
         }
+
     }
 
-    public function getAllSong(Request $request){
+    public function getAllSong(Request $request) {
+
         try {
-            $results = [];
-            $results = DB::table('media')
-                                ->select(
-                                    'media.id',
-                                    'media.parent_id',
-                                    'media.filename',
-                                    'media.filesize',
-                                    'media.filetype', 
-                                    'media.file_srt',
-                                    'media.source',
-                                    'media.duration',
-                                    'media.author',
-                                    'media.singer',
-                                    'media.image',
-                                    'media.display',
-                                    'media.ordering',
-                                    'media.created_at',
-                                    'media.updated_at'
-                                )
-                                ->orderBy('media.created_at', 'desc')
-                                ->paginate(20);
+            $results = Media::select(
+                'media.id',
+                'media.filename',
+                'media.filesize',
+                'media.filetype', 
+                'media.file_srt',
+                'media.source',
+                'media.duration',
+                'media.author',
+                'media.singer',
+                'media.image',
+                'media.display',
+                'media.ordering',
+                'media.created_at',
+                'media.updated_at'
+            )
+            ->orderBy('media.created_at', 'desc')
+            ->paginate(20);
+
             return Response::json($results);
         } catch (JWTAuthException $e) {
             return response()->json([
@@ -527,6 +477,7 @@ class ApiAppController extends Controller
                 'message' => 'Failed token'
             ], 200);
         }
+        
     }
     
 }  

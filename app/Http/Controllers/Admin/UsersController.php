@@ -26,6 +26,10 @@ class UsersController extends Controller
     	$users = User::all();
         if (!empty($users)) {
             $results = User::init($request);
+            foreach ($results as $result) {
+                $result['role'] = $result->role;
+            }
+
             return Response::json(['status' => true, 'data' => $results]);
         }
 
@@ -45,7 +49,6 @@ class UsersController extends Controller
     public static $rules = [
         'email' => 'required|email|unique:users',
         'username' => 'required|min:3|string|max:150|alpha_num|unique:users',
-        'password' => 'min:6|required',
         'fullname' => 'required|min:3|',
         'permission' => 'required|numeric|min:1|',
         'mobile' => 'required|numeric|digits_between:10,11|unique:users'
@@ -59,8 +62,6 @@ class UsersController extends Controller
         'username.required' => 'Username không được để trống',
         'username.min' => 'Username ít nhất 3 ký tự trở lên',
         'username.unique' => 'Username đã tồn tại trong hệ thống',
-        'password.required' => 'Mật khẩu không được để trống',
-        'password.min' => 'Mật khẩu ít nhất 6 ký tự trở lên',
         'mobile.required' => 'Số điện thoại không được để trống',
         'mobile.digits_between' => 'Số điện thoại phải 10 hoặc 11 số ',
         'mobile.numeric' => 'Số điện thoại chỉ được nhập số',
@@ -82,7 +83,7 @@ class UsersController extends Controller
                 ]);
             }
 
-            $data = $request->only(['username', 'fullname', 'password', 'email', 'mobile', 'selectedOptionStatus', 'permission']);
+            $data = $request->only(['username', 'fullname', 'email', 'mobile', 'selectedOptionStatus', 'permission']);
             if ($data) {
                 User::addAction($data);
                 return Response::json([
@@ -107,7 +108,7 @@ class UsersController extends Controller
 
     public function update(Request $request)
     {
-        $data = $request->only(['userId', 'username', 'fullname', 'password', 'email', 'mobile', 'selectedOptionStatus', 'permission']);
+        $data = $request->only(['userId', 'username', 'fullname', 'email', 'mobile', 'selectedOptionStatus', 'permission']);
         if ($data) {
             User::updateAction($data);
             return Response::json([

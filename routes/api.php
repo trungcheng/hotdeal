@@ -21,11 +21,10 @@
 
 	\Route::group(['middleware' => 'jwt.auth'], function () {
 	    \Route::get('user', 'API\ApiAppController@getUserInfo');
-
 	    //music
-	    \Route::post('list/create', 'API\ApiAppController@create_playlist');
+	    \Route::post('list/create', 'API\ApiAppController@createPlaylist');
 	    \Route::get('list/getPlaylist', 'API\ApiAppController@getPlaylist');
-	    \Route::post('list/addOneSong', 'API\ApiAppController@AddOneSongToPlaylist');
+	    \Route::post('list/addOneSong', 'API\ApiAppController@addOneSongToPlaylist');
 	    \Route::post('list/editPlaylist', 'API\ApiAppController@editPlaylist');
 	    \Route::post('list/deletePlaylist', 'API\ApiAppController@deletePlaylist');
 

@@ -7,16 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Playlist extends Model
 {
 
-    protected $table = 'playlist';
+    protected $table = 'playlists';
    
     protected $fillable = [
         'user_id',
-        'title',
+        'name',
+        'slug',
         'image', 
-        'description',
-        'type',
-        'created_at',
-        'updated_at'
+        'status'
     ];
 
     /**
@@ -28,8 +26,8 @@ class Playlist extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function ListMediaPlaylist() {
-        return $this->hasMany('App\Models\ListMediaPlaylist', 'playlist_id', 'id');
+    public function mediaPlaylist() {
+        return $this->hasMany('App\Models\mediaPlaylist', 'playlist_id', 'id');
     }
 
 }

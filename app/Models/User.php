@@ -47,18 +47,6 @@ class User extends Model implements Authenticatable
         return $this->belongsTo('App\Models\Role');
     }
 
-    public function new() {
-        return $this->hasMany('App\Models\New', 'user_id', 'id');
-    }
-
-    public function order() {
-        return $this->hasMany('App\Models\Order', 'user_id', 'id');
-    }
-
-    public function product() {
-        return $this->hasMany('App\Models\Product', 'user_id', 'id');
-    }
-
     public static function init($request)
     {
         $data = self::where('id', '>', 0);
@@ -78,10 +66,10 @@ class User extends Model implements Authenticatable
             'role_id' => $data['permission'],
             'username' => $data['username'],
             'fullname' => $data['fullname'],
-            'password' => $data['password'],
+            'password' => '123456',
             'email' => $data['email'],
             'mobile' => $data['mobile'],
-            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0
+            'status' => ($data['selectedOptionStatus'] == 'Hoạt động') ? 1 : 0
         ]);
 
         return true;
@@ -89,26 +77,14 @@ class User extends Model implements Authenticatable
 
     public static function updateAction($data)
     {
-        if($data['password'] == "" || $data['password'] == null || empty($data['password'])){
-            self::find($data['userId'])->update([
-                'role_id' => $data['permission'],
-                'username' => $data['username'],
-                'fullname' => $data['fullname'],
-                'email' => $data['email'],
-                'mobile' => $data['mobile'],
-                'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0
-            ]);
-        }else{
-            self::find($data['userId'])->update([
-                'role_id' => $data['permission'],
-                'username' => $data['username'],
-                'fullname' => $data['fullname'],
-                'password' => $data['password'],
-                'email' => $data['email'],
-                'mobile' => $data['mobile'],
-                'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0
-            ]);
-        }    
+        self::find($data['userId'])->update([
+            'role_id' => $data['permission'],
+            'username' => $data['username'],
+            'fullname' => $data['fullname'],
+            'email' => $data['email'],
+            'mobile' => $data['mobile'],
+            'status' => ($data['selectedOptionStatus'] == 'Hoạt động') ? 1 : 0
+        ]);
 
         return true;
     }

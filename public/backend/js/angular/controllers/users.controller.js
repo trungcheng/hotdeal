@@ -94,8 +94,7 @@
                 $scope.modalAdd.allRole = res.data;
             });
 
-            $scope.modalAdd.selectedOptionStatus = 'Hiển thị';
-            $scope.modalAdd.selectedOptionLocation = 'Có';
+            $scope.modalAdd.selectedOptionStatus = 'Hoạt động';
 
             $scope.close = function () {
                 $uibModalInstance.dismiss('cancel');
@@ -154,7 +153,7 @@
                 $scope.modalEdit.allRole = res.data;
             });
 
-            $scope.modalEdit.selectedOptionStatus = (user.status) ? 'Hiển thị' : 'Ẩn';
+            $scope.modalEdit.selectedOptionStatus = (user.status) ? 'Hoạt động' : 'Khóa';
 
             $scope.close = function () {
                 $uibModalInstance.dismiss('cancel');

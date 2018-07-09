@@ -56,40 +56,45 @@ class CategoryController extends Controller
 
     public function add(Request $request)
     {
-        $data = $request->only(['cateName', 'cateParent', 'cateSlug', 'selectedOptionStatus', 'selectedOptionLocation']);
-        if ($data) {
-            Category::addAction($data);
-            return Response::json([
-                'status' => true, 
-                'message' => 'Thêm danh mục thành công', 
-                'type' => 'success'
-            ]);
+        $data = $request->only(['cateName', 'cateParent', 'cateSlug', 'selectedOptionStatus', 'cateType']);
+        foreach ($data as $key => $value) {
+            if (!isset($data[$key]) || $value == '' || is_null($value)) {
+                return Response::json([
+                    'status' => false, 
+                    'message' => $key.' is required', 
+                    'type' => 'error'
+                ]);
+            }
         }
 
+        Category::addAction($data);
         return Response::json([
-            'status' => false, 
-            'message' => 'Data invalid', 
-            'type' => 'error'
+            'status' => true, 
+            'message' => 'Thêm danh mục thành công', 
+            'type' => 'success'
         ]);
     }
 
     public function update(Request $request)
     {
-        $data = $request->only(['cateId', 'cateName', 'cateParent', 'cateSlug', 'selectedOptionStatus', 'selectedOptionLocation']);
-        if ($data) {
-            Category::updateAction($data);
-            return Response::json([
-                'status' => true, 
-                'message' => 'Cập nhật danh mục thành công', 
-                'type' => 'success'
-            ]);
+        $data = $request->only(['cateId', 'cateName', 'cateParent', 'cateSlug', 'selectedOptionStatus', 'cateType']);
+        foreach ($data as $key => $value) {
+            if (!isset($data[$key]) || $value == '' || is_null($value)) {
+                return Response::json([
+                    'status' => false, 
+                    'message' => $key.' is required', 
+                    'type' => 'error'
+                ]);
+            }
         }
 
+        Category::updateAction($data);
         return Response::json([
-            'status' => false, 
-            'message' => 'Data invalid', 
-            'type' => 'error'
+            'status' => true, 
+            'message' => 'Cập nhật danh mục thành công', 
+            'type' => 'success'
         ]);
+
     }
 
     public function delete(Request $request)

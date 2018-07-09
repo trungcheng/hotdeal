@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Media extends Model
 {
 
-    protected $table = 'media';
+    protected $table = 'medias';
    
     protected $fillable = [
-        'parent_id',
+        'cat_id',
+        'user_id',
+        'name',
+        'description',
         'filename',
         'filesize',
         'filetype', 
@@ -22,8 +25,8 @@ class Media extends Model
         'image',
         'display',
         'ordering',
-        'created_at',
-        'updated_at'
+        'content',
+        'type'
     ];
 
     /**
@@ -35,8 +38,8 @@ class Media extends Model
         return $this->belongsTo('App\Models\Playlist');
     }
 
-    public function ListMediaPlaylist() {
-        return $this->hasMany('App\Models\ListMediaPlaylist', 'media_id', 'id');
+    public function mediaPlaylist() {
+        return $this->hasMany('App\Models\mediaPlaylist', 'media_id', 'id');
     }
 
 }
