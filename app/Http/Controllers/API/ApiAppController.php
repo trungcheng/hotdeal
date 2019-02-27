@@ -6,14 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\MediaPlaylist;
-use App\Models\Playlist;
-use App\Models\Media;
 use App\Models\Category;
-use App\Models\Post;
-use App\Models\Topic;
-use App\Models\Conversation;
-use App\Models\TopicConversation;
 use App\Models\User;
 use App\Util\Util;
 use Carbon\Carbon;
@@ -28,12 +21,10 @@ class ApiAppController extends Controller
 
     public function __construct(
         User $user,
-        Category $category,
-        Post $post
+        Category $category
     ) {
         $this->user = $user;
         $this->category = $category;
-        $this->post = $post;
     }
 
     public static $rules = [
