@@ -9,6 +9,8 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
+        "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "intervention/image": "^2.4",
         "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {

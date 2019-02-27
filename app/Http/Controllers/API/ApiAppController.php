@@ -1,43 +1,67 @@
 <?php
+
 namespace App\Http\Controllers\API;
 
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\Playlist;
-use App\Models\ListMediaPlaylist;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\MediaPlaylist;
+use App\Models\Playlist;
+use App\Models\Media;
+use App\Models\Category;
+use App\Models\Post;
+use App\Models\Topic;
+use App\Models\Conversation;
+use App\Models\TopicConversation;
+use App\Models\User;
+use App\Util\Util;
+use Carbon\Carbon;
 use JWTAuth;
 use JWTAuthException;
-use Carbon\Carbon;
 use Response;
+use Mail;
 
 class ApiAppController extends Controller
 {
+    private $post;
 
-    private $playlist;
     public function __construct(
-        Playlist $playlist
+        User $user,
+        Category $category,
+        Post $post
     ) {
-        $this->playlist = $playlist;
+        $this->user = $user;
+        $this->category = $category;
+        $this->post = $post;
     }
 
     public static $rules = [
         'email' => 'required|email|unique:users',
-        'username' => 'required|min:3',
+        'username' => 'required|min:3|string|max:150|alpha_num|unique:users',
         'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-        'password_confirmation' => 'min:6'
+        'password_confirmation' => 'min:6',
+        'fullname' => 'required|min:3|',
+        'mobile' => 'required|numeric|digits_between:10,11|unique:users'
     ];
 
     public static $messages = [
         'email.required' => 'Địa chỉ email không được để trống',
         'email.email' => 'Địa chỉ email chưa đúng định dạng',
-        'email.unique' => 'Địa chỉ email đã tồn tại',
+        'email.unique' => 'Địa chỉ email đã tồn tại trong hệ thống',
+        'username.alpha_num' => 'Username phải viết liền và sử dụng chữ không dấu',
         'username.required' => 'Username không được để trống',
         'username.min' => 'Username ít nhất 3 ký tự trở lên',
+        'username.unique' => 'Username đã tồn tại trong hệ thống',
         'password.required' => 'Mật khẩu không được để trống',
         'password.same' => 'Mật khẩu và xác nhận mật khẩu chưa khớp',
         'password.min' => 'Mật khẩu ít nhất 6 ký tự trở lên',
+        'mobile.required' => 'Số điện thoại không được để trống',
+        'mobile.digits_between' => 'Số điện thoại phải 10 hoặc 11 số ',
+        'mobile.numeric' => 'Số điện thoại chỉ được nhập số',
+        'mobile.unique' => 'Số điện thoại đã tồn tại trong hệ thống',
+        'fullname.required' => 'Họ tên không được để trống',
+        'fullname.min' => 'Họ tên phải ít nhất 3 ký tự',
     ];
 
     public function register(Request $request)
@@ -79,12 +103,24 @@ class ApiAppController extends Controller
 
     public function login(Request $request)
     {
-        if ($request->has(['email', 'password'])) {
-            $credentials = $request->only('email', 'password');
-            $user = User::where('email', $request->email)->first();
+        if (filter_var($request->username, FILTER_VALIDATE_EMAIL)) {
+            $credentials = ['email' => $request->username, 'password' => $request->password];
+            $user = User::where('email', $request->username)
+                ->where('status', 1)
+                ->where('is_confirmed', 1)
+                ->first();
+        } else if (is_numeric($request->username)) {
+            $credentials = ['mobile' => $request->username, 'password' => $request->password];
+            $user = User::where('mobile', $request->username)
+                ->where('status', 1)
+                ->where('is_confirmed', 1)
+                ->first();
         } else {
-            $credentials = $request->only('username', 'password');
-            $user = User::where('username', $request->username)->first();
+            $credentials = ['username' => $request->username, 'password' => $request->password];
+            $user = User::where('username', $request->username)
+                ->where('status', 1)
+                ->where('is_confirmed', 1)
+                ->first();
         }
 
         $token = null;
@@ -104,7 +140,15 @@ class ApiAppController extends Controller
 
         $payload = JWTAuth::getPayload($token);
         $expirationTime = $payload['exp'];
-        $user->update(['jwt_token' => $token]);
+
+        if ($user) {
+            $user->update(['jwt_token' => $token]);    
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Username, số điện thoại hoặc email bạn nhập không đúng.'
+            ], 200);
+        }
 
         return response()->json([ 
             'status' => true,
@@ -114,23 +158,138 @@ class ApiAppController extends Controller
         ], 200);
     }
 
-    public function recoverPassword(Request $request)
+    public function forgotPwd(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-        $user = User::where('email', $request->email)->first();
+        $data = $request->only('email');
+        if ($data) {
+            $user = User::where('email', $data['email'])->first();
+            if ($user) {
 
-        if ($user) {
-            $user->update([
-                'password' => $request->password
-            ]);
+                $resetCode = md5($data['email']).uniqid();
+                $hash = utf8_encode(base64_encode($resetCode));
+                $resetLink = url('api/v1/auth/forgotPwd/confirm') . '?m='.$data['email'].'&token='.$hash;
+
+                // send mail
+                Mail::send('pages/admin/mail/resetTemp', [
+                    'email' => $data['email'], 
+                    'link' => $resetLink
+                ], function($message) use ($data) {
+                    $message->to($data['email'], 'Hộ Tông Team')->subject('Lấy lại mật khẩu trungtamhotong');
+                    $message->from('trungs1bmt@gmail.com', 'Hộ Tông Team');
+                });
+
+                if (empty(Mail::failures())) {
+                    // send mail success then save data
+                    $user->update([
+                        'confirmation_code' => $resetCode,
+                        'expired_at' => Carbon::now('Asia/Bangkok')->addMinutes(15)->format('Y-m-d H:i:s')
+                    ]);
+
+                    return response()->json([
+                        'status'  => true,
+                        'message' => 'Gửi mail thành công! Vui lòng kiểm tra email để xác nhận lấy lại mật khẩu.'
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status'  => false,
+                        'message' => 'Có lỗi xảy ra trong quá trình gửi mail'
+                    ], 200);
+                }
+            }
 
             return response()->json([
-                'status' => true
+                'status'  => false,
+                'message' => 'Không tìm thấy người dùng'
             ], 200);
         }
 
         return response()->json([
-            'status' => false
+            'status'  => false,
+            'message' => 'Data invalid',
+            'data'    => []
+        ], 200);
+    }
+
+    public function confirmForgotPwd(Request $request)
+    {
+        $data = $request->all();
+        if (!empty($data) && isset($data['m']) && isset($data['token'])) {
+            $confirmationCode = utf8_decode(base64_decode($data['token']));
+            $user = User::where('email', $data['m'])
+                ->where('confirmation_code', $confirmationCode)
+                ->first();
+            if ($user) {
+                $time = Carbon::now('Asia/Bangkok')->format('Y-m-d H:i:s');
+                if ($time <= $user->expired_at) {
+                    return view('pages.user.user.reset', [
+                        'm' => $data['m'],
+                        'token' => $data['token']
+                    ]);
+                }
+
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Token expired'
+                ]);                
+            }
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Không tìm thấy người dùng'
+            ]);            
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Data invalid'
+        ]);
+    }
+
+    public function resetForgotPwd(Request $request)
+    {
+        $data = $request->only('m', 'token', 'password', 'confirm_password');
+        $confirmationCode = utf8_decode(base64_decode($data['token']));
+        $user = User::where('email', $data['m'])
+            ->where('confirmation_code', $confirmationCode)
+            ->first();
+
+        if ($user) {
+            $time = Carbon::now('Asia/Bangkok')->format('Y-m-d H:i:s');
+            if ($time <= $user->expired_at) {
+                $validator = Validator::make($data, [
+                    'password' => 'min:6|required_with:confirm_password|same:confirm_password',
+                    'confirm_password' => 'min:6'
+                ], [
+                    'password.required' => 'Mật khẩu không được để trống',
+                    'password.same' => 'Mật khẩu và xác nhận mật khẩu chưa khớp',
+                    'password.min' => 'Mật khẩu ít nhất 6 ký tự trở lên',
+                ]);
+                if ($validator->fails()) {
+                    return response()->json([
+                        'status' => false,
+                        'message' => $validator->messages()->first(),
+                    ], 200);
+                }
+                $user->update([
+                    'password' => $data['password'],
+                    'confirmation_code' => '1'
+                ]);
+
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Đổi mật khẩu thành công'
+                ], 200);
+            }
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Token expired'
+            ], 200);            
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Không tìm thấy user'
         ], 200);
     }
 
@@ -182,103 +341,99 @@ class ApiAppController extends Controller
         }
     } 
 
-    public function getUserInfo(Request $request){
+    public function getUserInfo(Request $request) {
         $user = JWTAuth::toUser($request->token);
         return response()->json(['result' => $user]);
     }
 
-    public function create_playlist(Request $request)
+    public function updateUserAvatar(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), ['title' => 'required|min:2']);
-            if ($validator->fails()) {
-                return response()->json([ 
-                    'status' => false,
-                    'message' => 'Bạn phải nhập tên Playlist',
+            $data = $request->only(['token', 'avatar']);
+            if ($data) {
+                $userJwt = JWTAuth::toUser($data['token']);
+                if ($userJwt) {
+                    $user = User::find($userJwt->id);
+                    
+                    $avatar = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data['avatar']));
+                    $imageName = 'user-avatar-app-'.time();
+                    $fileName = $imageName . '.' . 'png';
+                    file_put_contents(public_path('uploads/images/avatars/'.$fileName), $avatar);
+
+                    $user->update([
+                        'avatar' => url('/uploads/images/avatars/'.$fileName)
+                    ]);
+
+                    return response()->json([
+                        'status'  => true,
+                        'message' => 'Update avatar success',
+                        'data'    => url('/uploads/images/avatars/'.$fileName)
+                    ], 200);
+                }
+
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'User not found',
+                    'data'    => ''
                 ], 200);
             }
 
-            $user = JWTAuth::toUser($request->token);
-
-            $current = Carbon::now();
-            Playlist::firstOrCreate([
-                'user_id' => $user['id'],
-                'title' => $request->title, 
-                'image' => 'http://vietid.vcmedia.vn/vietid/image/avatars/default.png',
-                'description' => '',
-                'type' => 0,
-                'created_at'=> $current,
-                'updated_at'=> $current
-            ]);
-
             return response()->json([
-                'status' => true,
-                'message' => 'Creat playlist success.'
+                'status'  => false,
+                'message' => 'No data provided',
+                'data'    => ''
             ], 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
-                'status' => false,
-                'message' => $e->getMessage()
+                'status'  => false,
+                'message' => $e->getMessage(),
+                'data'    => ''
             ], 200);
         }
     }
 
-    public function getPlaylist(Request $request){
-        $user = JWTAuth::toUser($request->token);
+    public function updateUserInfo(Request $request)
+    {
         try {
-           if($user){
-                $results = [];
-                $posts = $this->playlist->where('id', '>', 0)->get();
-                if (!empty($posts)) {
-                    $posts = $this->playlist->where('id', '>', 0);
-                    // $posts->delete()->where('user_id', $user['id']);
-                    $posts->where('user_id', $user['id']);
-
-                    $results = $posts->select(
-                        'id',
-                        'user_id',
-                        'title',
-                        'image',
-                        'description',
-                        'created_at',
-                        'updated_at'
-                    )->orderBy('created_at', 'desc')->paginate(20);
+            $data = $request->only(['token', 'fullname', 'sex', 'birthday', 'bio', 'address', 'mobile']);
+            if ($data) {
+                $userJwt = JWTAuth::toUser($data['token']);
+                if ($userJwt) {
+                    $user = User::find($userJwt->id);
+                    $user->update([
+                        'fullname' => ($data['fullname']) ? $data['fullname'] : $user->fullname,
+                        'sex'       => ($data['sex']) ? $data['sex'] : $user->sex,
+                        'birthday'  => ($data['birthday']) ? $data['birthday'] : $user->birthday,
+                        'bio'       => ($data['bio']) ? $data['bio'] : $user->bio,
+                        'address'   => ($data['address']) ? $data['address'] : $user->address,
+                        'mobile'   => ($data['mobile']) ? $data['mobile'] : $user->mobile
+                    ]);
+                    return response()->json([
+                        'status'  => true,
+                        'message' => 'Update info success',
+                        'data'    => $user
+                    ], 200);
                 }
-                return Response::json($results);
+
+                return response()->json([
+                    'status'  => false,
+                    'message' => 'User not found',
+                    'data'    => []
+                ], 200);
             }
-        } catch (JWTAuthException $e) {
+
             return response()->json([
-                'status' => false,
-                'message' => 'Failed token'
+                'status'  => false,
+                'message' => 'No data provided',
+                'data'    => []
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status'  => false,
+                'message' => $e->getMessage(),
+                'data'    => []
             ], 200);
         }
     }
 
-    public function AddToPlaylist(Request $request){
-        try {
-            $user = JWTAuth::toUser($request->token);
-
-            $current = Carbon::now();
-            $medias = $request->media_id;
-            foreach ($medias as $media) {
-                ListMediaPlaylist::firstOrCreate([
-                    'media_id' => $media,
-                    'playlist_id' => $request->playlist_id,
-                    'created_at'=> $current,
-                    'updated_at'=> $current
-                ]);
-            }
-
-            return response()->json([
-                'status' => true,
-                'message' => 'Add to playlist success.'
-            ], 200);
-        } catch (\Exception $e) {
-            return response()->json([
-                'status' => false,
-                'message' => $e->getMessage()
-            ], 200);
-        }
-    }
-    
-}  
+}
