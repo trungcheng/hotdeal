@@ -18,6 +18,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap-4.2.1/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <!-- font - fontawesome -->
+    <link rel="stylesheet" href="{{ asset('frontend/vendor/fontawesome-5.6.1/css/all.min.css') }}">
+    <!-- font - stroyka -->
+    <link rel="stylesheet" href="{{ asset('frontend/fonts/stroyka/stroyka.css') }}">
 
     @section('pageCss')
     @show
@@ -84,10 +88,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script>
         svg4everybody();
     </script>
-    <!-- font - fontawesome -->
-    <link rel="stylesheet" href="{{ asset('frontend/vendor/fontawesome-5.6.1/css/all.min.css') }}">
-    <!-- font - stroyka -->
-    <link rel="stylesheet" href="{{ asset('frontend/fonts/stroyka/stroyka.css') }}">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97489509-6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

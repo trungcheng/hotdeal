@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
+use App\Util\Util;
 use Response;
 
 class CategoryController extends Controller
@@ -26,6 +27,7 @@ class CategoryController extends Controller
 
         if (!empty($categories)) {
             $results = Category::init($request);
+
             foreach ($results as $result) {
                 if ($result->parent_id !== 0) {
                     $result['parent'] = Category::find($result->parent_id)->name;
@@ -36,5 +38,119 @@ class CategoryController extends Controller
         }
 
         return Response::json(['status' => false, 'data' => []]);
+    }
+
+    public function getAllParentCates(Request $request)
+    {
+        $types = [];
+        if (isset($request->type)) {
+            $types = explode(',', $request->type);
+            $categories = Category::whereIn('type', $types)->get();
+        } else {
+            $categories = Category::all();
+        }
+        $categoriesPaged = Util::buildArray($categories->toArray());
+        if ($categoriesPaged) {
+            return Response::json(['status' => true, 'data' => $categoriesPaged]);
+        }
+
+        return Response::json(['status' => false, 'data' => []]);
+    }
+
+    public function add(Request $request)
+    {
+        try {
+            $data = $request->only(['cateName', 'cateParent', 'selectedOptionStatus']);
+            foreach ($data as $key => $value) {
+                if (!isset($data[$key]) || $value == '' || is_null($value) || $value == "0") {
+                    return Response::json([
+                        'status' => false,
+                        'message' => $key.' is required', 
+                        'type' => 'error'
+                    ]);
+                }
+            }
+
+            Category::addAction($data);
+
+            return Response::json([
+                'status' => true, 
+                'message' => 'Thêm danh mục thành công', 
+                'type' => 'success'
+            ]);
+        } catch (Exception $e) {
+            return Response::json([
+                'status' => false, 
+                'message' => $e->getMessage(), 
+                'type' => 'error'
+            ]);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        try {
+            $data = $request->only(['cateId', 'cateName',  'cateParent', 'selectedOptionStatus']);
+            foreach ($data as $key => $value) {
+                if (!isset($data[$key]) || $value == '' || is_null($value) || $value == "0") {
+                    return Response::json([
+                        'status' => false, 
+                        'message' => $key.' is required', 
+                        'type' => 'error'
+                    ]);
+                }
+            }
+
+            $cate = Category::find($data['cateId']);
+            if ($cate) {
+                Category::updateAction($data);
+                return Response::json([
+                    'status' => true, 
+                    'message' => 'Cập nhật danh mục thành công', 
+                    'type' => 'success'
+                ]);
+            }
+
+            return Response::json([
+                'status' => false, 
+                'message' => 'Không tìm thấy danh mục', 
+                'type' => 'error'
+            ]);
+        } catch (Exception $e) {
+            return Response::json([
+                'status' => false, 
+                'message' => $e->getMessage(), 
+                'type' => 'error'
+            ]);
+        }
+    }
+
+    public function delete(Request $request)
+    {
+        $cateId = $request->cateId;
+        if ($cateId && !is_null($cateId)) {
+            $cate = Category::find($cateId);
+            if ($cate) {
+                Category::where('parent_id', $cateId)->delete();
+                $cate->delete();
+                return Response::json([
+                    'status' => true, 
+                    'message' => 'Xóa danh mục thành công', 
+                    'type' => 'success'
+                ]);
+            }
+
+            return Response::json([
+                'status' => false, 
+                'message' => 'Không tìm thấy danh mục', 
+                'type' => 'error'
+            ]);
+        }
+
+        return Response::json([
+            'status' => false, 
+            'message' => 'Đã xảy ra lỗi', 
+            'type' => 'error'
+        ]);
     }
 }

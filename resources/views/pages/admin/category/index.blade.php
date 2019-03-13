@@ -15,6 +15,7 @@
             <h1>
                 Quản lý danh mục
                 <!-- <small>Optional description</small> -->
+                <button ng-click="openModalAdd()" class="pull-right btn btn-success btn-sm">Thêm danh mục</button>
             </h1>
         </section>
 
@@ -38,14 +39,14 @@
                                             <label>
                                                 Hiển thị
                                                 <select ng-change="getResultsPage(name, pullDownLists.selectedOption, pageNumber)" ng-model="pullDownLists.selectedOption" ng-options="item.value as item.name for item in pullDownLists.availableOption track by item.value" name="example_length" aria-controls="example" class="form-control input-sm" style="margin: 0 5px;width: 63px;">
-                                                </select> chuyên mục
+                                                </select> danh mục
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter" style="float:right;">
                                             <label>Search:
-                                                <input ng-change="searchCategoryName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
+                                                <input my-enter="searchCategoryName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
                                             </label>
                                         </div>
                                     </div>
@@ -56,26 +57,22 @@
                                         <table id="example1" class="table table-bordered table-hover table-striped dataTable" role="grid" aria-describedby="example1_info">
                                             <thead>
                                                 <tr role="row">
-                                                    <th style="width: 5%;">STT</th>
-                                                    <th style="text-align:left !important;width:20%">Tên danh mục</th>
-                                                    <th style="width:20%">Danh mục cha</th>
-                                                    <th style="width: 20%;">Tên slug</th>
-                                                    <th style="width: 10%;">Trạng thái</th>
-                                                    <th style="width: 10%;">Hiển thị khu vực</th>
-                                                    <th style="width: 10%">Chức năng</th>
+                                                    <th>STT</th>
+                                                    <th style="text-align:center !important;width:20%">Tên danh mục</th>
+                                                    <th>Danh mục cha</th>
+                                                    <th>Trạng thái</th>
+                                                    <th>Chức năng</th>
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in categories track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
-                                                    <td style="text-align:left !important">@{{ cate.name }}</td>
+                                                    <td style="text-align:center !important">@{{ cate.name }}</td>
                                                     <td>@{{ (cate.parent) ? cate.parent : '' }}</td>
-                                                    <td>@{{ cate.slug }}</td>
                                                     <td>@{{ (cate.status) ? 'Hiển thị' : 'Ẩn' }}</td>
-                                                    <td>@{{ (cate.is_filter_city) ? 'Có' : 'Không' }}</td>
                                                     <td>
-                                                        <button style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                                        <button style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                                                        <button ng-click="openModalEdit(cate)" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                                        <button ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -111,6 +108,71 @@
 
     </div>
 @stop
+
+<script type="text/ng-template" id="popup-add.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">&times;</button>
+        <h3 class="modal-title">Thêm danh mục</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Tên danh mục</label>
+            <input type="text" ng-model="modalAdd.cateName" class="form-control" placeholder="Tên danh mục...">
+        </div>
+        <div class="form-group">
+            <label>Danh mục cha</label>
+            <select ng-model="modalAdd.cateParent" class="form-control" ng-init="modalAdd.cateParent='0'">
+                <option value="0">----- Chọn danh mục cha -----</option>
+                <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in modalAdd.parentCates">
+                    @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Hiển thị trên menu</label>
+            <select class="form-control" ng-model="modalAdd.selectedOptionStatus">
+                <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="add()" type="button" class="btn btn-primary">Thêm</button>
+        <button ng-click="close()" type="button" class="btn btn-default">Đóng</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="popup-edit.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="close()">&times;</button>
+        <h3 class="modal-title">Chỉnh sửa danh mục</h3>
+    </div>
+    <div class="modal-body">
+        <input type="hidden" id="cateId" value="@{{ modalEdit.id }}">
+        <div class="form-group">
+            <label>Tên danh mục</label>
+            <input type="text" ng-model="modalEdit.name" class="form-control" placeholder="Tên danh mục...">
+        </div>
+        <div class="form-group">
+            <label>Danh mục cha</label>
+            <select id="parentCate" class="form-control">
+                <option value="0">----- Chọn danh mục cha -----</option>
+                <option ng-selected="item.id == modalEdit.parent_id" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in modalEdit.parentCates">
+                    @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Hiển thị trên menu</label>
+            <select class="form-control" ng-model="modalEdit.selectedOptionStatus">
+                <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="update()" type="button" class="btn btn-primary">Cập nhật</button>
+        <button ng-click="close()" type="button" class="btn btn-default">Đóng</button>
+    </div>
+</script>
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/category.controller.js') !!}

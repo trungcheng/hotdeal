@@ -17,3 +17,54 @@ table thead tr th, table tbody tr td {
 	text-align:center !important;
 	vertical-align: middle !important;
 }
+.box-checkbox {
+    overflow: hidden;
+    max-height: 150px;
+    overflow-y: scroll;
+    border: 1px solid #cecece;
+    padding: 5px 10px;
+}
+.btn-upload{
+    margin-top: 5px;
+}
+td{
+    /*max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;*/
+}
+
+.btn_img {
+    display: block;
+}
+
+.box-img {
+    float: left;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+.item-img{
+    padding: 10px 0;
+    float: left;
+    width: 100%;
+}
+
+.box-img input{
+    float: left;
+    width: 80%;
+}
+
+.box-img button{
+    float: left;
+    margin-top: 5px;
+    margin: 8px;
+    margin-top: 0;
+}
+
+.cate-level-0 {
+    font-weight: bold;   
+}

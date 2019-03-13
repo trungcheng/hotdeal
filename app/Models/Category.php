@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Util\Util;
 
 class Category extends Model
 {
@@ -32,6 +33,35 @@ class Category extends Model
         $data = $data->orderBy('id', 'desc')->paginate($request->perPage);
 
         return $data;
+    }
+
+    public static function addAction($data)
+    {
+        $genSlug = Util::generateSlug($data['cateName']);
+
+        return self::firstOrCreate([
+            'parent_id' => (int)$data['cateParent'],
+            'name' => $data['cateName'],
+            'slug' => $genSlug,
+            'order' => 1,
+            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
+            'is_filter_city' => 0
+        ]);
+    }
+
+    public static function updateAction($data)
+    {
+        $genSlug = Util::generateSlug($data['cateName']);
+        
+        return self::find($data['cateId'])->update([
+            'parent_id' => (int)$data['cateParent'],
+            'name' => $data['cateName'],
+            'slug' => $genSlug,
+            'order' => 1,
+            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
+            'is_filter_city' => 0
+        ]);
+
     }
 
 }

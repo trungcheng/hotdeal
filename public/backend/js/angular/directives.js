@@ -34,20 +34,6 @@ app.directive('validFile', ['$parse', function($parse) {
                                 scope.disabledButton = false;
                             }
                         }
-                        if ($(el).hasClass('thumb-file-avatar')) {
-                            scope.previewAvatar = loadEvent.target.result;
-                            scope.fileAvatarSelected = true;
-                            $('#pathImageAvatar').val('');
-                        }
-                        if ($(el).hasClass('thumb-file-cover')) {
-                            scope.previewCover = loadEvent.target.result;
-                            scope.fileCoverSelected = true;
-                            scope.uploadBtn = true;
-                            $('#pathImageCover').val('');
-                        }
-                        if ($(el).hasClass('ng-invalid')) {
-                            $('.validateMessage').removeClass('ng-hide');
-                        }
                     })
                 }
                 reader.readAsDataURL(fileinput);
@@ -127,4 +113,18 @@ app.directive('onFinishRender', function ($timeout) {
             }
         }
     }
+});
+
+app.directive('myEnter', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+                scope.$apply(function (){
+                    scope.$eval(attrs.myEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
 });
