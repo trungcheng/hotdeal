@@ -16,7 +16,7 @@
         
         <li><a data-route="/admin/products" href="{{ url('/admin/products') }}"><i class="fa fa-suitcase"></i> <span>Quản lý sản phẩm</span></a></li>
         
-        <li><a data-route="/admin/news" href="{{ url('/admin/news') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý tin tức</span></a></li>
+        <li><a data-route="/admin/articles" href="{{ url('/admin/articles') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý bài viết</span></a></li>
         
         <li><a data-route="/admin/advertises" href="{{ url('/admin/advertises') }}"><i class="fa fa-square-o"></i> <span>Quản lý quảng cáo</span></a></li>
         

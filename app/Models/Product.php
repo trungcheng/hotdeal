@@ -33,11 +33,11 @@ class Product extends Model
     ];
 
     public function category() {
-    	return $this->belongsTo('App\Models\Category');
+    	return $this->belongsTo('App\Models\Category', 'cat_id');
     }
 
     public function user() {
-    	return $this->belongsTo('App\Models\User');
+    	return $this->belongsTo('App\Models\User', 'user_id');
     }
 
     public function seo() {
@@ -91,7 +91,7 @@ class Product extends Model
             $data['image_list'] = '';
         }
         $data['price_sale'] = ((int)$data['discount'] == 0) ? $data['price'] : ((int)$data['price'] - ((int)$data['price'] * (int)$data['discount']) / 100);
-        $data['sku_id'] = Util::skuGenerate(12, $maxId + 1);
+        $data['sku_id'] = Util::skuGenerate(6, $maxId + 1);
         $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
 
         return self::firstOrCreate($data);

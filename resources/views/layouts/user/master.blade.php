@@ -1,107 +1,64 @@
-<!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en" dir="ltr">
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="M_Adnan" />
 
-    <meta charset="UTF-8">
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <title>@yield('page') | thachvu.vn</title>
 
-    <title>@yield('page') | Hotdeal</title>
-    
-    <link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon.png') }}">
-    <!-- fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
-    <!-- css -->
-    <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap-4.2.1/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/vendor/owl-carousel-2.3.4/assets/owl.carousel.min.css') }}">
+    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/rs-plugin/css/settings.css') }}" media="screen" />
+
+    <link rel="stylesheet" href="{{ asset('frontend/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-    <!-- font - fontawesome -->
-    <link rel="stylesheet" href="{{ asset('frontend/vendor/fontawesome-5.6.1/css/all.min.css') }}">
-    <!-- font - stroyka -->
-    <link rel="stylesheet" href="{{ asset('frontend/fonts/stroyka/stroyka.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
     @section('pageCss')
     @show
 
 </head>
-
 <body>
-    <!-- quickview-modal -->
-    <div id="quickview-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content"></div>
-        </div>
-    </div>
-    <!-- quickview-modal / end -->
-    
-    <!-- mobile__menu -->
-    @include('layouts.user.mobile-menu')
-    <!-- mobile__menu / end -->
-
-    <!-- site -->
-    <div class="site">
-        <!-- mobile site__header -->
-        @include('layouts.user.mobile-header')
-        <!-- mobile site__header / end -->
-
-        <!-- desktop site__header -->
-        <header class="site__header d-lg-block d-none">
-            <div class="site-header">
-
-                <!-- .topbar -->
-                @include('layouts.user.topbar-header')
-                <!-- .topbar / end -->
-                
-                <!-- .middlebar -->
-                @include('layouts.user.middlebar-header')
-                <!-- .middlebar / end  -->
-
-                <!-- navbar -->
-                @include('layouts.user.navbar')
-                <!-- navbar / end -->
-
-            </div>
-        </header>
-        <!-- desktop site__header / end -->
-        <!-- site__body -->
-        <div class="site__body">
+    <!-- Page Wrapper -->
+    <div id="wrap" class="layout-1"> 
+        <!-- Top bar -->
+        @include('layouts.user.topbar')
+        <!-- Header -->
+        @include('layouts.user.header')
+        <!-- Content -->
+        <div id="content"> 
             @yield('content')
         </div>
-        <!-- site__body / end -->
-        <!-- site__footer -->
+        <!-- Footer -->
         @include('layouts.user.footer')
-        <!-- site__footer / end -->
+        <!-- GO TO TOP  --> 
+        <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a> 
+        <!-- GO TO TOP End --> 
     </div>
-    <!-- site / end -->
+    <!-- End Page Wrapper --> 
 
-    <!-- js -->
-    <script src="{{ asset('frontend/vendor/jquery-3.3.1/jquery.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/bootstrap-4.2.1/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/owl-carousel-2.3.4/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/nouislider-12.1.0/nouislider.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/number.js') }}"></script>
+    <!-- JavaScripts --> 
+    <script src="{{ asset('frontend/js/vendors/modernizr.js') }}"></script>
+    <script src="{{ asset('frontend/js/vendors/jquery/jquery.min.js') }}"></script> 
+    <script src="{{ asset('frontend/js/vendors/wow.min.js') }}"></script> 
+    <script src="{{ asset('frontend/js/vendors/bootstrap.min.js') }}"></script> 
+    <script src="{{ asset('frontend/js/vendors/own-menu.js') }}"></script> 
+    <script src="{{ asset('frontend/js/vendors/jquery.sticky.js') }}"></script> 
+    <script src="{{ asset('frontend/js/vendors/owl.carousel.min.js') }}"></script> 
+
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
+    <script type="text/javascript" src="{{ asset('frontend/rs-plugin/js/jquery.tp.t.min.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('frontend/rs-plugin/js/jquery.tp.min.js') }}"></script> 
     <script src="{{ asset('frontend/js/main.js') }}"></script>
-    <script src="{{ asset('frontend/vendor/svg4everybody-2.1.9/svg4everybody.min.js') }}"></script>
-    <script>
-        svg4everybody();
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97489509-6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-97489509-6');
-    </script>
 
     @section('pageJs')
     @show
 
 </body>
-
 </html>

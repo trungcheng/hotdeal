@@ -65,6 +65,7 @@
                                                     <th>Sale (%)</th>
                                                     <th>Giá sale (VNĐ)</th>
                                                     <th>Tình trạng</th>
+                                                    <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
                                             </thead>
@@ -80,6 +81,7 @@
                                                     <td>@{{ pro.discount }}</td>
                                                     <td>@{{ pro.price_sale | currency : '' : 0 }}</td>
                                                     <td>@{{ (pro.status == 1) ? 'Còn hàng' : 'Hết hàng' }}</td>
+                                                    <td>@{{ pro.created_at }}</td>
                                                     <td>
                                                         <a href="/admin/products/edit/@{{ pro.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(pro, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>

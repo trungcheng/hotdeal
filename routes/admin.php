@@ -44,6 +44,15 @@
                 $this->post('products/update', 'Admin\ProductController@update');
                 $this->post('products/delete', 'Admin\ProductController@delete');
 
+                // article
+                $this->get('articles', 'Admin\ArticleController@index')->name('articles');
+                $this->get('articles/getAllArticles', 'Admin\ArticleController@getAllArticles');
+                $this->get('articles/create', 'Admin\ArticleController@create')->name('article-create');
+                $this->get('articles/edit/{id}', 'Admin\ArticleController@edit')->name('article-edit');
+                $this->post('articles/add', 'Admin\ArticleController@add');
+                $this->post('articles/update', 'Admin\ArticleController@update');
+                $this->post('articles/delete', 'Admin\ArticleController@delete');
+
             });
         });
 

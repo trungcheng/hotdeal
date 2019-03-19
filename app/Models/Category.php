@@ -15,11 +15,16 @@ class Category extends Model
         'slug',
         'order',
         'status',
-        'is_filter_city'
+        'is_filter_city',
+        'type'
     ];
 
     public function product() {
     	return $this->hasMany('App\Models\Product', 'cat_id' , 'id');
+    }
+
+    public function article() {
+        return $this->hasMany('App\Models\Article', 'cat_id' , 'id');
     }
 
     public static function init($request)
@@ -45,7 +50,8 @@ class Category extends Model
             'slug' => $genSlug,
             'order' => 1,
             'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
-            'is_filter_city' => 0
+            'is_filter_city' => 0,
+            'type' => $data['cateType']
         ]);
     }
 
@@ -59,7 +65,8 @@ class Category extends Model
             'slug' => $genSlug,
             'order' => 1,
             'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
-            'is_filter_city' => 0
+            'is_filter_city' => 0,
+            'type' => $data['cateType']
         ]);
 
     }

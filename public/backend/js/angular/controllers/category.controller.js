@@ -23,6 +23,8 @@
             selectedOption: {value: 10, name: '10'}
         };
 
+        $scope.types = [{type:0,name:'Sản phẩm'},{type:1,name:'Bài viết'}];
+
         $scope.getResultsPage = function (name, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
@@ -96,6 +98,7 @@
             });
 
             $scope.modalAdd.selectedOptionStatus = 'Hiển thị';
+            $scope.modalAdd.cateType = $scope.types[0].type;
 
             $scope.close = function () {
                 $uibModalInstance.dismiss('cancel');
@@ -148,6 +151,7 @@
         }
 
         var ModalInstanceEditCtrl = function ($scope, $uibModalInstance, cate) {
+            
             $scope.modalEdit = cate;
 
             $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
@@ -155,6 +159,7 @@
             });
 
             $scope.modalEdit.selectedOptionStatus = (cate.status) ? 'Hiển thị' : 'Ẩn';
+            $scope.modalEdit.cateType = cate.type;
 
             $scope.close = function () {
                 $uibModalInstance.dismiss('cancel');
@@ -178,7 +183,8 @@
                             cateId: $('#cateId').val(),
                             cateName: $scope.modalEdit.name,
                             cateParent: $('#parentCate option:selected').val(),
-                            selectedOptionStatus: $scope.modalEdit.selectedOptionStatus
+                            selectedOptionStatus: $scope.modalEdit.selectedOptionStatus,
+                            cateType: $scope.modalEdit.cateType
                         }
                     }).success(function (response) {
                         swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {

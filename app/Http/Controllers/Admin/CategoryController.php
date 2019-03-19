@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Article;
 use App\Util\Util;
 use Response;
 
@@ -60,7 +62,7 @@ class CategoryController extends Controller
     public function add(Request $request)
     {
         try {
-            $data = $request->only(['cateName', 'cateParent', 'selectedOptionStatus']);
+            $data = $request->only(['cateName', 'cateParent', 'cateType', 'selectedOptionStatus']);
             foreach ($data as $key => $value) {
                 if (!isset($data[$key]) || $value == '' || is_null($value) || $value == "0") {
                     return Response::json([
@@ -90,7 +92,7 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         try {
-            $data = $request->only(['cateId', 'cateName',  'cateParent', 'selectedOptionStatus']);
+            $data = $request->only(['cateId', 'cateName', 'cateParent', 'cateType', 'selectedOptionStatus']);
             foreach ($data as $key => $value) {
                 if (!isset($data[$key]) || $value == '' || is_null($value) || $value == "0") {
                     return Response::json([
@@ -106,7 +108,7 @@ class CategoryController extends Controller
                 Category::updateAction($data);
                 return Response::json([
                     'status' => true, 
-                    'message' => 'Cập nhật danh mục thành công', 
+                    'message' => 'Cập nhật danh mục thành công',
                     'type' => 'success'
                 ]);
             }
@@ -131,8 +133,13 @@ class CategoryController extends Controller
         if ($cateId && !is_null($cateId)) {
             $cate = Category::find($cateId);
             if ($cate) {
+                // remove all relate section
                 Category::where('parent_id', $cateId)->delete();
+                Product::where('cat_id', $cateId)->delete();
+                Article::where('cat_id', $cateId)->delete();
+                // remove itself
                 $cate->delete();
+
                 return Response::json([
                     'status' => true, 
                     'message' => 'Xóa danh mục thành công', 

@@ -72,8 +72,10 @@
                                             @endforeach 
                                         </div>
                                     @else
-                                        <input type="text" size="48" name="image_list[]" class="form-control list-img" id="xFilePath50" />
-                                        <button class="btn btn-primary btn-upload" onclick="openPopupMulti(50)">Tải ảnh lên</button>
+                                        <div class="box-img">
+                                            <input type="text" size="48" name="image_list[]" class="form-control list-img" id="xFilePath50" />
+                                            <button class="btn btn-primary btn-upload" onclick="openPopupMulti(50)">Tải ảnh lên</button>
+                                        </div>
                                     @endif
                                     <button type="button" onclick="add_img();" class="btn btn-brand btn_img" style="margin-top: 8px;">Thêm Ảnh</button>
                                 </div>

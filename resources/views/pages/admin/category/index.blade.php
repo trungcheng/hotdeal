@@ -59,8 +59,10 @@
                                                 <tr role="row">
                                                     <th>STT</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
+                                                    <th>Loại danh mục</th>
                                                     <th>Danh mục cha</th>
                                                     <th>Trạng thái</th>
+                                                    <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
                                             </thead>
@@ -68,8 +70,10 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in categories track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
+                                                    <td>@{{ (cate.type == 0) ? 'Sản phẩm' : 'Bài viết' }}</td>
                                                     <td>@{{ (cate.parent) ? cate.parent : '' }}</td>
                                                     <td>@{{ (cate.status) ? 'Hiển thị' : 'Ẩn' }}</td>
+                                                    <td>@{{ cate.created_at }}</td>
                                                     <td>
                                                         <button ng-click="openModalEdit(cate)" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                                         <button ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
@@ -120,6 +124,13 @@
             <input type="text" ng-model="modalAdd.cateName" class="form-control" placeholder="Tên danh mục...">
         </div>
         <div class="form-group">
+            <label>Loại danh mục</label>
+            <!-- <select class="form-control" ng-model="modalAdd.cateType" ng-init="modalAdd.cateType=0">
+                <option value="@{{ item.type }}" ng-repeat="item in types">@{{ item.name }}</option>
+            </select> -->
+            <select class="form-control" ng-options="item.type as item.name for item in types" ng-model="modalAdd.cateType"></select>
+        </div>
+        <div class="form-group">
             <label>Danh mục cha</label>
             <select ng-model="modalAdd.cateParent" class="form-control" ng-init="modalAdd.cateParent='0'">
                 <option value="0">----- Chọn danh mục cha -----</option>
@@ -151,6 +162,13 @@
         <div class="form-group">
             <label>Tên danh mục</label>
             <input type="text" ng-model="modalEdit.name" class="form-control" placeholder="Tên danh mục...">
+        </div>
+        <div class="form-group">
+            <label>Loại danh mục</label>
+            <!-- <select class="form-control" ng-model="modalAdd.cateType" ng-init="modalAdd.cateType=0">
+                <option value="@{{ item.type }}" ng-repeat="item in types">@{{ item.name }}</option>
+            </select> -->
+            <select class="form-control" ng-options="item.type as item.name for item in types" ng-model="modalEdit.cateType"></select>
         </div>
         <div class="form-group">
             <label>Danh mục cha</label>

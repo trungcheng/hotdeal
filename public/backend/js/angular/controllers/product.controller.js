@@ -61,7 +61,7 @@
         }
 
         $scope.loadInitCate = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
+            $http.get(app.vars.baseUrl + '/categories/getAllParentCates?type=0').success(function (res) {
                 $scope.parentCates = res.data;
             });
         }
