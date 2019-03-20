@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Mua chậu rửa bát chất lượng, uy tín tại Thạch Vũ
+@section('page')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch
 @stop
 
 @section('pageCss')
@@ -8,1204 +8,712 @@
 @stop
 
 @section('content')
-<!-- Slid Sec -->
-<section class="slid-sec">
-    <div class="container">
-      <div class="container-fluid">
-        <div class="row"> 
-
-          <!-- Main Slider  -->
-          <div class="col-md-9 no-padding"> 
-
-            <!-- Main Slider Start -->
-            <div class="tp-banner-container">
-              <div class="tp-banner">
-                <ul>
-
-                  <!-- SLIDE  -->
-                  <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
-                    <!-- MAIN IMAGE --> 
-                    <img src="{{ asset('frontend/images/slider-img-1.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-110" 
-                    data-speed="800" 
-                    data-start="800" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">High Quality VR Glasses </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-60" 
-                    data-speed="800" 
-                    data-start="1000" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">3D Daydream View </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="10" 
-                    data-speed="800" 
-                    data-start="1200" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="none" 
-                    data-splitout="none" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Starting at </div>
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="210" 
-                    data-y="center" data-voffset="5" 
-                    data-speed="800" 
-                    data-start="1300" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$49.99 </div>
-
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption lfb tp-resizeme scroll" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="80"
-                    data-speed="800" 
-                    data-start="1300"
-                    data-easing="Power3.easeInOut" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    data-scrolloffset="0"
-                    style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
-                </li>
-
-                <!-- SLIDE  -->
-                <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
-                    <!-- MAIN IMAGE --> 
-                    <img src="{{ asset('frontend/images/slider-img-2.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-110" 
-                    data-speed="800" 
-                    data-start="800" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">No restocking fee ($35 savings)</div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-60" 
-                    data-speed="800" 
-                    data-start="1000" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">M75 Sport Watch </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="10" 
-                    data-speed="800" 
-                    data-start="1200" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="none" 
-                    data-splitout="none" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Now Only </div>
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="210" 
-                    data-y="center" data-voffset="5" 
-                    data-speed="800" 
-                    data-start="1300" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$320.99 </div>
-
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption lfb tp-resizeme scroll" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="80"
-                    data-speed="800" 
-                    data-start="1300"
-                    data-easing="Power3.easeInOut" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    data-scrolloffset="0"
-                    style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
-                </li>
-
-                <!-- SLIDE  -->
-                <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
-                    <!-- MAIN IMAGE --> 
-                    <img src="{{ asset('frontend/images/slider-img-3.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-110" 
-                    data-speed="800" 
-                    data-start="800" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">Get Free Bluetooth when buy </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-60" 
-                    data-speed="800" 
-                    data-start="1000" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">Flat SmartWatch </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="0" 
-                    data-speed="800" 
-                    data-start="1200" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="none" 
-                    data-splitout="none" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Combo Only:</div>
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="240" 
-                    data-y="center" data-voffset=" -5" 
-                    data-speed="800" 
-                    data-start="1300" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$590.00 </div>
-
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption lfb tp-resizeme scroll" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="80"
-                    data-speed="800" 
-                    data-start="1300"
-                    data-easing="Power3.easeInOut" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    data-scrolloffset="0"
-                    style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
-                </li>
-            </ul>
+<div class="page-main">
+    <section class="banner section">
+        <div class="swiper swiper-pagination-inside">
+            <div class="swiper-container" data-plugin="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image:url({{ asset('frontend/images/ex/home/banner/slider-1.jpg') }})">
+                        <div class="container d-flex justify-content-md-end justify-content-center">
+                            <div class="align-self-center text-center text-md-right">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="" width="188">
+                                </a>
+                                <h2 class="section-heading mb-4">DIVER 300M</h2>
+                                <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="#">xem thông tin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url({{ asset('frontend/images/ex/home/banner/slider-1.jpg') }})">
+                        <div class="container d-flex justify-content-md-end justify-content-center">
+                            <div class="align-self-center text-center text-md-right">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="" width="188">
+                                </a>
+                                <h2 class="section-heading mb-4">DIVER 300M</h2>
+                                <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="#">xem thông tin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url({{ asset('frontend/images/ex/home/banner/slider-1.jpg') }})">
+                        <div class="container d-flex justify-content-md-end justify-content-center">
+                            <div class="align-self-center text-center text-md-right">
+                                <a href="#">
+                                    <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="" width="188">
+                                </a>
+                                <h2 class="section-heading mb-4">DIVER 300M</h2>
+                                <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="#">xem thông tin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
-    </div>
+    </section>
+    <section class="swiper swiper-fullwidth">
+        <div class="container">
+            <h2 class="section-heading text-center text-md-left">Top Sales</h2>
+        </div>
+        <div class="swiper-container" data-plugin="swiper" data-slidesperview="4" data-breakpoints-lg="3" data-breakpoints-md="2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="card card-product">
+                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
+                            <div class="card-deal deal mr-2 mb-2">
+                                <span class="deal-label">deal</span>
+                                <span class="deal-text">20%</span>
+                            </div>
+                            <div class="card-price-border mb-2">240.000.000 VND</div>
+                        </div>
+                        <a class="thumbnail" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title fs-base text-center mb-0">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card card-product">
+                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
+                            <div class="card-deal deal mr-2 mb-2">
+                                <span class="deal-label">deal</span>
+                                <span class="deal-text">20%</span>
+                            </div>
+                            <div class="card-price-border mb-2">240.000.000 VND</div>
+                        </div>
+                        <a class="thumbnail" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title fs-base text-center mb-0">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card card-product">
+                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
+                            <div class="card-deal deal mr-2 mb-2">
+                                <span class="deal-label">deal</span>
+                                <span class="deal-text">20%</span>
+                            </div>
+                            <div class="card-price-border mb-2">240.000.000 VND</div>
+                        </div>
+                        <a class="thumbnail" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title fs-base text-center mb-0">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card card-product">
+                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
+                            <div class="card-deal deal mr-2 mb-2">
+                                <span class="deal-label">deal</span>
+                                <span class="deal-text">20%</span>
+                            </div>
+                            <div class="card-price-border mb-2">240.000.000 VND</div>
+                        </div>
+                        <a class="thumbnail" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title fs-base text-center mb-0">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card card-product">
+                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
+                            <div class="card-deal deal mr-2 mb-2">
+                                <span class="deal-label">deal</span>
+                                <span class="deal-text">20%</span>
+                            </div>
+                            <div class="card-price-border mb-2">240.000.000 VND</div>
+                        </div>
+                        <a class="thumbnail" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title fs-base text-center mb-0">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card card-product">
+                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
+                            <div class="card-deal deal mr-2 mb-2">
+                                <span class="deal-label">deal</span>
+                                <span class="deal-text">20%</span>
+                            </div>
+                            <div class="card-price-border mb-2">240.000.000 VND</div>
+                        </div>
+                        <a class="thumbnail" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title fs-base text-center mb-0">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-buttons">
+                <div class="swiper-button-prev">
+                    <i class="icont-chevron-left"></i>
+                </div>
+                <div class="swiper-button-next">
+                    <i class="icont-chevron-right"></i>
+                </div>
+            </div>
+            <div class="swiper-pagination swiper-pagination-style-1 mt-5"></div>
+        </div>
+    </section>
+    <hr class="divider my-5">
+    <section class="section py-0">
+        <div class="container">
+            <header class="section-header d-flex flex-column flex-md-row align-items-center">
+                <h2 class="section-heading mb-4 mb-md-0">Sản phẩm nổi bật</h2>
+                <nav class="tabs tabs-simple fs-sm ml-md-auto">
+                    <ul class="nav nav-tabs mb-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-toggle="tab">Tất cả</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="tab">Đồng hồ nam</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="tab">Đồng hồ nam</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <div class="card-option">
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input class="custom-control-input" id="product-radio-1" type="radio" name="radio-1" checked>
+                                    <label class="custom-control-label" for="product-radio-1">42mm</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input class="custom-control-input" id="product-radio-2" type="radio" name="radio-1">
+                                    <label class="custom-control-label" for="product-radio-2">38mm</label>
+                                </div>
+                            </div>
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="divider my-5">
+    <section class="section py-0">
+        <div class="container">
+            <header class="section-header d-flex flex-column flex-md-row align-items-center">
+                <h2 class="section-heading mb-0">các thương hiệu nổi tiếng</h2>
+            </header>
+            <div class="brands row gutter-1 gutter-md-2 gutter-lg-3 mb-5">
+                <div class="col">
+                    <a class="brands-item" href="#">
+                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="brands-item active" href="#">
+                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="brands-item" href="#">
+                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="brands-item" href="#">
+                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
+                    </a>
+                </div>
+                <div class="col">
+                    <a class="brands-item" href="#">
+                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <img class="img-fluid w-100 align-self-baseline align-self-md-auto" src="{{ asset('frontend/images/ex/omega.jpg') }}" alt="">
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <img class="img-fluid w-100 align-self-baseline align-self-md-auto" src="{{ asset('frontend/images/ex/omega.jpg') }}" alt="">
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                    <div class="card card-product">
+                        <a class="thumbnail mb-4" href="#">
+                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        </a>
+                        <div class="card-body">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
+                                <span class="card-sale">20%</span>
+                            </div>
+                            <div class="card-status text-primary">
+                                <i class="fa fa-check mr-1"></i>Còn hàng
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section section-newsletter section-background text-white mb-0" style="background-image:url({{ asset('frontend/images/bg-newsletter.jpg') }})">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <p class="section-lead text-center mb-4">Đăng ký ngay để nhận những tin tức về những mẫu đồng hồ mới nhất từ chúng tôi</p>
+                    <div class="input-group input-group-lg input-group-newsletter">
+                        <input class="search-input form-control" type="text" placeholder="Địa chỉ email">
+                        <div class="input-group-append">
+                            <button class="search-btn btn btn-secondary" type="button">Đăng ký</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-
-<!-- Main Slider  -->
-<div class="col-md-3 no-padding"> 
-
-    <!-- New line required  -->
-    <div class="product">
-      <div class="like-bnr">
-        <div class="position-center-center">
-          <h5>New line required</h5>
-          <h4>Smartphone s7</h4>
-          <span class="price">$259.99</span> </div>
-      </div>
-  </div>
-
-  <!-- Weekly Slaes  -->
-  <div class="week-sale-bnr">
-      <h4>Weekly <span>Sale!</span></h4>
-      <p>Saving up to 50% off all online
-      store items this week.</p>
-      <a href="#." class="btn-round">Shop now</a> </div>
-  </div>
-</div>
-</div>
-</div>
-</section>
-<!-- Shipping Info -->
-<section class="shipping-info">
-  <div class="container">
-    <ul>
-
-      <!-- Free Shipping -->
-      <li>
-        <div class="media-left"> <i class="flaticon-delivery-truck-1"></i> </div>
-        <div class="media-body">
-          <h5>Free Shipping</h5>
-          <span>On order over $99</span></div>
-      </li>
-      <!-- Money Return -->
-      <li>
-        <div class="media-left"> <i class="flaticon-arrows"></i> </div>
-        <div class="media-body">
-          <h5>Money Return</h5>
-          <span>30 Days money return</span></div>
-      </li>
-      <!-- Support 24/7 -->
-      <li>
-        <div class="media-left"> <i class="flaticon-operator"></i> </div>
-        <div class="media-body">
-          <h5>Support 24/7</h5>
-          <span>Hotline: (+100) 123 456 7890</span></div>
-      </li>
-      <!-- Safe Payment -->
-      <li>
-        <div class="media-left"> <i class="flaticon-business"></i> </div>
-        <div class="media-body">
-          <h5>Safe Payment</h5>
-          <span>Protect online payment</span></div>
-      </li>
-  </ul>
-</div>
-</section>
-
-<!-- tab Section -->
-<section class="featur-tabs padding-top-60 padding-bottom-60">
-  <div class="container"> 
-
-    <!-- Nav tabs -->
-    <ul class="nav nav-tabs nav-pills margin-bottom-40" role="tablist">
-      <li role="presentation" class="active"><a href="#featur" aria-controls="featur" role="tab" data-toggle="tab">Featured</a></li>
-      <li role="presentation"><a href="#special" aria-controls="special" role="tab" data-toggle="tab">Special</a></li>
-      <li role="presentation"><a href="#on-sal" aria-controls="on-sal" role="tab" data-toggle="tab">Onsale</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content"> 
-      <!-- Featured -->
-      <div role="tabpanel" class="tab-pane active fade in" id="featur"> 
-        <!-- Items Slider -->
-        <div class="item-slide-5 with-nav"> 
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00 </div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-              <!-- Content --> 
-              <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00 <span>$200.00</span></div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-              <!-- Content --> 
-              <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-              <!-- Content --> 
-              <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00 <span>$200.00</span></div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-              <!-- Content --> 
-              <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-      </div>
-  </div>
-
-  <!-- Special -->
-  <div role="tabpanel" class="tab-pane fade" id="special"> 
-    <!-- Items Slider -->
-    <div class="item-col-5"> 
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-11.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00 </div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-9.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-          <!-- Content --> 
-          <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00 <span>$200.00</span></div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-  </div>
-</div>
-
-<!-- on sale -->
-<div role="tabpanel" class="tab-pane fade" id="on-sal"> 
-    <!-- Items Slider -->
-    <div class="item-col-5"> 
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00 </div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-          <!-- Content --> 
-          <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00 <span>$200.00</span></div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-  </div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Top Selling Week -->
-<section class="light-gry-bg padding-top-60 padding-bottom-30">
-  <div class="container"> 
-
-    <!-- heading -->
-    <div class="heading">
-      <h2>Top Selling of the Week</h2>
-      <hr>
-  </div>
-
-  <!-- Items -->
-  <div class="item-col-5"> 
-
-      <!-- Product -->
-      <div class="product col-2x">
-        <div class="like-bnr">
-          <div class="position-center-center">
-            <h5>Smart Watch 2.0</h5>
-            <p>Space Gray Aluminum Case
-              with Black/Volt Real Sport Band <span>38mm | 42mm</span> </p>
-              <a href="#." class="btn-round">View Detail</a> </div>
-          </div>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-          <!-- Content --> 
-          <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00 <span>$200.00</span></div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-9.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-10.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-11.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-12.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-13.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-  </div>
-</div>
-</section>
-
-<!-- Main Tabs Sec -->
-<section class="main-tabs-sec padding-top-60 padding-bottom-0">
-  <div class="container">
-    <ul class="nav margin-bottom-40" role="tablist">
-      <li role="presentation" class="active"><a href="#tv-au" aria-controls="featur" role="tab" data-toggle="tab"> <i class="flaticon-computer"></i> TV & Audios <span>236 item(s)</span></a></li>
-      <li role="presentation"><a href="#smart" aria-controls="special" role="tab" data-toggle="tab"><i class="flaticon-smartphone"></i>Smartphones <span>150 item(s)</span></a></li>
-      <li role="presentation"><a href="#deks-lap" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-laptop"></i>Desk & Laptop <span>268 item(s)</span></a></li>
-      <li role="presentation"><a href="#game-com" aria-controls="special" role="tab" data-toggle="tab"><i class="flaticon-gamepad-1"></i>Game Console <span>79 item(s)</span></a></li>
-      <li role="presentation"><a href="#watches" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-computer-1"></i>Watches <span>105 item(s)</span></a></li>
-      <li role="presentation"><a href="#access" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-keyboard"></i>Accessories <span>816 item(s)</span></a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content"> 
-      <!-- TV & Audios -->
-      <div role="tabpanel" class="tab-pane active fade in" id="tv-au"> 
-
-        <!-- Items -->
-        <div class="item-slide-5 with-bullet no-nav"> 
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00 </div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-              <!-- Content --> 
-              <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00 <span>$200.00</span></div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-              <!-- Content --> 
-              <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-              <!-- Content --> 
-              <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00 <span>$200.00</span></div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-              <!-- Content --> 
-              <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-9.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-              <!-- Content --> 
-              <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00 <span>$200.00</span></div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-10.jpg') }}" alt="" > 
-              <!-- Content --> 
-              <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-
-          <!-- Product -->
-          <div class="product">
-            <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-11.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-              <!-- Content --> 
-              <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-              <!-- Reviews -->
-              <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-              <div class="price">$350.00</div>
-              <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-          </div>
-      </div>
-  </div>
-
-  <!-- Smartphones -->
-  <div role="tabpanel" class="tab-pane fade" id="smart"> 
-    <!-- Items -->
-    <div class="item-col-5"> 
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-11.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-17.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-15.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-  </div>
-</div>
-<!-- Desk & Laptop -->
-<div role="tabpanel" class="tab-pane fade" id="deks-lap"> 
-
-    <!-- Items -->
-    <div class="item-col-5"> 
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-13.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-15.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-  </div>
-</div>
-<!-- Game Console -->
-<div role="tabpanel" class="tab-pane fade" id="game-com"> 
-
-    <!-- Items -->
-    <div class="item-col-5"> 
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-9.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-  </div>
-</div>
-<!-- Watches -->
-<div role="tabpanel" class="tab-pane fade" id="watches"> 
-
-    <!-- Items -->
-    <div class="item-col-5"> 
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-9.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-17.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-16.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-12.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-  </div>
-</div>
-<!-- Accessories -->
-<div role="tabpanel" class="tab-pane fade" id="access"> 
-
-    <!-- Items -->
-    <div class="item-col-5"> 
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-11.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-12.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-16.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-15.jpg') }}" alt="" > <span class="new-tag">New</span> 
-
-          <!-- Content --> 
-          <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-
-      <!-- Product -->
-      <div class="product">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-14.jpg') }}" alt="" > 
-          <!-- Content --> 
-          <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-          <!-- Reviews -->
-          <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p>
-          <div class="price">$350.00</div>
-          <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-      </div>
-  </div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- Top Selling Week -->
-<section class="padding-top-60 padding-bottom-60">
-  <div class="container"> 
-
-    <!-- heading -->
-    <div class="heading">
-      <h2>From our Blog</h2>
-      <hr>
-  </div>
-  <div id="blog-slide" class="with-nav"> 
-
-      <!-- Blog Post -->
-      <div class="blog-post">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/blog-img-1.jpg') }}" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">It’s why there’s nothing else like Mac. </a>
-          <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-          <a href="#.">Readmore</a> </article>
-      </div>
-
-      <!-- Blog Post -->
-      <div class="blog-post">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/blog-img-2.jpg') }}" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">Get the power to take your business to the
-        next level. </a>
-        <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-        <a href="#.">Readmore</a> </article>
-    </div>
-
-    <!-- Blog Post -->
-    <div class="blog-post">
-        <article> <img class="img-responsive" src="{{ asset('frontend/images/blog-img-3.jpg') }}" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">It’s why there’s nothing else like Mac. </a>
-          <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-          <a href="#.">Readmore</a> </article>
-      </div>
-  </div>
-</div>
-</section>
-
-<!-- Clients img -->
-<section class="light-gry-bg clients-img">
-  <div class="container">
-    <ul>
-      <li><img src="{{ asset('frontend/images/c-img-1.png') }}" alt="" ></li>
-      <li><img src="{{ asset('frontend/images/c-img-2.png') }}" alt="" ></li>
-      <li><img src="{{ asset('frontend/images/c-img-3.png') }}" alt="" ></li>
-      <li><img src="{{ asset('frontend/images/c-img-4.png') }}" alt="" ></li>
-      <li><img src="{{ asset('frontend/images/c-img-5.png') }}" alt="" ></li>
-  </ul>
-</div>
-</section>
-
-<!-- Newslatter -->
-<section class="newslatter">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Subscribe our Newsletter <span>Get <strong>25% Off</strong> first purchase!</span></h3>
-    </div>
-    <div class="col-md-6">
-        <form>
-          <input type="email" placeholder="Your email address here...">
-          <button type="submit">Subscribe!</button>
-      </form>
-  </div>
-</div>
-</div>
-</section>
 @stop
 
 @section('pageJs')

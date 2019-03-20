@@ -1,81 +1,31 @@
-<footer>
-    <div class="container"> 
-
-      <!-- Footer Upside Links -->
-      <div class="foot-link">
-        <ul>
-          <li><a href="#."> About us </a></li>
-          <li><a href="#."> Customer Service </a></li>
-          <li><a href="#."> Privacy Policy </a></li>
-          <li><a href="#."> Site Map </a></li>
-          <li><a href="#."> Search Terms </a></li>
-          <li><a href="#."> Advanced Search </a></li>
-          <li><a href="#."> Orders and Returns </a></li>
-          <li><a href="#."> Contact Us</a></li>
-      </ul>
-  </div>
-  <div class="row"> 
-
-    <!-- Contact -->
-    <div class="col-md-4">
-      <h4>Contact SmartTech!</h4>
-      <p>Address: 45 Grand Central Terminal New York, NY 1017
-      United State USA</p>
-      <p>Phone: (+100) 123 456 7890</p>
-      <p>Email: Support@smarttech.com</p>
-      <div class="social-links"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> <a href="#."><i class="fa fa-pinterest"></i></a> <a href="#."><i class="fa fa-instagram"></i></a> <a href="#."><i class="fa fa-google"></i></a> </div>
-  </div>
-
-  <!-- Categories -->
-  <div class="col-md-3">
-      <h4>Categories</h4>
-      <ul class="links-footer">
-        <li><a href="#.">Home Audio & Theater</a></li>
-        <li><a href="#."> TV & Video</a></li>
-        <li><a href="#."> Camera, Photo & Video</a></li>
-        <li><a href="#."> Cell Phones & Accessories</a></li>
-        <li><a href="#."> Headphones</a></li>
-        <li><a href="#."> Video Games</a></li>
-        <li><a href="#."> Bluetooth & Wireless</a></li>
-    </ul>
-</div>
-
-<!-- Categories -->
-<div class="col-md-3">
-  <h4>Customer Services</h4>
-  <ul class="links-footer">
-    <li><a href="#.">Shipping & Returns</a></li>
-    <li><a href="#."> Secure Shopping</a></li>
-    <li><a href="#."> International Shipping</a></li>
-    <li><a href="#."> Affiliates</a></li>
-    <li><a href="#."> Contact </a></li>
-</ul>
-</div>
-
-<!-- Categories -->
-<div class="col-md-2">
-  <h4>Information</h4>
-  <ul class="links-footer">
-    <li><a href="#.">Our Blog</a></li>
-    <li><a href="#."> About Our Shop</a></li>
-    <li><a href="#."> Secure Shopping</a></li>
-    <li><a href="#."> Delivery infomation</a></li>
-    <li><a href="#."> Store Locations</a></li>
-    <li><a href="#."> FAQs</a></li>
-</ul>
-</div>
-</div>
-</div>
-</footer>
-
-<!-- Rights -->
-<div class="rights">
+<footer class="footer" id="footer">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <p>Copyright © 2019 <a href="#." class="ri-li"> thachvu.vn. All rights reserved</p>
-      </div>
-      <div class="col-sm-6 text-right"> <img src="{{ asset('frontend/images/card-icon.png') }}" alt=""> </div>
-  </div>
-</div>
-</div>
+        <div class="footer-body py-3">
+            <div class="row py-3 align-items-center">
+                <div class="col-md-6 mb-3">
+                    <a class="footer-logo mb-4" href="#">
+                        <img class="img-fluid" src="{{ asset('frontend/images/logo.png') }}" alt="">
+                    </a>
+                    <ul class="list list-icons">
+                        <li class="list-item">
+                            <i class="list-icon fa fa-envelope text-secondary mr-2"></i>Email: <a href="mailto:autwatch@gmail.com">autwatch@gmail.com</a>
+                        </li>
+                        <li class="list-item">
+                            <i class="list-icon fa fa-phone fa-flip-horizontal text-secondary mr-2"></i>Hotline: <a href="tel:0945106656">0945 10.66.56</a> (Zalo, Viber)
+                        </li>
+                        <li class="list-item">
+                            <i class="list-icon fa fa-map-marker-alt text-secondary mr-2"></i>Địa chỉ : Số 1 , Nguyễn Huy Tưởng , Thanh Xuân , Hà Nội
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="map-container" style="height: 250px">
+                        <iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJuxOsSakodTERI-eF-2gRKT4&amp;key=AIzaSyDWoPkVqd_ZfDGY5wXkjsGevSuZ91yPQbw" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="divider my-0">
+        <div class="footer-copyright">Copyright AutWatches. All Right Reserved.</div>
+    </div>
+</footer>

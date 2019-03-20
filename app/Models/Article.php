@@ -37,8 +37,8 @@ class Article extends Model
     ];
 
     public static $messages = [
-        'name.required' => 'Tiêu đề không được để trống',
-        'name.min' => 'Tiêu đề ít nhất từ 2 ký tự',
+        'title.required' => 'Tiêu đề không được để trống',
+        'title.min' => 'Tiêu đề ít nhất từ 2 ký tự',
         'image.required' => 'Ảnh không được để trống',
         'intro.required' => 'Mô tả ngắn không được để trống',
         'fulltext.required' => 'Nội dung không được để trống',
