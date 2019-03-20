@@ -116,7 +116,7 @@ class Util
                 self::buildArray($objects, $result, $object['id'], $depth + 1);
             }
         }
-        
+
         return $result;
     }
 

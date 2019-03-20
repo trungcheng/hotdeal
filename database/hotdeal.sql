@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-03-20 08:52:58
+Date: 2019-03-20 17:23:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -84,30 +84,30 @@ CREATE TABLE `categories` (
 -- ----------------------------
 -- Records of categories
 -- ----------------------------
-INSERT INTO `categories` VALUES ('1', '0', 'Đồ tập gym - yoga', 'do-tap-gym-yoga', '2', '1', '0', '0', '2018-04-08 18:00:21', '2018-04-08 18:00:21');
-INSERT INTO `categories` VALUES ('3', '0', 'Bể bơi', 'be-boi', '3', '1', '0', '0', '2018-04-08 18:01:23', '2018-04-08 18:01:23');
-INSERT INTO `categories` VALUES ('4', '0', 'Khu vui chơi - giải trí', 'khu-vui-choi-giai-tri', '4', '1', '0', '0', '2018-04-08 18:01:23', '2018-04-08 18:01:23');
-INSERT INTO `categories` VALUES ('5', '0', 'Thực phẩm giảm cân', 'thuc-pham-giam-can', '5', '1', '0', '0', '2018-04-08 18:02:39', '2018-04-08 18:02:39');
-INSERT INTO `categories` VALUES ('6', '0', 'Khóa học online', 'khoa-hoc-online', '6', '1', '0', '0', '2018-04-08 18:02:39', '2018-04-08 18:02:39');
-INSERT INTO `categories` VALUES ('7', '0', 'Mỹ phẩm & Làm đẹp', 'my-pham-lam-dep', '7', '1', '0', '0', '2018-04-08 18:03:50', '2018-04-08 18:03:50');
-INSERT INTO `categories` VALUES ('9', '1', 'Tập gym', 'tap-gym', '1', '1', '0', '0', '2018-04-08 18:05:19', '2018-04-08 18:05:19');
-INSERT INTO `categories` VALUES ('10', '1', 'Tập yoga', 'tap-yoga', '2', '1', '0', '0', '2018-04-08 18:05:19', '2018-04-08 18:05:19');
-INSERT INTO `categories` VALUES ('11', '1', 'Zumba', 'zumba', '3', '1', '0', '0', '2018-04-08 18:06:24', '2018-04-08 18:06:24');
-INSERT INTO `categories` VALUES ('12', '1', 'Sexy dance', 'sexy-dance', '4', '1', '0', '0', '2018-04-08 18:06:24', '2018-04-08 18:06:24');
-INSERT INTO `categories` VALUES ('13', '1', 'Kpop dance', 'kpop-dance', '5', '1', '0', '0', '2018-04-08 18:06:51', '2018-04-08 18:06:51');
-INSERT INTO `categories` VALUES ('14', '3', 'Quần áo & Phụ kiện gym', 'quan-ao-phu-kien-gym', '1', '1', '0', '0', '2018-04-08 18:08:36', '2018-04-08 18:08:36');
-INSERT INTO `categories` VALUES ('15', '3', 'Quần áo yoga - zumba', 'quan-ao-yoga-zumba', '2', '1', '0', '0', '2018-04-08 18:08:36', '2018-04-08 18:08:36');
-INSERT INTO `categories` VALUES ('16', '3', 'Vé bơi', 've-boi', '1', '1', '0', '0', '2018-04-08 18:12:12', '2018-04-08 18:12:12');
-INSERT INTO `categories` VALUES ('17', '3', 'Học bơi', 'hoc-boi', '2', '1', '0', '0', '2018-04-08 18:12:12', '2018-04-08 18:12:12');
-INSERT INTO `categories` VALUES ('18', '3', 'Đồ tập bơi', 'do-tap-boi', '3', '1', '0', '0', '2018-04-08 18:12:30', '2018-04-08 18:12:30');
-INSERT INTO `categories` VALUES ('19', '4', 'Thỏa thích vui chơi', 'thoa-thich-vui-choi', '1', '1', '0', '0', '2018-04-08 18:15:46', '2018-04-08 18:15:46');
-INSERT INTO `categories` VALUES ('20', '4', 'Trọn gói quay phim - chụp ảnh', 'tron-goi-quay-phim-chup-anh', '2', '1', '0', '0', '2018-04-08 18:15:46', '2018-04-08 18:15:46');
-INSERT INTO `categories` VALUES ('21', '5', 'Thảo dược giẩm cân', 'thao-duoc-giam-can', '1', '1', '0', '0', '2018-04-08 18:16:42', '2018-04-08 18:16:42');
-INSERT INTO `categories` VALUES ('22', '5', 'Dinh dưỡng tập luyện', 'dinh-duong-tap-luyen', '2', '1', '0', '0', '2018-04-08 18:16:42', '2018-04-08 18:16:42');
-INSERT INTO `categories` VALUES ('23', '6', 'Khóa học yoga', 'khoa-hoc-yoga', '1', '1', '0', '0', '2018-04-08 18:17:29', '2018-04-08 18:17:29');
-INSERT INTO `categories` VALUES ('24', '6', 'Khóa học zumba', 'khoa-hoc-zumba', '2', '1', '0', '0', '2018-04-08 18:17:29', '2018-04-08 18:17:29');
-INSERT INTO `categories` VALUES ('25', '7', 'Trang điểm', 'trang-diem', '1', '1', '0', '0', '2018-04-08 18:18:02', '2018-04-08 18:18:02');
-INSERT INTO `categories` VALUES ('26', '7', 'Dưỡng da', 'duong-da', '1', '1', '0', '1', '2018-04-08 18:18:02', '2019-03-18 09:01:57');
+INSERT INTO `categories` VALUES ('1', '0', 'Đồ tập gym - yoga', 'do-tap-gym-yoga', '2', '1', '0', '1', '2018-04-08 18:00:21', '2018-04-08 18:00:21');
+INSERT INTO `categories` VALUES ('3', '0', 'Bể bơi', 'be-boi', '3', '1', '0', '1', '2018-04-08 18:01:23', '2018-04-08 18:01:23');
+INSERT INTO `categories` VALUES ('4', '0', 'Khu vui chơi - giải trí', 'khu-vui-choi-giai-tri', '4', '1', '0', '1', '2018-04-08 18:01:23', '2018-04-08 18:01:23');
+INSERT INTO `categories` VALUES ('5', '0', 'Thực phẩm giảm cân', 'thuc-pham-giam-can', '5', '1', '0', '1', '2018-04-08 18:02:39', '2018-04-08 18:02:39');
+INSERT INTO `categories` VALUES ('6', '0', 'Khóa học online', 'khoa-hoc-online', '6', '1', '0', '1', '2018-04-08 18:02:39', '2018-04-08 18:02:39');
+INSERT INTO `categories` VALUES ('7', '0', 'Mỹ phẩm & Làm đẹp', 'my-pham-lam-dep', '7', '1', '0', '1', '2018-04-08 18:03:50', '2018-04-08 18:03:50');
+INSERT INTO `categories` VALUES ('9', '1', 'Tập gym', 'tap-gym', '1', '1', '0', '1', '2018-04-08 18:05:19', '2018-04-08 18:05:19');
+INSERT INTO `categories` VALUES ('10', '1', 'Tập yoga', 'tap-yoga', '2', '1', '0', '1', '2018-04-08 18:05:19', '2018-04-08 18:05:19');
+INSERT INTO `categories` VALUES ('11', '1', 'Zumba', 'zumba', '3', '1', '0', '1', '2018-04-08 18:06:24', '2018-04-08 18:06:24');
+INSERT INTO `categories` VALUES ('12', '1', 'Sexy dance', 'sexy-dance', '4', '1', '0', '1', '2018-04-08 18:06:24', '2018-04-08 18:06:24');
+INSERT INTO `categories` VALUES ('13', '1', 'Kpop dance', 'kpop-dance', '5', '1', '0', '1', '2018-04-08 18:06:51', '2018-04-08 18:06:51');
+INSERT INTO `categories` VALUES ('14', '3', 'Quần áo & Phụ kiện gym', 'quan-ao-phu-kien-gym', '1', '1', '0', '1', '2018-04-08 18:08:36', '2018-04-08 18:08:36');
+INSERT INTO `categories` VALUES ('15', '3', 'Quần áo yoga - zumba', 'quan-ao-yoga-zumba', '2', '1', '0', '1', '2018-04-08 18:08:36', '2018-04-08 18:08:36');
+INSERT INTO `categories` VALUES ('16', '3', 'Vé bơi', 've-boi', '1', '1', '0', '1', '2018-04-08 18:12:12', '2018-04-08 18:12:12');
+INSERT INTO `categories` VALUES ('17', '3', 'Học bơi', 'hoc-boi', '2', '1', '0', '1', '2018-04-08 18:12:12', '2018-04-08 18:12:12');
+INSERT INTO `categories` VALUES ('18', '3', 'Đồ tập bơi', 'do-tap-boi', '3', '1', '0', '1', '2018-04-08 18:12:30', '2018-04-08 18:12:30');
+INSERT INTO `categories` VALUES ('19', '4', 'Thỏa thích vui chơi', 'thoa-thich-vui-choi', '1', '1', '0', '1', '2018-04-08 18:15:46', '2018-04-08 18:15:46');
+INSERT INTO `categories` VALUES ('20', '4', 'Trọn gói quay phim - chụp ảnh', 'tron-goi-quay-phim-chup-anh', '2', '1', '0', '1', '2018-04-08 18:15:46', '2018-04-08 18:15:46');
+INSERT INTO `categories` VALUES ('21', '5', 'Thảo dược giẩm cân', 'thao-duoc-giam-can', '1', '1', '0', '1', '2018-04-08 18:16:42', '2018-04-08 18:16:42');
+INSERT INTO `categories` VALUES ('22', '5', 'Dinh dưỡng tập luyện', 'dinh-duong-tap-luyen', '2', '1', '0', '1', '2018-04-08 18:16:42', '2018-04-08 18:16:42');
+INSERT INTO `categories` VALUES ('23', '6', 'Khóa học yoga', 'khoa-hoc-yoga', '1', '1', '0', '1', '2018-04-08 18:17:29', '2018-04-08 18:17:29');
+INSERT INTO `categories` VALUES ('24', '6', 'Khóa học zumba', 'khoa-hoc-zumba', '2', '1', '0', '1', '2018-04-08 18:17:29', '2018-04-08 18:17:29');
+INSERT INTO `categories` VALUES ('25', '7', 'Trang điểm', 'trang-diem', '1', '1', '0', '1', '2018-04-08 18:18:02', '2018-04-08 18:18:02');
+INSERT INTO `categories` VALUES ('26', '7', 'Dưỡng da', 'duong-da', '1', '1', '0', '1', '2018-04-08 18:18:02', '2019-03-20 10:17:33');
 
 -- ----------------------------
 -- Table structure for company

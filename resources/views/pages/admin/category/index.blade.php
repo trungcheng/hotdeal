@@ -70,7 +70,7 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in categories track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
-                                                    <td>@{{ (cate.type == 0) ? 'Sản phẩm' : 'Bài viết' }}</td>
+                                                    <td>@{{ (cate.type == 1) ? 'Sản phẩm' : 'Bài viết' }}</td>
                                                     <td>@{{ (cate.parent) ? cate.parent : '' }}</td>
                                                     <td>@{{ (cate.status) ? 'Hiển thị' : 'Ẩn' }}</td>
                                                     <td>@{{ cate.created_at }}</td>

@@ -47,7 +47,7 @@ class CategoryController extends Controller
         $types = [];
         if (isset($request->type)) {
             $types = explode(',', $request->type);
-            $categories = Category::whereIn('type', $types)->get();
+            $categories = Category::whereIn('type', $types)->orderBy('id', 'asc')->get();
         } else {
             $categories = Category::all();
         }
@@ -105,7 +105,12 @@ class CategoryController extends Controller
 
             $cate = Category::find($data['cateId']);
             if ($cate) {
-                Category::updateAction($data);
+                if ($data['cateType'] != $cate->type) {
+                    $parentCate = Category::find($cate->parent_id);
+                    if ($parentCate) $parentCate->update(['type' => $data['cateType']]);      
+                }
+                Category::updateAction($cate, $data);
+
                 return Response::json([
                     'status' => true, 
                     'message' => 'Cập nhật danh mục thành công',

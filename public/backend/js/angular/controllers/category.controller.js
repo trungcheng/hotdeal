@@ -23,7 +23,7 @@
             selectedOption: {value: 10, name: '10'}
         };
 
-        $scope.types = [{type:0,name:'Sản phẩm'},{type:1,name:'Bài viết'}];
+        $scope.types = [{type:1,name:'Sản phẩm'},{type:2,name:'Bài viết'}];
 
         $scope.getResultsPage = function (name, perPage, pageNumber) {
             $scope.loading = true;

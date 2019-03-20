@@ -36,9 +36,12 @@
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="cat_id">
-                                        <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                        <option ng-if="parentCates.length > 0" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
                                             @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
                                         </option>
+                                        <option value="" ng-if="parentCates.length == 0">Không có danh mục nào</option>
+                                        <!-- <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat-start="item in parentCates">@{{ item.name }}</option>
+                                        <option class="cateLevel cate-level-@{{ obj.depth }}" value="@{{ obj.id }}" ng-repeat-end="obj in item.childrens">@{{ obj.depth == 1 ? '----- ' : obj.depth == 2 ? '---------- ' : obj.depth == 3 ? '--------------- ' : '' }}@{{ obj.name }}</option> -->
                                     </select>
                                 </div>
                                 <div class="form-group">

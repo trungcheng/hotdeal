@@ -54,7 +54,6 @@ class Product extends Model
 
     public static $rules = [
         'name' => 'required|min:2',
-        'cat_id' => 'required',
         'price' => 'required|numeric',
         'image' => 'required'
     ];
@@ -62,7 +61,6 @@ class Product extends Model
     public static $messages = [
         'name.required' => 'Tên sản phẩm không được để trống',
         'name.min' => 'Tên sản phẩm ít nhất từ 2 ký tự',
-        'cat_id.required' => 'Danh mục không được để trống',
         'price.required' => 'Giá sản phẩm không được để trống',
         'price.numeric' => 'Giá sản phẩm phải là số',
         'image.required' => 'Ảnh sản phẩm không được để trống'

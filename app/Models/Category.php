@@ -55,11 +55,11 @@ class Category extends Model
         ]);
     }
 
-    public static function updateAction($data)
+    public static function updateAction($cate, $data)
     {
         $genSlug = Util::generateSlug($data['cateName']);
-        
-        return self::find($data['cateId'])->update([
+
+        return $cate->update([
             'parent_id' => (int)$data['cateParent'],
             'name' => $data['cateName'],
             'slug' => $genSlug,
