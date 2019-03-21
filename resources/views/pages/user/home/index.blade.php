@@ -3,6 +3,33 @@
 @section('page')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch
 @stop
 
+@section('description')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@stop
+
+@section('keywords')đồng hồ chính hãng, thương hiệu đồng hồ, đồng hồ chất lượng, đồng hồ nam, đồng hồ nữ, đồng hồ đẳng cấp, đồng hồ thương hiệu, cửa hàng đồng hồ uy tín
+@stop
+
+@section('canonical'){{ route('home') }}/
+@stop
+
+@section('alternate'){{ route('home') }}/
+@stop
+
+@section('propName')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch.
+@stop
+
+@section('propDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@stop
+
+@section('ogTitle')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch.
+@stop
+
+@section('ogDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@stop
+
+@section('ogUrl'){{ route('home') }}/
+@stop
+
 @section('pageCss')
 
 @stop
@@ -151,7 +178,7 @@
             <div class="brands row gutter-1 gutter-md-2 gutter-lg-3 mb-5">
                 @foreach ($brands as $brand)
                 <div class="col">
-                    <a class="brands-item" href="#">
+                    <a class="brands-item {{ ($loop->first) ? 'active' : '' }}" href="javascript:void(0)">
                         <img class="img-fluid" src="{{ asset($brand->icon) }}" alt="{{ $brand->name }}">
                     </a>
                 </div>

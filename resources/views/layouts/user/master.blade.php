@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html class="no-js" lang="vi">
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="TUTA">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>@yield('page') | Autwatch.vn</title>
-    
     <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css') }}">
-
     @yield('pageCss')
-
     <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('page') | Autwatch.vn</title>
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="@yield('canonical')">
+    <link rel="alternate" href="@yield('alternate')" hreflang="vi-vn">
+    <meta itemprop="name" content="@yield('propName')">
+    <meta itemprop="description" content="@yield('propDesc')">
+    <meta property="og:title" content="@yield('ogTitle')"> 
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="@yield('ogUrl')"> 
+    <meta property="og:description" content="@yield('ogDesc')"> 
+    <meta property="og:site_name" content="Autwatch">  
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
 </head>
 <body>
     <div class="page pg-home">
@@ -80,8 +87,6 @@
     <script src="{{ asset('frontend/js/photoswipe-init.min.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
-
     @yield('pageJs')
-
 </body>
 </html>

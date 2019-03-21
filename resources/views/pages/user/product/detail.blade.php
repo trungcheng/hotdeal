@@ -3,6 +3,33 @@
 @section('page'){{ $product->name }}
 @stop
 
+@section('description'){{ $product->name }} là dòng đồng hồ cao cấp của {{ $product->category->name }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@stop
+
+@section('keywords'){{ $product->name }}, {{ $product->category->name }}
+@stop
+
+@section('canonical'){{ route('product-detail', ['slug' => $product->slug]) }}
+@stop
+
+@section('alternate'){{ route('product-detail', ['slug' => $product->slug]) }}
+@stop
+
+@section('propName'){{ $product->name }}
+@stop
+
+@section('propDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ $product->category->name }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@stop
+
+@section('ogTitle'){{ $product->name }}
+@stop
+
+@section('ogDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ $product->category->name }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@stop
+
+@section('ogUrl'){{ route('product-detail', ['slug' => $product->slug]) }}
+@stop
+
 @section('pageCss')
 
 @stop
@@ -89,7 +116,7 @@
                             <strong>Case diameter:</strong> {{ ($product->case_diameter) ? $product->case_diameter.' mm' : '' }}
                         </li>
                         <li class="list-item">
-                            <strong>Dial colour:</strong> {{ $product->dial_colour }}
+                            <strong>Dial colour:</strong> {{ $product->dial_color }}
                         </li>
                         <li class="list-item">
                             <strong>Crystal:</strong> {{ $product->crystal }}

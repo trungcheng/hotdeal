@@ -96,6 +96,22 @@
                                     </select>
                                 </div>
 
+                                <div class="form-group">
+                                    <label>Sản phẩm nổi bật</label>
+                                    <select name="is_feature" class="form-control status">
+                                        <option {{ ($pro->is_feature == 1) ? 'selected' : '' }} value="1">Có</option>
+                                        <option {{ ($pro->is_feature == 0) ? 'selected' : '' }} value="0">Không</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Sản phẩm hot</label>
+                                    <select name="is_hot" class="form-control status">
+                                        <option {{ ($pro->is_hot == 1) ? 'selected' : '' }} value="1">Có</option>
+                                        <option {{ ($pro->is_hot == 0) ? 'selected' : '' }} value="0">Không</option>
+                                    </select>
+                                </div>
+
                                 <fieldset>
                                     <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
                                     <table class="preview-table-upload">
@@ -161,7 +177,7 @@
 </div>
 
 <script>
-    CKEDITOR.replace('short_content', { height: 300 }); 
+    CKEDITOR.replace('short_content', { height: 100 }); 
     CKEDITOR.replace('full_content'); 
 </script>
 

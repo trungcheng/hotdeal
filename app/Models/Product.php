@@ -38,6 +38,7 @@ class Product extends Model
         'wire_material',
         'glass_material',
         'energy_type',
+        'version',
         'status'
     ];
 

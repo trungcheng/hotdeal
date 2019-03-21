@@ -4,7 +4,7 @@
 
     \Route::group(['middleware' => ['user.values']], function () {
 
-        \Route::get('/', 'User\HomeController@index');
+        \Route::get('/', 'User\HomeController@index')->name('home');
 
         \Route::group(['middleware' => ['user.guest']], function () {
             // \Route::get('signin', 'User\AuthController@getSignIn');
@@ -24,7 +24,7 @@
 
         });
 
-        \Route::get('/{slug}', 'User\ProductController@index')->name('product-detail');
+        \Route::get('/p/{slug}', 'User\ProductController@index')->name('product-detail');
         \Route::get('/store/{sex}', 'User\ProductController@store')->name('product-store');
 
     });

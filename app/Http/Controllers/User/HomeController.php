@@ -20,7 +20,7 @@ class HomeController extends Controller
     	$features = Product::where('is_feature', 1)
     		->with('category')
     		->orderBy('created_at', 'desc')->limit(9)->get();
-    	$brands = Category::orderBy('created_at', 'desc')->limit(5)->get();
+    	$brands = Category::orderBy('created_at', 'asc')->limit(5)->get();
     	if (!empty($brands)) {
     		$proBrands = Product::where('cat_id', $brands[0]->id)->get();
     	}

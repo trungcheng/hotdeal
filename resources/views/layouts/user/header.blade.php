@@ -19,10 +19,10 @@
                                 <a class="nav-link" href="#">Thương hiệu</a>
                             </div>
                             <div class="nav-item">
-                                <a class="nav-link" href="#">Đồng hồ nam</a>
+                                <a class="nav-link" href="{{ route('product-store', ['sex' => 'm']) }}">Đồng hồ nam</a>
                             </div>
                             <div class="nav-item">
-                                <a class="nav-link" href="#">Đồng hồ nữ</a>
+                                <a class="nav-link" href="{{ route('product-store', ['sex' => 'f']) }}">Đồng hồ nữ</a>
                             </div>
                             <div class="nav-item">
                                 <a class="nav-link" href="#">Về chúng tôi</a>

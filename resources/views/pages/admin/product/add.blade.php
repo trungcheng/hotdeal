@@ -82,6 +82,22 @@
                                     </select>
                                 </div>
 
+                                <div class="form-group">
+                                    <label>Sản phẩm nổi bật</label>
+                                    <select name="is_feature" class="form-control status">
+                                        <option value="0">Không</option>
+                                        <option value="1">Có</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Sản phẩm hot</label>
+                                    <select name="is_hot" class="form-control status">
+                                        <option value="0">Không</option>
+                                        <option value="1">Có</option>
+                                    </select>
+                                </div>
+
                                 <fieldset>
                                     <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
                                     <table class="preview-table-upload">

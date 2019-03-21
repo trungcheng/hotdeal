@@ -1,0 +1,22 @@
+[
+	{
+		"id": 1,
+		"name": "Dây kim loại"
+	},
+	{
+		"id": 2,
+		"name": "Dây da"
+	},
+	{
+		"id": 3,
+		"name": "Dây nhựa/cao su"
+	},
+	{
+		"id": 4,
+		"name": "Dây titanium"
+	},
+	{
+		"id": 5,
+		"name": "Dây vải"
+	}
+]
