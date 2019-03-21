@@ -11,7 +11,6 @@ class Article extends Model
 
     protected $fillable = [
         'user_id', 
-        'cat_id',
         'title',
         'slug',
         'intro',
@@ -52,7 +51,7 @@ class Article extends Model
             $data->where("name", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->with(['category', 'user'])->orderBy('id', 'desc')->paginate($request->perPage);
+        $data = $data->with('user')->orderBy('id', 'desc')->paginate($request->perPage);
 
         return $data;
     }

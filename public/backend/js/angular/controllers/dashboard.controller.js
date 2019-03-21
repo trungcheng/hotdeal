@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('HotdealCMS')
+    .module('AutwatchCMS')
     .controller('DashboardController', DashboardController);
 
     function DashboardController($rootScope, $scope, $http, $window, $timeout) {

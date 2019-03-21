@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('HotdealCMS')
+        .module('AutwatchCMS')
         .controller('ArticleController', ArticleController);
 
     function ArticleController($rootScope, $scope, $http, $window, $timeout) {
@@ -61,7 +61,7 @@
         }
 
         $scope.loadInitCate = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates?type=2').success(function (res) {
+            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
                 $scope.parentCates = res.data;
             });
         }

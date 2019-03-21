@@ -7,7 +7,7 @@
                         <span class="hamburger-inner"></span>
                     </span>
                 </button>
-                <a class="header-logo" href="#">
+                <a class="header-logo" href="{{ url('/') }}">
                     <img class="header-logo-img" src="{{ asset('frontend/images/logo.png') }}" alt="">
                 </a>
             </div>

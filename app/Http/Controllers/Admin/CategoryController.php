@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Article;
 use App\Util\Util;
 use Response;
+use Validator;
 
 class CategoryController extends Controller
 {
@@ -29,12 +30,6 @@ class CategoryController extends Controller
 
         if (!empty($categories)) {
             $results = Category::init($request);
-
-            foreach ($results as $result) {
-                if ($result->parent_id !== 0) {
-                    $result['parent'] = Category::find($result->parent_id)->name;
-                }
-            }
             
             return Response::json(['status' => true, 'data' => $results]);
         }
@@ -44,91 +39,104 @@ class CategoryController extends Controller
 
     public function getAllParentCates(Request $request)
     {
-        $types = [];
-        if (isset($request->type)) {
-            $types = explode(',', $request->type);
-            $categories = Category::whereIn('type', $types)->orderBy('id', 'asc')->get();
-        } else {
-            $categories = Category::all();
+        $categories = Category::all();
+        if ($categories) {
+            return Response::json(['status' => true, 'data' => $categories]);
         }
-        $categoriesPaged = Util::buildArray($categories->toArray());
-        if ($categoriesPaged) {
-            return Response::json(['status' => true, 'data' => $categoriesPaged]);
+        return Response::json(['status' => false, 'data' => []]);
+    }
+
+    public function create(Request $request)
+    {
+        return view('pages.admin.category.add');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $category = Category::find($id);
+        if ($category) {
+            return view('pages.admin.category.edit', ['category' => $category]);
         }
 
-        return Response::json(['status' => false, 'data' => []]);
+        abort(404);
     }
 
     public function add(Request $request)
     {
         try {
-            $data = $request->only(['cateName', 'cateParent', 'cateType', 'selectedOptionStatus']);
-            foreach ($data as $key => $value) {
-                if (!isset($data[$key]) || $value == '' || is_null($value) || $value == "0") {
-                    return Response::json([
-                        'status' => false,
-                        'message' => $key.' is required', 
-                        'type' => 'error'
-                    ]);
-                }
-            }
-
-            Category::addAction($data);
-
-            return Response::json([
-                'status' => true, 
-                'message' => 'Thêm danh mục thành công', 
-                'type' => 'success'
-            ]);
-        } catch (Exception $e) {
-            return Response::json([
-                'status' => false, 
-                'message' => $e->getMessage(), 
-                'type' => 'error'
-            ]);
-        }
-    }
-
-    public function update(Request $request)
-    {
-        try {
-            $data = $request->only(['cateId', 'cateName', 'cateParent', 'cateType', 'selectedOptionStatus']);
-            foreach ($data as $key => $value) {
-                if (!isset($data[$key]) || $value == '' || is_null($value) || $value == "0") {
-                    return Response::json([
-                        'status' => false, 
-                        'message' => $key.' is required', 
-                        'type' => 'error'
-                    ]);
-                }
-            }
-
-            $cate = Category::find($data['cateId']);
-            if ($cate) {
-                if ($data['cateType'] != $cate->type) {
-                    $parentCate = Category::find($cate->parent_id);
-                    if ($parentCate) $parentCate->update(['type' => $data['cateType']]);      
-                }
-                Category::updateAction($cate, $data);
-
+            $validator = Validator::make($request->all(), Category::$rules, Category::$messages);
+            if ($validator->fails()) {
                 return Response::json([
-                    'status' => true, 
-                    'message' => 'Cập nhật danh mục thành công',
+                    'status' => false,
+                    'message' => $validator->messages()->first(),
+                    'type' => 'error'
+                ]);
+            }
+
+            $data = $request->all();
+            if ($data) {
+                Category::addAction($data);
+                return Response::json([
+                    'status' => true,
+                    'message' => 'Thêm danh mục thành công', 
                     'type' => 'success'
                 ]);
             }
 
             return Response::json([
                 'status' => false, 
-                'message' => 'Không tìm thấy danh mục', 
+                'message' => 'Đã xảy ra lỗi', 
                 'type' => 'error'
             ]);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 200);
+        }
+    }
+
+    public function update(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), Category::$rules, Category::$messages);
+            if ($validator->fails()) {
+                return Response::json([
+                    'status' => false,
+                    'message' => $validator->messages()->first(),
+                    'type' => 'error'
+                ]);
+            }
+
+            $data = $request->all();
+            if ($data) {
+                $category = Category::find($data['id']);
+                if ($category) {
+                    Category::updateAction($category, $data);
+                    return Response::json([
+                        'status' => true, 
+                        'message' => 'Cập nhật danh mục thành công', 
+                        'type' => 'success'
+                    ]);
+                } else {
+                    return Response::json([
+                        'status' => false,
+                        'message' => 'Không tìm thấy danh mục', 
+                        'type' => 'error'
+                    ]);
+                }
+            }
+
             return Response::json([
-                'status' => false, 
-                'message' => $e->getMessage(), 
+                'status' => false,
+                'message' => 'Đã xảy ra lỗi', 
                 'type' => 'error'
             ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 200);
         }
     }
 
@@ -139,9 +147,7 @@ class CategoryController extends Controller
             $cate = Category::find($cateId);
             if ($cate) {
                 // remove all relate section
-                Category::where('parent_id', $cateId)->delete();
                 Product::where('cat_id', $cateId)->delete();
-                Article::where('cat_id', $cateId)->delete();
                 // remove itself
                 $cate->delete();
 

@@ -10,22 +10,25 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
-        'parent_id', 
         'name',
         'slug',
-        'order',
-        'status',
-        'is_filter_city',
-        'type'
+        'icon'
     ];
 
     public function product() {
     	return $this->hasMany('App\Models\Product', 'cat_id' , 'id');
     }
 
-    public function article() {
-        return $this->hasMany('App\Models\Article', 'cat_id' , 'id');
-    }
+    public static $rules = [
+        'name' => 'required|min:2',
+        'icon' => 'required'
+    ];
+
+    public static $messages = [
+        'name.required' => 'Tên không được để trống',
+        'name.min' => 'Tên ít nhất từ 2 ký tự',
+        'icon.required' => 'Ảnh không được để trống',
+    ];
 
     public static function init($request)
     {
@@ -42,32 +45,16 @@ class Category extends Model
 
     public static function addAction($data)
     {
-        $genSlug = Util::generateSlug($data['cateName']);
+        $data['slug'] = Util::generateSlug($data['name']);
 
-        return self::firstOrCreate([
-            'parent_id' => (int)$data['cateParent'],
-            'name' => $data['cateName'],
-            'slug' => $genSlug,
-            'order' => 1,
-            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
-            'is_filter_city' => 0,
-            'type' => $data['cateType']
-        ]);
+        return self::firstOrCreate($data);
     }
 
     public static function updateAction($cate, $data)
     {
-        $genSlug = Util::generateSlug($data['cateName']);
+        $data['slug'] = Util::generateSlug($data['name']);
 
-        return $cate->update([
-            'parent_id' => (int)$data['cateParent'],
-            'name' => $data['cateName'],
-            'slug' => $genSlug,
-            'order' => 1,
-            'status' => ($data['selectedOptionStatus'] == 'Hiển thị') ? 1 : 0,
-            'is_filter_city' => 0,
-            'type' => $data['cateType']
-        ]);
+        return $cate->update($data);
 
     }
 

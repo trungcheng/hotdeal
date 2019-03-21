@@ -8,7 +8,6 @@
 @stop
 
 @section('content')
-<div class="page-main">
     <section class="banner section">
         <div class="swiper swiper-pagination-inside">
             <div class="swiper-container" data-plugin="swiper">
@@ -51,126 +50,34 @@
             </div>
         </div>
     </section>
+    @if (count($topSales) > 0)
     <section class="swiper swiper-fullwidth">
         <div class="container">
             <h2 class="section-heading text-center text-md-left">Top Sales</h2>
         </div>
         <div class="swiper-container" data-plugin="swiper" data-slidesperview="4" data-breakpoints-lg="3" data-breakpoints-md="2">
             <div class="swiper-wrapper">
+                @foreach ($topSales as $top)
                 <div class="swiper-slide">
                     <div class="card card-product">
                         <div class="card-body d-flex flex-wrap fs-sm pb-2">
                             <div class="card-deal deal mr-2 mb-2">
                                 <span class="deal-label">deal</span>
-                                <span class="deal-text">20%</span>
+                                <span class="deal-text">{{ $top->discount }}%</span>
                             </div>
-                            <div class="card-price-border mb-2">240.000.000 VND</div>
+                            <div class="card-price-border mb-2">{{ number_format($top->price_sale, 0, 0, '.') }} VND</div>
                         </div>
-                        <a class="thumbnail" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        <a class="thumbnail" href="{{ route('product-detail', ['slug' => $top->slug]) }}">
+                            <img class="thumbnail-img" src="{{ asset($top->image) }}" alt="{{ $top->name }}">
                         </a>
                         <div class="card-body">
                             <h3 class="card-title fs-base text-center mb-0">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                                <a href="{{ route('product-detail', ['slug' => $top->slug]) }}">{{ $top->name }}</a>
                             </h3>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="card card-product">
-                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
-                            <div class="card-deal deal mr-2 mb-2">
-                                <span class="deal-label">deal</span>
-                                <span class="deal-text">20%</span>
-                            </div>
-                            <div class="card-price-border mb-2">240.000.000 VND</div>
-                        </div>
-                        <a class="thumbnail" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title fs-base text-center mb-0">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card card-product">
-                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
-                            <div class="card-deal deal mr-2 mb-2">
-                                <span class="deal-label">deal</span>
-                                <span class="deal-text">20%</span>
-                            </div>
-                            <div class="card-price-border mb-2">240.000.000 VND</div>
-                        </div>
-                        <a class="thumbnail" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title fs-base text-center mb-0">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card card-product">
-                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
-                            <div class="card-deal deal mr-2 mb-2">
-                                <span class="deal-label">deal</span>
-                                <span class="deal-text">20%</span>
-                            </div>
-                            <div class="card-price-border mb-2">240.000.000 VND</div>
-                        </div>
-                        <a class="thumbnail" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title fs-base text-center mb-0">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card card-product">
-                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
-                            <div class="card-deal deal mr-2 mb-2">
-                                <span class="deal-label">deal</span>
-                                <span class="deal-text">20%</span>
-                            </div>
-                            <div class="card-price-border mb-2">240.000.000 VND</div>
-                        </div>
-                        <a class="thumbnail" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title fs-base text-center mb-0">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="card card-product">
-                        <div class="card-body d-flex flex-wrap fs-sm pb-2">
-                            <div class="card-deal deal mr-2 mb-2">
-                                <span class="deal-label">deal</span>
-                                <span class="deal-text">20%</span>
-                            </div>
-                            <div class="card-price-border mb-2">240.000.000 VND</div>
-                        </div>
-                        <a class="thumbnail" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title fs-base text-center mb-0">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="swiper-buttons">
                 <div class="swiper-button-prev">
@@ -184,6 +91,8 @@
         </div>
     </section>
     <hr class="divider my-5">
+    @endif
+    @if (count($features) > 0)
     <section class="section py-0">
         <div class="container">
             <header class="section-header d-flex flex-column flex-md-row align-items-center">
@@ -197,507 +106,92 @@
                             <a class="nav-link" href="#" data-toggle="tab">Đồng hồ nam</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="tab">Đồng hồ nam</a>
+                            <a class="nav-link" href="#" data-toggle="tab">Đồng hồ nữ</a>
                         </li>
                     </ul>
                 </nav>
             </header>
             <div class="row">
+                @foreach ($features as $fea)
                 <div class="col-md-6 col-lg-4 d-flex mb-4">
                     <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        <a class="thumbnail mb-4" href="{{ route('product-detail', ['slug' => $fea->slug]) }}">
+                            <img class="thumbnail-img" src="{{ asset($fea->image) }}" alt="{{ $fea->name }}">
                         </a>
                         <div class="card-body">
                             <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                                <img class="card-logo img-fluid" src="{{ asset($fea->category->icon) }}" alt="{{ $fea->category->name }}">
                             </a>
                             <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                                <a href="{{ route('product-detail', ['slug' => $fea->slug]) }}">{{ $fea->name }}</a>
                             </h3>
                             <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
+                                <span class="card-price mr-2">{{ number_format($fea->price_sale, 0, 0, '.') }} VND</span>
+                                <del class="card-price card-price-old mr-2">{{ number_format($fea->price, 0, 0, '.') }} VND</del>
+                                <span class="card-sale">{{ $fea->discount }}%</span>
                             </div>
                             <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
+                                <i class="fa fa-check mr-1"></i>{{ ($fea->status == 1) ? 'Còn hàng' : 'Hết hàng' }}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <div class="card-option">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input class="custom-control-input" id="product-radio-1" type="radio" name="radio-1" checked>
-                                    <label class="custom-control-label" for="product-radio-1">42mm</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input class="custom-control-input" id="product-radio-2" type="radio" name="radio-1">
-                                    <label class="custom-control-label" for="product-radio-2">38mm</label>
-                                </div>
-                            </div>
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <hr class="divider my-5">
+    @endif
+    @if (count($brands) > 0)
     <section class="section py-0">
         <div class="container">
             <header class="section-header d-flex flex-column flex-md-row align-items-center">
                 <h2 class="section-heading mb-0">các thương hiệu nổi tiếng</h2>
             </header>
             <div class="brands row gutter-1 gutter-md-2 gutter-lg-3 mb-5">
+                @foreach ($brands as $brand)
                 <div class="col">
                     <a class="brands-item" href="#">
-                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
+                        <img class="img-fluid" src="{{ asset($brand->icon) }}" alt="{{ $brand->name }}">
                     </a>
                 </div>
-                <div class="col">
-                    <a class="brands-item active" href="#">
-                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="col">
-                    <a class="brands-item" href="#">
-                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="col">
-                    <a class="brands-item" href="#">
-                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
-                    </a>
-                </div>
-                <div class="col">
-                    <a class="brands-item" href="#">
-                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/casio.png') }}" alt="">
-                    </a>
-                </div>
+                @endforeach
             </div>
+            @if (count($proBrands) > 0)
             <div class="row mb-5">
                 <div class="col-md-6 col-lg-4 d-flex mb-4">
                     <img class="img-fluid w-100 align-self-baseline align-self-md-auto" src="{{ asset('frontend/images/ex/omega.jpg') }}" alt="">
                 </div>
+                @foreach ($proBrands as $pro)
                 <div class="col-md-6 col-lg-4 d-flex mb-4">
                     <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
+                        <a class="thumbnail mb-4" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                            <img class="thumbnail-img" src="{{ asset($pro->image) }}" alt="{{ $pro->name }}">
                         </a>
                         <div class="card-body">
                             <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                                <img class="card-logo img-fluid" src="{{ asset($pro->category->icon) }}" alt="{{ $pro->category->name }}">
                             </a>
                             <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                                <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">{{ $pro->name }}</a>
                             </h3>
                             <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
+                                <span class="card-price mr-2">{{ number_format($pro->price_sale, 0, 0, '.') }} VND</span>
+                                <del class="card-price card-price-old mr-2">{{ number_format($pro->price, 0, 0, '.') }} VND</del>
+                                <span class="card-sale">{{ $pro->discount }}%</span>
                             </div>
                             <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
+                                <i class="fa fa-check mr-1"></i>{{ ($pro->status == 1) ? 'Còn hàng' : 'Hết hàng' }}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <img class="img-fluid w-100 align-self-baseline align-self-md-auto" src="{{ asset('frontend/images/ex/omega.jpg') }}" alt="">
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <div class="card card-product">
-                        <a class="thumbnail mb-4" href="#">
-                            <img class="thumbnail-img" src="{{ asset('frontend/images/ex/product-1.jpg') }}" alt="">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
-                                <del class="card-price card-price-old mr-2">360.000.000 VND</del>
-                                <span class="card-sale">20%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>Còn hàng
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     </section>
+    @endif
     <section class="section section-newsletter section-background text-white mb-0" style="background-image:url({{ asset('frontend/images/bg-newsletter.jpg') }})">
         <div class="container">
             <div class="row justify-content-center">
@@ -713,7 +207,6 @@
             </div>
         </div>
     </section>
-</div>
 @stop
 
 @section('pageJs')

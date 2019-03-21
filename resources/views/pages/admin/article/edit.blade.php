@@ -35,15 +35,6 @@
                                     <input value="{{ $article->title }}" name="title" type="text" class="form-control title" placeholder="Tiêu đề bài viết...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Thuộc danh mục</label>
-                                    <select class="form-control cate" name="cat_id">
-                                        <option ng-if="parentCates.length > 0" ng-selected="item.id == {{ $article->cat_id }}" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                                        </option>
-                                        <option value="" ng-if="parentCates.length == 0">Không có danh mục nào</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label>Ảnh</label>
                                     <input value="{{ $article->image }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>

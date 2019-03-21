@@ -15,7 +15,7 @@
             <h1>
                 Quản lý danh mục
                 <!-- <small>Optional description</small> -->
-                <button ng-click="openModalAdd()" class="pull-right btn btn-success btn-sm">Thêm danh mục</button>
+                <a href="{{ route('category-create') }}" class="pull-right btn btn-success btn-sm">Thêm danh mục</a>
             </h1>
         </section>
 
@@ -58,10 +58,8 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th>STT</th>
+                                                    <th>Ảnh</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
-                                                    <th>Loại danh mục</th>
-                                                    <th>Danh mục cha</th>
-                                                    <th>Trạng thái</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -69,14 +67,14 @@
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in categories track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
+                                                    <td style="text-align:center !important">
+                                                        <img ng-src="@{{ cate.icon }}" style="width:70px;">
+                                                    </td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
-                                                    <td>@{{ (cate.type == 1) ? 'Sản phẩm' : 'Bài viết' }}</td>
-                                                    <td>@{{ (cate.parent) ? cate.parent : '' }}</td>
-                                                    <td>@{{ (cate.status) ? 'Hiển thị' : 'Ẩn' }}</td>
                                                     <td>@{{ cate.created_at }}</td>
                                                     <td>
-                                                        <button ng-click="openModalEdit(cate)" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                                        <button ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button>
+                                                        <a href="/admin/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -112,85 +110,6 @@
 
     </div>
 @stop
-
-<script type="text/ng-template" id="popup-add.html">
-    <div class="modal-header">
-        <button type="button" class="close" ng-click="close()">&times;</button>
-        <h3 class="modal-title">Thêm danh mục</h3>
-    </div>
-    <div class="modal-body">
-        <div class="form-group">
-            <label>Tên danh mục</label>
-            <input type="text" ng-model="modalAdd.cateName" class="form-control" placeholder="Tên danh mục...">
-        </div>
-        <div class="form-group">
-            <label>Loại danh mục</label>
-            <!-- <select class="form-control" ng-model="modalAdd.cateType" ng-init="modalAdd.cateType=0">
-                <option value="@{{ item.type }}" ng-repeat="item in types">@{{ item.name }}</option>
-            </select> -->
-            <select class="form-control" ng-options="item.type as item.name for item in types" ng-model="modalAdd.cateType"></select>
-        </div>
-        <div class="form-group">
-            <label>Danh mục cha</label>
-            <select ng-model="modalAdd.cateParent" class="form-control" ng-init="modalAdd.cateParent='0'">
-                <option value="0">----- Chọn danh mục cha -----</option>
-                <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in modalAdd.parentCates">
-                    @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                </option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Hiển thị trên menu</label>
-            <select class="form-control" ng-model="modalAdd.selectedOptionStatus">
-                <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
-            </select>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button ng-click="add()" type="button" class="btn btn-primary">Thêm</button>
-        <button ng-click="close()" type="button" class="btn btn-default">Đóng</button>
-    </div>
-</script>
-
-<script type="text/ng-template" id="popup-edit.html">
-    <div class="modal-header">
-        <button type="button" class="close" ng-click="close()">&times;</button>
-        <h3 class="modal-title">Chỉnh sửa danh mục</h3>
-    </div>
-    <div class="modal-body">
-        <input type="hidden" id="cateId" value="@{{ modalEdit.id }}">
-        <div class="form-group">
-            <label>Tên danh mục</label>
-            <input type="text" ng-model="modalEdit.name" class="form-control" placeholder="Tên danh mục...">
-        </div>
-        <div class="form-group">
-            <label>Loại danh mục</label>
-            <!-- <select class="form-control" ng-model="modalAdd.cateType" ng-init="modalAdd.cateType=0">
-                <option value="@{{ item.type }}" ng-repeat="item in types">@{{ item.name }}</option>
-            </select> -->
-            <select class="form-control" ng-options="item.type as item.name for item in types" ng-model="modalEdit.cateType"></select>
-        </div>
-        <div class="form-group">
-            <label>Danh mục cha</label>
-            <select id="parentCate" class="form-control">
-                <option value="0">----- Chọn danh mục cha -----</option>
-                <option ng-selected="item.id == modalEdit.parent_id" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in modalEdit.parentCates">
-                    @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                </option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Hiển thị trên menu</label>
-            <select class="form-control" ng-model="modalEdit.selectedOptionStatus">
-                <option ng-repeat="value in ['Hiển thị','Ẩn']">@{{ value }}</option>
-            </select>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button ng-click="update()" type="button" class="btn btn-primary">Cập nhật</button>
-        <button ng-click="close()" type="button" class="btn btn-default">Đóng</button>
-    </div>
-</script>
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/category.controller.js') !!}

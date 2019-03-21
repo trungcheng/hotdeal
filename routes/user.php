@@ -24,6 +24,9 @@
 
         });
 
+        \Route::get('/{slug}', 'User\ProductController@index')->name('product-detail');
+        \Route::get('/store/{sex}', 'User\ProductController@store')->name('product-store');
+
     });
 
 // });

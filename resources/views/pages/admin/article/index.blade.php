@@ -60,7 +60,6 @@
                                                     <th style="width:5%;">STT</th>
                                                     <th>Ảnh</th>
                                                     <th style="text-align:center !important;width:20%">Tiêu đề</th>
-                                                    <th>Danh mục</th>
                                                     <th>Mô tả ngắn</th>
                                                     <th>Đăng bởi</th>
                                                     <th>Trạng thái</th>
@@ -75,7 +74,6 @@
                                                         <img ng-src="@{{ article.image }}" style="width:70px;height:60px;">
                                                     </td>
                                                     <td>@{{ article.title }}</td>
-                                                    <td>@{{ article.category.name }}</td>
                                                     <td>@{{ article.intro }}</td>
                                                     <td>@{{ article.user.username }}</td>
                                                     <td>@{{ (article.status == 0) ? 'Ẩn' : 'Hiển thị' }}</td>

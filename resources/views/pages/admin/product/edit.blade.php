@@ -37,8 +37,8 @@
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="cat_id">
-                                        <option ng-if="parentCates.length > 0" ng-selected="item.id == {{ $pro->cat_id }}" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
+                                        <option ng-if="parentCates.length > 0" ng-selected="item.id == {{ $pro->cat_id }}" class="cateLevel" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                            @{{ item.name }}
                                         </option>
                                         <option value="" ng-if="parentCates.length == 0">Không có danh mục nào</option>
                                     </select>
@@ -95,6 +95,55 @@
                                         <option {{ ($pro->status == 0) ? 'selected' : '' }} value="0">Hết hàng</option>
                                     </select>
                                 </div>
+
+                                <fieldset>
+                                    <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
+                                    <table class="preview-table-upload">
+                                        <tr>
+                                            <td class="col1">Between lugs (mm):</td>
+                                            <td>
+                                                <input value="{{ $pro->between_lug }}" type="text" id="between_lug" name="between_lug" class="form-control" placeholder="Khoảng cách giữa 2 tai trên vỏ đồng hồ để lắp dây..." />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Bracelet:</td>
+                                            <td>
+                                                <input value="{{ $pro->bracelet }}" type="text" id="bracelet" name="bracelet" class="form-control" placeholder="Vòng đeo" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Case:</td>
+                                            <td>
+                                                <input value="{{ $pro->case }}" type="text" id="case" name="case" class="form-control" placeholder="Vỏ" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Case diameter (mm):</td>
+                                            <td>
+                                                <input value="{{ $pro->case_diameter }}" type="text" id="case_diameter" name="case_diameter" class="form-control" placeholder="Đường kính vỏ" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Dial colour:</td>
+                                            <td>
+                                                <input value="{{ $pro->dial_color }}" type="text" id="dial_color" name="dial_color" class="form-control" placeholder="Màu kim số" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Crystal:</td>
+                                            <td>
+                                                <input value="{{ $pro->crystal }}" type="text" id="crystal" name="crystal" class="form-control" placeholder="Mặt kính" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Water resistance:</td>
+                                            <td>
+                                                <input value="{{ $pro->water_resistance }}" type="text" id="water_resistance" name="water_resistance" class="form-control" placeholder="Khả năng chịu nước" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>

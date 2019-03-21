@@ -31,6 +31,8 @@
                 $this->get('categories', 'Admin\CategoryController@index')->name('categories');
                 $this->get('categories/getAllCategories', 'Admin\CategoryController@getAllCategories');
                 $this->get('categories/getAllParentCates', 'Admin\CategoryController@getAllParentCates');
+                $this->get('categories/create', 'Admin\CategoryController@create')->name('category-create');
+                $this->get('categories/edit/{id}', 'Admin\CategoryController@edit')->name('category-edit');
                 $this->post('categories/add', 'Admin\CategoryController@add');
                 $this->post('categories/update', 'Admin\CategoryController@update');
                 $this->post('categories/delete', 'Admin\CategoryController@delete');

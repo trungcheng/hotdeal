@@ -36,12 +36,10 @@
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="cat_id">
-                                        <option ng-if="parentCates.length > 0" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
+                                        <option ng-if="parentCates.length > 0" class="cateLevel" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                            @{{ item.name }}
                                         </option>
                                         <option value="" ng-if="parentCates.length == 0">Không có danh mục nào</option>
-                                        <!-- <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat-start="item in parentCates">@{{ item.name }}</option>
-                                        <option class="cateLevel cate-level-@{{ obj.depth }}" value="@{{ obj.id }}" ng-repeat-end="obj in item.childrens">@{{ obj.depth == 1 ? '----- ' : obj.depth == 2 ? '---------- ' : obj.depth == 3 ? '--------------- ' : '' }}@{{ obj.name }}</option> -->
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -75,6 +73,7 @@
                                     <label>Mô tả chi tiết</label>
                                     <textarea class="form-control" id="full_content"></textarea>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select name="status" class="form-control status">
@@ -82,6 +81,55 @@
                                         <option value="0">Hết hàng</option>
                                     </select>
                                 </div>
+
+                                <fieldset>
+                                    <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
+                                    <table class="preview-table-upload">
+                                        <tr>
+                                            <td class="col1">Between lugs (mm):</td>
+                                            <td>
+                                                <input type="text" id="between_lug" name="between_lug" class="form-control" placeholder="Khoảng cách giữa 2 tai trên vỏ đồng hồ để lắp dây..." />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Bracelet:</td>
+                                            <td>
+                                                <input type="text" id="bracelet" name="bracelet" class="form-control" placeholder="Vòng đeo" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Case:</td>
+                                            <td>
+                                                <input type="text" id="case" name="case" class="form-control" placeholder="Vỏ" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Case diameter (mm):</td>
+                                            <td>
+                                                <input type="text" id="case_diameter" name="case_diameter" class="form-control" placeholder="Đường kính vỏ" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Dial colour:</td>
+                                            <td>
+                                                <input type="text" id="dial_color" name="dial_color" class="form-control" placeholder="Màu kim số" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Crystal:</td>
+                                            <td>
+                                                <input type="text" id="crystal" name="crystal" class="form-control" placeholder="Mặt kính" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col1">Water resistance:</td>
+                                            <td>
+                                                <input type="text" id="water_resistance" name="water_resistance" class="form-control" placeholder="Khả năng chịu nước" />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </fieldset>
+
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('add')" type="button" class="btn btn-primary">Thêm</button>
@@ -99,7 +147,7 @@
 </div>
 
 <script>
-    CKEDITOR.replace('short_content', { height: 300 }); 
+    CKEDITOR.replace('short_content', { height: 100 }); 
     CKEDITOR.replace('full_content'); 
 </script>
 

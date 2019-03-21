@@ -27,8 +27,17 @@ class Product extends Model
         'view',
         'is_feature',
         'is_hot',
-        'color',
-        'size',
+        'between_lug',
+        'bracelet',
+        'case',
+        'case_diameter',
+        'dial_color',
+        'crystal',
+        'water_resistance',
+        'sex',
+        'wire_material',
+        'glass_material',
+        'energy_type',
         'status'
     ];
 
@@ -38,18 +47,6 @@ class Product extends Model
 
     public function user() {
     	return $this->belongsTo('App\Models\User', 'user_id');
-    }
-
-    public function seo() {
-        return $this->hasMany('App\Models\ProductSeo', 'pro_id', 'id');
-    }
-
-    public function tag() {
-        return $this->hasMany('App\Models\ProductTag', 'pro_id', 'id');
-    }
-
-    public function city() {
-        return $this->belongsToMany('App\Models\ProvinceCity', 'product_city', 'pro_id', 'city_id');
     }
 
     public static $rules = [
