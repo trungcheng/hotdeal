@@ -135,7 +135,8 @@
                     <div class="col-md-8">
                         <div class="product-comment-inner">
                             <h3 class="section-heading text-primary">hỏi đáp</h3>
-                            <img class="img-fluid" src="{{ asset('frontend/images/ex/facebook-plugins.png') }}" alt="">
+                            <!-- <img class="img-fluid" src="{{ asset('frontend/images/ex/facebook-plugins.png') }}" alt=""> -->
+                            <div class="fb-comments" data-href="http://donghoxachtay.store" data-width="650" data-numposts="5"></div>
                         </div>
                     </div>
                 </div>

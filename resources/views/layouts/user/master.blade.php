@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css') }}">
     @yield('pageCss')
     <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('page') | Autwatch.vn</title>
