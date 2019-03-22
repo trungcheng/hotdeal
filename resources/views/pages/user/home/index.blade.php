@@ -39,39 +39,23 @@
         <div class="swiper swiper-pagination-inside">
             <div class="swiper-container" data-plugin="swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-image:url({{ asset('frontend/images/ex/home/banner/slider-1.jpg') }})">
-                        <div class="container d-flex justify-content-md-end justify-content-center">
-                            <div class="align-self-center text-center text-md-right">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="" width="188">
-                                </a>
-                                <h2 class="section-heading mb-4">DIVER 300M</h2>
-                                <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="#">xem thông tin</a>
+                    @foreach ($slides as $slide)
+                        <div class="swiper-slide" style="background-image:url({{ asset($slide->image) }})">
+                            <div class="container d-flex justify-content-md-end justify-content-center">
+                                <div class="align-self-center text-center text-md-right">
+                                    <a href="#">
+                                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="" width="188">
+                                    </a>
+                                    <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
+                                    @if ($slide->target_type == 'product')
+                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ route('product-detail', ['slug' => $slide->product->slug]) }}">xem thông tin</a>
+                                    @else
+                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="#">xem thông tin</a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url({{ asset('frontend/images/ex/home/banner/slider-1.jpg') }})">
-                        <div class="container d-flex justify-content-md-end justify-content-center">
-                            <div class="align-self-center text-center text-md-right">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="" width="188">
-                                </a>
-                                <h2 class="section-heading mb-4">DIVER 300M</h2>
-                                <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="#">xem thông tin</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url({{ asset('frontend/images/ex/home/banner/slider-1.jpg') }})">
-                        <div class="container d-flex justify-content-md-end justify-content-center">
-                            <div class="align-self-center text-center text-md-right">
-                                <a href="#">
-                                    <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="" width="188">
-                                </a>
-                                <h2 class="section-heading mb-4">DIVER 300M</h2>
-                                <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="#">xem thông tin</a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="swiper-pagination"></div>
             </div>

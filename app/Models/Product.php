@@ -50,6 +50,10 @@ class Product extends Model
     	return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    public function slide() {
+        return $this->hasMany('App\Models\Slide', 'target')->where('slides.target_type', 'product');
+    }
+
     public static $rules = [
         'name' => 'required|min:2',
         'price' => 'required|numeric',

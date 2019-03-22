@@ -55,6 +55,16 @@
                 $this->post('articles/update', 'Admin\ArticleController@update');
                 $this->post('articles/delete', 'Admin\ArticleController@delete');
 
+                // slide
+                $this->get('slides', 'Admin\SlideController@index')->name('slides');
+                $this->get('slides/getAllSlides', 'Admin\SlideController@getAllSlides');
+                $this->get('slides/create', 'Admin\SlideController@create')->name('slide-create');
+                $this->get('slides/edit/{id}', 'Admin\SlideController@edit')->name('slide-edit');
+                $this->post('slides/add', 'Admin\SlideController@add');
+                $this->post('slides/update', 'Admin\SlideController@update');
+                $this->post('slides/delete', 'Admin\SlideController@delete');
+                $this->get('slides/loadObject/{target}', 'Admin\SlideController@loadObject')->name('slide-load-object');
+
             });
         });
 

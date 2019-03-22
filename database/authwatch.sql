@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-03-21 21:18:33
+Date: 2019-03-22 17:31:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -105,7 +105,7 @@ CREATE TABLE `products` (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('1', '4568578', '1', '1', 'Speedmaster Triple Date Chronograph Yellow Gold 18k', '<p>Steel on leather strap<br></p>', '<p>Since 1993, the Seamaster Professional Diver 300M has enjoyed a legendary following. Today’s modern collection has embraced that famous ocean heritage and updated it with OMEGA’s best innovation and design. This 42 mm model is crafted from stainless steel and includes a black ceramic bezel with a white enamel diving scale.</p><p>The skeleton hands and raised indexes are rhodium-plated and are filled with white Super-LumiNova, while the helium escape valve has been given a conical design. The watch is presented on a stainless steel bracelet and is driven by the OMEGA Master Chronometer Calibre 8800, which can be seen through the sapphire-crystal on the wave-edged caseback.<br></p>', 'speedmaster-triple-date-chronograph-yellow-gold-18k-15531755.html', '/backend/uploads/images/product-1.jpg', '[\"/backend/uploads/images/slider-2.jpg\",\"/backend/uploads/images/slider-3.jpg\",\"/backend/uploads/images/slider-4.jpg\"]', '360000000.0000', '20', '288000000.0000', null, null, '0', '1', '0', '20', 'steel', 'Steel', '42', 'Black', 'Domed scratch‑resistant sapphire crystal with anti‑reflective treatment on both sides.', '30 bar (300 metres / 1000 feet)', 'm', '1', '2', '3', '1', '1', '2019-03-21 20:53:11', '2019-03-21 20:53:11');
+INSERT INTO `products` VALUES ('1', '4568578', '1', '1', 'Speedmaster Triple Date Chronograph Yellow Gold 18k', '<p>Steel on leather strap</p>', '<p>Since 1993, the Seamaster Professional Diver 300M has enjoyed a legendary following. Today’s modern collection has embraced that famous ocean heritage and updated it with OMEGA’s best innovation and design. This 42 mm model is crafted from stainless steel and includes a black ceramic bezel with a white enamel diving scale.</p><p>The skeleton hands and raised indexes are rhodium-plated and are filled with white Super-LumiNova, while the helium escape valve has been given a conical design. The watch is presented on a stainless steel bracelet and is driven by the OMEGA Master Chronometer Calibre 8800, which can be seen through the sapphire-crystal on the wave-edged caseback.</p>', 'speedmaster-triple-date-chronograph-yellow-gold-18k-15532393.html', '/backend/uploads/images/product-1.jpg', '[\"/backend/uploads/images/slider-2.jpg\",\"/backend/uploads/images/slider-3.jpg\",\"/backend/uploads/images/slider-4.jpg\"]', '360000000.0000', '20', '288000000.0000', null, null, '0', '1', '0', '20', 'steel', 'Steel', '42', 'Black', 'Domed scratch‑resistant sapphire crystal with anti‑reflective treatment on both sides.', '30 bar (300 metres / 1000 feet)', 'm', '1', '2', '3', '1', '1', '2019-03-22 14:22:26', '2019-03-22 07:22:26');
 
 -- ----------------------------
 -- Table structure for roles
@@ -124,6 +124,27 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` VALUES ('1', 'Superadmin', '1');
 INSERT INTO `roles` VALUES ('2', 'Admin', '0');
 INSERT INTO `roles` VALUES ('3', 'User', '0');
+
+-- ----------------------------
+-- Table structure for slides
+-- ----------------------------
+DROP TABLE IF EXISTS `slides`;
+CREATE TABLE `slides` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `target` varchar(50) DEFAULT NULL,
+  `target_type` varchar(50) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of slides
+-- ----------------------------
+INSERT INTO `slides` VALUES ('1', 'Seamaster Diver 300', '/backend/uploads/images/slider-1.jpg', '1', 'product', '1', '2019-03-22 17:03:41', '2019-03-22 10:03:41');
 
 -- ----------------------------
 -- Table structure for users

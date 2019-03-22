@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Slide;
 
 class HomeController extends Controller
 {
@@ -16,6 +17,12 @@ class HomeController extends Controller
     public function index()
     {
     	$proBrands = [];
+
+        $slides = Slide::where('status', 1)->orderBy('created_at', 'desc')->get();
+        if ($slides) {
+            
+        }
+
     	$topSales = Product::where('discount', '>', 0)->orderBy('created_at', 'desc')->limit(6)->get();
     	$features = Product::where('is_feature', 1)
     		->with('category')
@@ -26,6 +33,7 @@ class HomeController extends Controller
     	}
 
         return view('pages.user.home.index', [
+            'slides' => $slides,
             'topSales' => $topSales,
             'features' => $features,
             'brands' => $brands,
