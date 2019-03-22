@@ -37,15 +37,36 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-        return view('pages.admin.product.add');
+        $wires = file_get_contents(public_path('/frontend/json/wire-materials.json'));
+        $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
+        $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
+        $versions = file_get_contents(public_path('/frontend/json/versions.json'));
+
+        return view('pages.admin.product.add', [
+            'wires' => json_decode($wires),
+            'glasses' => json_decode($glasses),
+            'energies' => json_decode($energies),
+            'versions' => json_decode($versions)
+        ]);
     }
 
     public function edit(Request $request, $id)
     {
         $pro = Product::find($id);
         if ($pro) {
+            $wires = file_get_contents(public_path('/frontend/json/wire-materials.json'));
+            $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
+            $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
+            $versions = file_get_contents(public_path('/frontend/json/versions.json'));
             if ($pro->image_list !== '') $pro->image_list = json_decode($pro->image_list);
-            return view('pages.admin.product.edit', ['pro' => $pro]);
+
+            return view('pages.admin.product.edit', [
+                'pro' => $pro,
+                'wires' => json_decode($wires),
+                'glasses' => json_decode($glasses),
+                'energies' => json_decode($energies),
+                'versions' => json_decode($versions)
+            ]);
         }
 
         abort(404);

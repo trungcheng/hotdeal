@@ -98,7 +98,7 @@
                                     </select>
                                 </div>
 
-                                <fieldset>
+                                <fieldset style="margin-top:30px;margin-bottom:30px;">
                                     <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
                                     <table class="preview-table-upload">
                                         <tr>
@@ -145,6 +145,42 @@
                                         </tr>
                                     </table>
                                 </fieldset>
+
+                                <div class="form-group">
+                                    <label>Chất liệu dây</label>
+                                    <select name="wire_material" class="form-control status">
+                                        @foreach ($wires as $wire)
+                                        <option value="{{ $wire->id }}">{{ $wire->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Chất liệu mặt kính</label>
+                                    <select name="glass_material" class="form-control status">
+                                        @foreach ($glasses as $glass)
+                                        <option value="{{ $glass->id }}">{{ $glass->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Bộ máy & Năng lượng</label>
+                                    <select name="energy_type" class="form-control status">
+                                        @foreach ($energies as $energy)
+                                        <option value="{{ $energy->id }}">{{ $energy->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Phiên bản đặc biệt</label>
+                                    <select name="version" class="form-control status">
+                                        @foreach ($versions as $version)
+                                        <option value="{{ $version->id }}">{{ $version->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
                             </div>
                             <div class="modal-footer">
