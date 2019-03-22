@@ -35,6 +35,7 @@
 @stop
 
 @section('content')
+    <h1 class="hide">{{ $product->name }}</h1>
     <section class="product pt-5">
         <div class="container">
             <div class="row flex-column-reverse flex-md-row mb-5">

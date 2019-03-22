@@ -35,6 +35,7 @@
 @stop
 
 @section('content')
+    <h1 class="hide">Đồng hồ {{ ($sex == 'm') ? 'nam' : 'nữ' }} chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch</h1>
     <hr class="divider my-0">
     <div class="container-fluid pt-4">
         <div class="row">
@@ -305,7 +306,7 @@
                         <div class="col-md-6 col-xl-4 d-flex mb-4">
                             <div class="card card-product">
                                 <a class="thumbnail mb-4" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
-                                    <img class="thumbnail-img" src="{{ asset($result->image) }}" alt="">
+                                    <img class="thumbnail-img" src="{{ asset($result->image) }}" alt="{{ $result->name }}">
                                 </a>
                                 <div class="card-body">
                                     <a class="d-inline-block mb-1" href="javascript:void(0)">

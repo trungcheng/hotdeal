@@ -7,7 +7,7 @@
                         <span class="hamburger-inner"></span>
                     </span>
                 </button>
-                <a class="header-logo" href="{{ url('/') }}">
+                <a class="header-logo" href="{{ route('home') }}">
                     <img class="header-logo-img" src="{{ asset('frontend/images/logo.png') }}" alt="">
                 </a>
             </div>
@@ -16,7 +16,7 @@
                     <div class="collapse navbar-collapse" id="header-navbar-main-collapse">
                         <div class="nav mr-auto">
                             <div class="nav-item">
-                                <a class="nav-link" href="javascript:void(0)">Thương hiệu</a>
+                                <a class="nav-link" href="{{ route('home') }}">Thương hiệu</a>
                             </div>
                             <div class="nav-item">
                                 <a class="nav-link" href="{{ route('product-store', ['sex' => 'm']) }}">Đồng hồ nam</a>

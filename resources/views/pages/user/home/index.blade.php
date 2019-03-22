@@ -35,6 +35,7 @@
 @stop
 
 @section('content')
+    <h1 class="hide">Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch</h1>
     <section class="banner section">
         <div class="swiper swiper-pagination-inside">
             <div class="swiper-container" data-plugin="swiper">
@@ -43,8 +44,8 @@
                         <div class="swiper-slide" style="background-image:url({{ asset($slide->image) }})">
                             <div class="container d-flex justify-content-md-end justify-content-center">
                                 <div class="align-self-center text-center text-md-right">
-                                    <a href="#">
-                                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="" width="188">
+                                    <a href="javascript:void(0)">
+                                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="seamaster" width="188">
                                     </a>
                                     <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
                                     @if ($slide->target_type == 'product')
@@ -171,7 +172,7 @@
             @if (count($proBrands) > 0)
             <div class="row mb-5" id="section-brand">
                 <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <img class="img-fluid w-100 align-self-baseline align-self-md-auto" src="{{ asset('frontend/images/ex/omega.jpg') }}" alt="">
+                    <img class="img-fluid w-100 align-self-baseline align-self-md-auto" src="{{ asset('frontend/images/ex/omega.jpg') }}" alt="omega">
                 </div>
                 @foreach ($proBrands as $pro)
                 <div class="col-md-6 col-lg-4 d-flex mb-4">

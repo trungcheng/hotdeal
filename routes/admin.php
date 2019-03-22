@@ -1,8 +1,10 @@
 <?php
 
-// \Route::group(['namespace' => 'admin'], function() {
+\Route::group(['namespace' => 'admin'], function() {
+// \Route::group(['domain' => 'admin.authwatch.xyz'], function() {
 
-    \Route::group(['prefix' => 'admin', 'middleware' => ['admin.values']], function () {
+    \Route::group(['middleware' => ['admin.values']], function () {
+    // \Route::group(['prefix' => 'admin', 'middleware' => ['admin.values']], function () {
 
         \Route::group(['middleware' => ['admin.guest']], function () {
             //Authentication Routes
@@ -70,4 +72,4 @@
 
     });
 
-// });
+});
