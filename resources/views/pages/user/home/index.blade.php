@@ -127,18 +127,18 @@
                 <nav class="tabs tabs-simple fs-sm ml-md-auto">
                     <ul class="nav nav-tabs mb-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" data-toggle="tab">Tất cả</a>
+                            <a data-sex="" class="nav-link active" href="javascript:void(0)" data-toggle="tab">Tất cả</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="tab">Đồng hồ nam</a>
+                            <a data-sex="m" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nam</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" data-toggle="tab">Đồng hồ nữ</a>
+                            <a data-sex="f" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nữ</a>
                         </li>
                     </ul>
                 </nav>
             </header>
-            <div class="row">
+            <div class="row" id="section-feature">
                 @foreach ($features as $fea)
                 <div class="col-md-6 col-lg-4 d-flex mb-4">
                     <div class="card card-product">
@@ -178,14 +178,14 @@
             <div class="brands row gutter-1 gutter-md-2 gutter-lg-3 mb-5">
                 @foreach ($brands as $brand)
                 <div class="col">
-                    <a class="brands-item {{ ($loop->first) ? 'active' : '' }}" href="javascript:void(0)">
+                    <a data-id="{{ $brand->id }}" class="brands-item {{ ($loop->first) ? 'active' : '' }}" href="javascript:void(0)">
                         <img class="img-fluid" src="{{ asset($brand->icon) }}" alt="{{ $brand->name }}">
                     </a>
                 </div>
                 @endforeach
             </div>
             @if (count($proBrands) > 0)
-            <div class="row mb-5">
+            <div class="row mb-5" id="section-brand">
                 <div class="col-md-6 col-lg-4 d-flex mb-4">
                     <img class="img-fluid w-100 align-self-baseline align-self-md-auto" src="{{ asset('frontend/images/ex/omega.jpg') }}" alt="">
                 </div>
@@ -237,5 +237,22 @@
 @stop
 
 @section('pageJs')
-
+    <script type="text/javascript">
+        $(document).on('click', '.brands-item', function () {
+            var catId = $(this).data('id');
+            $('.brands-item').removeClass('active');
+            $(this).addClass('active');
+            $.get('/product/getProdByCate/' + catId, function (res) {
+                $('#section-brand').html(res.html);
+            });
+        });
+        $(document).on('click', '.nav-link', function () {
+            var sex = $(this).data('sex');
+            $('.nav-link').removeClass('active');
+            $(this).addClass('active');
+            $.get('/product/getProdBySex/' + sex, function (res) {
+                $('#section-feature').html(res.html);
+            });
+        });
+    </script>
 @stop

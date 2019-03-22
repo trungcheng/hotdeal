@@ -29,6 +29,37 @@ class ProductController extends Controller
         abort(404);
     }
 
+    public function getProdByCate(Request $request, $catId)
+    {
+        $products = Product::where('cat_id', $catId)->orderBy('created_at', 'desc')->limit(9)->get();
+        $view = view('pages.user.product.product-by-cate', [
+            'products' => $products
+        ])->render();
+
+        return response()->json([
+            'status' => true,
+            'html' => $view
+        ]);
+    }
+
+    public function getProdBySex(Request $request, $sex)
+    {
+        $products = Product::where('is_feature', 1);
+        if ($sex != '') {
+            $products->where('sex', $sex);
+        }
+        $products = $products->orderBy('created_at', 'desc')->limit(9)->get();
+        
+        $view = view('pages.user.product.product-by-sex', [
+            'products' => $products
+        ])->render();
+
+        return response()->json([
+            'status' => true,
+            'html' => $view
+        ]);
+    }
+
     public function store(Request $request, $sex)
     {
         $conditions = [];
@@ -39,6 +70,9 @@ class ProductController extends Controller
 
             if ($request->has('br')) {
                 $products->whereIn('cat_id', $data['br']);
+                // $products->where(function ($query) use ($data) {
+                //     $query->whereIn('cat_id', $data['br']);
+                // });
                 foreach ($brands as $brand) {
                     if (in_array($brand->id, $data['br'])) {
                         $conditions[] = $brand->name;
@@ -47,11 +81,18 @@ class ProductController extends Controller
             }
 
             if ($request->has('pr')) {
-                // $products->whereBetween('cat_id', $data['pr']);
+                $arr = [];
+                $final = [];
+                foreach ($data['pr'] as $pr) {
+                    $prs = explode('-', $pr);
+                    $final = array_merge($arr, $prs);
+                    $conditions[] = $pr;
+                }
+                $products->orWhereBetween('price_sale', [min($final), max($final)]);
             }
 
             if ($request->has('wm')) {
-                $products->whereIn('wire_material', $data['wm']);
+                $products->whereIn('wire_material', $data['wm'], 'or');
                 $wires = file_get_contents(public_path('/frontend/json/wire-materials.json'));
                 foreach (json_decode($wires) as $wire) {
                     if (in_array($wire->id, $data['wm'])) {
@@ -61,7 +102,7 @@ class ProductController extends Controller
             }
 
             if ($request->has('gm')) {
-                $products->whereIn('glass_material', $data['gm']);
+                $products->whereIn('glass_material', $data['gm'], 'or');
                 $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
                 foreach (json_decode($glasses) as $glass) {
                     if (in_array($glass->id, $data['gm'])) {
@@ -71,7 +112,7 @@ class ProductController extends Controller
             }
 
             if ($request->has('et')) {
-                $products->whereIn('energy_type', $data['et']);
+                $products->whereIn('energy_type', $data['et'], 'or');
                 $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
                 foreach (json_decode($energies) as $energy) {
                     if (in_array($energy->id, $data['et'])) {
@@ -81,7 +122,7 @@ class ProductController extends Controller
             }
 
             if ($request->has('v')) {
-                $products->whereIn('version', $data['v']);
+                $products->whereIn('version', $data['v'], 'or');
                 $versions = file_get_contents(public_path('/frontend/json/versions.json'));
                 foreach (json_decode($versions) as $version) {
                     if (in_array($version->id, $data['v'])) {

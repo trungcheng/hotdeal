@@ -16,7 +16,7 @@
                     <div class="collapse navbar-collapse" id="header-navbar-main-collapse">
                         <div class="nav mr-auto">
                             <div class="nav-item">
-                                <a class="nav-link" href="#">Thương hiệu</a>
+                                <a class="nav-link" href="javascript:void(0)">Thương hiệu</a>
                             </div>
                             <div class="nav-item">
                                 <a class="nav-link" href="{{ route('product-store', ['sex' => 'm']) }}">Đồng hồ nam</a>
@@ -25,14 +25,14 @@
                                 <a class="nav-link" href="{{ route('product-store', ['sex' => 'f']) }}">Đồng hồ nữ</a>
                             </div>
                             <div class="nav-item">
-                                <a class="nav-link" href="#">Về chúng tôi</a>
+                                <a class="nav-link" href="javascript:void(0)">Về chúng tôi</a>
                             </div>
                         </div>
                     </div>
                 </nav>
             </div>
             <div class="col col-auto">
-                <a class="header-search" href="#">
+                <a class="header-search" href="javascript:void(0)">
                     <i class="fa fa-search"></i>
                 </a>
             </div>

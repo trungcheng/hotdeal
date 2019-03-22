@@ -22,7 +22,7 @@ class HomeController extends Controller
     		->orderBy('created_at', 'desc')->limit(9)->get();
     	$brands = Category::orderBy('created_at', 'asc')->limit(5)->get();
     	if (!empty($brands)) {
-    		$proBrands = Product::where('cat_id', $brands[0]->id)->get();
+    		$proBrands = Product::where('cat_id', $brands[0]->id)->limit(8)->get();
     	}
 
         return view('pages.user.home.index', [

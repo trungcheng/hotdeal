@@ -278,7 +278,7 @@
             <div class="col-main col-lg-9">
                 <section class="section py-0">
                     <header class="section-header d-flex flex-column flex-md-row align-items-center justify-content-between">
-                        <h2 class="section-heading mb-3 mb-md-0">Đồng hồ {{ ($sex == 'm') ? 'nam' : 'nữ' }} <span class="fw-3">({{ count($results) }}+ mẫu)</span>
+                        <h2 class="section-heading mb-3 mb-md-0">Đồng hồ {{ ($sex == 'm') ? 'nam' : 'nữ' }} <span class="fw-3">({{ count($results) }} mẫu)</span>
                         </h2>
                         <ul class="list-inline list-inline-borders fs-sm3 mb-md-0">
                             <li class="list-item">Xem: {{ count($results) }}</li>
@@ -342,8 +342,14 @@
                 $('.filtered').each(function (v, k) {
                     var filteredCheckBox = $(k).next().text();
                     $('.filter-input').each(function (a, b) {
-                        if ($(b).next().text() == filteredCheckBox) {
-                            $(b).prop('checked', true);
+                        if ($(b).hasClass('filter-price')) {
+                            if ($(b).val() == filteredCheckBox) {
+                                $(b).prop('checked', true);
+                            }
+                        } else {
+                            if ($(b).next().text() == filteredCheckBox) {
+                                $(b).prop('checked', true);
+                            }
                         }
                     });
                 });

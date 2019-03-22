@@ -40,19 +40,22 @@
                                 <div class="swiper-container" data-plugin="swiper" data-loop="true" data-delay="5000">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)<a href="#">
+                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
+                                            <!-- <a href="javascript:void(0)">
                                                 <ins>Xem thông tin chi tiết 1</ins>
-                                            </a>
+                                            </a> -->
                                         </div>
                                         <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)<a href="#">
+                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
+                                            <!-- <a href="javascript:void(0)">
                                                 <ins>Xem thông tin chi tiết 2</ins>
-                                            </a>
+                                            </a> -->
                                         </div>
                                         <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)<a href="#">
+                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
+                                            <!-- <a href="javascript:void(0)">
                                                 <ins>Xem thông tin chi tiết 3</ins>
-                                            </a>
+                                            </a> -->
                                         </div>
                                     </div>
                                     <div class="swiper-buttons d-none d-md-flex">
