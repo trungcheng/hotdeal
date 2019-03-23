@@ -49,12 +49,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Giá sản phẩm</label>
-                                    <input value="{{ number_format($pro->price, 0, '', '') }}" name="price" type="text" class="form-control title" placeholder="Giá sản phẩm...">
+                                    <input id="price" value="{{ number_format($pro->price, 0, 0, ',') }}" name="price" type="text" class="form-control title" placeholder="Giá sản phẩm...">
                                 </div>
                                 <div class="form-group">
                                     <label>Sale (%)</label>
                                     <select class="form-control" name="discount">
-                                        <option ng-selected="item == {{ $pro->discount }}" ng-repeat="item in range(0, 100, 5)" value="@{{ item }}">@{{ item }}</option>
+                                        <option ng-selected="item == {{ $pro->discount }}" ng-repeat="item in range(0, 100, 1)" value="@{{ item }}">@{{ item }}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -276,4 +276,33 @@
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/product.controller.js') !!}
+
+    <script type="text/javascript">
+        $(function() {
+            $('#price').on("keyup", function(event) {
+                var selection = window.getSelection().toString();
+                if (selection !== '') {
+                    return;
+                }
+                if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+                    return;
+                }
+                var $this = $(this);
+                var input = $this.val();
+                var input = input.replace(/[\D\s\._\-]+/g, "");
+                input = input ? parseInt(input, 10 ) : 0;
+                $this.val(function() {
+                    return (input === 0) ? "" : input.toLocaleString("en-US");
+                });
+            });
+            $("#discount").on('keypress', function (e) {
+                //if the letter is not digit then display error and don't type anything
+                if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                    //display error message
+                    $("#errmsg").html("Chỉ được nhập số").show().fadeOut("slow");
+                       return false;
+                }
+            });
+        });
+    </script>
 @stop

@@ -56,7 +56,7 @@ class Product extends Model
 
     public static $rules = [
         'name' => 'required|min:2',
-        'price' => 'required|numeric',
+        'price' => 'required',
         'image' => 'required'
     ];
 
@@ -64,7 +64,6 @@ class Product extends Model
         'name.required' => 'Tên sản phẩm không được để trống',
         'name.min' => 'Tên sản phẩm ít nhất từ 2 ký tự',
         'price.required' => 'Giá sản phẩm không được để trống',
-        'price.numeric' => 'Giá sản phẩm phải là số',
         'image.required' => 'Ảnh sản phẩm không được để trống'
     ];
 
@@ -90,7 +89,8 @@ class Product extends Model
         } else {
             $data['image_list'] = '';
         }
-        $data['price_sale'] = ((int)$data['discount'] == 0) ? $data['price'] : ((int)$data['price'] - ((int)$data['price'] * (int)$data['discount']) / 100);
+        $data['price'] = str_replace(',', '', $data['price']);
+        $data['price_sale'] = ((float)$data['discount'] == 0) ? $data['price'] : ((float)$data['price'] - ((float)$data['price'] * (float)$data['discount']) / 100);
         $data['sku_id'] = Util::skuGenerate(6, $maxId + 1);
         $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
         if ($data['short_desc'] == '<p><br></p>') {
@@ -108,7 +108,8 @@ class Product extends Model
         } else {
             $data['image_list'] = '';
         }
-        $data['price_sale'] = ((int)$data['discount'] == 0) ? $data['price'] : ((int)$data['price'] - ((int)$data['price'] * (int)$data['discount']) / 100);
+        $data['price'] = str_replace(',', '', $data['price']);
+        $data['price_sale'] = ((float)$data['discount'] == 0) ? $data['price'] : ((float)$data['price'] - ((float)$data['price'] * (float)$data['discount']) / 100);
         // $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
         if ($data['short_desc'] == "<p><br></p>") {
             $data['short_desc'] = '';
