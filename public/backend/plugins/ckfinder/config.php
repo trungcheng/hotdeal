@@ -33,7 +33,7 @@ $config['authentication'] = function () {
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
 $config['licenseName'] = 'donghoxachtay.store';
-$config['licenseKey']  = 'JMDM8FMWP2BJ2QPSU96XXP45KAXCS';
+$config['licenseKey']  = 'K2U2WQF55FF946MQK9NJX4ER2SJG5';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
