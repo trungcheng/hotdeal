@@ -93,6 +93,9 @@ class Product extends Model
         $data['price_sale'] = ((int)$data['discount'] == 0) ? $data['price'] : ((int)$data['price'] - ((int)$data['price'] * (int)$data['discount']) / 100);
         $data['sku_id'] = Util::skuGenerate(6, $maxId + 1);
         $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
+        if ($data['short_desc'] == '<p><br></p>') {
+            $data['short_desc'] = '';
+        }
 
         return self::firstOrCreate($data);
     }
@@ -107,6 +110,9 @@ class Product extends Model
         }
         $data['price_sale'] = ((int)$data['discount'] == 0) ? $data['price'] : ((int)$data['price'] - ((int)$data['price'] * (int)$data['discount']) / 100);
         // $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
+        if ($data['short_desc'] == "<p><br></p>") {
+            $data['short_desc'] = '';
+        }
 
         return $pro->update($data);
     }

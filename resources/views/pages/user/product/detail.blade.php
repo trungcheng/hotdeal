@@ -92,8 +92,8 @@
                 <div class="col-md-4">
                     <img class="product-logo img-fluid mb-3" src="{{ asset($product->category->icon) }}" height="12">
                     <h1 class="product-title mb-3">{{ $product->name }}</h1>
-                    <p style="opacity:0.8;margin-top:-10px;font-size:14px;">SKU: {!! $product->sku_id !!}</p>
-                    {!! $product->short_desc !!}
+                    <p style="opacity:0.8;margin-top:-10px;font-size:14px;">Model: {!! $product->sku_id !!}</p>
+                    {!! ($product->short_desc != '') ? $product->short_desc : '' !!}
                     <div class="mb-3">
                         <div class="product-price">{{ number_format($product->price_sale, 0, 0, '.') }} VND</div>
                         <div>
