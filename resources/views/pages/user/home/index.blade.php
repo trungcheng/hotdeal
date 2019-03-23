@@ -112,7 +112,7 @@
                 <nav class="tabs tabs-simple fs-sm ml-md-auto">
                     <ul class="nav nav-tabs mb-0">
                         <li class="nav-item">
-                            <a data-sex="" class="nav-link active" href="javascript:void(0)" data-toggle="tab">Tất cả</a>
+                            <a data-sex="all" class="nav-link active" href="javascript:void(0)" data-toggle="tab">Tất cả</a>
                         </li>
                         <li class="nav-item">
                             <a data-sex="m" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nam</a>

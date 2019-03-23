@@ -45,7 +45,7 @@ class ProductController extends Controller
     public function getProdBySex(Request $request, $sex)
     {
         $products = Product::where('is_feature', 1);
-        if ($sex != '') {
+        if ($sex != 'all') {
             $products->where('sex', $sex);
         }
         $products = $products->orderBy('created_at', 'desc')->limit(9)->get();

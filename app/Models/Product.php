@@ -106,7 +106,7 @@ class Product extends Model
             $data['image_list'] = '';
         }
         $data['price_sale'] = ((int)$data['discount'] == 0) ? $data['price'] : ((int)$data['price'] - ((int)$data['price'] * (int)$data['discount']) / 100);
-        $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
+        // $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
 
         return $pro->update($data);
     }
