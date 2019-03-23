@@ -98,6 +98,14 @@
                                     </select>
                                 </div>
 
+                                <div class="form-group">
+                                    <label>Giới tính</label>
+                                    <select name="sex" class="form-control status">
+                                        <option selected value="m">Nam</option>
+                                        <option value="f">Nữ</option>
+                                    </select>
+                                </div>
+
                                 <fieldset style="margin-top:30px;margin-bottom:30px;">
                                     <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
                                     <table class="preview-table-upload">
