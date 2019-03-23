@@ -8,7 +8,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
 
-        <li><a data-route="/admin" href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
+        <li><a data-route="/admin" href="{{ url('/admin/dashboard') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
 
         <li><a data-route="/admin/categories" href="{{ url('/admin/categories') }}"><i class="fa fa-bars"></i> <span>Quản lý danh mục</span></a></li>
         

@@ -1,17 +1,9 @@
 <!DOCTYPE html>
 <html class="no-js" lang="vi">
 <head>
-    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css') }}">
-    @yield('pageCss')
-    <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
-    {!! $setting->fb_pixel_code !!}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('page') | Autwatch.vn</title>
+    <title>@yield('page') | donghoxachtay.store</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="robots" content="index, follow">
@@ -27,6 +19,13 @@
     <meta property="og:site_name" content="Autwatch">  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css') }}">
+    @yield('pageCss')
+    <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
+    {!! $setting->fb_pixel_code !!}
 </head>
 <body>
     <div class="page pg-home">
