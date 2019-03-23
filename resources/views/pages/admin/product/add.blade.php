@@ -34,6 +34,10 @@
                                     <input name="name" type="text" class="form-control title" placeholder="Tên sản phẩm...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Mã sản phẩm</label>
+                                    <input name="sku_id" type="text" class="form-control title" placeholder="Mã sản phẩm...">
+                                </div>
+                                <div class="form-group">
                                     <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="cat_id">
                                         <option ng-if="parentCates.length > 0" class="cateLevel" value="@{{ item.id }}" ng-repeat="item in parentCates">
