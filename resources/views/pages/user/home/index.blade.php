@@ -171,9 +171,6 @@
             </div>
             @if (count($proBrands) > 0)
             <div class="row mb-5" id="section-brand">
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
-                    <img class="img-fluid w-100 align-self-baseline align-self-md-auto" src="{{ asset('frontend/images/ex/omega.jpg') }}" alt="omega">
-                </div>
                 @foreach ($proBrands as $pro)
                 <div class="col-md-6 col-lg-4 d-flex mb-4">
                     <div class="card card-product">

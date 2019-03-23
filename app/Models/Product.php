@@ -96,6 +96,9 @@ class Product extends Model
         if (in_array($data['short_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
             $data['short_desc'] = '';
         }
+        if (in_array($data['full_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['full_desc'] = '';
+        }
 
         return self::firstOrCreate($data);
     }
@@ -113,6 +116,9 @@ class Product extends Model
         // $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
         if (in_array($data['short_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
             $data['short_desc'] = '';
+        }
+        if (in_array($data['full_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['full_desc'] = '';
         }
 
         return $pro->update($data);

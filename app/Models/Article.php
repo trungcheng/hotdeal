@@ -48,7 +48,7 @@ class Article extends Model
         $data = self::where('id', '>', 0);
 
         if ($request->name !== 'all-article' && $request->name !== 'undefined') {
-            $data->where("name", "LIKE", "%" . $request->name . "%");
+            $data->where("title", "LIKE", "%" . $request->name . "%");
         }
 
         $data = $data->with('user')->orderBy('id', 'desc')->paginate($request->perPage);
@@ -59,13 +59,24 @@ class Article extends Model
     public static function addAction($data)
     {
         $data['slug'] = Util::generateSlug($data['title']).'-'.substr(time(), 0 ,8);
+        if (in_array($data['intro'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['intro'] = '';
+        }
+        if (in_array($data['fulltext'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['fulltext'] = '';
+        }
 
         return self::firstOrCreate($data);
     }
 
     public static function updateAction($data, $pro)
     {
-        $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8);
+        if (in_array($data['intro'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['intro'] = '';
+        }
+        if (in_array($data['fulltext'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['fulltext'] = '';
+        }
 
         return $pro->update($data);
     }
