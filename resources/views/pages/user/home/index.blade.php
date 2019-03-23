@@ -49,7 +49,7 @@
                                     </a>
                                     <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
                                     @if ($slide->target_type == 'product')
-                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ route('product-detail', ['slug' => $slide->product->slug]) }}">xem thông tin</a>
+                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
                                     @else
                                         <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="#">xem thông tin</a>
                                     @endif
