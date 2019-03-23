@@ -91,9 +91,9 @@ class Product extends Model
         }
         $data['price'] = str_replace(',', '', $data['price']);
         $data['price_sale'] = ((float)$data['discount'] == 0) ? $data['price'] : ((float)$data['price'] - ((float)$data['price'] * (float)$data['discount']) / 100);
-        $data['sku_id'] = Util::skuGenerate(6, $maxId + 1);
+        $data['sku_id'] = ($data['sku_id'] == '') ? Util::skuGenerate(6, $maxId + 1) : $data['sku_id'];
         $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
-        if ($data['short_desc'] == '<p><br></p>') {
+        if (in_array($data['short_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
             $data['short_desc'] = '';
         }
 
@@ -111,7 +111,7 @@ class Product extends Model
         $data['price'] = str_replace(',', '', $data['price']);
         $data['price_sale'] = ((float)$data['discount'] == 0) ? $data['price'] : ((float)$data['price'] - ((float)$data['price'] * (float)$data['discount']) / 100);
         // $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
-        if ($data['short_desc'] == "<p><br></p>") {
+        if (in_array($data['short_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
             $data['short_desc'] = '';
         }
 
