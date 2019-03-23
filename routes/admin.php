@@ -1,7 +1,7 @@
 <?php
 
-\Route::group(['namespace' => 'admin'], function() {
-// \Route::group(['domain' => 'admin.authwatch.xyz'], function() {
+// \Route::group(['namespace' => 'admin'], function() {
+\Route::group(['domain' => config('app.admin_public_domain')], function() {
 
     \Route::group(['middleware' => ['admin.values']], function () {
     // \Route::group(['prefix' => 'admin', 'middleware' => ['admin.values']], function () {
@@ -66,6 +66,10 @@
                 $this->post('slides/update', 'Admin\SlideController@update');
                 $this->post('slides/delete', 'Admin\SlideController@delete');
                 $this->get('slides/loadObject/{target}', 'Admin\SlideController@loadObject')->name('slide-load-object');
+
+                //setting
+                $this->get('setting', 'Admin\SettingController@index');
+                $this->post('setting/update', 'Admin\SettingController@update');
 
             });
         });

@@ -1,6 +1,7 @@
 <?php
 
 // \Route::group(['namespace' => 'user'], function() {
+\Route::group(['domain' => config('app.user_public_domain')], function() {
 
     \Route::group(['middleware' => ['user.values']], function () {
 
@@ -32,4 +33,4 @@
 
     });
 
-// });
+});

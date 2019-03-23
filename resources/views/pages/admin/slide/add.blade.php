@@ -114,7 +114,7 @@
 	    }
 
 	    $(document).on('change', '#target_type', function () {
-	    	$.get('/admin/slides/loadObject/' + $(this).val(), function (res) {
+	    	$.get('/slides/loadObject/' + $(this).val(), function (res) {
 				var html = '';
 				if (res.length > 0) {
 					$.each(res, function (i, obj) {

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-03-22 17:31:00
+Date: 2019-03-23 11:33:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -52,7 +52,7 @@ CREATE TABLE `categories` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of categories
@@ -60,6 +60,27 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` VALUES ('1', 'OMEGA', 'omega', '/frontend/images/ex/brands/omega.png', '2018-04-08 18:00:21', '2018-04-08 18:00:21');
 INSERT INTO `categories` VALUES ('2', 'CASIO', 'casio', '/frontend/images/ex/brands/casio.png', '2018-04-08 18:01:23', '2018-04-08 18:01:23');
 INSERT INTO `categories` VALUES ('3', 'SEAMASTER', 'seamaster', '/frontend/images/ex/brands/seamaster.png', '2018-04-08 18:01:23', '2018-04-08 18:01:23');
+
+-- ----------------------------
+-- Table structure for general
+-- ----------------------------
+DROP TABLE IF EXISTS `general`;
+CREATE TABLE `general` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `hotline` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `fb_pixel_code` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of general
+-- ----------------------------
+INSERT INTO `general` VALUES ('1', 'autwatch@gmail.com', '0945 10.66.56 (Zalo, Viber)', 'Số 1 , Nguyễn Huy Tưởng , Thanh Xuân , Hà Nội', null, '123', '2019-03-23 11:32:39', '2019-03-23 04:32:39');
 
 -- ----------------------------
 -- Table structure for products

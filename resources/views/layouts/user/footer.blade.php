@@ -3,18 +3,18 @@
         <div class="footer-body py-3">
             <div class="row py-3 align-items-center">
                 <div class="col-md-6 mb-3">
-                    <a class="footer-logo mb-4" href="#">
+                    <a class="footer-logo mb-4" href="{{ route('home') }}">
                         <img class="img-fluid" src="{{ asset('frontend/images/logo.png') }}" alt="">
                     </a>
                     <ul class="list list-icons">
                         <li class="list-item">
-                            <i class="list-icon fa fa-envelope text-secondary mr-2"></i>Email: <a href="mailto:autwatch@gmail.com">autwatch@gmail.com</a>
+                            <i class="list-icon fa fa-envelope text-secondary mr-2"></i>Email: <a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a>
                         </li>
                         <li class="list-item">
-                            <i class="list-icon fa fa-phone fa-flip-horizontal text-secondary mr-2"></i>Hotline: <a href="tel:0945106656">0945 10.66.56</a> (Zalo, Viber)
+                            <i class="list-icon fa fa-phone fa-flip-horizontal text-secondary mr-2"></i>Hotline: <a href="tel:{{ $setting->tel }}">{{ $setting->hotline }}</a> (Zalo, Viber)
                         </li>
                         <li class="list-item">
-                            <i class="list-icon fa fa-map-marker-alt text-secondary mr-2"></i>Địa chỉ : Số 1 , Nguyễn Huy Tưởng , Thanh Xuân , Hà Nội
+                            <i class="list-icon fa fa-map-marker-alt text-secondary mr-2"></i>Địa chỉ: {{ $setting->address }}
                         </li>
                     </ul>
                 </div>

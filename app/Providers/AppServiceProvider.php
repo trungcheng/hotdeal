@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\General;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,9 +12,17 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    protected $setting;
+
     public function boot()
     {
-        //
+        $this->setting = General::first();
+        $this->setting->tel = str_replace('.', '', $this->setting->hotline); 
+        $this->setting->tel = str_replace(' ', '', $this->setting->tel); 
+        view()->composer('*', function($view) {
+            $view->with('setting', $this->setting);  
+        });
     }
 
     /**

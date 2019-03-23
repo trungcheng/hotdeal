@@ -8,17 +8,19 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
 
-        <li><a data-route="/admin" href="{{ url('/admin') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
+        <li><a data-route="/" href="{{ url('/') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
 
-        <li><a data-route="/admin/categories" href="{{ url('/admin/categories') }}"><i class="fa fa-bars"></i> <span>Quản lý danh mục</span></a></li>
+        <li><a data-route="/categories" href="{{ url('/categories') }}"><i class="fa fa-bars"></i> <span>Quản lý danh mục</span></a></li>
         
         <!-- <li><a data-route="/admin/orders" href="{{ url('/admin/orders') }}"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
         
-        <li><a data-route="/admin/products" href="{{ url('/admin/products') }}"><i class="fa fa-suitcase"></i> <span>Quản lý sản phẩm</span></a></li>
+        <li><a data-route="/products" href="{{ url('/products') }}"><i class="fa fa-suitcase"></i> <span>Quản lý sản phẩm</span></a></li>
         
-        <li><a data-route="/admin/articles" href="{{ url('/admin/articles') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý bài viết</span></a></li>
+        <li><a data-route="/articles" href="{{ url('/articles') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý bài viết</span></a></li>
 
-        <li><a data-route="/admin/slides" href="{{ url('/admin/slides') }}"><i class="fa fa-sliders"></i> <span>Quản lý slide</span></a></li>
+        <li><a data-route="/slides" href="{{ url('/slides') }}"><i class="fa fa-sliders"></i> <span>Quản lý slide</span></a></li>
+
+        <li><a data-route="/setting" href="{{ url('/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
         
         <!-- <li><a data-route="/admin/advertises" href="{{ url('/admin/advertises') }}"><i class="fa fa-square-o"></i> <span>Quản lý quảng cáo</span></a></li>
         

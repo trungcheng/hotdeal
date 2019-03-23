@@ -237,4 +237,7 @@ return [
 
     ],
 
+    'admin_public_domain' => env('ADMIN_PUBLIC_DOMAIN'),
+    'user_public_domain' => env('USER_PUBLIC_DOMAIN')
+
 ];
