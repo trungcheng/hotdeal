@@ -149,6 +149,8 @@ class ProductController extends Controller
                 'conditions' => $conditions,
                 'results' => $results
             ]);
+        } elseif ($sex == 'admin') {
+            return redirect('/admin/login');
         }
 
         abort(404);
