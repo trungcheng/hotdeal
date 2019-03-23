@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-03-23 11:33:53
+Date: 2019-03-23 12:06:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,7 +80,7 @@ CREATE TABLE `general` (
 -- ----------------------------
 -- Records of general
 -- ----------------------------
-INSERT INTO `general` VALUES ('1', 'autwatch@gmail.com', '0945 10.66.56 (Zalo, Viber)', 'Số 1 , Nguyễn Huy Tưởng , Thanh Xuân , Hà Nội', null, '123', '2019-03-23 11:32:39', '2019-03-23 04:32:39');
+INSERT INTO `general` VALUES ('1', 'autwatch@gmail.com', '0945 10.66.56', 'Số 1 , Nguyễn Huy Tưởng , Thanh Xuân , Hà Nội', null, null, '2019-03-23 11:48:51', '2019-03-23 04:48:51');
 
 -- ----------------------------
 -- Table structure for products
