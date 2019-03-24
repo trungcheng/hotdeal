@@ -49,6 +49,13 @@ $(document).ready(function(){
         e.preventDefault();
         $(this).parents('.product-detail').toggleClass('active');
     });
+
+    var baseUrl = window.location.origin + window.location.pathname;
+    $('.nav-link').each(function (v, k) {
+        if ($(k).attr('href') == baseUrl) {
+            $(k).parents('.nav-item').addClass('active');
+        }
+    });
 });
 
 function get_query(url) {

@@ -1,5 +1,5 @@
 <header class="header header-sticky" id="header">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row align-items-center justify-content-between">
             <div class="col col-auto d-flex align-items-center">
                 <button class="hamburger hamburger--slider d-lg-none" id="navbar-main-toggle" data-toggle="collapse" data-target="#header-navbar-main-collapse" aria-controls="header-navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light header-navbar-main navbar-main navbar-main-effect-1 navbar-main-trigger-hover">
                     <div class="collapse navbar-collapse" id="header-navbar-main-collapse">
                         <div class="nav mr-auto">
-                            <div class="nav-item">
+                            <div class="nav-item home">
                                 <a class="nav-link" href="{{ route('home') }}">Thương hiệu</a>
                             </div>
                             <div class="nav-item">
@@ -32,9 +32,17 @@
                 </nav>
             </div>
             <div class="col col-auto">
-                <a class="header-search" href="javascript:void(0)">
-                    <i class="fa fa-search"></i>
-                </a>
+                <div class="header-search input-group deactive" id="header-search">
+                    <input class="search-input form-control" type="text" placeholder="Tìm kiếm">
+                    <div class="input-group-append">
+                        <button class="btn header-search-btn-send" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <button class="btn header-search-btn-close" type="button">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

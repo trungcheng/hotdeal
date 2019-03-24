@@ -220,6 +220,9 @@
 
 @section('pageJs')
     <script type="text/javascript">
+        $(function () {
+            $('.nav .home').addClass('active');
+        });
         $(document).on('click', '.brands-item', function () {
             var catId = $(this).data('id');
             $('.brands-item').removeClass('active');
