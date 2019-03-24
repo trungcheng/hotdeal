@@ -41,11 +41,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn</label>
-                                    <textarea class="form-control" id="short_content">{!! $article->short_desc !!}</textarea>
+                                    <textarea class="form-control" id="short_content">{!! $article->intro !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả chi tiết</label>
-                                    <textarea class="form-control" id="full_content">{!! $article->full_desc !!}</textarea>
+                                    <textarea class="form-control" id="full_content">{!! $article->fulltext !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>
