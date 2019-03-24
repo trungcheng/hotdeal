@@ -53,6 +53,11 @@
                     $scope.articles = response.data.data;
                     $scope.totalItems = response.data.total;
 
+                    angular.forEach($scope.articles, function (v, k) {
+                        v.title = trimText(v.title, 20);
+                        v.intro = trimText(v.intro, 20);
+                    });
+
                 });
         }
 

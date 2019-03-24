@@ -60,7 +60,7 @@
                                                     <th style="width:5%;">STT</th>
                                                     <th>Ảnh</th>
                                                     <th style="text-align:center !important;width:20%">Tiêu đề</th>
-                                                    <th>Mô tả ngắn</th>
+                                                    <th style="width:30%">Mô tả ngắn</th>
                                                     <th>Đăng bởi</th>
                                                     <th>Trạng thái</th>
                                                     <th>Ngày tạo</th>
@@ -74,7 +74,7 @@
                                                         <img ng-src="@{{ article.image }}" style="width:70px;height:60px;">
                                                     </td>
                                                     <td>@{{ article.title }}</td>
-                                                    <td>@{{ article.intro }}</td>
+                                                    <td style="width:30%">@{{ article.intro }}</td>
                                                     <td>@{{ article.user.username }}</td>
                                                     <td>@{{ (article.status == 0) ? 'Ẩn' : 'Hiển thị' }}</td>
                                                     <td>@{{ article.created_at }}</td>
@@ -119,4 +119,17 @@
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/article.controller.js') !!}
+
+    <script type="text/javascript">
+        function trimText(str ,wordCount) {
+            var strArray = str.split(' ');
+            var subArray = strArray.slice(0, wordCount);
+            var result = subArray.join(" ");
+            if (strArray.length < wordCount) {
+                return result;
+            } else {
+                return result + '...';
+            }
+        }
+    </script>
 @stop
