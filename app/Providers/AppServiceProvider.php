@@ -17,9 +17,15 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->setting = General::first();
-        $this->setting->tel = str_replace('.', '', $this->setting->hotline); 
-        $this->setting->tel = str_replace(' ', '', $this->setting->tel); 
+        $general = General::first();
+        if ($general) {
+            $this->setting = General::first();
+            $this->setting->tel = str_replace('.', '', $this->setting->hotline); 
+            $this->setting->tel = str_replace(' ', '', $this->setting->tel); 
+        } else {
+            $this->setting = '';
+        }
+
         view()->composer('*', function($view) {
             $view->with('setting', $this->setting);  
         });

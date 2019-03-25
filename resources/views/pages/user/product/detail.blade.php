@@ -47,10 +47,10 @@
                             <div class="swiper-container" data-plugin="swiper-gallery-row-thumbs">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide" style="background-image: url({{ asset($product->image) }})"></div>
-                                    @if (count(json_decode($product->image_list)) > 0)
-                                    @foreach (json_decode($product->image_list) as $key => $image)
-                                    <div class="swiper-slide" style="background-image: url({{ asset($image) }})"></div>
-                                    @endforeach
+                                    @if (count($imageLists) > 0)
+                                        @foreach ($imageLists as $image)
+                                            <div class="swiper-slide" style="background-image: url({{ asset($image['link']) }})"></div>
+                                        @endforeach
                                     @endif
                                 </div>
                             </div>
@@ -60,15 +60,15 @@
                             <div class="swiper-container" data-plugin="swiper-gallery-row">
                                 <div class="swiper-wrapper">
                                     <figure class="swiper-slide">
-                                        <a href="{{ asset($product->image) }}" data-size="1300x1080">
+                                        <a href="{{ asset($product->image) }}" data-size="{{ $product->image_width }}x{{ $product->image_height }}">
                                             <img class="img-fluid" src="{{ asset($product->image) }}" alt="{{ $product->name }}">
                                         </a>
                                     </figure>
-                                    @if (count(json_decode($product->image_list)) > 0)
-                                    @foreach (json_decode($product->image_list) as $key => $image)
+                                    @if (count($imageLists) > 0)
+                                    @foreach ($imageLists as $image)
                                     <figure class="swiper-slide">
-                                        <a href="{{ asset($image) }}" data-size="1300x1080">
-                                            <img class="img-fluid" src="{{ asset($image) }}" alt="{{ asset($image) }}">
+                                        <a href="{{ asset($image['link']) }}" data-size="{{ $image['width'] }}x{{ $image['height'] }}">
+                                            <img class="img-fluid" src="{{ asset($image['link']) }}" alt="{{ asset($image['link']) }}">
                                         </a>
                                     </figure>
                                     @endforeach
@@ -100,8 +100,8 @@
                             <del class="product-price-old">Giá retail: {{ number_format($product->price, 0, 0, '.') }} VND</del>
                         </div>
                     </div>
-                    <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary mb-3" href="#">tôi muốn mua sản phẩm này</a>
-                    <p class="text-center fs-sm text-uppercase">Liên hệ đặt mua: <a href="tel:0945106656">0945 10 66 56</a> (Zalo, Viber)</p>
+                    <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary mb-3" href="javascript:void(0)">tôi muốn mua sản phẩm này</a>
+                    <!-- <p class="text-center fs-sm text-uppercase">Liên hệ đặt mua: <a href="tel:0945106656">0945 10 66 56</a> (Zalo, Viber)</p> -->
                     <hr class="divider">
                     <h6 class="text-secondary text-uppercase fs-sm">thông số kỹ thuật</h6>
                     <ul class="list list-mb-2 fs-sm mb-0">
@@ -138,7 +138,7 @@
                         <div class="product-comment-inner">
                             <h3 class="section-heading text-primary">hỏi đáp</h3>
                             <!-- <img class="img-fluid" src="{{ asset('frontend/images/ex/facebook-plugins.png') }}" alt=""> -->
-                            <div class="fb-comments" data-href="http://donghoxachtay.store" data-width="650" data-numposts="5"></div>
+                            <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="650" data-numposts="5"></div>
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                             </div>
                             <div class="card-price-border mb-2">{{ number_format($pro->price_sale, 0, 0, '.') }} VND</div>
                         </div>
-                        <a class="thumbnail" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                        <a class="thumbnail py-0" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                             <img class="thumbnail-img" src="{{ asset($pro->image) }}" alt="{{ $pro->name }}">
                         </a>
                         <div class="card-body">

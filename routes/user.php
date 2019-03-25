@@ -27,6 +27,7 @@
 
         \Route::get('/p/{slug}', 'User\ProductController@index')->name('product-detail');
         \Route::get('/{sex}', 'User\ProductController@store')->name('product-store');
+        
 
         \Route::get('/product/getProdByCate/{catId}', 'User\ProductController@getProdByCate')->name('product-by-cate');
         \Route::get('/product/getProdBySex/{sex}', 'User\ProductController@getProdBySex')->name('product-by-sex');

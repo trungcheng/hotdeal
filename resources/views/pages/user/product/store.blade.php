@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Đồng hồ {{ ($sex == 'm') ? 'nam' : 'nữ' }} chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch
+@section('page'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Đồng hồ nữ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Tìm kiếm "'.$searchText.'"' }}
 @stop
 
 @section('description')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
@@ -15,13 +15,13 @@
 @section('alternate'){{ route('product-store', ['sex' => $sex]) }}
 @stop
 
-@section('propName')Đồng hồ {{ ($sex == 'm') ? 'nam' : 'nữ' }} chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch.
+@section('propName'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Đồng hồ nữ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Tìm kiếm "'.$searchText.'"' }}.
 @stop
 
 @section('propDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
-@section('ogTitle')Đồng hồ {{ ($sex == 'm') ? 'nam' : 'nữ' }} chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch.
+@section('ogTitle'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Đồng hồ nữ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Tìm kiếm "'.$searchText.'"' }}.
 @stop
 
 @section('ogDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
@@ -35,11 +35,11 @@
 @stop
 
 @section('content')
-    <h1 class="hide">Đồng hồ {{ ($sex == 'm') ? 'nam' : 'nữ' }} chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch</h1>
+    <h1 class="hide">{{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Đồng hồ nữ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Tìm kiếm "'.$searchText.'"' }}</h1>
     <hr class="divider my-0">
     <div class="container-fluid pt-4">
         <div class="row">
-            <form role="form" method="get" action="{{ route('product-store', ['sex' => $sex]) }}" style="display:contents !important;">
+            
             <div class="col-aside col-lg-3 mb-4 mb-lg-0">
                 <aside class="product-filter">
                     <div class="text-center d-lg-none">
@@ -279,7 +279,7 @@
             <div class="col-main col-lg-9">
                 <section class="section py-0">
                     <header class="section-header d-flex flex-column flex-md-row align-items-center justify-content-between">
-                        <h2 class="section-heading mb-3 mb-md-0">Đồng hồ {{ ($sex == 'm') ? 'nam' : 'nữ' }} <span class="fw-3">({{ count($results) }} mẫu)</span>
+                        <h2 style="max-width:60%;" class="section-heading mb-3 mb-md-0">{{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam' : 'Đồng hồ nữ' : 'Tìm kiếm "'.$searchText.'"' }} <span class="fw-3">({{ count($results) }} mẫu)</span>
                         </h2>
                         <ul class="list-inline list-inline-borders fs-sm3 mb-md-0">
                             <li class="list-item">Xem: {{ count($results) }}</li>
@@ -302,42 +302,46 @@
                         </div>
                     </header>
                     <div class="row">
-                        @foreach ($results as $result)
-                        <div class="col-md-6 col-xl-4 d-flex mb-4">
-                            <div class="card card-product">
-                                <a class="thumbnail mb-4" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
-                                    <img class="thumbnail-img" src="{{ asset($result->image) }}" alt="{{ $result->name }}">
-                                </a>
-                                <div class="card-body">
-                                    <a class="d-inline-block mb-1" href="javascript:void(0)">
-                                        <img class="card-logo img-fluid" src="{{ asset($result->category->icon) }}" alt="{{ $result->category->name }}">
+                        @if (count($results) > 0)
+                            @foreach ($results as $result)
+                            <div class="col-md-6 col-xl-4 d-flex mb-4">
+                                <div class="card card-product">
+                                    <a class="thumbnail mb-4" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
+                                        <img class="thumbnail-img" src="{{ asset($result->image) }}" alt="{{ $result->name }}">
                                     </a>
-                                    <h3 class="card-title mb-2">
-                                        <a href="{{ route('product-detail', ['slug' => $result->slug]) }}">{{ $result->name }}</a>
-                                    </h3>
-                                    <div class="d-flex flex-wrap align-items-center mb-2">
-                                        <span class="card-price mr-2">{{ number_format($result->price_sale, 0, 0, '.') }} VND</span>
-                                        <del class="card-price card-price-old mr-2">{{ number_format($result->price, 0, 0, '.') }} VND</del>
-                                        <span class="card-sale">{{ $result->discount }}%</span>
-                                    </div>
-                                    <div class="card-status text-primary">
-                                        <i class="fa fa-check mr-1"></i>{{ ($result->status == 1) ? 'Còn hàng' : 'Hết hàng' }}
+                                    <div class="card-body">
+                                        <a class="d-inline-block mb-1" href="javascript:void(0)">
+                                            <img class="card-logo img-fluid" src="{{ asset($result->category->icon) }}" alt="{{ $result->category->name }}">
+                                        </a>
+                                        <h3 class="card-title mb-2">
+                                            <a href="{{ route('product-detail', ['slug' => $result->slug]) }}">{{ $result->name }}</a>
+                                        </h3>
+                                        <div class="d-flex flex-wrap align-items-center mb-2">
+                                            <span class="card-price mr-2">{{ number_format($result->price_sale, 0, 0, '.') }} VND</span>
+                                            <del class="card-price card-price-old mr-2">{{ number_format($result->price, 0, 0, '.') }} VND</del>
+                                            <span class="card-sale">{{ $result->discount }}%</span>
+                                        </div>
+                                        <div class="card-status text-primary">
+                                            <i class="fa fa-check mr-1"></i>{{ ($result->status == 1) ? 'Còn hàng' : 'Hết hàng' }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @endforeach
+                            @endforeach
+                        @else
+                            <p style="padding-left:15px;">Không có {{ ($sex != 's') ? 'sản phẩm' : 'kết quả' }} nào !</p>
+                        @endif
                     </div>
                 </section>
             </div>
-            </form>
+
         </div>
     </div>
 @stop
 
 @section('pageJs')
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(function() {
             var filtered = $('.filtered').length;
             if (filtered > 0) {
                 $('.filtered').each(function (v, k) {
@@ -354,6 +358,12 @@
                         }
                     });
                 });
+            }
+            var sex = '{{ $sex }}';
+            if (sex == 's') {
+                var searchText = '{{ $searchText }}';
+                console.log(searchText);
+                $('.search-input').val(searchText);
             }
         });
         $(document).on('change', '.filter-input', function() {

@@ -33,7 +33,7 @@
             </div>
             <div class="col col-auto">
                 <div class="header-search input-group deactive" id="header-search">
-                    <input class="search-input form-control" type="text" placeholder="Tìm kiếm">
+                    <input class="search-input form-control" name="key" type="text" placeholder="Tìm kiếm">
                     <div class="input-group-append">
                         <button class="btn header-search-btn-send" type="button">
                             <i class="fa fa-search"></i>

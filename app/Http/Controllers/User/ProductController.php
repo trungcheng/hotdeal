@@ -18,11 +18,28 @@ class ProductController extends Controller
     {
     	$product = Product::where('slug', $slug)->first();
         if ($product) {
+
+            $data = getimagesize(public_path($product->image));
+            $product->image_width = $data[0];
+            $product->image_height = $data[1];
+
+            $imageLists = [];
+            $image_list = json_decode($product->image_list);
+            if (count($image_list) > 0 && !is_null($image_list[0])) {
+                foreach ($image_list as $key => $item) {
+                    $data = getimagesize(public_path($item));
+                    $imageLists[$key]['link'] = $item;
+                    $imageLists[$key]['width'] = $data[0];
+                    $imageLists[$key]['height'] = $data[1];
+                }
+            }
+
             $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(6)->get()->except($product->id);
 
             return view('pages.user.product.detail', [
                 'product' => $product,
-                'relatedProducts' => $relatedProducts
+                'relatedProducts' => $relatedProducts,
+                'imageLists' => $imageLists
             ]);
         }
 
@@ -64,9 +81,21 @@ class ProductController extends Controller
     {
         $conditions = [];
         $data = $request->all();
-        if (in_array($sex, ['m', 'f'])) {
+        if (in_array($sex, ['m', 'f', 's'])) {
+
             $brands = Category::all();
-            $products = Product::where('sex', $sex);
+            $products = Product::where('id', '>', 0);
+            
+            if ($sex != 's') {
+                $products->where('sex', $sex);
+            } else {
+                if ($request->has('key')) {
+                    $products->where(function ($query) use ($data) {
+                        $query->where('name', 'LIKE', '%'.$data['key'].'%')
+                              ->orWhere('sku_id', 'LIKE', '%'.$data['key'].'%');
+                    });
+                }
+            }
 
             if ($request->has('br')) {
                 $products->whereIn('cat_id', $data['br']);
@@ -79,7 +108,6 @@ class ProductController extends Controller
                     }
                 }
             }
-
             if ($request->has('pr')) {
                 $arr = [];
                 $final = [];
@@ -90,7 +118,6 @@ class ProductController extends Controller
                 }
                 $products->orWhereBetween('price_sale', [min($final), max($final)]);
             }
-
             if ($request->has('wm')) {
                 $products->whereIn('wire_material', $data['wm'], 'or');
                 $wires = file_get_contents(public_path('/frontend/json/wire-materials.json'));
@@ -100,7 +127,6 @@ class ProductController extends Controller
                     }
                 }
             }
-
             if ($request->has('gm')) {
                 $products->whereIn('glass_material', $data['gm'], 'or');
                 $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
@@ -110,7 +136,6 @@ class ProductController extends Controller
                     }
                 }
             }
-
             if ($request->has('et')) {
                 $products->whereIn('energy_type', $data['et'], 'or');
                 $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
@@ -120,7 +145,6 @@ class ProductController extends Controller
                     }
                 }
             }
-
             if ($request->has('v')) {
                 $products->whereIn('version', $data['v'], 'or');
                 $versions = file_get_contents(public_path('/frontend/json/versions.json'));
@@ -130,7 +154,6 @@ class ProductController extends Controller
                     }
                 }
             }
-
             if ($request->has('order')) {
                 $filter = $data['order'];
                 $filters = explode('-', $data['order']);
@@ -147,7 +170,8 @@ class ProductController extends Controller
                 'sex' => $sex,
                 'brands' => $brands,
                 'conditions' => $conditions,
-                'results' => $results
+                'results' => $results,
+                'searchText' => ($sex == 's') ? $data['key'] : ''
             ]);
         } elseif ($sex == 'admin') {
             return redirect('/admin/login');
@@ -155,4 +179,5 @@ class ProductController extends Controller
 
         abort(404);
     }
+
 }

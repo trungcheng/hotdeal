@@ -1,4 +1,7 @@
-.thumbnail {
+.hide {
+	display:none;
+}
+/*.thumbnail {
 	display: table-cell;
     z-index: 0;
     position: relative;
@@ -8,5 +11,5 @@
     height: 400px;
     width: 100%;
     vertical-align: middle;
-}
+}*/
 

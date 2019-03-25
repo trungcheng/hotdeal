@@ -26,10 +26,11 @@
     @yield('pageCss')
     <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
-    {!! $setting->fb_pixel_code !!}
+    {!! ($setting != '') ? $setting->fb_pixel_code : '' !!}
 </head>
 <body>
     <div class="page pg-home">
+        <form role="form" method="get" action="" style="display:contents !important;">
         <!-- Header -->
         @include('layouts.user.header')
         <!-- Content -->
@@ -80,6 +81,7 @@
         </div>
         <!-- Footer -->
         @include('layouts.user.footer')
+        </form>
     </div>
     <a class="backtotop btn btn-primary rounded-circle shadow" id="back-to-top" href="#"></a>
 
@@ -94,5 +96,14 @@
     <script src="{{ asset('frontend/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
     @yield('pageJs')
+    <script type="text/javascript">
+        $(document).on('keydown', '.search-input', function(e) {
+            var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+            if (key == 13) {
+                e.preventDefault();
+                window.location.href = '/s?key=' + $(this).val();
+            }
+        });
+    </script>
 </body>
 </html>

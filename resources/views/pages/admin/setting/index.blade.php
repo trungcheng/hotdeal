@@ -48,22 +48,22 @@
 
                     <div class="form-group">
                         <label class="control-label">Email</label>
-                        <input type="text" name="email" value="{{ $setting->email }}" class="form-control" placeholder="Địa chỉ email...">
+                        <input type="text" name="email" value="{{ ($setting != '') ? $setting->email : '' }}" class="form-control" placeholder="Địa chỉ email...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Hotline</label>
-                        <input type="text" name="hotline" value="{{ $setting->hotline }}" class="form-control" placeholder="Hotline...">
+                        <input type="text" name="hotline" value="{{ ($setting != '') ? $setting->hotline : '' }}" class="form-control" placeholder="Hotline...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Địa chỉ</label>
-                        <input type="text" name="address" value="{{ $setting->address }}" class="form-control" placeholder="Địa chỉ...">
+                        <input type="text" name="address" value="{{ ($setting != '') ? $setting->address : '' }}" class="form-control" placeholder="Địa chỉ...">
                     </div>
 
                     <div class="form-group">
                         <label>Facebook Pixel Code</label>
-                        <textarea style="height: 100px;" name="fb_pixel_code" class="form-control" placeholder="Facebook Pixel Code...">{{ $setting->fb_pixel_code }}</textarea>
+                        <textarea style="height: 100px;" name="fb_pixel_code" class="form-control" placeholder="Facebook Pixel Code...">{{ ($setting != '') ? $setting->fb_pixel_code : '' }}</textarea>
                     </div>
 
                     <div class="form-group">

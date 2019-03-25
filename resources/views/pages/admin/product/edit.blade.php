@@ -51,11 +51,15 @@
                                     <label>Giá sản phẩm</label>
                                     <input id="price" value="{{ number_format($pro->price, 0, 0, ',') }}" name="price" type="text" class="form-control title" placeholder="Giá sản phẩm...">
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label>Sale (%)</label>
                                     <select class="form-control" name="discount">
                                         <option ng-selected="item == {{ $pro->discount }}" ng-repeat="item in range(0, 100, 1)" value="@{{ item }}">@{{ item }}</option>
                                     </select>
+                                </div> -->
+                                <div class="form-group">
+                                    <label>Giá sale</label>
+                                    <input id="price_sale" value="{{ number_format($pro->price_sale, 0, 0, ',') }}" name="price_sale" type="text" class="form-control title" placeholder="Giá khuyến mãi...">
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh</label>
@@ -279,7 +283,7 @@
 
     <script type="text/javascript">
         $(function() {
-            $('#price').on("keyup", function(event) {
+            $('#price, #price_sale').on("keyup", function(event) {
                 var selection = window.getSelection().toString();
                 if (selection !== '') {
                     return;
