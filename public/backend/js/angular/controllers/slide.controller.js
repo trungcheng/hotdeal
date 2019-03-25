@@ -121,7 +121,7 @@
             });
         }
 
-        $scope.delete = function (cate, index) {
+        $scope.delete = function (slide, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa slide này ?",
                 type: "warning",
@@ -136,7 +136,7 @@
                     url: app.vars.baseUrl + '/slides/delete',
                     method: 'POST',
                     data: {
-                        cateId: cate.id
+                        slideId: slide.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {

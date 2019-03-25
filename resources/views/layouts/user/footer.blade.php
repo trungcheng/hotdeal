@@ -20,12 +20,12 @@
                 </div>
                 <div class="col-md-6">
                     <div class="map-container" style="height: 250px">
-                        <iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJuxOsSakodTERI-eF-2gRKT4&amp;key=AIzaSyDWoPkVqd_ZfDGY5wXkjsGevSuZ91yPQbw" allowfullscreen=""></iframe>
+                        <iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="https://maps.google.com/maps?q=s%E1%BB%91%201%20nguy%E1%BB%85n%20huy%20t%C6%B0%E1%BB%9Fng&t=&z=17&ie=UTF8&iwloc=&output=embed" allowfullscreen=""></iframe>
                     </div>
                 </div>
             </div>
         </div>
         <hr class="divider my-0">
-        <div class="footer-copyright">Copyright AutWatches. All Right Reserved.</div>
+        <div class="footer-copyright">Copyright donghoxachtay.store. All Right Reserved.</div>
     </div>
 </footer>
