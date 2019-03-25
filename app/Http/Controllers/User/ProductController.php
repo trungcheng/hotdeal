@@ -19,7 +19,7 @@ class ProductController extends Controller
     	$product = Product::where('slug', $slug)->first();
         if ($product) {
 
-            $data = getimagesize(public_path($product->image));
+            $data = getimagesize(url($product->image));
             $product->image_width = $data[0];
             $product->image_height = $data[1];
 
@@ -27,7 +27,7 @@ class ProductController extends Controller
             $image_list = json_decode($product->image_list);
             if (count($image_list) > 0 && !is_null($image_list[0])) {
                 foreach ($image_list as $key => $item) {
-                    $data = getimagesize(public_path($item));
+                    $data = getimagesize(url($item));
                     $imageLists[$key]['link'] = $item;
                     $imageLists[$key]['width'] = $data[0];
                     $imageLists[$key]['height'] = $data[1];
