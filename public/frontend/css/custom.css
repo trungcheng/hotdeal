@@ -1,15 +1,15 @@
 .hide {
 	display:none;
 }
-/*.thumbnail {
-	display: table-cell;
-    z-index: 0;
-    position: relative;
-    line-height: 400px;
-    text-align: center;
-    overflow: hidden;
-    height: 400px;
+.thumbnail-img {
+    width: 100% !important;
+    height: 100%;
+    transition: all .2s ease-in-out;
+    object-fit: cover;
+    display: block;    
+}
+.thumbnail {
     width: 100%;
-    vertical-align: middle;
-}*/
+    height: 100%;
+}
 
