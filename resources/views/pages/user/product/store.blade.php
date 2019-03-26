@@ -43,7 +43,7 @@
             <div class="col-aside col-lg-3 mb-4 mb-lg-0">
                 <aside class="product-filter">
                     <div class="text-center d-lg-none">
-                        <button class="btn btn-outline-gray-200 rounded-0 text-body text-uppercase fs-sm" data-toggle="collapse" data-target="#product-filter-collapse">bộ lọc</button>
+                        <button id="filter" class="btn btn-outline-gray-200 rounded-0 text-body text-uppercase fs-sm" data-toggle="collapse" data-target="#product-filter-collapse">bộ lọc</button>
                     </div>
                     <div class="product-filter-collapse collapse" id="product-filter-collapse">
                         <div class="accordions" id="toggle-default">
@@ -368,6 +368,9 @@
         });
         $(document).on('change', '.filter-input', function() {
             $('form').submit();
+        });
+        $(document).on('click', '#filter', function(e) {
+            return false;
         });
         $(document).on('click', '.filter-order', function () {
             $('#filter-order-display').text($(this).text());
