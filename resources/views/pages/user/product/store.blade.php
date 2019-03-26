@@ -306,7 +306,7 @@
                             @foreach ($results as $result)
                             <div class="col-md-6 col-xl-4 d-flex mb-4">
                                 <div class="card card-product">
-                                    <a class="thumbnail mb-4" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
+                                    <a class="thumbnail" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
                                         <img class="thumbnail-img" src="{{ asset($result->image) }}" alt="{{ $result->name }}">
                                     </a>
                                     <div class="card-body">
