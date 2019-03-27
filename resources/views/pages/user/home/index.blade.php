@@ -44,9 +44,9 @@
                         <div class="swiper-slide" style="background-image:url({{ asset($slide->image) }})">
                             <div class="container d-flex justify-content-md-end justify-content-center">
                                 <div class="align-self-center text-center text-md-right">
-                                    <a href="javascript:void(0)">
+                                    <!-- <a href="javascript:void(0)">
                                         <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="seamaster" width="188">
-                                    </a>
+                                    </a> -->
                                     <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
                                     @if ($slide->target_type == 'product')
                                         <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
@@ -220,9 +220,6 @@
 
 @section('pageJs')
     <script type="text/javascript">
-        $(function () {
-            $('.nav .home').addClass('active');
-        });
         $(document).on('click', '.brands-item', function () {
             var catId = $(this).data('id');
             $('.brands-item').removeClass('active');

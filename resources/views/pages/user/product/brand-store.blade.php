@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Đồng hồ nữ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Tìm kiếm "'.$searchText.'"' }}
+@section('page')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Autwatch
 @stop
 
 @section('description')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
@@ -9,25 +9,25 @@
 @section('keywords')đồng hồ chính hãng, thương hiệu đồng hồ, đồng hồ chất lượng, đồng hồ nam, đồng hồ nữ, đồng hồ đẳng cấp, đồng hồ thương hiệu, cửa hàng đồng hồ uy tín
 @stop
 
-@section('canonical'){{ route('product-store', ['sex' => $sex]) }}
+@section('canonical'){{ route('product-store', ['sex' => 'c']) }}
 @stop
 
-@section('alternate'){{ route('product-store', ['sex' => $sex]) }}
+@section('alternate'){{ route('product-store', ['sex' => 'c']) }}
 @stop
 
-@section('propName'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Đồng hồ nữ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Tìm kiếm "'.$searchText.'"' }}.
+@section('propName')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Autwatch.
 @stop
 
 @section('propDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
-@section('ogTitle'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Đồng hồ nữ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Tìm kiếm "'.$searchText.'"' }}.
+@section('ogTitle')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Autwatch.
 @stop
 
 @section('ogDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
-@section('ogUrl'){{ route('product-store', ['sex' => $sex]) }}
+@section('ogUrl'){{ route('product-store', ['sex' => 'c']) }}
 @stop
 
 @section('pageCss')
@@ -35,7 +35,7 @@
 @stop
 
 @section('content')
-    <h1 class="hide">{{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Đồng hồ nữ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch' : 'Tìm kiếm "'.$searchText.'"' }}</h1>
+    <h1 class="hide">Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Autwatch</h1>
     <hr class="divider my-0">
     <div class="container-fluid pt-4">
         <div class="row">
@@ -279,7 +279,7 @@
             <div class="col-main col-lg-9">
                 <section class="section py-0">
                     <header class="section-header d-flex flex-column flex-md-row align-items-center justify-content-between">
-                        <h2 style="max-width:60%;" class="section-heading mb-3 mb-md-0">{{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam' : 'Đồng hồ nữ' : 'Tìm kiếm "'.$searchText.'"' }} <span class="fw-3">({{ count($results) }} mẫu)</span>
+                        <h2 style="max-width:60%;" class="section-heading mb-3 mb-md-0">Tất cả sản phẩm <span class="fw-3">({{ count($results) }} mẫu)</span>
                         </h2>
                         <ul class="list-inline list-inline-borders fs-sm3 mb-md-0">
                             <li class="list-item">Xem: {{ count($results) }}</li>
@@ -329,7 +329,7 @@
                             </div>
                             @endforeach
                         @else
-                            <p style="padding-left:15px;">Không có {{ ($sex != 's') ? 'sản phẩm' : 'kết quả' }} nào !</p>
+                            <p style="padding-left:15px;">Không có sản phẩm nào !</p>
                         @endif
                     </div>
                 </section>

@@ -81,12 +81,12 @@ class ProductController extends Controller
     {
         $conditions = [];
         $data = $request->all();
-        if (in_array($sex, ['m', 'f', 's'])) {
+        if (in_array($sex, ['m', 'f', 's', 'c'])) {
 
             $brands = Category::all();
             $products = Product::where('id', '>', 0);
             
-            if ($sex != 's') {
+            if (!in_array($sex, ['s', 'c'])) {
                 $products->where('sex', $sex);
             } else {
                 if ($request->has('key')) {
@@ -94,14 +94,13 @@ class ProductController extends Controller
                         $query->where('name', 'LIKE', '%'.$data['key'].'%')
                               ->orWhere('sku_id', 'LIKE', '%'.$data['key'].'%');
                     });
+                } else {
+                    $data['key'] = '';
                 }
             }
 
             if ($request->has('br')) {
                 $products->whereIn('cat_id', $data['br']);
-                // $products->where(function ($query) use ($data) {
-                //     $query->whereIn('cat_id', $data['br']);
-                // });
                 foreach ($brands as $brand) {
                     if (in_array($brand->id, $data['br'])) {
                         $conditions[] = $brand->name;
@@ -116,10 +115,10 @@ class ProductController extends Controller
                     $final = array_merge($arr, $prs);
                     $conditions[] = $pr;
                 }
-                $products->orWhereBetween('price_sale', [min($final), max($final)]);
+                $products->whereBetween('price_sale', [min($final), max($final)]);
             }
             if ($request->has('wm')) {
-                $products->whereIn('wire_material', $data['wm'], 'or');
+                $products->whereIn('wire_material', $data['wm']);
                 $wires = file_get_contents(public_path('/frontend/json/wire-materials.json'));
                 foreach (json_decode($wires) as $wire) {
                     if (in_array($wire->id, $data['wm'])) {
@@ -128,7 +127,7 @@ class ProductController extends Controller
                 }
             }
             if ($request->has('gm')) {
-                $products->whereIn('glass_material', $data['gm'], 'or');
+                $products->whereIn('glass_material', $data['gm']);
                 $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
                 foreach (json_decode($glasses) as $glass) {
                     if (in_array($glass->id, $data['gm'])) {
@@ -137,7 +136,7 @@ class ProductController extends Controller
                 }
             }
             if ($request->has('et')) {
-                $products->whereIn('energy_type', $data['et'], 'or');
+                $products->whereIn('energy_type', $data['et']);
                 $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
                 foreach (json_decode($energies) as $energy) {
                     if (in_array($energy->id, $data['et'])) {
@@ -146,7 +145,7 @@ class ProductController extends Controller
                 }
             }
             if ($request->has('v')) {
-                $products->whereIn('version', $data['v'], 'or');
+                $products->whereIn('version', $data['v']);
                 $versions = file_get_contents(public_path('/frontend/json/versions.json'));
                 foreach (json_decode($versions) as $version) {
                     if (in_array($version->id, $data['v'])) {
@@ -162,11 +161,13 @@ class ProductController extends Controller
                 } else {
                     $products->orderBy($filters[0], $filters[1]);
                 }
+            } else {
+                $products->orderBy('created_at', 'desc');
             }
 
             $results = $products->get();
 
-            return view('pages.user.product.store', [
+            return view(($sex != 'c') ? 'pages.user.product.store' : 'pages.user.product.brand-store', [
                 'sex' => $sex,
                 'brands' => $brands,
                 'conditions' => $conditions,

@@ -19,17 +19,14 @@ class HomeController extends Controller
     	$proBrands = [];
 
         $slides = Slide::where('status', 1)->orderBy('created_at', 'desc')->get();
-        if ($slides) {
-            
-        }
 
-    	$topSales = Product::where('discount', '>', 0)->orderBy('created_at', 'desc')->limit(6)->get();
+    	$topSales = Product::where('discount', '>', 0)->orderBy('created_at', 'desc')->limit(10)->get();
     	$features = Product::where('is_feature', 1)
     		->with('category')
     		->orderBy('created_at', 'desc')->limit(9)->get();
-    	$brands = Category::orderBy('created_at', 'asc')->limit(5)->get();
+    	$brands = Category::orderBy('created_at', 'asc')->get();
     	if (!empty($brands)) {
-    		$proBrands = Product::where('cat_id', $brands[0]->id)->limit(8)->get();
+    		$proBrands = Product::where('cat_id', $brands[0]->id)->limit(9)->get();
     	}
 
         return view('pages.user.home.index', [
@@ -38,6 +35,15 @@ class HomeController extends Controller
             'features' => $features,
             'brands' => $brands,
             'proBrands' => $proBrands
+        ]);
+    }
+
+    public function brand()
+    {
+        $brands = Category::orderBy('created_at', 'asc')->get();
+
+        return view('pages.user.home.brand', [
+            'brands' => $brands
         ]);
     }
 }

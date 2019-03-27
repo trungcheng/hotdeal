@@ -16,7 +16,7 @@
                     <div class="collapse navbar-collapse" id="header-navbar-main-collapse">
                         <div class="nav mr-auto">
                             <div class="nav-item home">
-                                <a class="nav-link" href="{{ route('home') }}">Thương hiệu</a>
+                                <a class="nav-link" href="{{ route('brand') }}">Thương hiệu</a>
                             </div>
                             <div class="nav-item">
                                 <a class="nav-link" href="{{ route('product-store', ['sex' => 'm']) }}">Đồng hồ nam</a>
