@@ -160,14 +160,26 @@
             <header class="section-header d-flex flex-column flex-md-row align-items-center">
                 <h2 class="section-heading mb-0">các thương hiệu nổi tiếng</h2>
             </header>
-            <div class="brands row gutter-1 gutter-md-2 gutter-lg-3 mb-5">
-                @foreach ($brands as $brand)
-                <div class="col">
-                    <a data-id="{{ $brand->id }}" class="brands-item {{ ($loop->first) ? 'active' : '' }}" href="javascript:void(0)">
-                        <img class="img-fluid" src="{{ asset($brand->icon) }}" alt="{{ $brand->name }}">
-                    </a>
+            <div class="swiper swiper-button-simple brands mb-5">
+                <div class="swiper-container" data-plugin="swiper" data-slidesperview="5" data-breakpoints-xs="3" data-spacebetween="20">
+                    <div class="swiper-wrapper">
+                        @foreach ($brands as $brand)
+                        <div class="swiper-slide">
+                            <a data-id="{{ $brand->id }}" class="brands-item {{ ($loop->first) ? 'active' : '' }}" href="javascript:void(0)">
+                                <img class="img-fluid" src="{{ asset($brand->icon) }}" alt="{{ $brand->name }}">
+                            </a>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-buttons">
+                        <div class="swiper-button-prev">
+                            <i class="icont-chevron-left"></i>
+                        </div>
+                        <div class="swiper-button-next">
+                            <i class="icont-chevron-right"></i>
+                        </div>
+                    </div>
                 </div>
-                @endforeach
             </div>
             @if (count($proBrands) > 0)
             <div class="row mb-5" id="section-brand">
