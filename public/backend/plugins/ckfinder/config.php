@@ -14,8 +14,8 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 ini_set('display_errors', 1);
 
 // Development
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 /*============================ General Settings =======================================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html
@@ -146,7 +146,7 @@ $config['forceAscii'] = false;
 $config['xSendfile'] = false;
 
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_debug
-$config['debug'] = false;
+$config['debug'] = true;
 
 /*==================================== Plugins ========================================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_plugins
