@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $general = General::first();
+
         if ($general) {
             $this->setting = General::first();
             $this->setting->tel = str_replace('.', '', $this->setting->hotline); 

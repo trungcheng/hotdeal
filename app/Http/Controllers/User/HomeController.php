@@ -25,7 +25,7 @@ class HomeController extends Controller
     		->with('category')
     		->orderBy('created_at', 'desc')->limit(9)->get();
     	$brands = Category::orderBy('created_at', 'asc')->get();
-    	if (!empty($brands)) {
+    	if (count($brands) > 0) {
     		$proBrands = Product::where('cat_id', $brands[0]->id)->limit(9)->get();
     	}
 
