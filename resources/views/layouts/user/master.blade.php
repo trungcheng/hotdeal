@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('page') | donghoxachtay.store</title>
+    <title>@yield('page') | Donghoxachtay.store</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="robots" content="index, follow">
@@ -16,7 +16,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="@yield('ogUrl')"> 
     <meta property="og:description" content="@yield('ogDesc')"> 
-    <meta property="og:site_name" content="Autwatch">  
+    <meta property="og:site_name" content="Donghoxachtay">  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">

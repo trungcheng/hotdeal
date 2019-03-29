@@ -1,9 +1,9 @@
 @extends('layouts.user.master')
 
-@section('page')Thương hiệu đồng hồ nổi tiếng tại Autwatch
+@section('page')Thương hiệu đồng hồ nổi tiếng tại Donghoxachtay
 @stop
 
-@section('description')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('description')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
 @section('keywords')đồng hồ chính hãng, thương hiệu đồng hồ, đồng hồ chất lượng, đồng hồ nam, đồng hồ nữ, đồng hồ đẳng cấp, đồng hồ thương hiệu, cửa hàng đồng hồ uy tín
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('brand') }}/
 @stop
 
-@section('propName')Thương hiệu đồng hồ nổi tiếng tại Autwatch.
+@section('propName')Thương hiệu đồng hồ nổi tiếng tại Donghoxachtay.
 @stop
 
-@section('propDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('propDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
-@section('ogTitle')Thương hiệu đồng hồ nổi tiếng tại Autwatch.
+@section('ogTitle')Thương hiệu đồng hồ nổi tiếng tại Donghoxachtay.
 @stop
 
-@section('ogDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('ogDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
 @section('ogUrl'){{ route('brand') }}/
@@ -35,7 +35,7 @@
 @stop
 
 @section('content')
-    <h1 class="hide">Thương hiệu đồng hồ nổi tiếng tại Autwatch</h1>
+    <h1 class="hide">Thương hiệu đồng hồ nổi tiếng tại Donghoxachtay</h1>
     @if (count($brands) > 0)
     <section class="section py-0" style="display:flex;">
         <div class="container">

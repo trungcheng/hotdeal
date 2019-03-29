@@ -1,9 +1,9 @@
 @extends('layouts.user.master')
 
-@section('page')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Autwatch
+@section('page')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Donghoxachtay
 @stop
 
-@section('description')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('description')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
 @section('keywords')đồng hồ chính hãng, thương hiệu đồng hồ, đồng hồ chất lượng, đồng hồ nam, đồng hồ nữ, đồng hồ đẳng cấp, đồng hồ thương hiệu, cửa hàng đồng hồ uy tín
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('product-store', ['sex' => 'c']) }}
 @stop
 
-@section('propName')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Autwatch.
+@section('propName')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Donghoxachtay.
 @stop
 
-@section('propDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('propDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
-@section('ogTitle')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Autwatch.
+@section('ogTitle')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Donghoxachtay.
 @stop
 
-@section('ogDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('ogDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
 @section('ogUrl'){{ route('product-store', ['sex' => 'c']) }}
@@ -35,7 +35,7 @@
 @stop
 
 @section('content')
-    <h1 class="hide">Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Autwatch</h1>
+    <h1 class="hide">Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Donghoxachtay</h1>
     <hr class="divider my-0">
     <div class="container-fluid pt-4">
         <div class="row">

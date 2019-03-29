@@ -1,9 +1,9 @@
 @extends('layouts.user.master')
 
-@section('page')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch
+@section('page')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay
 @stop
 
-@section('description')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('description')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
 @section('keywords')đồng hồ chính hãng, thương hiệu đồng hồ, đồng hồ chất lượng, đồng hồ nam, đồng hồ nữ, đồng hồ đẳng cấp, đồng hồ thương hiệu, cửa hàng đồng hồ uy tín
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('home') }}/
 @stop
 
-@section('propName')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch.
+@section('propName')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay.
 @stop
 
-@section('propDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('propDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
-@section('ogTitle')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch.
+@section('ogTitle')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay.
 @stop
 
-@section('ogDesc')Autwatch - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('ogDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
 @section('ogUrl'){{ route('home') }}/
@@ -35,7 +35,7 @@
 @stop
 
 @section('content')
-    <h1 class="hide">Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Autwatch</h1>
+    <h1 class="hide">Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay</h1>
     <section class="banner section">
         <div class="swiper swiper-pagination-inside">
             <div class="swiper-container" data-plugin="swiper">

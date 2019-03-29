@@ -8,7 +8,7 @@
                     </span>
                 </button>
                 <a class="header-logo" href="{{ route('home') }}">
-                    <img class="header-logo-img" src="{{ asset('frontend/images/logo.png') }}" alt="">
+                    <img class="header-logo-img" src="{{ asset('frontend/images/logo-01.png') }}" alt="Logo donghoxachtay.store">
                 </a>
             </div>
             <div class="col col-auto">

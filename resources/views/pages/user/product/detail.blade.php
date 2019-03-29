@@ -102,7 +102,7 @@
                     </div>
                     <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary mb-3" href="javascript:void(0)">tôi muốn mua sản phẩm này</a>
                     <!-- <p class="text-center fs-sm text-uppercase">Liên hệ đặt mua: <a href="tel:0945106656">0945 10 66 56</a> (Zalo, Viber)</p> -->
-                    <hr class="divider">
+                    <!-- <hr class="divider">
                     <h6 class="text-secondary text-uppercase fs-sm">thông số kỹ thuật</h6>
                     <ul class="list list-mb-2 fs-sm mb-0">
                         <li class="list-item">
@@ -127,7 +127,7 @@
                             <strong>Water resistance:</strong> {{ $product->water_resistance }}
                         </li>
                     </ul>
-                    <hr class="divider">
+                    <hr class="divider"> -->
                 </div>
             </div>
         </div>
