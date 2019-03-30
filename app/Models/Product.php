@@ -57,14 +57,16 @@ class Product extends Model
     public static $rules = [
         'name' => 'required|min:2',
         'price' => 'required',
-        'image' => 'required'
+        'image' => 'required|mimes:jpeg,jpg,png,gif|max:5120'
     ];
 
     public static $messages = [
         'name.required' => 'Tên sản phẩm không được để trống',
         'name.min' => 'Tên sản phẩm ít nhất từ 2 ký tự',
         'price.required' => 'Giá sản phẩm không được để trống',
-        'image.required' => 'Ảnh sản phẩm không được để trống'
+        'image.required' => 'Ảnh sản phẩm không được để trống',
+        'image.mimes' => 'Định dạng ảnh không đúng',
+        'image.max' => 'Dung lượng ảnh không được vượt quá 5MB'
     ];
 
     public static function init($request)
@@ -83,12 +85,12 @@ class Product extends Model
     public static function addAction($data)
     {
         $maxId = self::max('id');
-        if (!empty($data['image_list'])) {
-            $data['image_list'] = json_encode($data['image_list']);
-            $data['image_list'] = str_replace('\\', '', $data['image_list']);
-        } else {
-            $data['image_list'] = '';
-        }
+        // if (!empty($data['image_list'])) {
+        //     $data['image_list'] = json_encode($data['image_list']);
+        //     $data['image_list'] = str_replace('\\', '', $data['image_list']);
+        // } else {
+        //     $data['image_list'] = '';
+        // }
         $data['price'] = str_replace(',', '', $data['price']);
         $data['price_sale'] = str_replace(',', '', $data['price_sale']);
         

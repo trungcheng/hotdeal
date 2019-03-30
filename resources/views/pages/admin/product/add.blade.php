@@ -30,7 +30,7 @@
                             <div class="modal-body">
                                 <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
                                 <div class="form-group">
-                                    <label>Tên sản phẩm</label>
+                                    <label>Tên sản phẩm (*)</label>
                                     <input name="name" type="text" class="form-control title" placeholder="Tên sản phẩm...">
                                 </div>
                                 <div class="form-group">
@@ -47,7 +47,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Giá sản phẩm</label>
+                                    <label>Giá sản phẩm (*)</label>
                                     <input id="price" name="price" type="text" class="form-control title" placeholder="Giá sản phẩm...">
                                 </div>
                                 <!-- <div class="form-group">
@@ -61,15 +61,15 @@
                                     <input id="price_sale" name="price_sale" type="text" class="form-control title" placeholder="Giá khuyến mãi...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Ảnh</label>
-                                    <input name="image" type="text" size="48" class="form-control" id="xFilePath" />
-                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                                    <label>Ảnh (*)</label>
+                                    <input name="image" type="file" class="form-control" id="xFilePath" accept="image/*" />
+                                    <!-- <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button> -->
                                 </div>
                                 <div class="form-group">
                                     <label>List ảnh liên quan</label>      
                                     <div class="box-img">
-                                        <input type="text" size="48" name="image_list[]" class="form-control list-img" id="xFilePath1" />
-                                        <button class="btn btn-primary btn-upload" onclick="openPopupMulti(1)">Tải ảnh lên</button>
+                                        <input type="file" name="image_list[]" class="form-control list-img" id="xFilePath1" accept="image/*" />
+                                        <!-- <button class="btn btn-primary btn-upload" onclick="openPopupMulti(1)">Tải ảnh lên</button> -->
                                     </div>
                                     <button type="button" onclick="add_img();" class="btn btn-brand btn_img" style="margin-top: 8px;">Thêm Ảnh</button>
                                 </div>
@@ -114,7 +114,7 @@
                                     </select>
                                 </div>
 
-                                <fieldset style="margin-top:30px;margin-bottom:30px;">
+                                <!-- <fieldset style="margin-top:30px;margin-bottom:30px;">
                                     <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
                                     <table class="preview-table-upload">
                                         <tr>
@@ -160,7 +160,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </fieldset>
+                                </fieldset> -->
 
                                 <div class="form-group">
                                     <label>Chất liệu dây</label>
@@ -220,42 +220,42 @@
 </script>
 
 <script>
-    function openPopup() {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath' ).value = file.getUrl();
-                } );
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                } );
-            }
-        } );
-    }
+    // function openPopup() {
+    //     CKFinder.popup( {
+    //         chooseFiles: true,
+    //         onInit: function( finder ) {
+    //             finder.on( 'files:choose', function( evt ) {
+    //                 var file = evt.data.files.first();
+    //                 document.getElementById( 'xFilePath' ).value = file.getUrl();
+    //             } );
+    //             finder.on( 'file:choose:resizedImage', function( evt ) {
+    //                 document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+    //             } );
+    //         }
+    //     } );
+    // }
     
-    function openPopupMulti(id) {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath'+id ).value = file.getUrl();
-                });
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
-                });
-            }
-        });
-    }
+    // function openPopupMulti(id) {
+    //     CKFinder.popup( {
+    //         chooseFiles: true,
+    //         onInit: function( finder ) {
+    //             finder.on( 'files:choose', function( evt ) {
+    //                 var file = evt.data.files.first();
+    //                 document.getElementById( 'xFilePath'+id ).value = file.getUrl();
+    //             });
+    //             finder.on( 'file:choose:resizedImage', function( evt ) {
+    //                 document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
+    //             });
+    //         }
+    //     });
+    // }
 </script>
 
 <script>
     var i = 1;
     function add_img(){
         i++;
-        var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="image_list[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-primary">Xóa</button></span></p>';
+        var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="file" class="form-control list-img" name="image_list[]" id="xFilePath'+i+'" accept="image/*" /><button onclick="del_accads('+i+');" type="button" class="btn btn-primary">Xóa</button></span></p>';
         $(insert).appendTo('.box-img');
     }
     function del_accads(id){

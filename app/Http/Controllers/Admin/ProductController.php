@@ -86,7 +86,39 @@ class ProductController extends Controller
 
             $data = $request->all();
             if ($data) {
+                $thumbImage = '';
+                if ($request->hasFile('image')) {
+                    $thumbImage = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 500, 'height' => 600]);
+                    // $thumbImage = /backend/uploads/products/thumbs/2019-03-30-05-02-48-omega-de-ville-46142002-8.jpg
+                    $image = $this->saveImageWithoutResizeForThumb($request->file('image'), $thumbImage);
+                    if (!$thumbImage || !$image) {
+                        return Response::json([
+                            'status' => false,
+                            'message' => 'Không thể lưu ảnh thumbnail chính',
+                            'type' => 'error'
+                        ]);
+                    }
+                }
+                $imageList = [];
+                if(isset($data['image_list']) && count($data['image_list']) > 0) {
+                    foreach ($data['image_list'] as $key => $image_upload) {
+                        $imageName = '';
+                        $imageName = $this->saveImageWithoutResize($image_upload, 'products');
+                        if (!$imageName) {
+                            return Response::json([
+                                'status' => false,
+                                'message' => 'Không thể lưu ảnh liên quan',
+                                'type' => 'error'
+                            ]);
+                        }
+
+                        $imageList[] = $imageName;
+                    }
+                }
+                $data['image'] = $thumbImage;
+                $data['image_list'] = $imageList;
                 Product::addAction($data);
+
                 return Response::json([
                     'status' => true,
                     'message' => 'Thêm sản phẩm thành công', 
