@@ -54,10 +54,15 @@ class Product extends Model
         return $this->hasMany('App\Models\Slide', 'target')->where('slides.target_type', 'product');
     }
 
-    public static $rules = [
+    public static $rules_add = [
         'name' => 'required|min:2',
         'price' => 'required',
         'image' => 'required|mimes:jpeg,jpg,png,gif|max:5120'
+    ];
+
+    public static $rules_update = [
+        'name' => 'required|min:2',
+        'price' => 'required'
     ];
 
     public static $messages = [
@@ -85,12 +90,12 @@ class Product extends Model
     public static function addAction($data)
     {
         $maxId = self::max('id');
-        // if (!empty($data['image_list'])) {
-        //     $data['image_list'] = json_encode($data['image_list']);
-        //     $data['image_list'] = str_replace('\\', '', $data['image_list']);
-        // } else {
-        //     $data['image_list'] = '';
-        // }
+        if (!empty($data['image_list'])) {
+            $data['image_list'] = json_encode($data['image_list']);
+            $data['image_list'] = str_replace('\\', '', $data['image_list']);
+        } else {
+            $data['image_list'] = '[]';
+        }
         $data['price'] = str_replace(',', '', $data['price']);
         $data['price_sale'] = str_replace(',', '', $data['price_sale']);
         
@@ -125,7 +130,7 @@ class Product extends Model
             $data['image_list'] = json_encode($data['image_list']);
             $data['image_list'] = str_replace('\\', '', $data['image_list']);
         } else {
-            $data['image_list'] = '';
+            $data['image_list'] = '[]';
         }
         $data['price'] = str_replace(',', '', $data['price']);
         $data['price_sale'] = str_replace(',', '', $data['price_sale']);

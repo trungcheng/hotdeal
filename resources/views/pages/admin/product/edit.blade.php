@@ -62,32 +62,46 @@
                                     <input id="price_sale" value="{{ number_format($pro->price_sale, 0, 0, ',') }}" name="price_sale" type="text" class="form-control title" placeholder="Giá khuyến mãi...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Ảnh</label>
-                                    <input value="{{ $pro->image }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />
-                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
-                                </div>
-                                <div class="form-group">
-                                    <label>List ảnh liên quan</label> 
-                                    @if ($pro->image_list !== '' && !empty($pro->image_list))
-                                        <div class="box-img">
-                                            @foreach ($pro->image_list as $key => $item)
-                                                <p class="item-img add_{{ $key + 1 }}" style="margin:3px 0; height: 40px; padding:0;">
-                                                    <span style="display:block;">
-                                                        <input value="{{ $item }}" type="text" size="48" name="image_list[]" class="form-control list-img" id="xFilePath{{ $key + 1 }}" />
-                                                        <button class="btn btn-primary btn-upload" onclick="openPopupMulti({{ $key + 1 }})">Tải ảnh lên</button>
-                                                        <button onclick="del_accads({{ $key + 1 }});" type="button" class="btn btn-primary">Xóa</button>
-                                                    </span>
-                                                </p>
-                                            @endforeach 
-                                        </div>
-                                    @else
-                                        <div class="box-img">
-                                            <input type="text" size="48" name="image_list[]" class="form-control list-img" id="xFilePath50" />
-                                            <button class="btn btn-primary btn-upload" onclick="openPopupMulti(50)">Tải ảnh lên</button>
-                                        </div>
+                                    <label>Ảnh sản phẩm (*)</label><br>
+                                    @if(isset($pro->image) && is_file(public_path($pro->image)))
+                                        <img src="{{url($pro->image)}}" width="100" height="100" />
                                     @endif
-                                    <button type="button" onclick="add_img();" class="btn btn-brand btn_img" style="margin-top: 8px;">Thêm Ảnh</button>
+                                    <input type="file" name="image" class="form-control" accept="image/*" />
                                 </div>
+                                @if (count($pro->image_list) > 0)
+                                    <div class="form-group list-image">
+                                        <label>List ảnh liên quan</label>
+                                        <div class="col-md-12" style="border:1px solid #ccc;margin-bottom:15px;padding:10px;">
+                                            @foreach ($pro->image_list as $key => $image)
+                                                @if (!empty($image))
+                                                    <div class="col-md-3">
+                                                        @if (isset($pro->image_list[$key]) && is_file(public_path($pro->image_list[$key])))
+                                                            <img src="{{ url($pro->image_list[$key]) }}" width="100" height="100" />
+                                                        @endif
+                                                        <div class="form-group">
+                                                            <label>Hình ảnh liên quan {{ $key+1 }}</label>
+                                                            <input type="file" class="form-control" name="update_image[{{ $key }}]" accept="image/*" />
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                            <div class="form-group">
+                                                <div class="col-md-3" style="margin-top:100px;">
+                                                    <div class="form-group">
+                                                        <label>Thêm ảnh liên quan</label>
+                                                        <input type="file" class="form-control" name="add_image[]" accept="image/*" multiple />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="form-group">
+                                        <label>List ảnh liên quan</label>
+                                        <input type="file" class="form-control" name="add_image[]" accept="image/*" multiple />
+                                    </div>
+                                @endif
+
                                 <div class="form-group">
                                     <label>Mô tả ngắn</label>
                                     <textarea class="form-control" id="short_content">{!! $pro->short_desc !!}</textarea>
@@ -128,7 +142,7 @@
                                     </select>
                                 </div>
 
-                                <fieldset style="margin-top:30px;margin-bottom:30px;">
+                                <!-- <fieldset style="margin-top:30px;margin-bottom:30px;">
                                     <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
                                     <table class="preview-table-upload">
                                         <tr>
@@ -174,7 +188,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </fieldset>
+                                </fieldset> -->
 
                                 <div class="form-group">
                                     <label>Chất liệu dây</label>

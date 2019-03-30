@@ -58,7 +58,7 @@ class ProductController extends Controller
             $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
             $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
             $versions = file_get_contents(public_path('/frontend/json/versions.json'));
-            if ($pro->image_list !== '') $pro->image_list = json_decode($pro->image_list);
+            if ($pro->image_list !== '[]') $pro->image_list = json_decode($pro->image_list);
 
             return view('pages.admin.product.edit', [
                 'pro' => $pro,
@@ -75,7 +75,7 @@ class ProductController extends Controller
     public function add(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), Product::$rules, Product::$messages);
+            $validator = Validator::make($request->all(), Product::$rules_add, Product::$messages);
             if ($validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -89,7 +89,6 @@ class ProductController extends Controller
                 $thumbImage = '';
                 if ($request->hasFile('image')) {
                     $thumbImage = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 500, 'height' => 600]);
-                    // $thumbImage = /backend/uploads/products/thumbs/2019-03-30-05-02-48-omega-de-ville-46142002-8.jpg
                     $image = $this->saveImageWithoutResizeForThumb($request->file('image'), $thumbImage);
                     if (!$thumbImage || !$image) {
                         return Response::json([
@@ -142,7 +141,7 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), Product::$rules, Product::$messages);
+            $validator = Validator::make($request->all(), Product::$rules_update, Product::$messages);
             if ($validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -155,7 +154,58 @@ class ProductController extends Controller
             if ($data) {
                 $product = Product::find($data['id']);
                 if ($product) {
+                    $thumbnail = '';
+                    if ($request->hasFile('image')) {
+                        $this->deleteImage($product->image);
+                        $thumbnail = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 500, 'height' => 600]);
+                        $image = $this->saveImageWithoutResizeForThumb($request->file('image'), $thumbnail);
+                        if (!$thumbnail || !$image) {
+                            return Response::json([
+                                'status' => false,
+                                'message' => 'Không thể lưu ảnh thumbnail chính',
+                                'type' => 'error'
+                            ]);
+                        }
+                    } else {
+                        $thumbnail = $product->image;
+                    }
+                    $currentImages = !is_null($product->image_list) ? json_decode($product->image_list) : [];
+
+                    if (!empty($request->update_image)) {
+                        foreach ($request->update_image as $key => $image) {
+                            if (!is_null($image)) {
+                                $newImage = $this->saveImageWithoutResize($image, 'products');
+                                if (!$newImage) {
+                                    return Response::json([
+                                        'status' => false,
+                                        'message' => 'Không thể lưu ảnh liên quan',
+                                        'type' => 'error'
+                                    ]);
+                                }
+                                $currentImages[$key] = $newImage;
+                            }
+                        }
+                    }
+                    if (!empty($request->add_image)) {
+                        foreach ($request->add_image as $key => $image) {
+                            if (!is_null($image)) {
+                                $newImage = $this->saveImageWithoutResize($image, 'products');
+                                if (!$newImage) {
+                                    return Response::json([
+                                        'status' => false,
+                                        'message' => 'Không thể lưu ảnh liên quan',
+                                        'type' => 'error'
+                                    ]);
+                                }
+                                array_push($currentImages, $newImage);
+                            }
+                        }
+                    }
+
+                    $data['image'] = $thumbnail;
+                    $data['image_list'] = $currentImages;
                     Product::updateAction($data, $product);
+
                     return Response::json([
                         'status' => true, 
                         'message' => 'Cập nhật sản phẩm thành công', 

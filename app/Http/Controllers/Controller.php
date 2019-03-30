@@ -88,7 +88,7 @@ class Controller extends BaseController
 
             $img = Image::make($imageRealPath);
             
-            $pathToDirectory =  '/backend/uploads/' . $directory . '/thumbs/';
+            $pathToDirectory =  '/backend/uploads/' . $directory . '/';
             if (!$this->checkAndMakeDirectory($pathToDirectory)) {
                 return false;
             }

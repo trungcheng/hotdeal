@@ -60,18 +60,14 @@
                                     <label>Giá sale</label>
                                     <input id="price_sale" name="price_sale" type="text" class="form-control title" placeholder="Giá khuyến mãi...">
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label>Ảnh (*)</label>
-                                    <input name="image" type="file" class="form-control" id="xFilePath" accept="image/*" />
-                                    <!-- <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button> -->
+                                    <label>Ảnh sản phẩm (*)</label>
+                                    <input type="file" name="image" accept="image/*" />
                                 </div>
                                 <div class="form-group">
-                                    <label>List ảnh liên quan</label>      
-                                    <div class="box-img">
-                                        <input type="file" name="image_list[]" class="form-control list-img" id="xFilePath1" accept="image/*" />
-                                        <!-- <button class="btn btn-primary btn-upload" onclick="openPopupMulti(1)">Tải ảnh lên</button> -->
-                                    </div>
-                                    <button type="button" onclick="add_img();" class="btn btn-brand btn_img" style="margin-top: 8px;">Thêm Ảnh</button>
+                                    <label>List ảnh liên quan (có thể chọn nhiều ảnh cùng lúc)</label>
+                                    <input type="file" name="image_list[]" accept="image/*" multiple />
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn</label>

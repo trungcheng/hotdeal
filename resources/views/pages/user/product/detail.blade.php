@@ -46,7 +46,7 @@
                         <div class="swiper swiper-thumbs flex-grow-1">
                             <div class="swiper-container" data-plugin="swiper-gallery-row-thumbs">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide" style="background-image: url({{ asset($product->image) }})"></div>
+                                    <div class="swiper-slide" style="background-image: url({{ asset($imageOriginal) }})"></div>
                                     @if (count($imageLists) > 0)
                                         @foreach ($imageLists as $image)
                                             <div class="swiper-slide" style="background-image: url({{ asset($image['link']) }})"></div>
@@ -60,8 +60,8 @@
                             <div class="swiper-container" data-plugin="swiper-gallery-row">
                                 <div class="swiper-wrapper">
                                     <figure class="swiper-slide">
-                                        <a href="{{ asset($product->image) }}" data-size="{{ $product->image_width }}x{{ $product->image_height }}">
-                                            <img class="img-fluid" src="{{ asset($product->image) }}" alt="{{ $product->name }}">
+                                        <a href="{{ asset($imageOriginal) }}" data-size="{{ $product->image_width }}x{{ $product->image_height }}">
+                                            <img class="img-fluid" src="{{ asset($imageOriginal) }}" alt="{{ $product->name }}">
                                         </a>
                                     </figure>
                                     @if (count($imageLists) > 0)

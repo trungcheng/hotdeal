@@ -18,8 +18,8 @@ class ProductController extends Controller
     {
     	$product = Product::where('slug', $slug)->first();
         if ($product) {
-
-            $data = getimagesize(url($product->image));
+            $imageOriginal = str_replace('/thumbs', '', $product->image);
+            $data = getimagesize(url($imageOriginal));
             $product->image_width = $data[0];
             $product->image_height = $data[1];
 
@@ -37,6 +37,7 @@ class ProductController extends Controller
             $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(6)->get()->except($product->id);
 
             return view('pages.user.product.detail', [
+                'imageOriginal' => $imageOriginal,
                 'product' => $product,
                 'relatedProducts' => $relatedProducts,
                 'imageLists' => $imageLists
