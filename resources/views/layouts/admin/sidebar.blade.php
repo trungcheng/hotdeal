@@ -10,15 +10,55 @@
 
         <li><a data-route="/admin" href="{{ url('/admin/dashboard') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
 
-        <li><a data-route="/admin/categories" href="{{ url('/admin/categories') }}"><i class="fa fa-bars"></i> <span>Quản lý danh mục</span></a></li>
+        <li class="treeview">
+            <a href="javascript:void(0)"><i class="fa fa-bars"></i> <span>Quản lý danh mục</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a style="margin-left:35px;" data-route="/admin/categories" href="{{ url('/admin/categories') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/categories/create" href="{{ url('/admin/categories/create') }}">Thêm mới</a></li>
+            </ul>
+        </li>
         
         <!-- <li><a data-route="/admin/orders" href="{{ url('/admin/orders') }}"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
         
-        <li><a data-route="/admin/products" href="{{ url('/admin/products') }}"><i class="fa fa-suitcase"></i> <span>Quản lý sản phẩm</span></a></li>
+        <li class="treeview">
+            <a href="javascript:void(0)"><i class="fa fa-suitcase"></i> <span>Quản lý sản phẩm</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a style="margin-left:35px;" data-route="/admin/products" href="{{ url('/admin/products') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/products/create" href="{{ url('/admin/products/create') }}">Thêm mới</a></li>
+            </ul>
+        </li>
         
-        <li><a data-route="/admin/articles" href="{{ url('/admin/articles') }}"><i class="fa fa-newspaper-o"></i> <span>Quản lý bài viết</span></a></li>
+        <li class="treeview">
+            <a href="javascript:void(0)"><i class="fa fa-newspaper-o"></i> <span>Quản lý danh mục</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a style="margin-left:35px;" data-route="/admin/articles" href="{{ url('/admin/articles') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/articles/create" href="{{ url('/admin/articles/create') }}">Thêm mới</a></li>
+            </ul>
+        </li>
 
-        <li><a data-route="/admin/slides" href="{{ url('/admin/slides') }}"><i class="fa fa-sliders"></i> <span>Quản lý slide</span></a></li>
+        <li class="treeview">
+            <a href="javascript:void(0)"><i class="fa fa-sliders"></i> <span>Quản lý slide</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a style="margin-left:35px;" data-route="/admin/slides" href="{{ url('/admin/slides') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/slides/create" href="{{ url('/admin/slides/create') }}">Thêm mới</a></li>
+            </ul>
+        </li>
 
         <li><a data-route="/admin/setting" href="{{ url('/admin/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
         
