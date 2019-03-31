@@ -44,9 +44,11 @@
                     <a href="{{ route('home') }}">Trang chủ</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="{{ route('product-detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                    <a href="{{ route('brand') }}">Thương hiệu</a>
                 </li>
-                <!--li.breadcrumb-item.active(aria-current='page') Data-->
+                <li class="breadcrumb-item">
+                    <a href="{{ route('product-store', ['sex' => 'c', 'br[]' => ($product->category) ? $product->category->id : '']) }}">{{ ($product->category) ? $product->category->name : '' }}</a>
+                </li>
             </ol>
         </nav>
     </div>
