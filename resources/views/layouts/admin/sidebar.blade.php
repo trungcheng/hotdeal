@@ -37,7 +37,7 @@
         </li>
         
         <li class="treeview">
-            <a href="javascript:void(0)"><i class="fa fa-newspaper-o"></i> <span>Quản lý danh mục</span>
+            <a href="javascript:void(0)"><i class="fa fa-newspaper-o"></i> <span>Quản lý bài viết</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
