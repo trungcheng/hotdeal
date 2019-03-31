@@ -132,7 +132,7 @@
                         </a>
                         <div class="card-body">
                             <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset($fea->category->icon) }}" alt="{{ $fea->category->name }}">
+                                <img class="card-logo img-fluid" src="{{ ($fea->category) ? asset($fea->category->icon) : '' }}" alt="{{ ($fea->category) ? $fea->category->name : '' }}">
                             </a>
                             <h3 class="card-title mb-2">
                                 <a href="{{ route('product-detail', ['slug' => $fea->slug]) }}">{{ $fea->name }}</a>
@@ -191,7 +191,7 @@
                         </a>
                         <div class="card-body">
                             <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset($pro->category->icon) }}" alt="{{ $pro->category->name }}">
+                                <img class="card-logo img-fluid" src="{{ ($pro->category) ? asset($pro->category->icon) : '' }}" alt="{{ ($pro->category) ? $pro->category->name : '' }}">
                             </a>
                             <h3 class="card-title mb-2">
                                 <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">{{ $pro->name }}</a>

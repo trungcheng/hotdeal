@@ -123,7 +123,7 @@
 
         $scope.delete = function (cate, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa danh mục này ?",
+                title: "Bạn chắc chắn muốn xóa danh mục này ? Tất cả các sản phẩm thuộc danh mục này sẽ bị xóa theo !",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",

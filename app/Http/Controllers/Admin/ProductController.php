@@ -58,7 +58,7 @@ class ProductController extends Controller
             $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
             $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
             $versions = file_get_contents(public_path('/frontend/json/versions.json'));
-            if ($pro->image_list !== '[]') $pro->image_list = json_decode($pro->image_list);
+            $pro->image_list = json_decode($pro->image_list);
 
             return view('pages.admin.product.edit', [
                 'pro' => $pro,

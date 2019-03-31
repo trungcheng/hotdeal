@@ -311,7 +311,7 @@
                                     </a>
                                     <div class="card-body">
                                         <a class="d-inline-block mb-1" href="javascript:void(0)">
-                                            <img class="card-logo img-fluid" src="{{ asset($result->category->icon) }}" alt="{{ $result->category->name }}">
+                                            <img class="card-logo img-fluid" src="{{ ($result->category) ? asset($result->category->icon) : '' }}" alt="{{ ($result->category) ? $result->category->name : '' }}">
                                         </a>
                                         <h3 class="card-title mb-2">
                                             <a href="{{ route('product-detail', ['slug' => $result->slug]) }}">{{ $result->name }}</a>

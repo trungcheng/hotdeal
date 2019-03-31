@@ -3,10 +3,10 @@
 @section('page'){{ $product->name }}
 @stop
 
-@section('description'){{ $product->name }} là dòng đồng hồ cao cấp của {{ $product->category->name }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@section('description'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
 @stop
 
-@section('keywords'){{ $product->name }}, {{ $product->category->name }}
+@section('keywords'){{ $product->name }}, {{ ($product->category) ? $product->category->name : 'Autwatch' }}
 @stop
 
 @section('canonical'){{ route('product-detail', ['slug' => $product->slug]) }}
@@ -18,13 +18,13 @@
 @section('propName'){{ $product->name }}
 @stop
 
-@section('propDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ $product->category->name }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@section('propDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
 @stop
 
 @section('ogTitle'){{ $product->name }}
 @stop
 
-@section('ogDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ $product->category->name }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@section('ogDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
 @stop
 
 @section('ogUrl'){{ route('product-detail', ['slug' => $product->slug]) }}
@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img class="product-logo img-fluid mb-3" src="{{ asset($product->category->icon) }}" height="12">
+                    <img class="product-logo img-fluid mb-3" src="{{ ($product->category) ? asset($product->category->icon) : '' }}" height="12">
                     <h1 class="product-title mb-3">{{ $product->name }}</h1>
                     <p style="opacity:0.8;margin-top:-10px;font-size:14px;">Model: {!! $product->sku_id !!}</p>
                     {!! ($product->short_desc != '') ? $product->short_desc : '' !!}
