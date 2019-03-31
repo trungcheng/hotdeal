@@ -8,14 +8,14 @@
                     </span>
                 </button>
                 <a class="header-logo" href="{{ route('home') }}">
-                    <img class="header-logo-img" src="{{ asset('frontend/images/logo-01.png') }}" alt="Logo donghoxachtay.store">
+                    <img class="header-logo-img" src="{{ asset('frontend/images/logo.png') }}" alt="Logo donghoxachtay.store">
                 </a>
             </div>
             <div class="col col-auto">
                 <nav class="navbar navbar-expand-lg navbar-light header-navbar-main navbar-main navbar-main-effect-1 navbar-main-trigger-hover">
                     <div class="collapse navbar-collapse" id="header-navbar-main-collapse">
                         <div class="nav mr-auto">
-                            <div class="nav-item home">
+                            <div class="nav-item">
                                 <a class="nav-link" href="{{ route('brand') }}">Thương hiệu</a>
                             </div>
                             <div class="nav-item">

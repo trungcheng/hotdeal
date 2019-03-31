@@ -58,6 +58,78 @@ $(document).ready(function(){
 
 
     // ---------------------------------------------------------------------------
+    // magnific popup
+    // ---------------------------------------------------------------------------
+
+    $('[data-plugin="mfp-popup"]').each(function () {
+        var config = {};
+        config.type = $(this).data('type') !== undefined ? $(this).data('type') : 'inline';
+        config.midClick = $(this).data('midclick') !== undefined ? $(this).data('midclick') : false;
+        config.mainClass = $(this).data('mainclass') !== undefined ? $(this).data('mainclass') : '';
+        config.preloader = $(this).data('preloader') !== undefined ? $(this).data('preloader') : true;
+        config.focus = $(this).data('focus') !== undefined ? $(this).data('focus') : '';
+        config.closeOnContentClick = $(this).data('closeoncontentclick') !== undefined ? $(this).data('closeoncontentclick') : false;
+        config.closeOnBgClick = $(this).data('closeonbgclick') !== undefined ? $(this).data('closeonbgclick') : true;
+        config.closeBtnInside = $(this).data('closebtninside') !== undefined ? $(this).data('closebtninside') : false;
+        config.showCloseBtn = $(this).data('showclosebtn') !== undefined ? $(this).data('showclosebtn') : true;
+        config.enableEscapeKey = $(this).data('enableescapekey') !== undefined ? $(this).data('enableescapekey') : true;
+        config.modal = $(this).data('modal') !== undefined ? $(this).data('modal') : false;
+        config.alignTop = $(this).data('aligntop') !== undefined ? $(this).data('aligntop') : false;
+        config.index = $(this).data('index') !== undefined ? $(this).data('index') : null;
+        config.fixedContentPos = $(this).data('fixedcontentpos') !== undefined ? $(this).data('fixedcontentpos') : 'auto';
+        config.fixedBgPos = $(this).data('fixedbgpos') !== undefined ? $(this).data('fixedbgpos') : 'auto';
+        config.overflowY = $(this).data('overflowy') !== undefined ? $(this).data('overflowy') : 'auto';
+        config.autoFocusLast = $(this).data('autofocuslast') !== undefined ? $(this).data('autofocuslast') : true;
+
+        if ($(this).data('type') === 'image') {
+            config.image = {
+                verticalFit: $(this).data('verticalfit') !== undefined ? $(this).data('verticalfit') : true,
+                cursor: $(this).data('cursor') !== undefined ? $(this).data('cursor') : 'mfp-zoom-out-cur',
+            }
+        }
+
+        if ($(this).data('gallery') === true) {
+            config.delegate = $(this).data('delegate') !== undefined ? $(this).data('delegate') : 'a';
+            config.gallery = {
+                enabled: true,
+                navigateByImgClick: $(this).data('navigatebyimgclick') !== undefined ? $(this).data('navigatebyimgclick') : true
+            };
+        }
+
+        if ($(this).data('effect')) {
+            config.removalDelay = $(this).data('removaldelay') !== undefined ? $(this).data('removaldelay') : 500;
+            config.mainClass = $(this).data('effect');
+            config.callbacks = {
+                beforeOpen: function() {
+                    this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+                }
+            };
+        }
+
+        if ($(this).data('zoom') === true) {
+            config.removalDelay = $(this).data('removaldelay') !== undefined ? $(this).data('removaldelay') : 500;
+            config.mainClass = $(this).data('mainclass') !== undefined ? $(this).data('mainclass') : 'mfp-with-zoom mfp-img-mobile';
+            config.zoom = {
+                enabled: true,
+                duration: 300, // duration of the effect, in milliseconds
+                easing: 'ease-in-out',
+                opener: function(element) {
+                    return element.find('img');
+                }
+            };
+        }
+
+        $(this).magnificPopup(config);
+    });
+
+    // mfp-dismiss
+    $(document).on('click', '.mfp-dismiss', function (e) {
+        e.preventDefault();
+        $.magnificPopup.close();
+    });
+
+
+    // ---------------------------------------------------------------------------
     // swiper
     // ---------------------------------------------------------------------------
 
@@ -138,10 +210,6 @@ $(document).ready(function(){
     });
 
     var $swiper_gallery_row = new Swiper('[data-plugin="swiper-gallery-row"]', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
         thumbs: {
             swiper: $swiper_gallery_row_thumbs
         }

@@ -63,9 +63,11 @@
         </div>
     </section>
     @if (count($topSales) > 0)
-    <section class="swiper swiper-fullwidth">
+    <section class="swiper swiper-fullwidth mb-5">
         <div class="container">
-            <h2 class="section-heading text-center text-md-left">Top Sales</h2>
+            <h2 class="section-heading text-center text-md-left">
+                <span class="line-bottom">Top Sales</span>
+            </h2>
         </div>
         <div class="swiper-container" data-plugin="swiper" data-slidesperview="4" data-breakpoints-lg="3" data-breakpoints-md="2">
             <div class="swiper-wrapper">
@@ -79,7 +81,7 @@
                             </div>
                             <div class="card-price-border mb-2">{{ number_format($top->price_sale, 0, 0, '.') }} VND</div>
                         </div>
-                        <a class="thumbnail py-0" href="{{ route('product-detail', ['slug' => $top->slug]) }}">
+                        <a class="thumbnail" href="{{ route('product-detail', ['slug' => $top->slug]) }}">
                             <img class="thumbnail-img" src="{{ asset($top->image) }}" alt="{{ $top->name }}">
                         </a>
                         <div class="card-body">
@@ -108,7 +110,9 @@
     <section class="section py-0">
         <div class="container">
             <header class="section-header d-flex flex-column flex-md-row align-items-center">
-                <h2 class="section-heading mb-4 mb-md-0">Sản phẩm nổi bật</h2>
+                <h2 class="section-heading mb-4 mb-md-0">
+                    <span class="line-bottom">Sản phẩm nổi bật</span>
+                </h2>
                 <nav class="tabs tabs-simple fs-sm ml-md-auto">
                     <ul class="nav nav-tabs mb-0">
                         <li class="nav-item">
@@ -118,14 +122,14 @@
                             <a data-sex="m" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nam</a>
                         </li>
                         <li class="nav-item">
-                            <a data-sex="f" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nữ</a>
+                            <a data-sex="f" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nam</a>
                         </li>
                     </ul>
                 </nav>
             </header>
-            <div class="row" id="section-feature">
+            <div class="row gutter-2 gutter-md-3" id="section-feature">
                 @foreach ($features as $fea)
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                <div class="col-6 col-lg-4 d-flex mb-5 mb-md-4">
                     <div class="card card-product">
                         <a class="thumbnail" href="{{ route('product-detail', ['slug' => $fea->slug]) }}">
                             <img class="thumbnail-img" src="{{ asset($fea->image) }}" alt="{{ $fea->name }}">
@@ -150,6 +154,9 @@
                 </div>
                 @endforeach
             </div>
+            <div class="text-center">
+                <a class="btn btn-secondary text-uppercase rounded-0 px-4" href="#">Xem thêm</a>
+            </div>
         </div>
     </section>
     <hr class="divider my-5">
@@ -158,7 +165,9 @@
     <section class="section py-0">
         <div class="container">
             <header class="section-header d-flex flex-column flex-md-row align-items-center">
-                <h2 class="section-heading mb-0">các thương hiệu nổi tiếng</h2>
+                <h2 class="section-heading mb-0">
+                    <span class="line-bottom">các thương hiệu nổi tiếng</span>
+                </h2>
             </header>
             <div class="swiper swiper-button-simple brands mb-5">
                 <div class="swiper-container" data-plugin="swiper" data-slidesperview="5" data-breakpoints-xs="3" data-spacebetween="20">
@@ -182,9 +191,9 @@
                 </div>
             </div>
             @if (count($proBrands) > 0)
-            <div class="row mb-5" id="section-brand">
+            <div class="row gutter-2 gutter-md-3 mb-5" id="section-brand">
                 @foreach ($proBrands as $pro)
-                <div class="col-md-6 col-lg-4 d-flex mb-4">
+                <div class="col-6 col-lg-4 d-flex mb-5 mb-md-4">
                     <div class="card card-product">
                         <a class="thumbnail" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                             <img class="thumbnail-img" src="{{ asset($pro->image) }}" alt="{{ $pro->name }}">

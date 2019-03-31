@@ -4,7 +4,7 @@
             <div class="row py-3 align-items-center">
                 <div class="col-md-6 mb-3">
                     <a class="footer-logo mb-4" href="{{ route('home') }}">
-                        <img class="img-fluid" src="{{ asset('frontend/images/logo-01.png') }}" alt="Logo donghoxachtay.store">
+                        <img class="img-fluid" src="{{ asset('frontend/images/logo.png') }}" alt="Logo donghoxachtay.store">
                     </a>
                     <ul class="list list-icons">
                         <li class="list-item">

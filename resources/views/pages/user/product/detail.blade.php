@@ -36,10 +36,24 @@
 
 @section('content')
     <h1 class="hide">{{ $product->name }}</h1>
-    <section class="product pt-5">
+    <hr class="divider my-0">
+    <div class="container my-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb text-uppercase mb-0">
+                <li class="breadcrumb-item">
+                    <a href="{{ route('home') }}">Trang chủ</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ route('product-detail', ['slug' => $product->slug]) }}">{{ $product->name }}</a>
+                </li>
+                <!--li.breadcrumb-item.active(aria-current='page') Data-->
+            </ol>
+        </nav>
+    </div>
+    <section class="product">
         <div class="container">
-            <div class="row flex-column-reverse flex-md-row mb-5">
-                <div class="col-md-8">
+            <div class="row mb-5">
+                <div class="col-lg-8">
                     <!-- row.flex-column-reverse.flex-md-row.gutter-2-->
                     <div class="gallery gallery-row mb-5">
                         <!--.col-thumb-->
@@ -77,6 +91,22 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-4">
+                    <img class="product-logo img-fluid mb-3" src="{{ ($product->category) ? asset($product->category->icon) : '' }}" height="12">
+                    <h1 class="product-title mb-3">{{ $product->name }}</h1>
+                    <p class="product-info">Model: {!! $product->sku_id !!}</p>
+                    {!! ($product->short_desc != '') ? $product->short_desc : '' !!}
+                    <div class="mb-3">
+                        <div class="product-price">{{ number_format($product->price_sale, 0, 0, '.') }} VND</div>
+                        <div>
+                            <del class="product-price-old">Giá retail: {{ number_format($product->price, 0, 0, '.') }} VND</del>
+                        </div>
+                    </div>
+                    <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary mb-3" data-plugin="mfp-popup" data-effect="mfp-zoom-in" href="#modal-product-detail">tôi muốn mua sản phẩm này</a>
+                    <hr class="divider">
+                </div>
+                <div class="col-lg-8">
                     <div class="product-detail" id="product-detail">
                         <h4 class="text-uppercase text-primary mb-4">thông tin sản phẩm</h4>
                         <div></div>
@@ -89,55 +119,14 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <img class="product-logo img-fluid mb-3" src="{{ ($product->category) ? asset($product->category->icon) : '' }}" height="12">
-                    <h1 class="product-title mb-3">{{ $product->name }}</h1>
-                    <p style="opacity:0.8;margin-top:-10px;font-size:14px;">Model: {!! $product->sku_id !!}</p>
-                    {!! ($product->short_desc != '') ? $product->short_desc : '' !!}
-                    <div class="mb-3">
-                        <div class="product-price">{{ number_format($product->price_sale, 0, 0, '.') }} VND</div>
-                        <div>
-                            <del class="product-price-old">Giá retail: {{ number_format($product->price, 0, 0, '.') }} VND</del>
-                        </div>
-                    </div>
-                    <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary mb-3" href="javascript:void(0)">tôi muốn mua sản phẩm này</a>
-                    <!-- <p class="text-center fs-sm text-uppercase">Liên hệ đặt mua: <a href="tel:0945106656">0945 10 66 56</a> (Zalo, Viber)</p> -->
-                    <!-- <hr class="divider">
-                    <h6 class="text-secondary text-uppercase fs-sm">thông số kỹ thuật</h6>
-                    <ul class="list list-mb-2 fs-sm mb-0">
-                        <li class="list-item">
-                            <strong>Between lugs:</strong> {{ ($product->between_lug) ? $product->between_lug.' mm' : '' }}
-                        </li>
-                        <li class="list-item">
-                            <strong>Bracelet:</strong> {{ $product->bracelet }}
-                        </li>
-                        <li class="list-item">
-                            <strong>Case:</strong> {{ $product->case }}
-                        </li>
-                        <li class="list-item">
-                            <strong>Case diameter:</strong> {{ ($product->case_diameter) ? $product->case_diameter.' mm' : '' }}
-                        </li>
-                        <li class="list-item">
-                            <strong>Dial colour:</strong> {{ $product->dial_color }}
-                        </li>
-                        <li class="list-item">
-                            <strong>Crystal:</strong> {{ $product->crystal }}
-                        </li>
-                        <li class="list-item">
-                            <strong>Water resistance:</strong> {{ $product->water_resistance }}
-                        </li>
-                    </ul>
-                    <hr class="divider"> -->
-                </div>
             </div>
         </div>
         <div class="product-comment section bg-gray-100">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-lg-8">
                         <div class="product-comment-inner">
                             <h3 class="section-heading text-primary">hỏi đáp</h3>
-                            <!-- <img class="img-fluid" src="{{ asset('frontend/images/ex/facebook-plugins.png') }}" alt=""> -->
                             <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="650" data-numposts="5"></div>
                         </div>
                     </div>
@@ -183,7 +172,8 @@
     @if (count($relatedProducts) > 0)
     <section class="swiper swiper-fullwidth mb-5">
         <div class="container">
-            <h2 class="section-heading text-center text-md-left">Sản phẩm TƯƠNG TỰ
+            <h2 class="section-heading text-center text-md-left">
+                <span class="line-bottom">Sản phẩm TƯƠNG TỰ</span>
             </h2>
         </div>
         <div class="swiper-container" data-plugin="swiper" data-slidesperview="4" data-breakpoints-lg="3" data-breakpoints-md="2">
@@ -198,7 +188,7 @@
                             </div>
                             <div class="card-price-border mb-2">{{ number_format($pro->price_sale, 0, 0, '.') }} VND</div>
                         </div>
-                        <a class="thumbnail py-0" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                        <a class="thumbnail" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                             <img class="thumbnail-img" src="{{ asset($pro->image) }}" alt="{{ $pro->name }}">
                         </a>
                         <div class="card-body">
@@ -222,6 +212,53 @@
         </div>
     </section>
     @endif
+
+    <div class="white-popup mfp-with-anim mfp-hide modal-product-detail" id="modal-product-detail">
+        <div class="modal-body">
+            <div class="card card-product border-0">
+                <div class="row align-items-center no-gutters">
+                    <div class="col-md-5 col-3">
+                        <img class="img-fluid w-100" src="images/ex/product/slider-1.jpg">
+                    </div>
+                    <div class="col-md-7 col-9">
+                        <div class="card-body p-3 p-md-4">
+                            <a class="d-inline-block mb-1" href="#">
+                                <img class="card-logo img-fluid" src="images/ex/brands/omega.png" alt="">
+                            </a>
+                            <h3 class="card-title mb-2">
+                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                            </h3>
+                            <div class="d-flex flex-wrap align-items-center mb-2">
+                                <span class="card-price mr-2">240.000.000 VND</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-body section-background" style="background-image: url(images/bg-newsletter.jpg)">
+            <div class="row justify-content-center">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Tên">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Số điện thoại">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Địa chỉ">
+                    </div>
+                    <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary" data-plugin="mfp-popup" data-effect="mfp-zoom-in" href="#modal-product-success">Gửi liên hệ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="white-popup mfp-with-anim mfp-hide" id="modal-product-success">
+        <div class="modal-body text-center">
+            <h3 class="text-success">Success</h3>
+        </div>
+    </div>
+
 @stop
 
 @section('pageJs')

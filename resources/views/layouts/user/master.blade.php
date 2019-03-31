@@ -22,7 +22,7 @@
     <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css?').time() }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css?').time() }}">
+    <!-- <link rel="stylesheet" href="{{ asset('frontend/css/custom.css?').time() }}"> -->
     @yield('pageCss')
     <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
@@ -45,19 +45,19 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide text-center">
                                             <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
-                                            <!-- <a href="javascript:void(0)">
+                                            <!-- <a href="#">
                                                 <ins>Xem thông tin chi tiết 1</ins>
                                             </a> -->
                                         </div>
                                         <div class="swiper-slide text-center">
                                             <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
-                                            <!-- <a href="javascript:void(0)">
+                                            <!-- <a href="#">
                                                 <ins>Xem thông tin chi tiết 2</ins>
                                             </a> -->
                                         </div>
                                         <div class="swiper-slide text-center">
                                             <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
-                                            <!-- <a href="javascript:void(0)">
+                                            <!-- <a href="#">
                                                 <ins>Xem thông tin chi tiết 3</ins>
                                             </a> -->
                                         </div>
@@ -93,6 +93,7 @@
     <script src="{{ asset('frontend/js/vendor/photoswipe.min.js') }}"></script>
     <script src="{{ asset('frontend/js/vendor/photoswipe-ui-default.min.js') }}"></script>
     <script src="{{ asset('frontend/js/photoswipe-init.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/vendor/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
     @yield('pageJs')
