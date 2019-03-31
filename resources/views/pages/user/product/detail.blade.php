@@ -218,12 +218,12 @@
             <div class="card card-product border-0">
                 <div class="row align-items-center no-gutters">
                     <div class="col-md-5 col-3">
-                        <img class="img-fluid w-100" src="images/ex/product/slider-1.jpg">
+                        <img class="img-fluid w-100" src="{{ asset('frontend/images/ex/product/slider-1.jpg') }}">
                     </div>
                     <div class="col-md-7 col-9">
                         <div class="card-body p-3 p-md-4">
                             <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="images/ex/brands/omega.png" alt="">
+                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
                             </a>
                             <h3 class="card-title mb-2">
                                 <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
@@ -236,7 +236,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal-body section-background" style="background-image: url(images/bg-newsletter.jpg)">
+        <div class="modal-body section-background" style="background-image: url({{ asset('frontend/images/bg-newsletter.jpg') }})">
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="form-group">
