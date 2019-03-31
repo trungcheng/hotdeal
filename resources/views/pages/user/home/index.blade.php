@@ -122,7 +122,7 @@
                             <a data-sex="m" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nam</a>
                         </li>
                         <li class="nav-item">
-                            <a data-sex="f" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nam</a>
+                            <a data-sex="f" class="nav-link" href="javascript:void(0)" data-toggle="tab">Đồng hồ nữ</a>
                         </li>
                     </ul>
                 </nav>
