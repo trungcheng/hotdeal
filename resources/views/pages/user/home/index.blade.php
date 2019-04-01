@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay
+@section('page')Mua đồng hồ chính hãng uy tín và chất lượng tại Donghoxachtay
 @stop
 
 @section('description')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
@@ -15,13 +15,13 @@
 @section('alternate'){{ route('home') }}/
 @stop
 
-@section('propName')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay.
+@section('propName')Mua đồng hồ chính hãng uy tín và chất lượng tại Donghoxachtay.
 @stop
 
 @section('propDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
-@section('ogTitle')Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay.
+@section('ogTitle')Mua đồng hồ chính hãng uy tín và chất lượng tại Donghoxachtay.
 @stop
 
 @section('ogDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
@@ -35,7 +35,7 @@
 @stop
 
 @section('content')
-    <h1 class="hide">Mua đồng hồ chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay</h1>
+    <h1 class="hide">Mua đồng hồ chính hãng uy tín và chất lượng tại Donghoxachtay</h1>
     <section class="banner section">
         <div class="swiper swiper-pagination-inside">
             <div class="swiper-container" data-plugin="swiper">
