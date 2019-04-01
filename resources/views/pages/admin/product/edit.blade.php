@@ -74,7 +74,7 @@
                                         <div class="col-md-12" style="border:1px solid #ccc;margin-bottom:15px;padding:10px;">
                                             @foreach ($pro->image_list as $key => $image)
                                                 @if (!empty($image))
-                                                    <div class="col-md-3 frame-list" style="text-align:center;">
+                                                    <div class="col-md-3 frame-list" style="text-align:center;margin-top:10px;">
                                                         @if (isset($pro->image_list[$key]) && is_file(public_path($pro->image_list[$key])))
                                                             <img src="{{ url($pro->image_list[$key]) }}" width="100" height="100" />
                                                         @endif
