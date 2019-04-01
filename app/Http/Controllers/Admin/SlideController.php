@@ -24,15 +24,9 @@ class SlideController extends Controller
 
     public function getAllSlides(Request $request)
     {
-        $slides = Slide::all();
-
-        if (!empty($slides)) {
-            $results = Slide::init($request);
+        $results = Slide::init($request);
             
-            return Response::json(['status' => true, 'data' => $results]);
-        }
-
-        return Response::json(['status' => false, 'data' => []]);
+        return Response::json(['status' => true, 'data' => $results]);
     }
 
     public function loadObject(Request $request, $target)

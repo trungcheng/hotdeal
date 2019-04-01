@@ -26,15 +26,9 @@ class CategoryController extends Controller
 
     public function getAllCategories(Request $request)
     {
-    	$categories = Category::all();
-
-        if (!empty($categories)) {
-            $results = Category::init($request);
+        $results = Category::init($request);
             
-            return Response::json(['status' => true, 'data' => $results]);
-        }
-
-        return Response::json(['status' => false, 'data' => []]);
+        return Response::json(['status' => true, 'data' => $results]);
     }
 
     public function getAllParentCates(Request $request)

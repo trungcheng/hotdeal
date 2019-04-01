@@ -24,15 +24,9 @@ class ProductController extends Controller
 
     public function getAllProducts(Request $request)
     {
-    	$products = Product::all();
-
-        if (!empty($products)) {
-            $results = Product::init($request);
+        $results = Product::init($request);
             
-            return Response::json(['status' => true, 'data' => $results]);
-        }
-
-        return Response::json(['status' => false, 'data' => []]);
+        return Response::json(['status' => true, 'data' => $results]);
     }
 
     public function create(Request $request)

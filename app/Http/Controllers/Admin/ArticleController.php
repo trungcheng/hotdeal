@@ -22,15 +22,9 @@ class ArticleController extends Controller
 
     public function getAllArticles(Request $request)
     {
-        $articles = Article::all();
-
-        if (!empty($articles)) {
-            $results = Article::init($request);
+        $results = Article::init($request);
             
-            return Response::json(['status' => true, 'data' => $results]);
-        }
-
-        return Response::json(['status' => false, 'data' => []]);
+        return Response::json(['status' => true, 'data' => $results]);
     }
 
     public function create(Request $request)
