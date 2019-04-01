@@ -1,17 +1,32 @@
 .hide {
 	display:none;
 }
-/*.thumbnail-img {
-    width: 100% !important;
-    height: 100%;
-    transition: all .2s ease-in-out;
-    object-fit: cover;
-    display: block;    
+.navbar-main .nav-link {
+    font-size: 1rem !important;
+    font-weight: 700 !important;
 }
-.thumbnail {
-    width: 100%;
-    height: 100%;
-}*/
+.card-product .thumbnail {
+    margin: 0rem 1rem 0rem 1rem !important;
+}
+.section {
+    margin-bottom: 1.5rem !important;
+}
+.section-newsletter {
+    min-height: 15rem !important;
+}
+.mb-5, .my-5 {
+    margin-bottom: 1.5rem!important;
+}
+.mt-5, .my-5 {
+    margin-top: 1.5rem!important;
+}
+
+@media (min-width: 992px) {
+    .pb-lg-4, .py-lg-4 {
+        padding-bottom: 0.8rem!important;
+        padding-top: 0.8rem!important;
+    }
+}
 
 @media (max-width:992px) {
     .col-main {

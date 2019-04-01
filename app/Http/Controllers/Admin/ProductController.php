@@ -182,7 +182,16 @@ class ProductController extends Controller
                                         'type' => 'error'
                                     ]);
                                 }
+                                $this->deleteImage($currentImages[$key]);
                                 $currentImages[$key] = $newImage;
+                            }
+                        }
+                    }
+                    if (!empty($request->delete_image)) {
+                        foreach ($request->delete_image as $key => $value) {
+                            if ($value == 1) {
+                                $this->deleteImage($currentImages[$key]);
+                                unset($currentImages[$key]);
                             }
                         }
                     }
@@ -203,7 +212,7 @@ class ProductController extends Controller
                     }
 
                     $data['image'] = $thumbnail;
-                    $data['image_list'] = $currentImages;
+                    $data['image_list'] = array_values($currentImages);
                     Product::updateAction($data, $product);
 
                     return Response::json([

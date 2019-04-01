@@ -74,19 +74,21 @@
                                         <div class="col-md-12" style="border:1px solid #ccc;margin-bottom:15px;padding:10px;">
                                             @foreach ($pro->image_list as $key => $image)
                                                 @if (!empty($image))
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-3 frame-list" style="text-align:center;">
                                                         @if (isset($pro->image_list[$key]) && is_file(public_path($pro->image_list[$key])))
                                                             <img src="{{ url($pro->image_list[$key]) }}" width="100" height="100" />
                                                         @endif
-                                                        <div class="form-group">
+                                                        <div class="form-group" style="margin-bottom:5px;">
                                                             <label>Hình ảnh liên quan {{ $key+1 }}</label>
                                                             <input type="file" class="form-control" name="update_image[{{ $key }}]" accept="image/*" />
                                                         </div>
+                                                        <a href="javascript:void(0)" class="remove-image" style="text-decoration:underline;">Xóa</a>
                                                     </div>
+                                                    <input value="0" type="hidden" name="delete_image[{{ $key }}]">
                                                 @endif
                                             @endforeach
                                             <div class="form-group">
-                                                <div class="col-md-3" style="margin-top:100px;">
+                                                <div class="col-md-3" style="margin-top:100px;text-align:center;">
                                                     <div class="form-group">
                                                         <label>Thêm ảnh liên quan</label>
                                                         <input type="file" class="form-control" name="add_image[]" accept="image/*" multiple />
@@ -321,6 +323,10 @@
                        return false;
                 }
             });
+        });
+        $(document).on('click', '.remove-image', function () {
+            $(this).parents('.frame-list').next().val(1);
+            $(this).parents('.frame-list').remove();
         });
     </script>
 @stop
