@@ -88,7 +88,7 @@ class ProductController extends Controller
             if ($data) {
                 $thumbImage = '';
                 if ($request->hasFile('image')) {
-                    $thumbImage = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 500, 'height' => 600]);
+                    $thumbImage = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 750, 'height' => 900]);
                     $image = $this->saveImageWithoutResizeForThumb($request->file('image'), $thumbImage);
                     if (!$thumbImage || !$image) {
                         return Response::json([
@@ -157,7 +157,7 @@ class ProductController extends Controller
                     $thumbnail = '';
                     if ($request->hasFile('image')) {
                         $this->deleteImage($product->image);
-                        $thumbnail = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 500, 'height' => 600]);
+                        $thumbnail = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 750, 'height' => 900]);
                         $image = $this->saveImageWithoutResizeForThumb($request->file('image'), $thumbnail);
                         if (!$thumbnail || !$image) {
                             return Response::json([
