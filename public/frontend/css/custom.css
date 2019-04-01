@@ -20,6 +20,9 @@
 .mt-5, .my-5 {
     margin-top: 1.5rem!important;
 }
+.card-product {
+    display: block !important;
+}
 
 @media (min-width: 992px) {
     .pb-lg-4, .py-lg-4 {
