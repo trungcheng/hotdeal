@@ -6,7 +6,7 @@
     font-weight: 700 !important;
 }
 .card-product .thumbnail {
-    margin: 0rem 1rem 0rem 1rem !important;
+    margin: 0rem 1rem 0rem 1rem;
 }
 .section {
     margin-bottom: 1.5rem !important;
@@ -25,6 +25,13 @@
     .pb-lg-4, .py-lg-4 {
         padding-bottom: 0.8rem!important;
         padding-top: 0.8rem!important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .card-product .thumbnail {
+        margin: 0 0 1rem !important;
+        padding-top: 130%;
     }
 }
 
