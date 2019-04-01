@@ -100,9 +100,9 @@
                     <p class="product-info">Model: {!! $product->sku_id !!}</p>
                     {!! ($product->short_desc != '') ? $product->short_desc : '' !!}
                     <div class="mb-3">
-                        <div class="product-price">{{ number_format($product->price_sale, 0, 0, '.') }} VND</div>
+                        <div class="product-price">{{ number_format($product->price_sale, 0, 0, '.') }} VNĐ</div>
                         <div>
-                            <del class="product-price-old">Giá retail: {{ number_format($product->price, 0, 0, '.') }} VND</del>
+                            <del class="product-price-old">Giá retail: {{ number_format($product->price, 0, 0, '.') }} VNĐ</del>
                         </div>
                     </div>
                     <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary mb-3" data-plugin="mfp-popup" data-effect="mfp-zoom-in" href="#modal-product-detail">tôi muốn mua sản phẩm này</a>
@@ -188,7 +188,7 @@
                                 <span class="deal-label">deal</span>
                                 <span class="deal-text">{{ $pro->discount }}%</span>
                             </div>
-                            <div class="card-price-border mb-2">{{ number_format($pro->price_sale, 0, 0, '.') }} VND</div>
+                            <div class="card-price-border mb-2">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ</div>
                         </div>
                         <a class="thumbnail" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                             <img class="thumbnail-img" src="{{ asset($pro->image) }}" alt="{{ $pro->name }}">
@@ -231,7 +231,7 @@
                                 <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
                             </h3>
                             <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VND</span>
+                                <span class="card-price mr-2">240.000.000 VNĐ</span>
                             </div>
                         </div>
                     </div>

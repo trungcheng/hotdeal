@@ -79,7 +79,7 @@
                                 <span class="deal-label">deal</span>
                                 <span class="deal-text">{{ $top->discount }}%</span>
                             </div>
-                            <div class="card-price-border mb-2">{{ number_format($top->price_sale, 0, 0, '.') }} VND</div>
+                            <div class="card-price-border mb-2">{{ number_format($top->price_sale, 0, 0, '.') }} VNĐ</div>
                         </div>
                         <a class="thumbnail" href="{{ route('product-detail', ['slug' => $top->slug]) }}">
                             <img class="thumbnail-img" src="{{ asset($top->image) }}" alt="{{ $top->name }}">
@@ -142,8 +142,8 @@
                                 <a href="{{ route('product-detail', ['slug' => $fea->slug]) }}">{{ $fea->name }}</a>
                             </h3>
                             <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">{{ number_format($fea->price_sale, 0, 0, '.') }} VND</span>
-                                <del class="card-price card-price-old mr-2">{{ number_format($fea->price, 0, 0, '.') }} VND</del>
+                                <span class="card-price mr-2">{{ number_format($fea->price_sale, 0, 0, '.') }} VNĐ</span>
+                                <del class="card-price card-price-old mr-2">{{ number_format($fea->price, 0, 0, '.') }} VNĐ</del>
                                 <span class="card-sale">{{ $fea->discount }}%</span>
                             </div>
                             <div class="card-status text-primary">
@@ -206,8 +206,8 @@
                                 <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">{{ $pro->name }}</a>
                             </h3>
                             <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">{{ number_format($pro->price_sale, 0, 0, '.') }} VND</span>
-                                <del class="card-price card-price-old mr-2">{{ number_format($pro->price, 0, 0, '.') }} VND</del>
+                                <span class="card-price mr-2">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ</span>
+                                <del class="card-price card-price-old mr-2">{{ number_format($pro->price, 0, 0, '.') }} VNĐ</del>
                                 <span class="card-sale">{{ $pro->discount }}%</span>
                             </div>
                             <div class="card-status text-primary">

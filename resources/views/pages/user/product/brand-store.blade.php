@@ -318,8 +318,8 @@
                                             <a href="{{ route('product-detail', ['slug' => $result->slug]) }}">{{ $result->name }}</a>
                                         </h3>
                                         <div class="d-flex flex-wrap align-items-center mb-2">
-                                            <span class="card-price mr-2">{{ number_format($result->price_sale, 0, 0, '.') }} VND</span>
-                                            <del class="card-price card-price-old mr-2">{{ number_format($result->price, 0, 0, '.') }} VND</del>
+                                            <span class="card-price mr-2">{{ number_format($result->price_sale, 0, 0, '.') }} VNĐ</span>
+                                            <del class="card-price card-price-old mr-2">{{ number_format($result->price, 0, 0, '.') }} VNĐ</del>
                                             <span class="card-sale">{{ $result->discount }}%</span>
                                         </div>
                                         <div class="card-status text-primary">
