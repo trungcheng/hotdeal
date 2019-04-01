@@ -1,9 +1,9 @@
 @extends('layouts.user.master')
 
-@section('page'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay' : 'Đồng hồ nữ chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Tìm kiếm "'.$searchText.'"' }}
+@section('page'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Đồng hồ nữ chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Tìm kiếm "'.$searchText.'"' }}
 @stop
 
-@section('description')Donghoxachtay - Thương hiệu đồng hồ chính hãng, uy tín, chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
+@section('description')Donghoxachtay - Thương hiệu đồng hồ chính hãng uy tín và chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
 @section('keywords')đồng hồ chính hãng, thương hiệu đồng hồ, đồng hồ chất lượng, đồng hồ nam, đồng hồ nữ, đồng hồ đẳng cấp, đồng hồ thương hiệu, cửa hàng đồng hồ uy tín
@@ -15,13 +15,13 @@
 @section('alternate'){{ route('product-store', ['sex' => $sex]) }}
 @stop
 
-@section('propName'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay' : 'Đồng hồ nữ chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Tìm kiếm "'.$searchText.'"' }}.
+@section('propName'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Đồng hồ nữ chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Tìm kiếm "'.$searchText.'"' }}.
 @stop
 
 @section('propDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng uy tín và chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
 @stop
 
-@section('ogTitle'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng, thương hiệu, chất lượng và uy tín tại Donghoxachtay' : 'Đồng hồ nữ chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Tìm kiếm "'.$searchText.'"' }}.
+@section('ogTitle'){{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Đồng hồ nữ chính hãng uy tín và chất lượng tại Donghoxachtay' : 'Tìm kiếm "'.$searchText.'"' }}.
 @stop
 
 @section('ogDesc')Donghoxachtay - Thương hiệu đồng hồ chính hãng uy tín và chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.

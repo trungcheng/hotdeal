@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Đồng hồ nam, nữ chính hãng, uy tín, chất lượng tại Donghoxachtay
+@section('page')Đồng hồ nam, nữ chính hãng uy tín và chất lượng tại Donghoxachtay
 @stop
 
 @section('description')Donghoxachtay - Thương hiệu đồng hồ chính hãng uy tín và chất lượng, cập nhật những mẫu mã đa dạng, đẳng cấp và hot nhất trên thị trường.
