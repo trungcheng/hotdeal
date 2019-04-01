@@ -278,7 +278,7 @@
             <div class="col-main col-lg-9">
                 <section class="section py-0">
                     <header class="section-header d-flex flex-column flex-md-row align-items-center justify-content-between">
-                        <h2 style="max-width:60%;" class="section-heading mb-3 mb-md-0">
+                        <h2 class="section-heading mb-3 mb-md-0">
                             <span class="line-bottom">Tất cả sản phẩm</span>
                             <spanfw-3>({{ count($results) }} mẫu)</spanfw-3>
                         </h2>
@@ -305,7 +305,7 @@
                     <div class="row gutter-2 gutter-md-3">
                         @if (count($results) > 0)
                             @foreach ($results as $result)
-                            <div class="col-md-6 col-xl-4 d-flex mb-5 mb-md-4">
+                            <div class="col-6 col-xl-4 d-flex mb-5 mb-md-4">
                                 <div class="card card-product">
                                     <a class="thumbnail mb-4" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
                                         <img class="thumbnail-img" src="{{ asset($result->image) }}" alt="{{ $result->name }}">
