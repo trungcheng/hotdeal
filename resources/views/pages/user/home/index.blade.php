@@ -218,6 +218,9 @@
                 </div>
                 @endforeach
             </div>
+            <div class="text-center">
+                <a class="btn btn-secondary text-uppercase rounded-0 px-4" href="#">Xem thêm</a>
+            </div>
             @endif
         </div>
     </section>

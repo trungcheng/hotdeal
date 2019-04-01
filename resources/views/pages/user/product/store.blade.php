@@ -39,10 +39,9 @@
     <hr class="divider my-0">
     <div class="container-fluid pt-4">
         <div class="row">
-            
             <div class="col-aside col-lg-3 mb-4 mb-lg-0">
                 <aside class="product-filter">
-                    <div class="text-center d-lg-none">
+                    <div class="text-center d-lg-none mb-4">
                         <button id="filter" class="btn btn-outline-gray-200 rounded-0 text-body text-uppercase fs-sm" data-toggle="collapse" data-target="#product-filter-collapse">bộ lọc</button>
                     </div>
                     <div class="product-filter-collapse collapse" id="product-filter-collapse">
@@ -279,7 +278,9 @@
             <div class="col-main col-lg-9">
                 <section class="section py-0">
                     <header class="section-header d-flex flex-column flex-md-row align-items-center justify-content-between">
-                        <h2 style="max-width:60%;" class="section-heading mb-3 mb-md-0">{{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam' : 'Đồng hồ nữ' : 'Tìm kiếm "'.$searchText.'"' }} <span class="fw-3">({{ count($results) }} mẫu)</span>
+                        <h2 style="max-width:60%;" class="section-heading mb-3 mb-md-0">
+                            <span class="line-bottom">{{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam' : 'Đồng hồ nữ' : 'Tìm kiếm "'.$searchText.'"' }}</span>
+                            <spanfw-3>({{ count($results) }} mẫu)</spanfw-3>
                         </h2>
                         <ul class="list-inline list-inline-borders fs-sm3 mb-md-0">
                             <li class="list-item">Xem: {{ count($results) }}</li>
@@ -301,10 +302,10 @@
                             </div>
                         </div>
                     </header>
-                    <div class="row">
+                    <div class="row gutter-2 gutter-md-3">
                         @if (count($results) > 0)
                             @foreach ($results as $result)
-                            <div class="col-md-6 col-xl-4 d-flex mb-4">
+                            <div class="col-md-6 col-xl-4 d-flex mb-5 mb-md-4">
                                 <div class="card card-product">
                                     <a class="thumbnail mb-4" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
                                         <img class="thumbnail-img" src="{{ asset($result->image) }}" alt="{{ $result->name }}">
@@ -332,9 +333,13 @@
                             <p style="padding-left:15px;">Không có {{ ($sex != 's') ? 'sản phẩm' : 'kết quả' }} nào !</p>
                         @endif
                     </div>
+                    @if (count($results) > 0)
+                        <div class="text-center">
+                            <a class="btn btn-secondary text-uppercase rounded-0 px-4" href="#">Xem thêm</a>
+                        </div>
+                    @endif
                 </section>
             </div>
-
         </div>
     </div>
 @stop

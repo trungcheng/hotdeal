@@ -67,7 +67,21 @@
                                 </div>
                                 <div class="form-group">
                                     <label>List ảnh liên quan (có thể chọn nhiều ảnh cùng lúc)</label>
-                                    <input type="file" name="image_list[]" accept="image/*" multiple />
+                                    <table id="table" class="table table-hover table-bordered">
+                                        <tbody>
+                                            <tr class="add_row">
+                                                <td width="75%"><input class="file" name='image_list[]' type='file' accept="image/*" multiple /></td>
+                                                <td width="20%"></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <button class="btn btn-success btn-sm" type="button" id="add" title='Thêm ảnh'/>Thêm ảnh</button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn</label>
@@ -289,6 +303,15 @@
                        return false;
                 }
             });
+        });
+        $('#table').on('click', "#add", function(e) {
+            $('tbody').append('<tr class="add_row"><td><input name="image_list[]" type="file" accept="image/*" multiple /></td><td class="text-center"><button type="button" class="btn btn-danger btn-sm" id="delete" title="Xóa ảnh">Xóa ảnh</button></td><tr>');
+            e.preventDefault();
+        });
+        // Delete row
+        $('#table').on('click', "#delete", function(e) {
+            $(this).closest('tr').remove();
+            e.preventDefault();
         });
     </script>
 @stop

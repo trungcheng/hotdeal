@@ -40,7 +40,9 @@
     <section class="section py-0" style="display:flex;">
         <div class="container">
             <header style="margin-top:3rem;" class="section-header d-flex flex-column flex-md-row align-items-center">
-                <h2 style="padding-left:15px;" class="section-heading mb-0">các thương hiệu nổi tiếng</h2>
+                <h2 style="padding-left:15px;" class="section-heading mb-0">
+                    <span class="line-bottom">các thương hiệu nổi tiếng</span>
+                </h2>
             </header>
             @foreach ($brands as $brand)
             <div class="col-md-6 col-lg-4 mb-4" style="float:left">

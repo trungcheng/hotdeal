@@ -68,9 +68,9 @@
                                     @endif
                                     <input type="file" name="image" class="form-control" accept="image/*" />
                                 </div>
-                                @if (count($pro->image_list) > 0)
-                                    <div class="form-group list-image">
-                                        <label>List ảnh liên quan</label>
+                                <div class="form-group list-image">
+                                    <label>List ảnh liên quan</label>
+                                    @if (count($pro->image_list) > 0)
                                         <div class="col-md-12" style="border:1px solid #ccc;margin-bottom:15px;padding:10px;">
                                             @foreach ($pro->image_list as $key => $image)
                                                 @if (!empty($image))
@@ -82,27 +82,29 @@
                                                             <label>Hình ảnh liên quan {{ $key+1 }}</label>
                                                             <input type="file" class="form-control" name="update_image[{{ $key }}]" accept="image/*" />
                                                         </div>
-                                                        <a href="javascript:void(0)" class="remove-image" style="text-decoration:underline;">Xóa</a>
+                                                        <a href="javascript:void(0)" class="remove-image" style="text-decoration:underline;">Xóa ảnh</a>
                                                     </div>
                                                     <input value="0" type="hidden" name="delete_image[{{ $key }}]">
                                                 @endif
                                             @endforeach
-                                            <div class="form-group">
-                                                <div class="col-md-3" style="margin-top:100px;text-align:center;">
-                                                    <div class="form-group">
-                                                        <label>Thêm ảnh liên quan</label>
-                                                        <input type="file" class="form-control" name="add_image[]" accept="image/*" multiple />
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
-                                    </div>
-                                @else
-                                    <div class="form-group">
-                                        <label>List ảnh liên quan</label>
-                                        <input type="file" class="form-control" name="add_image[]" accept="image/*" multiple />
-                                    </div>
-                                @endif
+                                    @endif
+                                    <table id="table" class="table table-hover table-bordered">
+                                        <tbody>
+                                            <tr class="add_row">
+                                                <td width="75%"><input class="file" name='add_image[]' type='file' accept="image/*" multiple /></td>
+                                                <td width="20%"></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="4">
+                                                    <button class="btn btn-success btn-sm" type="button" id="add" title='Thêm ảnh'/>Thêm ảnh</button>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
 
                                 <div class="form-group">
                                     <label>Mô tả ngắn</label>
@@ -327,6 +329,15 @@
         $(document).on('click', '.remove-image', function () {
             $(this).parents('.frame-list').next().val(1);
             $(this).parents('.frame-list').remove();
+        });
+        $('#table').on('click', "#add", function(e) {
+            $('tbody').append('<tr class="add_row"><td><input name="add_image[]" type="file" accept="image/*" multiple /></td><td class="text-center"><button type="button" class="btn btn-danger btn-sm" id="delete" title="Xóa ảnh">Xóa ảnh</button></td><tr>');
+            e.preventDefault();
+        });
+        // Delete row
+        $('#table').on('click', "#delete", function(e) {
+            $(this).closest('tr').remove();
+            e.preventDefault();
         });
     </script>
 @stop
