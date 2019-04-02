@@ -333,11 +333,7 @@
                             <p style="padding-left:15px;">Không có sản phẩm nào !</p>
                         @endif
                     </div>
-                    @if (count($results) > 0)
-                        <div class="text-center">
-                            <a class="btn btn-secondary text-uppercase rounded-0 px-4" href="#">Xem thêm</a>
-                        </div>
-                    @endif
+                    {{ $results->appends(request()->query())->links() }}
                 </section>
             </div>
 

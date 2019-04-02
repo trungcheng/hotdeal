@@ -173,7 +173,7 @@ class ProductController extends Controller
                 $products->orderBy('created_at', 'desc');
             }
 
-            $results = $products->get();
+            $results = $products->paginate(1);
 
             return view(($sex != 'c') ? 'pages.user.product.store' : 'pages.user.product.brand-store', [
                 'sex' => $sex,
