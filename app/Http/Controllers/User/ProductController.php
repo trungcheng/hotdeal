@@ -205,7 +205,8 @@ class ProductController extends Controller
 
         return response()->json([
             'status' => false,
-            'message' => 'Liên hệ đặt hàng thất bại'
+            'message' => 'Liên hệ đặt hàng thất bại',
+            'ip' => $request->ip()
         ]);
     }
 
