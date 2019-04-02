@@ -54,6 +54,10 @@ class Product extends Model
         return $this->hasMany('App\Models\Slide', 'target')->where('slides.target_type', 'product');
     }
 
+    public function order() {
+        return $this->hasMany('App\Models\Order', 'pro_id', 'id');
+    }
+
     public static $rules_add = [
         'name' => 'required|min:2',
         'price' => 'required',

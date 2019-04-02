@@ -52,6 +52,7 @@
             </ol>
         </nav>
     </div>
+    {!! csrf_field() !!}
     <section class="product">
         <div class="container">
             <div class="row mb-5">
@@ -105,7 +106,7 @@
                             <del class="product-price-old">Giá retail: {{ number_format($product->price, 0, 0, '.') }} VNĐ</del>
                         </div>
                     </div>
-                    <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary mb-3" data-plugin="mfp-popup" data-effect="mfp-zoom-in" href="#modal-product-detail">tôi muốn mua sản phẩm này</a>
+                    <a id="buy" class="product-btn-addtocart btn btn-lg btn-block btn-secondary mb-3" data-plugin="mfp-popup" data-effect="mfp-zoom-in" href="#modal-product-detail">tôi muốn mua sản phẩm này</a>
                     <hr class="divider">
                 </div>
                 <div class="col-lg-8">
@@ -220,18 +221,18 @@
             <div class="card card-product border-0">
                 <div class="row align-items-center no-gutters">
                     <div class="col-md-5 col-3">
-                        <img class="img-fluid w-100" src="{{ asset('frontend/images/ex/product/slider-1.jpg') }}">
+                        <img id="previewImage" class="img-fluid w-100" src="{{ asset('frontend/images/ex/product/slider-1.jpg') }}">
                     </div>
                     <div class="col-md-7 col-9">
                         <div class="card-body p-3 p-md-4">
                             <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
+                                <img id="previewBrand" class="card-logo img-fluid" src="{{ asset('frontend/images/ex/brands/omega.png') }}" alt="">
                             </a>
                             <h3 class="card-title mb-2">
-                                <a href="#">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
+                                <a id="previewName" href="javascript:void(0)">Speedmaster Triple Date Chronograph Yellow Gold 18k</a>
                             </h3>
                             <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">240.000.000 VNĐ</span>
+                                <span id="previewPrice" class="card-price mr-2">240.000.000 VNĐ</span>
                             </div>
                         </div>
                     </div>
@@ -242,22 +243,23 @@
             <div class="row justify-content-center">
                 <div class="col-md-9">
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Tên">
+                        <input id="name" class="form-control" type="text" placeholder="Tên">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Số điện thoại">
+                        <input id="phone" class="form-control" type="tel" placeholder="Số điện thoại">
                     </div>
                     <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Địa chỉ">
+                        <input id="address" class="form-control" type="text" placeholder="Địa chỉ">
                     </div>
-                    <a class="product-btn-addtocart btn btn-lg btn-block btn-secondary" data-plugin="mfp-popup" data-effect="mfp-zoom-in" href="#modal-product-success">Gửi liên hệ</a>
+                    <button id="send" class="product-btn-addtocart btn btn-lg btn-block btn-secondary">Gửi liên hệ</button>
                 </div>
             </div>
         </div>
     </div>
+    <a class="hide" id="btn-trigger" data-plugin="mfp-popup" data-effect="mfp-zoom-in" href="#modal-product-success"></a>
     <div class="white-popup mfp-with-anim mfp-hide" id="modal-product-success">
-        <div class="modal-body text-center">
-            <h3 class="text-success">Success</h3>
+        <div class="modal-body text-center" id="res-message">
+
         </div>
     </div>
 
@@ -271,5 +273,52 @@
                 $('#product-detail-btn-more').hide();
             }
         })
+        $(document).on('click', '#buy', function () {
+            $('#previewImage').attr('src', '{{ $imageOriginal }}');
+            $('#previewBrand').attr('src', '{{ $product->category->icon }}');
+            $('#previewName').text('{{ $product->name }}');
+            $('#previewPrice').text('{{ number_format($product->price_sale, 0, 0, '.') }}' + ' VNĐ');
+        });
+        $(document).on('click', '#send', function () {
+            var regexp = /^[\s()+-]*([0-9][\s()+-]*){10}$/
+            var no = $("#phone").val();
+            var name = $("#name").val();
+            var address = $("#address").val();
+            if (name == '') {
+                toastr.error('Bạn chưa điền tên', 'ERROR');
+                $('#name').focus();
+                return false;   
+            }
+            if (no == '') {
+                toastr.error('Bạn chưa điền số điện thoại', 'ERROR');
+                $('#phone').focus();
+                return false;   
+            }
+            if (!regexp.test(no) || no.length !== 10) {
+                toastr.error('Định dạng số điện thoại ko đúng', 'ERROR');
+                $('#phone').focus();
+                return false;
+            }
+            if (address == '') {
+                toastr.error('Bạn chưa điền địa chỉ', 'ERROR');
+                $('#address').focus();
+                return false;   
+            }
+            $.post('/order', {
+                pro_id: '{{ $product->id }}',
+                name: name,
+                phone: no,
+                address: address,
+                _token:  $('input[name=_token]').val()
+            }, function (res) {
+                // $.magnificPopup.close();
+                $('#btn-trigger').click();
+                if (res.status) {
+                    $('#res-message').html('<h3 class="text-success">'+res.message+'</h3>');
+                } else {
+                    $('#res-message').html('<h3 class="text-error">'+res.message+'</h3>');
+                }
+            });
+        });
     </script>
 @stop

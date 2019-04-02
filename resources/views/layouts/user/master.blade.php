@@ -23,6 +23,7 @@
     <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css?').time() }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css?').time() }}">
+    <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}" />
     @yield('pageCss')
     <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
@@ -96,6 +97,7 @@
     <script src="{{ asset('frontend/js/vendor/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script src="{{ asset('backend/js/toastr.min.js?').time() }}"></script>
     @yield('pageJs')
     <script type="text/javascript">
         $(document).on('keydown', '.search-input', function(e) {
@@ -104,6 +106,17 @@
                 e.preventDefault();
                 window.location.href = '/s?key=' + $(this).val();
             }
+        });
+        $(function () {
+            toastr.options = {
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": 5000,
+                "extendedTimeOut": 1000
+            };
         });
     </script>
 </body>

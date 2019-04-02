@@ -35,6 +35,8 @@
         \Route::get('/product/getAllFeatureProd', 'User\ProductController@getAllFeatureProd')->name('getAllFeatureProd');
         \Route::get('/product/getAllCateProd', 'User\ProductController@getAllCateProd')->name('getAllCateProd');
 
+        \Route::post('/order', 'User\ProductController@order')->name('order');
+
     });
 
 // });

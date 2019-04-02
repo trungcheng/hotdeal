@@ -35,6 +35,18 @@
                 <li><a style="margin-left:35px;" data-route="/admin/products/create" href="{{ url('/admin/products/create') }}">Thêm mới</a></li>
             </ul>
         </li>
+
+        <li class="treeview">
+            <a href="javascript:void(0)"><i class="fa fa-sliders"></i> <span>Quản lý đơn hàng</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a style="margin-left:35px;" data-route="/admin/orders" href="{{ url('/admin/orders') }}">Danh sách</a></li>
+                <!-- <li><a style="margin-left:35px;" data-route="/admin/orders/create" href="{{ url('/admin/orders/create') }}">Thêm mới</a></li> -->
+            </ul>
+        </li>
         
         <li class="treeview">
             <a href="javascript:void(0)"><i class="fa fa-newspaper-o"></i> <span>Quản lý bài viết</span>

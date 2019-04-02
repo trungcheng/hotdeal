@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
 
 class ProductController extends Controller
 {
@@ -187,6 +188,25 @@ class ProductController extends Controller
         }
 
         abort(404);
+    }
+
+    public function order(Request $request)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+        if ($request->ip() == '45.32.50.130') {
+            Order::firstOrCreate($data);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Liên hệ đặt hàng thành công'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Liên hệ đặt hàng thất bại'
+        ]);
     }
 
 }

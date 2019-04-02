@@ -46,6 +46,15 @@
                 $this->post('products/update', 'Admin\ProductController@update');
                 $this->post('products/delete', 'Admin\ProductController@delete');
 
+                // order
+                $this->get('orders', 'Admin\OrderController@index')->name('orders');
+                $this->get('orders/getAllOrders', 'Admin\OrderController@getAllOrders');
+                $this->get('orders/create', 'Admin\OrderController@create')->name('order-create');
+                $this->get('orders/edit/{id}', 'Admin\OrderController@edit')->name('order-edit');
+                $this->post('orders/add', 'Admin\OrderController@add');
+                $this->post('orders/update', 'Admin\OrderController@update');
+                $this->post('orders/delete', 'Admin\OrderController@delete');
+
                 // article
                 $this->get('articles', 'Admin\ArticleController@index')->name('articles');
                 $this->get('articles/getAllArticles', 'Admin\ArticleController@getAllArticles');
