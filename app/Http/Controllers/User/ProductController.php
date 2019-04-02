@@ -61,7 +61,7 @@ class ProductController extends Controller
         return response()->json([
             'status' => true,
             'html' => $view,
-            'product' => [
+            'products' => [
                 'current_page' => $products->currentPage(),
                 'last_page' => $products->lastPage()
             ]
@@ -78,7 +78,7 @@ class ProductController extends Controller
         return response()->json([
             'status' => true,
             'html' => $view,
-            'product' => [
+            'products' => [
                 'current_page' => $products->currentPage(),
                 'last_page' => $products->lastPage()
             ]
