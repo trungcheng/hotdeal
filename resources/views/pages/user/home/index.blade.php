@@ -106,7 +106,6 @@
     </section>
     <hr class="divider my-5">
     @endif
-    @if (count($features) > 0)
     <section class="section py-0">
         <div class="container">
             <header class="section-header d-flex flex-column flex-md-row align-items-center">
@@ -128,39 +127,14 @@
                 </nav>
             </header>
             <div class="row gutter-2 gutter-md-3" id="section-feature">
-                @foreach ($features as $fea)
-                <div class="col-6 col-lg-4 d-flex mb-5 mb-md-4">
-                    <div class="card card-product">
-                        <a class="thumbnail" href="{{ route('product-detail', ['slug' => $fea->slug]) }}">
-                            <img class="thumbnail-img" src="{{ asset($fea->image) }}" alt="{{ $fea->name }}">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ ($fea->category) ? asset($fea->category->icon) : '' }}" alt="{{ ($fea->category) ? $fea->category->name : '' }}">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="{{ route('product-detail', ['slug' => $fea->slug]) }}">{{ $fea->name }}</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">{{ number_format($fea->price_sale, 0, 0, '.') }} VNĐ</span>
-                                <del class="card-price card-price-old mr-2">{{ number_format($fea->price, 0, 0, '.') }} VNĐ</del>
-                                <span class="card-sale">{{ $fea->discount }}%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>{{ ($fea->status == 1) ? 'Còn hàng' : 'Hết hàng' }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+                
             </div>
             <div class="text-center">
-                <a class="btn btn-secondary text-uppercase rounded-0 px-4" href="#">Xem thêm</a>
+                <a id="feature-loadmore" class="btn btn-secondary text-uppercase rounded-0 px-4" href="javascript:void(0)">Xem thêm</a>
             </div>
         </div>
     </section>
     <hr class="divider my-5">
-    @endif
     @if (count($brands) > 0)
     <section class="section py-0">
         <div class="container">
@@ -190,38 +164,12 @@
                     </div>
                 </div>
             </div>
-            @if (count($proBrands) > 0)
             <div class="row gutter-2 gutter-md-3 mb-5" id="section-brand">
-                @foreach ($proBrands as $pro)
-                <div class="col-6 col-lg-4 d-flex mb-5 mb-md-4">
-                    <div class="card card-product">
-                        <a class="thumbnail" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
-                            <img class="thumbnail-img" src="{{ asset($pro->image) }}" alt="{{ $pro->name }}">
-                        </a>
-                        <div class="card-body">
-                            <a class="d-inline-block mb-1" href="#">
-                                <img class="card-logo img-fluid" src="{{ ($pro->category) ? asset($pro->category->icon) : '' }}" alt="{{ ($pro->category) ? $pro->category->name : '' }}">
-                            </a>
-                            <h3 class="card-title mb-2">
-                                <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">{{ $pro->name }}</a>
-                            </h3>
-                            <div class="d-flex flex-wrap align-items-center mb-2">
-                                <span class="card-price mr-2">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ</span>
-                                <del class="card-price card-price-old mr-2">{{ number_format($pro->price, 0, 0, '.') }} VNĐ</del>
-                                <span class="card-sale">{{ $pro->discount }}%</span>
-                            </div>
-                            <div class="card-status text-primary">
-                                <i class="fa fa-check mr-1"></i>{{ ($pro->status == 1) ? 'Còn hàng' : 'Hết hàng' }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+                
             </div>
             <div class="text-center">
-                <a class="btn btn-secondary text-uppercase rounded-0 px-4" href="#">Xem thêm</a>
+                <a id="probrand-loadmore" class="btn btn-secondary text-uppercase rounded-0 px-4" href="javascript:void(0)">Xem thêm</a>
             </div>
-            @endif
         </div>
     </section>
     @endif
@@ -244,21 +192,64 @@
 
 @section('pageJs')
     <script type="text/javascript">
+        var pageFeature = 1;
+        var pageProBrand = 1;
+        $(function () {
+            getAllFeatureProd('all', pageFeature, 'btn-sex');
+            var countBrand = '{{ count($brands) }}';
+            if (countBrand > 0) {
+                var catId = $('.brands-item.active').data('id');
+                getAllCateProd(catId, pageProBrand, 'btn-cate');
+            }
+        });
+        $(document).on('click', '.nav-link', function () {
+            var sex = $(this).data('sex');
+            getAllFeatureProd(sex, 1, 'btn-sex');
+            pageFeature = 1;
+        });
+        $(document).on('click', '#feature-loadmore', function () {
+            pageFeature++;
+            var sex = $('.nav-link.active').data('sex');
+            getAllFeatureProd(sex, pageFeature, 'btn-load');
+        });
         $(document).on('click', '.brands-item', function () {
             var catId = $(this).data('id');
             $('.brands-item').removeClass('active');
             $(this).addClass('active');
-            $.get('/product/getProdByCate/' + catId, function (res) {
-                $('#section-brand').html(res.html);
-            });
+            getAllCateProd(catId, 1, 'btn-cate');
         });
-        $(document).on('click', '.nav-link', function () {
-            var sex = $(this).data('sex');
-            $('.nav-link').removeClass('active');
-            $(this).addClass('active');
-            $.get('/product/getProdBySex/' + sex, function (res) {
-                $('#section-feature').html(res.html);
-            });
+        $(document).on('click', '#probrand-loadmore', function () {
+            pageProBrand++;
+            var catId = $('.brands-item.active').data('id');
+            getAllCateProd(catId, pageProBrand, 'btn-load');
         });
+        function getAllFeatureProd(sex, page, type) {
+            $.get('/product/getAllFeatureProd?sex='+sex+'&page='+page, function (res) {
+                if (type == 'btn-sex') {
+                    $('#section-feature').html(res.html);
+                } else {
+                    $('#section-feature').append(res.html);
+                }
+                if (res.products.current_page >= res.products.last_page) {
+                    $('#feature-loadmore').addClass('hide');
+                } else {
+                    $('#feature-loadmore').removeClass('hide');
+                }
+            });
+        }
+        function getAllCateProd(catId, page, type) {
+            $.get('/product/getAllCateProd?catId='+catId+'&page='+page, function (res) {
+                if (type == 'btn-cate') {
+                    $('#section-brand').html(res.html);
+                } else {
+                    $('#section-brand').append(res.html);
+                }
+                if (res.products.current_page >= res.products.last_page) {
+                    $('#probrand-loadmore').addClass('hide');
+                } else {
+                    $('#probrand-loadmore').removeClass('hide');
+                }
+            });
+        }
     </script>
 @stop

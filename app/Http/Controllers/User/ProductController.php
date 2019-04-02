@@ -34,7 +34,7 @@ class ProductController extends Controller
                 }
             }
 
-            $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(6)->get()->except($product->id);
+            $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(12)->get()->except($product->id);
 
             return view('pages.user.product.detail', [
                 'imageOriginal' => $imageOriginal,
@@ -47,34 +47,35 @@ class ProductController extends Controller
         abort(404);
     }
 
-    public function getProdByCate(Request $request, $catId)
-    {
-        $products = Product::where('cat_id', $catId)->orderBy('created_at', 'desc')->limit(9)->get();
-        $view = view('pages.user.product.product-by-cate', [
-            'products' => $products
-        ])->render();
-
-        return response()->json([
-            'status' => true,
-            'html' => $view
-        ]);
-    }
-
-    public function getProdBySex(Request $request, $sex)
+    public function getAllFeatureProd(Request $request)
     {
         $products = Product::where('is_feature', 1);
-        if ($sex != 'all') {
-            $products->where('sex', $sex);
+        if ($request->sex != 'all') {
+            $products->where('sex', $request->sex);
         }
-        $products = $products->orderBy('created_at', 'desc')->limit(9)->get();
-        
+        $products = $products->orderBy('created_at', 'desc')->paginate(12);
         $view = view('pages.user.product.product-by-sex', [
             'products' => $products
         ])->render();
 
         return response()->json([
             'status' => true,
-            'html' => $view
+            'html' => $view,
+            'products' => $products
+        ]);
+    }
+
+    public function getAllCateProd(Request $request)
+    {
+        $products = Product::where('cat_id', $request->catId)->orderBy('created_at', 'desc')->paginate(12);
+        $view = view('pages.user.product.product-by-cate', [
+            'products' => $products
+        ])->render();
+
+        return response()->json([
+            'status' => true,
+            'html' => $view,
+            'products' => $products
         ]);
     }
 

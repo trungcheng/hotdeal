@@ -30,8 +30,8 @@
 
         \Route::get('/brand/all', 'User\HomeController@brand')->name('brand');
 
-        \Route::get('/product/getProdByCate/{catId}', 'User\ProductController@getProdByCate')->name('product-by-cate');
-        \Route::get('/product/getProdBySex/{sex}', 'User\ProductController@getProdBySex')->name('product-by-sex');
+        \Route::get('/product/getAllFeatureProd', 'User\ProductController@getAllFeatureProd')->name('getAllFeatureProd');
+        \Route::get('/product/getAllCateProd', 'User\ProductController@getAllCateProd')->name('getAllCateProd');
 
     });
 
