@@ -283,7 +283,7 @@
                             <spanfw-3>({{ $results->total() }} mẫu)</spanfw-3>
                         </h2>
                         <ul class="list-inline list-inline-borders fs-sm3 mb-md-0">
-                            <li class="list-item">Xem: {{ count($results) }}</li>
+                            <li class="list-item">Xem: {{ $results->total() }}</li>
                             <li class="list-item">
                                 <a class="text-secondary" href="javascript:void(0)">Tất cả</a>
                             </li>
