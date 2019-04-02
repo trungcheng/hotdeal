@@ -18,12 +18,13 @@
             // \Route::post('reset-password', 'User\PasswordController@postResetPassword');
             // \Route::get('signup', 'User\AuthController@getSignUp');
             // \Route::post('signup', 'User\AuthController@postSignUp');
-
         });
 
         \Route::group(['middleware' => ['user.auth']], function () {
 
         });
+
+        \Route::get('/article', 'User\ArticleController@index')->name('article');
 
         \Route::get('/p/{slug}', 'User\ProductController@index')->name('product-detail');
         \Route::get('/{sex}', 'User\ProductController@store')->name('product-store');
