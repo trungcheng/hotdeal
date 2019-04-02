@@ -194,8 +194,8 @@ class ProductController extends Controller
     {
         $data = $request->all();
         unset($data['_token']);
-        if ($request->ip() == '45.32.50.130' || $request->ip() == '162.158.219.58') {
-            Order::firstOrCreate($data);
+        if ($request->ip() == '45.32.50.130' || $request->ip() == '162.158.219.58' || $request->ip() == '162.158.219.106') {
+            Order::create($data);
 
             return response()->json([
                 'status' => true,
@@ -206,7 +206,8 @@ class ProductController extends Controller
         return response()->json([
             'status' => false,
             'message' => 'Liên hệ đặt hàng thất bại',
-            'ip' => $request->ip()
+            'ip' => $request->ip(),
+            'url' => $request->fullUrl()
         ]);
     }
 
