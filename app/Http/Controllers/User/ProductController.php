@@ -61,7 +61,10 @@ class ProductController extends Controller
         return response()->json([
             'status' => true,
             'html' => $view,
-            'products' => $products
+            'product' => [
+                'current_page' => $products->currentPage(),
+                'last_page' => $products->lastPage()
+            ]
         ]);
     }
 
@@ -75,7 +78,10 @@ class ProductController extends Controller
         return response()->json([
             'status' => true,
             'html' => $view,
-            'products' => $products
+            'product' => [
+                'current_page' => $products->currentPage(),
+                'last_page' => $products->lastPage()
+            ]
         ]);
     }
 
@@ -167,7 +173,7 @@ class ProductController extends Controller
                 $products->orderBy('created_at', 'desc');
             }
 
-            $results = $products->get();
+            $results = $products->paginate(12);
 
             return view(($sex != 'c') ? 'pages.user.product.store' : 'pages.user.product.brand-store', [
                 'sex' => $sex,
