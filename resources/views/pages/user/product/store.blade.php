@@ -280,7 +280,7 @@
                     <header class="section-header d-flex flex-column flex-md-row align-items-center justify-content-between">
                         <h2 class="section-heading mb-3 mb-md-0">
                             <span class="line-bottom">{{ ($sex != 's') ? ($sex == 'm') ? 'Đồng hồ nam' : 'Đồng hồ nữ' : 'Tìm kiếm "'.$searchText.'"' }}</span>
-                            <spanfw-3>({{ count($results) }} mẫu)</spanfw-3>
+                            <spanfw-3>({{ $results->total() }} mẫu)</spanfw-3>
                         </h2>
                         <ul class="list-inline list-inline-borders fs-sm3 mb-md-0">
                             <li class="list-item">Xem: {{ count($results) }}</li>
