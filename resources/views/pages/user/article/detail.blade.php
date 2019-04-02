@@ -42,7 +42,7 @@
                 <li class="breadcrumb-item">
                     <a href="{{ route('home') }}">Trang chủ</a>
                 </li>
-                <li class="breadcrumb-item active">
+                <li class="breadcrumb-item">
                     <a href="{{ route('article') }}">Tin tức</a>
                 </li>
             </ol>
