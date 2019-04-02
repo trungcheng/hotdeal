@@ -18,11 +18,11 @@ class Slide extends Model
     ];
 
     public function product() {
-        return $this->belongsTo('App\Models\Product', 'target')->where('slides.target_type', 'product');
+        return $this->belongsTo('App\Models\Product', 'target');
     }
 
     public function article() {
-        return $this->belongsTo('App\Models\Article', 'target')->where('slides.target_type', 'article');
+        return $this->belongsTo('App\Models\Article', 'target');
     }
 
     public static $rules = [
