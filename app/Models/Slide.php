@@ -18,7 +18,7 @@ class Slide extends Model
     ];
 
     public function product() {
-        return $this->belongsTo('App\Models\Product', 'target');
+        return $this->belongsTo('App\Models\Product', 'target')->where('slides.target_type', 'product');
     }
 
     public function article() {
