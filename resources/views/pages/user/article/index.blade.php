@@ -96,7 +96,7 @@
                                     <h4 class="card-title" style="margin-top:-0.5rem">
                                         <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">{{ $article->title }}</a>
                                     </h4>
-                                    <p class="card-text small font-italic text-muted">{!! $article->intro !!}</p>
+                                    <p class="card-text small font-italic text-muted text-intro">{!! $article->intro !!}</p>
                                 </div>
                                 <div class="d-none d-md-block">
                                     <a class="small font-italic text-secondary" href="{{ route('article-detail', ['slug' => $article->slug]) }}">Đọc tin tức >></a>
@@ -113,5 +113,10 @@
 @stop
 
 @section('pageJs')
-
+	<script type="text/javascript">
+        $('p.text-intro').each(function (v, k) {
+            var trim = trimText($(k).text(), 40);
+            $(k).text(trim);
+        });
+    </script>
 @stop

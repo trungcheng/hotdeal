@@ -3,7 +3,7 @@
 @section('page'){{ $article->title }}
 @stop
 
-@section('description'){!! $article->intro !!}
+@section('description'){{ $article->title }}
 @stop
 
 @section('keywords'){{ $article->title }}
@@ -18,13 +18,13 @@
 @section('propName'){{ $article->title }}
 @stop
 
-@section('propDesc'){!! $article->intro !!}
+@section('propDesc'){{ $article->title }}
 @stop
 
 @section('ogTitle'){{ $article->title }}
 @stop
 
-@section('ogDesc'){!! $article->intro !!}
+@section('ogDesc'){{ $article->title }}
 @stop
 
 @section('ogUrl'){{ route('article-detail', ['slug' => $article->slug]) }}
@@ -65,6 +65,7 @@
             </div>
         </div>
     </div>
+    @if (count($others) > 0)
     <section class="mb-5">
         <div class="container">
             <h2 class="section-heading text-center text-md-left">
@@ -86,7 +87,7 @@
                                     <h4 class="card-title">
                                         <a href="{{ route('article-detail', ['slug' => $other->slug]) }}">{{ $other->title }}</a>
                                     </h4>
-                                    <p class="card-text small font-italic text-muted">{!! $other->intro !!}</p>
+                                    <p class="card-text small font-italic text-muted text-intro">{!! $other->intro !!}</p>
                                 </div>
                             </div>
                         </div>
@@ -105,8 +106,14 @@
             </div>
         </div>
     </section>
+    @endif
 @stop
 
 @section('pageJs')
-
+    <script type="text/javascript">
+        $('p.text-intro').each(function (v, k) {
+            var trim = trimText($(k).text(), 40);
+            $(k).text(trim);
+        });
+    </script>
 @stop
