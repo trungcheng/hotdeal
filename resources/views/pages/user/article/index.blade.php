@@ -114,7 +114,7 @@
 
 @section('pageJs')
 	<script type="text/javascript">
-        $('p.text-intro').each(function (v, k) {
+        $('article p').each(function (v, k) {
             var trim = trimText($(k).text(), 30);
             $(k).text(trim);
         });

@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Cập nhật sản phẩm
+            Cập nhật bài viết
             <a href="{{ route('articles') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>
