@@ -87,3 +87,6 @@ td{
     vertical-align: top;
     text-align: left !important;
 }
+.cke_widget_drag_handler_container {
+    display: none !important;
+}
