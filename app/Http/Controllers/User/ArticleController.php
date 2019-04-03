@@ -38,4 +38,16 @@ class ArticleController extends Controller
         abort(404);
     }
 
+    public function about(Request $request)
+    {
+        $article = Article::where('is_about', 1)->first();
+        if ($article) {
+            return view('pages.user.about.index', [
+                'article' => $article
+            ]);
+        }
+
+        abort(404);
+    }
+
 }

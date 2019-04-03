@@ -24,6 +24,7 @@
 
         });
 
+        \Route::get('/about', 'User\ArticleController@about')->name('about');
         \Route::get('/article', 'User\ArticleController@index')->name('article');
         \Route::get('/a/{slug}', 'User\ArticleController@detail')->name('article-detail');
 

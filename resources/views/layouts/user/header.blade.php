@@ -28,7 +28,7 @@
                                 <a class="nav-link" href="{{ route('article') }}">Tin tức</a>
                             </div>
                             <div class="nav-item">
-                                <a class="nav-link" href="javascript:void(0)">Về chúng tôi</a>
+                                <a class="nav-link" href="{{ route('about') }}">Về chúng tôi</a>
                             </div>
                         </div>
                     </div>

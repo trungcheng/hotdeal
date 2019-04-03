@@ -16,7 +16,7 @@ class Article extends Model
         'intro',
         'fulltext',
         'image',
-        'tags',
+        'is_about',
         'status'
     ];
 
