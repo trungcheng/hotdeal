@@ -23,6 +23,9 @@
 .card-product {
     display: block !important;
 }
+.cke_widget_drag_handler_container {
+    display: none !important;
+}
 
 @media (min-width: 992px) {
     .pb-lg-4, .py-lg-4 {
