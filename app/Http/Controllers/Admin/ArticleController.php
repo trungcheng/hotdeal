@@ -94,14 +94,7 @@ class ArticleController extends Controller
                 $article = Article::find($data['id']);
                 if ($article) {
                     if ($data['is_about'] == 1) {
-                        $checkIsAbout = Article::where('is_about', 1)->where('id', '<>', $article->id)->first();
-                        if ($checkIsAbout) {
-                            return Response::json([
-                                'status' => false,
-                                'message' => 'Đã tồn tại bài viết là trang giới thiệu', 
-                                'type' => 'error'
-                            ]);
-                        }
+                        Article::where('id', '>', 0)->update(['is_about' => 0]);
                     }
                     Article::updateAction($data, $article);
                     
