@@ -80,46 +80,5 @@
 @stop
 
 @section('pageJs')
-    <script type="text/javascript">
-        function openPopup() {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
-                        var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath' ).value = file.getUrl();
-                    } );
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                    } );
-                }
-            } );
-        }
-        
-        function openPopupMulti(id) {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
-                        var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath'+id ).value = file.getUrl();
-                    });
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
-                    });
-                }
-            });
-        }
 
-        var i = 1;
-        function add_img(){
-            i++;
-            var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="image_list[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-primary">Xóa</button></span></p>';
-            $(insert).appendTo('.box-img');
-        }
-        
-        function del_accads(id){
-            $('.add_'+id).remove(); 
-        }
-    </script>
 @stop

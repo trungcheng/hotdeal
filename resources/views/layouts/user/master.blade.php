@@ -45,21 +45,21 @@
                                 <div class="swiper-container" data-plugin="swiper" data-loop="true" data-delay="5000">
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
+                                            <i class="fa fa-plane mr-3"></i>Cam kết hàng mới tinh fullbox 100%, giá tốt nhất thị trường
+                                            <!-- <a href="#">
+                                                <ins>Xem thông tin chi tiết 3</ins>
+                                            </a> -->
+                                        </div>
+                                        <div class="swiper-slide text-center">
+                                            <i class="fa fa-plane mr-3"></i>Miễn phí ship toàn quốc, ship COD toàn quốc
                                             <!-- <a href="#">
                                                 <ins>Xem thông tin chi tiết 1</ins>
                                             </a> -->
                                         </div>
                                         <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
+                                            <i class="fa fa-plane mr-3"></i>Đồng hồ chính hãng 100%
                                             <!-- <a href="#">
                                                 <ins>Xem thông tin chi tiết 2</ins>
-                                            </a> -->
-                                        </div>
-                                        <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
-                                            <!-- <a href="#">
-                                                <ins>Xem thông tin chi tiết 3</ins>
                                             </a> -->
                                         </div>
                                     </div>

@@ -14,7 +14,7 @@
                             <i class="list-icon fa fa-phone fa-flip-horizontal text-secondary mr-2"></i>Hotline: <a href="tel:{{ ($setting != '') ? $setting->hotline : '' }}">{{ ($setting != '') ? $setting->hotline. '(Zalo, Viber)' : '' }}</a>
                         </li> -->
                         <li class="list-item">
-                            <i class="list-icon fa fa-map-marker-alt text-secondary mr-2"></i>Địa chỉ: {{ ($setting != '') ? $setting->address : '' }}
+                            <i class="list-icon fa fa-map-marker-alt text-secondary mr-2"></i>Địa chỉ: {!! ($setting != '') ? $setting->address : '' !!}
                         </li>
                     </ul>
                 </div>
