@@ -16,7 +16,7 @@
                     <del class="card-price card-price-old mr-2">{{ number_format($fea->price, 0, 0, '.') }} VND</del>
                     <span class="card-sale">{{ $fea->discount }}%</span>
                 </div>
-                <div class="card-status text-primary">
+                <div class="card-status text-{{ ($fea->status == 1) ? 'success' : 'primary' }}">
                     <i class="fa fa-check mr-1"></i>{{ ($fea->status == 1) ? 'Còn hàng' : 'Hết hàng' }}
                 </div>
             </div>
