@@ -12,8 +12,8 @@
                     <a href="{{ route('product-detail', ['slug' => $fea->slug]) }}">{{ $fea->name }}</a>
                 </h3>
                 <div class="d-flex flex-wrap align-items-center mb-2">
-                    <span class="card-price mr-2">{{ number_format($fea->price_sale, 0, 0, '.') }} VND</span>
-                    <del class="card-price card-price-old mr-2">{{ number_format($fea->price, 0, 0, '.') }} VND</del>
+                    <span class="card-price mr-2">{{ number_format($fea->price_sale, 0, 0, '.') }} VNĐ</span>
+                    <del class="card-price card-price-old mr-2">{{ number_format($fea->price, 0, 0, '.') }} VNĐ</del>
                     <span class="card-sale">{{ $fea->discount }}%</span>
                 </div>
                 <div class="card-status text-{{ ($fea->status == 1) ? 'success' : 'primary' }}">

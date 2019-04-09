@@ -10,7 +10,7 @@
                 </li>
             @else
                 <li class="page-item">
-                    <a class="page-link" href="{{ url()->current() }}?page=1">
+                    <a class="page-link" href="{{ $paginator->url(1) }}">
                         <i class="fa fa-long-arrow-alt-left mr-md-1"></i>
                         <span class="d-none d-md-inline">Đầu</span>
                     </a>
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->url($page) }}">
+                    <a class="page-link" href="{{ $paginator->url($paginator->lastPage()) }}">
                         <span class="d-none d-md-inline">Cuối</span>
                         <i class="fa fa-long-arrow-alt-right ml-md-1"></i>
                     </a>
