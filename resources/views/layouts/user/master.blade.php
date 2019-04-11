@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css?').time() }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css?').time() }}">
     <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     @yield('pageCss')
     <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
@@ -86,6 +87,57 @@
     </div>
     <a class="backtotop btn btn-primary rounded-circle shadow" id="back-to-top" href="#"></a>
 
+    <!-- <div class="call-mobile1"> 
+        <a data-animate="fadeInDown" rel="noopener noreferrer" href="http://zalo.me/0988392366" target="_blank" class="button success" style="border-radius:99px;background: #0c8800 !important;" data-animated="true"> 
+            <span>Chat Zalo </span>
+        </a>
+    </div>
+    <div class="hotlinefix">
+        <span class="phone">    
+            <p><a href="tel:0988392366">0988.392.366</a></p>
+            <p><a href="tel:0942691366">0942.691.366</a></p>
+        </span>
+        <div class="circle-hotline">
+            <span><img src="https://thaibinhweb.net/wp-content/uploads/2018/08/hotline.png"></span>
+        </div>
+    </div>
+
+    <a target="_blank" href="https://www.messenger.com/t/khuong3012" title="Gửi tin nhắn cho chúng tôi qua Facebook" class="ctrlq fb-button"> <div class="bubble">1</div><div class="bubble-msg">Bạn cần hỗ trợ?</div></a>
+    <a id="register-link" target="_blank"  href="https://zalo.me/0988392366">
+        <div class="hovergallery">
+            <img class="alignnone1 size-full" src="https://thaibinhweb.net/wp-content/uploads/2018/10/Unt44444itled-1.png" alt="btn-dangkyhocthu">
+        </div>
+    </a> -->
+
+    <div class="social-button">
+        <div class="social-button-content" style="display:none">
+            <a href="tel:0988832333" class="call-icon" rel="nofollow">
+                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                <div class="animated alo-circle"></div>
+                <div class="animated alo-circle-fill"></div>
+                <span>Hotline: 098.883.2333</span>
+            </a>
+            <a href="sms:0988832333" class="sms">
+                <i class="fa fa-weixin" aria-hidden="true"></i>
+                <span>SMS: 098.883.2333</span>
+            </a>
+            <a href="https://www.facebook.com/truewatchdongho" class="mes">
+                <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                <span>Nhắn tin Facebook</span>
+            </a>
+            <a href="http://zalo.me/0988832333" class="zalo">
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <span>Zalo: 098.148.1368</span>
+            </a>
+        </div>
+       
+        <a class="user-support">
+            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <div class="animated alo-circle"></div>
+            <div class="animated alo-circle-fill lantoa"></div>
+        </a>
+    </div>
+
     <script src="{{ asset('frontend/js/vendor/jquery.min.js') }}"></script>
     <script src="{{ asset('frontend/js/vendor/popper.min.js') }}"></script>
     <script src="{{ asset('frontend/js/vendor/bootstrap.min.js') }}"></script>
@@ -117,7 +169,14 @@
                 "timeOut": 5000,
                 "extendedTimeOut": 1000
             };
+            $('.user-support').click(function(event) {
+                $('.social-button-content').slideToggle();
+            });
         });
     </script>
+    <!-- <div class="zalo-chat-widget" data-oaid="957179604842562893" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
+
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script> -->
+
 </body>
 </html>

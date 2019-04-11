@@ -44,9 +44,6 @@
                         <div class="swiper-slide" style="background-image:url({{ asset($slide->image) }})">
                             <div class="container d-flex justify-content-md-end justify-content-center">
                                 <div class="align-self-center text-center text-md-right">
-                                    <!-- <a href="javascript:void(0)">
-                                        <img class="img-fluid" src="{{ asset('frontend/images/ex/brands/seamaster.png') }}" alt="seamaster" width="188">
-                                    </a> -->
                                     <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
                                     @if ($slide->target_type == 'product')
                                         <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
@@ -72,7 +69,7 @@
         <div class="swiper-container" data-plugin="swiper" data-slidesperview="4" data-breakpoints-lg="3" data-breakpoints-md="2">
             <div class="swiper-wrapper">
                 @foreach ($topSales as $top)
-                <div class="swiper-slide">
+                <div class="swiper-slide top-sale">
                     <div class="card card-product">
                         <div class="card-body d-flex flex-wrap fs-sm pb-2">
                             <div class="card-deal deal mr-2 mb-2">
@@ -200,6 +197,14 @@
             if (countBrand > 0) {
                 var catId = $('.brands-item.active').data('id');
                 getAllCateProd(catId, pageProBrand, 'btn-cate');
+            }
+            // Order div randomly
+            var cards = $('.top-sale');
+            console.log(cards.length);
+            for (var i = 0; i < cards.length; i++) {
+                var target = Math.floor(Math.random() * cards.length -1) + 1;
+                var target2 = Math.floor(Math.random() * cards.length -1) +1;
+                cards.eq(target).before(cards.eq(target2));
             }
         });
         $(document).on('click', '.nav-link', function () {
