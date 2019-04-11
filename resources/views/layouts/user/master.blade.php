@@ -80,11 +80,11 @@
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <div class="animated alo-circle"></div>
                 <div class="animated alo-circle-fill"></div>
-                <span>Hotline: 098.883.2333</span>
+                <span>Hotline: 09888.32.333</span>
             </a>
             <a href="sms:0988832333" class="sms">
                 <i class="fa fa-sms" aria-hidden="true"></i>
-                <span>SMS: 098.883.2333</span>
+                <span>SMS: 09888.32.333</span>
             </a>
             <a href="https://www.facebook.com/truewatchdongho" class="mes">
                 <i class="fa fa-facebook facebook" aria-hidden="true"></i>
@@ -92,7 +92,7 @@
             </a>
             <a href="http://zalo.me/0988832333" class="zalo">
                 <i class="fa fa-comment-dots" aria-hidden="true"></i>
-                <span>Zalo: 098.883.2333</span>
+                <span>Zalo: 09888.32.333</span>
             </a>
         </div>
        
