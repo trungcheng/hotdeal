@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css?').time() }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css?').time() }}">
     <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     @yield('pageCss')
     <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
@@ -112,27 +112,27 @@
     <div class="social-button">
         <div class="social-button-content" style="display:none">
             <a href="tel:0988832333" class="call-icon" rel="nofollow">
-                <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                <i class="fa fa-phone" aria-hidden="true"></i>
                 <div class="animated alo-circle"></div>
                 <div class="animated alo-circle-fill"></div>
                 <span>Hotline: 098.883.2333</span>
             </a>
             <a href="sms:0988832333" class="sms">
-                <i class="fa fa-weixin" aria-hidden="true"></i>
+                <i class="fa fa-sms" aria-hidden="true"></i>
                 <span>SMS: 098.883.2333</span>
             </a>
             <a href="https://www.facebook.com/truewatchdongho" class="mes">
-                <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                <i class="fa fa-facebook facebook" aria-hidden="true"></i>
                 <span>Nhắn tin Facebook</span>
             </a>
             <a href="http://zalo.me/0988832333" class="zalo">
-                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                <i class="fa fa-comment-dots" aria-hidden="true"></i>
                 <span>Zalo: 098.148.1368</span>
             </a>
         </div>
        
         <a class="user-support">
-            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
             <div class="animated alo-circle"></div>
             <div class="animated alo-circle-fill lantoa"></div>
         </a>

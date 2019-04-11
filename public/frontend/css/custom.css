@@ -34,6 +34,10 @@
 /* 
 SOCIAL CSS
 */
+.facebook::before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f39e";
+}
 .social-button {
     display: inline-grid;
     position: fixed;
