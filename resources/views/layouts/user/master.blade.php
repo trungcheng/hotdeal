@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css?').time() }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.css?').time() }}">
     <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}" />
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     @yield('pageCss')
     <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
@@ -33,9 +32,7 @@
 <body>
     <div class="page pg-home">
         <form role="form" method="get" action="" style="display:contents !important;">
-        <!-- Header -->
         @include('layouts.user.header')
-        <!-- Content -->
         <div class="page-main">
             <hr class="divider my-0">
             <section class="bg-gray-100 fs-sm">
@@ -47,21 +44,12 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide text-center">
                                             <i class="fa fa-plane mr-3"></i>Cam kết hàng mới tinh fullbox 100%, giá tốt nhất thị trường
-                                            <!-- <a href="#">
-                                                <ins>Xem thông tin chi tiết 3</ins>
-                                            </a> -->
                                         </div>
                                         <div class="swiper-slide text-center">
                                             <i class="fa fa-plane mr-3"></i>Miễn phí ship toàn quốc, ship COD toàn quốc
-                                            <!-- <a href="#">
-                                                <ins>Xem thông tin chi tiết 1</ins>
-                                            </a> -->
                                         </div>
                                         <div class="swiper-slide text-center">
                                             <i class="fa fa-plane mr-3"></i>Đồng hồ chính hãng 100%
-                                            <!-- <a href="#">
-                                                <ins>Xem thông tin chi tiết 2</ins>
-                                            </a> -->
                                         </div>
                                     </div>
                                     <div class="swiper-buttons d-none d-md-flex">
@@ -81,33 +69,10 @@
             <hr class="divider my-0">
             @yield('content')
         </div>
-        <!-- Footer -->
         @include('layouts.user.footer')
         </form>
     </div>
     <a class="backtotop btn btn-primary rounded-circle shadow" id="back-to-top" href="#"></a>
-
-    <!-- <div class="call-mobile1"> 
-        <a data-animate="fadeInDown" rel="noopener noreferrer" href="http://zalo.me/0988392366" target="_blank" class="button success" style="border-radius:99px;background: #0c8800 !important;" data-animated="true"> 
-            <span>Chat Zalo </span>
-        </a>
-    </div>
-    <div class="hotlinefix">
-        <span class="phone">    
-            <p><a href="tel:0988392366">0988.392.366</a></p>
-            <p><a href="tel:0942691366">0942.691.366</a></p>
-        </span>
-        <div class="circle-hotline">
-            <span><img src="https://thaibinhweb.net/wp-content/uploads/2018/08/hotline.png"></span>
-        </div>
-    </div>
-
-    <a target="_blank" href="https://www.messenger.com/t/khuong3012" title="Gửi tin nhắn cho chúng tôi qua Facebook" class="ctrlq fb-button"> <div class="bubble">1</div><div class="bubble-msg">Bạn cần hỗ trợ?</div></a>
-    <a id="register-link" target="_blank"  href="https://zalo.me/0988392366">
-        <div class="hovergallery">
-            <img class="alignnone1 size-full" src="https://thaibinhweb.net/wp-content/uploads/2018/10/Unt44444itled-1.png" alt="btn-dangkyhocthu">
-        </div>
-    </a> -->
 
     <div class="social-button">
         <div class="social-button-content" style="display:none">
@@ -127,7 +92,7 @@
             </a>
             <a href="http://zalo.me/0988832333" class="zalo">
                 <i class="fa fa-comment-dots" aria-hidden="true"></i>
-                <span>Zalo: 098.148.1368</span>
+                <span>Zalo: 098.883.2333</span>
             </a>
         </div>
        
@@ -174,9 +139,5 @@
             });
         });
     </script>
-    <!-- <div class="zalo-chat-widget" data-oaid="957179604842562893" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="350" data-height="420"></div>
-
-    <script src="https://sp.zalo.me/plugins/sdk.js"></script> -->
-
 </body>
 </html>
