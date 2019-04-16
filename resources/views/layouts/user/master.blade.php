@@ -76,7 +76,7 @@
 
     <div class="social-button">
         <div class="social-button-content" style="display:none">
-            <a href="tel:0988832333" class="call-icon" rel="nofollow">
+            <!-- <a href="tel:0988832333" class="call-icon" rel="nofollow">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <div class="animated alo-circle"></div>
                 <div class="animated alo-circle-fill"></div>
@@ -93,6 +93,18 @@
             <a href="http://zalo.me/0988832333" class="zalo">
                 <i class="fa fa-comment-dots" aria-hidden="true"></i>
                 <span>Zalo: 09888.32.333</span>
+            </a> -->
+            <a href="tel:0988832333" class="call-icon" rel="nofollow">
+                <img style="width:45px;height:45px;border-radius:50%" src="{{ asset('frontend/images/truewatch.jpg') }}">
+                <span>Hệ thống truewatch: 09888.32.333</span>
+            </a>
+            <a href="tel:0987323424" class="call-icon" rel="nofollow">
+                <img style="width:45px;height:45px;border-radius:50%" src="{{ asset('frontend/images/onlywatch.jpg') }}">
+                <span>Hệ thống onlywatch: 0987.323.424</span>
+            </a>
+            <a href="tel:0941666665" class="call-icon" rel="nofollow">
+                <img style="width:45px;height:45px;border-radius:50%" src="{{ asset('frontend/images/autwatch.jpg') }}">
+                <span>Hệ thống autwatch: 0941.666.665</span>
             </a>
         </div>
        
