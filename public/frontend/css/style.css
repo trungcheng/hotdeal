@@ -542,13 +542,13 @@ section {
 
 .top-bar .right-sec li {
 
-	border-right: 1px solid #dddddd;
+	/*border-right: 1px solid #dddddd;*/
 
 	margin-right: 10px;
 
 	margin-top: 7px;
 
-	line-height: 14px;
+	line-height: 20px;
 
 	padding-right: 10px;
 
@@ -1179,6 +1179,8 @@ section {
 .slid-sec li {
 
 	list-style: none;
+
+	height: 300px !important;
 
 }
 
@@ -5984,6 +5986,8 @@ footer {
 
 	padding: 0px;
 
+	padding-top: 50px;
+
 	padding-bottom: 50px;
 
 	background: #fff;
@@ -8536,7 +8540,7 @@ footer .social p a {
 
 	border-top: none;
 
-	padding: 30px;
+	padding: 10px;
 
 	position: relative;
 

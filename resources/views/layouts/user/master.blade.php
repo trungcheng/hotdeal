@@ -3,11 +3,11 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="M_Adnan" />
+    <meta name="author" content="Thạch Vũ" />
 
     <title>@yield('page') | thachvu.vn</title>
 
-    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon"> -->
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/rs-plugin/css/settings.css') }}" media="screen" />
 
@@ -34,6 +34,22 @@
         <!-- Content -->
         <div id="content"> 
             @yield('content')
+            <!-- Newslatter -->
+            <section class="newslatter">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 style="font-size:20px;">Đăng ký để nhận những thông tin mới nhất từ chúng tôi</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <form>
+                              <input type="email" placeholder="Nhập địa chỉ email...">
+                              <button type="submit">Đăng ký</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
         <!-- Footer -->
         @include('layouts.user.footer')

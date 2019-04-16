@@ -1,6 +1,55 @@
-jQuery( document ).ready(function( $ ) {
-
 "use strict"
+
+function initialize_owl(el) {
+
+    el.owlCarousel({
+
+        items : 4,
+
+        autoplay:true,
+
+        loop:false,
+
+        margin: 30,
+
+        touchDrag: false,
+
+        autoplayTimeout:5000,
+
+        autoplayHoverPause:true,
+
+        navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+
+        lazyLoad:true,
+
+        nav: true,
+
+        responsive: {
+
+            0:{
+                items:1,
+            },
+            600:{
+                items:2,
+            },
+            1000:{
+                items:4,
+            }
+        },
+
+        animateOut: 'fadeOut'    
+
+    });
+    
+}
+
+function destroy_owl(el) {
+    // el.data('owlCarousel').destroy();
+    el.trigger("destroy.owl.carousel");
+    el.find('.owl-stage-outer').children(':eq(0)').unwrap();
+}
+
+jQuery( document ).ready(function( $ ) {
 
 /*-----------------------------------------------------------------------------------*/
 
