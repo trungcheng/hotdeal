@@ -5,12 +5,11 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="Thạch Vũ" />
 
-    <title>@yield('page') | thachvu.vn</title>
+    <title>@yield('page') | Thachvu.com</title>
 
     <!-- <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon"> -->
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/rs-plugin/css/settings.css') }}" media="screen" />
-
+    <link rel="stylesheet" href="{{ asset('frontend/rs-plugin/css/settings.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('frontend/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">

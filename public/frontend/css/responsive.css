@@ -16,7 +16,7 @@ header .navbar li a {
 	padding: 16px 10px;
 }
 header .search-cate {
-	min-width: 470px;
+	min-width: 330px;
 }
 header .search-cate input {
 	width: 47%;
@@ -177,6 +177,9 @@ header .search-cate {
 	position: absolute;
 	top: 0px;
 	right: 15px;
+}
+.profile {
+	right: 165px !important;
 }
 .main-tabs-sec .nav li {
 	width: 33.33333%;
@@ -552,6 +555,11 @@ footer h4 {
 	position: absolute;
 	top: 0px;
 	right: 15px;
+}
+.profile {
+	position: absolute;
+	top: 0px;
+	right: 165px !important;
 }
 header .ownmenu ul.dropdown {
 	float: left;
@@ -1056,7 +1064,7 @@ header .col-xs-5.seri {
 }
 @media (max-width:640px) {
 header .search-cate input {
-	width: 54%;
+	/*width: 54%;*/
 }
 header.header-style-3 .cart-pop .dropdown-menu {
 	width: 100%;
@@ -1090,7 +1098,7 @@ header.header-style-3 .cart-pop {
 }
 @media(max-width:540px) {
 header .search-cate {
-	display: none;
+	/*display: none;*/
 }
 .layout-4 .big-nsv .nav li {
 	width: 50%;
@@ -1150,16 +1158,31 @@ header .col-xs-5.seri {
 	min-height: 161px;
 }
 }
+@media(max-width:580px) {
+	header .logo {
+		margin-bottom: 20px;
+	    width: 100%;
+	    display: inline-block;
+	    float: none;
+	    text-align: center;
+	}
+}
 @media(max-width:440px) {
 header .logo {
 	margin-bottom: 20px;
 	width: 100%;
 	display: inline-block;
 	float: none;
+	text-align: center;
 }
 header .cart-pop {
 	position: relative;
 	right: 0px;
+}
+header .profile {
+	position: relative;
+	right: 0px !important;
+	margin-top: 15px;
 }
 .mega-inside .home-links li {
 	width: 50% !important;
