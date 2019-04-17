@@ -15,9 +15,13 @@
 
   <!-- Cart Part -->
   <ul class="nav navbar-right cart-pop">
-    <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">3</span> <i class="flaticon-shopping-bag"></i> <strong>Giỏ hàng</strong> <br>
-      <span>3 sản phẩm</span></a>
-      <ul class="dropdown-menu">
+    <li class="dropdown"> 
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class="itm-cont">0</span> 
+        <i class="flaticon-shopping-bag"></i> <strong>Giỏ hàng</strong> <br>
+        <span>0 sản phẩm</span>
+      </a>
+      <!-- <ul class="dropdown-menu">
         <li>
           <div class="media-left"> <a href="javascript:void(0)" class="thumb"> <img src="{{ asset('frontend/images/item-img-1-1.jpg') }}" class="img-responsive" alt="" > </a> </div>
           <div class="media-body"> <a href="javascript:void(0)" class="tittle">Funda Para Ebook 7" 128GB full HD</a> <span>250 x 1</span> </div>
@@ -27,7 +31,7 @@
           <div class="media-body"> <a href="javascript:void(0)" class="tittle">Funda Para Ebook 7" full HD</a> <span>250 x 1</span> </div>
       </li>
       <li class="btn-cart"> <a href="javascript:void(0)" class="btn-round">Xem giỏ hàng</a> </li>
-  </ul>
+  </ul> -->
 </li>
 </ul>
 </div>
@@ -69,9 +73,8 @@
         <li><a href="{{ route('store') }}">Cửa hàng</a></li>
         <li><a href="{{ route('product-detail') }}">Chi tiết sản phẩm</a></li>
         <li><a href="{{ route('cart') }}">Giỏ hàng</a></li>
-        <li><a href="PaymentMethods.html">Phương thức thanh toán</a></li>
-        <li><a href="DeliveryMethods.html">Phương thức vận chuyển</a></li>
-        <li><a href="Confirmation.html">Xác nhận đơn hàng</a></li>
+        <li><a href="{{ route('step1') }}">Checkout 1</a></li>
+        <li><a href="{{ route('step2') }}">Checkout 2</a></li>
         <li><a href="{{ route('checkout-success') }}">Đặt hàng thành công</a></li>
         <li><a href="{{ route('contact') }}">Liên hệ</a></li>
         <li class="dropdown-submenu"><a href="javascript:void(0)">Menu đa cấp</a>
@@ -83,8 +86,8 @@
 </li>
 <li class="dropdown"> <a href="blog.html" class="dropdown-toggle" data-toggle="dropdown">Tin tức</a>
   <ul class="dropdown-menu multi-level animated-2s fadeInUpHalf">
-    <li><a href="Blog.html">Danh sách</a></li>
-    <li><a href="Blog_details.html">Chi tiết</a></li>
+    <li><a href="{{ route('article') }}">Danh sách</a></li>
+    <li><a href="{{ route('article-detail') }}">Chi tiết</a></li>
   </ul>
 </li>
 </ul>

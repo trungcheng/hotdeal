@@ -76,7 +76,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-          <p>Copyright © 2019 <a href="#." class="ri-li"> thachvu.vn</a>. All rights reserved</p>
+          <p>Copyright © 2019 <a href="#." class="ri-li"> thachvu.com</a>. All rights reserved</p>
       </div>
       <div class="col-sm-6 text-right"> <img src="{{ asset('frontend/images/card-icon.png') }}" alt=""> </div>
   </div>

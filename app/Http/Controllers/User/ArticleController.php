@@ -4,23 +4,23 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 
-class PageController extends Controller
+class ArticleController extends Controller
 {
 
 	public function __construct() {
         // $this->middleware('');
     }
 
-    public function about()
+    public function index()
     {
-        return view('pages.user.page.about', [
+        return view('pages.user.article.index', [
             
         ]);
     }
 
-    public function contact()
+    public function detail()
     {
-        return view('pages.user.page.contact', [
+        return view('pages.user.article.detail', [
             
         ]);
     }

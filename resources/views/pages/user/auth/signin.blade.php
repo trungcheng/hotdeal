@@ -29,8 +29,8 @@
             <form>
               <ul class="row">
                 <li class="col-sm-12">
-                  <label>Tên đăng nhập
-                    <input type="text" class="form-control" name="name" placeholder="Tên đăng nhập hoặc email">
+                  <label>Email / Số điện thoại
+                    <input type="text" class="form-control" name="name" placeholder="Nhập email hoặc số điện thoại">
                   </label>
                 </li>
                 <li class="col-sm-12">
@@ -46,7 +46,7 @@
                 </li>
                 <li class="col-sm-6"> <a href="#." class="forget">Quên mật khẩu?</a> </li>
                 <li class="col-sm-12 text-left">
-                  <button type="submit" class="btn-round">Đăng nhập</button>
+                  <button style="width:100%;margin-top:30px;" type="submit" class="btn-round">Đăng nhập</button>
                 </li>
               </ul>
             </form>

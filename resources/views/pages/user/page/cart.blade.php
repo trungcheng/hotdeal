@@ -8,12 +8,21 @@
 @stop
 
 @section('content')
+  <!-- Linking -->
+<div class="linking">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="#">Trang chủ</a></li>
+      <li class="active">Giỏ hàng</li>
+    </ol>
+  </div>
+</div>
+
 	<!-- Ship Process -->
-    <div class="ship-process padding-top-30 padding-bottom-30">
+    <!-- <div class="ship-process padding-top-30 padding-bottom-30">
       <div class="container">
         <ul class="row">
           
-          <!-- Step 1 -->
           <li class="col-sm-3 current">
             <div class="media-left"> <i class="flaticon-shopping"></i> </div>
             <div class="media-body"> <span>Bước 1</span>
@@ -21,7 +30,6 @@
             </div>
           </li>
           
-          <!-- Step 2 -->
           <li class="col-sm-3">
             <div class="media-left"> <i class="flaticon-business"></i> </div>
             <div class="media-body"> <span>Bước 2</span>
@@ -29,7 +37,6 @@
             </div>
           </li>
           
-          <!-- Step 3 -->
           <li class="col-sm-3">
             <div class="media-left"> <i class="flaticon-delivery-truck"></i> </div>
             <div class="media-body"> <span>Bước 3</span>
@@ -37,7 +44,6 @@
             </div>
           </li>
           
-          <!-- Step 4 -->
           <li class="col-sm-3">
             <div class="media-left"> <i class="fa fa-check"></i> </div>
             <div class="media-body"> <span>Bước 4</span>
@@ -46,11 +52,12 @@
           </li>
         </ul>
       </div>
-    </div>
-    
+    </div> -->
     <!-- Shopping Cart -->
     <section class="shopping-cart padding-bottom-60">
       <div class="container">
+        <h5 class="text-uppercase padding-bottom-10">Giỏ hàng</h5>
+        <div class="table-responsive">
         <table class="table">
           <thead>
             <tr>
@@ -79,7 +86,7 @@
                   <input type="number" value="02">
                 </div></td>
               <td class="text-center padding-top-60">400.000 VNĐ</td>
-              <td class="text-center padding-top-60"><a href="#." class="remove"><i class="fa fa-close"></i></a></td>
+              <td class="text-center padding-top-60"><a href="#." class="remove">Xóa</a></td>
             </tr>
             
             <!-- Item Cart -->
@@ -96,21 +103,23 @@
                   <input type="number" value="02">
                 </div></td>
               <td class="text-center padding-top-60">400.000 VNĐ</td>
-              <td class="text-center padding-top-60"><a href="#." class="remove"><i class="fa fa-close"></i></a></td>
+              <td class="text-center padding-top-60"><a href="#." class="remove">Xóa</a></td>
             </tr>
           </tbody>
         </table>
+      </div>
         
         <!-- Promotion -->
-        <div class="promo" style="height:60px;">
+        <div class="promo" style="height:70px;">
           <!-- Grand total -->
           <div class="g-totel">
-            <h5>Tổng hóa đơn: <span>500.000 VNĐ</span></h5>
+            <h5>Tổng hóa đơn: <span style="color:#f00">500.000 VNĐ</span></h5>
+            <span style="float:right">(Đã bao gồm VAT)</span>
           </div>
         </div>
         
         <!-- Button -->
-        <div class="pro-btn"> <a href="#." class="btn-round btn-light">Quay lại mua sắm</a> <a href="#." class="btn-round">Tiếp theo</a> </div>
+        <div class="pro-btn"> <a href="#." class="btn-round btn-light">Tiếp tục mua sắm</a> <a href="#." class="btn-round">Tiến hành đặt hàng</a> </div>
       </div>
     </section>
 @stop

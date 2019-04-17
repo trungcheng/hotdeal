@@ -17,4 +17,25 @@ class CartController extends Controller
             
         ]);
     }
+
+    public function checkoutFirst()
+    {
+        return view('pages.user.checkout.index', [
+            
+        ]);
+    }
+
+    public function checkoutProcess()
+    {
+        return view('pages.user.checkout.index', [
+            
+        ]);
+    }
+
+    public function checkoutSuccess()
+    {
+        return view('pages.user.page.checkout-success', [
+            
+        ]);
+    }
 }
