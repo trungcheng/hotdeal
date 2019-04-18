@@ -95,15 +95,15 @@
                 <span>Zalo: 09888.32.333</span>
             </a> -->
             <a href="tel:0988832333" class="call-icon" rel="nofollow">
-                <img style="width:45px;height:45px;border-radius:50%" src="{{ asset('frontend/images/truewatch.jpg') }}">
+                <img style="width:45px;height:45px;border-radius:50%;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);" src="{{ asset('frontend/images/truewatch.jpg') }}">
                 <span>Hệ thống truewatch: 09888.32.333</span>
             </a>
-            <a href="tel:0987323424" class="call-icon" rel="nofollow">
-                <img style="width:45px;height:45px;border-radius:50%" src="{{ asset('frontend/images/onlywatch.jpg') }}">
-                <span>Hệ thống onlywatch: 0987.323.424</span>
+            <a href="tel:0911223445" class="call-icon" rel="nofollow">
+                <img style="width:45px;height:45px;border-radius:50%;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);" src="{{ asset('frontend/images/onlywatch.jpg') }}">
+                <span>Hệ thống onlywatch: 0911.223.445</span>
             </a>
             <a href="tel:0941666665" class="call-icon" rel="nofollow">
-                <img style="width:45px;height:45px;border-radius:50%" src="{{ asset('frontend/images/autwatch.jpg') }}">
+                <img style="width:45px;height:45px;border-radius:50%;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);" src="{{ asset('frontend/images/autwatch.jpg') }}">
                 <span>Hệ thống autwatch: 0941.666.665</span>
             </a>
         </div>
