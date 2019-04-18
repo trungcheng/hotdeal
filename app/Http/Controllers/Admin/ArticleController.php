@@ -22,15 +22,9 @@ class ArticleController extends Controller
 
     public function getAllArticles(Request $request)
     {
-        $articles = Article::all();
-
-        if (!empty($articles)) {
-            $results = Article::init($request);
+        $results = Article::init($request);
             
-            return Response::json(['status' => true, 'data' => $results]);
-        }
-
-        return Response::json(['status' => false, 'data' => []]);
+        return Response::json(['status' => true, 'data' => $results]);
     }
 
     public function create(Request $request)
@@ -99,7 +93,11 @@ class ArticleController extends Controller
             if ($data) {
                 $article = Article::find($data['id']);
                 if ($article) {
+                    if ($data['is_about'] == 1) {
+                        Article::where('id', '>', 0)->update(['is_about' => 0]);
+                    }
                     Article::updateAction($data, $article);
+                    
                     return Response::json([
                         'status' => true, 
                         'message' => 'Cập nhật bài viết thành công', 

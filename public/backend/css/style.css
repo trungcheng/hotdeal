@@ -68,3 +68,22 @@ td{
 .cate-level-0 {
     font-weight: bold;   
 }
+
+.preview-table-upload {
+    font-size: 13px;
+    width: 100%;
+    margin-top: -15px;
+}
+.preview-table-upload tr {
+    height: 45px;
+}
+.preview-table-upload td {
+    word-break: break-all;
+}
+.preview-table-upload .col1 {
+    width: 20%;
+    font-weight: bold;
+    padding-left: 15px;
+    vertical-align: top;
+    text-align: left !important;
+}

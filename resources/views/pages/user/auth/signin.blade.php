@@ -30,7 +30,7 @@
               <ul class="row">
                 <li class="col-sm-12">
                   <label>Email / Số điện thoại
-                    <input type="text" class="form-control" name="name" placeholder="Nhập email hoặc số điện thoại">
+                    <input autofocus type="text" class="form-control" name="name" placeholder="Nhập email hoặc số điện thoại">
                   </label>
                 </li>
                 <li class="col-sm-12">

@@ -29,13 +29,18 @@
             <form>
               <ul class="row">
                 <li class="col-sm-12">
-                  <label>Tên đăng nhập
-                    <input type="text" class="form-control" name="name" placeholder="Tên đăng nhập">
+                  <label>Họ tên
+                    <input autofocus type="text" class="form-control" name="name" placeholder="Họ tên">
                   </label>
                 </li>
                 <li class="col-sm-12">
                   <label>Email
-                    <input type="password" class="form-control" name="pass" placeholder="Địa chỉ email">
+                    <input type="email" class="form-control" name="email" placeholder="Địa chỉ email">
+                  </label>
+                </li>
+                <li class="col-sm-12">
+                  <label>Số điện thoại
+                    <input type="text" class="form-control" name="pass" placeholder="Số điện thoại">
                   </label>
                 </li>
                 <li class="col-sm-12">
@@ -49,7 +54,7 @@
                   </label>
                 </li>
                 <li class="col-sm-12 text-left">
-                  <button type="submit" class="btn-round">Đăng ký</button>
+                  <button style="width:100%;margin-top:30px;" type="submit" class="btn-round">Đăng ký</button>
                 </li>
               </ul>
             </form>

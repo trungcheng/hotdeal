@@ -1160,16 +1160,20 @@ header .col-xs-5.seri {
 }
 @media(max-width:580px) {
 	header .logo {
-		margin-bottom: 20px;
+		/*margin-bottom: 20px;*/
 	    width: 100%;
 	    display: inline-block;
 	    float: none;
 	    text-align: center;
 	}
+	.cart-pop {
+	    position: relative;
+	    right: 0px !important;
+	}
 }
 @media(max-width:440px) {
 header .logo {
-	margin-bottom: 20px;
+	/*margin-bottom: 20px;*/
 	width: 100%;
 	display: inline-block;
 	float: none;

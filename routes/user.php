@@ -24,16 +24,18 @@
 
         });
 
-        \Route::get('/product-detail', 'User\ProductController@detail')->name('product-detail');
+        \Route::get('/p/{slug}', 'User\ProductController@detail')->name('product-detail');
+        // \Route::get('/product-detail', 'User\ProductController@detail')->name('product-detail');
         \Route::get('/store', 'User\ProductController@store')->name('store');
 
         \Route::get('/cart', 'User\CartController@index')->name('cart');
+        \Route::post('/cart/add', 'User\CartController@add')->name('cartAdd');
 
         \Route::get('/article', 'User\ArticleController@index')->name('article');
         \Route::get('/article-detail', 'User\ArticleController@detail')->name('article-detail');
 
         \Route::get('/checkout/first', 'User\CartController@checkoutFirst')->name('step1');
-        \Route::get('/checkout/process', 'User\CartController@checkoutProcess')->name('step2');
+        \Route::get('/checkout/info', 'User\CartController@checkoutInfo')->name('step2');
         \Route::get('/checkout/success', 'User\CartController@checkoutSuccess')->name('checkout-success');
 
         \Route::get('/about', 'User\PageController@about')->name('about');

@@ -27,6 +27,7 @@ class Product extends Model
         'view',
         'is_feature',
         'is_hot',
+        'is_new',
         'color',
         'size',
         'status'
@@ -34,6 +35,14 @@ class Product extends Model
 
     public function category() {
     	return $this->belongsTo('App\Models\Category', 'cat_id');
+    }
+
+    public function slide() {
+        return $this->hasMany('App\Models\Slide', 'target')->where('slides.target_type', 'product');
+    }
+
+    public function order() {
+        return $this->hasMany('App\Models\Order', 'pro_id', 'id');
     }
 
     public function user() {
@@ -52,18 +61,24 @@ class Product extends Model
         return $this->belongsToMany('App\Models\ProvinceCity', 'product_city', 'pro_id', 'city_id');
     }
 
-    public static $rules = [
+    public static $rules_add = [
         'name' => 'required|min:2',
-        'price' => 'required|numeric',
-        'image' => 'required'
+        'price' => 'required',
+        'image' => 'required|mimes:jpeg,jpg,png,gif|max:5120'
+    ];
+
+    public static $rules_update = [
+        'name' => 'required|min:2',
+        'price' => 'required'
     ];
 
     public static $messages = [
         'name.required' => 'Tên sản phẩm không được để trống',
         'name.min' => 'Tên sản phẩm ít nhất từ 2 ký tự',
         'price.required' => 'Giá sản phẩm không được để trống',
-        'price.numeric' => 'Giá sản phẩm phải là số',
-        'image.required' => 'Ảnh sản phẩm không được để trống'
+        'image.required' => 'Ảnh sản phẩm không được để trống',
+        'image.mimes' => 'Định dạng ảnh không đúng',
+        'image.max' => 'Dung lượng ảnh không được vượt quá 5MB'
     ];
 
     public static function init($request)
@@ -86,11 +101,32 @@ class Product extends Model
             $data['image_list'] = json_encode($data['image_list']);
             $data['image_list'] = str_replace('\\', '', $data['image_list']);
         } else {
-            $data['image_list'] = '';
+            $data['image_list'] = '[]';
         }
-        $data['price_sale'] = ((int)$data['discount'] == 0) ? $data['price'] : ((int)$data['price'] - ((int)$data['price'] * (int)$data['discount']) / 100);
-        $data['sku_id'] = Util::skuGenerate(6, $maxId + 1);
+        $data['price'] = str_replace(',', '', $data['price']);
+        $data['price_sale'] = str_replace(',', '', $data['price_sale']);
+        
+        if ($data['price_sale'] != '') {
+            if ((float)$data['price_sale'] >= (float)$data['price']) {
+                $data['price_sale'] = $data['price'];
+                $data['discount'] = 0;
+            } else {
+                $data['discount'] = round(((float)$data['price'] - (float)$data['price_sale']) / (float)$data['price'] * 100);
+            }
+        } else {
+            $data['price_sale'] = $data['price'];
+            $data['discount'] = 0;
+        }
+        
+        $data['sku_id'] = ($data['sku_id'] == '') ? Util::skuGenerate(6, $maxId + 1) : $data['sku_id'];
         $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
+        
+        if (in_array($data['short_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['short_desc'] = '';
+        }
+        if (in_array($data['full_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['full_desc'] = '';
+        }
 
         return self::firstOrCreate($data);
     }
@@ -101,10 +137,29 @@ class Product extends Model
             $data['image_list'] = json_encode($data['image_list']);
             $data['image_list'] = str_replace('\\', '', $data['image_list']);
         } else {
-            $data['image_list'] = '';
+            $data['image_list'] = '[]';
         }
-        $data['price_sale'] = ((int)$data['discount'] == 0) ? $data['price'] : ((int)$data['price'] - ((int)$data['price'] * (int)$data['discount']) / 100);
-        $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
+        $data['price'] = str_replace(',', '', $data['price']);
+        $data['price_sale'] = str_replace(',', '', $data['price_sale']);
+        
+        if ($data['price_sale'] != '') {
+            if ((float)$data['price_sale'] >= (float)$data['price']) {
+                $data['price_sale'] = $data['price'];
+                $data['discount'] = 0;
+            } else {
+                $data['discount'] = round(((float)$data['price'] - (float)$data['price_sale']) / (float)$data['price'] * 100);
+            }
+        } else {
+            $data['price_sale'] = $data['price'];
+            $data['discount'] = 0;
+        }
+
+        if (in_array($data['short_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['short_desc'] = '';
+        }
+        if (in_array($data['full_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['full_desc'] = '';
+        }
 
         return $pro->update($data);
     }

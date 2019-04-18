@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Đặt hàng
+@section('page')Khách hàng mới / đăng nhập
 @stop
 
 @section('pageCss')
@@ -96,7 +96,7 @@
 	                    <form method="POST" action="" id="login_popup_form" novalidate="novalidate">
 	                        <div class="form-group has-feedback" id="popup_login">
 	                            <label class="control-label">Email / Số điện thoại</label>
-	                            <input id="popup-login-email" type="text" class="form-control login" name="email" placeholder="Nhập email hoặc số điện thoại">
+	                            <input autofocus id="popup-login-email" type="text" class="form-control login focus-input" name="email" placeholder="Nhập email hoặc số điện thoại">
 	                            <span class="help-block ajax-message"></span>
 	                        </div>
 	                        <div class="form-group has-feedback" id="popup_password">
@@ -120,7 +120,7 @@
 	                        <div class="form-group" id="register_email">
 	                            <label class="control-label" for="email"><strong>Email</strong></label>
 	                            <div class="input-wrap has-feedback">
-	                                <input type="text" class="form-control register register-email-input" name="email" id="email_for_register" placeholder="Nhập email" data-bv-field="email">
+	                                <input autofocus type="text" class="form-control register register-email-input focus-input" name="email" id="email_for_register" placeholder="Nhập email" data-bv-field="email">
 	                                <span class="help-block ajax-message"></span>
 	                        </div>
 	                        <div class="form-group" id="register_password">
@@ -167,6 +167,7 @@
 		  }
 		  document.getElementById(cityName).style.display = "block";
 		  evt.currentTarget.className += " active";
+		  $('.focus-input').focus();
 		}
 
 		// Get the element with id="defaultOpen" and click on it

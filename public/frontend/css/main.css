@@ -3386,11 +3386,11 @@ header nav {
 }
 .cart-pop .dropdown-menu {
 	margin-top: 10px;
-	min-width: 246px;
+	min-width: 165px;
 	padding: 15px;
-	min-height: 265px;
+	min-height: 100px;
 	border-radius: 0px;
-	border: 1px solid #eeeeee;
+	/*border: 1px solid #eeeeee;*/
 }
 .cart-pop .itm-cont {
 	position: absolute;

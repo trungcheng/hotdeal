@@ -6,13 +6,6 @@
             </a> 
         </div>
         <div class="search-cate">
-            <!-- <select class="selectpicker">
-                <option>Chậu rửa bát đá nhân tạo</option>
-                <option>Chậu rửa bát inox 201</option>
-                <option>Kệ tủ bếp</option>
-                <option>Tủ lavabo</option>
-                <option>Vòi hoa sen</option>
-            </select> -->
             <input type="search" placeholder="Tìm kiểm sản phẩm bạn muốn...">
             <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
         </div>
@@ -20,37 +13,49 @@
         <!-- Cart Part -->
         <ul class="nav navbar-right cart-pop" style="min-width:150px !important">
             <li class="dropdown"> 
-                <a href="{{ route('cart') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="itm-cont">0</span> 
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <span class="itm-cont">0</span>
                     <i class="flaticon-shopping-bag"></i> <strong>Giỏ hàng</strong> <br>
                     <span>0 sản phẩm</span>
                 </a>
-                <!-- <ul class="dropdown-menu">
-                    <li>
-                        <div class="media-left"> <a href="javascript:void(0)" class="thumb"> <img src="{{ asset('frontend/images/item-img-1-1.jpg') }}" class="img-responsive" alt="" > </a> </div>
-                        <div class="media-body"> <a href="javascript:void(0)" class="tittle">Funda Para Ebook 7" 128GB full HD</a> <span>250 x 1</span> </div>
+                <ul class="dropdown-menu" style="min-height:75px !important;min-width:240px !important">
+                    <li class="add-cart-status-message hide">
+                        <i class="fa fa-check"></i>
+                        Thêm vào giỏ hàng thành công
                     </li>
-                    <li>
-                        <div class="media-left"> <a href="javascript:void(0)" class="thumb"> <img src="{{ asset('frontend/images/item-img-1-2.jpg') }}" class="img-responsive" alt="" > </a> </div>
-                        <div class="media-body"> <a href="javascript:void(0)" class="tittle">Funda Para Ebook 7" full HD</a> <span>250 x 1</span> </div>
-                    </li>
-                    <li class="btn-cart"> <a href="javascript:void(0)" class="btn-round">Xem giỏ hàng</a> </li>
-                </ul> -->
+                    <li class="btn-cart"> <a href="{{ route('cart') }}" class="btn-round">Xem giỏ hàng</a> </li>
+                </ul>
             </li>
         </ul>
 
         <!-- User Profile Part -->
-        <ul class="nav navbar-right cart-pop profile" style="min-width:165px !important">
-            <li class="dropdown"> 
-                <a href="{{ route('cart') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-user tvicon"></i> <strong>Đăng nhập</strong> <br>
-                    <span>Tài khoản</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li>Thoát tài khoản</li>
-                </ul>
-            </li>
-        </ul>
+        @if (isset($authUser))
+            <ul class="nav navbar-right cart-pop profile" style="min-width:165px !important">
+                <li class="dropdown"> 
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user tvicon"></i> <strong>Chào Đinh Trung</strong> <br>
+                        <span>Tài khoản</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Tài khoản của tôi</a></li>
+                        <li><a href="#">Thoát tài khoản</a></li>
+                    </ul>
+                </li>
+            </ul>
+        @else
+            <ul class="nav navbar-right cart-pop profile" style="min-width:165px !important">
+                <li class="dropdown"> 
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user tvicon"></i> <strong>Đăng nhập</strong> <br>
+                        <span>Tài khoản</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('getSignIn') }}">Đăng nhập</a></li>
+                        <li><a href="{{ route('getSignUp') }}">Tạo tài khoản</a></li>
+                    </ul>
+                </li>
+            </ul>
+        @endif
 
     </div>
 
@@ -83,13 +88,13 @@
             <div class="collapse navbar-collapse" id="nav-open-btn">
                 <ul class="nav">
                     <li class="active"><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li class="dropdown"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Các trang</a>
+                    <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Các trang</a>
                         <ul class="dropdown-menu multi-level animated-2s fadeInUpHalf">
                             <li><a href="{{ route('about') }}">Giới thiệu</a></li>
                             <li><a href="{{ route('getSignIn') }}">Đăng nhập</a></li>
                             <li><a href="{{ route('getSignUp') }}">Đăng ký</a></li>
                             <li><a href="{{ route('store') }}">Cửa hàng</a></li>
-                            <li><a href="{{ route('product-detail') }}">Chi tiết sản phẩm</a></li>
+                            <li><a href="">Chi tiết sản phẩm</a></li>
                             <li><a href="{{ route('cart') }}">Giỏ hàng</a></li>
                             <li><a href="{{ route('step1') }}">Checkout 1</a></li>
                             <li><a href="{{ route('step2') }}">Checkout 2</a></li>

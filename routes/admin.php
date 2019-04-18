@@ -25,12 +25,14 @@
             Route::group(['middleware' => 'admin.role:Superadmin,Admin'], function () {
 
                 // dashboard
-                $this->get('', 'Admin\DashboardController@index');
+                $this->get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
                 
                 // category
                 $this->get('categories', 'Admin\CategoryController@index')->name('categories');
                 $this->get('categories/getAllCategories', 'Admin\CategoryController@getAllCategories');
                 $this->get('categories/getAllParentCates', 'Admin\CategoryController@getAllParentCates');
+                $this->get('categories/create', 'Admin\CategoryController@create')->name('category-create');
+                $this->get('categories/edit/{id}', 'Admin\CategoryController@edit')->name('category-edit');
                 $this->post('categories/add', 'Admin\CategoryController@add');
                 $this->post('categories/update', 'Admin\CategoryController@update');
                 $this->post('categories/delete', 'Admin\CategoryController@delete');
@@ -44,6 +46,15 @@
                 $this->post('products/update', 'Admin\ProductController@update');
                 $this->post('products/delete', 'Admin\ProductController@delete');
 
+                // order
+                $this->get('orders', 'Admin\OrderController@index')->name('orders');
+                $this->get('orders/getAllOrders', 'Admin\OrderController@getAllOrders');
+                $this->get('orders/create', 'Admin\OrderController@create')->name('order-create');
+                $this->get('orders/edit/{id}', 'Admin\OrderController@edit')->name('order-edit');
+                $this->post('orders/add', 'Admin\OrderController@add');
+                $this->post('orders/update', 'Admin\OrderController@update');
+                $this->post('orders/delete', 'Admin\OrderController@delete');
+
                 // article
                 $this->get('articles', 'Admin\ArticleController@index')->name('articles');
                 $this->get('articles/getAllArticles', 'Admin\ArticleController@getAllArticles');
@@ -52,6 +63,20 @@
                 $this->post('articles/add', 'Admin\ArticleController@add');
                 $this->post('articles/update', 'Admin\ArticleController@update');
                 $this->post('articles/delete', 'Admin\ArticleController@delete');
+
+                // slide
+                $this->get('slides', 'Admin\SlideController@index')->name('slides');
+                $this->get('slides/getAllSlides', 'Admin\SlideController@getAllSlides');
+                $this->get('slides/create', 'Admin\SlideController@create')->name('slide-create');
+                $this->get('slides/edit/{id}', 'Admin\SlideController@edit')->name('slide-edit');
+                $this->post('slides/add', 'Admin\SlideController@add');
+                $this->post('slides/update', 'Admin\SlideController@update');
+                $this->post('slides/delete', 'Admin\SlideController@delete');
+                $this->get('slides/loadObject/{target}', 'Admin\SlideController@loadObject')->name('slide-load-object');
+
+                //setting
+                $this->get('setting', 'Admin\SettingController@index');
+                $this->post('setting/update', 'Admin\SettingController@update');
 
             });
         });

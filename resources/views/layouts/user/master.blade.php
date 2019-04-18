@@ -27,7 +27,7 @@
     <!-- Page Wrapper -->
     <div id="wrap" class="layout-1"> 
         <!-- Top bar -->
-        @include('layouts.user.topbar')
+        {{--@include('layouts.user.topbar')--}}
         <!-- Header -->
         @include('layouts.user.header')
         <!-- Content -->
@@ -68,8 +68,8 @@
     <script src="{{ asset('frontend/js/vendors/owl.carousel.min.js') }}"></script> 
 
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
-    <script type="text/javascript" src="{{ asset('frontend/rs-plugin/js/jquery.tp.t.min.js') }}"></script> 
-    <script type="text/javascript" src="{{ asset('frontend/rs-plugin/js/jquery.tp.min.js') }}"></script> 
+    <script src="{{ asset('frontend/rs-plugin/js/jquery.tp.t.min.js') }}"></script> 
+    <script src="{{ asset('frontend/rs-plugin/js/jquery.tp.min.js') }}"></script> 
     <script src="{{ asset('frontend/js/main.js') }}"></script>
 
     @section('pageJs')

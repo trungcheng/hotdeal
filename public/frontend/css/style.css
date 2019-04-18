@@ -1662,7 +1662,9 @@ section {
 
 	display: inline-block;
 
-	min-height: 40px;
+	min-height: 25px;
+
+	margin-top: 10px;
 
 }
 
@@ -1688,7 +1690,7 @@ section {
 
 	color: #333333;
 
-	float: left;
+	/*float: left;*/
 
 }
 
@@ -8658,11 +8660,11 @@ footer .social p a {
 
 }
 
-.pay-method input {
+.pay-method input, .pay-method textarea {
 
 	margin-top: 5px;
 
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 
 }
 

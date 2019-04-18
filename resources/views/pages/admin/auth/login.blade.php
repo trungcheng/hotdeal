@@ -16,7 +16,7 @@
     <div class="login-logo">
         <a href="{!! url('admin') !!}">
             <!-- <img src="{!! asset('images/logo-kinghub.png')!!}" alt="logo" title="Lavalite"> -->
-            <h3>HotdealCMS</h3>
+            <h3>ThachvuCMS</h3>
         </a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">

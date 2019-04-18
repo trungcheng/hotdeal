@@ -116,138 +116,206 @@
             <div class="item-col-3"> 
               <!-- Product -->
               <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="" > <span class="sale-tag">-25%</span> 
-                  
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
                   <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
                   <!-- Reviews -->
                   <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                   <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
               </div>
               
               <!-- Product -->
               <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > 
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
                   <!-- Content --> 
-                  <!-- <span class="tag">Appliances</span> --> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > <span class="new-tag">New</span> 
-                  
-                  <!-- Content --> 
-                  <!-- <span class="tag">Accessories</span> --> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="" > 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Appliances</span> --> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="" > 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Appliances</span> --> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="" > <span class="new-tag">New</span> 
-                  
-                  <!-- Content --> 
-                  <!-- <span class="tag">Accessories</span> --> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
                   <!-- Reviews -->
                   <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
               </div>
               
               <!-- Product -->
               <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="" > 
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
                   <!-- Content --> 
-                  <!-- <span class="tag">Appliances</span> --> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
                   <!-- Reviews -->
                   <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
               </div>
               
               <!-- Product -->
               <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" > 
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
                   <!-- Content --> 
-                  <!-- <span class="tag">Appliances</span> --> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
                   <!-- Reviews -->
                   <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
               </div>
               
               <!-- Product -->
               <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-9.jpg') }}" alt="" > 
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
                   <!-- Content --> 
-                  <!-- <span class="tag">Appliances</span> --> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-10.jp') }}g" alt="" > <span class="new-tag">New</span> 
-                  
-                  <!-- Content --> 
-                  <!-- <span class="tag">Accessories</span> --> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
                   <!-- Reviews -->
                   <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
               </div>
               
               <!-- Product -->
               <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-11.jp') }}g" alt="" > 
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
                   <!-- Content --> 
-                  <!-- <span class="tag">Appliances</span> --> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
                   <!-- Reviews -->
                   <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
               </div>
               
               <!-- Product -->
               <div class="product">
-                <article> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-12.jp') }}g" alt="" > 
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
                   <!-- Content --> 
-                  <!-- <span class="tag">Appliances</span> --> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
                   <!-- Reviews -->
                   <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ</div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
+              </div>
+              
+              <!-- Product -->
+              <div class="product">
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
+                  <!-- Content --> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
+                  <!-- Reviews -->
+                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
+              </div>
+              
+              <!-- Product -->
+              <div class="product">
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-9.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
+                  <!-- Content --> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
+                  <!-- Reviews -->
+                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
+              </div>
+              
+              <!-- Product -->
+              <div class="product">
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-10.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
+                  <!-- Content --> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
+                  <!-- Reviews -->
+                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
+              </div>
+              
+              <!-- Product -->
+              <div class="product">
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-11.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
+                  <!-- Content --> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
+                  <!-- Reviews -->
+                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
+              </div>
+              
+              <!-- Product -->
+              <div class="product">
+                <article> 
+                  <a href="{{ route('product-detail') }}">
+                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-12.jpg') }}" alt="">
+                  </a> 
+                  <span class="sale-tag">-25%</span> 
+                  <!-- Content --> 
+                  <!-- <span class="tag">Tablets</span> --> 
+                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
+                  <!-- Reviews -->
+                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
+                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
+                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                </article>
               </div>
             </div>
             <!-- pagination -->

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $table = 'categories';
+    protected $table = 'orders';
 
     protected $fillable = [
         'user_id', 
@@ -14,7 +14,8 @@ class Order extends Model
         'sub_amount',
         'amount',
         'payment_method',
-        'payment_info',
+        'delivery_method',
+        'obj_info',
         'message',
         'note',
         'status'

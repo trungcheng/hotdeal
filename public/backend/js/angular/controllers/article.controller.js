@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('HotdealCMS')
+        .module('ThachvuCMS')
         .controller('ArticleController', ArticleController);
 
     function ArticleController($rootScope, $scope, $http, $window, $timeout) {
@@ -53,6 +53,11 @@
                     $scope.articles = response.data.data;
                     $scope.totalItems = response.data.total;
 
+                    angular.forEach($scope.articles, function (v, k) {
+                        v.title = trimText(v.title, 20);
+                        v.intro = trimText(v.intro, 20);
+                    });
+
                 });
         }
 
@@ -61,7 +66,7 @@
         }
 
         $scope.loadInitCate = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates?type=2').success(function (res) {
+            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
                 $scope.parentCates = res.data;
             });
         }

@@ -53,15 +53,14 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12" style="overflow-x:auto;">
                                         <table id="example1" class="table table-bordered table-hover table-striped dataTable" role="grid" aria-describedby="example1_info">
                                             <thead>
                                                 <tr role="row">
                                                     <th style="width:5%;">STT</th>
                                                     <th>Ảnh</th>
                                                     <th style="text-align:center !important;width:20%">Tiêu đề</th>
-                                                    <th>Danh mục</th>
-                                                    <th>Mô tả ngắn</th>
+                                                    <th style="width:30%">Mô tả ngắn</th>
                                                     <th>Đăng bởi</th>
                                                     <th>Trạng thái</th>
                                                     <th>Ngày tạo</th>
@@ -75,8 +74,7 @@
                                                         <img ng-src="@{{ article.image }}" style="width:70px;height:60px;">
                                                     </td>
                                                     <td>@{{ article.title }}</td>
-                                                    <td>@{{ article.category.name }}</td>
-                                                    <td>@{{ article.intro }}</td>
+                                                    <td style="width:30%">@{{ article.intro }}</td>
                                                     <td>@{{ article.user.username }}</td>
                                                     <td>@{{ (article.status == 0) ? 'Ẩn' : 'Hiển thị' }}</td>
                                                     <td>@{{ article.created_at }}</td>
@@ -99,7 +97,7 @@
 
                                 <div class="row" ng-cloak ng-if="!loading && articles.length > 0">
                                     <div class="col-sm-5" style="padding-top:5px;">
-                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Hiển thị từ <strong>@{{ from }}</strong> đến <strong>@{{ to }}</strong> của <strong>@{{ total }}</strong> danh mục</div>
+                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Hiển thị từ <strong>@{{ from }}</strong> đến <strong>@{{ to }}</strong> của <strong>@{{ total }}</strong> bài viết</div>
                                     </div>
                                     <div class="col-sm-7">
                                         <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style="margin-top:-20px;float:right">
@@ -121,4 +119,17 @@
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/article.controller.js') !!}
+
+    <script type="text/javascript">
+        function trimText(str ,wordCount) {
+            var strArray = str.split(' ');
+            var subArray = strArray.slice(0, wordCount);
+            var result = subArray.join(" ");
+            if (strArray.length < wordCount) {
+                return result;
+            } else {
+                return result + '...';
+            }
+        }
+    </script>
 @stop

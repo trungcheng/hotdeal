@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Cập nhật sản phẩm
+            Cập nhật bài viết
             <a href="{{ route('articles') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>
@@ -35,26 +35,24 @@
                                     <input value="{{ $article->title }}" name="title" type="text" class="form-control title" placeholder="Tiêu đề bài viết...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Thuộc danh mục</label>
-                                    <select class="form-control cate" name="cat_id">
-                                        <option ng-if="parentCates.length > 0" ng-selected="item.id == {{ $article->cat_id }}" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                                        </option>
-                                        <option value="" ng-if="parentCates.length == 0">Không có danh mục nào</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label>Ảnh</label>
                                     <input value="{{ $article->image }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn</label>
-                                    <textarea class="form-control" id="short_content">{!! $article->short_desc !!}</textarea>
+                                    <textarea class="form-control" id="short_content">{!! $article->intro !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả chi tiết</label>
-                                    <textarea class="form-control" id="full_content">{!! $article->full_desc !!}</textarea>
+                                    <textarea class="form-control" id="full_content">{!! $article->fulltext !!}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Trang giới thiệu</label>
+                                    <select name="is_about" class="form-control">
+                                        <option {{ ($article->is_about == 0) ? 'selected' : '' }} value="0">Không</option>
+                                        <option {{ ($article->is_about == 1) ? 'selected' : '' }} value="1">Có</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>

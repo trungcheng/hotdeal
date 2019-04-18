@@ -15,6 +15,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.filebrowserUploadUrl = $url_ckfinder + 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files';	 
 	config.filebrowserImageUploadUrl = $url_ckfinder + 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images';
 	config.filebrowserFlashUploadUrl = $url_ckfinder + 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash';
+	config.enterMode = 2;
+	config.shiftEnterMode = 1;
 	config.toolbar = [
 		{ name: 'document', items: [ 'Print' ] },
 		{ name: 'clipboard', items: [ 'Undo', 'Redo' ] },
