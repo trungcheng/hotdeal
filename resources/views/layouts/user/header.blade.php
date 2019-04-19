@@ -14,11 +14,11 @@
         <ul class="nav navbar-right cart-pop" style="min-width:150px !important">
             <li class="dropdown"> 
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="itm-cont">0</span>
+                    <span class="itm-cont">{{ $countItemCart }}</span>
                     <i class="flaticon-shopping-bag"></i> <strong>Giỏ hàng</strong> <br>
-                    <span>0 sản phẩm</span>
+                    <span>{{ $countItemCart }} sản phẩm</span>
                 </a>
-                <ul class="dropdown-menu" style="min-height:75px !important;min-width:240px !important">
+                <ul class="dropdown-menu" style="min-height:75px !important;min-width:150px !important">
                     <li class="add-cart-status-message hide">
                         <i class="fa fa-check"></i>
                         Thêm vào giỏ hàng thành công

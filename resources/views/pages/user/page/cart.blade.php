@@ -8,17 +8,17 @@
 @stop
 
 @section('content')
-  <!-- Linking -->
+<!-- Linking -->
 <div class="linking">
   <div class="container">
     <ol class="breadcrumb">
       <li><a href="#">Trang chủ</a></li>
       <li class="active">Giỏ hàng</li>
-    </ol>
-  </div>
+  </ol>
+</div>
 </div>
 
-	<!-- Ship Process -->
+<!-- Ship Process -->
     <!-- <div class="ship-process padding-top-30 padding-bottom-30">
       <div class="container">
         <ul class="row">
@@ -52,12 +52,18 @@
           </li>
         </ul>
       </div>
-    </div> -->
-    <!-- Shopping Cart -->
-    <section class="shopping-cart padding-bottom-60">
+  </div> -->
+  <!-- Shopping Cart -->
+  <section class="shopping-cart padding-bottom-60">
       <div class="container">
-        <h5 class="text-uppercase padding-bottom-10">Giỏ hàng</h5>
-        <div class="table-responsive">
+        @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-block">
+          <button type="button" class="close" data-dismiss="alert">×</button> 
+          <strong>{{ $message }}</strong>
+      </div>
+      @endif
+      <h5 class="text-uppercase padding-bottom-10">Giỏ hàng</h5>
+      <div class="table-responsive">
         <table class="table">
           <thead>
             <tr>
@@ -66,62 +72,78 @@
               <th class="text-center">Số lượng</th>
               <th class="text-center">Tổng giá</th>
               <th>&nbsp; </th>
-            </tr>
-          </thead>
-          <tbody>
-            
-            <!-- Item Cart -->
-            <tr>
-              <td><div class="media">
-                  <div class="media-left"> <a href="#."> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="" > </a> </div>
-                  <div class="media-body">
-                    <p>E-book Reader Lector De Libros
-                      Digitales 7''</p>
-                  </div>
-                </div></td>
-              <td class="text-center padding-top-60">200.000 VNĐ</td>
-              <td class="text-center"><!-- Quinty -->
-                
-                <div class="quinty padding-top-20">
-                  <input type="number" value="02">
-                </div></td>
-              <td class="text-center padding-top-60">400.000 VNĐ</td>
-              <td class="text-center padding-top-60"><a href="#." class="remove">Xóa</a></td>
-            </tr>
-            
-            <!-- Item Cart -->
-            <tr>
-              <td><div class="media">
-                  <div class="media-left"> <a href="#."> <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > </a> </div>
-                  <div class="media-body">
-                    <p>E-book Reader Lector De Libros
-                      Digitales 7''</p>
-                  </div>
-                </div></td>
-              <td class="text-center padding-top-60">200.000 VNĐ</td>
-              <td class="text-center"><div class="quinty padding-top-20">
-                  <input type="number" value="02">
-                </div></td>
-              <td class="text-center padding-top-60">400.000 VNĐ</td>
-              <td class="text-center padding-top-60"><a href="#." class="remove">Xóa</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-        
-        <!-- Promotion -->
-        <div class="promo" style="height:70px;">
-          <!-- Grand total -->
-          <div class="g-totel">
-            <h5>Tổng hóa đơn: <span style="color:#f00">500.000 VNĐ</span></h5>
-            <span style="float:right">(Đã bao gồm VAT)</span>
-          </div>
-        </div>
-        
-        <!-- Button -->
-        <div class="pro-btn"> <a href="#." class="btn-round btn-light">Tiếp tục mua sắm</a> <a href="#." class="btn-round">Tiến hành đặt hàng</a> </div>
-      </div>
-    </section>
+          </tr>
+      </thead>
+      <tbody>
+
+        <!-- Item Cart -->
+        @foreach($cart as $item)
+        <tr>
+          <td><div class="media">
+              <div class="media-left"> <a href="{{ route('product-detail', ['slug' => $item->options->slug]) }}"> <img class="img-responsive" src="{{ asset($item->options->image) }}" alt="" > </a> </div>
+              <div class="media-body">
+                <p>{{ $item->name }}</p>
+            </div>
+        </div></td>
+        <td class="text-center padding-top-60">{{ number_format($item->price, 0, 0, '.') }} VNĐ</td>
+        <td class="text-center"><!-- Quinty -->
+            <div class="quinty padding-top-20">
+                <form style="display:inline" method="POST" action="{{ route('cartUpdate') }}">
+                    <input type="hidden" name="product_id" value="{{ $item->id }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="decrease" value="1">
+                    <button style="width:20px;" type="submit">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </form>
+                <input style="width:40%;margin:0 5px;" type="text" value="{{ $item->qty }}" autocomplete="off" size="2">
+                <form style="display:inline" method="POST" action="{{ route('cartUpdate') }}">
+                    <input type="hidden" name="product_id" value="{{ $item->id }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="increment" value="1">
+                    <button style="width:20px;" type="submit">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </form>
+          </div></td>
+          <td class="text-center padding-top-60">{{ number_format($item->subtotal, 0, 0, '.') }} VNĐ</td>
+          <form method="POST" action="{{ route('cartDelete') }}">
+            <input type="hidden" name="product_id" value="{{ $item->id }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <td class="text-center padding-top-60">
+                <button style="width:40px;" type="submit">Xóa</button>
+            </td>
+          </form>
+      </tr>
+      @endforeach
+
+
+  </tbody>
+</table>
+</div>
+
+    <!-- Promotion -->
+    <div class="promo" style="height:70px;">
+        <!-- Grand total -->
+        @if (count($cart) > 0)
+            <div class="g-totel">
+                <h5>Tổng hóa đơn: <span style="color:#f00">{{ $total }} VNĐ</span></h5>
+                <span style="float:right">(Đã bao gồm VAT)</span>
+            </div>
+        @else
+            <h6 style="font-size:15px;" class="text-center">Chưa có sản phẩm nào trong giỏ hàng</h6>
+        @endif
+    </div>
+
+    <!-- Button -->
+    <div class="pro-btn"> 
+        <a href="{{ route('home') }}" class="btn-round btn-light">Tiếp tục mua sắm</a> 
+        @if (count($cart) > 0)
+        <a href="#." class="btn-round">Tiến hành đặt hàng</a> 
+        @endif
+    </div>
+</div>
+</section>
 @stop
 
 @section('pageJs')

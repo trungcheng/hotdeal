@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
-use Cookie;
-use Session;
 
 class LoginController extends Controller
 {
@@ -38,64 +36,18 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('user.guest')->except('logout');
     }
 
-    public function loginCustom(Request $request)
+    protected function credentials(Request $request)
     {
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-
-        if ($request->ajax()) {
-            if (\Auth::attempt($data)) {
-                return Response::json([
-                    'status' => true,
-                    'data' => Auth::user(),
-                    'message' => 'Login success'
-                ]);
-            }
-
-            return Response::json([
-                'status' => false,
-                'data' => [],
-                'message' => 'Info invalid'
-            ]);
+        if (is_numeric($request->get('email'))) {
+            return ['mobile' => $request->get('email'),'password' => $request->get('password')];
+        } elseif (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
+            return ['email' => $request->get('email'), 'password' => $request->get('password')];
         }
 
-        $this->validateLogin($request);
-        
-        if (\Auth::attempt($data)) {
-            $currentUser = User::find(\Auth::id());
-            // Save to cookie
-            Session::put('uacc',  $currentUser);
-            Cookie::queue(Cookie::forget('kinghub_laracook'));
-            Cookie::queue('kinghub_laracook', json_encode(Session::get('uacc')), 60);
-            // return $this->sendLoginResponse($request);
-            return redirect()->intended($this->redirectPath());
-        } else {
-            return $this->sendFailedLoginResponse($request);
-        }
+        return ['username' => $request->get('email'), 'password' => $request->get('password')];
     }
 
-    public function logout(Request $request)
-    {
-        \Auth::logout();
-        Cookie::queue(Cookie::make('token', NULL, -999999, '/', \App::environment('production') ? '.kinghub.vn' : '.khv2.xyz'));
-        Cookie::queue(Cookie::make('user', NULL, -999999, '/', \App::environment('production') ? '.kinghub.vn' : '.khv2.xyz'));
-        Cookie::queue(Cookie::make('expired_at', NULL, -999999, '/', \App::environment('production') ? '.kinghub.vn' : '.khv2.xyz'));
-
-        return redirect('/login');
-    }
-
-    // public function authenticated()
-    // {
-    //     $currentUser = User::find(\Auth::id());
-    //     if (!$currentUser->is_super_admin) {
-    //         return redirect('/channels');
-    //     }
-
-    //     return redirect('/');
-    // }
 }

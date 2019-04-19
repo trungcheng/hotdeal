@@ -71,12 +71,12 @@
            </ul>
             <!-- Quinty -->
             <form method="POST" action="{{ route('cartAdd') }}">
-                <input type="hidden" name="product_id" value="1">
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="quinty">
                     <input name="quantity" type="number" value="1">
                 </div>
-                <button style="border:none" type="button" id="btnAddCart" class="btn-round">
+                <button style="border:none" type="submit" id="btnAddCart" class="btn-round">
                     <i class="icon-basket-loaded margin-right-5"></i> Đặt mua ngay
                 </button>
             </form>

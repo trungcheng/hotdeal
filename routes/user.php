@@ -7,16 +7,17 @@
         \Route::get('/', 'User\HomeController@index')->name('home');
 
         // \Route::group(['middleware' => ['user.guest']], function () {
-            \Route::get('account/signin', 'User\AuthController@getSignIn')->name('getSignIn');
-            // \Route::post('signin', 'User\AuthController@postSignIn');
-            // \Route::get('signin/facebook', 'User\FacebookServiceAuthController@redirect');
-            // \Route::get('signin/facebook/callback', 'User\FacebookServiceAuthController@callback');
-            // \Route::get('forgot-password', 'User\PasswordController@getForgotPassword');
-            // \Route::post('forgot-password', 'User\PasswordController@postForgotPassword');
-            // \Route::get('reset-password/{token}', 'User\PasswordController@getResetPassword');
-            // \Route::post('reset-password', 'User\PasswordController@postResetPassword');
-            \Route::get('account/signup', 'User\AuthController@getSignUp')->name('getSignUp');
-            // \Route::post('signup', 'User\AuthController@postSignUp');
+        \Route::get('login', 'User\AuthController@getSignIn')->name('getSignIn');
+        \Route::post('login', 'User\Auth\LoginController@login');
+        // \Route::post('signin', 'User\AuthController@postSignIn');
+        // \Route::get('signin/facebook', 'User\FacebookServiceAuthController@redirect');
+        // \Route::get('signin/facebook/callback', 'User\FacebookServiceAuthController@callback');
+        // \Route::get('forgot-password', 'User\PasswordController@getForgotPassword');
+        // \Route::post('forgot-password', 'User\PasswordController@postForgotPassword');
+        // \Route::get('reset-password/{token}', 'User\PasswordController@getResetPassword');
+        // \Route::post('reset-password', 'User\PasswordController@postResetPassword');
+        \Route::get('account/signup', 'User\AuthController@getSignUp')->name('getSignUp');
+        // \Route::post('signup', 'User\AuthController@postSignUp');
 
         // });
 
@@ -30,6 +31,8 @@
 
         \Route::get('/cart', 'User\CartController@index')->name('cart');
         \Route::post('/cart/add', 'User\CartController@add')->name('cartAdd');
+        \Route::post('/cart/update', 'User\CartController@update')->name('cartUpdate');
+        \Route::post('/cart/delete', 'User\CartController@delete')->name('cartDelete');
 
         \Route::get('/article', 'User\ArticleController@index')->name('article');
         \Route::get('/article-detail', 'User\ArticleController@detail')->name('article-detail');

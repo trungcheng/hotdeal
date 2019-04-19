@@ -26,11 +26,12 @@
             <!-- Login Your Account -->
             <h5 class="text-uppercase">Đăng nhập</h5>
             <!-- FORM -->
-            <form>
+            <form action="#" method="POST">
+              {{ csrf_field() }}
               <ul class="row">
                 <li class="col-sm-12">
                   <label>Email / Số điện thoại
-                    <input autofocus type="text" class="form-control" name="name" placeholder="Nhập email hoặc số điện thoại">
+                    <input autofocus type="text" class="form-control" name="email" placeholder="Nhập email hoặc số điện thoại">
                   </label>
                 </li>
                 <li class="col-sm-12">
@@ -40,7 +41,7 @@
                 </li>
                 <li class="col-sm-6">
                   <div class="checkbox checkbox-primary">
-                    <input id="cate1" class="styled" type="checkbox" >
+                    <input id="cate1" class="styled" type="checkbox">
                     <label for="cate1"> Nhớ mật khẩu </label>
                   </div>
                 </li>

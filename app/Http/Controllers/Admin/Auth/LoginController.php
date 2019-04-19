@@ -43,9 +43,26 @@ class LoginController extends Controller
         return view('pages.admin.auth.login');
     }
 
-    public function logoutAdmin(Request $request)
+    public function login(Request $request)
     {
-        $this->guard()->logout();
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::guard('admin')->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ], $request->remember)) {
+            return redirect()->intended(route('dashboard'));
+        }
+
+        return redirect()->back()->withInput($request->only('email', 'remember'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
 
         $request->session()->invalidate();
 

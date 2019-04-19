@@ -95,8 +95,8 @@
 					<div id="login-form" class="col-md-10 col-md-offset-1" style="display:block;">
 	                    <form method="POST" action="" id="login_popup_form" novalidate="novalidate">
 	                        <div class="form-group has-feedback" id="popup_login">
-	                            <label class="control-label">Email / Số điện thoại</label>
-	                            <input autofocus id="popup-login-email" type="text" class="form-control login focus-input" name="email" placeholder="Nhập email hoặc số điện thoại">
+	                            <label class="control-label">Email</label>
+	                            <input autofocus id="popup-login-email" type="text" class="form-control login focus-input" name="email" placeholder="Nhập email">
 	                            <span class="help-block ajax-message"></span>
 	                        </div>
 	                        <div class="form-group has-feedback" id="popup_password">

@@ -1,1 +1,0 @@
-RedirectIfAuthenticate.php
