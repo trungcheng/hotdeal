@@ -16,8 +16,11 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <script src="{{ asset('frontend/js/vendors/modernizr.custom.js') }}"></script>
 
     @section('pageCss')
     @show
@@ -66,11 +69,16 @@
     <script src="{{ asset('frontend/js/vendors/own-menu.js') }}"></script> 
     <script src="{{ asset('frontend/js/vendors/jquery.sticky.js') }}"></script> 
     <script src="{{ asset('frontend/js/vendors/owl.carousel.min.js') }}"></script> 
+    <script src="{{ asset('frontend/js/vendors/swiper.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/vendors/jquery.mCustomScrollbar.js') }}"></script>
+    <script src="{{ asset('frontend/js/vendors/jquery.magnific-popup.min.js') }}"></script>
 
     <!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
     <script src="{{ asset('frontend/rs-plugin/js/jquery.tp.t.min.js') }}"></script> 
     <script src="{{ asset('frontend/rs-plugin/js/jquery.tp.min.js') }}"></script> 
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script src="{{ asset('frontend/js/plugins.js') }}"></script>
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
 
     @section('pageJs')
     @show

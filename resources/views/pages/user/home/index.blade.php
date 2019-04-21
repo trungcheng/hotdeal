@@ -4,258 +4,140 @@
 @stop
 
 @section('pageCss')
-
+    <style type="text/css">
+        .swiper .swiper-container {
+            position: static;
+        }
+        .swiper-container[class*=swiper-container-] {
+            height: auto;
+        }
+        .swiper-container[class*=swiper-container-]>* {
+            visibility: visible;
+        }
+        .swiper-container>* {
+            /*visibility: hidden;*/
+            transition: all .2s ease-in-out;
+        }
+        .swiper-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            /*display: -ms-flexbox;*/
+            display: flex;
+            /*transition-property: transform;*/
+            box-sizing: content-box;
+        }
+        .banner {
+            margin-bottom: 4.5rem !important;
+            padding: 0;
+            color: #fff;
+            flex-grow: 1;
+            background: #fff;
+        }
+        .banner .swiper-slide {
+            position: relative;
+            display: flex;
+            height: 300px;
+            background-size: cover;
+            background-position: 50% 50%;
+            background-repeat: repeat;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .banner .swiper .swiper-pagination-bullets .swiper-pagination-bullet-active {
+            background-color: #fff !important;
+        }
+        .banner .swiper .swiper-pagination-bullets .swiper-pagination-bullet {
+            height: .625rem;
+            width: .625rem;
+            background-color: transparent;
+            border: 2px solid #fff;
+            display: inline-block;
+            border-radius: 100%;
+        }
+        .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0 4px;
+        }
+        .swiper-pagination-clickable .swiper-pagination-bullet {
+            cursor: pointer;
+        }
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: #007aff;
+        }
+        .banner .section-heading {
+            font-size: 35px;
+            font-weight: 300;
+            text-transform: uppercase;
+            line-height: 1;
+            color: #fff;
+        }
+        .align-self-center {
+            align-self: center!important;
+            margin-top: 100px;
+        }
+        .text-md-right {
+            text-align: right!important;
+        }
+        .btn-style-1 {
+            padding: 1rem 1rem;
+            text-transform: uppercase;
+            font-size: 13px !important;
+        }
+        .btn-outline-white {
+            color: #fff;
+            border-color: #fff;
+        }
+        .rounded-0 {
+            border-radius: 0!important;
+        }
+        .btn-block {
+            display: block;
+            width: 100%;
+            line-height: 1.5;
+        }
+        .btn-outline-white:not(:disabled):not(.disabled).active, .btn-outline-white:not(:disabled):not(.disabled):active, .show>.btn-outline-white.dropdown-toggle {
+            color: #212529;
+            background-color: #fff;
+            border-color: #fff;
+        }
+        @media (min-width: 768px) {
+            .banner .btn-style-1 {
+                max-width: 26.8125rem;
+                margin-left: auto;
+            }
+        }
+    </style>
 @stop
 
 @section('content')
+<h1 class="hide">Mua chậu rửa bát chất lượng, uy tín tại Thạch Vũ</h1>
 <!-- Slid Sec -->
-<section class="slid-sec">
+<section class="banner section">
     <div class="container">
-      <div class="container-fluid">
-        <div class="row"> 
-
-          <!-- Main Slider  -->
-          <div class="col-md-12 no-padding"> 
-
-            <!-- Main Slider Start -->
-            <div class="tp-banner-container" style="height:300px !important;">
-              <div class="tp-banner" style="height:300px !important;">
-                <ul>
-
-                  <!-- SLIDE  -->
-                  <li style="height:300px !important" data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
-                    <!-- MAIN IMAGE --> 
-                    <img src="{{ asset('frontend/images/slider-img-1.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-110" 
-                    data-speed="800" 
-                    data-start="800" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">High Quality VR Glasses </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-60" 
-                    data-speed="800" 
-                    data-start="1000" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">3D Daydream View </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="10" 
-                    data-speed="800" 
-                    data-start="1200" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="none" 
-                    data-splitout="none" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Starting at </div>
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="210" 
-                    data-y="center" data-voffset="5" 
-                    data-speed="800" 
-                    data-start="1300" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$49.99 </div>
-
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption lfb tp-resizeme scroll" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="80"
-                    data-speed="800" 
-                    data-start="1300"
-                    data-easing="Power3.easeInOut" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    data-scrolloffset="0"
-                    style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
-                </li>
-
-                <!-- SLIDE  -->
-                <li style="height:300px !important" data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
-                    <!-- MAIN IMAGE --> 
-                    <img src="{{ asset('frontend/images/slider-img-2.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-110" 
-                    data-speed="800" 
-                    data-start="800" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">No restocking fee ($35 savings)</div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-60" 
-                    data-speed="800" 
-                    data-start="1000" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">M75 Sport Watch </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="10" 
-                    data-speed="800" 
-                    data-start="1200" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="none" 
-                    data-splitout="none" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Now Only </div>
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="210" 
-                    data-y="center" data-voffset="5" 
-                    data-speed="800" 
-                    data-start="1300" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$320.99 </div>
-
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption lfb tp-resizeme scroll" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="80"
-                    data-speed="800" 
-                    data-start="1300"
-                    data-easing="Power3.easeInOut" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    data-scrolloffset="0"
-                    style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
-                </li>
-
-                <!-- SLIDE  -->
-                <li style="height:300px !important" data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" > 
-                    <!-- MAIN IMAGE --> 
-                    <img src="{{ asset('frontend/images/slider-img-3.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat"> 
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-110" 
-                    data-speed="800" 
-                    data-start="800" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">Get Free Bluetooth when buy </div>
-
-                    <!-- LAYER NR. 2 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="-60" 
-                    data-speed="800" 
-                    data-start="1000" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">Flat SmartWatch </div>
-
-                    <!-- LAYER NR. 3 -->
-                    <div class="tp-caption sfl tp-resizeme" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="0" 
-                    data-speed="800" 
-                    data-start="1200" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="none" 
-                    data-splitout="none" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Combo Only:</div>
-
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption sfr tp-resizeme" 
-                    data-x="left" data-hoffset="240" 
-                    data-y="center" data-voffset=" -5" 
-                    data-speed="800" 
-                    data-start="1300" 
-                    data-easing="Power3.easeInOut" 
-                    data-splitin="chars" 
-                    data-splitout="none" 
-                    data-elementdelay="0.03" 
-                    data-endelementdelay="0.4" 
-                    data-endspeed="300"
-                    style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$590.00 </div>
-
-                    <!-- LAYER NR. 4 -->
-                    <div class="tp-caption lfb tp-resizeme scroll" 
-                    data-x="left" data-hoffset="60" 
-                    data-y="center" data-voffset="80"
-                    data-speed="800" 
-                    data-start="1300"
-                    data-easing="Power3.easeInOut" 
-                    data-elementdelay="0.1" 
-                    data-endelementdelay="0.1" 
-                    data-endspeed="300" 
-                    data-scrolloffset="0"
-                    style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
-                </li>
-            </ul>
+        <div class="swiper swiper-pagination-inside">
+            <div class="swiper-container" data-plugin="swiper">
+                <div class="swiper-wrapper">
+                    @foreach ($slides as $slide)
+                        <div class="swiper-slide" style="background-image:url({{ asset($slide->image) }})">
+                            <div class="container d-flex justify-content-md-end justify-content-center">
+                                <div class="align-self-center text-center text-md-right">
+                                    <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
+                                    @if ($slide->target_type == 'product')
+                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
+                                    @else
+                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
     </div>
-</div>
-
-<!-- Main Slider  -->
-
-</div>
-</div>
-</div>
 </section>
 <!-- Shipping Info -->
 
@@ -332,243 +214,26 @@
             <hr>
         </div>
         <div class="singl-slide with-nav">
+            @foreach ($chauda as $list)
             <div class="item-col-4"> 
+                @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="">
+                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                            <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
                         </a>
                         <!-- Content --> 
                         <!-- <span class="tag">Latop</span> --> 
-                        <a href="" class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
+                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a>
                         <!-- Reviews -->
                         <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
+                        <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
                         <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
                     </article>
                 </div>
-                <div class="product">
-                    <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > 
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > 
-                        </a>
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="" >
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="" >
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" >
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
+                @endforeach
             </div>
-            
-            <div class="item-col-4"> 
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Latop</span> --> 
-                        <a href="" class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="">
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="">
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="">
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="">
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -1114,7 +779,7 @@
                     <a href="{{ route('article-detail') }}" class="tittle">It’s why there’s nothing else like Mac. </a>
                     <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
                     <a href="{{ route('article-detail') }}">Readmore</a> 
-            </article>
+                </article>
             </div>
             <!-- Blog Post -->
             <div class="blog-post">
@@ -1138,7 +803,7 @@
                     <a href="{{ route('article-detail') }}" class="tittle">It’s why there’s nothing else like Mac. </a>
                     <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
                     <a href="{{ route('article-detail') }}">Readmore</a> 
-            </article>
+                </article>
             </div>
             <!-- Blog Post -->
             <div class="blog-post">
@@ -1150,7 +815,7 @@
                     <a href="{{ route('article-detail') }}" class="tittle">It’s why there’s nothing else like Mac. </a>
                     <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
                     <a href="{{ route('article-detail') }}">Readmore</a> 
-            </article>
+                </article>
             </div>
         </div>
     </div>
@@ -1158,19 +823,19 @@
 @stop
 
 @section('pageJs')
-    <script type="text/javascript">
-        $(function () {
+<script type="text/javascript">
+    $(function () {
+        initialize_owl($('#owl1'));
+        $('a[href="#tab1"]').on('shown.bs.tab', function () {
             initialize_owl($('#owl1'));
-            $('a[href="#tab1"]').on('shown.bs.tab', function () {
-                initialize_owl($('#owl1'));
-            }).on('hide.bs.tab', function () {
+        }).on('hide.bs.tab', function () {
                 // destroy_owl($('#owl1'));
-            });
-            $('a[href="#tab2"]').on('shown.bs.tab', function () {
-                initialize_owl($('#owl2'));
-            }).on('hide.bs.tab', function () {
-                // destroy_owl($('#owl2'));
-            });
         });
-    </script>
+        $('a[href="#tab2"]').on('shown.bs.tab', function () {
+            initialize_owl($('#owl2'));
+        }).on('hide.bs.tab', function () {
+                // destroy_owl($('#owl2'));
+        });
+    });
+</script>
 @stop

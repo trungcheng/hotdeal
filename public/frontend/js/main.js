@@ -409,9 +409,9 @@ $(".singl-slide").owlCarousel({
 
     items : 1,
 
-	autoplay:true,
+	autoplay:false,
 
-	loop:true,
+	loop:false,
 
 	autoplayTimeout:5000,
 
