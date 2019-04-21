@@ -16,8 +16,8 @@ class SetDefaultValues
      */
     public function handle($request, \Closure $next)
     {
-        // $authUser = \Auth::user();
-        // \View::share('authUser', $authUser);
+        $authUser = \Auth::user();
+        \View::share('authUser', $authUser);
 
         return $next($request);
     }

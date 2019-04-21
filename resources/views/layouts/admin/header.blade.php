@@ -26,14 +26,14 @@
               <!-- The user image in the navbar-->
               <img src="{{ asset('components/admin-lte/dist/img/user2-160x160.jpg') }}" class="user-image" alt="Admin">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">{{ ($authUser && $authUser->username !== '' && $authUser->username !== null) ? $authUser->username : 'anonymous' }}</span>
+              <span class="hidden-xs">{{ ($authAdminUser && $authAdminUser->username !== '' && $authAdminUser->username !== null) ? $authAdminUser->username : 'anonymous' }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="{{ asset('components/admin-lte/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="Admin">
                 <p>
-                  {{ $authUser->fullname }} - Administrator
+                  {{ $authAdminUser->fullname }} - Administrator
                   <small>Member since April. 2018</small>
                 </p>
               </li>

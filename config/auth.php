@@ -46,17 +46,15 @@ return [
             'provider' => 'users',
         ],
 
-        //For Backend
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'admins',
         ],
-     
-        //For Frontend
+        
         'user' => [
             'driver' => 'session',
-            'provider' => 'user',
-        ],
+            'provider' => 'users',
+        ]
     ],
 
     /*
@@ -79,19 +77,16 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
-        //For Backend
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-     
-        //For Frontend
-        'user' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*
@@ -114,6 +109,11 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 

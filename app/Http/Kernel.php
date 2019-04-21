@@ -77,7 +77,7 @@ class Kernel extends HttpKernel
         'admin.values' => \App\Http\Middleware\Admin\SetDefaultValues::class,
         'admin.role' => \App\Http\Middleware\Admin\VerifyRole::class,
         
-        'user.auth' => \App\Http\Middleware\User\Authenticate::class,
+        'user.auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'user.guest' => \App\Http\Middleware\User\RedirectIfAuthenticated::class,
         'user.values' => \App\Http\Middleware\User\SetDefaultValues::class,
         'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class

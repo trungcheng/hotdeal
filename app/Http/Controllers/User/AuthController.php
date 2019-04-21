@@ -13,18 +13,4 @@ class AuthController extends Controller
         // $this->middleware('');
     }
 
-    public function getSignIn()
-    {
-        // var_dump(\Auth::user());die;
-        return view('pages.user.auth.signin', [
-            
-        ]);
-    }
-
-    public function getSignUp()
-    {
-        return view('pages.user.auth.signup', [
-            
-        ]);
-    }
 }

@@ -33,12 +33,12 @@
             <ul class="nav navbar-right cart-pop profile" style="min-width:165px !important">
                 <li class="dropdown"> 
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-user tvicon"></i> <strong>Chào Đinh Trung</strong> <br>
+                        <i class="fa fa-user tvicon"></i> <strong>Chào {{ $authUser->fullname }}</strong> <br>
                         <span>Tài khoản</span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Tài khoản của tôi</a></li>
-                        <li><a href="#">Thoát tài khoản</a></li>
+                        <li><a href="{{ route('getLogout') }}">Thoát tài khoản</a></li>
                     </ul>
                 </li>
             </ul>

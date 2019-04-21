@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -39,6 +38,11 @@ class LoginController extends Controller
         $this->middleware('user.guest')->except('logout');
     }
 
+    public function showLoginForm()
+    {
+        return view('pages.user.auth.signin');
+    }
+
     protected function credentials(Request $request)
     {
         if (is_numeric($request->get('email'))) {
@@ -48,6 +52,13 @@ class LoginController extends Controller
         }
 
         return ['username' => $request->get('email'), 'password' => $request->get('password')];
+    }
+
+    public function logout(Request $request)
+    {
+        \Auth::logout();
+
+        return redirect('/');
     }
 
 }

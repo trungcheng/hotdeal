@@ -26,7 +26,16 @@
             <!-- Login Your Account -->
             <h5 class="text-uppercase">Đăng nhập</h5>
             <!-- FORM -->
-            <form action="#" method="POST">
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li style="list-style:none">{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
+            <form action="" method="POST">
               {{ csrf_field() }}
               <ul class="row">
                 <li class="col-sm-12">
@@ -36,7 +45,7 @@
                 </li>
                 <li class="col-sm-12">
                   <label>Mật khẩu
-                    <input type="password" class="form-control" name="pass" placeholder="Mật khẩu">
+                    <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
                   </label>
                 </li>
                 <li class="col-sm-6">

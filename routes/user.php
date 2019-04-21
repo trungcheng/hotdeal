@@ -7,9 +7,9 @@
         \Route::get('/', 'User\HomeController@index')->name('home');
 
         // \Route::group(['middleware' => ['user.guest']], function () {
-        \Route::get('login', 'User\AuthController@getSignIn')->name('getSignIn');
-        \Route::post('login', 'User\Auth\LoginController@login');
-        // \Route::post('signin', 'User\AuthController@postSignIn');
+        \Route::get('account/signin', 'User\Auth\LoginController@showLoginForm')->name('getSignIn');
+        \Route::post('account/signin', 'User\Auth\LoginController@login');
+        \Route::get('account/logout', 'User\Auth\LoginController@logout')->name('getLogout');
         // \Route::get('signin/facebook', 'User\FacebookServiceAuthController@redirect');
         // \Route::get('signin/facebook/callback', 'User\FacebookServiceAuthController@callback');
         // \Route::get('forgot-password', 'User\PasswordController@getForgotPassword');

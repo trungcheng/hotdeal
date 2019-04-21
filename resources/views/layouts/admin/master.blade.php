@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	    $.app.init({
 	      	baseUrl		 : '{!! url("/admin") !!}',
 	      	csrf   		 : '{!! csrf_token() !!}',
-	      	user   		 : '{!! $authUser !!}',
+	      	user   		 : '{!! $authAdminUser !!}',
       		currentRoute : '{!! $current_route_name !!}'
 	    });
 	    $(function () {

@@ -5,7 +5,7 @@ namespace App\Http\Middleware\Admin;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use App\Models\User;
-
+use Auth;
 
 class VerifyRole
 {
@@ -36,13 +36,17 @@ class VerifyRole
      */
     public function handle($request, Closure $next, ... $roles)
     {
-        $currentUser = User::find(\Auth::id());
-        if (!$this->auth->check() || !$currentUser->hasRoles($roles)) {
-            \Auth::logout();
-            $request->session()->flush();
-            return redirect('admin/login');
+        if (Auth::guard('admin')->check()) {
+            $userId = Auth::guard('admin')->user()->id;
+            $currentUser = User::find($userId);
+            if ($currentUser->role_id !== 3) {
+                return $next($request);
+            }
         }
 
-        return $next($request);
+        Auth::guard('admin')->logout();
+        $request->session()->flush();
+
+        return redirect('admin/login');
     }
 }

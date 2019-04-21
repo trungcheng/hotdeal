@@ -19,17 +19,6 @@ class Controller extends BaseController
 
     protected $currentCallingControllerName = null;
 
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            view()->share('signedIn', auth()->check());
-            view()->share('authUser', auth()->user());
-
-            return $next($request);
-        });
-
-    }
-
     /**
      * Resize and Save image
      *
