@@ -350,6 +350,10 @@
         }).on('hide.bs.tab', function () {
                 // destroy_owl($('#owl2'));
         });
+        $('.blog-post p').each(function (v, k) {
+            var trim = trimText($(k).text(), 30);
+            $(k).text(trim);
+        });
     });
 </script>
 @stop

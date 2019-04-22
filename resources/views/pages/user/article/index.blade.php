@@ -70,5 +70,12 @@
 @stop
 
 @section('pageJs')
-
+  <script type="text/javascript">
+      $(function () {
+        // $('.blog-post p').each(function (v, k) {
+        //     var trim = trimText($(k).text(), 30);
+        //     $(k).text(trim);
+        // });
+      });
+  </script>
 @stop
