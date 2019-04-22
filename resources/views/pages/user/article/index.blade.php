@@ -49,8 +49,8 @@
       <div class="recent-post"> 
 
         <div class="media">
-          <div class="media-left"> <a href="{{ route('article-detail') }}"><img class="img-responsive" src="{{ asset('frontend/images/blog-img-2.jpg') }}" alt=""> </a> </div>
-          <div class="media-body"> <a href="{{ route('article-detail') }}">It’s why there’s
+          <div class="media-left"> <a href=""><img class="img-responsive" src="{{ asset('frontend/images/blog-img-2.jpg') }}" alt=""> </a> </div>
+          <div class="media-body"> <a href="">It’s why there’s
           nothing else like Mac. </a> <span>25 Dec, 2017 </span><span> 86 Comments</span> </div>
       </div>
   </div> -->
