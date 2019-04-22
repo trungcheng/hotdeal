@@ -55,13 +55,20 @@
                 <span class="tags">Model: {!! $product->sku_id !!}</span>
                 <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                 <div class="row" style="margin-top:10px;">
-                   <div class="col-sm-6"><span class="price">{{ number_format($product->price_sale, 0, 0, '.') }} VNĐ </span></div>
                    <div class="col-sm-6">
-                      <p>Tình trạng: <span class="in-stock">{{ ($product->status == 1) ? 'Còn hàng' : 'Hết hàng' }}</span></p>
+                      <span class="price">{{ number_format($product->price_sale, 0, 0, '.') }} VNĐ</span>
+                      <div>
+                        <del class="product-price-old">Giá retail: {{ number_format($product->price, 0, 0, '.') }} VNĐ</del>
+                      </div>
+                    </div>
+                   <div class="col-sm-6">
+                      <p style="line-height:30px;">Tình trạng: <span class="in-stock">{{ ($product->status == 1) ? 'Còn hàng' : 'Hết hàng' }}</span></p>
                   </div>
               </div>
               <!-- List Details -->
+              <div style="margin-top:10px;">
               {!! ($product->short_desc != '') ? $product->short_desc : '' !!}
+              </div>
 
            <!-- Compare Wishlist -->
            <ul class="cmp-list">

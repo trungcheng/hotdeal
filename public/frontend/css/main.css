@@ -1,6 +1,9 @@
 /*=======================================================
 			Page Loader
 ========================================================*/
+.cke_widget_drag_handler_container {
+    display: none !important;
+}
 #loader {
 	position: fixed;
 	top: 0;

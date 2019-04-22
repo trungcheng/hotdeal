@@ -35,7 +35,7 @@
         \Route::post('/cart/delete', 'User\CartController@delete')->name('cartDelete');
 
         \Route::get('/article', 'User\ArticleController@index')->name('article');
-        \Route::get('/article-detail', 'User\ArticleController@detail')->name('article-detail');
+        \Route::get('/a/{slug}', 'User\ArticleController@detail')->name('article-detail');
 
         \Route::get('/checkout/first', 'User\CartController@checkoutFirst')->name('step1');
         \Route::get('/checkout/info', 'User\CartController@checkoutInfo')->name('step2');
@@ -43,6 +43,10 @@
 
         \Route::get('/about', 'User\PageController@about')->name('about');
         \Route::get('/contact', 'User\PageController@contact')->name('contact');
+
+        \Route::get('/admin', function () {
+            return redirect('/admin/login');
+        });
 
     });
 

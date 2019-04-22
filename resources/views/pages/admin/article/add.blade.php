@@ -28,7 +28,7 @@
                     <div class="box-body">
                         <form id="formProcess" onsubmit="return false;" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
-                                <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" id="user_id" name="user_id" value="{{ $authAdminUser->id }}">
                                 <div class="form-group">
                                     <label>Tiêu đề</label>
                                     <input name="title" type="text" class="form-control slug" placeholder="Tiêu đề bài viết...">

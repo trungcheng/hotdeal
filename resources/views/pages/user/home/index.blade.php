@@ -206,11 +206,12 @@
     </div>
 </section>
 
+@if (count($chauda) > 0)
 <section class="light-gry-bg padding-top-30 padding-bottom-30">
     <div class="container"> 
         <!-- heading -->
         <div class="heading">
-            <h2>CHẬU RỬA BÁT ĐÁ NHÂN TẠO</h2>
+            <h2 class="text-uppercase">Chậu rửa bát đá nhân tạo</h2>
             <hr>
         </div>
         <div class="singl-slide with-nav">
@@ -237,506 +238,77 @@
         </div>
     </div>
 </section>
+@endif
 
+@if (count($chauinox) > 0)
 <section class="padding-top-30 padding-bottom-30">
     <div class="container"> 
         <!-- heading -->
         <div class="heading">
-            <h2 class="text-uppercase">Chậu rửa bát inox 201</h2>
+            <h2 class="text-uppercase">Chậu rửa bát inox</h2>
             <hr>
         </div>
         <div class="singl-slide with-nav">
+            @foreach ($chauinox as $list)
             <div class="item-col-4"> 
+                @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="" >
+                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                            <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}" >
                         </a>
                         <!-- Content --> 
                         <!-- <span class="tag">Latop</span> --> 
-                        <a href="" class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
+                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
                         <!-- Reviews -->
                         <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
+                        <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
                         <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
                     </article>
                 </div>
-                <div class="product">
-                    <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > 
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > 
-                        </a>
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="" >
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="" >
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" >
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
+                @endforeach
             </div>
-            
-            <div class="item-col-4"> 
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Latop</span> --> 
-                        <a href="" class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="">
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="">
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="">
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="">
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+@endif
 
+@if (count($voiruabat) > 0)
 <section class="light-gry-bg padding-top-30 padding-bottom-30">
     <div class="container"> 
         <!-- heading -->
         <div class="heading">
-            <h2 class="text-uppercase">Kệ tủ bếp</h2>
+            <h2 class="text-uppercase">Vòi rửa bát</h2>
             <hr>
         </div>
         <div class="singl-slide with-nav">
+            @foreach ($voiruabat as $list)
             <div class="item-col-4"> 
+                @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="" >
+                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                            <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}" >
                         </a>
                         <!-- Content --> 
                         <!-- <span class="tag">Latop</span> --> 
-                        <a href="" class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
+                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
                         <!-- Reviews -->
                         <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
+                        <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
                         <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
                     </article>
                 </div>
-                <div class="product">
-                    <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="" > 
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="" > 
-                        </a>
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="" >
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="" >
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="" >
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
+                @endforeach
             </div>
-            
-            <div class="item-col-4"> 
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Latop</span> --> 
-                        <a href="" class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article> 
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="">
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="">
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Funda Para Ebook 7" 128GB full HD</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="">
-                        </a>
-                        <span class="sale-tag">-25%</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Tablets</span> --> 
-                        <a href="" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ<span>200.000 VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="">
-                        </a> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Appliances</span> --> 
-                        <a href="" class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                <div class="product">
-                    <article>
-                        <a href="">
-                            <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="">
-                        </a>
-                        <span class="new-tag">New</span> 
-                        <!-- Content --> 
-                        <!-- <span class="tag">Accessories</span> --> 
-                        <a href="" class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">350.000 VNĐ</div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                    </article>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+@endif
 
-<!-- Top Selling Week -->
+@if (count($featureArticles) > 0)
 <section class="padding-top-30 padding-bottom-30">
     <div class="container"> 
         <!-- heading -->
@@ -745,81 +317,23 @@
             <hr>
         </div>
         <div id="blog-slide" class="with-nav"> 
-            <!-- Blog Post -->
+            @foreach ($featureArticles as $article)
             <div class="blog-post">
                 <article>
-                    <a href="{{ route('article-detail') }}">
-                        <img class="img-responsive" src="{{ asset('frontend/images/blog-img-1.jpg') }}" alt="">
+                    <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">
+                        <img class="img-responsive" src="{{ asset($article->image) }}" alt="{{ asset($article->image) }}">
                     </a>
-                    <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> 
-                    <a href="{{ route('article-detail') }}" class="tittle">It’s why there’s nothing else like Mac. </a>
-                    <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                    <a href="{{ route('article-detail') }}">Readmore</a> 
+                    <span><i class="fa fa-bookmark-o"></i>{{ $article->created_at }}</span>
+                    <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="tittle">{{ $article->title }}</a>
+                    <p>{!! $article->intro !!}</p>
+                    <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">Đọc thêm</a> 
                 </article>
             </div>
-            <!-- Blog Post -->
-            <div class="blog-post">
-                <article> 
-                    <a href="{{ route('article-detail') }}">
-                        <img class="img-responsive" src="{{ asset('frontend/images/blog-img-2.jpg') }}" alt="">
-                    </a>
-                    <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> 
-                    <a href="{{ route('article-detail') }}" class="tittle">Get the power to take your business to the next level. </a>
-                    <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                    <a href="{{ route('article-detail') }}">Readmore</a>
-                </article>
-            </div>
-            <!-- Blog Post -->
-            <div class="blog-post">
-                <article>
-                    <a href="{{ route('article-detail') }}">
-                        <img class="img-responsive" src="{{ asset('frontend/images/blog-img-3.jpg') }}" alt="">
-                    </a> 
-                    <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> 
-                    <a href="{{ route('article-detail') }}" class="tittle">It’s why there’s nothing else like Mac. </a>
-                    <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                    <a href="{{ route('article-detail') }}">Readmore</a> 
-                </article>
-            </div>
-            <!-- Blog Post -->
-            <div class="blog-post">
-                <article> 
-                    <a href="{{ route('article-detail') }}">
-                        <img class="img-responsive" src="{{ asset('frontend/images/blog-img-4.jpg') }}" alt="">
-                    </a>
-                    <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> 
-                    <a href="{{ route('article-detail') }}" class="tittle">It’s why there’s nothing else like Mac. </a>
-                    <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                    <a href="{{ route('article-detail') }}">Readmore</a> 
-                </article>
-            </div>
-            <!-- Blog Post -->
-            <div class="blog-post">
-                <article> 
-                    <a href="{{ route('article-detail') }}">
-                        <img class="img-responsive" src="{{ asset('frontend/images/blog-img-5.jpg') }}" alt="">
-                    </a> 
-                    <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> 
-                    <a href="{{ route('article-detail') }}" class="tittle">It’s why there’s nothing else like Mac. </a>
-                    <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                    <a href="{{ route('article-detail') }}">Readmore</a> 
-                </article>
-            </div>
-            <!-- Blog Post -->
-            <div class="blog-post">
-                <article> 
-                    <a href="{{ route('article-detail') }}">
-                        <img class="img-responsive" src="{{ asset('frontend/images/blog-img-6.jpg') }}" alt="">
-                    </a>
-                    <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> 
-                    <a href="{{ route('article-detail') }}" class="tittle">It’s why there’s nothing else like Mac. </a>
-                    <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                    <a href="{{ route('article-detail') }}">Readmore</a> 
-                </article>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+@endif
 @stop
 
 @section('pageJs')

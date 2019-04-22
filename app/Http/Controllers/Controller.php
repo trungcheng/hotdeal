@@ -28,7 +28,7 @@ class Controller extends BaseController
      *
      * @return string
      */
-    public function saveImage($image, $directory = '', $size = ['width' => 300, 'height' => 300])
+    public function saveImage($image, $directory = '', $size = ['width' => 600, 'height' => 600])
     {
         try {
             $directory = str_replace('.', DIRECTORY_SEPARATOR, $directory);

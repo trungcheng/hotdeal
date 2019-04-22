@@ -28,7 +28,7 @@
                     <div class="box-body">
                         <form id="formProcess" onsubmit="return false;" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
-                                <input type="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">
+                                <input type="hidden" id="user_id" name="user_id" value="{{ $authAdminUser->id }}">
                                 <input type="hidden" id="id" name="id" value="{{ $pro->id }}">
                                 <div class="form-group">
                                     <label>Tên sản phẩm</label>
@@ -138,98 +138,6 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Giới tính</label>
-                                    <select name="sex" class="form-control status">
-                                        <option {{ ($pro->sex == 'm') ? 'selected' : '' }} value="m">Nam</option>
-                                        <option {{ ($pro->sex == 'f') ? 'selected' : '' }} value="f">Nữ</option>
-                                    </select>
-                                </div>
-
-                                <!-- <fieldset style="margin-top:30px;margin-bottom:30px;">
-                                    <legend style="height:30px;line-height:30px;background: #f1f0f0;padding-left:15px;font-size:15px;font-weight:bold;">Thông số kỹ thuật</legend>
-                                    <table class="preview-table-upload">
-                                        <tr>
-                                            <td class="col1">Between lugs (mm):</td>
-                                            <td>
-                                                <input value="{{ $pro->between_lug }}" type="text" id="between_lug" name="between_lug" class="form-control" placeholder="Khoảng cách giữa 2 tai trên vỏ đồng hồ để lắp dây..." />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col1">Bracelet:</td>
-                                            <td>
-                                                <input value="{{ $pro->bracelet }}" type="text" id="bracelet" name="bracelet" class="form-control" placeholder="Vòng đeo" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col1">Case:</td>
-                                            <td>
-                                                <input value="{{ $pro->case }}" type="text" id="case" name="case" class="form-control" placeholder="Vỏ" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col1">Case diameter (mm):</td>
-                                            <td>
-                                                <input value="{{ $pro->case_diameter }}" type="text" id="case_diameter" name="case_diameter" class="form-control" placeholder="Đường kính vỏ" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col1">Dial colour:</td>
-                                            <td>
-                                                <input value="{{ $pro->dial_color }}" type="text" id="dial_color" name="dial_color" class="form-control" placeholder="Màu kim số" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col1">Crystal:</td>
-                                            <td>
-                                                <input value="{{ $pro->crystal }}" type="text" id="crystal" name="crystal" class="form-control" placeholder="Mặt kính" />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col1">Water resistance:</td>
-                                            <td>
-                                                <input value="{{ $pro->water_resistance }}" type="text" id="water_resistance" name="water_resistance" class="form-control" placeholder="Khả năng chịu nước" />
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </fieldset> -->
-
-                                <div class="form-group">
-                                    <label>Chất liệu dây</label>
-                                    <select name="wire_material" class="form-control status">
-                                        @foreach ($wires as $wire)
-                                        <option {{ ($pro->wire_material == $wire->id) ? 'selected' : '' }} value="{{ $wire->id }}">{{ $wire->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Chất liệu mặt kính</label>
-                                    <select name="glass_material" class="form-control status">
-                                        @foreach ($glasses as $glass)
-                                        <option {{ ($pro->glass_material == $glass->id) ? 'selected' : '' }} value="{{ $glass->id }}">{{ $glass->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Bộ máy & Năng lượng</label>
-                                    <select name="energy_type" class="form-control status">
-                                        @foreach ($energies as $energy)
-                                        <option {{ ($pro->energy_type == $energy->id) ? 'selected' : '' }} value="{{ $energy->id }}">{{ $energy->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Phiên bản đặc biệt</label>
-                                    <select name="version" class="form-control status">
-                                        @foreach ($versions as $version)
-                                        <option {{ ($pro->version == $version->id) ? 'selected' : '' }} value="{{ $version->id }}">{{ $version->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>
@@ -249,50 +157,6 @@
 <script>
     CKEDITOR.replace('short_content', { height: 100 }); 
     CKEDITOR.replace('full_content'); 
-</script>
-
-<script>
-    function openPopup() {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath' ).value = file.getUrl();
-                } );
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                } );
-            }
-        } );
-    }
-    
-    function openPopupMulti(id) {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath'+id ).value = file.getUrl();
-                });
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
-                });
-            }
-        });
-    }
-</script>
-
-<script>
-    var i = 50;
-    function add_img(){
-        i++;
-        var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="image_list[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-primary">Xóa</button></span></p>';
-        $(insert).appendTo('.box-img');
-    }
-    function del_accads(id){
-        $('.add_'+id).remove(); 
-    }
 </script>
 @stop
 

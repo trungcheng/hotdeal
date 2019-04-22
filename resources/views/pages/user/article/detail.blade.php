@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Chi tiết tin tức
+@section('page'){{ $article->title }}
 @stop
 
 @section('pageCss')
@@ -12,9 +12,9 @@
 <div class="linking">
 	<div class="container">
 		<ol class="breadcrumb">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Blog</a></li>
-			<li class="active">It’s  why there’s nothing else like Mac.</li>
+			<li><a href="{{ route('home') }}">Trang chủ</a></li>
+			<li><a href="{{ route('article') }}">Tin tức</a></li>
+			<li class="active">{{ $article->title }}</li>
 		</ol>
 	</div>
 </div>
@@ -27,18 +27,18 @@
 				
 				<!-- Blog Post -->
 				<div class="blog-post">
-					<article> <img class="img-responsive margin-bottom-20" src="{{ asset('frontend/images/blog-img-1.jpg') }}" alt="" > <span>By: <strong>Claudio Doe</strong></span> <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span>
-						<h5>It’s why there’s nothing else like Mac. </h5>
-						<p>Ut eget dolor eu ex efficitur accumsan. Ut eros nibh, tincidunt nec imperdiet sit amet, aliquam eget leo. Ut finibus sollicitudin ultricies. Fusce a ex lectus. Donec sollicitudin mi leo, nec eleifend quam luctus vel. Morbi vel neque eu libero fermentum molestie. Nam posuere nunc id consequat tempus. Maecenas imperdiet maximus turpis at tincidunt. Phasellus fermentum turpis et libero feugiat, at porttitor eros vestibulum. Suspenisse enim dolor, semper eu ultricies id, tristique nec ipsum.</p>
-						<blockquote> Suspendisse interdum lacus eget ligula posuere congue, suspendisse sodales cursus lorem vel Donec tincidunt aliquet lacus. Maecenas pulvinarefficiur.... </blockquote>
-						<p>Curabitur ante arcu, feugiat non ante nec, cursus fermentum ante. Proin imperdiet, sapien eget rhoncus convallis, neque ante placerat turpis, vitae dignissim mi ipsum a purus. Vivamus et diam tempus, elementum felis sed, sodales libero. Morbi sed sapien sed lectus volutpat mollis. Donec porttitor sapien est, eget porta nulla lobortis non. Maecenas leo massa, porttitor lobortis nibh sit amet, sodales interdum mauris. </p>
+					<article> 
+						<!-- <img style="width:100%" class="img-responsive margin-bottom-20" src="{{ asset($article->image) }}" alt="{{ asset($article->image) }}" />  -->
+						<span>By: <strong>{{ $article->user->fullname }}</strong></span> <span><i class="fa fa-bookmark-o"></i> {{ $article->created_at }}</span> <span><i class="fa fa-comment-o"></i> 0 Bình luận</span>
+						<h5>{{ $article->title }}</h5>
+						{!! $article->intro !!}
+						{!! $article->fulltext !!}
 					</article>
 					
 					<!-- Comments -->
-					<div class="comments">
+					<!-- <div class="comments">
 						<h6 class="margin-0">Comments (01)</h6>
 						<ul>
-							<!-- Comments -->
 							<li class="media">
 								<div class="media-left"> <a href="#" class="avatar"> <img src="{{ asset('frontend/images/avatar.jpg') }}" alt=""> </a> </div>
 								<div class="media-body padding-left-20">
@@ -47,13 +47,11 @@
 								</div>
 							</li>
 						</ul>
-					</div>
+					</div> -->
 					
 					<!-- ADD comments -->
-					<div class="add-comments padding-top-20">
+					<!-- <div class="add-comments padding-top-20">
 						<h6>Leave a Comment</h6>
-						
-						<!-- FORM -->
 						<form>
 							<ul class="row">
 								<li class="col-sm-6">
@@ -76,33 +74,29 @@
 								</li>
 							</ul>
 						</form>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			
 			<!-- Side Bar -->
-			<div class="col-md-3">
+			<!-- <div class="col-md-3">
 				<div class="shop-side-bar"> 
 					
-					<!-- Recent Posts -->
 					<h6>Recent Posts</h6>
 					<div class="recent-post"> 
 						
-						<!-- Recent Posts -->
 						<div class="media">
 							<div class="media-left"> <a href="#."><img class="img-responsive" src="{{ asset('frontend/images/blog-img-2.jpg') }}" alt=""> </a> </div>
 							<div class="media-body"> <a href="#.">It’s why there’s
 							nothing else like Mac. </a> <span>25 Dec, 2017 </span><span> 86 Comments</span> </div>
 						</div>
 						
-						<!-- Recent Posts -->
 						<div class="media">
 							<div class="media-left"> <a href="#."><img class="img-responsive" src="{{ asset('frontend/images/blog-img-3.jpg') }}" alt=""> </a> </div>
 							<div class="media-body"> <a href="#.">It’s why there’s
 							nothing else like Mac. </a> <span>25 Dec, 2017 </span><span> 86 Comments</span> </div>
 						</div>
 						
-						<!-- Recent Posts -->
 						<div class="media">
 							<div class="media-left"> <a href="#."><img class="img-responsive" src="{{ asset('frontend/images/blog-img-4.jpg') }}" alt=""> </a> </div>
 							<div class="media-body"> <a href="#.">It’s why there’s
@@ -110,14 +104,13 @@
 						</div>
 					</div>
 					
-					<!-- Quote of the Day -->
 					<h6>Quote of the Day</h6>
 					<div class="quote-day"> <i class="fa fa-quote-left"></i>
 						<p>Suspendisse sodales cursus lorem vel
 						efficitur. Donec tincidunt aliquet lacus. Maecenas pulvinar egestas ex eget eleifend. Aenean eget tempus urna [...]</p>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </section>

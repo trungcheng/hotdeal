@@ -67,11 +67,9 @@
                 <div class="cate-bar-in">
                     <div id="cater" class="collapse">
                         <ul>
-                            <li><a href="#.">Chậu rửa bát đá nhân tạo</a></li>
-                            <li><a href="#.">Chậu rửa bát inox 201</a></li>
-                            <li><a href="#.">Kệ tủ bếp</a></li>
-                            <li><a href="#.">Tủ lavabo</a></li>
-                            <li><a href="#.">Vòi hoa sen</a></li>
+                            @foreach ($categories as $cate)
+                                <li><a href="">{{ $cate->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -87,8 +85,8 @@
             <!-- NAV -->
             <div class="collapse navbar-collapse" id="nav-open-btn">
                 <ul class="nav">
-                    <li class="active"><a href="{{ route('home') }}">Trang chủ</a></li>
-                    <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Các trang</a>
+                    <li class="nav-item active"><a class="nav-link" href="{{ route('home') }}">Trang chủ</a></li>
+                    {{--<li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Các trang</a>
                         <ul class="dropdown-menu multi-level animated-2s fadeInUpHalf">
                             <li><a href="{{ route('about') }}">Giới thiệu</a></li>
                             <li><a href="{{ route('getSignIn') }}">Đăng nhập</a></li>
@@ -106,13 +104,11 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
-                    <li class="dropdown"> <a href="{{ route('article') }}" class="dropdown-toggle" data-toggle="dropdown">Tin tức</a>
-                        <ul class="dropdown-menu multi-level animated-2s fadeInUpHalf">
-                            <li><a href="{{ route('article') }}">Danh sách</a></li>
-                            <li><a href="{{ route('article-detail') }}">Chi tiết</a></li>
-                        </ul>
-                    </li>
+                    </li>--}}
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Cửa hàng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('article') }}">Tin tức</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Liên hệ</a></li>
                 </ul>
             </div>
 

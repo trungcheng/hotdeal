@@ -31,16 +31,8 @@ class ProductController extends Controller
 
     public function create(Request $request)
     {
-        $wires = file_get_contents(public_path('/frontend/json/wire-materials.json'));
-        $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
-        $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
-        $versions = file_get_contents(public_path('/frontend/json/versions.json'));
-
         return view('pages.admin.product.add', [
-            'wires' => json_decode($wires),
-            'glasses' => json_decode($glasses),
-            'energies' => json_decode($energies),
-            'versions' => json_decode($versions)
+
         ]);
     }
 
@@ -48,18 +40,10 @@ class ProductController extends Controller
     {
         $pro = Product::find($id);
         if ($pro) {
-            $wires = file_get_contents(public_path('/frontend/json/wire-materials.json'));
-            $glasses = file_get_contents(public_path('/frontend/json/glass-materials.json'));
-            $energies = file_get_contents(public_path('/frontend/json/energy-types.json'));
-            $versions = file_get_contents(public_path('/frontend/json/versions.json'));
             $pro->image_list = json_decode($pro->image_list);
 
             return view('pages.admin.product.edit', [
-                'pro' => $pro,
-                'wires' => json_decode($wires),
-                'glasses' => json_decode($glasses),
-                'energies' => json_decode($energies),
-                'versions' => json_decode($versions)
+                'pro' => $pro
             ]);
         }
 
@@ -82,7 +66,7 @@ class ProductController extends Controller
             if ($data) {
                 $thumbImage = '';
                 if ($request->hasFile('image')) {
-                    $thumbImage = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 750, 'height' => 900]);
+                    $thumbImage = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 600, 'height' => 600]);
                     $image = $this->saveImageWithoutResizeForThumb($request->file('image'), $thumbImage);
                     if (!$thumbImage || !$image) {
                         return Response::json([
@@ -151,7 +135,7 @@ class ProductController extends Controller
                     $thumbnail = '';
                     if ($request->hasFile('image')) {
                         $this->deleteImage($product->image);
-                        $thumbnail = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 750, 'height' => 900]);
+                        $thumbnail = $this->saveImage($request->file('image'), 'products/thumbs', ['width' => 600, 'height' => 600]);
                         $image = $this->saveImageWithoutResizeForThumb($request->file('image'), $thumbnail);
                         if (!$thumbnail || !$image) {
                             return Response::json([
