@@ -21,10 +21,10 @@ class HomeController extends Controller
     	$saleProducts = Product::where('discount', '>', 0)->orderBy('discount', 'desc')->limit(12)->get();
 
         $chauda = Product::where('cat_id', 1)->orderBy('created_at', 'desc')->limit(24)->get()->chunk(8);
-        $chauinox = Product::whereIn('cat_id', [2,3])
+        $chauinox = Product::whereIn('cat_id', [2])
             ->orderBy('created_at', 'desc')
             ->limit(24)->get()->chunk(8);
-        $voiruabat = Product::where('cat_id', 5)->orderBy('created_at', 'desc')->limit(24)->get()->chunk(8);
+        $voiruabat = Product::where('cat_id', 3)->orderBy('created_at', 'desc')->limit(24)->get()->chunk(8);
 
         $featureArticles = Article::where('status', 1)->where('is_feature', 1)->limit(12)->get();
 

@@ -33,7 +33,7 @@
                                 <!-- items mirrored twice, total of 12 -->
                             </ul>
                         </div>
-                        <div id="carousel" class="flexslider">
+                        <div id="carousel" class="flexslider" style="margin-top:20px;">
                             <ul class="slides">
                               <li>
                                 <img src="{{ asset($product->image) }}" alt="">

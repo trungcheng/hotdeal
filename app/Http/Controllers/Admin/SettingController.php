@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\General;
+use App\Models\Company;
 use Response;
 
 class SettingController extends Controller
@@ -17,7 +17,7 @@ class SettingController extends Controller
 
     public function index()
     {
-        $setting = General::first();
+        $setting = Company::first();
         return view('pages.admin.setting.index', [
             'setting' => $setting
         ]);
@@ -28,7 +28,7 @@ class SettingController extends Controller
         $data = $request->all();
         unset($data['_token']);
         
-        $setting = General::first();
+        $setting = Company::first();
         $setting->update($data);
         
         return redirect()->back()->with('message', 'Cập nhật thành công');

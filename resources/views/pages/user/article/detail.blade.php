@@ -36,8 +36,8 @@
 					</article>
 					
 					<!-- Comments -->
-					<!-- <div class="comments">
-						<h6 class="margin-0">Comments (01)</h6>
+					<div class="comments">
+						<h6 class="margin-0">Bình luận (01)</h6>
 						<ul>
 							<li class="media">
 								<div class="media-left"> <a href="#" class="avatar"> <img src="{{ asset('frontend/images/avatar.jpg') }}" alt=""> </a> </div>
@@ -47,15 +47,15 @@
 								</div>
 							</li>
 						</ul>
-					</div> -->
+					</div>
 					
 					<!-- ADD comments -->
-					<!-- <div class="add-comments padding-top-20">
-						<h6>Leave a Comment</h6>
+					<div class="add-comments padding-top-20">
+						<h6>Gửi bình luận</h6>
 						<form>
 							<ul class="row">
 								<li class="col-sm-6">
-									<label>Name
+									<label>Họ tên
 										<input type="text" class="form-control" name="name" placeholder="">
 									</label>
 								</li>
@@ -65,16 +65,16 @@
 									</label>
 								</li>
 								<li class="col-sm-12">
-									<label>Message
+									<label>Tin nhắn
 										<textarea class="form-control" rows="5" placeholder=""></textarea>
 									</label>
 								</li>
 								<li class="col-sm-12 text-left">
-									<button type="submit" class="btn-round">Send Message</button>
+									<button type="submit" class="btn-round">Gửi bình luận</button>
 								</li>
 							</ul>
 						</form>
-					</div> -->
+					</div>
 				</div>
 			</div>
 			

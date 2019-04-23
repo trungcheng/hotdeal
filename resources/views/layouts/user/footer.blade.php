@@ -15,10 +15,10 @@
 
     <!-- Contact -->
     <div class="col-md-4">
-      <h4>Liên hệ Thạch Vũ!</h4>
-      <p>Địa chỉ: 87 Nguyễn Đổng Chi - Q.Nam Từ Liêm - TP.Hà Nội</p>
-      <p>Điện thoại: 098 345 678</p>
-      <p>Email: support@thachvu.com</p>
+      <h4>Liên hệ {{ $setting->name }}!</h4>
+      <p>Địa chỉ: {!! $setting->address !!}</p>
+      <p>Điện thoại: {!! $setting->phone !!}</p>
+      <p>Email: {!! $setting->email !!}</p>
       <div class="social-links"> 
         <a href="#."><i class="fa fa-facebook"></i></a> 
         <!-- <a href="#."><i class="fa fa-twitter"></i></a>  -->
@@ -33,11 +33,9 @@
   <div class="col-md-3">
       <h4>Danh mục</h4>
       <ul class="links-footer">
-        <li><a href="#.">Chậu rửa bát đá nhân tạo</a></li>
-        <li><a href="#.">Chậu rửa bát inox 201</a></li>
-        <li><a href="#.">Kệ tủ bếp</a></li>
-        <li><a href="#.">Tủ lavabo</a></li>
-        <li><a href="#.">Vòi hoa sen</a></li>
+        @foreach ($categories as $cate)
+        <li><a href="{{ route('store', ['br[]' => $cate->id]) }}">{{ $cate->name }}</a></li>
+        @endforeach
         <!-- <li><a href="#."> Video Games</a></li> -->
         <!-- <li><a href="#."> Bluetooth & Wireless</a></li> -->
     </ul>

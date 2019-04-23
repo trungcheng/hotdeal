@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
+use App\Models\Company;
 use Cart;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function($view) {
             $view->with('countItemCart', Cart::count());
             $view->with('categories', Category::all());
+            $view->with('setting', Company::first());
         });
     }
 

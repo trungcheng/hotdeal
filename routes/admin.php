@@ -74,6 +74,15 @@
                 $this->post('slides/delete', 'Admin\SlideController@delete');
                 $this->get('slides/loadObject/{target}', 'Admin\SlideController@loadObject')->name('slide-load-object');
 
+                // member
+                $this->get('members', 'Admin\MemberController@index')->name('members');
+                $this->get('members/getAllMembers', 'Admin\MemberController@getAllMembers');
+                $this->get('members/create', 'Admin\MemberController@create')->name('member-create');
+                $this->get('members/edit/{id}', 'Admin\MemberController@edit')->name('member-edit');
+                $this->post('members/add', 'Admin\MemberController@add');
+                $this->post('members/update', 'Admin\MemberController@update');
+                $this->post('members/delete', 'Admin\MemberController@delete');
+
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');
                 $this->post('setting/update', 'Admin\SettingController@update');

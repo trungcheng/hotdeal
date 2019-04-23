@@ -47,8 +47,8 @@ class User extends Model implements Authenticatable
         return $this->belongsTo('App\Models\Role');
     }
 
-    public function new() {
-        return $this->hasMany('App\Models\New', 'user_id', 'id');
+    public function article() {
+        return $this->hasMany('App\Models\Article', 'user_id', 'id');
     }
 
     public function order() {
@@ -57,6 +57,45 @@ class User extends Model implements Authenticatable
 
     public function product() {
         return $this->hasMany('App\Models\Product', 'user_id', 'id');
+    }
+
+    public static $rules = [
+        'fullname' => 'required|min:2',
+        'email' => 'required|email',
+        'mobile' => 'required|numeric'
+    ];
+
+    public static $messages = [
+        'fullname.required' => 'Họ tên không được để trống',
+        'fullname.min' => 'Họ tên ít nhất từ 2 ký tự',
+        'email.required' => 'Email không được để trống',
+        'email.email' => 'Email không đúng định dạng',
+        'mobile.required' => 'Điện thoại không được để trống',
+        'mobile.numeric' => 'Điện thoại phải là định dạng số',
+    ];
+
+    public static function init($request)
+    {
+        $data = self::where('id', '>', 0)->where('role_id', 3);
+
+        if ($request->fullname !== 'all-member' && $request->fullname !== 'undefined') {
+            $data->where("fullname", "LIKE", "%" . $request->fullname . "%");
+        }
+
+        $data = $data->orderBy('id', 'desc')->paginate($request->perPage);
+
+        return $data;
+    }
+
+    public static function addAction($data)
+    {
+        $data['password'] = bcrypt('123456');
+        return self::firstOrCreate($data);
+    }
+
+    public static function updateAction($data, $member)
+    {
+        return $member->update($data);
     }
 
 }

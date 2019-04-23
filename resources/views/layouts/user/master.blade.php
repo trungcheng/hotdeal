@@ -7,7 +7,7 @@
 
     <title>@yield('page') | Thachvu.com</title>
 
-    <!-- <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon"> -->
+    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
 
     <link rel="stylesheet" href="{{ asset('frontend/rs-plugin/css/settings.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('frontend/css/ionicons.min.css') }}">

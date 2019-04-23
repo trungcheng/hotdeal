@@ -14,7 +14,7 @@
         <div class="order-success error-page"> <img src="{{ asset('frontend/images/error-img.jpg') }}" alt="" >
           <h3>Lỗi <span>404</span> Không tìm thấy trang</h3>
           <p>Không tìm thấy trang bạn đang truy cập.<br>
-            bạn hãy chuyển tới <a href="#.">trang chủ</a></p>
+            Quay lại <a href="{{ route('home') }}">trang chủ</a></p>
         </div>
       </div>
     </section>

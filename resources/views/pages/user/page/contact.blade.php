@@ -12,8 +12,8 @@
     <div class="linking">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="#">Home</a></li>
-          <li class="active">Contact</li>
+          <li><a href="{{ route('home') }}">Trang chủ</a></li>
+          <li class="active">Liên hệ</li>
         </ol>
       </div>
     </div>
@@ -24,8 +24,9 @@
         
         <!-- MAP -->
         <section class="map-block margin-bottom-40">
-          <div class="map-wrapper" id="map-canvas" data-lat="-37.814199" data-lng="144.961560" data-zoom="13" data-style="1"></div>
-          <div class="markers-wrapper addresses-block"> <a class="marker" data-rel="map-canvas" data-lat="-37.814199" data-lng="144.961560" data-string="Smart Tech"></a> </div>
+          <div class="map-container" style="height: 300px">
+              <iframe frameborder="0" style="border:0; width: 100%; height: 100%;" src="https://maps.google.com/maps?q=s%E1%BB%91%201%20nguy%E1%BB%85n%20huy%20t%C6%B0%E1%BB%9Fng&t=&z=17&ie=UTF8&iwloc=&output=embed" allowfullscreen=""></iframe>
+          </div>
         </section>
         
         <!-- Conatct -->
@@ -38,26 +39,26 @@
                   
                   <!-- Payment information -->
                   <div class="heading">
-                    <h2>Dou You have a Question for Us ?</h2>
+                    <h2>Liên hệ với chúng tôi</h2>
                   </div>
                   <ul class="row">
                     <li class="col-sm-6">
-                      <label>First Name
-                        <input type="text" class="form-control" name="name" id="name" placeholder="">
+                      <label>Họ tên
+                        <input type="fullname" class="form-control" name="name" id="name" placeholder="">
                       </label>
                     </li>
                     <li class="col-sm-6">
-                      <label>Last Name
-                        <input type="text" class="form-control" name="email" id="email" placeholder="">
+                      <label>Email
+                        <input type="email" class="form-control" name="email" id="email" placeholder="">
                       </label>
                     </li>
                     <li class="col-sm-12">
-                      <label>Message
+                      <label>Nội dung
                         <textarea class="form-control" name="message" id="message" rows="5" placeholder=""></textarea>
                       </label>
                     </li>
                     <li class="col-sm-12 no-margin">
-                      <button type="submit" value="submit" class="btn-round" id="btn_submit" onClick="proceed();">Send Message</button>
+                      <button type="submit" value="submit" class="btn-round" id="btn_submit" onClick="proceed();">Gửi liên hệ</button>
                     </li>
                   </ul>
                 </div>
@@ -65,18 +66,15 @@
                 <!-- Conatct Infomation -->
                 <div class="col-md-4">
                   <div class="contact-info">
-                    <h5>SmartTech</h5>
-                    <p>The most powerful PSD for Digital & Electronic!</p>
+                    <h5>{{ $setting->name }}</h5>
+                    <p>{{ $setting->slogan }}</p>
                     <hr>
-                    <h6> Address:</h6>
-                    <p>45 Grand Central Terminal New York, NY 1017
-                      United State USA</p>
-                    <h6>Phone:</h6>
-                    <p>(+100) 123 456 7890</p>
-                    <p>(+100) 987 654 3210 </p>
+                    <h6> Địa chỉ:</h6>
+                    <p>{!! $setting->address !!}</p>
+                    <h6>Điện thoại:</h6>
+                    <p>{!! $setting->phone !!}</p>
                     <h6>Email:</h6>
-                    <p>Support@smarttech.com
-                      Support24/7@smarttech.com</p>
+                    <p>{{ $setting->email }}</p>
                   </div>
                 </div>
               </div>

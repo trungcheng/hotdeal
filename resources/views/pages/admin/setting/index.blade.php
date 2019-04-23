@@ -47,18 +47,33 @@
                     </div> -->
 
                     <div class="form-group">
+                        <label class="control-label">Tên công ty</label>
+                        <input type="text" name="name" value="{{ ($setting != '') ? $setting->name : '' }}" class="form-control" placeholder="Tên công ty...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Slogan</label>
+                        <input type="text" name="slogan" value="{{ ($setting != '') ? $setting->slogan : '' }}" class="form-control" placeholder="Slogan...">
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label">Email</label>
                         <input type="text" name="email" value="{{ ($setting != '') ? $setting->email : '' }}" class="form-control" placeholder="Địa chỉ email...">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Hotline</label>
-                        <input type="text" name="hotline" value="{{ ($setting != '') ? $setting->hotline : '' }}" class="form-control" placeholder="Hotline...">
+                        <label class="control-label">Điện thoại</label>
+                        <input type="text" name="phone" value="{{ ($setting != '') ? $setting->phone : '' }}" class="form-control" placeholder="Điện thoại...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Địa chỉ</label>
                         <input type="text" name="address" value="{{ ($setting != '') ? $setting->address : '' }}" class="form-control" placeholder="Địa chỉ...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Giờ làm việc</label>
+                        <input type="text" name="time_work" value="{{ ($setting != '') ? $setting->time_work : '' }}" class="form-control" placeholder="Giờ làm việc...">
                     </div>
 
                     <div class="form-group">

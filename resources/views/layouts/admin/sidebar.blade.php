@@ -72,9 +72,19 @@
             </ul>
         </li>
 
-        <li><a data-route="/admin/users" href="{{ url('/admin/users') }}"><i class="fa fa-users"></i> <span>Quản lý user</span></a></li>
+        <li class="treeview">
+            <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý thành viên</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a style="margin-left:35px;" data-route="/admin/members" href="{{ url('/admin/members') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/members/create" href="{{ url('/admin/members/create') }}">Thêm mới</a></li>
+            </ul>
+        </li>
 
-        <li><a data-route="/admin/setting" href="{{ url('/admin/setting') }}"><i class="fa fa-cog"></i> <span>Thông tin công ty</span></a></li>
+        <!-- <li><a data-route="/admin/setting" href="{{ url('/admin/setting') }}"><i class="fa fa-cog"></i> <span>Thông tin công ty</span></a></li> -->
 
         <li><a data-route="/admin/setting" href="{{ url('/admin/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
         

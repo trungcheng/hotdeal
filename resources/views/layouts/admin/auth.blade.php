@@ -6,7 +6,7 @@
   	<title>ThachvuCMS | Login</title>
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}">
-  	<!-- <link href="{{asset('img/favicon.ico')}}" rel="shortcut icon" /> -->
+  	<link href="{{asset('frontend/images/favicon.ico')}}" rel="shortcut icon" />
   	<!-- Bootstrap 3.3.2 -->
   	<link href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
   	<!-- Font Awesome Icons -->

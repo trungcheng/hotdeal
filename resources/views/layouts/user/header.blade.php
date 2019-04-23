@@ -68,7 +68,7 @@
                     <div id="cater" class="collapse">
                         <ul>
                             @foreach ($categories as $cate)
-                                <li><a href="">{{ $cate->name }}</a></li>
+                                <li><a href="{{ route('store', ['br[]' => $cate->id]) }}">{{ $cate->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -105,10 +105,10 @@
                             </li>
                         </ul>
                     </li>--}}
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Cửa hàng</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('store') }}">Cửa hàng</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('article') }}">Tin tức</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Giới thiệu</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Liên hệ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Giới thiệu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Liên hệ</a></li>
                 </ul>
             </div>
 

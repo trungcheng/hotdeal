@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Mua chậu rửa bát chất lượng, uy tín tại Thạch Vũ
+@section('page')Mua chậu rửa bát giá rẻ, đẹp và hiện đại tại Thạch Vũ
 @stop
 
 @section('pageCss')
@@ -108,6 +108,39 @@
                 margin-left: auto;
             }
         }
+        article {
+            display: block !important;
+            justify-content: space-between;
+            flex-grow: 1;
+            border-radius: 0;
+            border-color: transparent;
+            position: relative;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+        }
+        article .thumb {
+            padding-top: 100%;
+            position: relative;
+            display: block;
+            z-index: 0;
+        }
+        .thumb .img-responsive {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            max-width: 100%;
+            transition: all .2s ease-in-out;
+            vertical-align: middle;
+        }
+        .product {
+            display: flex;
+        }
     </style>
 @stop
 
@@ -147,46 +180,22 @@
 
         <!-- Nav tabs -->
         <ul class="nav nav-tabs nav-pills margin-bottom-40" role="tablist">
-            <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">NỔI BẬT</a></li>
-            <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">KHUYẾN MÃI</a></li>
+            <li role="presentation" class="active"><a href="#tab1" aria-controls="tab1" role="tab" data-toggle="tab">KHUYẾN MÃI</a></li>
+            <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab">NỔI BẬT</a></li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
 
-            <!-- Featured -->
+            <!-- On sale -->
             <div role="tabpanel" class="tab-pane active fade in" id="tab1"> 
                 <!-- Items Slider -->
-                <div class="with-nav" id="owl1"> 
-                    <!-- Product -->
-                    @foreach ($featureProducts as $pro)
-                    <div class="product">
-                        <article>
-                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
-                                <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
-                            </a>
-                            <!-- Content --> 
-                            <!-- <span class="tag">Latop</span> --> 
-                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
-                            <!-- Reviews -->
-                            <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                            <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ</div>
-                            <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> --> 
-                        </article>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-
-            <!-- On sale -->
-            <div role="tabpanel" class="tab-pane fade" id="tab2"> 
-                <!-- Items Slider -->
-                <div class="with-nav" id="owl2"> 
+                <div class="item-slide-4 with-nav" id="owl1"> 
                     <!-- Product -->
                     @foreach ($saleProducts as $pro)
                     <div class="product">
                         <article>
-                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                            <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                                 <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
                             </a>
                             <span class="sale-tag">-{{ $pro->discount }}%</span>
@@ -202,6 +211,31 @@
                     @endforeach
                 </div>
             </div>
+
+            <!-- Featured -->
+            <div role="tabpanel" class="tab-pane fade" id="tab2"> 
+                <!-- Items Slider -->
+                <div class="with-nav" id="owl2"> 
+                    <!-- Product -->
+                    @foreach ($featureProducts as $pro)
+                    <div class="product">
+                        <article>
+                            <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                                <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
+                            </a>
+                            <!-- Content --> 
+                            <!-- <span class="tag">Latop</span> --> 
+                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+                            <!-- Reviews -->
+                            <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
+                            <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
+                            <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> --> 
+                        </article>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -220,7 +254,7 @@
                 @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                        <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                             <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
                         </a>
                         <!-- Content --> 
@@ -254,7 +288,7 @@
                 @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                        <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                             <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}" >
                         </a>
                         <!-- Content --> 
@@ -288,7 +322,7 @@
                 @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                        <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                             <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}" >
                         </a>
                         <!-- Content --> 
@@ -339,7 +373,6 @@
 @section('pageJs')
 <script type="text/javascript">
     $(function () {
-        initialize_owl($('#owl1'));
         $('a[href="#tab1"]').on('shown.bs.tab', function () {
             initialize_owl($('#owl1'));
         }).on('hide.bs.tab', function () {

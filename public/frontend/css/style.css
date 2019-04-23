@@ -1692,6 +1692,8 @@ section {
 
 	/*float: left;*/
 
+	margin-top: 5px;
+
 }
 
 .product article .price span {
@@ -12785,8 +12787,10 @@ footer .social p a {
 }
 
 
-#carousel li{padding: 10px;
-margin: 0;}
+#carousel li{
+	padding: 0 10px;
+	margin: 0;
+}
 #carousel .flex-viewport { background: #fff;}
 #carousel .flex-direction-nav{    position: absolute;
 width: 100%;

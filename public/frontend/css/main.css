@@ -4,6 +4,10 @@
 .cke_widget_drag_handler_container {
     display: none !important;
 }
+.blog-post article img {
+	height: 260px;
+}
+
 #loader {
 	position: fixed;
 	top: 0;

@@ -4,334 +4,214 @@
 @stop
 
 @section('pageCss')
-
+    <style type="text/css">
+        article {
+            display: block !important;
+            justify-content: space-between;
+            flex-grow: 1;
+            border-radius: 0;
+            border-color: transparent;
+            position: relative;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+        }
+        article .thumb {
+            padding-top: 100%;
+            position: relative;
+            display: block;
+            z-index: 0;
+        }
+        .thumb .img-responsive {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            max-width: 100%;
+            transition: all .2s ease-in-out;
+            vertical-align: middle;
+        }
+        .product {
+            display: flex;
+        }
+    </style>
 @stop
 
 @section('content')
-	<!-- Linking -->
-  <div class="linking">
+<!-- Linking -->
+<div class="linking">
     <div class="container">
       <ol class="breadcrumb">
-        <li><a href="#">Home</a></li>
+        <li><a href="{{ route('home') }}">Trang chủ</a></li>
         <li class="active">Cửa hàng</li>
-      </ol>
-    </div>
-  </div>
+    </ol>
+</div>
+</div>
+<form role="form" id="storeForm" action="" method="get">
+<!-- Products -->
+<section class="padding-top-40 padding-bottom-60">
+  <div class="container">
+    <div class="row"> 
 
-  <!-- Products -->
-    <section class="padding-top-40 padding-bottom-60">
-      <div class="container">
-        <div class="row"> 
-          
-          <!-- Shop Side Bar -->
-          <div class="col-md-3">
-            <div class="shop-side-bar"> 
-              
-              <!-- Categories -->
-              <h6>Danh mục</h6>
-              <div class="checkbox checkbox-primary">
-                <ul>
-                  <li>
-                    <input id="cate1" class="styled" type="checkbox">
-                    <label for="cate1">Chậu rửa bát đá nhân tạo</label>
-                  </li>
-                  <li>
-                    <input id="cate2" class="styled" type="checkbox">
-                    <label for="cate2">Chậu rửa bát inox 201</label>
-                  </li>
-                  <li>
-                    <input id="cate3" class="styled" type="checkbox">
-                    <label for="cate3">Kệ tủ bếp</label>
-                  </li>
-                  <li>
-                    <input id="cate4" class="styled" type="checkbox">
-                    <label for="cate4">Tủ lavabo</label>
-                  </li>
-                  <li>
-                    <input id="cate5" class="styled" type="checkbox">
-                    <label for="cate5">Vòi hoa sen</label>
-                  </li>
-                </ul>
-              </div>
-              
-              <!-- Categories -->
-              <h6>Giá sản phẩm</h6>
-              <!-- PRICE -->
-              <div class="checkbox checkbox-primary">
-                <ul>
-                  <li>
-                    <input id="price1" class="styled" type="checkbox" >
-                    <label for="price1"> 0 đ - 500.000 đ </label>
-                  </li>
-                  <li>
-                    <input id="price2" class="styled" type="checkbox" >
-                    <label for="price2"> 500.000 đ - 1.000.000 đ </label>
-                  </li>
-                  <li>
-                    <input id="price3" class="styled" type="checkbox" >
-                    <label for="price3"> 1.000.000 đ - 5.000.000 đ </label>
-                  </li>
-                  <li>
-                    <input id="price4" class="styled" type="checkbox" >
-                    <label for="price4"> 5.000.000 đ+ </label>
-                  </li>
-                </ul>
-              </div>
-              
+      <!-- Shop Side Bar -->
+      <div class="col-md-3">
+        <div class="shop-side-bar"> 
+
+        <!-- Categories -->
+        @if (count($conditions) > 0)
+        <div>
+            <h6 style="display:inline">Bộ lọc</h6>
+            <div style="float:right;font-size:11px;">
+                <i class="fa fa-refresh"></i>  
+                <a style="margin-left:5px;" href="{{ route('store') }}"> Đặt lại</a>
             </div>
-          </div>
-          
-          <!-- Products -->
-          <div class="col-md-9"> 
-            
-            <!-- Short List -->
-            <div class="short-lst">
-              <h2 class="text-uppercase">Cửa hàng</h2>
-              <ul>
-                <!-- Short List -->
+        </div>
+        <div class="checkbox checkbox-primary">
+            <ul>
+                @foreach ($conditions as $key => $con)
                 <li>
-                  <p>Hiển thị 1–12 của 756 sản phẩm</p>
+                    <input id="cate{{ $key+1 }}" class="styled filtered" type="checkbox" checked>
+                    <label for="cate{{ $key+1 }}">{{ $con }}</label>
                 </li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
+        <!-- Categories -->
+        <h6>Danh mục</h6>
+        <div class="checkbox checkbox-primary">
+            <ul>
+                @foreach ($categories as $key => $cate)
+                <li>
+                    <input value="{{ $cate->id }}" name="br[]" id="cate{{ $key+1 }}" class="styled filter-input" type="checkbox">
+                    <label for="cate{{ $key+1 }}">{{ $cate->name }}</label>
+                </li>
+                @endforeach
+            </ul>
+        </div>
+
+        <!-- Categories -->
+        <h6>Giá sản phẩm</h6>
+        <!-- PRICE -->
+        <div class="checkbox checkbox-primary">
+            <ul>
+                <li>
+                    <input value="0-1000000" name="pr[]" id="price1" class="styled filter-input filter-price" type="checkbox" >
+                    <label for="price1"> 0 đ - 1.000.000 đ </label>
+                </li>
+                <li>
+                    <input value="1000000-3000000" name="pr[]" id="price2" class="styled filter-input filter-price" type="checkbox" >
+                    <label for="price2"> 1.000.000 đ - 3.000.000 đ </label>
+                </li>
+                <li>
+                    <input value="3000000-5000000" name="pr[]" id="price3" class="styled filter-input filter-price" type="checkbox" >
+                    <label for="price3"> 3.000.000 đ - 5.000.000 đ </label>
+                </li>
+                <li>
+                    <input value="5000000-10000000" name="pr[]" id="price4" class="styled filter-input filter-price" type="checkbox" >
+                    <label for="price4"> 5.000.000 đ+ </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <!-- Products -->
+    <div class="col-md-9"> 
+
+        <!-- Short List -->
+        <div class="short-lst">
+            <h2 class="text-uppercase" style="display:inline;">Cửa hàng</h2>
+            <ul style="float:right;margin-top:5px;">
                 <!-- Short  -->
-                <li >
-                  <select class="selectpicker">
-                    <option>Hiển thị 12 </option>
-                    <option>Hiển thị 24 </option>
-                    <option>Hiển thị 32 </option>
-                  </select>
+                <li>
+                    <select id="num" name="num" class="selectpicker filter-input filter-num">
+                        <option value="12" selected>Hiển thị 12</option>
+                        <option value="24">Hiển thị 24</option>
+                        <option value="48">Hiển thị 48</option>
+                    </select>
                 </li>
                 <!-- by Default -->
                 <li>
-                  <select class="selectpicker">
-                    <option>Mới nhất</option>
-                    <option>Giá thấp đến cao</option>
-                    <option>Giá cao đến thấp</option>
-                  </select>
+                    <select id="order" name="order" class="selectpicker filter-input filter-order">
+                        <option value="created_at-desc" selected>Mới nhất</option>
+                        <option value="price-asc">Giá thấp đến cao</option>
+                        <option value="price-desc">Giá cao đến thấp</option>
+                    </select>
                 </li>
-                
-              </ul>
-            </div>
-            
-            <!-- Items -->
-            <div class="item-col-3"> 
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-1.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-2.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-3.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-4.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-5.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-6.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-7.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-8.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-9.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-10.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-11.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-              
-              <!-- Product -->
-              <div class="product">
-                <article> 
-                  <a href="{{ route('product-detail') }}">
-                    <img class="img-responsive" src="{{ asset('frontend/images/item-img-1-12.jpg') }}" alt="">
-                  </a> 
-                  <span class="sale-tag">-25%</span> 
-                  <!-- Content --> 
-                  <!-- <span class="tag">Tablets</span> --> 
-                  <a href="{{ route('product-detail') }}" class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a> 
-                  <!-- Reviews -->
-                  <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                  <div class="price">350.000 VNĐ <span>350.000 VNĐ</span></div>
-                  <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
-                </article>
-              </div>
-            </div>
-            <!-- pagination -->
-              <ul class="pagination">
-                <li><a href="#" aria-label="Previous"> <i class="fa fa-angle-left"></i> </a> </li>
-                <li><a class="active" href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#" aria-label="Next"> <i class="fa fa-angle-right"></i> </a> </li>
-              </ul>
-          </div>
+
+            </ul>
         </div>
-      </div>
-    </section>
+
+        <!-- Items -->
+        @if (count($results) > 0)
+            <div class="item-col-3" style="display:inline-block;"> 
+                <!-- Product -->
+                @foreach ($results as $result)
+                <div class="product">
+                    <article> 
+                        <a class="thumb" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
+                            <img class="img-responsive" src="{{ asset($result->image) }}" alt="{{ asset($result->image) }}">
+                        </a> 
+                        <!-- <span class="sale-tag">-25%</span>  -->
+                        <!-- Content --> 
+                        <!-- <span class="tag">Tablets</span> --> 
+                        <a href="{{ route('product-detail', ['slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a> 
+                        <!-- Reviews -->
+                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
+                        <div class="price">{{ number_format($result->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($result->price, 0, 0, '.') }} VNĐ</span></div>
+                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
+                    </article>
+                </div>
+                @endforeach
+            </div>
+        @else
+            <p style="padding-left:15px;">Không có sản phẩm nào !</p>
+        @endif
+        <!-- pagination -->
+        {{ $results->appends(request()->query())->links() }}
+    </div>
+</div>
+</div>
+</section>
+</form>
 @stop
 
 @section('pageJs')
-
+    <script type="text/javascript">
+        $(function () {
+            var filtered = $('.filtered').length;
+            if (filtered > 0) {
+                $('.filtered').each(function (v, k) {
+                    var filteredCheckBox = $(k).next().text();
+                    $('.filter-input').each(function (a, b) {
+                        if ($(b).hasClass('filter-price')) {
+                            if ($(b).val() == filteredCheckBox) {
+                                $(b).prop('checked', true);
+                            }
+                        } else {
+                            if ($(b).next().text() == filteredCheckBox) {
+                                $(b).prop('checked', true);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+        $(document).on('change', '.filter-input', function() {
+            $('#storeForm').submit();
+        });
+        var query = get_query(window.location.href);
+        if (query.order !== undefined) {
+            $('#order').val(query.order);
+        }
+        if (query.num !== undefined) {
+            $('#num').val(query.num);
+        }
+    </script>
 @stop
