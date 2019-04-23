@@ -73,4 +73,22 @@ class ProductController extends Controller
         ]);
 
     }
+
+    public function search(Request $request)
+    {
+        if ($request->exists('key')) {
+            if (is_null($request->key)) $request->key = 'null';
+            $results = Product::where('name', 'LIKE', '%'.$request->key.'%')
+            // ->orWhere('short_desc', 'LIKE', '%'.$request->key.'%')
+            // ->orWhere('full_desc', 'LIKE', '%'.$request->key.'%')
+            ->paginate(12);
+
+            return view('pages.user.page.search', [
+                'results' => $results,
+                'key' => $request->key
+            ]);    
+        }
+        
+        abort(404);
+    }
 }

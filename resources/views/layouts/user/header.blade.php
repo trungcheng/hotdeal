@@ -5,10 +5,12 @@
                 <img src="{{ asset('frontend/images/logo.png') }}" alt="Logo Thạch Vũ" >
             </a> 
         </div>
-        <div class="search-cate">
-            <input type="search" placeholder="Tìm kiểm sản phẩm bạn muốn...">
-            <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
-        </div>
+        <form style="display:inline" role="form" method="get" action="{{ route('search') }}">
+            <div class="search-cate">
+                <input type="text" name="key" placeholder="Tìm kiểm sản phẩm bạn muốn...">
+                <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
+            </div>
+        </form>
 
         <!-- Cart Part -->
         <ul class="nav navbar-right cart-pop" style="min-width:150px !important">

@@ -1,3 +1,17 @@
+@media(max-width:480px) {
+	.item-col-3 .product {
+		width: 100%;
+	}
+	img.cke_widget_element {
+		width: 100%;
+	}
+}
+@media(min-width:480px) and (max-width:768px) {
+	.item-col-3 .product {
+		width: 50%;
+	}
+}
+
 @media(min-width:1400px) and (max-width:1920px) {
 }
 @media(min-width:1200px) and (max-width:1400px) {
@@ -720,6 +734,9 @@ header .search-cate {
 .item-col-4 .product {
 	width: 100%;
 }
+/*.item-col-3 .product {
+	width: 100%;
+}*/
 header.header-style-3 .cate-lst {
 	display: none;
 }

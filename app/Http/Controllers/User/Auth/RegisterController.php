@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\User\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/account/signin';
 
     /**
      * Create a new controller instance.
@@ -36,7 +36,12 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('user.guest');
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('pages.user.auth.signup');
     }
 
     /**
@@ -48,9 +53,18 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'fullname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'min:6|max:32|required_with:repassword|same:repassword'
+        ], [
+            'fullname.required' => 'Họ và tên không được để trống',
+            'email.required' => 'Email không được để trống',
+            'email.email' => 'Email không đúng định dạng',
+            'email.unique' => 'Email đã tồn tại',
+            'password.required' => 'Mật khẩu không được để trống',
+            'password.same' => 'Mật khẩu và xác nhận mật khẩu chưa khớp',
+            'password.min' => 'Mật khẩu ít nhất 6 ký tự trở lên',
+            'password.max' => 'Mật khẩu tối đa 32 ký tự'
         ]);
     }
 
@@ -63,9 +77,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
+            'role_id' => 3,
+            'fullname' => $data['fullname'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => $data['password'],
+            'mobile' => (isset($data['mobile']) && $data['mobile'] !== '') ? $data['mobile'] : '',
+            'address' => (isset($data['address']) && $data['address'] !== '') ? $data['address'] : ''
         ]);
     }
 }

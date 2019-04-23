@@ -12,7 +12,7 @@
     <div class="linking">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="#">Home</a></li>
+          <li><a href="{{ route('home') }}">Home</a></li>
           <li class="active">Đăng ký</li>
         </ol>
       </div>
@@ -26,11 +26,21 @@
             <!-- Login Your Account -->
             <h5 class="text-uppercase">Đăng ký</h5>
             <!-- FORM -->
-            <form>
+            @if (count($errors) > 0)
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li style="list-style:none">{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
+            <form action="" method="post">
+              {{ csrf_field() }}
               <ul class="row">
                 <li class="col-sm-12">
                   <label>Họ tên
-                    <input autofocus type="text" class="form-control" name="name" placeholder="Họ tên">
+                    <input autofocus type="text" class="form-control" name="fullname" placeholder="Họ tên">
                   </label>
                 </li>
                 <li class="col-sm-12">
@@ -40,17 +50,17 @@
                 </li>
                 <li class="col-sm-12">
                   <label>Số điện thoại
-                    <input type="text" class="form-control" name="pass" placeholder="Số điện thoại">
+                    <input type="text" class="form-control" name="mobile" placeholder="Số điện thoại">
                   </label>
                 </li>
                 <li class="col-sm-12">
                   <label>Mật khẩu
-                    <input type="password" class="form-control" name="pass" placeholder="Mật khẩu">
+                    <input type="password" class="form-control" name="password" placeholder="Mật khẩu">
                   </label>
                 </li>
                 <li class="col-sm-12">
                   <label>Xác nhận mật khẩu
-                    <input type="password" class="form-control" name="confirmpass" placeholder="Xác nhận mật khẩu">
+                    <input type="password" class="form-control" name="repassword" placeholder="Xác nhận mật khẩu">
                   </label>
                 </li>
                 <li class="col-sm-12 text-left">

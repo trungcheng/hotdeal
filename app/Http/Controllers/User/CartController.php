@@ -78,9 +78,13 @@ class CartController extends Controller
 
     public function checkoutFirst()
     {
-        return view('pages.user.checkout.index', [
+        if (!\Auth::check()) {
+            return view('pages.user.checkout.index', [
             
-        ]);
+            ]);
+        }
+
+        return redirect()->route('step2');
     }
 
     public function checkoutInfo()

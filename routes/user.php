@@ -16,8 +16,8 @@
         // \Route::post('forgot-password', 'User\PasswordController@postForgotPassword');
         // \Route::get('reset-password/{token}', 'User\PasswordController@getResetPassword');
         // \Route::post('reset-password', 'User\PasswordController@postResetPassword');
-        \Route::get('account/signup', 'User\AuthController@getSignUp')->name('getSignUp');
-        // \Route::post('signup', 'User\AuthController@postSignUp');
+        \Route::get('account/signup', 'User\Auth\RegisterController@showRegistrationForm')->name('getSignUp');
+        \Route::post('account/signup', 'User\Auth\RegisterController@register');
 
         // });
 
@@ -28,6 +28,7 @@
         \Route::get('/p/{slug}', 'User\ProductController@detail')->name('product-detail');
         // \Route::get('/product-detail', 'User\ProductController@detail')->name('product-detail');
         \Route::get('/store', 'User\ProductController@store')->name('store');
+        \Route::get('/search', 'User\ProductController@search')->name('search');
 
         \Route::get('/cart', 'User\CartController@index')->name('cart');
         \Route::post('/cart/add', 'User\CartController@add')->name('cartAdd');

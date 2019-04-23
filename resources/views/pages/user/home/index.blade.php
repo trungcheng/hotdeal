@@ -245,7 +245,7 @@
     <div class="container"> 
         <!-- heading -->
         <div class="heading">
-            <h2 class="text-uppercase">Chậu rửa bát đá nhân tạo</h2>
+            <h2 class="text-uppercase">Chậu rửa đá nhân tạo</h2>
             <hr>
         </div>
         <div class="singl-slide with-nav">
@@ -279,7 +279,7 @@
     <div class="container"> 
         <!-- heading -->
         <div class="heading">
-            <h2 class="text-uppercase">Chậu rửa bát inox</h2>
+            <h2 class="text-uppercase">Chậu rửa inox</h2>
             <hr>
         </div>
         <div class="singl-slide with-nav">

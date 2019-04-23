@@ -18,7 +18,7 @@
                <div class="product">
                   <div class="row">
                      <!-- Slider Thumb -->
-                     <div class="col-xs-5">
+                     <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <article class="slider-item on-nav">
                             <div id="slider" class="flexslider">
                                 <ul class="slides">
@@ -49,7 +49,7 @@
                 </article>
             </div>
             <!-- Item Content -->
-            <div class="col-xs-7">
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
                 <span class="tags">{{ $product->category->name }}</span>
                 <h5>{{ $product->name }}</h5>
                 <span class="tags">Model: {!! $product->sku_id !!}</span>

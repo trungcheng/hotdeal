@@ -58,7 +58,7 @@
     <div class="row"> 
 
       <!-- Shop Side Bar -->
-      <div class="col-md-3">
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
         <div class="shop-side-bar"> 
 
         <!-- Categories -->
@@ -122,7 +122,7 @@
 </div>
 
     <!-- Products -->
-    <div class="col-md-9"> 
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12"> 
 
         <!-- Short List -->
         <div class="short-lst">

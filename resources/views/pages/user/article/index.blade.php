@@ -4,7 +4,11 @@
 @stop
 
 @section('pageCss')
-
+  <style type="text/css">
+    .blog-post article img {
+      height: auto;
+    }
+  </style>
 @stop
 
 @section('content')

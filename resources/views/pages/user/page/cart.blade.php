@@ -12,7 +12,7 @@
 <div class="linking">
   <div class="container">
     <ol class="breadcrumb">
-      <li><a href="#">Trang chủ</a></li>
+      <li><a href="{{ route('home') }}">Trang chủ</a></li>
       <li class="active">Giỏ hàng</li>
   </ol>
 </div>
@@ -139,7 +139,7 @@
     <div class="pro-btn"> 
         <a href="{{ route('home') }}" class="btn-round btn-light">Tiếp tục mua sắm</a> 
         @if (count($cart) > 0)
-        <a href="#." class="btn-round">Tiến hành đặt hàng</a> 
+        <a href="{{ route('step1') }}" class="btn-round">Tiến hành đặt hàng</a> 
         @endif
     </div>
 </div>

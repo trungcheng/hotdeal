@@ -12,7 +12,7 @@
     <div class="linking">
       <div class="container">
         <ol class="breadcrumb">
-          <li><a href="#">Home</a></li>
+          <li><a href="{{ route('home') }}">Home</a></li>
           <li class="active">Đăng nhập</li>
         </ol>
       </div>
