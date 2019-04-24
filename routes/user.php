@@ -19,6 +19,9 @@
         \Route::get('account/signup', 'User\Auth\RegisterController@showRegistrationForm')->name('getSignUp');
         \Route::post('account/signup', 'User\Auth\RegisterController@register');
 
+        \Route::post('account/ajax_signin', 'User\AuthController@ajaxSignIn')->name('ajax-signin');
+        \Route::post('account/ajax_signup', 'User\AuthController@ajaxSignUp')->name('ajax-signup');
+
         // });
 
         \Route::group(['middleware' => ['user.auth']], function () {
@@ -39,7 +42,8 @@
         \Route::get('/a/{slug}', 'User\ArticleController@detail')->name('article-detail');
 
         \Route::get('/checkout/first', 'User\CartController@checkoutFirst')->name('step1');
-        \Route::get('/checkout/info', 'User\CartController@checkoutInfo')->name('step2');
+        \Route::get('/checkout/payment', 'User\CartController@checkoutPayment')->name('step2');
+        \Route::post('/checkout/payment', 'User\CartController@postCheckoutPayment')->name('postStep2');
         \Route::get('/checkout/success', 'User\CartController@checkoutSuccess')->name('checkout-success');
 
         \Route::get('/about', 'User\PageController@about')->name('about');

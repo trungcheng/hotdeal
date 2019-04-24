@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\User\Auth;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -76,13 +78,53 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'role_id' => 3,
-            'fullname' => $data['fullname'],
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'mobile' => (isset($data['mobile']) && $data['mobile'] !== '') ? $data['mobile'] : '',
-            'address' => (isset($data['address']) && $data['address'] !== '') ? $data['address'] : ''
-        ]);
+        $confirmationCode = md5($data['email']).uniqid();
+        $hash = utf8_encode(base64_encode($confirmationCode));
+        $confirmationLink = url('account/signin') . '?m='.$data['email'].'&token='.$hash;
+
+        // send mail
+        Mail::send('pages/user/mail/register_confirm_temp', [
+            'email' => $data['email'], 
+            'link' => $confirmationLink
+        ], function($message) use ($data) {
+            $message->to($data['email'], 'Thạch Vũ Team')->subject('Xác nhận đăng ký tài khoản');
+            $message->from('trungs1bmt@gmail.com', 'Thạch Vũ Team');
+        });
+
+        if (empty(Mail::failures())) {
+            // send mail success then save data
+            User::create([
+                'role_id' => 3,
+                'fullname' => $data['fullname'],
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'mobile' => (isset($data['mobile']) && $data['mobile'] !== '') ? $data['mobile'] : '',
+                'address' => (isset($data['address']) && $data['address'] !== '') ? $data['address'] : '',
+                'confirmation_code' => $confirmationCode,
+                'is_confirmed' => 0
+            ]);
+
+            return [
+                'status'  => true,
+                'message' => 'Hoàn tất! Vui lòng kiểm tra email để xác nhận quá trình đăng ký.'
+            ];
+        } else {
+            return [
+                'status'  => false,
+                'message' => 'Có lỗi xảy ra'
+            ];
+        }
+
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $process = $this->create($request->all());
+        if ($process['status']) {
+            return redirect($this->redirectPath())->with('success', $process['message']);
+        }
+
+        return redirect()->back()->with('error', $process['message']);
     }
 }

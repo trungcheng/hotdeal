@@ -93,7 +93,8 @@
 
 				<div id="Login" class="tabcontent">
 					<div id="login-form" class="col-md-10 col-md-offset-1" style="display:block;">
-	                    <form method="POST" action="" id="login_popup_form" novalidate="novalidate">
+	                    <form method="POST" onsubmit="return false;" action="" id="login_popup_form" novalidate="novalidate">
+	                    	{{ csrf_field() }}
 	                        <div class="form-group has-feedback" id="popup_login">
 	                            <label class="control-label">Email</label>
 	                            <input autofocus id="popup-login-email" type="text" class="form-control login focus-input" name="email" placeholder="Nhập email">
@@ -116,7 +117,15 @@
 
 				<div id="Register" class="tabcontent">
 					<div id="register-form" class="col-md-10 col-md-offset-1" style="display:block;">
-	                    <form id="register_popup_form" class="content bv-form" method="POST" action="" novalidate="novalidate">
+	                    <form id="register_popup_form" onsubmit="return false;" class="content bv-form" method="POST" action="" novalidate="novalidate">
+	                    	{{ csrf_field() }}
+	                    	<div class="form-group" id="register_name">
+	                            <label class="control-label"><strong>Họ tên</strong></label>
+	                            <div class="input-wrap has-feedback">
+	                                <input type="text" class="form-control register" name="full_name" id="name" placeholder="Nhập họ tên" data-bv-field="full_name">
+	                                <span class="help-block ajax-message"></span>
+	                        	</div>
+	                        </div>
 	                        <div class="form-group" id="register_email">
 	                            <label class="control-label" for="email"><strong>Email</strong></label>
 	                            <div class="input-wrap has-feedback">
@@ -126,20 +135,20 @@
 	                        <div class="form-group" id="register_password">
 	                            <label class="control-label" for="pasword"><strong>Mật khẩu</strong></label>
 	                            <div class="input-wrap has-feedback">
-	                                <input type="password" class="form-control register" name="password" id="password" placeholder="Mật khẩu từ 6 đến 32 ký tự" autocomplete="off" data-bv-field="password">
+	                                <input type="password" class="form-control register" name="password" placeholder="Mật khẩu từ 6 đến 32 ký tự" autocomplete="off" data-bv-field="password">
 	                                <span class="help-block ajax-message"></span>
 	                        	</div>
 	                        </div>
-	                        <div class="form-group" id="register_name">
-	                            <label class="control-label"><strong>Họ tên</strong></label>
+	                        <div class="form-group" id="register_password">
+	                            <label class="control-label" for="pasword"><strong>Xác nhận mật khẩu</strong></label>
 	                            <div class="input-wrap has-feedback">
-	                                <input type="text" class="form-control register" name="full_name" id="name" placeholder="Nhập họ tên" data-bv-field="full_name">
+	                                <input type="password" class="form-control register" name="repassword" placeholder="Xác nhận mật khẩu từ 6 đến 32 ký tự" autocomplete="off" data-bv-field="password">
 	                                <span class="help-block ajax-message"></span>
 	                        	</div>
 	                        </div>
 	                        <div class="form-group policy-group">
 	                            <div class="input-wrap">
-	                                <p style="max-width:100%" class="policy">Khi bạn nhấn Đăng ký, bạn  đã đồng ý thực hiện mọi giao dịch mua bán theo <a target="_blank" href="http://hotro.tiki.vn/hc/vi/articles/201971214">điều kiện sử dụng và chính sách của Thachvu</a>.</p>
+	                                <p style="max-width:100%" class="policy">Khi bạn nhấn Đăng ký, bạn  đã đồng ý thực hiện mọi giao dịch mua bán theo <a target="_blank" href="#">điều kiện sử dụng và chính sách của Thachvu</a>.</p>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
@@ -156,21 +165,44 @@
 @section('pageJs')
 	<script type="text/javascript">
 		function openCity(evt, cityName) {
-		  var i, tabcontent, tablinks;
-		  tabcontent = document.getElementsByClassName("tabcontent");
-		  for (i = 0; i < tabcontent.length; i++) {
-		    tabcontent[i].style.display = "none";
-		  }
-		  tablinks = document.getElementsByClassName("tablinks");
-		  for (i = 0; i < tablinks.length; i++) {
-		    tablinks[i].className = tablinks[i].className.replace(" active", "");
-		  }
-		  document.getElementById(cityName).style.display = "block";
-		  evt.currentTarget.className += " active";
-		  $('.focus-input').focus();
+		  	var i, tabcontent, tablinks;
+		  	tabcontent = document.getElementsByClassName("tabcontent");
+		  	for (i = 0; i < tabcontent.length; i++) {
+		    	tabcontent[i].style.display = "none";
+		  	}
+		  	tablinks = document.getElementsByClassName("tablinks");
+		  	for (i = 0; i < tablinks.length; i++) {
+		    	tablinks[i].className = tablinks[i].className.replace(" active", "");
+		  	}
+		  	document.getElementById(cityName).style.display = "block";
+		  	evt.currentTarget.className += " active";
+		  	$('.focus-input').focus();
 		}
 
 		// Get the element with id="defaultOpen" and click on it
 		document.getElementById("defaultOpen").click();
+
+		$('#login_popup_form').on('submit', function (e) {
+			e.preventDefault();
+
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: '{{ route("ajax-signin") }}',
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json',
+                crossDomain: true,
+                data: formData,
+                success: function (response) {
+                    if (!response.status) {
+                        toastr.error(response.message, 'ERROR');
+                    } else {
+                    	window.location.href = "{{ route('step2') }}";
+                    }
+                }
+            });
+		});
 	</script>
 @stop

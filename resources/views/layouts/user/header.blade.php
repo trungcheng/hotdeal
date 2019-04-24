@@ -40,6 +40,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Tài khoản của tôi</a></li>
+                        <li><a href="#">Sản phẩm yêu thích</a></li>
                         <li><a href="{{ route('getLogout') }}">Thoát tài khoản</a></li>
                     </ul>
                 </li>

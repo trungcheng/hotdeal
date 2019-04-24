@@ -26,7 +26,12 @@
             <!-- Login Your Account -->
             <h5 class="text-uppercase">Đăng nhập</h5>
             <!-- FORM -->
-            @if (count($errors) > 0)
+            @foreach (['danger', 'warning', 'success', 'info'] as $key)
+              @if(Session::has($key))
+                <p class="alert alert-{{ $key }}">{{ Session::get($key) }}</p>
+              @endif
+            @endforeach
+            @if ($errors->any())
             <div class="alert alert-danger">
               <ul>
                 @foreach ($errors->all() as $error)

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -79,9 +80,24 @@
     <script src="{{ asset('frontend/js/main.js') }}"></script>
     <script src="{{ asset('frontend/js/plugins.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('backend/js/toastr.min.js?').time() }}"></script>
 
     @section('pageJs')
     @show
+
+    <script type="text/javascript">
+        $(function () {
+            toastr.options = {
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": 5000,
+                "extendedTimeOut": 1000
+            };
+        });
+    </script>
 
 </body>
 </html>
