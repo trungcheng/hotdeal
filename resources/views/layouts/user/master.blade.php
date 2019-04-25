@@ -1,14 +1,25 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="Thạch Vũ" />
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('page') | Thachvu.com</title>
-
+    <meta name="description" content="@yield('description')">
+    <meta name="keywords" content="@yield('keywords')">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="@yield('canonical')">
+    <link rel="alternate" href="@yield('alternate')" hreflang="vi-vn">
+    <meta itemprop="name" content="@yield('propName')">
+    <meta itemprop="description" content="@yield('propDesc')">
+    <meta property="og:title" content="@yield('ogTitle')"> 
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="@yield('ogUrl')"> 
+    <meta property="og:description" content="@yield('ogDesc')"> 
+    <meta property="og:site_name" content="Thachvu">  
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
-
     <link rel="stylesheet" href="{{ asset('frontend/rs-plugin/css/settings.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('frontend/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
@@ -18,14 +29,12 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-    <script src="{{ asset('frontend/js/vendors/modernizr.custom.js') }}"></script>
-
     @section('pageCss')
     @show
-
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <script src="{{ asset('frontend/js/vendors/modernizr.custom.js') }}"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=590845398084862&autoLogAppEvents=1"></script>
+    {!! ($setting != '') ? $setting->fb_pixel_code : '' !!}
 </head>
 <body>
     <!-- Page Wrapper -->

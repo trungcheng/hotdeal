@@ -12,6 +12,6 @@
 		<a href="{{ $link }}">{{ $link }}</a>
 	</p>
 	<p>Cảm ơn vì sự hợp tác của bạn!<br>
-	<strong>Thạch Vũ Team.</strong></p>
+	<strong>Thạch Vũ</strong></p>
 </body>
 </html>

@@ -116,7 +116,7 @@
             </div>
 
             <!-- NAV RIGHT -->
-            <div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Hotline:</strong> 098 345 678</span> </div>
+            <div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Hotline:</strong> {!! $setting->phone !!}</span> </div>
         </div>
     </nav>
 </header>

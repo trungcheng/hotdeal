@@ -3,6 +3,33 @@
 @section('page')Thông tin giao hàng / thanh toán
 @stop
 
+@section('description')Thông tin giao hàng / thanh toán
+@stop
+
+@section('keywords')Thông tin giao hàng, thanh toán
+@stop
+
+@section('canonical'){{ route('step2') }}
+@stop
+
+@section('alternate'){{ route('step2') }}
+@stop
+
+@section('propName')Thông tin giao hàng / thanh toán
+@stop
+
+@section('propDesc')Thông tin giao hàng, thanh toán
+@stop
+
+@section('ogTitle')Thông tin giao hàng / thanh toán
+@stop
+
+@section('ogDesc')Thông tin giao hàng, thanh toán
+@stop
+
+@section('ogUrl'){{ route('step2') }}
+@stop
+
 @section('pageCss')
 	
 @stop

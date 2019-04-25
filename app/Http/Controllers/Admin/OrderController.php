@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Product;
 use Response;
 use Validator;
@@ -24,6 +25,24 @@ class OrderController extends Controller
     public function getAllOrders(Request $request)
     {
         $results = Order::init($request);
+        foreach ($results as $result) {
+            switch ($result->status) {
+                case 0:
+                    $result->status = 'Chờ xử lý';
+                    break;
+                case 1:
+                    $result->status = 'Đang giao đang xử lý';
+                    break;
+                case 2:
+                    $result->status = 'Đã giao chưa thanh toán';
+                    break;
+                case 3:
+                    $result->status = 'Đã giao đã thanh toán';
+                    break;
+                default:
+                    $result->status = 'Bị trả lại';
+            }
+        }
             
         return Response::json(['status' => true, 'data' => $results]);
     }
@@ -37,11 +56,13 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         if ($order) {
-            $products = Product::select('id', 'name')->get();
+            $customerInfo = json_decode($order->obj_info);
+            $orderDetails = OrderDetail::where('order_id', $order->id)->get();
 
             return view('pages.admin.order.edit', [
                 'order' => $order,
-                'products' => $products
+                'orderDetails' => $orderDetails,
+                'customerInfo' => $customerInfo
             ]);
         }
 
@@ -86,14 +107,14 @@ class OrderController extends Controller
     public function update(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), Order::$rules, Order::$messages);
-            if ($validator->fails()) {
-                return Response::json([
-                    'status' => false,
-                    'message' => $validator->messages()->first(),
-                    'type' => 'error'
-                ]);
-            }
+            // $validator = Validator::make($request->all(), Order::$rules, Order::$messages);
+            // if ($validator->fails()) {
+            //     return Response::json([
+            //         'status' => false,
+            //         'message' => $validator->messages()->first(),
+            //         'type' => 'error'
+            //     ]);
+            // }
 
             $data = $request->all();
             if ($data) {

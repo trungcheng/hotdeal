@@ -3,6 +3,33 @@
 @section('page')Đăng ký
 @stop
 
+@section('description')Đăng ký.
+@stop
+
+@section('keywords')Đăng ký
+@stop
+
+@section('canonical'){{ route('getSignUp') }}
+@stop
+
+@section('alternate'){{ route('getSignUp') }}
+@stop
+
+@section('propName')Đăng ký.
+@stop
+
+@section('propDesc')Đăng ký.
+@stop
+
+@section('ogTitle')Đăng ký.
+@stop
+
+@section('ogDesc')Đăng ký.
+@stop
+
+@section('ogUrl'){{ route('getSignUp') }}
+@stop
+
 @section('pageCss')
 
 @stop

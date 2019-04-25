@@ -3,6 +3,33 @@
 @section('page')Liên hệ
 @stop
 
+@section('description')Liên hệ
+@stop
+
+@section('keywords')Liên hệ
+@stop
+
+@section('canonical'){{ route('contact') }}
+@stop
+
+@section('alternate'){{ route('contact') }}
+@stop
+
+@section('propName')Liên hệ
+@stop
+
+@section('propDesc')Liên hệ
+@stop
+
+@section('ogTitle')Liên hệ
+@stop
+
+@section('ogDesc')Liên hệ
+@stop
+
+@section('ogUrl'){{ route('contact') }}
+@stop
+
 @section('pageCss')
 
 @stop

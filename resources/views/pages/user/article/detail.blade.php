@@ -3,6 +3,33 @@
 @section('page'){{ $article->title }}
 @stop
 
+@section('description'){{ $article->title }}
+@stop
+
+@section('keywords'){{ $article->title }}
+@stop
+
+@section('canonical'){{ route('article-detail', ['slug' => $article->slug]) }}
+@stop
+
+@section('alternate'){{ route('article-detail', ['slug' => $article->slug]) }}
+@stop
+
+@section('propName'){{ $article->title }}
+@stop
+
+@section('propDesc'){{ $article->title }}
+@stop
+
+@section('ogTitle'){{ $article->title }}
+@stop
+
+@section('ogDesc'){{ $article->title }}
+@stop
+
+@section('ogUrl'){{ route('article-detail', ['slug' => $article->slug]) }}
+@stop
+
 @section('pageCss')
 	<style type="text/css">
 	    .blog-post article img {
@@ -41,8 +68,9 @@
 					
 					<!-- Comments -->
 					<div class="comments">
-						<h6 class="margin-0">Bình luận (01)</h6>
-						<ul>
+						<!-- <h6 class="margin-0">Bình luận</h6> -->
+						<div class="fb-comments" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="850" data-numposts="5"></div>
+						<!-- <ul>
 							<li class="media">
 								<div class="media-left"> <a href="#" class="avatar"> <img src="{{ asset('frontend/images/avatar.jpg') }}" alt=""> </a> </div>
 								<div class="media-body padding-left-20">
@@ -50,11 +78,11 @@
 									<p>Suspendisse interdum lacus eget ligula posuere congue, suspendisse sodales cursus lorem vel Donec tincidunt aliquet lacus. Maecenas pulvinarefficiur.... </p>
 								</div>
 							</li>
-						</ul>
+						</ul> -->
 					</div>
 					
 					<!-- ADD comments -->
-					<div class="add-comments padding-top-20">
+					<!-- <div class="add-comments padding-top-20">
 						<h6>Gửi bình luận</h6>
 						<form>
 							<ul class="row">
@@ -78,7 +106,7 @@
 								</li>
 							</ul>
 						</form>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			

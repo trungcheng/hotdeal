@@ -3,6 +3,33 @@
 @section('page')Đăng nhập
 @stop
 
+@section('description')Đăng nhập.
+@stop
+
+@section('keywords')Đăng nhập
+@stop
+
+@section('canonical'){{ route('getSignIn') }}
+@stop
+
+@section('alternate'){{ route('getSignIn') }}
+@stop
+
+@section('propName')Đăng nhập.
+@stop
+
+@section('propDesc')Đăng nhập.
+@stop
+
+@section('ogTitle')Đăng nhập.
+@stop
+
+@section('ogDesc')Đăng nhập.
+@stop
+
+@section('ogUrl'){{ route('getSignIn') }}
+@stop
+
 @section('pageCss')
 
 @stop

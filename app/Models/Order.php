@@ -26,4 +26,27 @@ class Order extends Model
     	return $this->hasMany('App\Models\OrderDetail', 'order_id', 'id');
     }
 
+    public static function init($request)
+    {
+        $data = self::where('id', '>', 0);
+
+        if ($request->name !== 'all-order' && $request->name !== 'undefined') {
+            $data->where("amount", "LIKE", "%" . $request->name . "%");
+        }
+
+        $data = $data->with('user')->orderBy('id', 'desc')->paginate($request->perPage);
+
+        return $data;
+    }
+
+    public static function addAction($data)
+    {
+        return self::firstOrCreate($data);
+    }
+
+    public static function updateAction($data, $order)
+    {
+        return $order->update($data);
+    }
+
 }

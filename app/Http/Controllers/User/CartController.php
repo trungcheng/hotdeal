@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Cart;
+use Mail;
 
 class CartController extends Controller
 {
@@ -155,18 +156,30 @@ class CartController extends Controller
                     $orderDetail->save();
                 }
             }
+
+            Mail::send('pages/user/mail/order_temp', [
+                'order' => $order,
+                'name' => $obj_info['customer_name'], 
+                'cartInfo' => $cartInfo,
+                'total' => Cart::subtotal(0, '.', '.')
+            ], function($message) use ($data, $order) {
+                $message->to($data['customer_email'])
+                        ->cc(\Auth::user()->email)
+                        ->subject('Xác nhận đơn hàng #'.$order->id);
+            });
+
             Cart::destroy();
 
-            return redirect()->route('checkout-success');
+            return redirect()->route('checkout-success', ['order_id' => '#'.$order->id]);
         } catch (Exception $e) {
             abort(500);
         }
     }
 
-    public function checkoutSuccess()
+    public function checkoutSuccess(Request $request)
     {
         return view('pages.user.page.checkout-success', [
-            
+            'order_id' => isset($request->order_id) ? $request->order_id : ''
         ]);
     }
 }

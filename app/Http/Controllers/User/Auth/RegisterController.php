@@ -57,12 +57,16 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'fullname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
+            'mobile' => 'required|numeric|digits_between:10,11',
             'password' => 'min:6|max:32|required_with:repassword|same:repassword'
         ], [
             'fullname.required' => 'Họ và tên không được để trống',
             'email.required' => 'Email không được để trống',
             'email.email' => 'Email không đúng định dạng',
             'email.unique' => 'Email đã tồn tại',
+            'mobile.required' => 'Số điện thoại không được để trống',
+            'mobile.numeric' => 'Số điện thoại phải là định dạng số',
+            'mobile.digits_between' => 'Số điện thoại phải 10 hoặc 11 số ',
             'password.required' => 'Mật khẩu không được để trống',
             'password.same' => 'Mật khẩu và xác nhận mật khẩu chưa khớp',
             'password.min' => 'Mật khẩu ít nhất 6 ký tự trở lên',
@@ -87,8 +91,7 @@ class RegisterController extends Controller
             'email' => $data['email'], 
             'link' => $confirmationLink
         ], function($message) use ($data) {
-            $message->to($data['email'], 'Thạch Vũ Team')->subject('Xác nhận đăng ký tài khoản');
-            $message->from('trungs1bmt@gmail.com', 'Thạch Vũ Team');
+            $message->to($data['email'])->subject('Xác nhận đăng ký tài khoản');
         });
 
         if (empty(Mail::failures())) {

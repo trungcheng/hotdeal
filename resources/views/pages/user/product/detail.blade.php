@@ -3,6 +3,33 @@
 @section('page'){{ $product->name }}
 @stop
 
+@section('description'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@stop
+
+@section('keywords'){{ $product->name }}, {{ ($product->category) ? $product->category->name : 'Autwatch' }}
+@stop
+
+@section('canonical'){{ route('product-detail', ['slug' => $product->slug]) }}
+@stop
+
+@section('alternate'){{ route('product-detail', ['slug' => $product->slug]) }}
+@stop
+
+@section('propName'){{ $product->name }}
+@stop
+
+@section('propDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@stop
+
+@section('ogTitle'){{ $product->name }}
+@stop
+
+@section('ogDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@stop
+
+@section('ogUrl'){{ route('product-detail', ['slug' => $product->slug]) }}
+@stop
+
 @section('pageCss')
 
 @stop
@@ -103,7 +130,9 @@
      <div role="tabpanel" class="tab-pane fade in active" id="pro-detil">
         {!! ($product->full_desc != '') ? $product->full_desc : '' !!}
      </div>
-<div role="tabpanel" class="tab-pane fade" id="cus-rev"></div>
+      <div role="tabpanel" class="tab-pane fade" id="cus-rev">
+        <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="850" data-numposts="5"></div>
+      </div>
 <!-- <div role="tabpanel" class="tab-pane fade" id="ship"></div> -->
 </div>
 </div>

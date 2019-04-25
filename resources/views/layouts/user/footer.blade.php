@@ -45,11 +45,11 @@
 <div class="col-md-3">
   <h4>Dịch vụ khách hàng</h4>
   <ul class="links-footer">
-    <li><a href="#.">Giao hàng</a></li>
-    <li><a href="#.">An toàn mua sắm</a></li>
-    <!-- <li><a href="#."> International Shipping</a></li> -->
-    <!-- <li><a href="#."> Affiliates</a></li> -->
-    <li><a href="#.">Liên hệ chúng tôi</a></li>
+    <li><a href="#">Phương thức thanh toán</a></li>
+    <li><a href="#">Phương thức vận chuyển</a></li>
+    <li><a href="#">Chính sách đổi trả</a></li>
+    <li><a href="#">Thông tin tuyển dụng</a></li>
+    <li><a href="{{ route('contact') }}">Liên hệ chúng tôi</a></li>
 </ul>
 </div>
 
@@ -57,12 +57,8 @@
 <div class="col-md-2">
   <h4>Thông tin khác</h4>
   <ul class="links-footer">
-    <li><a href="#.">Tin tức</a></li>
-    <li><a href="#.">Cửa hàng</a></li>
-    <!-- <li><a href="#."> Secure Shopping</a></li> -->
-    <li><a href="#.">Thông tin vận chuyển</a></li>
-    <!-- <li><a href="#."> Store Locations</a></li> -->
-    <li><a href="#.">FAQs</a></li>
+    <li><a href="{{ route('article') }}">Tin tức</a></li>
+    <li><a href="{{ route('store') }}">Cửa hàng</a></li>
 </ul>
 </div>
 </div>

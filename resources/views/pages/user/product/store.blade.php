@@ -1,6 +1,33 @@
 @extends('layouts.user.master')
 
-@section('page')Cửa hàng
+@section('page')Cửa hàng chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại
+@stop
+
+@section('description')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@stop
+
+@section('keywords')chậu rửa bát, cửa hàng chậu rửa bát tại Hà Nội, chậu rửa inox, chậu rửa đá nhân tạo, chậu rửa inox 201, chậu rửa inox 304
+@stop
+
+@section('canonical'){{ route('store') }}
+@stop
+
+@section('alternate'){{ route('store') }}
+@stop
+
+@section('propName')Cửa hàng chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại
+@stop
+
+@section('propDesc')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@stop
+
+@section('ogTitle')Cửa hàng chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại
+@stop
+
+@section('ogDesc')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@stop
+
+@section('ogUrl'){{ route('store') }}
 @stop
 
 @section('pageCss')

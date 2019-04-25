@@ -3,6 +3,33 @@
 @section('page')Tìm kiếm với từ khóa "{{ $key }}"
 @stop
 
+@section('description')Tìm kiếm với từ khóa "{{ $key }}"
+@stop
+
+@section('keywords')Tìm kiếm, từ khóa "{{ $key }}"
+@stop
+
+@section('canonical'){{ route('search') }}
+@stop
+
+@section('alternate'){{ route('search') }}
+@stop
+
+@section('propName')Tìm kiếm với từ khóa "{{ $key }}"
+@stop
+
+@section('propDesc')Tìm kiếm với từ khóa "{{ $key }}"
+@stop
+
+@section('ogTitle')Tìm kiếm với từ khóa "{{ $key }}"
+@stop
+
+@section('ogDesc')Tìm kiếm với từ khóa "{{ $key }}"
+@stop
+
+@section('ogUrl'){{ route('search') }}
+@stop
+
 @section('pageCss')
 	<style type="text/css">
         article {

@@ -3,6 +3,33 @@
 @section('page')Giới thiệu
 @stop
 
+@section('description'){{ $article->title }}
+@stop
+
+@section('keywords'){{ $article->title }}
+@stop
+
+@section('canonical'){{ route('article-detail', ['slug' => $article->slug]) }}
+@stop
+
+@section('alternate'){{ route('article-detail', ['slug' => $article->slug]) }}
+@stop
+
+@section('propName'){{ $article->title }}
+@stop
+
+@section('propDesc'){{ $article->title }}
+@stop
+
+@section('ogTitle'){{ $article->title }}
+@stop
+
+@section('ogDesc'){{ $article->title }}
+@stop
+
+@section('ogUrl'){{ route('article-detail', ['slug' => $article->slug]) }}
+@stop
+
 @section('pageCss')
 
 @stop
@@ -12,7 +39,7 @@
 <div class="linking">
 	<div class="container">
 		<ol class="breadcrumb">
-			<li><a href="#">Trang chủ</a></li>
+			<li><a href="{{ route('home') }}">Trang chủ</a></li>
 			<li class="active">Giới thiệu</li>
 		</ol>
 	</div>

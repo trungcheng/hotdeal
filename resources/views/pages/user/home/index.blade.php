@@ -1,6 +1,33 @@
 @extends('layouts.user.master')
 
-@section('page')Mua chậu rửa bát giá rẻ, đẹp và hiện đại tại Thạch Vũ
+@section('page')Chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại
+@stop
+
+@section('description')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@stop
+
+@section('keywords')chậu rửa bát, cửa hàng chậu rửa bát tại Hà Nội, chậu rửa inox, chậu rửa đá nhân tạo, chậu rửa inox 201, chậu rửa inox 304
+@stop
+
+@section('canonical'){{ route('home') }}/
+@stop
+
+@section('alternate'){{ route('home') }}/
+@stop
+
+@section('propName')Chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại.
+@stop
+
+@section('propDesc')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@stop
+
+@section('ogTitle')Chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại.
+@stop
+
+@section('ogDesc')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@stop
+
+@section('ogUrl'){{ route('home') }}/
 @stop
 
 @section('pageCss')

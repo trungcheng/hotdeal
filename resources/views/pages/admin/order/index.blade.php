@@ -58,28 +58,26 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th style="width:5%;">STT</th>
-                                                    <th style="text-align:center !important;width:20%">Sản phẩm</th>
-                                                    <th>Tên khách</th>
-                                                    <th>Số điện thoại</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Liên hệ</th>
-                                                    <th>Tiền</th>
-                                                    <th>Ngày tạo</th>
+                                                    <th style="text-align:center !important;width:20%">Tên người order</th>
+                                                    <th>SĐT người order</th>
+                                                    <th>Email</th>
+                                                    <th>Tổng tiền</th>
+                                                    <th>Ngày đặt hàng</th>
+                                                    <th>Trạng thái</th>
                                                     <th>Chức năng</th>
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="order in orders track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
-                                                    <td>@{{ order.product.name }}</td>
-                                                    <td>@{{ order.name }}</td>
-                                                    <td>@{{ order.phone }}</td>
-                                                    <td>@{{ order.address }}</td>
-                                                    <td>@{{ (order.is_contact == 0) ? 'Chưa liên hệ' : 'Đã liên hệ' }}</td>
-                                                    <td>@{{ order.product.price_sale | currency : '' : 0 }} VNĐ</td>
+                                                    <td>@{{ order.user.fullname }}</td>
+                                                    <td>@{{ order.user.mobile }}</td>
+                                                    <td>@{{ order.user.email }}</td>
+                                                    <td>@{{ order.amount | currency : '' : 0 }} VNĐ</td>
                                                     <td>@{{ order.created_at }}</td>
+                                                    <td>@{{ order.status }}</td>
                                                     <td>
-                                                        <a href="/admin/orders/edit/@{{ order.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a href="/admin/orders/edit/@{{ order.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
                                                         <a ng-click="delete(order, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>

@@ -58,7 +58,6 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th>STT</th>
-                                                    <th>Ảnh</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
@@ -67,9 +66,6 @@
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in categories track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
-                                                    <td style="text-align:center !important">
-                                                        <img ng-src="@{{ cate.icon }}" style="width:70px;">
-                                                    </td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
                                                     <td>@{{ cate.created_at }}</td>
                                                     <td>

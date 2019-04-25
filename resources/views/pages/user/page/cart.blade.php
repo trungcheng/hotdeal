@@ -3,6 +3,33 @@
 @section('page')Cửa hàng
 @stop
 
+@section('description')Cửa hàng
+@stop
+
+@section('keywords')Cửa hàng
+@stop
+
+@section('canonical'){{ route('cart') }}
+@stop
+
+@section('alternate'){{ route('cart') }}
+@stop
+
+@section('propName')Cửa hàng
+@stop
+
+@section('propDesc')Cửa hàng
+@stop
+
+@section('ogTitle')Cửa hàng
+@stop
+
+@section('ogDesc')Cửa hàng
+@stop
+
+@section('ogUrl'){{ route('cart') }}
+@stop
+
 @section('pageCss')
 
 @stop

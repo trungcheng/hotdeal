@@ -16,11 +16,11 @@ class OrderDetail extends Model
     ];
 
     public function product() {
-    	return $this->belongsTo('App\Models\Product');
+    	return $this->belongsTo('App\Models\Product', 'pro_id', 'id');
     }
 
     public function order() {
-    	return $this->belongsTo('App\Models\Order');
+    	return $this->belongsTo('App\Models\Order', 'order_id', 'id');
     }
 
 }

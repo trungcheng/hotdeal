@@ -3,6 +3,33 @@
 @section('page')Tin tức
 @stop
 
+@section('description')Tin tức.
+@stop
+
+@section('keywords')Tin tức
+@stop
+
+@section('canonical'){{ route('article') }}
+@stop
+
+@section('alternate'){{ route('article') }}
+@stop
+
+@section('propName')Tin tức.
+@stop
+
+@section('propDesc')Tin tức.
+@stop
+
+@section('ogTitle')Tin tức.
+@stop
+
+@section('ogDesc')Tin tức.
+@stop
+
+@section('ogUrl'){{ route('article') }}
+@stop
+
 @section('pageCss')
   <style type="text/css">
     .blog-post article img {

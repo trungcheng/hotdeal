@@ -3,6 +3,33 @@
 @section('page')Khách hàng mới / đăng nhập
 @stop
 
+@section('description')Khách hàng mới / đăng nhập
+@stop
+
+@section('keywords')Khách hàng mới, đăng nhập
+@stop
+
+@section('canonical'){{ route('step1') }}
+@stop
+
+@section('alternate'){{ route('step1') }}
+@stop
+
+@section('propName')Khách hàng mới / đăng nhập
+@stop
+
+@section('propDesc')Khách hàng mới, đăng nhập
+@stop
+
+@section('ogTitle')Khách hàng mới / đăng nhập
+@stop
+
+@section('ogDesc')Khách hàng mới, đăng nhập
+@stop
+
+@section('ogUrl'){{ route('step1') }}
+@stop
+
 @section('pageCss')
 	<style type="text/css">
 		* {box-sizing: border-box}
@@ -122,7 +149,7 @@
 	                    	<div class="form-group" id="register_name">
 	                            <label class="control-label"><strong>Họ tên</strong></label>
 	                            <div class="input-wrap has-feedback">
-	                                <input type="text" class="form-control register" name="full_name" id="name" placeholder="Nhập họ tên" data-bv-field="full_name">
+	                                <input type="text" class="form-control register" name="fullname" id="fullname" placeholder="Nhập họ tên" data-bv-field="fullname">
 	                                <span class="help-block ajax-message"></span>
 	                        	</div>
 	                        </div>
@@ -132,17 +159,17 @@
 	                                <input autofocus type="text" class="form-control register register-email-input focus-input" name="email" id="email_for_register" placeholder="Nhập email" data-bv-field="email">
 	                                <span class="help-block ajax-message"></span>
 	                        </div>
-	                        <div class="form-group" id="register_password">
-	                            <label class="control-label" for="pasword"><strong>Mật khẩu</strong></label>
+	                        <div class="form-group" id="register_name">
+	                            <label class="control-label"><strong>Số điện thoại</strong></label>
 	                            <div class="input-wrap has-feedback">
-	                                <input type="password" class="form-control register" name="password" placeholder="Mật khẩu từ 6 đến 32 ký tự" autocomplete="off" data-bv-field="password">
+	                                <input type="text" class="form-control register" name="mobile" id="mobile" placeholder="Nhập số điện thoại" data-bv-field="mobile">
 	                                <span class="help-block ajax-message"></span>
 	                        	</div>
 	                        </div>
 	                        <div class="form-group" id="register_password">
-	                            <label class="control-label" for="pasword"><strong>Xác nhận mật khẩu</strong></label>
+	                            <label class="control-label" for="pasword"><strong>Mật khẩu</strong></label>
 	                            <div class="input-wrap has-feedback">
-	                                <input type="password" class="form-control register" name="repassword" placeholder="Xác nhận mật khẩu từ 6 đến 32 ký tự" autocomplete="off" data-bv-field="password">
+	                                <input type="password" class="form-control register" name="password" placeholder="Mật khẩu từ 6 đến 32 ký tự" autocomplete="off" data-bv-field="password">
 	                                <span class="help-block ajax-message"></span>
 	                        	</div>
 	                        </div>
@@ -204,5 +231,29 @@
                 }
             });
 		});
+
+		$('#register_popup_form').on('submit', function (e) {
+			e.preventDefault();
+
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: '{{ route("ajax-signup") }}',
+                type: 'POST',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json',
+                crossDomain: true,
+                data: formData,
+                success: function (response) {
+                    if (!response.status) {
+                        toastr.error(response.message, 'ERROR');
+                    } else {
+                    	window.location.href = "{{ route('step2') }}";
+                    }
+                }
+            });
+		});
+
 	</script>
 @stop

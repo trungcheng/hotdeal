@@ -41,8 +41,8 @@ class Product extends Model
         return $this->hasMany('App\Models\Slide', 'target')->where('slides.target_type', 'product');
     }
 
-    public function order() {
-        return $this->hasMany('App\Models\Order', 'pro_id', 'id');
+    public function orderDetail() {
+        return $this->hasMany('App\Models\OrderDetail', 'pro_id', 'id');
     }
 
     public function user() {

@@ -32,11 +32,11 @@
                                     <label>Tên danh mục</label>
                                     <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label>Ảnh</label>
                                     <input name="icon" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('add')" type="button" class="btn btn-primary">Thêm</button>
