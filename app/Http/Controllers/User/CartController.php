@@ -39,7 +39,8 @@ class CartController extends Controller
             'qty' => $request->quantity,
             'options' => [
                 'image' => $product->image,
-                'slug' => $product->slug
+                'slug' => $product->slug,
+                'cate' => $product->category->slug
             ]
         ];
         Cart::add($cartInfo);

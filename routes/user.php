@@ -38,7 +38,7 @@
         \Route::post('/cart/delete', 'User\CartController@delete')->name('cartDelete');
 
         \Route::get('/tin-tuc', 'User\ArticleController@index')->name('article');
-        \Route::get('/tin-tuc/{slug}', 'User\ArticleController@detail')->name('article-detail');
+        \Route::get('/tin-tuc/{slug}.html', 'User\ArticleController@detail')->name('article-detail');
 
         \Route::get('/checkout/first', 'User\CartController@checkoutFirst')->name('step1');
         \Route::get('/checkout/payment', 'User\CartController@checkoutPayment')->name('step2');
@@ -52,7 +52,7 @@
             return redirect('/admin/login');
         });
 
-        \Route::get('/p/{slug}', 'User\ProductController@detail')->name('product-detail');
+        \Route::get('/{cate}/{slug}', 'User\ProductController@detail')->name('product-detail');
         \Route::get('/{cateSlug}', 'User\ProductController@detailCate')->name('cate-detail');
 
     });

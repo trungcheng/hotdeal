@@ -9,10 +9,10 @@
 @section('keywords'){{ $product->name }}, {{ ($product->category) ? $product->category->name : 'Autwatch' }}
 @stop
 
-@section('canonical'){{ route('product-detail', ['slug' => $product->slug]) }}
+@section('canonical'){{ route('product-detail', ['cate' => $product->category->slug, 'slug' => $product->slug]) }}
 @stop
 
-@section('alternate'){{ route('product-detail', ['slug' => $product->slug]) }}
+@section('alternate'){{ route('product-detail', ['cate' => $product->category->slug, 'slug' => $product->slug]) }}
 @stop
 
 @section('propName'){{ $product->name }}
@@ -27,11 +27,45 @@
 @section('ogDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
 @stop
 
-@section('ogUrl'){{ route('product-detail', ['slug' => $product->slug]) }}
+@section('ogUrl'){{ route('product-detail', ['cate' => $product->category->slug, 'slug' => $product->slug]) }}
 @stop
 
 @section('pageCss')
-
+  <style type="text/css">
+    .relate {
+        display: block !important;
+        justify-content: space-between;
+        flex-grow: 1;
+        border-radius: 0;
+        border-color: transparent;
+        position: relative;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+    }
+    .relate .thumb {
+        padding-top: 100%;
+        position: relative;
+        display: block;
+        z-index: 0;
+    }
+    .thumb .img-responsive {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        max-width: 100%;
+        transition: all .2s ease-in-out;
+        vertical-align: middle;
+    }
+    /*.product {
+        display: flex;
+    }*/
+  </style>
 @stop
 
 @section('content')
@@ -131,7 +165,7 @@
         {!! ($product->full_desc != '') ? $product->full_desc : '' !!}
      </div>
       <div role="tabpanel" class="tab-pane fade" id="cus-rev">
-        <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="850" data-numposts="5"></div>
+        <div class="fb-comments" data-href="{{ route('product-detail', ['cate' => $product->category->slug, 'slug' => $product->slug]) }}" data-width="850" data-numposts="5"></div>
       </div>
 <!-- <div role="tabpanel" class="tab-pane fade" id="ship"></div> -->
 </div>
@@ -149,13 +183,13 @@
       <!-- Product -->
       @foreach ($relatedProducts as $pro)
       <div class="product">
-        <article>
-            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+        <article class="relate">
+            <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
                 <img class="img-responsive" src="{{ asset($pro->image) }}" alt="">
             </a> 
             <!-- Content --> 
             <!-- <span class="tag">Latop</span>  -->
-            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+            <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
             <!-- Reviews -->
             <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
             <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ</div>
@@ -172,34 +206,5 @@
 @stop
 
 @section('pageJs')
-<script type="text/javascript">
-    $(document).ready(function($) {
-            //  Price Filter ( noUiSlider Plugin)
-            $("#price-range").noUiSlider({
-                range: {
-                    'min': [0],
-                    'max': [1000]
-                },
-                start: [40, 940],
-                connect: true,
-                serialization: {
-                    lower: [
-                    $.Link({
-                        target: $("#price-min")
-                    })
-                    ],
-                    upper: [
-                    $.Link({
-                        target: $("#price-max")
-                    })
-                    ],
-                    format: {
-                        // Set formatting
-                        decimals: 2,
-                        prefix: '$'
-                    }
-                }
-            })
-        });
-    </script>
-    @stop
+
+@stop

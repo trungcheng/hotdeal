@@ -185,7 +185,7 @@
                                 <div class="align-self-center text-center text-md-right">
                                     <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
                                     @if ($slide->target_type == 'product')
-                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
+                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['cate' => $slide->product->category->slug, 'slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
                                     @else
                                         <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
                                     @endif
@@ -222,13 +222,13 @@
                     @foreach ($saleProducts as $pro)
                     <div class="product">
                         <article>
-                            <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                            <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
                                 <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
                             </a>
                             <span class="sale-tag">-{{ $pro->discount }}%</span>
                             <!-- Content --> 
                             <!-- <span class="tag">Latop</span> --> 
-                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+                            <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
                             <!-- Reviews -->
                             <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                             <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
@@ -247,12 +247,12 @@
                     @foreach ($featureProducts as $pro)
                     <div class="product">
                         <article>
-                            <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                            <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
                                 <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
                             </a>
                             <!-- Content --> 
                             <!-- <span class="tag">Latop</span> --> 
-                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+                            <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
                             <!-- Reviews -->
                             <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                             <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
@@ -281,12 +281,12 @@
                 @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                        <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
                             <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
                         </a>
                         <!-- Content --> 
                         <!-- <span class="tag">Latop</span> --> 
-                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a>
+                        <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a>
                         <!-- Reviews -->
                         <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                         <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
@@ -315,12 +315,12 @@
                 @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                        <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
                             <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}" >
                         </a>
                         <!-- Content --> 
                         <!-- <span class="tag">Latop</span> --> 
-                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+                        <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
                         <!-- Reviews -->
                         <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                         <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
@@ -349,12 +349,12 @@
                 @foreach ($list as $pro)
                 <div class="product">
                     <article> 
-                        <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
+                        <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
                             <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}" >
                         </a>
                         <!-- Content --> 
                         <!-- <span class="tag">Latop</span> --> 
-                        <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+                        <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
                         <!-- Reviews -->
                         <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                         <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>

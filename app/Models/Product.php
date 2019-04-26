@@ -119,7 +119,7 @@ class Product extends Model
         }
         
         $data['sku_id'] = ($data['sku_id'] == '') ? Util::skuGenerate(6, $maxId + 1) : $data['sku_id'];
-        $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8).'.html';
+        $data['slug'] = Util::generateSlug($data['name']).'.html';
         
         if (in_array($data['short_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
             $data['short_desc'] = '';

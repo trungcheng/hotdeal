@@ -60,14 +60,13 @@ class Article extends Model
 
     public static function addAction($data)
     {
-        $data['slug'] = Util::generateSlug($data['title']).'-'.substr(time(), 0 ,8);
+        $data['slug'] = Util::generateSlug($data['title']);
 
         return self::firstOrCreate($data);
     }
 
     public static function updateAction($data, $pro)
     {
-        // $data['slug'] = Util::generateSlug($data['name']).'-'.substr(time(), 0 ,8);
         return $pro->update($data);
     }
 

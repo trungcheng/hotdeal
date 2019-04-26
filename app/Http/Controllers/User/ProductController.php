@@ -14,7 +14,7 @@ class ProductController extends Controller
         // $this->middleware('');
     }
 
-    public function detail(Request $request, $slug)
+    public function detail(Request $request, $cate, $slug)
     {
         $product = Product::where('slug', $slug)->first();
         if ($product) {

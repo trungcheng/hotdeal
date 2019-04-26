@@ -107,7 +107,7 @@
         @foreach($cart as $item)
         <tr>
           <td><div class="media">
-              <div class="media-left"> <a href="{{ route('product-detail', ['slug' => $item->options->slug]) }}"> <img class="img-responsive" src="{{ asset($item->options->image) }}" alt="" > </a> </div>
+              <div class="media-left"> <a href="{{ route('product-detail', ['cate' => $item->options->cate, 'slug' => $item->options->slug]) }}"> <img class="img-responsive" src="{{ asset($item->options->image) }}" alt="" > </a> </div>
               <div class="media-body">
                 <p>{{ $item->name }}</p>
             </div>
