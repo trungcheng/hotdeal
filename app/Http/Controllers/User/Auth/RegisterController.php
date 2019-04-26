@@ -84,7 +84,7 @@ class RegisterController extends Controller
     {
         $confirmationCode = md5($data['email']).uniqid();
         $hash = utf8_encode(base64_encode($confirmationCode));
-        $confirmationLink = url('account/signin') . '?m='.$data['email'].'&token='.$hash;
+        $confirmationLink = url('dang-nhap') . '?m='.$data['email'].'&token='.$hash;
 
         // send mail
         Mail::send('pages/user/mail/register_confirm_temp', [
