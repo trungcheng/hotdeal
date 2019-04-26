@@ -31,6 +31,21 @@ class ProductController extends Controller
         abort(404);
     }
 
+    public function detailCate(Request $request, $cateSlug)
+    {
+        $cate = Category::where('slug', $cateSlug)->first();
+        if ($cate) {
+            $products = Product::where('cat_id', $cate->id)->get();
+
+            return view('pages.user.product.detail-cate', [
+                'results' => $products,
+                'cate' => $cate
+            ]);
+        }
+
+        abort(404);
+    }
+
     public function store(Request $request)
     {
         $conditions = [];

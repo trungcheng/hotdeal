@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page')Đăng ký
+@section('page')Tạo tài khoản
 @stop
 
-@section('description')Đăng ký.
+@section('description')Tạo tài khoản.
 @stop
 
-@section('keywords')Đăng ký
+@section('keywords')Tạo tài khoản
 @stop
 
 @section('canonical'){{ route('getSignUp') }}
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('getSignUp') }}
 @stop
 
-@section('propName')Đăng ký.
+@section('propName')Tạo tài khoản.
 @stop
 
-@section('propDesc')Đăng ký.
+@section('propDesc')Tạo tài khoản.
 @stop
 
-@section('ogTitle')Đăng ký.
+@section('ogTitle')Tạo tài khoản.
 @stop
 
-@section('ogDesc')Đăng ký.
+@section('ogDesc')Tạo tài khoản.
 @stop
 
 @section('ogUrl'){{ route('getSignUp') }}
@@ -40,7 +40,7 @@
       <div class="container">
         <ol class="breadcrumb">
           <li><a href="{{ route('home') }}">Home</a></li>
-          <li class="active">Đăng ký</li>
+          <li class="active">Tạo tài khoản</li>
         </ol>
       </div>
     </div>
@@ -51,7 +51,7 @@
         <div class="row">
           <div class="col-md-6 col-md-offset-3"> 
             <!-- Login Your Account -->
-            <h5 class="text-uppercase">Đăng ký</h5>
+            <h5 class="text-uppercase">Tạo tài khoản</h5>
             <!-- FORM -->
             @if (count($errors) > 0)
             <div class="alert alert-danger">

@@ -1,33 +1,33 @@
 @extends('layouts.user.master')
 
-@section('page')Tìm kiếm với từ khóa "{{ $key }}"
+@section('page'){{ $cate->name }}
 @stop
 
-@section('description')Tìm kiếm với từ khóa "{{ $key }}"
+@section('description'){{ $cate->name }}
 @stop
 
-@section('keywords')Tìm kiếm, từ khóa "{{ $key }}"
+@section('keywords'){{ $cate->name }}
 @stop
 
-@section('canonical'){{ route('search') }}
+@section('canonical'){{ route('cate-detail', ['cateSlug' => $cate->slug]) }}
 @stop
 
-@section('alternate'){{ route('search') }}
+@section('alternate'){{ route('cate-detail', ['cateSlug' => $cate->slug]) }}
 @stop
 
-@section('propName')Tìm kiếm với từ khóa "{{ $key }}"
+@section('propName'){{ $cate->name }}
 @stop
 
-@section('propDesc')Tìm kiếm với từ khóa "{{ $key }}"
+@section('propDesc'){{ $cate->name }}
 @stop
 
-@section('ogTitle')Tìm kiếm với từ khóa "{{ $key }}"
+@section('ogTitle'){{ $cate->name }}
 @stop
 
-@section('ogDesc')Tìm kiếm với từ khóa "{{ $key }}"
+@section('ogDesc'){{ $cate->name }}
 @stop
 
-@section('ogUrl'){{ route('search') }}
+@section('ogUrl'){{ route('cate-detail', ['cateSlug' => $cate->slug]) }}
 @stop
 
 @section('pageCss')
@@ -74,7 +74,7 @@
 	<div class="container">
 		<ol class="breadcrumb">
 			<li><a href="{{ route('home') }}">Trang chủ</a></li>
-			<li class="active">Tìm kiếm</li>
+			<li class="active">{{ $cate->name }}</li>
 		</ol>
 	</div>
 </div>
@@ -82,7 +82,7 @@
   	<div class="container">
     	<div class="row">
     		<div class="col-md-12">
-                <h5 class="text-uppercase padding-bottom-10">Tìm kiếm với từ khóa "{{ $key }}"</h5>
+                <h5 class="text-uppercase padding-bottom-10">{{ $cate->name }}</h5>
     			@if (count($results) > 0)
 	    			<div class="item-col-4" style="display:inline-block;"> 
 		                <!-- Product -->
