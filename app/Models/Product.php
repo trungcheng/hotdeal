@@ -30,7 +30,10 @@ class Product extends Model
         'is_new',
         'color',
         'size',
-        'status'
+        'status',
+        'seo_title',
+        'seo_desc',
+        'seo_keyword'
     ];
 
     public function category() {

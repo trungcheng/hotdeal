@@ -77,7 +77,7 @@
                                                     <td style="text-align:center !important">@{{ (mem.status) ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>@{{ mem.created_at }}</td>
                                                     <td>
-                                                        <a href="/admin/members/edit/@{{ mem.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a href="/admin/access/members/edit/@{{ mem.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(mem, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>

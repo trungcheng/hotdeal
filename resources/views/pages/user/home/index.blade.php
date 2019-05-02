@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page')Chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại
+@section('page'){{ $setting->seo_title }}
 @stop
 
-@section('description')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@section('description'){{ $setting->seo_desc }}
 @stop
 
-@section('keywords')chậu rửa bát, cửa hàng chậu rửa bát tại Hà Nội, chậu rửa inox, chậu rửa đá nhân tạo, chậu rửa inox 201, chậu rửa inox 304
+@section('keywords'){{ $setting->seo_keyword }}
 @stop
 
 @section('canonical'){{ route('home') }}/
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('home') }}/
 @stop
 
-@section('propName')Chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại.
+@section('propName'){{ $setting->seo_title }}
 @stop
 
-@section('propDesc')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@section('propDesc'){{ $setting->seo_desc }}
 @stop
 
-@section('ogTitle')Chậu rửa bát giá rẻ - Chậu rửa bát inox đẹp và hiện đại.
+@section('ogTitle'){{ $setting->seo_title }}
 @stop
 
-@section('ogDesc')Được thành lập từ 2007, chúng tôi chuyên sản xuất chậu rửa bát đá nhân tạo cao cấp và phân phối chậu rửa bát inox 304, 201 giá rẻ nhưng chất lượng tại Hà Nội.
+@section('ogDesc'){{ $setting->seo_desc }}
 @stop
 
 @section('ogUrl'){{ route('home') }}/
@@ -56,6 +56,7 @@
             box-sizing: content-box;
         }
         .banner {
+            margin-top: 10px;
             margin-bottom: 4.5rem !important;
             padding: 0;
             color: #fff;
@@ -71,6 +72,7 @@
             background-repeat: repeat;
             overflow: hidden;
             z-index: 0;
+            cursor: pointer;
         }
         .banner .swiper .swiper-pagination-bullets .swiper-pagination-bullet-active {
             background-color: #fff !important;
@@ -168,35 +170,87 @@
         .product {
             display: flex;
         }
+        .banner-ads {
+            width:34%;
+            float:right;
+            height:300px;
+            overflow:hidden;
+        }
+        .banner-ads a {
+            display: block;
+            overflow: hidden;
+        }
+        .banner-ads a img {
+            width: 100%;
+            height: 145px;
+            display: block;
+        }
     </style>
 @stop
 
 @section('content')
-<h1 class="hide">Mua chậu rửa bát chất lượng, uy tín tại Thạch Vũ</h1>
+<h1 class="hide">Thiết bị vệ sinh cao cấp giá rẻ</h1>
 <!-- Slid Sec -->
 <section class="banner section">
     <div class="container">
-        <div class="swiper swiper-pagination-inside">
-            <div class="swiper-container" data-plugin="swiper">
-                <div class="swiper-wrapper">
-                    @foreach ($slides as $slide)
-                        <div class="swiper-slide" style="background-image:url({{ asset($slide->image) }})">
-                            <div class="container d-flex justify-content-md-end justify-content-center">
-                                <div class="align-self-center text-center text-md-right">
-                                    <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
-                                    @if ($slide->target_type == 'product')
-                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['cate' => $slide->product->category->slug, 'slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
-                                    @else
-                                        <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
-                                    @endif
+        @if (count($ads) > 0)
+            <div class="swiper swiper-pagination-inside" style="width:65%;float:left;position:relative;">
+                <div class="swiper-container" data-plugin="swiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($slides as $slide)
+                            <div class="swiper-slide" style="background-image:url({{ asset($slide->image) }})">
+                                <div class="container d-flex justify-content-md-end justify-content-center">
+                                    <div class="align-self-center text-center text-md-right">
+                                        <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
+                                        @if ($slide->target_type == 'product')
+                                            <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
+                                        @else
+                                            <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-pagination"></div>
             </div>
-        </div>
+            <div class="banner-ads">
+                @foreach ($ads as $slide)
+                    @if ($slide->target_type == 'product')
+                        <a href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}">
+                            <img style="{{ ($loop->first) ? 'margin-bottom:10px;' : '' }}" src="{{ asset($slide->image) }}">
+                        </a>
+                    @else
+                        <a href="{{ ($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)' }}">
+                            <img style="{{ ($loop->first) ? 'margin-bottom:10px;' : '' }}" src="{{ asset($slide->image) }}">
+                        </a>
+                    @endif
+                @endforeach
+            </div>
+        @else
+            <div class="swiper swiper-pagination-inside">
+                <div class="swiper-container" data-plugin="swiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($slides as $slide)
+                            <div class="swiper-slide" style="background-image:url({{ asset($slide->image) }})">
+                                <div class="container d-flex justify-content-md-end justify-content-center">
+                                    <div class="align-self-center text-center text-md-right">
+                                        <h3 style="font-size:35px;" class="section-heading mb-4">{{ $slide->title }}</h3>
+                                        @if ($slide->target_type == 'product')
+                                            <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
+                                        @else
+                                            <a class="btn btn-lg btn-block btn-outline-white rounded-0 btn-style-1" href="{{ ($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)' }}">xem thông tin</a>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        @endif
     </div>
 </section>
 <!-- Shipping Info -->
@@ -217,25 +271,8 @@
             <!-- On sale -->
             <div role="tabpanel" class="tab-pane active fade in" id="tab1"> 
                 <!-- Items Slider -->
-                <div class="item-slide-4 with-nav" id="owl1"> 
+                <div class="with-nav" id="owl1"> 
                     <!-- Product -->
-                    @foreach ($saleProducts as $pro)
-                    <div class="product">
-                        <article>
-                            <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
-                                <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
-                            </a>
-                            <span class="sale-tag">-{{ $pro->discount }}%</span>
-                            <!-- Content --> 
-                            <!-- <span class="tag">Latop</span> --> 
-                            <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
-                            <!-- Reviews -->
-                            <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                            <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
-                            <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> --> 
-                        </article>
-                    </div>
-                    @endforeach
                 </div>
             </div>
 
@@ -247,12 +284,12 @@
                     @foreach ($featureProducts as $pro)
                     <div class="product">
                         <article>
-                            <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
+                            <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                                 <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
                             </a>
                             <!-- Content --> 
                             <!-- <span class="tag">Latop</span> --> 
-                            <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
                             <!-- Reviews -->
                             <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                             <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
@@ -267,7 +304,6 @@
     </div>
 </section>
 
-@if (count($chauda) > 0)
 <section class="light-gry-bg padding-top-30 padding-bottom-30">
     <div class="container"> 
         <!-- heading -->
@@ -275,33 +311,19 @@
             <h2 class="text-uppercase">Chậu rửa đá nhân tạo</h2>
             <hr>
         </div>
-        <div class="singl-slide with-nav">
-            @foreach ($chauda as $list)
-            <div class="item-col-4"> 
-                @foreach ($list as $pro)
-                <div class="product">
-                    <article> 
-                        <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
-                            <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}">
-                        </a>
-                        <!-- Content --> 
-                        <!-- <span class="tag">Latop</span> --> 
-                        <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a>
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                @endforeach
+        {{--<div class="singl-slide">--}}
+            {{-- @foreach ($chauda as $pro) --}}
+            <div id="section-chauda" class="item-col-4" style="display:inline-block;"> 
+                
             </div>
-            @endforeach
-        </div>
+            <div class="text-center">
+                <a id="chauda-loadmore" class="btn-round text-uppercase" href="javascript:void(0)">Xem thêm</a>
+            </div>
+            {{-- @endforeach --}}
+        {{-- </div> --}}
     </div>
 </section>
-@endif
 
-@if (count($chauinox) > 0)
 <section class="padding-top-30 padding-bottom-30">
     <div class="container"> 
         <!-- heading -->
@@ -309,33 +331,19 @@
             <h2 class="text-uppercase">Chậu rửa inox</h2>
             <hr>
         </div>
-        <div class="singl-slide with-nav">
-            @foreach ($chauinox as $list)
-            <div class="item-col-4"> 
-                @foreach ($list as $pro)
-                <div class="product">
-                    <article> 
-                        <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
-                            <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}" >
-                        </a>
-                        <!-- Content --> 
-                        <!-- <span class="tag">Latop</span> --> 
-                        <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                @endforeach
+        {{--<div class="singl-slide with-nav">--}}
+            {{--@foreach ($chauinox as $list)--}}
+            <div id="section-chauinox" class="item-col-4" style="display:inline-block;"> 
+                
             </div>
-            @endforeach
-        </div>
+            <div class="text-center">
+                <a id="chauinox-loadmore" class="btn-round text-uppercase" href="javascript:void(0)">Xem thêm</a>
+            </div>
+            {{--@endforeach--}}
+        {{--</div>--}}
     </div>
 </section>
-@endif
 
-@if (count($voiruabat) > 0)
 <section class="light-gry-bg padding-top-30 padding-bottom-30">
     <div class="container"> 
         <!-- heading -->
@@ -343,31 +351,18 @@
             <h2 class="text-uppercase">Vòi rửa bát</h2>
             <hr>
         </div>
-        <div class="singl-slide with-nav">
-            @foreach ($voiruabat as $list)
-            <div class="item-col-4"> 
-                @foreach ($list as $pro)
-                <div class="product">
-                    <article> 
-                        <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
-                            <img class="img-responsive" src="{{ asset($pro->image) }}" alt="{{ asset($pro->image) }}" >
-                        </a>
-                        <!-- Content --> 
-                        <!-- <span class="tag">Latop</span> --> 
-                        <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
-                        <!-- Reviews -->
-                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-                        <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
-                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a>  -->
-                    </article>
-                </div>
-                @endforeach
+        {{--<div class="singl-slide with-nav">--}}
+            {{--@foreach ($voiruabat as $list)--}}
+            <div id="section-voiruabat" class="item-col-4" style="display:inline-block;"> 
+                
             </div>
-            @endforeach
-        </div>
+            <div class="text-center">
+                <a id="voiruabat-loadmore" class="btn-round text-uppercase" href="javascript:void(0)">Xem thêm</a>
+            </div>
+            {{--@endforeach--}}
+        {{--</div>--}}
     </div>
 </section>
-@endif
 
 @if (count($featureArticles) > 0)
 <section class="padding-top-30 padding-bottom-30">
@@ -403,17 +398,74 @@
         $('a[href="#tab1"]').on('shown.bs.tab', function () {
             initialize_owl($('#owl1'));
         }).on('hide.bs.tab', function () {
-                // destroy_owl($('#owl1'));
+            // destroy_owl($('#owl1'));
         });
         $('a[href="#tab2"]').on('shown.bs.tab', function () {
             initialize_owl($('#owl2'));
         }).on('hide.bs.tab', function () {
-                // destroy_owl($('#owl2'));
+            // destroy_owl($('#owl2'));
         });
         $('.blog-post p').each(function (v, k) {
             var trim = trimText($(k).text(), 30);
             $(k).text(trim);
         });
     });
+    var pageChauda = 1;
+    var pageChauinox = 1;
+    var pageVoiruabat = 1;
+    $(function () {
+        getAllSaleProd();
+        getAllChauDaProd(pageChauda);
+        getAllChauInoxProd(pageChauinox);
+        getAllVoiRuaBatProd(pageVoiruabat);
+    });
+    $(document).on('click', '#chauda-loadmore', function () {
+        pageChauda++;
+        getAllChauDaProd(pageChauda);
+    });
+    $(document).on('click', '#chauinox-loadmore', function () {
+        pageChauinox++;
+        getAllChauInoxProd(pageChauinox);
+    });
+    $(document).on('click', '#voiruabat-loadmore', function () {
+        pageVoiruabat++;
+        getAllVoiRuaBatProd(pageVoiruabat);
+    });
+    function getAllSaleProd() {
+        $.get('/product/getAllSaleProd', function (res) {
+            $('#owl1').append(res.html);
+            initialize_owl($('#owl1'));
+        });
+    }
+    function getAllChauDaProd(page) {
+        $.get('/product/getAllChauDaProd?page='+page, function (res) {
+            $('#section-chauda').append(res.html);
+            if (res.products.current_page >= res.products.last_page) {
+                $('#chauda-loadmore').addClass('hide');
+            } else {
+                $('#chauda-loadmore').removeClass('hide');
+            }
+        });
+    }
+    function getAllChauInoxProd(page) {
+        $.get('/product/getAllChauInoxProd?page='+page, function (res) {
+            $('#section-chauinox').append(res.html);
+            if (res.products.current_page >= res.products.last_page) {
+                $('#chauinox-loadmore').addClass('hide');
+            } else {
+                $('#chauinox-loadmore').removeClass('hide');
+            }
+        });
+    }
+    function getAllVoiRuaBatProd(page) {
+        $.get('/product/getAllVoiRuaBatProd?page='+page, function (res) {
+            $('#section-voiruabat').append(res.html);
+            if (res.products.current_page >= res.products.last_page) {
+                $('#voiruabat-loadmore').addClass('hide');
+            } else {
+                $('#voiruabat-loadmore').removeClass('hide');
+            }
+        });
+    }
 </script>
 @stop

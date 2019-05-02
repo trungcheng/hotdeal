@@ -8,7 +8,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
 
-        <li><a data-route="/admin" href="{{ url('/admin/dashboard') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
+        <li><a data-route="/admin/access/dashboard" href="{{ url('/admin/access/dashboard') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
 
         <li class="treeview">
             <a href="javascript:void(0)"><i class="fa fa-bars"></i> <span>Quản lý danh mục</span>
@@ -17,12 +17,12 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/categories" href="{{ url('/admin/categories') }}">Danh sách</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/categories/create" href="{{ url('/admin/categories/create') }}">Thêm mới</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/categories" href="{{ url('/admin/access/categories') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/categories/create" href="{{ url('/admin/access/categories/create') }}">Thêm mới</a></li>
             </ul>
         </li>
         
-        <!-- <li><a data-route="/admin/orders" href="{{ url('/admin/orders') }}"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
+        <!-- <li><a data-route="/admin/access/orders" href="{{ url('/admin/access/orders') }}"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
         
         <li class="treeview">
             <a href="javascript:void(0)"><i class="fa fa-suitcase"></i> <span>Quản lý sản phẩm</span>
@@ -31,8 +31,8 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/products" href="{{ url('/admin/products') }}">Danh sách</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/products/create" href="{{ url('/admin/products/create') }}">Thêm mới</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/products" href="{{ url('/admin/access/products') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/products/create" href="{{ url('/admin/access/products/create') }}">Thêm mới</a></li>
             </ul>
         </li>
 
@@ -43,8 +43,8 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/orders" href="{{ url('/admin/orders') }}">Danh sách</a></li>
-                <!-- <li><a style="margin-left:35px;" data-route="/admin/orders/create" href="{{ url('/admin/orders/create') }}">Thêm mới</a></li> -->
+                <li><a style="margin-left:35px;" data-route="/admin/access/orders" href="{{ url('/admin/access/orders') }}">Danh sách</a></li>
+                <!-- <li><a style="margin-left:35px;" data-route="/admin/access/orders/create" href="{{ url('/admin/access/orders/create') }}">Thêm mới</a></li> -->
             </ul>
         </li>
         
@@ -55,8 +55,8 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/articles" href="{{ url('/admin/articles') }}">Danh sách</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/articles/create" href="{{ url('/admin/articles/create') }}">Thêm mới</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/articles" href="{{ url('/admin/access/articles') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/articles/create" href="{{ url('/admin/access/articles/create') }}">Thêm mới</a></li>
             </ul>
         </li>
 
@@ -67,8 +67,8 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/slides" href="{{ url('/admin/slides') }}">Danh sách</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/slides/create" href="{{ url('/admin/slides/create') }}">Thêm mới</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/slides" href="{{ url('/admin/access/slides') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/slides/create" href="{{ url('/admin/access/slides/create') }}">Thêm mới</a></li>
             </ul>
         </li>
 
@@ -79,26 +79,26 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/members" href="{{ url('/admin/members') }}">Danh sách</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/members/create" href="{{ url('/admin/members/create') }}">Thêm mới</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/members" href="{{ url('/admin/access/members') }}">Danh sách</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/members/create" href="{{ url('/admin/access/members/create') }}">Thêm mới</a></li>
             </ul>
         </li>
 
-        <!-- <li><a data-route="/admin/setting" href="{{ url('/admin/setting') }}"><i class="fa fa-cog"></i> <span>Thông tin công ty</span></a></li> -->
+        <!-- <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-cog"></i> <span>Thông tin công ty</span></a></li> -->
 
-        <li><a data-route="/admin/setting" href="{{ url('/admin/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
+        <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
         
-        <!-- <li><a data-route="/admin/advertises" href="{{ url('/admin/advertises') }}"><i class="fa fa-square-o"></i> <span>Quản lý quảng cáo</span></a></li>
+        <!-- <li><a data-route="/admin/access/advertises" href="{{ url('/admin/access/advertises') }}"><i class="fa fa-square-o"></i> <span>Quản lý quảng cáo</span></a></li>
         
-        <li><a data-route="/admin/menu" href="{{ url('/admin/menu') }}"><i class="fa fa-server"></i> <span>Quản lý menu</span></a></li>
+        <li><a data-route="/admin/access/menu" href="{{ url('/admin/access/menu') }}"><i class="fa fa-server"></i> <span>Quản lý menu</span></a></li>
         
-        <li><a data-route="/admin/location" href="{{ url('/admin/location') }}"><i class="fa fa-share-alt"></i> <span>Quản lý khu vực</span></a></li> -->
+        <li><a data-route="/admin/access/location" href="{{ url('/admin/access/location') }}"><i class="fa fa-share-alt"></i> <span>Quản lý khu vực</span></a></li> -->
         
-        <!-- <li><a data-route="/admin/users" href="{{ url('/admin/users') }}"><i class="fa fa-users"></i> <span>Quản lý user</span></a></li> -->
+        <!-- <li><a data-route="/admin/access/users" href="{{ url('/admin/access/users') }}"><i class="fa fa-users"></i> <span>Quản lý user</span></a></li> -->
         
-        <!-- <li><a data-route="/admin/company" href="{{ url('/admin/company') }}"><i class="fa fa-flag"></i> <span>Thông tin công ty</span></a></li>
+        <!-- <li><a data-route="/admin/access/company" href="{{ url('/admin/access/company') }}"><i class="fa fa-flag"></i> <span>Thông tin công ty</span></a></li>
         
-        <li><a data-route="/admin/general-info" href="{{ url('/admin/general-info') }}"><i class="fa fa-info-circle"></i> <span>Thông tin chung</span></a></li> -->
+        <li><a data-route="/admin/access/general-info" href="{{ url('/admin/access/general-info') }}"><i class="fa fa-info-circle"></i> <span>Thông tin chung</span></a></li> -->
 
         <!-- <li><a data-route="setting" href="#"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li> -->
         

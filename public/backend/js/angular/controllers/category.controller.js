@@ -89,6 +89,7 @@
             
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
+            formData.append('seo_content', CKEDITOR.instances.seo_content.document.getBody().getHtml());
             
             swal({
                 title: "Bạn chắc chắn muốn "+ title +" danh mục này ?",

@@ -61,6 +61,18 @@
                                         <option {{ ($article->status == 0) ? 'selected' : '' }} value="0">Ẩn</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label>SEO Title</label>
+                                    <input value="{{ $article->seo_title }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Description</label>
+                                    <input value="{{ $article->seo_desc }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Keyword</label>
+                                    <input value="{{ $article->seo_keyword }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>

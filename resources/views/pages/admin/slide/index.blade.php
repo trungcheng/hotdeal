@@ -61,6 +61,7 @@
                                                     <th>Ảnh</th>
                                                     <th style="text-align:center !important;width:20%">Tiêu đề</th>
                                                     <th>Loại mục tiêu</th>
+                                                    <th>Loại hiển thị</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -73,9 +74,10 @@
                                                     </td>
                                                     <td style="text-align:center !important">@{{ slide.title }}</td>
                                                     <td>@{{ slide.target_type }}</td>
+                                                    <td>@{{ (slide.type == 'slide') ? 'Slide' : 'Quảng cáo' }}</td>
                                                     <td>@{{ slide.created_at }}</td>
                                                     <td>
-                                                        <a href="/admin/slides/edit/@{{ slide.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a href="/admin/access/slides/edit/@{{ slide.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(slide, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>

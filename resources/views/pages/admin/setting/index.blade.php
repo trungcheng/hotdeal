@@ -36,7 +36,7 @@
                     <p class="alert alert-success">{{ Session::get('message') }}</p>
                 @endif
 
-                <form id="form_setting" action="{{ url('/admin/setting/update') }}" enctype="multipart/form-data" method="post">
+                <form id="form_setting" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
 
                     {{ csrf_field() }}
                     
@@ -79,6 +79,19 @@
                     <div class="form-group">
                         <label>Facebook Pixel Code</label>
                         <textarea style="height: 100px;" name="fb_pixel_code" class="form-control" placeholder="Facebook Pixel Code...">{{ ($setting != '') ? $setting->fb_pixel_code : '' }}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SEO Title</label>
+                        <input name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
+                    </div>
+                    <div class="form-group">
+                        <label>SEO Description</label>
+                        <input name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
+                    </div>
+                    <div class="form-group">
+                        <label>SEO Keyword</label>
+                        <input name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                     </div>
 
                     <div class="form-group">

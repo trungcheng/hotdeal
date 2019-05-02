@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/admin/access/dashboard';
 
     /**
      * Create a new controller instance.
@@ -55,7 +55,7 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ], $request->remember)) {
-            return redirect('/admin/dashboard');
+            return redirect('/admin/access/dashboard');
         }
 
         return redirect()->back()->withInput($request->only('email', 'remember'));
@@ -65,7 +65,7 @@ class LoginController extends Controller
     {
         Auth::guard('admin')->logout();
 
-        return redirect('/admin/login');
+        return redirect('/admin/access/login');
     }
 
 }

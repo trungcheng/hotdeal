@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page'){{ $article->title }}
+@section('page'){{ $article->seo_title }}
 @stop
 
-@section('description'){{ $article->title }}
+@section('description'){{ $article->seo_desc }}
 @stop
 
-@section('keywords'){{ $article->title }}
+@section('keywords'){{ $article->seo_keyword }}
 @stop
 
 @section('canonical'){{ route('article-detail', ['slug' => $article->slug]) }}
@@ -15,27 +15,23 @@
 @section('alternate'){{ route('article-detail', ['slug' => $article->slug]) }}
 @stop
 
-@section('propName'){{ $article->title }}
+@section('propName'){{ $article->seo_title }}
 @stop
 
-@section('propDesc'){{ $article->title }}
+@section('propDesc'){{ $article->seo_desc }}
 @stop
 
-@section('ogTitle'){{ $article->title }}
+@section('ogTitle'){{ $article->seo_title }}
 @stop
 
-@section('ogDesc'){{ $article->title }}
+@section('ogDesc'){{ $article->seo_desc }}
 @stop
 
 @section('ogUrl'){{ route('article-detail', ['slug' => $article->slug]) }}
 @stop
 
 @section('pageCss')
-	<style type="text/css">
-	    .blog-post article img {
-	      height: auto;
-	    }
-  	</style>
+
 @stop
 
 @section('content')
@@ -51,7 +47,7 @@
 </div>
 
 <!-- Blog -->
-<section class="blog-single padding-top-30 padding-bottom-60">
+<section class="blog-single padding-top-20 padding-bottom-60">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-9"> 
@@ -60,8 +56,8 @@
 				<div class="blog-post">
 					<article> 
 						<!-- <img style="width:100%" class="img-responsive margin-bottom-20" src="{{ asset($article->image) }}" alt="{{ asset($article->image) }}" />  -->
-						<span>By: <strong>{{ $article->user->fullname }}</strong></span> <span><i class="fa fa-bookmark-o"></i> {{ $article->created_at }}</span> <span><i class="fa fa-comment-o"></i> 0 Bình luận</span>
-						<h5>{{ $article->title }}</h5>
+						<span><i class="fa fa-bookmark-o"></i> {{ $article->created_at }}</span>
+						<h1 style="font-size:25px;">{{ $article->title }}</h1>
 						{!! $article->intro !!}
 						{!! $article->fulltext !!}
 					</article>
@@ -69,7 +65,7 @@
 					<!-- Comments -->
 					<div class="comments">
 						<!-- <h6 class="margin-0">Bình luận</h6> -->
-						<div class="fb-comments" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="850" data-numposts="5"></div>
+						<div class="fb-comments" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="850" data-numposts="10"></div>
 						<!-- <ul>
 							<li class="media">
 								<div class="media-left"> <a href="#" class="avatar"> <img src="{{ asset('frontend/images/avatar.jpg') }}" alt=""> </a> </div>

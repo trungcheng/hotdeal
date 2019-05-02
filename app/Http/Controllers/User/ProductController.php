@@ -14,32 +14,28 @@ class ProductController extends Controller
         // $this->middleware('');
     }
 
-    public function detail(Request $request, $cate, $slug)
+    public function detail(Request $request, $slug)
     {
-        $product = Product::where('slug', $slug)->first();
-        if ($product) {
-            $image_list = json_decode($product->image_list);
-            $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(12)->get()->except($product->id);
+        if ($slug == 'admin') return redirect('/admin/access/login');
+        $category = Category::where('slug', $slug)->first();
+        if (!$category) {
+            $product = Product::where('slug', $slug)->first();
+            if ($product) {
+                $image_list = json_decode($product->image_list);
+                $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(12)->get()->except($product->id);
 
-            return view('pages.user.product.detail', [
-                'product' => $product,
-                'image_list' => $image_list,
-                'relatedProducts' => $relatedProducts
-            ]);
-        }
-
-        abort(404);
-    }
-
-    public function detailCate(Request $request, $cateSlug)
-    {
-        $cate = Category::where('slug', $cateSlug)->first();
-        if ($cate) {
-            $products = Product::where('cat_id', $cate->id)->get();
+                return view('pages.user.product.detail', [
+                    'product' => $product,
+                    'image_list' => $image_list,
+                    'relatedProducts' => $relatedProducts
+                ]);
+            }
+        } else {
+            $products = Product::where('cat_id', $category->id)->get();
 
             return view('pages.user.product.detail-cate', [
                 'results' => $products,
-                'cate' => $cate
+                'cate' => $category
             ]);
         }
 
@@ -105,5 +101,69 @@ class ProductController extends Controller
         }
         
         abort(404);
+    }
+
+    public function getAllSaleProd(Request $request)
+    {
+        $products = Product::where('discount', '>', 0)->orderBy('discount', 'desc')->limit(12)->get();
+        $view = view('pages.user.product.prodajax', [
+            'products' => $products
+        ])->render();
+
+        return response()->json([
+            'status' => true,
+            'html' => $view
+        ]);
+    }
+
+    public function getAllChauDaProd(Request $request)
+    {
+        $products = Product::where('cat_id', 1)->orderBy('created_at', 'desc')->paginate(8);
+        $view = view('pages.user.product.prodajax', [
+            'products' => $products
+        ])->render();
+
+        return response()->json([
+            'status' => true,
+            'html' => $view,
+            'products' => [
+                'current_page' => $products->currentPage(),
+                'last_page' => $products->lastPage()
+            ]
+        ]);
+    }
+
+    public function getAllChauInoxProd(Request $request)
+    {
+        $products = Product::where('cat_id', 2)->orderBy('created_at', 'desc')->paginate(8);
+        $view = view('pages.user.product.prodajax', [
+            'products' => $products
+        ])->render();
+
+        return response()->json([
+            'status' => true,
+            'html' => $view,
+            'products' => [
+                'current_page' => $products->currentPage(),
+                'last_page' => $products->lastPage()
+            ]
+        ]);
+    }
+
+    public function getAllVoiRuaBatProd(Request $request)
+    {
+        $products = Product::where('cat_id', 3)->orderBy('created_at', 'desc')->paginate(8);
+        $view = view('pages.user.product.prodajax', [
+            'products' => $products
+        ])->render();
+
+        return response()->json([
+            'status' => true,
+            'html' => $view,
+            'products' => [
+                'current_page' => $products->currentPage(),
+                'last_page' => $products->lastPage()
+            ]
+        ]);
     }
 }

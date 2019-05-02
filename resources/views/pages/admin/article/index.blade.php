@@ -79,7 +79,7 @@
                                                     <td>@{{ (article.status == 0) ? 'Ẩn' : 'Hiển thị' }}</td>
                                                     <td>@{{ article.created_at }}</td>
                                                     <td>
-                                                        <a href="/admin/articles/edit/@{{ article.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a href="/admin/access/articles/edit/@{{ article.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(article, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>

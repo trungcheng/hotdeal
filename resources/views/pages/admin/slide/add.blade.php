@@ -57,6 +57,13 @@
                                 	</select>
                                 </div>
                                 <div class="form-group">
+                                    <label>Loại hiển thị</label>
+                                    <select name="type" class="form-control">
+                                        <option value="slide">Slide</option>
+                                        <option value="ads">Quảng cáo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                 	<label>Hiển thị</label>
                                 	<select name="status" class="form-control">
                                 		<option value="1">Có</option>
@@ -114,7 +121,7 @@
 	    }
 
 	    $(document).on('change', '#target_type', function () {
-	    	$.get('/admin/slides/loadObject/' + $(this).val(), function (res) {
+	    	$.get('/admin/access/slides/loadObject/' + $(this).val(), function (res) {
 				var html = '';
 				if (res.length > 0) {
 					$.each(res, function (i, obj) {

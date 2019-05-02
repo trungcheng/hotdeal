@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page')Tin tức
+@section('page')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp
 @stop
 
-@section('description')Tin tức.
+@section('description')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp.
 @stop
 
-@section('keywords')Tin tức
+@section('keywords')tin tức, thiết bị vệ sinh, phong thủy nhà bếp, tin tức thiết bị vệ sinh
 @stop
 
 @section('canonical'){{ route('article') }}
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('article') }}
 @stop
 
-@section('propName')Tin tức.
+@section('propName')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp.
 @stop
 
-@section('propDesc')Tin tức.
+@section('propDesc')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp.
 @stop
 
-@section('ogTitle')Tin tức.
+@section('ogTitle')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp.
 @stop
 
-@section('ogDesc')Tin tức.
+@section('ogDesc')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp.
 @stop
 
 @section('ogUrl'){{ route('article') }}
@@ -51,7 +51,7 @@
 
 <!-- Blog -->
 @if (count($articles) > 0)
-<section class="blog-page padding-top-30 padding-bottom-60">
+<section class="blog-page padding-top-20 padding-bottom-60">
   <div class="container">
     <div class="row">
       <div class="col-md-9"> 
@@ -61,7 +61,7 @@
         <div class="blog-post">
             <article class="row">
                 <div class="col-xs-7"> <img class="img-responsive" src="{{ asset($article->image) }}" alt="{{ asset($article->image) }}" > </div>
-                <div class="col-xs-5"> <span><i class="fa fa-bookmark-o"></i> {{ $article->created_at }}</span> <span><i class="fa fa-comment-o"></i> 0 Bình luận</span> <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="tittle">{{ $article->title }}</a>
+                <div class="col-xs-5"> <span><i class="fa fa-bookmark-o"></i> {{ $article->created_at }}</span> <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="tittle">{{ $article->title }}</a>
                 {!! $article->intro !!}
                 <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">Đọc thêm</a></div>
             </article>

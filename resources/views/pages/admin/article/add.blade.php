@@ -60,6 +60,18 @@
                                         <option value="0">Ẩn</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label>SEO Title</label>
+                                    <input name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Description</label>
+                                    <input name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Keyword</label>
+                                    <input name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('add')" type="button" class="btn btn-primary">Thêm</button>
@@ -75,7 +87,6 @@
     </section>
 
 </div>
-
 <script>
     CKEDITOR.replace('short_content', { height: 300 }); 
     CKEDITOR.replace('full_content'); 
@@ -114,7 +125,7 @@
 </script>
 
 <script>
-    var i = 1;
+    var i = 50;
     function add_img(){
         i++;
         var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="image_list[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-primary">Xóa</button></span></p>';

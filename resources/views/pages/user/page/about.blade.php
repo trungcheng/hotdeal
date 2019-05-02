@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page')Giới thiệu
+@section('page')Giới thiệu về Thạch Vũ
 @stop
 
-@section('description'){{ $article->title }}
+@section('description'){{ $article->intro }}
 @stop
 
-@section('keywords'){{ $article->title }}
+@section('keywords')Giới thiệu về Thạch Vũ
 @stop
 
 @section('canonical'){{ route('article-detail', ['slug' => $article->slug]) }}
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('article-detail', ['slug' => $article->slug]) }}
 @stop
 
-@section('propName'){{ $article->title }}
+@section('propName')Giới thiệu về Thạch Vũ
 @stop
 
-@section('propDesc'){{ $article->title }}
+@section('propDesc'){{ $article->intro }}
 @stop
 
 @section('ogTitle'){{ $article->title }}
 @stop
 
-@section('ogDesc'){{ $article->title }}
+@section('ogDesc'){{ $article->intro }}
 @stop
 
 @section('ogUrl'){{ route('article-detail', ['slug' => $article->slug]) }}

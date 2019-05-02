@@ -1,33 +1,33 @@
 @extends('layouts.user.master')
 
-@section('page'){{ $product->name }}
+@section('page'){{ $product->seo_title }}
 @stop
 
-@section('description'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@section('description'){{ $product->seo_desc }}
 @stop
 
-@section('keywords'){{ $product->name }}, {{ ($product->category) ? $product->category->name : 'Autwatch' }}
+@section('keywords'){{ $product->seo_keyword }}
 @stop
 
-@section('canonical'){{ route('product-detail', ['cate' => $product->category->slug, 'slug' => $product->slug]) }}
+@section('canonical'){{ route('product-detail', ['slug' => $product->slug]) }}
 @stop
 
-@section('alternate'){{ route('product-detail', ['cate' => $product->category->slug, 'slug' => $product->slug]) }}
+@section('alternate'){{ route('product-detail', ['slug' => $product->slug]) }}
 @stop
 
-@section('propName'){{ $product->name }}
+@section('propName'){{ $product->seo_title }}
 @stop
 
-@section('propDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@section('propDesc'){{ $product->seo_desc }}
 @stop
 
-@section('ogTitle'){{ $product->name }}
+@section('ogTitle'){{ $product->seo_title }}
 @stop
 
-@section('ogDesc'){{ $product->name }} là dòng đồng hồ cao cấp của {{ ($product->category) ? $product->category->name : 'Autwatch' }} mang lại sự trang trọng, lịch sử và đẳng cấp.
+@section('ogDesc'){{ $product->desc }}
 @stop
 
-@section('ogUrl'){{ route('product-detail', ['cate' => $product->category->slug, 'slug' => $product->slug]) }}
+@section('ogUrl'){{ route('product-detail', ['slug' => $product->slug]) }}
 @stop
 
 @section('pageCss')
@@ -69,7 +69,17 @@
 @stop
 
 @section('content')
-<section class="padding-top-40 padding-bottom-60">
+<!-- Linking -->
+<div class="linking">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{{ route('home') }}">Trang chủ</a></li>
+      <li><a href="{{ route('product-detail', ['slug' => $product->category->slug]) }}">{{ $product->category->name }}</a></li>
+      <li class="active">{{ $product->name }}</li>
+    </ol>
+  </div>
+</div>
+<section class="padding-top-20 padding-bottom-60">
    <div class="container">
       <div class="row">
 
@@ -111,9 +121,9 @@
             </div>
             <!-- Item Content -->
             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                <span class="tags">{{ $product->category->name }}</span>
-                <h5>{{ $product->name }}</h5>
-                <span class="tags">Model: {!! $product->sku_id !!}</span>
+                <!-- <span class="tags">{{ $product->category->name }}</span> -->
+                <h1 style="font-size:25px;margin-top:10px;">{{ $product->name }}</h1>
+                <span class="tags">Mã sản phẩm: {!! $product->sku_id !!}</span>
                 <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                 <div class="row" style="margin-top:10px;">
                    <div class="col-sm-6">
@@ -155,17 +165,17 @@
 <div class="item-tabs-sec">
   <!-- Nav tabs -->
   <ul class="nav" role="tablist">
-     <li role="presentation" class="active"><a href="#pro-detil"  role="tab" data-toggle="tab">Thông tin sản phẩm</a></li>
-     <li role="presentation"><a href="#cus-rev"  role="tab" data-toggle="tab">Bình luận</a></li>
+     <li role="presentation" class="active"><a href="#pro-detail" role="tab" data-toggle="tab">Thông tin sản phẩm</a></li>
+     <li role="presentation"><a href="#cus-rev" role="tab" data-toggle="tab">Bình luận</a></li>
      <!-- <li role="presentation"><a href="#ship" role="tab" data-toggle="tab">Shipping & Payment</a></li> -->
  </ul>
  <!-- Tab panes -->
  <div class="tab-content">
-     <div role="tabpanel" class="tab-pane fade in active" id="pro-detil">
+     <div role="tabpanel" class="tab-pane fade in active" id="pro-detail">
         {!! ($product->full_desc != '') ? $product->full_desc : '' !!}
      </div>
       <div role="tabpanel" class="tab-pane fade" id="cus-rev">
-        <div class="fb-comments" data-href="{{ route('product-detail', ['cate' => $product->category->slug, 'slug' => $product->slug]) }}" data-width="850" data-numposts="5"></div>
+        <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="850" data-numposts="10"></div>
       </div>
 <!-- <div role="tabpanel" class="tab-pane fade" id="ship"></div> -->
 </div>
@@ -184,12 +194,12 @@
       @foreach ($relatedProducts as $pro)
       <div class="product">
         <article class="relate">
-            <a class="thumb" href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}">
+            <a class="thumb" href="{{ route('product-detail', ['slug' => $pro->slug]) }}">
                 <img class="img-responsive" src="{{ asset($pro->image) }}" alt="">
             </a> 
             <!-- Content --> 
             <!-- <span class="tag">Latop</span>  -->
-            <a href="{{ route('product-detail', ['cate' => $pro->category->slug, 'slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
             <!-- Reviews -->
             <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
             <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ</div>

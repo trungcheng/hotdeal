@@ -29,7 +29,7 @@
         });
 
         // \Route::get('/product-detail', 'User\ProductController@detail')->name('product-detail');
-        \Route::get('/store', 'User\ProductController@store')->name('store');
+        \Route::get('/cua-hang', 'User\ProductController@store')->name('store');
         \Route::get('/tim-kiem', 'User\ProductController@search')->name('search');
 
         \Route::get('/gio-hang', 'User\CartController@index')->name('cart');
@@ -48,12 +48,12 @@
         \Route::get('/gioi-thieu', 'User\PageController@about')->name('about');
         \Route::get('/lien-he', 'User\PageController@contact')->name('contact');
 
-        \Route::get('/admin', function () {
-            return redirect('/admin/login');
-        });
+        \Route::get('/product/getAllSaleProd', 'User\ProductController@getAllSaleProd');
+        \Route::get('/product/getAllChauDaProd', 'User\ProductController@getAllChauDaProd');
+        \Route::get('/product/getAllChauInoxProd', 'User\ProductController@getAllChauInoxProd');
+        \Route::get('/product/getAllVoiRuaBatProd', 'User\ProductController@getAllVoiRuaBatProd');
 
-        \Route::get('/{cate}/{slug}', 'User\ProductController@detail')->name('product-detail');
-        \Route::get('/{cateSlug}', 'User\ProductController@detailCate')->name('cate-detail');
+        \Route::get('/{slug}', 'User\ProductController@detail')->name('product-detail');
 
     });
 

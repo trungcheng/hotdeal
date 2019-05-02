@@ -19,7 +19,10 @@ class Article extends Model
         'image',
         'is_about',
         'is_feature',
-        'status'
+        'status',
+        'seo_title',
+        'seo_desc',
+        'seo_keyword'
     ];
 
     public function user() {

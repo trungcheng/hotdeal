@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page')Cửa hàng
+@section('page')Giỏ hàng
 @stop
 
-@section('description')Cửa hàng
+@section('description')Giỏ hàng
 @stop
 
-@section('keywords')Cửa hàng
+@section('keywords')Giỏ hàng
 @stop
 
 @section('canonical'){{ route('cart') }}
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('cart') }}
 @stop
 
-@section('propName')Cửa hàng
+@section('propName')Giỏ hàng
 @stop
 
-@section('propDesc')Cửa hàng
+@section('propDesc')Giỏ hàng
 @stop
 
-@section('ogTitle')Cửa hàng
+@section('ogTitle')Giỏ hàng
 @stop
 
-@section('ogDesc')Cửa hàng
+@section('ogDesc')Giỏ hàng
 @stop
 
 @section('ogUrl'){{ route('cart') }}
@@ -107,7 +107,7 @@
         @foreach($cart as $item)
         <tr>
           <td><div class="media">
-              <div class="media-left"> <a href="{{ route('product-detail', ['cate' => $item->options->cate, 'slug' => $item->options->slug]) }}"> <img class="img-responsive" src="{{ asset($item->options->image) }}" alt="" > </a> </div>
+              <div class="media-left"> <a href="{{ route('product-detail', ['slug' => $item->options->slug]) }}"> <img class="img-responsive" src="{{ asset($item->options->image) }}" alt="" > </a> </div>
               <div class="media-body">
                 <p>{{ $item->name }}</p>
             </div>

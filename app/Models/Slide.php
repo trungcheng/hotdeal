@@ -14,6 +14,7 @@ class Slide extends Model
         'image',
         'target',
         'target_type',
+        'type',
         'status'
     ];
 
@@ -26,14 +27,11 @@ class Slide extends Model
     }
 
     public static $rules = [
-        'title' => 'required|min:2',
         'image' => 'required'
     ];
 
     public static $messages = [
-        'title.required' => 'Tiêu đề không được để trống',
-        'title.min' => 'Tiêu đề ít nhất từ 2 ký tự',
-        'image.required' => 'Ảnh không được để trống',
+        'image.required' => 'Ảnh không được để trống'
     ];
 
     public static function init($request)

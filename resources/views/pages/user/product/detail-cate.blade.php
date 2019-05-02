@@ -1,33 +1,33 @@
 @extends('layouts.user.master')
 
-@section('page'){{ $cate->name }}
+@section('page'){{ $cate->seo_title }}
 @stop
 
-@section('description'){{ $cate->name }}
+@section('description'){{ $cate->seo_desc }}
 @stop
 
-@section('keywords'){{ $cate->name }}
+@section('keywords'){{ $cate->seo_keyword }}
 @stop
 
-@section('canonical'){{ route('cate-detail', ['cateSlug' => $cate->slug]) }}
+@section('canonical'){{ route('product-detail', ['slug' => $cate->slug]) }}
 @stop
 
-@section('alternate'){{ route('cate-detail', ['cateSlug' => $cate->slug]) }}
+@section('alternate'){{ route('product-detail', ['slug' => $cate->slug]) }}
 @stop
 
-@section('propName'){{ $cate->name }}
+@section('propName'){{ $cate->seo_title }}
 @stop
 
-@section('propDesc'){{ $cate->name }}
+@section('propDesc'){{ $cate->seo_desc }}
 @stop
 
-@section('ogTitle'){{ $cate->name }}
+@section('ogTitle'){{ $cate->seo_title }}
 @stop
 
-@section('ogDesc'){{ $cate->name }}
+@section('ogDesc'){{ $cate->seo_desc }}
 @stop
 
-@section('ogUrl'){{ route('cate-detail', ['cateSlug' => $cate->slug]) }}
+@section('ogUrl'){{ route('product-detail', ['slug' => $cate->slug]) }}
 @stop
 
 @section('pageCss')
@@ -82,28 +82,37 @@
   	<div class="container">
     	<div class="row">
     		<div class="col-md-12">
-                <h5 class="text-uppercase padding-bottom-10">{{ $cate->name }}</h5>
+                <h1 style="font-size:25px;" class="text-uppercase padding-bottom-10">{{ $cate->name }}</h1>
     			@if (count($results) > 0)
 	    			<div class="item-col-4" style="display:inline-block;"> 
 		                <!-- Product -->
 		                @foreach ($results as $result)
 		                <div class="product">
 		                    <article> 
-		                        <a class="thumb" href="{{ route('product-detail', ['cate' => $result->category->slug, 'slug' => $result->slug]) }}">
+		                        <a class="thumb" href="{{ route('product-detail', ['slug' => $result->slug]) }}">
 		                            <img class="img-responsive" src="{{ asset($result->image) }}" alt="{{ asset($result->image) }}">
-		                        </a> 
-		                        <!-- <span class="sale-tag">-25%</span>  -->
+		                        </a>
+                                @if ($result->discount > 0)
+		                        <span class="sale-tag">-{{ $result->discount }}%</span>
+                                @endif 
 		                        <!-- Content --> 
 		                        <!-- <span class="tag">Tablets</span> --> 
-		                        <a href="{{ route('product-detail', ['cate' => $result->category->slug, 'slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a> 
+		                        <a href="{{ route('product-detail', ['slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a> 
 		                        <!-- Reviews -->
 		                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
-		                        <div class="price">{{ number_format($result->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($result->price, 0, 0, '.') }} VNĐ</span></div>
+		                        <div class="price">{{ number_format($result->price_sale, 0, 0, '.') }} VNĐ
+                                    @if ($result->discount > 0)
+                                    <span>{{ number_format($result->price, 0, 0, '.') }} VNĐ</span>
+                                    @endif
+                                </div>
 		                        <!-- <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> -->
 		                    </article>
 		                </div>
 		                @endforeach
 		            </div>
+                    <div class="margin-top-10">
+                        {!! $cate->seo_content !!}
+                    </div>
 	            @else
 		            <p>Không có sản phẩm nào !</p>
 		        @endif

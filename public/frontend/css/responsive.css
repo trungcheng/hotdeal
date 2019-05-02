@@ -472,6 +472,21 @@ footer h4{
 }
 }
 @media(max-width:767px) {
+img.cke_widget_element {
+    width: 100%;
+    height: auto;
+}
+.blog-post article img {
+	width: 100%;
+  	height: auto;
+}
+.swiper {
+	width: 100% !important;
+}
+.banner-ads {
+	margin-top: 10px;
+	width: 100% !important;
+}
 .ownmenu > li.showhide span.icon {
 	padding: 0px;
 	margin: 0px;

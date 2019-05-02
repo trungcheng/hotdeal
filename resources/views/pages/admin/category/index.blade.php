@@ -59,6 +59,7 @@
                                                 <tr role="row">
                                                     <th>STT</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
+                                                    <th style="text-align:center !important;width:20%">Slug</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -67,9 +68,10 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in categories track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
+                                                    <td style="text-align:center !important">@{{ cate.slug }}</td>
                                                     <td>@{{ cate.created_at }}</td>
                                                     <td>
-                                                        <a href="/admin/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>

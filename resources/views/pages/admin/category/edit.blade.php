@@ -33,6 +33,22 @@
                                     <label>Tên danh mục</label>
                                     <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
                                 </div>
+                                <div class="form-group">
+                                    <label>SEO Content</label>
+                                    <textarea class="form-control" id="seo_content">{!! $category->seo_content !!}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Title</label>
+                                    <input value="{{ $category->seo_title }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Description</label>
+                                    <input value="{{ $category->seo_desc }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Keyword</label>
+                                    <input value="{{ $category->seo_keyword }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                                </div>
                                 <!-- <div class="form-group">
                                     <label>Ảnh</label>
                                     <input value="{{ $category->icon }}" name="icon" type="text" size="48" class="form-control" id="xFilePath" />
@@ -84,6 +100,9 @@
             }
         });
     }
+</script>
+<script type="text/javascript">
+    CKEDITOR.replace('seo_content', {height: 300}); 
 </script>
 @stop
 
