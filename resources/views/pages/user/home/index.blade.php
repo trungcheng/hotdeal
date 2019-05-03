@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page'){{ $setting->seo_title }}
+@section('page'){{ $setting->seo_title }} | Thạch Vũ
 @stop
 
 @section('description'){{ $setting->seo_desc }}
@@ -185,6 +185,9 @@
             height: 145px;
             display: block;
         }
+        article h3 {
+            margin: 0px !important;
+        }
     </style>
 @stop
 
@@ -289,7 +292,7 @@
                             </a>
                             <!-- Content --> 
                             <!-- <span class="tag">Latop</span> --> 
-                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+                            <h3><a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a></h3>
                             <!-- Reviews -->
                             <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                             <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($pro->price, 0, 0, '.') }} VNĐ</span></div>
@@ -308,19 +311,23 @@
     <div class="container"> 
         <!-- heading -->
         <div class="heading">
-            <h2 class="text-uppercase">Chậu rửa đá nhân tạo</h2>
+            <h2 class="text-uppercase">Chậu rửa bát đá nhân tạo</h2>
             <hr>
         </div>
-        {{--<div class="singl-slide">--}}
-            {{-- @foreach ($chauda as $pro) --}}
-            <div id="section-chauda" class="item-col-4" style="display:inline-block;"> 
-                
+        <div class="row">
+            <div class="col-md-12">
+                {{--<div class="singl-slide">--}}
+                    {{-- @foreach ($chauda as $pro) --}}
+                    <div id="section-chauda" class="item-col-4" style="display:inline-block;"> 
+                        
+                    </div>
+                    <div class="text-center">
+                        <a id="chauda-loadmore" class="btn-round text-uppercase" href="javascript:void(0)">Xem thêm</a>
+                    </div>
+                    {{-- @endforeach --}}
+                {{-- </div> --}}
             </div>
-            <div class="text-center">
-                <a id="chauda-loadmore" class="btn-round text-uppercase" href="javascript:void(0)">Xem thêm</a>
-            </div>
-            {{-- @endforeach --}}
-        {{-- </div> --}}
+        </div>
     </div>
 </section>
 

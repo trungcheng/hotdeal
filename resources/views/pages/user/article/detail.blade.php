@@ -60,6 +60,7 @@
 						<h1 style="font-size:25px;">{{ $article->title }}</h1>
 						{!! $article->intro !!}
 						{!! $article->fulltext !!}
+						<div class="fb-like" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="850" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 					</article>
 					
 					<!-- Comments -->

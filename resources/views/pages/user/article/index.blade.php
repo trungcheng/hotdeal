@@ -33,7 +33,89 @@
 @section('pageCss')
   <style type="text/css">
     .blog-post article img {
-      height: auto;
+        height: auto;
+    }
+    .cs-flex {
+        display: flex;
+    }
+    .list-view {
+        background: #fbfbfb;
+        border-radius: 3px;
+        width: 100%;
+    }
+    .list-view .item {
+        border: 1px solid #e5e5e5;
+        margin-bottom: -1px;
+        padding: 5px 0;
+    }
+    .list-view .item .image {
+        width: 60px;
+        height: 70px;
+        background: #fafafa;
+    }
+    .list-view .item .about {
+        padding: 0 10px;
+        width: 190px;
+    }
+    .list-view .item .about .title {
+        font-size: 14px;
+        margin: 0;
+        padding: 15px 0 2px;
+        font-weight: 700;
+    }
+    .list-view .item .about .description {
+        font-size: 14px;
+    }
+
+    .hotline-footer {
+        max-width: 350px;
+        display: flex;
+        line-height: 25px;
+        margin-top: 30px;
+    }
+    .hotline-footer>div {
+        columns: 164px 2;
+    }
+    .hotline-footer strong {
+        display: inline-block;
+        line-height: 25px;
+        text-align: left;
+    }
+    .hotline-right {
+        line-height: 25px;
+        text-align: left;
+    }
+    .hotline-right a {
+        position: relative;
+        background: #804d00;
+        color: #fff!important;
+        font-size: 16px;
+        border-radius: 50px;
+        padding: 8px 8px 8px 0px;
+        display: block;
+        width: 125px;
+    }
+    .phone {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+    }
+    .phone span {
+        position: absolute;
+        top: 7px;
+        left: 6px;
+        width: 25px;
+        height: 25px;
+        background: url(/frontend/images/phone0.png) no-repeat top;
+    }
+    .phone+div {
+        border: 1px solid #fff;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        border-radius: 50px;
+        left: 7px;
+        top: 7px;
     }
   </style>
 @stop
@@ -73,26 +155,76 @@
   </div>
 
   <!-- Side Bar -->
-  <!-- <div class="col-md-3">
+  <div class="col-md-3">
     <div class="shop-side-bar"> 
 
-      <h6>Recent Posts</h6>
+      <!-- <h6>Recent Posts</h6>
       <div class="recent-post"> 
 
         <div class="media">
           <div class="media-left"> <a href=""><img class="img-responsive" src="{{ asset('frontend/images/blog-img-2.jpg') }}" alt=""> </a> </div>
           <div class="media-body"> <a href="">It’s why there’s
           nothing else like Mac. </a> <span>25 Dec, 2017 </span><span> 86 Comments</span> </div>
+        </div>
+      </div> -->
+
+      <div class="hotline-footer">
+          <div class="chattuvan">
+              <strong class="hotline-right">
+                  <a href="http://zalo.me/0943180888" style="background:#0C599C;padding-left:35px;width:160px;" rel="nofollow">
+                      <img style="width:41px;border-radius:126px;position:absolute;left:0px;top:0;" src="{{ asset('frontend/images/zalo.png') }}" alt="Chat với Thạch Vũ"> &emsp;Chat tư vấn
+                  </a>
+              </strong>
+          </div>
+          <div class="gopy-phananh">
+              <strong class="hotline-right">
+                  <a href="tel:0943180888" style="padding-left:20px;width:160px;" rel="nofollow"> 
+                      <div class="phone"><span>&nbsp;</span></div><div></div> &emsp; 0943.180.888
+                  </a>
+              </strong>
+          </div>
       </div>
-  </div> -->
+
+      <div class="cs-flex">
+        <!-- List View. -->
+        <div class="list-view">
+            <div class="item cs-flex" style="padding-bottom: 15px;">
+                <div class="image" style="background: url(https://www.wheystore.vn/upload/service/shiper1.png) no-repeat center">
+                </div>
+                <div class="about">
+                    <h3 class="title">Giao hàng toàn quốc</h3>
+                    <span class="description">Nhận hàng &amp; thanh toán tiền tại nhà, ship hàng siêu nhanh</span>
+                </div>
+            </div>
+            <div class="item cs-flex" style="padding-bottom: 15px;">
+                <div class="image" style="background: url(https://www.wheystore.vn/upload/service/change1.png) no-repeat center">
+                </div>
+                <div class="about">
+                    <h3 class="title">Đổi trả nhanh gọn</h3>
+                    <span class="description">Đổi trả hàng trong vòng 30 ngày, chấp nhận bất kỳ lý do</span>
+                </div>
+            </div>
+            <div class="item cs-flex" style="padding-bottom: 15px;">
+                <div class="image" style="background: url(https://www.wheystore.vn/upload/service/phone.png) no-repeat center">
+                </div>
+                <div class="about">
+                    <h3 class="title">Tư vấn nhiệt tình</h3>
+                    <span class="description">Đội ngũ chuyên viên tư vấn có kiến thức chuẩn và body đẹp</span>
+                </div>
+            </div>
+            <div class="item cs-flex" style="padding-bottom: 15px;">
+                <div class="image" style="background: url(https://www.wheystore.vn/upload/service/gift-icon.png) no-repeat center">
+                </div>
+                <div class="about">
+                    <h3 class="title">Giá tốt kèm quà tặng</h3>
+                    <span class="description">Nhiều chương trình giảm giá, tặng quà cực giá trị</span>
+                </div>
+            </div>
+        </div>
+        <!-- End List View -->
+    </div>
   
-  <!-- Quote of the Day -->
-  <!-- <h6>Quote of the Day</h6>
-  <div class="quote-day"> <i class="fa fa-quote-left"></i>
-    <p>Suspendisse sodales cursus lorem vel
-    efficitur. Donec tincidunt aliquet lacus. Maecenas pulvinar egestas ex eget eleifend. Aenean eget tempus urna [...]</p>
-</div> -->
-</div>
+    </div>
 </div>
 </div>
 </div>

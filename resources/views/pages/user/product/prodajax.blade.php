@@ -9,7 +9,7 @@
             @endif
             <!-- Content --> 
             <!-- <span class="tag">Latop</span> --> 
-            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a> 
+            <h3><a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" class="tittle">{{ $pro->name }}</a></h3>
             <!-- Reviews -->
             <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
             <div class="price">{{ number_format($pro->price_sale, 0, 0, '.') }} VNĐ

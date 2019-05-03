@@ -65,6 +65,56 @@
     /*.product {
         display: flex;
     }*/
+    .hotline-footer {
+        max-width: 350px;
+        display: flex;
+        line-height: 25px;
+        margin-top: 30px;
+    }
+    .hotline-footer>div {
+        columns: 164px 2;
+    }
+    .hotline-footer strong {
+        display: inline-block;
+        line-height: 25px;
+        text-align: left;
+    }
+    .hotline-right {
+        line-height: 25px;
+        text-align: left;
+    }
+    .hotline-right a {
+        position: relative;
+        background: #804d00;
+        color: #fff!important;
+        font-size: 16px;
+        border-radius: 50px;
+        padding: 8px 8px 8px 0px;
+        display: block;
+        width: 125px;
+    }
+    .phone {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+    }
+    .phone span {
+        position: absolute;
+        top: 7px;
+        left: 6px;
+        width: 25px;
+        height: 25px;
+        background: url(/frontend/images/phone0.png) no-repeat top;
+    }
+    .phone+div {
+        border: 1px solid #fff;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        border-radius: 50px;
+        left: 7px;
+        top: 7px;
+    }
   </style>
 @stop
 
@@ -158,6 +208,24 @@
                     <i class="icon-basket-loaded margin-right-5"></i> Đặt mua ngay
                 </button>
             </form>
+
+            <div class="hotline-footer">
+                <div class="chattuvan">
+                    <strong class="hotline-right">
+                        <a href="http://zalo.me/0943180888" style="background:#0C599C;padding-left:35px;width:160px;" rel="nofollow">
+                            <img style="width:41px;border-radius:126px;position:absolute;left:0px;top:0;" src="{{ asset('frontend/images/zalo.png') }}" alt="Chat với Thạch Vũ"> &emsp;Chat tư vấn
+                        </a>
+                    </strong>
+                </div>
+                <div class="gopy-phananh">
+                    <strong class="hotline-right">
+                        <a href="tel:0943180888" style="padding-left:20px;width:160px;" rel="nofollow"> 
+                            <div class="phone"><span>&nbsp;</span></div><div></div> &emsp; 0943.180.888
+                        </a>
+                    </strong>
+                </div>
+            </div>
+
     </div>
 </div>
 </div>
@@ -173,6 +241,7 @@
  <div class="tab-content">
      <div role="tabpanel" class="tab-pane fade in active" id="pro-detail">
         {!! ($product->full_desc != '') ? $product->full_desc : '' !!}
+        <div class="fb-like" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="850" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
      </div>
       <div role="tabpanel" class="tab-pane fade" id="cus-rev">
         <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="850" data-numposts="10"></div>

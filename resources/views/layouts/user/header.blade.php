@@ -108,7 +108,7 @@
                             </li>
                         </ul>
                     </li>--}}
-                    <li class="nav-item"><a class="nav-link" href="{{ route('store') }}">Cửa hàng</a></li>
+                    {{--<li class="nav-item"><a class="nav-link" href="{{ route('store') }}">Cửa hàng</a></li>--}}
                     <li class="nav-item"><a class="nav-link" href="{{ route('article') }}">Tin tức</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">Giới thiệu</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Liên hệ</a></li>

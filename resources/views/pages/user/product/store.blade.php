@@ -65,6 +65,9 @@
         .product {
             display: flex;
         }
+        article h3 {
+            margin: 0px !important;
+        }
     </style>
 @stop
 
@@ -188,7 +191,7 @@
                         <!-- <span class="sale-tag">-25%</span>  -->
                         <!-- Content --> 
                         <!-- <span class="tag">Tablets</span> --> 
-                        <a href="{{ route('product-detail', ['slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a> 
+                        <h3><a href="{{ route('product-detail', ['slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a></h3>
                         <!-- Reviews -->
                         <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
                         <div class="price">{{ number_format($result->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($result->price, 0, 0, '.') }} VNĐ</span></div>

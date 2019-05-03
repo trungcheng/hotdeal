@@ -65,10 +65,14 @@
         .product {
             display: flex;
         }
+        article h3 {
+            margin: 0px !important;
+        }
     </style>
 @stop
 
 @section('content')
+<h1 class="hide">Tìm kiếm với từ khóa "{{ $key }}"</h1>
 <!-- Linking -->
 <div class="linking">
 	<div class="container">
@@ -84,7 +88,7 @@
     		<div class="col-md-12">
                 <h5 class="text-uppercase padding-bottom-10">Tìm kiếm với từ khóa "{{ $key }}"</h5>
     			@if (count($results) > 0)
-	    			<div class="item-col-4" style="display:inline-block;"> 
+	    			<div class="item-col-4"> 
 		                <!-- Product -->
 		                @foreach ($results as $result)
 		                <div class="product">
@@ -95,7 +99,7 @@
 		                        <!-- <span class="sale-tag">-25%</span>  -->
 		                        <!-- Content --> 
 		                        <!-- <span class="tag">Tablets</span> --> 
-		                        <a href="{{ route('product-detail', ['slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a> 
+		                        <h3><a href="{{ route('product-detail', ['slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a></h3>
 		                        <!-- Reviews -->
 		                        <!-- <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">5 Review(s)</span></p> -->
 		                        <div class="price">{{ number_format($result->price_sale, 0, 0, '.') }} VNĐ<span>{{ number_format($result->price, 0, 0, '.') }} VNĐ</span></div>

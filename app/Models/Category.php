@@ -26,6 +26,15 @@ class Category extends Model
         return $this->hasMany('App\Models\Article', 'cat_id' , 'id');
     }
 
+    public static $rules = [
+        'name' => 'required|min:2'
+    ];
+
+    public static $messages = [
+        'name.required' => 'Tên không được để trống',
+        'name.min' => 'Tên ít nhất từ 2 ký tự'
+    ];
+
     public static function init($request)
     {
         $data = self::where('id', '>', 0);
@@ -41,14 +50,14 @@ class Category extends Model
 
     public static function addAction($data)
     {
-        $data['slug'] = Util::generateSlug($data['cateName']);
+        $data['slug'] = Util::generateSlug($data['name']);
 
         return self::firstOrCreate($data);
     }
 
     public static function updateAction($cate, $data)
     {
-        $data['slug'] = Util::generateSlug($data['cateName']);
+        $data['slug'] = Util::generateSlug($data['name']);
 
         return $cate->update($data);
 

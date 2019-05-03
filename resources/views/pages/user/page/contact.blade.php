@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page')Liên hệ
+@section('page')Liên hệ với Thạch Vũ
 @stop
 
-@section('description')Liên hệ
+@section('description')Liên hệ với Thạch Vũ
 @stop
 
-@section('keywords')Liên hệ
+@section('keywords')Liên hệ, Thạch Vũ
 @stop
 
 @section('canonical'){{ route('contact') }}
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('contact') }}
 @stop
 
-@section('propName')Liên hệ
+@section('propName')Liên hệ với Thạch Vũ
 @stop
 
-@section('propDesc')Liên hệ
+@section('propDesc')Liên hệ với Thạch Vũ
 @stop
 
-@section('ogTitle')Liên hệ
+@section('ogTitle')Liên hệ với Thạch Vũ
 @stop
 
-@section('ogDesc')Liên hệ
+@section('ogDesc')Liên hệ với Thạch Vũ
 @stop
 
 @section('ogUrl'){{ route('contact') }}
