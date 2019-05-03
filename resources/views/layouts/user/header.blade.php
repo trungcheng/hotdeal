@@ -88,7 +88,7 @@
             <!-- NAV -->
             <div class="collapse navbar-collapse" id="nav-open-btn">
                 <ul class="nav">
-                    <li class="nav-item active"><a class="nav-link" href="{{ route('home') }}">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}/">Trang chủ</a></li>
                     {{--<li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Các trang</a>
                         <ul class="dropdown-menu multi-level animated-2s fadeInUpHalf">
                             <li><a href="{{ route('about') }}">Giới thiệu</a></li>

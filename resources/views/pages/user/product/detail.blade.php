@@ -220,7 +220,7 @@
                 <div class="gopy-phananh">
                     <strong class="hotline-right">
                         <a href="tel:0943180888" style="padding-left:20px;width:160px;" rel="nofollow"> 
-                            <div class="phone"><span>&nbsp;</span></div><div></div> &emsp; 0943.180.888
+                            <div class="phone"><span>&nbsp;</span></div><div></div> &emsp; 0943 180 888
                         </a>
                     </strong>
                 </div>

@@ -83,15 +83,15 @@
 
                     <div class="form-group">
                         <label>SEO Title</label>
-                        <input name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
+                        <input value="{{ ($setting != '') ? $setting->seo_title : '' }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
                     </div>
                     <div class="form-group">
                         <label>SEO Description</label>
-                        <input name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
+                        <input value="{{ ($setting != '') ? $setting->seo_desc : '' }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
                     </div>
                     <div class="form-group">
                         <label>SEO Keyword</label>
-                        <input name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                        <input value="{{ ($setting != '') ? $setting->seo_keyword : '' }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                     </div>
 
                     <div class="form-group">

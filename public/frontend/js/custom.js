@@ -1,8 +1,8 @@
 $(function () {
     var baseUrl = window.location.origin + window.location.pathname;
+    $('.nav-item').removeClass('active');
     $('.nav-link').each(function (v, k) {
         if ($(k).attr('href') == baseUrl) {
-            $('.nav-item').removeClass('active');
             $(k).parents('.nav-item').addClass('active');
         }
     });

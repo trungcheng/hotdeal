@@ -68,16 +68,10 @@
     }
 
     .hotline-footer {
-        max-width: 350px;
-        display: flex;
-        line-height: 25px;
-        margin-top: 30px;
-    }
-    .hotline-footer>div {
-        columns: 164px 2;
+        width: 100%;
+        margin-top: 0px;
     }
     .hotline-footer strong {
-        display: inline-block;
         line-height: 25px;
         text-align: left;
     }
@@ -93,7 +87,7 @@
         border-radius: 50px;
         padding: 8px 8px 8px 0px;
         display: block;
-        width: 125px;
+        width: 100%;
     }
     .phone {
         position: absolute;
@@ -110,12 +104,12 @@
     }
     .phone+div {
         border: 1px solid #fff;
-        width: 25px;
-        height: 25px;
+        width: 38px;
+        height: 38px;
         position: absolute;
-        border-radius: 50px;
-        left: 7px;
-        top: 7px;
+        border-radius: 126px;
+        left: 2px;
+        top: 2px;
     }
   </style>
 @stop
@@ -169,17 +163,17 @@
       </div> -->
 
       <div class="hotline-footer">
-          <div class="chattuvan">
+          <div class="chattuvan" style="margin-bottom: 15px;">
               <strong class="hotline-right">
-                  <a href="http://zalo.me/0943180888" style="background:#0C599C;padding-left:35px;width:160px;" rel="nofollow">
-                      <img style="width:41px;border-radius:126px;position:absolute;left:0px;top:0;" src="{{ asset('frontend/images/zalo.png') }}" alt="Chat với Thạch Vũ"> &emsp;Chat tư vấn
+                  <a href="http://zalo.me/0943180888" style="background:#0C599C;padding-left:35px;" rel="nofollow">
+                      <img style="width:41px;border-radius:126px;position:absolute;left:0px;top:0;" src="{{ asset('frontend/images/zalo.png') }}" alt="Chat với Thạch Vũ"> &emsp;Chat zalo với chúng tôi
                   </a>
               </strong>
           </div>
-          <div class="gopy-phananh">
+          <div class="gopy-phananh" style="margin-bottom: 15px;">
               <strong class="hotline-right">
-                  <a href="tel:0943180888" style="padding-left:20px;width:160px;" rel="nofollow"> 
-                      <div class="phone"><span>&nbsp;</span></div><div></div> &emsp; 0943.180.888
+                  <a href="tel:0943180888" style="padding-left:30px;" rel="nofollow"> 
+                      <div class="phone"><span>&nbsp;</span></div><div></div> &emsp; Hotline: 0943 180 888
                   </a>
               </strong>
           </div>

@@ -15,7 +15,10 @@ class Company extends Model
         'phone',
         'email',
         'time_work',
-        'fb_pixel_code'
+        'fb_pixel_code',
+        'seo_title',
+        'seo_desc',
+        'seo_keyword'
     ];
 
 }

@@ -36,8 +36,33 @@
     {!! ($setting != '') ? $setting->fb_pixel_code : '' !!}
 </head>
 <body>
+    <!-- Load Facebook SDK for JavaScript -->
     <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v3.3'
+        });
+      };
+
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js#xfbml=1&version=v3.3&autoLogAppEvents=1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=590845398084862&autoLogAppEvents=1"></script>
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat"
+      attribution=setup_tool
+      page_id="346169519331102"
+      theme_color="#0088cc"
+      logged_in_greeting="Xin chào, chúng tôi hỗ trợ được gì cho bạn?"
+      logged_out_greeting="Xin chào, chúng tôi hỗ trợ được gì cho bạn?">
+    </div>
+    
     <!-- Page Wrapper -->
     <div id="wrap" class="layout-1"> 
         <!-- Top bar -->
@@ -67,7 +92,7 @@
         <!-- Footer -->
         @include('layouts.user.footer')
         <!-- GO TO TOP  --> 
-        <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a> 
+        <!-- <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a>  -->
         <!-- GO TO TOP End --> 
 
         <div class="social-button">
@@ -76,11 +101,11 @@
                     <i class="fa fa-phone" aria-hidden="true"></i>
                     <div class="animated alo-circle"></div>
                     <div class="animated alo-circle-fill"></div>
-                    <span>Hotline: 0943.180.888</span>
+                    <span>Hotline: 0943 180 888</span>
                 </a>
                 <a href="sms:0943180888" class="sms">
                     <i class="fa fa-comment" aria-hidden="true"></i>
-                    <span>SMS: 0943.180.888</span>
+                    <span>SMS: 0943 180 888</span>
                 </a>
                 <a href="https://www.facebook.com/thachvuvietnam" class="mes">
                     <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -88,7 +113,7 @@
                 </a>
                 <a href="http://zalo.me/0943180888" class="zalo">
                     <img style="width:40px;height:40px;border-radius:50%;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);" src="{{ asset('frontend/images/zalo.png') }}">
-                    <span>Zalo: 0943.180.888</span>
+                    <span>Zalo: 0943 180 888</span>
                 </a>
             </div>
            

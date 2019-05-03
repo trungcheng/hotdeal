@@ -72,7 +72,6 @@
 @stop
 
 @section('content')
-<h1 class="hide">{{ $cate->name }}</h1>
 <!-- Linking -->
 <div class="linking">
 	<div class="container">
