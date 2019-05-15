@@ -241,7 +241,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            {{--<div class="card">
                                 <div class="card-header" data-toggle="collapse" data-target="#toggle-phienbandacbiet" aria-expanded="true">
                                     <h6 class="card-title">Phiên bản đặc biệt</h6>
                                     <i class="icont-plus ml-3"></i>
@@ -270,7 +270,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                 </aside>
@@ -298,6 +298,10 @@
                                 <input value="price-asc" name="order" class="custom-control-input filter-input filter-order-cbx hide" id="cbo-phienbandacbiet-3" type="checkbox">
                                 <a class="dropdown-item filter-order" href="javascript:void(0)">THEO GIÁ GIẢM DẦN</a>
                                 <input value="price-desc" name="order" class="custom-control-input filter-input filter-order-cbx hide" id="cbo-phienbandacbiet-3" type="checkbox">
+                                <a class="dropdown-item filter-order" href="javascript:void(0)">CÒN HÀNG</a>
+                                <input value="1" name="order" class="custom-control-input filter-input filter-order-cbx hide" id="cbo-phienbandacbiet-3" type="checkbox">
+                                <a class="dropdown-item filter-order" href="javascript:void(0)">HẾT HÀNG</a>
+                                <input value="0" name="order" class="custom-control-input filter-input filter-order-cbx hide" id="cbo-phienbandacbiet-3" type="checkbox">
                                 <!-- <a class="dropdown-item" href="javascript:void(0)">Bán chạy nhất</a> -->
                             </div>
                         </div>

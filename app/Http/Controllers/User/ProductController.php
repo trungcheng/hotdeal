@@ -153,20 +153,22 @@ class ProductController extends Controller
                     }
                 }
             }
-            if ($request->has('v')) {
-                $products->whereIn('version', $data['v']);
-                $versions = file_get_contents(public_path('/frontend/json/versions.json'));
-                foreach (json_decode($versions) as $version) {
-                    if (in_array($version->id, $data['v'])) {
-                        $conditions[] = $version->name;
-                    }
-                }
-            }
+            // if ($request->has('v')) {
+            //     $products->whereIn('version', $data['v']);
+            //     $versions = file_get_contents(public_path('/frontend/json/versions.json'));
+            //     foreach (json_decode($versions) as $version) {
+            //         if (in_array($version->id, $data['v'])) {
+            //             $conditions[] = $version->name;
+            //         }
+            //     }
+            // }
             if ($request->has('order')) {
                 $filter = $data['order'];
                 $filters = explode('-', $data['order']);
                 if ($filter == 'name') {
                     $products->orderBy('name');
+                } elseif ($filter == '1' || $filter == '0') {
+                    $products->where('status', $filter);
                 } else {
                     $products->orderBy($filters[0], $filters[1]);
                 }
