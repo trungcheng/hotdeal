@@ -16,7 +16,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-    	$articles = Article::orderBy('created_at', 'asc')->paginate(10);
+    	$articles = Article::orderBy('created_at', 'asc')->where('is_about', 0)->paginate(10);
 
         return view('pages.user.article.index', [
             'articles' => $articles
@@ -27,7 +27,7 @@ class ArticleController extends Controller
     {
         $article = Article::where('slug', $slug)->first();
         if ($article) {
-            $others = Article::limit(12)->get()->except($article->id);
+            $others = Article::where('is_about', 0)->limit(12)->get()->except($article->id);
 
             return view('pages.user.article.detail', [
                 'article' => $article,
