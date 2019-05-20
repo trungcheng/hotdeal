@@ -111,6 +111,11 @@
         left: 2px;
         top: 2px;
     }
+    @media (max-width: 768px) {
+        .image-block {
+            margin-bottom: 15px;
+        }
+    }
   </style>
 @stop
 
@@ -136,10 +141,15 @@
         @foreach ($articles as $article)
         <div class="blog-post">
             <article class="row">
-                <div class="col-xs-7"> <img class="img-responsive" src="{{ asset($article->image) }}" alt="{{ asset($article->image) }}" > </div>
-                <div class="col-xs-5"> <span><i class="fa fa-bookmark-o"></i> {{ $article->created_at }}</span> <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="tittle">{{ $article->title }}</a>
-                {!! $article->intro !!}
-                <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">Đọc thêm</a></div>
+                <div class="image-block col-lg-7 col-md-7 col-sm-7 col-xs-12"> 
+                    <img class="img-responsive" src="{{ asset($article->image) }}" alt="{{ asset($article->image) }}" > 
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12"> 
+                    <span><i class="fa fa-bookmark-o"></i> {{ $article->created_at }}</span> 
+                    <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="tittle">{{ $article->title }}</a>
+                    {!! $article->intro !!}
+                    <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">Đọc thêm</a>
+                </div>
             </article>
         </div>
         @endforeach

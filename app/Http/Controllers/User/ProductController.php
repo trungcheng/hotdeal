@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Article;
 
 class ProductController extends Controller
 {
@@ -23,11 +24,13 @@ class ProductController extends Controller
             if ($product) {
                 $image_list = json_decode($product->image_list);
                 $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(12)->get()->except($product->id);
+                $featureArticles = Article::where('status', 1)->where('is_feature', 1)->limit(5)->get();
 
                 return view('pages.user.product.detail', [
                     'product' => $product,
                     'image_list' => $image_list,
-                    'relatedProducts' => $relatedProducts
+                    'relatedProducts' => $relatedProducts,
+                    'featureArticles' => $featureArticles
                 ]);
             }
         } else {

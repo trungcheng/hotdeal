@@ -111,6 +111,10 @@
 	        left: 2px;
 	        top: 2px;
 	    }
+	    ol {
+	    	margin-left: 15px;
+	    	font-weight: bold;
+	    }
 	</style>
 @stop
 

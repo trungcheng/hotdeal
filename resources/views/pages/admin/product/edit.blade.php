@@ -167,10 +167,6 @@
 
 </div>
 
-<script>
-    CKEDITOR.replace('short_content', { height: 100 }); 
-    CKEDITOR.replace('full_content'); 
-</script>
 @stop
 
 @section('pageJs')
@@ -178,6 +174,8 @@
 
     <script type="text/javascript">
         $(function() {
+            CKEDITOR.replace('short_content', { height: 100 }); 
+            CKEDITOR.replace('full_content'); 
             $('#price, #price_sale').on("keyup", function(event) {
                 var selection = window.getSelection().toString();
                 if (selection !== '') {

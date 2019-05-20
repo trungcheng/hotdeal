@@ -62,9 +62,39 @@
         transition: all .2s ease-in-out;
         vertical-align: middle;
     }
-    /*.product {
+    
+    .cs-flex {
         display: flex;
-    }*/
+        margin-top: 20px;
+    }
+    .list-view {
+        background: #fbfbfb;
+        border-radius: 3px;
+        width: 100%;
+    }
+    .list-view .item {
+        border: 1px solid #e5e5e5;
+        margin-bottom: -1px;
+        padding: 5px 0;
+    }
+    .list-view .item .image {
+        width: 60px;
+        height: 70px;
+        background: #fafafa;
+    }
+    .list-view .item .about {
+        padding: 0 10px;
+        width: 290px;
+    }
+    .list-view .item .about .title {
+        font-size: 14px;
+        margin: 0;
+        padding: 15px 0 2px;
+        font-weight: 700;
+    }
+    .list-view .item .about .description {
+        font-size: 14px;
+    }
     .hotline-footer {
         max-width: 350px;
         display: flex;
@@ -114,6 +144,75 @@
         border-radius: 50px;
         left: 7px;
         top: 7px;
+    }
+    .fb-like {
+        display: block !important;
+        margin-top: 20px;
+    }
+    img.cke_widget_element, .cke_image_resizer_wrapper img {
+        width: 100%;
+        height: auto;
+    }
+    .sidebar h4 {
+        display: block;
+        overflow: hidden;
+        font-size: 20px;
+        line-height: 1.3em;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+    .sidebar ul li {
+        display: block;
+        overflow: hidden;
+        padding: 8px 0;
+    }
+    .sidebar ul li a {
+        display: block;
+        overflow: hidden;
+    }
+    .sidebar ul li a img {
+        float: left;
+        width: 100px;
+        height: 60px;
+        margin-right: 10px;
+        display: block;
+    }
+    .sidebar ul li a h3 {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        font-size: 14px;
+        margin-top: 2px;
+    }
+    .tab-content h2 {
+        display: block;
+        overflow: hidden;
+        font-size: 20px;
+        margin-bottom: 10px;
+        line-height: 1.3em;
+        font-weight: bold;
+        margin-top: 0;
+    }
+    .tab-content h3 {
+        display: block;
+        line-height: 1.3em;
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+    #pro-detail article {
+        font-size: 16px;
+    }
+    @media (max-width: 992px) {
+        .sidebar {
+            margin-top: 50px;
+        }
+    }
+    @media (min-width: 992px) {
+        .sidebar {
+            width: 31.333333%;
+            float: right;
+        }
     }
   </style>
 @stop
@@ -240,13 +339,69 @@
  <!-- Tab panes -->
  <div class="tab-content">
      <div role="tabpanel" class="tab-pane fade in active" id="pro-detail">
-        {!! ($product->full_desc != '') ? $product->full_desc : '' !!}
-        <div class="fb-like" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="850" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-     </div>
-      <div role="tabpanel" class="tab-pane fade" id="cus-rev">
-        <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="850" data-numposts="10"></div>
-      </div>
-<!-- <div role="tabpanel" class="tab-pane fade" id="ship"></div> -->
+        <div class="row">
+            <div class="col-md-8">
+                <article>
+                    {!! ($product->full_desc != '') ? $product->full_desc : '' !!}
+                </article>
+                <div class="fb-like" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="850" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            </div>
+            <div class="sidebar col-md-4">
+                <h4>Tin tức nổi bật</h4>
+                <ul>
+                    @foreach ($featureArticles as $fea)
+                    <li>
+                        <a href="{{ route('article-detail', ['slug' => $fea->slug]) }}">
+                            <img class="lazy" src="{{ asset($fea->image) }}" style="display: block;">
+                            <h3>{{ $fea->title }}</h3>
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="cs-flex">
+                    <!-- List View. -->
+                    <div class="list-view">
+                        <div class="item cs-flex" style="padding-bottom: 15px;">
+                            <div class="image" style="background: url(https://www.wheystore.vn/upload/service/shiper1.png) no-repeat center">
+                            </div>
+                            <div class="about">
+                                <h3 class="title">Giao hàng toàn quốc</h3>
+                                <span class="description">Nhận hàng &amp; thanh toán tiền tại nhà, ship hàng siêu nhanh</span>
+                            </div>
+                        </div>
+                        <div class="item cs-flex" style="padding-bottom: 15px;">
+                            <div class="image" style="background: url(https://www.wheystore.vn/upload/service/change1.png) no-repeat center">
+                            </div>
+                            <div class="about">
+                                <h3 class="title">Đổi trả nhanh gọn</h3>
+                                <span class="description">Đổi trả hàng trong vòng 30 ngày, chấp nhận bất kỳ lý do</span>
+                            </div>
+                        </div>
+                        <div class="item cs-flex" style="padding-bottom: 15px;">
+                            <div class="image" style="background: url(https://www.wheystore.vn/upload/service/phone.png) no-repeat center">
+                            </div>
+                            <div class="about">
+                                <h3 class="title">Tư vấn nhiệt tình</h3>
+                                <span class="description">Đội ngũ chuyên viên tư vấn có kiến thức chuẩn và body đẹp</span>
+                            </div>
+                        </div>
+                        <div class="item cs-flex" style="padding-bottom: 15px;">
+                            <div class="image" style="background: url(https://www.wheystore.vn/upload/service/gift-icon.png) no-repeat center">
+                            </div>
+                            <div class="about">
+                                <h3 class="title">Giá tốt kèm quà tặng</h3>
+                                <span class="description">Nhiều chương trình giảm giá, tặng quà cực giá trị</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End List View -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="cus-rev">
+        <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="780" data-numposts="10"></div>
+    </div>
 </div>
 </div>
 </div>

@@ -90,11 +90,6 @@
 </div>
 
 <script>
-    CKEDITOR.replace('short_content', { height: 300 }); 
-    CKEDITOR.replace('full_content'); 
-</script>
-
-<script>
     function openPopup() {
         CKFinder.popup( {
             chooseFiles: true,
@@ -141,4 +136,10 @@
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/article.controller.js') !!}
+    <script type="text/javascript">
+        $(function () {
+            CKEDITOR.replace('short_content', { height: 300 }); 
+            CKEDITOR.replace('full_content'); 
+        });
+    </script>
 @stop

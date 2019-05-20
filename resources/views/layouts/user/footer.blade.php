@@ -19,6 +19,8 @@
           <p>Địa chỉ: {!! $setting->address !!}</p>
           <p>Điện thoại: {!! $setting->phone !!}</p>
           <p>Email: {!! $setting->email !!}</p>
+          <br>
+          <a href="//www.dmca.com/Protection/Status.aspx?ID=8b01c871-fd90-49f4-b85a-ff04f4db98ad" rel="nofollow" target="_blank" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_16_120.png?ID=8b01c871-fd90-49f4-b85a-ff04f4db98ad"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
           <!-- <div class="social-links">  -->
             <!-- <a href="#."><i class="fa fa-facebook"></i></a>  -->
             <!-- <a href="#."><i class="fa fa-twitter"></i></a>  -->
@@ -95,7 +97,7 @@
                     <p class="margin-top-10 margin-bottom-10">Thiết bị vệ sinh cao cấp giá rẻ. Copyright © 2019 thachvu.com. All rights reserved</p>
                 </div>
                 <div id="ws-footer-marketing">
-                    <p>Thiết bị vệ sinh Thạch Vũ phôi phối các thiết bị nhà bếp, phòng tắm chính hãng, cao cấp giá rẻ. Mang lại rất nhiều thuận tiện cho các sự lựa chọn thiết bị nội thất cho gia đình bạn với dịch vụ giao hàng tận nhà miễn phí. Chúng tôi cung cấp các sản phẩm như: <a style="color:#337ab7 !important" href="{{ route('product-detail', ['slug' => 'chau-rua-bat-bang-da']) }}">Chậu rửa bát</a> (bồn rửa chén) bằng đá nhân tạo, <a style="color:#337ab7 !important" href="{{ route('product-detail', ['slug' => 'chau-rua-inox']) }}">chậu rửa inox</a> 304, <a style="color:#337ab7 !important" href="{{ route('product-detail', ['slug' => 'voi-rua-bat']) }}">vòi rửa bát</a>, <a style="color:#337ab7 !important" href="{{ route('product-detail', ['slug' => 'voi-sen-tam']) }}">vòi hoa sen</a>... Với những thiết kế sang trọng, kiểu dáng phong phú nhất trên thị trường hiện nay.</p>
+                    <p>Thiết bị vệ sinh Thạch Vũ cung cấp các thiết bị nhà bếp, phòng tắm chính hãng, cao cấp giá rẻ. Mang lại rất nhiều thuận tiện cho việc lựa chọn thiết bị nội thất gia đình bạn với dịch vụ giao hàng tận nhà miễn phí. Chúng tôi cung cấp các sản phẩm như: <a style="color:#337ab7 !important" href="{{ route('product-detail', ['slug' => 'chau-rua-bat-bang-da']) }}">Chậu rửa bát</a> (bồn rửa chén) bằng đá nhân tạo, <a style="color:#337ab7 !important" href="{{ route('product-detail', ['slug' => 'chau-rua-inox']) }}">chậu rửa inox</a> 304, <a style="color:#337ab7 !important" href="{{ route('product-detail', ['slug' => 'voi-rua-bat']) }}">vòi rửa bát</a>, <a style="color:#337ab7 !important" href="{{ route('product-detail', ['slug' => 'voi-sen-tam']) }}">vòi hoa sen</a>... Với những thiết kế sang trọng, kiểu dáng phong phú nhất trên thị trường hiện nay.</p>
                 </div>
             </div>
         </div>
