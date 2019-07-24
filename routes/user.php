@@ -28,16 +28,6 @@
         \Route::get('/article', 'User\ArticleController@index')->name('article');
         \Route::get('/a/{slug}', 'User\ArticleController@detail')->name('article-detail');
 
-        \Route::get('/p/{slug}', 'User\ProductController@index')->name('product-detail');
-        \Route::get('/{sex}', 'User\ProductController@store')->name('product-store');
-
-        \Route::get('/brand/all', 'User\HomeController@brand')->name('brand');
-
-        \Route::get('/product/getAllFeatureProd', 'User\ProductController@getAllFeatureProd')->name('getAllFeatureProd');
-        \Route::get('/product/getAllCateProd', 'User\ProductController@getAllCateProd')->name('getAllCateProd');
-
-        \Route::post('/order', 'User\ProductController@order')->name('order');
-
     });
 
 // });

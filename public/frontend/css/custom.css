@@ -1,43 +1,28 @@
-.hide {
-	display:none;
+a.nav-link:visited {
+    color:#17A53C
 }
-.navbar-main .nav-link {
-    font-size: 1rem !important;
-    font-weight: 700 !important;
+.parent {
+    width: 100vw;
+    height: 204px;
+    margin: 20px auto;
+    overflow: hidden
 }
-.card-product .thumbnail {
-    margin: 0rem 1rem 0rem 1rem;
+.parent .child {
+    width: 20000px;
+    display: inline-block;
+    animation: marquee 60s linear infinite;
 }
-.section {
-    margin-bottom: 1.5rem !important;
-}
-.section-newsletter {
-    min-height: 15rem !important;
-}
-.mb-5, .my-5 {
-    margin-bottom: 1.5rem!important;
-}
-.mt-5, .my-5 {
-    margin-top: 1.5rem!important;
-}
-.card-product {
-    display: block !important;
-}
-.cke_widget_drag_handler_container {
-    display: none !important;
-}
-
-@media (min-width: 992px) {
-    .pb-lg-4, .py-lg-4 {
-        padding-bottom: 0.8rem!important;
-        padding-top: 0.8rem!important;
+@keyframes marquee {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: calc(-1835px + 608px);
     }
 }
-
-@media (max-width: 767.98px) {
-    .card-product .thumbnail {
-        margin: 0 0 1rem !important;
-        padding-top: 130%;
-    }
+.parent .child:hover {
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -o-animation-play-state: paused;
+    animation-play-state: paused;
 }
-

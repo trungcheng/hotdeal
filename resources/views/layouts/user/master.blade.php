@@ -1,123 +1,45 @@
 <!DOCTYPE html>
-<html class="no-js" lang="vi">
+<html data-wf-page="5d0b80bd2ab90c35cef3f7a9" data-wf-site="5d0b80bd2ab90c4f90f3f7ac">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('page') | Donghoxachtay.store</title>
+    <title>@yield('page') - VISCI Re-Coded</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="@yield('canonical')">
-    <link rel="alternate" href="@yield('alternate')" hreflang="vi-vn">
+    <link rel="alternate" href="@yield('alternate')">
     <meta itemprop="name" content="@yield('propName')">
     <meta itemprop="description" content="@yield('propDesc')">
     <meta property="og:title" content="@yield('ogTitle')"> 
-    <meta property="og:locale" content="vi_VN">
     <meta property="og:type" content="website">
     <meta property="og:url" content="@yield('ogUrl')"> 
     <meta property="og:description" content="@yield('ogDesc')"> 
-    <meta property="og:site_name" content="Donghoxachtay">  
+    <meta property="og:site_name" content="VISCI">  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
-    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.min.css?').time() }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css?').time() }}">
-    <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}" />
+    <link rel="shortcut icon" href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/normalize.css?').time() }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/webflow.css?').time() }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/visci-re-coded-09-05-4929290c404f89e2b5.webflow.css?').time() }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}" />
     @yield('pageCss')
-    <script src="{{ asset('frontend/js/vendor/modernizr.custom.js') }}"></script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=536910540049979&autoLogAppEvents=1"></script>
-    {!! ($setting != '') ? $setting->fb_pixel_code : '' !!}
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">WebFont.load({  google: {    families: ["Roboto:100,100italic,300,300italic,regular,italic,500,500italic,700,700italic,900,900italic:vietnamese,latin"]  }});</script>
+    <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+    <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
 </head>
 <body>
-    <div class="page pg-home">
-        <form role="form" method="get" action="" style="display:contents !important;">
-        <!-- Header -->
-        @include('layouts.user.header')
-        <!-- Content -->
-        <div class="page-main">
-            <hr class="divider my-0">
-            <section class="bg-gray-100 fs-sm">
-                <div class="container py-2 py-lg-4">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-8 col-md-10">
-                            <div class="swiper swiper-button-simple swiper-news">
-                                <div class="swiper-container" data-plugin="swiper" data-loop="true" data-delay="5000">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
-                                            <!-- <a href="#">
-                                                <ins>Xem thông tin chi tiết 1</ins>
-                                            </a> -->
-                                        </div>
-                                        <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
-                                            <!-- <a href="#">
-                                                <ins>Xem thông tin chi tiết 2</ins>
-                                            </a> -->
-                                        </div>
-                                        <div class="swiper-slide text-center">
-                                            <i class="fa fa-plane mr-3"></i>Miễn phí Ship toàn quốc, Ship COD toàn quốc (Có cọc)
-                                            <!-- <a href="#">
-                                                <ins>Xem thông tin chi tiết 3</ins>
-                                            </a> -->
-                                        </div>
-                                    </div>
-                                    <div class="swiper-buttons d-none d-md-flex">
-                                        <div class="swiper-button-prev">
-                                            <i class="icont-chevron-left"></i>
-                                        </div>
-                                        <div class="swiper-button-next">
-                                            <i class="icont-chevron-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <hr class="divider my-0">
-            @yield('content')
-        </div>
-        <!-- Footer -->
-        @include('layouts.user.footer')
-        </form>
-    </div>
-    <a class="backtotop btn btn-primary rounded-circle shadow" id="back-to-top" href="#"></a>
+    @include('layouts.user.header')
+    @yield('home')
+    <main style="opacity:0" class="b-body">
+        @yield('content')
+    </main>
+    @include('layouts.user.footer')
 
-    <script src="{{ asset('frontend/js/vendor/jquery.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendor/popper.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendor/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendor/swiper.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendor/jquery.mCustomScrollbar.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendor/photoswipe.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendor/photoswipe-ui-default.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/photoswipe-init.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendor/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/plugins.js') }}"></script>
-    <script src="{{ asset('frontend/js/main.js') }}"></script>
-    <script src="{{ asset('backend/js/toastr.min.js?').time() }}"></script>
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="{{ asset('frontend/js/webflow.js') }}"></script>
     @yield('pageJs')
-    <script type="text/javascript">
-        $(document).on('keydown', '.search-input', function(e) {
-            var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-            if (key == 13) {
-                e.preventDefault();
-                window.location.href = '/s?key=' + $(this).val();
-            }
-        });
-        $(function () {
-            toastr.options = {
-                "debug": false,
-                "positionClass": "toast-bottom-right",
-                "onclick": null,
-                "fadeIn": 300,
-                "fadeOut": 1000,
-                "timeOut": 5000,
-                "extendedTimeOut": 1000
-            };
-        });
-    </script>
 </body>
 </html>

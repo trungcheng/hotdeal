@@ -1,52 +1,130 @@
-<header class="header header-sticky" id="header">
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-between">
-            <div class="col col-auto d-flex align-items-center">
-                <button class="hamburger hamburger--slider d-lg-none" id="navbar-main-toggle" data-toggle="collapse" data-target="#header-navbar-main-collapse" aria-controls="header-navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="hamburger-box d-block">
-                        <span class="hamburger-inner"></span>
-                    </span>
-                </button>
-                <a class="header-logo" href="{{ route('home') }}">
-                    <img class="header-logo-img" src="{{ asset('frontend/images/logo.png') }}" alt="Logo donghoxachtay.store">
-                </a>
-            </div>
-            <div class="col col-auto">
-                <nav class="navbar navbar-expand-lg navbar-light header-navbar-main navbar-main navbar-main-effect-1 navbar-main-trigger-hover">
-                    <div class="collapse navbar-collapse" id="header-navbar-main-collapse">
-                        <div class="nav mr-auto">
-                            <div class="nav-item">
-                                <a class="nav-link" href="{{ route('brand') }}">Thương hiệu</a>
-                            </div>
-                            <div class="nav-item">
-                                <a class="nav-link" href="{{ route('product-store', ['sex' => 'm']) }}">Đồng hồ nam</a>
-                            </div>
-                            <div class="nav-item">
-                                <a class="nav-link" href="{{ route('product-store', ['sex' => 'f']) }}">Đồng hồ nữ</a>
-                            </div>
-                            <div class="nav-item">
-                                <a class="nav-link" href="{{ route('article') }}">Tin tức</a>
-                            </div>
-                            <div class="nav-item">
-                                <a class="nav-link" href="{{ route('about') }}">Về chúng tôi</a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-            <div class="col col-auto">
-                <div class="header-search input-group deactive" id="header-search">
-                    <input class="search-input form-control" name="key" type="text" placeholder="Tìm kiếm">
-                    <div class="input-group-append">
-                        <button class="btn header-search-btn-send" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                        <button class="btn header-search-btn-close" type="button">
-                            <i class="fa fa-times"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="preloader">
+    <div class="preloader-container">
+        <figure class="logo-image"></figure>
     </div>
-</header>
+</div>
+<nav class="navbar">
+    <div class="nav-button">
+        <div class="nav-button-line-top"></div>
+        <div class="nav-button-line-middle"></div>
+        <div class="nav-button-line-bottom"></div>
+    </div>
+    <div class="nav-menu-container"><a href="index.html" class="header-logo inside w-nav-brand w--current"><img src="{{ asset('frontend/images/visci-vector-web-white.svg') }}" height="60" alt="" class="brand-visci"><img src="{{ asset('frontend/images/visci-tagline-vector-web-white.svg') }}" height="66" alt="" class="tagline inside-the-menu"></a>
+      <nav class="nav-link-pc">
+        <div data-hover="1" data-delay="0" class="nav-drop w-dropdown">
+          <div class="nav-drop-toggle w-dropdown-toggle">
+            <a href="#" class="nav-drop-heading w-inline-block">
+              <h3>About VISCI</h3>
+            </a>
+          </div>
+          <nav class="nav-drop-list w-dropdown-list"></nav>
+        </div>
+        <div data-hover="1" data-delay="0" class="nav-drop w-dropdown">
+          <div class="nav-drop-toggle w-dropdown-toggle">
+            <a href="news-events.html" class="nav-drop-heading w-inline-block">
+              <h3>News &amp; Events</h3>
+              <div class="nav-drop-line"></div>
+            </a>
+          </div>
+          <nav class="nav-drop-list w-dropdown-list"><a href="/category/news" class="link white w-dropdown-link">News</a><a href="/newsletter" class="link white w-dropdown-link">Newsletter</a><a href="#" class="link white w-dropdown-link">Coming Events</a><a href="#" class="link white w-dropdown-link">Past Events</a></nav>
+        </div>
+        <div data-hover="1" data-delay="0" class="nav-drop w-dropdown">
+          <div class="nav-drop-toggle w-dropdown-toggle">
+            <a href="#" class="nav-drop-heading w-inline-block">
+              <h3>Projects</h3>
+            </a>
+          </div>
+          <nav class="nav-drop-list w-dropdown-list"></nav>
+        </div>
+        <div data-hover="1" data-delay="0" class="nav-drop w-dropdown">
+          <div class="nav-drop-toggle w-dropdown-toggle">
+            <a href="#" class="nav-drop-heading w-inline-block">
+              <h3>Partners</h3>
+            </a>
+          </div>
+          <nav class="nav-drop-list w-dropdown-list"></nav>
+        </div>
+        <div data-hover="1" data-delay="0" class="nav-drop w-dropdown">
+          <div class="nav-drop-toggle w-dropdown-toggle">
+            <a href="#" class="nav-drop-heading w-inline-block">
+              <h3>Media &amp; Press</h3>
+              <div class="nav-drop-line"></div>
+            </a>
+          </div>
+          <nav class="nav-drop-list w-dropdown-list"><a href="#" class="link white w-dropdown-link">Media</a><a href="#" class="link white w-dropdown-link">Press</a></nav>
+        </div>
+        <div data-hover="1" data-delay="0" class="nav-drop w-dropdown">
+          <div class="nav-drop-toggle w-dropdown-toggle">
+            <a href="#" class="nav-drop-heading w-inline-block">
+              <h3>Contact us</h3>
+            </a>
+          </div>
+          <nav class="nav-drop-list w-dropdown-list"></nav>
+        </div>
+      </nav>
+      <div class="nav-link-mobile-container">
+        <nav class="nav-link-mobile">
+          <div data-delay="300" class="nav-drop-mobile w-dropdown">
+            <div class="nav-drop-mobile-toggle w-dropdown-toggle">
+              <a href="#" class="nav-drop-mobile-heading w-inline-block">
+                <h5>About us</h5>
+              </a>
+            </div>
+            <nav class="nav-drop-mobile-list blank w-dropdown-list"></nav>
+          </div>
+          <div data-delay="300" class="nav-drop-mobile w-dropdown">
+            <div class="nav-drop-mobile-toggle w-dropdown-toggle">
+              <div class="nav-drop-mobile-icon w-icon-dropdown-toggle"></div>
+              <a href="news-events.html" class="nav-drop-mobile-heading w-inline-block">
+                <h5>News &amp; Events</h5>
+              </a>
+            </div>
+            <nav class="nav-drop-mobile-list w-dropdown-list"><a href="#" class="link white mobile">News</a><a href="#" class="link white mobile">Newsletter</a><a href="#" class="link white mobile">Coming Events</a><a href="#" class="link white mobile">Past Events</a></nav>
+          </div>
+          <div data-delay="0" class="nav-drop-mobile w-dropdown">
+            <div class="nav-drop-mobile-toggle w-dropdown-toggle">
+              <a href="#" class="nav-drop-mobile-heading w-inline-block">
+                <h5>Projects</h5>
+              </a>
+            </div>
+            <nav class="nav-drop-mobile-list blank w-dropdown-list"></nav>
+          </div>
+          <div data-delay="0" class="nav-drop-mobile w-dropdown">
+            <div class="nav-drop-mobile-toggle w-dropdown-toggle">
+              <a href="#" class="nav-drop-mobile-heading w-inline-block">
+                <h5>Partners</h5>
+              </a>
+            </div>
+            <nav class="nav-drop-mobile-list blank w-dropdown-list"></nav>
+          </div>
+          <div data-delay="300" class="nav-drop-mobile w-dropdown">
+            <div class="nav-drop-mobile-toggle w-dropdown-toggle">
+              <div class="nav-drop-mobile-icon w-icon-dropdown-toggle"></div>
+              <a href="#" class="nav-drop-mobile-heading w-inline-block">
+                <h5>Media &amp; Press</h5>
+              </a>
+            </div>
+            <nav class="nav-drop-mobile-list w-dropdown-list"><a href="#" class="link white mobile">Media</a><a href="#" class="link white mobile">Press</a></nav>
+          </div>
+          <div data-delay="0" class="nav-drop-mobile w-dropdown">
+            <div class="nav-drop-mobile-toggle w-dropdown-toggle">
+              <a href="#" class="nav-drop-mobile-heading w-inline-block">
+                <h5>Contact us</h5>
+              </a>
+            </div>
+            <nav class="nav-drop-mobile-list blank w-dropdown-list"></nav>
+          </div>
+        </nav>
+      </div>
+      <div class="searchbox"><a href="#" class="cta-button-square close w-button"><strong></strong></a><a href="#" class="cta-button-square open w-button"></a>
+        <form action="/search" class="search-button w-form"><input type="search" id="search" maxlength="256" name="query" placeholder="Search…" required="" class="search-input w-input"><input type="submit" value="Search" class="cta-button special w-button"></form>
+        <div class="search-box-background"></div>
+      </div>
+      <div class="nav-side-container">
+        <div class="nav-side-item-container social"><a href="#" class="social-link facebook w-inline-block"></a><a href="#" class="social-link youtube w-inline-block"></a></div>
+        <div class="nav-side-item-container"><a href="index.html" class="language-link w--current">English</a><a href="#" class="language-link">Vietnamese</a></div>
+      </div>
+    </div><a href="index.html" class="header-logo w-nav-brand w--current"><img src="{{ asset('frontend/images/visci-vector-web.svg') }}" height="60" alt="" class="brand-visci"><img src="{{ asset('frontend/images/visci-tagline-vector-web.svg') }}" height="66" alt="" class="tagline"></a>
+    <div class="nav-bar-background"></div>
+    <div class="light"></div>
+</nav>
