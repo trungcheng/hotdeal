@@ -12,6 +12,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   	<title>ThachvuCMS | @yield('page')</title>
   	
   	<link rel="stylesheet" href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" />
+  	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" /> -->
   	<!-- Font Awesome -->
   	<link rel="stylesheet" href="{{ asset('components/font-awesome/css/font-awesome.min.css') }}" />
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
@@ -70,15 +71,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<script src="{{ asset('backend/js/app/base.app.js?').time() }}"></script>
 
   	<script src="{{ asset('backend/js/toastr.min.js?').time() }}"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
   	<script src="{{ asset('backend/js/angular/angular.min.js?').time() }}"></script>
+  	<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script> -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+  	<!-- <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.js"></script> -->
+
   	<script src="{{ asset('backend/js/angular/angular-messages.min.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/angucomplete-alt.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/image-crop.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/app.js?').time() }}"></script>
+  	<script src="{{ asset('backend/js/angular/factories.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/directives.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/filters.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/helpers.js?').time() }}"></script>

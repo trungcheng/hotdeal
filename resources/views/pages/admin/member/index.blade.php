@@ -38,7 +38,7 @@
                                         <div class="dataTables_length" id="example1_length">
                                             <label>
                                                 Hiển thị
-                                                <select ng-change="getResultsPage(name, pullDownLists.selectedOption, pageNumber)" ng-model="pullDownLists.selectedOption" ng-options="item.value as item.name for item in pullDownLists.availableOption track by item.value" name="example_length" aria-controls="example" class="form-control input-sm" style="margin: 0 5px;width: 63px;">
+                                                <select ng-change="setPage(pullDownLists.selectedOption, pageNumber)" ng-model="pullDownLists.selectedOption" ng-options="item.value as item.name for item in pullDownLists.availableOption track by item.value" name="example_length" aria-controls="example" class="form-control input-sm" style="margin: 0 5px;width: 63px;">
                                                 </select> thành viên
                                             </label>
                                         </div>
@@ -68,7 +68,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
-                                                <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="mem in members track by $index">
+                                                <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="mem in items track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ mem.fullname }}</td>
                                                     <td style="text-align:center !important">@{{ mem.email }}</td>
@@ -87,13 +87,13 @@
                                         <div ng-cloak ng-if="loading">
                                             <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:46%;margin-top:0%">
                                         </div>
-                                        <div ng-cloak ng-if="!loading && members.length === 0">
+                                        <div ng-cloak ng-if="!loading && items.length === 0">
                                             <h5 style="font-size:16px;color:#f00;">Oops! Không tìm thấy thành viên!</h5>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="row" ng-cloak ng-if="!loading && members.length > 0">
+                                <div class="row" ng-cloak ng-if="!loading && items.length > 0">
                                     <div class="col-sm-5" style="padding-top:5px;">
                                         <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Hiển thị từ <strong>@{{ from }}</strong> đến <strong>@{{ to }}</strong> của <strong>@{{ total }}</strong> thành viên</div>
                                     </div>

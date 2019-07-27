@@ -42,7 +42,7 @@ class Slide extends Model
             $data->where("title", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->orderBy('id', 'desc')->paginate($request->perPage);
+        $data = $data->orderBy('id', 'desc')->get();
 
         return $data;
     }

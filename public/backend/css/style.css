@@ -7,6 +7,10 @@
     display: none !important;
 }
 
+.pagination li a {
+    cursor: pointer !important;
+}
+
 .icon-disabled {
     pointer-events: none !important;
     background: #d8d8d8 !important;

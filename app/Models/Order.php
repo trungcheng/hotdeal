@@ -34,7 +34,7 @@ class Order extends Model
             $data->where("amount", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->with('user')->orderBy('id', 'desc')->paginate($request->perPage);
+        $data = $data->with('user')->orderBy('id', 'desc')->get();
 
         return $data;
     }

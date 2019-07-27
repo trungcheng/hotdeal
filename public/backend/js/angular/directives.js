@@ -56,14 +56,14 @@ app.directive('ngFormCommit', ['$parse', function($parse) {
 app.directive('itemsPagination', function () {
     return {
         restrict: 'E',
-        template: '<ul class="pagination">'+
-            '<li ng-show="currentPage != 1"><a href="javascript:void(0)" ng-click="getResultsPage(name, perPage, 1)">Đầu</a></li>'+
-            '<li ng-show="currentPage != 1"><a href="javascript:void(0)" ng-click="getResultsPage(name, perPage, currentPage-1)">Trước</a></li>'+
-            '<li ng-repeat="i in range track by $index" ng-class="{active : currentPage == i}">'+
-                '<a href="javascript:void(0)" ng-click="getResultsPage(name, perPage, i)">{{i}}</a>'+
+        template: '<ul ng-if="pager.pages.length" class="pagination">'+
+            '<li ng-show="pager.currentPage != 1"><a href="javascript:void(0)" ng-click="setPage(perPage, 1)">Đầu</a></li>'+
+            '<li ng-show="pager.currentPage != 1"><a href="javascript:void(0)" ng-click="setPage(perPage, pager.currentPage-1)">Trước</a></li>'+
+            '<li ng-repeat="page in pager.pages track by $index" ng-class="{active : pager.currentPage == page}">'+
+                '<a href="javascript:void(0)" ng-click="setPage(perPage, page)">{{page}}</a>'+
             '</li>'+
-            '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getResultsPage(name, perPage, currentPage+1)">Tiếp</a></li>'+
-            '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getResultsPage(name, perPage, totalPages)">Cuối</a></li>'+
+            '<li ng-show="pager.currentPage != pager.totalPages"><a href="javascript:void(0)" ng-click="setPage(perPage, pager.currentPage+1)">Tiếp</a></li>'+
+            '<li ng-show="pager.currentPage != pager.totalPages"><a href="javascript:void(0)" ng-click="setPage(perPage, pager.totalPages)">Cuối</a></li>'+
         '</ul>'
     };
 });

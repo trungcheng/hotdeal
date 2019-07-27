@@ -92,7 +92,8 @@ class Product extends Model
             $data->where("name", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->with('category')->orderBy('id', 'desc')->paginate($request->perPage);
+        // $data = $data->with('category')->orderBy('id', 'desc')->paginate($request->perPage);
+        $data = $data->with('category')->orderBy('id', 'desc')->get();
 
         return $data;
     }

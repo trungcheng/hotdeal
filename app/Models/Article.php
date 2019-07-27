@@ -56,7 +56,7 @@ class Article extends Model
             $data->where("name", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->with(['category', 'user'])->orderBy('id', 'desc')->paginate($request->perPage);
+        $data = $data->with(['category', 'user'])->orderBy('id', 'desc')->get();
 
         return $data;
     }

@@ -5,12 +5,10 @@
         .module('ThachvuCMS')
         .controller('ArticleController', ArticleController);
 
-    function ArticleController($rootScope, $scope, $http, $window, $timeout) {
+    function ArticleController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
-    	$scope.articles = [];
-    	$scope.totalPages = 0;
-        $scope.currentPage = 1;
-        $scope.range = [];
+    	$scope.totalItems = [];
+        $scope.pager = {};
         $scope.enableSubmit = false;
 
         $scope.pullDownLists = {
@@ -27,7 +25,7 @@
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/articles/getAllArticles?name=' + name + '&perPage=' + perPage + '&page=' + pageNumber, {cache: false})
+            $http.get(app.vars.baseUrl + '/articles/getAllArticles?name=' + name, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -37,28 +35,24 @@
                     $scope.pullDownLists.selectedOption = { value: perPage, name: perPage };
                     $scope.perPage = perPage;
                     $scope.pageNumber = pageNumber;
-                    $scope.totalPages = response.data.last_page;
-                    $scope.currentPage = response.data.current_page;
-                    $scope.from = response.data.from;
-                    $scope.to = response.data.to;
-                    $scope.total = response.data.total;
-                    var pages = [];
-                    for (var i = 1; i <= response.data.last_page; i++) {          
-                        pages.push(i);
-                    }
-                    $scope.range = pages;
-                    if ($scope.totalPages == 0) {
-                        $scope.currentPage = 0;
-                    }
-                    $scope.articles = response.data.data;
-                    $scope.totalItems = response.data.total;
-
-                    angular.forEach($scope.articles, function (v, k) {
-                        v.title = trimText(v.title, 20);
-                        v.intro = trimText(v.intro, 20);
-                    });
+                    $scope.totalItems = response.data;
+                    $scope.setPage(perPage, pageNumber);
 
                 });
+        }
+
+        $scope.setPage = function (pageSize, currentPage) {
+            if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
+            $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
+            $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+            $scope.from = $scope.pager.startIndex + 1;
+            $scope.to = $scope.pager.endIndex + 1;
+            $scope.total = $scope.pager.totalItems;
+            $scope.pullDownLists.selectedOption = { value: pageSize, name: pageSize };
+            angular.forEach($scope.items, function (v, k) {
+                v.title = trimText(v.title, 20);
+                v.intro = trimText(v.intro, 20);
+            });
         }
 
         $scope.loadInit = function () {

@@ -82,7 +82,7 @@ class User extends Model implements Authenticatable
             $data->where("fullname", "LIKE", "%" . $request->fullname . "%");
         }
 
-        $data = $data->orderBy('id', 'desc')->paginate($request->perPage);
+        $data = $data->orderBy('id', 'desc')->get();
 
         return $data;
     }

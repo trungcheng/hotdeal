@@ -43,7 +43,7 @@ class Category extends Model
             $data->where("name", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->orderBy('id', 'desc')->paginate($request->perPage);
+        $data = $data->orderBy('id', 'desc')->get();
 
         return $data;
     }
