@@ -18,7 +18,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.enterMode = 2;
 	config.shiftEnterMode = 1;
 	config.toolbar = [
-		{ name: 'document', items: [ 'Print' ] },
+		{ name: 'document', items: [ 'Source' ,'Print' ] },
 		{ name: 'clipboard', items: [ 'Undo', 'Redo' ] },
 		{ name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
 		{ name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'CopyFormatting' ] },
