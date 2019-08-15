@@ -4,9 +4,9 @@
     <!-- Logo -->
     <a href="{{ route('dashboard') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>T</b>V</span>
+      <span class="logo-mini"><b>V</b>C</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Thachvu</b>CMS</span>
+      <span class="logo-lg"><b>Vincom</b>CMS</span>
     </a>
 
     <!-- Header Navbar -->

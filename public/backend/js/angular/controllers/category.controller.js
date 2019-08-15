@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ThachvuCMS')
+        .module('VincomCMS')
         .controller('CategoryController', CategoryController);
 
     function CategoryController($rootScope, $scope, $http, $window, $timeout, PagerService) {

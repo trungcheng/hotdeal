@@ -3,13 +3,13 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html data-ng-app="ThachvuCMS">
+<html data-ng-app="VincomCMS">
 <head>
   	<meta charset="UTF-8">
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-  	<title>ThachvuCMS | @yield('page')</title>
+  	<title>VincomCMS | @yield('page')</title>
   	
   	<link rel="stylesheet" href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" />
   	<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" /> -->
@@ -82,7 +82,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   	<script src="{{ asset('backend/js/angular/angular-messages.min.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/angucomplete-alt.js?').time() }}"></script>
-  	<script src="{{ asset('backend/js/angular/image-crop.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/app.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/factories.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/directives.js?').time() }}"></script>

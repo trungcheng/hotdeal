@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Tạo tài khoản
+@section('page')Tạo tài khoản | Vincom Retail
 @stop
 
 @section('description')Tạo tài khoản.

@@ -10,20 +10,16 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
+        'parent_id',
         'name',
+        'description',
         'slug',
-        'seo_title',
-        'seo_desc',
-        'seo_keyword',
-        'seo_content'
+        'image',
+        'status'
     ];
 
-    public function product() {
-    	return $this->hasMany('App\Models\Product', 'cat_id' , 'id');
-    }
-
-    public function article() {
-        return $this->hasMany('App\Models\Article', 'cat_id' , 'id');
+    public function user() {
+    	return $this->hasMany('App\Models\User', 'cat_id' , 'id');
     }
 
     public static $rules = [

@@ -16,19 +16,14 @@ class User extends Model implements Authenticatable
     protected $fillable = [
         'role_id',
         'username',
-        'fullname', 
+        'full_name', 
         'email',
-        'avatar',
         'password',
-        'mobile',
-        'address',
-        'birthday',
-        'sex',
-        'bio',
-        'status', 
-        'confirmation_code', 
-        'is_confirmed',
-        'jwt_token'
+        'intro',
+        'content',
+        'avatar',
+        'total_vote',
+        'status'
     ];
 
     /**
@@ -47,39 +42,29 @@ class User extends Model implements Authenticatable
         return $this->belongsTo('App\Models\Role');
     }
 
-    public function article() {
-        return $this->hasMany('App\Models\Article', 'user_id', 'id');
-    }
-
-    public function order() {
-        return $this->hasMany('App\Models\Order', 'user_id', 'id');
-    }
-
-    public function product() {
-        return $this->hasMany('App\Models\Product', 'user_id', 'id');
+    public function category() {
+        return $this->belongsTo('App\Models\Category', 'cat_id', 'id');
     }
 
     public static $rules = [
-        'fullname' => 'required|min:2',
-        'email' => 'required|email',
-        'mobile' => 'required|numeric'
+        'full_name' => 'required|min:2',
+        'intro' => 'required',
+        'content' => 'required'
     ];
 
     public static $messages = [
-        'fullname.required' => 'Họ tên không được để trống',
-        'fullname.min' => 'Họ tên ít nhất từ 2 ký tự',
-        'email.required' => 'Email không được để trống',
-        'email.email' => 'Email không đúng định dạng',
-        'mobile.required' => 'Điện thoại không được để trống',
-        'mobile.numeric' => 'Điện thoại phải là định dạng số',
+        'full_name.required' => 'Họ tên không được để trống',
+        'full_name.min' => 'Họ tên ít nhất từ 2 ký tự',
+        'intro.required' => 'Vị trí không được để trống',
+        'content.required' => 'Thông điệp không được để trống',
     ];
 
     public static function init($request)
     {
         $data = self::where('id', '>', 0)->where('role_id', 3);
 
-        if ($request->fullname !== 'all-member' && $request->fullname !== 'undefined') {
-            $data->where("fullname", "LIKE", "%" . $request->fullname . "%");
+        if ($request->full_name !== 'all-member' && $request->full_name !== 'undefined') {
+            $data->where("full_name", "LIKE", "%" . $request->full_name . "%");
         }
 
         $data = $data->orderBy('id', 'desc')->get();

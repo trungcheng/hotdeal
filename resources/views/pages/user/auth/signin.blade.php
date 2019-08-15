@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Đăng nhập
+@section('page')Đăng nhập | Vincom Retail
 @stop
 
 @section('description')Đăng nhập.
