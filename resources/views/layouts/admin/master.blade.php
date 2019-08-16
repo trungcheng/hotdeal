@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   	<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}" />
 
-  	<link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
+  	<link rel="shortcut icon" href="{{ asset('backend/img/favicon.png') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
   	<!-- Google Font -->
   	<link rel="stylesheet"
