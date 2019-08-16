@@ -56,6 +56,7 @@ class MemberController extends Controller
             }
 
             $data = $request->all();
+            console.log($data);
             if ($data) {
                 User::addAction($data);
                 return Response::json([

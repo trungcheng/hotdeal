@@ -31,7 +31,7 @@
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
-            </a>
+            </a> 
             <ul class="treeview-menu">
                 <li><a style="margin-left:35px;" data-route="/admin/access/rounds" href="{{ url('/admin/access/categories') }}"><i class="fa fa-list-ol"></i> Danh sách</a></li>
                 <li><a style="margin-left:35px;" data-route="/admin/access/rounds/create" href="{{ url('/admin/access/categories/create') }}"><i class="fa fa-pencil-square-o"></i> Thêm mới</a></li>
