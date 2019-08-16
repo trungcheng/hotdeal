@@ -33,23 +33,24 @@
                                     <input name="fullname" type="text" class="form-control" placeholder="Họ tên...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Quyền truy cập</label>
+                                    <label>Thuộc Khối</label>
                                     <select name="role_id" class="form-control">
-                                        <option value="3">Thành viên</option>
-                                        <option value="2">Admin</option>
+                                        <option value="3">Vận hành</option>
+                                        <option value="2">Xây dựng</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input name="email" type="email" class="form-control" placeholder="Email...">
+                                    <label>Ảnh đại diện</label>
+                                    <input name="avatar" type="text" size="48" class="form-control" id="xFilePath" />
+                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
-                                    <label>Số điện thoại</label>
-                                    <input name="mobile" type="text" class="form-control" placeholder="Số điện thoại...">
+                                    <label>Vị trí</label>
+                                    <input name="intro" type="text" class="form-control" placeholder="Vị trí">
                                 </div>
                                 <div class="form-group">
-                                    <label>Địa chỉ</label>
-                                    <input name="address" type="text" class="form-control" placeholder="Địa chỉ...">
+                                    <label>Nội dung</label>
+                                    <textarea class="form-control" id="content"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>
@@ -73,6 +74,24 @@
     </section>
 
 </div>
+
+<script>
+    function openPopup() {
+        CKFinder.popup( {
+            chooseFiles: true,
+            onInit: function( finder ) {
+                finder.on( 'files:choose', function( evt ) {
+                    var file = evt.data.files.first();
+                    document.getElementById( 'xFilePath' ).value = file.getUrl();
+                } );
+                finder.on( 'file:choose:resizedImage', function( evt ) {
+                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                } );
+            }
+        } );
+    }
+    CKEDITOR.replace('content', {height: 300});
+</script>
 
 @stop
 

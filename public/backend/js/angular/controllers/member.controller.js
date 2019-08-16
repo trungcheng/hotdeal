@@ -80,10 +80,10 @@
             return input;
         };
 
-        $scope.process = function (type) {
-            
+        $scope.process = function (type) {    
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
+            console.log(formData);
             
             swal({
                 title: "Bạn chắc chắn muốn "+ title +" thành viên này ?",

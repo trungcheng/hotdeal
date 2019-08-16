@@ -2,5 +2,6 @@
 2. cp .env.example .env
 3. php artisan key:generate
 4. cd public/
-5. bower install
-6. php artisan config:cache
+5. install bower -g
+6. bower install
+7. php artisan config:cache

@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'donghoxachtay.store';
-$config['licenseKey']  = 'CWYWDYW2CGRQXDTWFU2HX552UHPHN';
+$config['licenseName'] = 'vincom.com';
+$config['licenseKey']  = '*6?8-*1**-L**9-*M**-*4**-J*9*-5**C';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
