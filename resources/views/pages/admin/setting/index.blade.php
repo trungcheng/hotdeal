@@ -40,11 +40,11 @@
 
                     {{ csrf_field() }}
                     
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label>Logo</label>
-                        <input name="image" type="text" size="48" class="form-control" id="xFilePath" />
+                        <input name="logo" type="text" size="48" class="form-control" id="xFilePath" />
                         <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
-                    </div> -->
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label">Tên công ty</label>
@@ -63,7 +63,7 @@
 
                     <div class="form-group">
                         <label class="control-label">Điện thoại</label>
-                        <input type="text" name="phone" value="{{ ($setting != '') ? $setting->phone : '' }}" class="form-control" placeholder="Điện thoại...">
+                        <input type="text" name="mobile" value="{{ ($setting != '') ? $setting->mobile : '' }}" class="form-control" placeholder="Điện thoại...">
                     </div>
 
                     <div class="form-group">
@@ -73,25 +73,7 @@
 
                     <div class="form-group">
                         <label class="control-label">Giờ làm việc</label>
-                        <input type="text" name="time_work" value="{{ ($setting != '') ? $setting->time_work : '' }}" class="form-control" placeholder="Giờ làm việc...">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Facebook Pixel Code</label>
-                        <textarea style="height: 100px;" name="fb_pixel_code" class="form-control" placeholder="Facebook Pixel Code...">{{ ($setting != '') ? $setting->fb_pixel_code : '' }}</textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>SEO Title</label>
-                        <input value="{{ ($setting != '') ? $setting->seo_title : '' }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
-                    </div>
-                    <div class="form-group">
-                        <label>SEO Description</label>
-                        <input value="{{ ($setting != '') ? $setting->seo_desc : '' }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
-                    </div>
-                    <div class="form-group">
-                        <label>SEO Keyword</label>
-                        <input value="{{ ($setting != '') ? $setting->seo_keyword : '' }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                        <input type="text" name="work_time" value="{{ ($setting != '') ? $setting->work_time : '' }}" class="form-control" placeholder="Giờ làm việc...">
                     </div>
 
                     <div class="form-group">

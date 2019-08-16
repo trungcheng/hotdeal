@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Cập nhật danh mục
+@section('page')Cập nhật khối
 @stop
 
 @section('pageCss')
@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Cập nhật danh mục
+            Cập nhật khối
             <a href="{{ route('categories') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>
@@ -30,30 +30,14 @@
                             <div class="modal-body">
                                 <input type="hidden" id="id" name="id" value="{{ $category->id }}">
                                 <div class="form-group">
-                                    <label>Tên danh mục</label>
-                                    <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
+                                    <label>Tên khối</label>
+                                    <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên khối...">
                                 </div>
                                 <div class="form-group">
-                                    <label>SEO Content</label>
-                                    <textarea class="form-control" id="seo_content">{!! $category->seo_content !!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>SEO Title</label>
-                                    <input value="{{ $category->seo_title }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
-                                </div>
-                                <div class="form-group">
-                                    <label>SEO Description</label>
-                                    <input value="{{ $category->seo_desc }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
-                                </div>
-                                <div class="form-group">
-                                    <label>SEO Keyword</label>
-                                    <input value="{{ $category->seo_keyword }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
-                                </div>
-                                <!-- <div class="form-group">
                                     <label>Ảnh</label>
-                                    <input value="{{ $category->icon }}" name="icon" type="text" size="48" class="form-control" id="xFilePath" />
+                                    <input value="{{ $category->image }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
-                                </div> -->
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>
@@ -100,9 +84,6 @@
             }
         });
     }
-</script>
-<script type="text/javascript">
-    CKEDITOR.replace('seo_content', {height: 300}); 
 </script>
 @stop
 

@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Quản lý danh mục
+@section('page')Quản lý khối
 @stop
 
 @section('pageCss')
@@ -13,9 +13,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header" style="padding-top:30px;">
             <h1>
-                Quản lý danh mục
+                Quản lý khối
                 <!-- <small>Optional description</small> -->
-                <a href="{{ route('category-create') }}" class="pull-right btn btn-success btn-sm">Thêm danh mục</a>
+                <a href="{{ route('category-create') }}" class="pull-right btn btn-success btn-sm">Thêm khối</a>
             </h1>
         </section>
 
@@ -39,7 +39,7 @@
                                             <label>
                                                 Hiển thị
                                                 <select ng-change="setPage(pullDownLists.selectedOption, pageNumber)" ng-model="pullDownLists.selectedOption" ng-options="item.value as item.name for item in pullDownLists.availableOption track by item.value" name="example_length" aria-controls="example" class="form-control input-sm" style="margin: 0 5px;width: 63px;">
-                                                </select> danh mục
+                                                </select> khối
                                             </label>
                                         </div>
                                     </div>
@@ -58,8 +58,7 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th>STT</th>
-                                                    <th style="text-align:center !important;width:20%">Tên danh mục</th>
-                                                    <th style="text-align:center !important;width:20%">Slug</th>
+                                                    <th style="text-align:center !important;width:20%">Tên khối</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -68,7 +67,6 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in items track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
-                                                    <td style="text-align:center !important">@{{ cate.slug }}</td>
                                                     <td>@{{ cate.created_at }}</td>
                                                     <td>
                                                         <a href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
@@ -82,14 +80,14 @@
                                             <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:46%;margin-top:0%">
                                         </div>
                                         <div ng-cloak ng-if="!loading && items.length === 0">
-                                            <h5 style="font-size:16px;color:#f00;">Oops! Không tìm thấy danh mục!</h5>
+                                            <h5 style="font-size:16px;color:#f00;">Oops! Không tìm thấy khối!</h5>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row" ng-cloak ng-if="!loading && items.length > 0">
                                     <div class="col-sm-5" style="padding-top:5px;">
-                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Hiển thị từ <strong>@{{ from }}</strong> đến <strong>@{{ to }}</strong> của <strong>@{{ total }}</strong> danh mục</div>
+                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Hiển thị từ <strong>@{{ from }}</strong> đến <strong>@{{ to }}</strong> của <strong>@{{ total }}</strong> khối</div>
                                     </div>
                                     <div class="col-sm-7">
                                         <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style="margin-top:-20px;float:right">

@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Thêm mới danh mục
+@section('page')Thêm mới khối
 @stop
 
 @section('pageCss')
@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Thêm mới danh mục
+            Thêm mới khối
             <a href="{{ route('categories') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>
@@ -29,30 +29,14 @@
                         <form id="formProcess" onsubmit="return false;" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Tên danh mục</label>
-                                    <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
+                                    <label>Tên khối</label>
+                                    <input name="name" type="text" class="form-control slug" placeholder="Tên khối...">
                                 </div>
                                 <div class="form-group">
-                                    <label>SEO Content</label>
-                                    <textarea class="form-control" id="seo_content"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>SEO Title</label>
-                                    <input name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
-                                </div>
-                                <div class="form-group">
-                                    <label>SEO Description</label>
-                                    <input name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
-                                </div>
-                                <div class="form-group">
-                                    <label>SEO Keyword</label>
-                                    <input name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
-                                </div>
-                                <!-- <div class="form-group">
                                     <label>Ảnh</label>
                                     <input name="icon" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
-                                </div> -->
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('add')" type="button" class="btn btn-primary">Thêm</button>
@@ -99,9 +83,6 @@
             }
         });
     }
-</script>
-<script type="text/javascript">
-    CKEDITOR.replace('seo_content', {height: 300}); 
 </script>
 @stop
 

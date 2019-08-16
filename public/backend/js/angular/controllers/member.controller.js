@@ -118,7 +118,7 @@
 
         $scope.delete = function (mem, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa thành viên này ? Tất cả các sản phẩm, bài viết và đơn hàng của thành viên này sẽ bị xóa theo !",
+                title: "Bạn chắc chắn muốn xóa thành viên này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",

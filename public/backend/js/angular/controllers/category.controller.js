@@ -87,7 +87,7 @@
             formData.append('seo_content', CKEDITOR.instances.seo_content.document.getBody().getHtml());
             
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" danh mục này ?",
+                title: "Bạn chắc chắn muốn "+ title +" khối này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -119,7 +119,7 @@
 
         $scope.delete = function (cate, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa danh mục này ? Tất cả các sản phẩm thuộc danh mục này sẽ bị xóa theo !",
+                title: "Bạn chắc chắn muốn xóa khối này ? Tất cả các thành viên thuộc khối này sẽ bị xóa theo !",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
