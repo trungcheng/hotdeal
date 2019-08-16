@@ -17,7 +17,8 @@ class Round extends Model
         'to_date',
         'is_expired',
         'is_reset_vote',
-        'user_select_count'
+        'user_select_count',
+        'visible_menu'
     ];
 
     public function user_round() {

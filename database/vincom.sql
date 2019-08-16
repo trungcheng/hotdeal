@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-16 02:22:22
+Date: 2019-08-16 10:14:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -92,6 +92,7 @@ CREATE TABLE `rounds` (
   `is_expired` tinyint(1) DEFAULT '0',
   `is_reset_vote` tinyint(1) DEFAULT '0',
   `user_select_count` int(11) DEFAULT NULL,
+  `visible_menu` tinyint(4) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -100,9 +101,9 @@ CREATE TABLE `rounds` (
 -- ----------------------------
 -- Records of rounds
 -- ----------------------------
-INSERT INTO `rounds` VALUES ('1', 'Vòng 1', null, 'vong-1', null, null, '0', '0', '30', '2019-08-16 01:14:43', '2019-08-16 01:14:43');
-INSERT INTO `rounds` VALUES ('2', 'Vòng 2', null, 'vong-2', null, null, '0', '0', '30', '2019-08-16 01:15:24', '2019-08-16 01:15:24');
-INSERT INTO `rounds` VALUES ('3', 'Vòng kết quả', null, 'vong-ket-qua', null, null, '0', '0', '15', '2019-08-16 01:15:57', '2019-08-16 01:15:57');
+INSERT INTO `rounds` VALUES ('1', 'Vòng 1', null, 'vong-1', null, null, '0', '0', '30', '0', '2019-08-16 01:14:43', '2019-08-16 01:14:43');
+INSERT INTO `rounds` VALUES ('2', 'Vòng 2', null, 'vong-2', null, null, '0', '0', '30', '0', '2019-08-16 01:15:24', '2019-08-16 01:15:24');
+INSERT INTO `rounds` VALUES ('3', 'Vòng kết quả', null, 'vong-ket-qua', null, null, '0', '0', '15', '0', '2019-08-16 01:15:57', '2019-08-16 01:15:57');
 
 -- ----------------------------
 -- Table structure for setting
