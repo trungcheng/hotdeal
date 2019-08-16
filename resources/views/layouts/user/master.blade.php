@@ -19,7 +19,7 @@
     <meta property="og:site_name" content="Vincom Retail">  
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
-    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('backend/img/favicon.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('frontend/rs-plugin/css/settings.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('frontend/css/ionicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">

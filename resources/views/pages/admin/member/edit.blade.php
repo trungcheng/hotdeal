@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Cập nhật thành viên
+@section('page')Cập nhật nhân vật bình chọn
 @stop
 
 @section('pageCss')
@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Cập nhật thành viên
+            Cập nhật nhân vật bình chọn
             <a href="{{ route('members') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>

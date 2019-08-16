@@ -35,7 +35,7 @@
         </li>
         
         <li class="treeview">
-            <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý thành viên</span>
+            <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý nhân vật bình chọn</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>

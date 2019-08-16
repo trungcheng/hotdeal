@@ -15,7 +15,7 @@ class Round extends Model
         'slug',
         'from_date',
         'to_date',
-        'is_expired',
+        'is_running',
         'is_reset_vote',
         'user_select_count',
         'visible_menu'
@@ -29,23 +29,19 @@ class Round extends Model
         return $this->hasMany('App\Models\History', 'round_id', 'id');
     }
 
-    public static $rules_add = [
+    public static $rules = [
         'name' => 'required|min:2',
-        'from_date' => 'required',
-        'to_date' => 'required'
-    ];
-
-    public static $rules_update = [
-        'name' => 'required|min:2',
-        'from_date' => 'required',
-        'to_date' => 'required'
+        'from_date' => 'required|date|after:now',
+        'to_date' => 'required|date|after:from_date'
     ];
 
     public static $messages = [
         'name.required' => 'Tên không được để trống',
         'name.min' => 'Tên ít nhất từ 2 ký tự',
         'from_date.required' => 'Ngày bắt đầu không được để trống',
+        'from_date.after' => 'Vui lòng chọn ngày bắt đầu trong tương lai',
         'to_date.required' => 'Ngày kết thúc không được để trống',
+        'to_date.after' => 'Ngày kết thúc phải sau ngày bắt đầu'
     ];
 
     public static function init($request)
@@ -56,7 +52,7 @@ class Round extends Model
             $data->where("name", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->orderBy('id', 'desc')->get();
+        $data = $data->orderBy('id', 'asc')->get();
 
         return $data;
     }
@@ -64,6 +60,12 @@ class Round extends Model
     public static function addAction($data)
     {
         $data['slug'] = Util::generateSlug($data['name']);
+        if ($data['is_running'] == 1) {
+            $countRunning = self::where('is_running', 1)->count();
+            if ($countRunning >= 1) {
+                self::where('is_running', 1)->update(['is_running' => 0]);
+            }
+        }
 
         return self::firstOrCreate($data);
     }
@@ -71,6 +73,12 @@ class Round extends Model
     public static function updateAction($data, $round)
     {
         $data['slug'] = Util::generateSlug($data['name']);
+        if ($data['is_running'] == 1) {
+            $countRunning = self::where('is_running', 1)->count();
+            if ($countRunning >= 1) {
+                self::where('is_running', 1)->update(['is_running' => 0]);
+            }
+        }
 
         return $round->update($data);
     }

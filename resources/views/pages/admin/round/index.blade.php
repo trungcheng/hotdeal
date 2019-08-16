@@ -59,9 +59,10 @@
                                                 <tr role="row">
                                                     <th>STT</th>
                                                     <th style="text-align:center !important;width:20%">Tên vòng</th>
-                                                    <th>Mô tả</th>
                                                     <th>Từ ngày</th>
                                                     <th>Đến ngày</th>
+                                                    <th>Số người chọn</th>
+                                                    <th>Trạng thái</th>
                                                     <th>Hiện menu</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -70,10 +71,11 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="round in items track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ round.name }}</td>
-                                                    <td>@{{ round.description }}</td>
                                                     <td>@{{ round.from_date }}</td>
                                                     <td>@{{ round.to_date }}</td>
-                                                    <td>@{{ (round.visible_menu) ? 'Ẩn' : 'Hiện' }}</td>
+                                                    <td>@{{ round.user_select_count }}</td>
+                                                    <td>@{{ (round.is_running) ? 'Bật' : 'Tắt' }}</td>
+                                                    <td>@{{ (round.visible_menu) ? 'Hiện' : 'Ẩn' }}</td>
                                                     <td>
                                                         <a href="/admin/access/rounds/edit/@{{ round.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(round, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>

@@ -57,6 +57,8 @@ class User extends Model implements Authenticatable
 
     public static $rules = [
         'full_name' => 'required|min:2',
+        'cat_id' => 'required',
+        'avatar' => 'required',
         'intro' => 'required',
         'content' => 'required'
     ];
@@ -64,13 +66,15 @@ class User extends Model implements Authenticatable
     public static $messages = [
         'full_name.required' => 'Họ tên không được để trống',
         'full_name.min' => 'Họ tên ít nhất từ 2 ký tự',
+        'cat_id.required' => 'Thuộc khối không được để trống',
+        'avatar.required' => 'Ảnh đại diện không được để trống',
         'intro.required' => 'Vị trí không được để trống',
-        'content.required' => 'Thông điệp không được để trống',
+        'content.required' => 'Thông điệp không được để trống'
     ];
 
     public static function init($request)
     {
-        $data = self::where('id', '>', 0)->where('role_id', 3);
+        $data = self::where('id', '>', 0)->where('role_id', 3)->where('type', 1);
 
         if ($request->full_name !== 'all-member' && $request->full_name !== 'undefined') {
             $data->where("full_name", "LIKE", "%" . $request->full_name . "%");
@@ -88,6 +92,7 @@ class User extends Model implements Authenticatable
         }
         $data['cat_id'] = (int) $data['cat_id'];
         $data['password'] = '123456';
+        $data['type'] = 1;
 
         return self::firstOrCreate($data);
     }
