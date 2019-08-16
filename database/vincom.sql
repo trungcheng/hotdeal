@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-16 10:14:46
+Date: 2019-08-16 17:14:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `categories` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of categories
@@ -149,14 +149,14 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '1', null, 'admin', 'Nguyễn Át Min', 'admin@admin.com', 'CEO', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '1', '0UZASRQ6qmaAau4oBE73eB0Xs32X3xAf1mLgLZ9LkB1iQ4akzDpO0N8ZwKe3', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
-INSERT INTO `users` VALUES ('3', '3', null, 'haihv', 'Hoàng Văn Hải', 'haihv@gmail.com', 'Lập trình viên cấp cao', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$VMxBri/qLDxAEq6rGo12Yef2.md..3AqfjSuHnk0q2tbzTQLu5Lp6', '1', '0UZASRQ6qmaAau4oBE73eB0Xs32X3xAf1mLgLZ9LkB1iQ4akzDpO0N8ZwKe3', '2019-04-23 09:28:28', '2019-04-23 09:31:06');
-INSERT INTO `users` VALUES ('5', '3', null, 'trungdn', 'Đinh Trung', 'trungdn@gmail.com', 'Chuyên viên thiết kế animation', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$YBm9bIA.RaFUyDiXYFazNeJ72dwtF072Pieyth2BOFE43KDOdZhsy', '1', 'Afv5L7EZILNQbdVSdZwct6DPbNkUIx4OCYyA8FR2w8DNkQp9bLEK8PxF9fEB', '2019-04-24 04:21:40', '2019-04-24 04:26:28');
+INSERT INTO `users` VALUES ('1', '1', '1', 'admin', 'Nguyễn Át Min', 'admin@admin.com', 'CEO', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '1', '0UZASRQ6qmaAau4oBE73eB0Xs32X3xAf1mLgLZ9LkB1iQ4akzDpO0N8ZwKe3', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
+INSERT INTO `users` VALUES ('3', '3', '2', 'haihv', 'Hoàng Văn Hải', 'haihv@gmail.com', 'Lập trình viên cấp cao', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$VMxBri/qLDxAEq6rGo12Yef2.md..3AqfjSuHnk0q2tbzTQLu5Lp6', '1', '0UZASRQ6qmaAau4oBE73eB0Xs32X3xAf1mLgLZ9LkB1iQ4akzDpO0N8ZwKe3', '2019-04-23 09:28:28', '2019-04-23 09:31:06');
+INSERT INTO `users` VALUES ('5', '3', '3', 'trungdn', 'Đinh Trung', 'trungdn@gmail.com', 'Chuyên viên thiết kế animation', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$YBm9bIA.RaFUyDiXYFazNeJ72dwtF072Pieyth2BOFE43KDOdZhsy', '1', 'Afv5L7EZILNQbdVSdZwct6DPbNkUIx4OCYyA8FR2w8DNkQp9bLEK8PxF9fEB', '2019-04-24 04:21:40', '2019-04-24 04:26:28');
 
 -- ----------------------------
 -- Table structure for user_round

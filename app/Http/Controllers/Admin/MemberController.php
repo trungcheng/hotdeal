@@ -56,7 +56,6 @@ class MemberController extends Controller
             }
 
             $data = $request->all();
-            console.log($data);
             if ($data) {
                 User::addAction($data);
                 return Response::json([
@@ -130,9 +129,8 @@ class MemberController extends Controller
             $mem = User::find($memId);
             if ($mem) {
                 // remove all relate section
-                $mem->article()->delete();
-                $mem->product()->delete();
-                $mem->order()->delete();
+                $mem->user_round()->delete();
+                $mem->history()->delete();
                 // remove itself
                 $mem->delete();
 

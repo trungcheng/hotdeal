@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Quản lý khối
+@section('page')Quản lý khối (phòng ban)
 @stop
 
 @section('pageCss')
@@ -13,7 +13,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header" style="padding-top:30px;">
             <h1>
-                Quản lý khối
+                Quản lý khối (phòng ban)
                 <!-- <small>Optional description</small> -->
                 <a href="{{ route('category-create') }}" class="pull-right btn btn-success btn-sm">Thêm khối</a>
             </h1>
@@ -59,7 +59,8 @@
                                                 <tr role="row">
                                                     <th>STT</th>
                                                     <th style="text-align:center !important;width:20%">Tên khối</th>
-                                                    <th>Ngày tạo</th>
+                                                    <th>Thuộc khối</th>
+                                                    <th>Trạng thái</th>
                                                     <th>Chức năng</th>
                                                 </tr>
                                             </thead>
@@ -67,7 +68,8 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in items track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
-                                                    <td>@{{ cate.created_at }}</td>
+                                                    <td style="text-align:center !important">@{{ (cate.parent) ? cate.parent : 'Không' }}</td>
+                                                    <td>@{{ (cate.status) ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>
                                                         <a href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>

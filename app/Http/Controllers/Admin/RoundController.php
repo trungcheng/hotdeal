@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Round;
 use App\Models\User;
 use App\Util\Util;
 use Response;
 use Validator;
 
-class CategoryController extends Controller
+class RoundController extends Controller
 {
 
 	public function __construct() {
@@ -19,44 +19,26 @@ class CategoryController extends Controller
 
     public function index()
     {
-        return view('pages.admin.category.index');
+        return view('pages.admin.round.index');
     }
 
-    public function getAllCategories(Request $request)
+    public function getAllRounds(Request $request)
     {
-        $results = Category::init($request);
-        if ($results) {
-            foreach ($results as $result) {
-                if ($result->parent_id !== 0) {
-                    $result['parent'] = Category::find($result->parent_id)->name;
-                }
-            }
-        }
-        
+        $results = Round::init($request);
+            
         return Response::json(['status' => true, 'data' => $results]);
-    }
-
-    public function getAllParentCates(Request $request)
-    {
-        $categories = Category::all();
-        $categoriesPaged = Util::buildArray($categories->toArray());
-        if ($categoriesPaged) {
-            return Response::json(['status' => true, 'data' => $categoriesPaged]);
-        }
-
-        return Response::json(['status' => false, 'data' => []]);
     }
 
     public function create(Request $request)
     {
-        return view('pages.admin.category.add');
+        return view('pages.admin.round.add');
     }
 
     public function edit(Request $request, $id)
     {
-        $category = Category::find($id);
-        if ($category) {
-            return view('pages.admin.category.edit', ['category' => $category]);
+        $round = Round::find($id);
+        if ($round) {
+            return view('pages.admin.round.edit', ['round' => $round]);
         }
 
         abort(404);
@@ -65,7 +47,7 @@ class CategoryController extends Controller
     public function add(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), Category::$rules, Category::$messages);
+            $validator = Validator::make($request->all(), Round::$rules, Round::$messages);
             if ($validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -76,10 +58,10 @@ class CategoryController extends Controller
 
             $data = $request->all();
             if ($data) {
-                Category::addAction($data);
+                Round::addAction($data);
                 return Response::json([
                     'status' => true,
-                    'message' => 'Thêm khối thành công', 
+                    'message' => 'Thêm vòng thi thành công', 
                     'type' => 'success'
                 ]);
             }
@@ -100,7 +82,7 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), Category::$rules, Category::$messages);
+            $validator = Validator::make($request->all(), Round::$rules, Round::$messages);
             if ($validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -111,18 +93,18 @@ class CategoryController extends Controller
 
             $data = $request->all();
             if ($data) {
-                $category = Category::find($data['id']);
-                if ($category) {
-                    Category::updateAction($category, $data);
+                $round = Round::find($data['id']);
+                if ($round) {
+                    Round::updateAction($data, $round);
                     return Response::json([
                         'status' => true, 
-                        'message' => 'Cập nhật khối thành công', 
+                        'message' => 'Cập nhật vòng thi thành công', 
                         'type' => 'success'
                     ]);
                 } else {
                     return Response::json([
                         'status' => false,
-                        'message' => 'Không tìm thấy khối', 
+                        'message' => 'Không tìm thấy vòng thi', 
                         'type' => 'error'
                     ]);
                 }
@@ -143,25 +125,26 @@ class CategoryController extends Controller
 
     public function delete(Request $request)
     {
-        $cateId = $request->cateId;
-        if ($cateId && !is_null($cateId)) {
-            $cate = Category::find($cateId);
-            if ($cate) {
+        $roundId = $request->roundId;
+        if ($roundId && !is_null($roundId)) {
+            $round = Round::find($roundId);
+            if ($round) {
                 // remove all relate section
-                User::where('cat_id', $cateId)->update(['cat_id' => 0]);
+                $round->user_round()->delete();
+                $round->history()->delete();
                 // remove itself
-                $cate->delete();
+                $round->delete();
 
                 return Response::json([
                     'status' => true, 
-                    'message' => 'Xóa khối thành công', 
+                    'message' => 'Xóa vòng thi thành công', 
                     'type' => 'success'
                 ]);
             }
 
             return Response::json([
                 'status' => false, 
-                'message' => 'Không tìm thấy khối', 
+                'message' => 'Không tìm thấy vòng thi', 
                 'type' => 'error'
             ]);
         }

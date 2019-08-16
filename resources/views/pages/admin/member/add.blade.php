@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<div ng-controller="MemberController">
+<div ng-controller="MemberController" ng-init="loadInitCreate()">
 
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
@@ -30,13 +30,15 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Họ tên</label>
-                                    <input name="fullname" type="text" class="form-control" placeholder="Họ tên...">
+                                    <input name="full_name" type="text" class="form-control" placeholder="Họ tên...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Thuộc Khối</label>
-                                    <select name="role_id" class="form-control">
-                                        <option value="3">Vận hành</option>
-                                        <option value="2">Xây dựng</option>
+                                    <label>Thuộc khối</label>
+                                    <select class="form-control cate" name="cat_id">
+                                        <option value="0">Không thuộc khối nào</option>
+                                        <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
+                                        </option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -49,7 +51,7 @@
                                     <input name="intro" type="text" class="form-control" placeholder="Vị trí">
                                 </div>
                                 <div class="form-group">
-                                    <label>Nội dung</label>
+                                    <label>Thông điệp</label>
                                     <textarea class="form-control" id="content"></textarea>
                                 </div>
                                 <div class="form-group">
@@ -57,6 +59,13 @@
                                     <select name="status" class="form-control status">
                                         <option value="1">Hoạt động</option>
                                         <option value="0">Khóa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quyền truy cập</label>
+                                    <select name="role_id" class="form-control status">
+                                        <option value="3">Thành viên</option>
+                                        <option value="2">Admin</option>
                                     </select>
                                 </div>
                             </div>
@@ -75,26 +84,26 @@
 
 </div>
 
-<script>
-    function openPopup() {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath' ).value = file.getUrl();
-                } );
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                } );
-            }
-        } );
-    }
-    CKEDITOR.replace('content', {height: 300});
-</script>
-
 @stop
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/member.controller.js') !!}
+
+    <script type="text/javascript">
+        function openPopup() {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                    } );
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                    } );
+                }
+            } );
+        }
+        CKEDITOR.replace('content', {height: 300});
+    </script>
 @stop

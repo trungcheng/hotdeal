@@ -20,4 +20,8 @@ class History extends Model
         return $this->belongsTo('App\Models\Round', 'round_id', 'id');
     }
 
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'vote_for', 'id');
+    }
+
 }

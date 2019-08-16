@@ -15,6 +15,7 @@ class User extends Model implements Authenticatable
    
     protected $fillable = [
         'role_id',
+        'cat_id',
         'username',
         'full_name', 
         'email',
@@ -46,6 +47,14 @@ class User extends Model implements Authenticatable
         return $this->belongsTo('App\Models\Category', 'cat_id', 'id');
     }
 
+    public function user_round() {
+        return $this->hasMany('App\Models\UserRound', 'user_id', 'id');
+    }
+
+    public function history() {
+        return $this->belongsTo('App\Models\History', 'vote_for', 'id');
+    }
+
     public static $rules = [
         'full_name' => 'required|min:2',
         'intro' => 'required',
@@ -67,19 +76,29 @@ class User extends Model implements Authenticatable
             $data->where("full_name", "LIKE", "%" . $request->full_name . "%");
         }
 
-        $data = $data->orderBy('id', 'desc')->get();
+        $data = $data->with('category')->orderBy('id', 'desc')->get();
 
         return $data;
     }
 
     public static function addAction($data)
     {
-        $data['password'] = bcrypt('123456');
+        if (in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['content'] = '';
+        }
+        $data['cat_id'] = (int) $data['cat_id'];
+        $data['password'] = '123456';
+
         return self::firstOrCreate($data);
     }
 
     public static function updateAction($data, $member)
     {
+        if (in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['content'] = '';
+        }
+        $data['cat_id'] = (int) $data['cat_id'];
+
         return $member->update($data);
     }
 

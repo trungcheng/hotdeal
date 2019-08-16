@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<div ng-controller="CategoryController">
+<div ng-controller="CategoryController" ng-init="loadInitCreate()">
 
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
@@ -33,9 +33,29 @@
                                     <input name="name" type="text" class="form-control slug" placeholder="Tên khối...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Ảnh</label>
-                                    <input name="icon" type="text" size="48" class="form-control" id="xFilePath" />
+                                    <label>Thuộc khối</label>
+                                    <select class="form-control cate" name="parent_id">
+                                        <option value="0">Không thuộc khối nào</option>
+                                        <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mô tả</label>
+                                    <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ảnh đại diện</label>
+                                    <input name="image" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                                </div>
+                                <div class="form-group">
+                                    <label>Trạng thái</label>
+                                    <select class="form-control status" name="status">
+                                        <option value="1">Hoạt động</option>
+                                        <option value="0">Khóa</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -53,39 +73,40 @@
 
 </div>
 
-<script>
-    function openPopup() {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath' ).value = file.getUrl();
-                } );
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                } );
-            }
-        } );
-    }
-    
-    function openPopupMulti(id) {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath'+id ).value = file.getUrl();
-                });
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
-                });
-            }
-        });
-    }
-</script>
 @stop
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/category.controller.js') !!}
+
+    <script type="text/javascript">
+        function openPopup() {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                    } );
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                    } );
+                }
+            } );
+        }
+        
+        function openPopupMulti(id) {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath'+id ).value = file.getUrl();
+                    });
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        }
+    </script>
 @stop

@@ -3,9 +3,9 @@
 
     angular
         .module('VincomCMS')
-        .controller('MemberController', MemberController);
+        .controller('RoundController', RoundController);
 
-    function MemberController($rootScope, $scope, $http, $window, $timeout, PagerService) {
+    function RoundController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
         $scope.totalItems = [];
         $scope.pager = {};
@@ -25,7 +25,7 @@
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/members/getAllMembers?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/rounds/getAllRounds?name=' + name, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -52,20 +52,14 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-member', 10, 1);
+            $scope.getResultsPage('all-round', 10, 1);
         }
 
-        $scope.loadInitCreate = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
-                $scope.parentCates = res.data;
-            });
-        }
-
-        $scope.searchMemberName = function() {
+        $scope.searchRoundName = function() {
             if ($scope.searchText.length >= 1) {
                 $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
             } else {
-                $scope.getResultsPage('all-member', $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage('all-round', $scope.perPage, $scope.pageNumber);
             }
         }
 
@@ -89,10 +83,9 @@
         $scope.process = function (type) {    
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
-            formData.append('content', CKEDITOR.instances.content.document.getBody().getHtml());
             
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" thành viên này ?",
+                title: "Bạn chắc chắn muốn "+ title +" vòng thi này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -103,7 +96,7 @@
             }, function () {
                 $http({
                     method: 'POST',
-                    url: app.vars.baseUrl + '/members/' + type,
+                    url: app.vars.baseUrl + '/rounds/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
@@ -112,7 +105,7 @@
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
-                                window.location.href = app.vars.baseUrl + '/members';
+                                window.location.href = app.vars.baseUrl + '/rounds';
                             } else {
                                 // toastr.error(response.message, 'ERROR');
                             }
@@ -122,9 +115,9 @@
             });
         }
 
-        $scope.delete = function (mem, index) {
+        $scope.delete = function (round, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa thành viên này ?",
+                title: "Bạn chắc chắn muốn xóa vòng thi này ? Toàn bộ kết quả thuộc vòng này sẽ xóa hết !",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
@@ -134,10 +127,10 @@
                 showLoaderOnConfirm: true
             }, function () {
                 $http({
-                    url: app.vars.baseUrl + '/members/delete',
+                    url: app.vars.baseUrl + '/rounds/delete',
                     method: 'POST',
                     data: {
-                        memId: mem.id
+                        roundId: round.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {

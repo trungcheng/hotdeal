@@ -55,6 +55,12 @@
             $scope.getResultsPage('all-category', 10, 1);
         }
 
+        $scope.loadInitCreate = function () {
+            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
+                $scope.parentCates = res.data;
+            });
+        }
+
         $scope.searchCategoryName = function() {
             if ($scope.searchText.length >= 1) {
                 $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
@@ -84,7 +90,6 @@
             
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
-            formData.append('seo_content', CKEDITOR.instances.seo_content.document.getBody().getHtml());
             
             swal({
                 title: "Bạn chắc chắn muốn "+ title +" khối này ?",
@@ -119,7 +124,7 @@
 
         $scope.delete = function (cate, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa khối này ? Tất cả các thành viên thuộc khối này sẽ bị xóa theo !",
+                title: "Bạn chắc chắn muốn xóa khối này?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",

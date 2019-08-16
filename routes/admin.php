@@ -28,6 +28,15 @@
                 $this->post('categories/update', 'Admin\CategoryController@update');
                 $this->post('categories/delete', 'Admin\CategoryController@delete');
 
+                // round
+                $this->get('rounds', 'Admin\RoundController@index')->name('rounds');
+                $this->get('rounds/getAllRounds', 'Admin\RoundController@getAllRounds');
+                $this->get('rounds/create', 'Admin\RoundController@create')->name('round-create');
+                $this->get('rounds/edit/{id}', 'Admin\RoundController@edit')->name('round-edit');
+                $this->post('rounds/add', 'Admin\RoundController@add');
+                $this->post('rounds/update', 'Admin\RoundController@update');
+                $this->post('rounds/delete', 'Admin\RoundController@delete');
+
                 // member
                 $this->get('members', 'Admin\MemberController@index')->name('members');
                 $this->get('members/getAllMembers', 'Admin\MemberController@getAllMembers');

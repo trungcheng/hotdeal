@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Cấu hình chung
+@section('page')Thông tin chung
 @stop
 
 @section('pageCss')
@@ -11,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Cấu hình chung
+            Thông tin chung
             <!-- <small>Optional description</small> -->
         </h1>
     </section>
@@ -42,8 +42,8 @@
                     
                     <div class="form-group">
                         <label>Logo</label>
-                        <input name="logo" type="text" size="48" class="form-control" id="xFilePath" />
-                        <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                        <input value="{{ ($setting != '') ? $setting->logo : '' }}" name="logo" type="text" size="48" class="form-control" id="xFilePath" />
+                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                     </div>
 
                     <div class="form-group">
@@ -90,5 +90,21 @@
 @stop
 
 @section('pageJs')
+    <script type="text/javascript">
+        function openPopup() {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function(finder) {
+                    finder.on( 'files:choose', function(evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                    } );
+                    finder.on('file:choose:resizedImage', function(evt) {
+                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        }
+    </script>
 
 @stop
