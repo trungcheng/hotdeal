@@ -33,6 +33,7 @@
                 $this->get('rounds/getAllRounds', 'Admin\RoundController@getAllRounds');
                 $this->get('rounds/create', 'Admin\RoundController@create')->name('round-create');
                 $this->get('rounds/edit/{id}', 'Admin\RoundController@edit')->name('round-edit');
+                $this->get('rounds/view/{id}', 'Admin\RoundController@view')->name('round-view');
                 $this->post('rounds/add', 'Admin\RoundController@add');
                 $this->post('rounds/update', 'Admin\RoundController@update');
                 $this->post('rounds/delete', 'Admin\RoundController@delete');

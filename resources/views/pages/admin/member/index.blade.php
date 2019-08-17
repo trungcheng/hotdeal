@@ -15,7 +15,10 @@
             <h1>
                 Quản lý nhân vật bình chọn
                 <!-- <small>Optional description</small> -->
-                <a href="{{ route('member-create') }}" class="pull-right btn btn-success btn-sm">Thêm mới</a>
+                <a href="{{ route('member-create') }}" class="pull-right btn btn-success btn-sm">
+                    <i class="fa fa-plus"></i> 
+                    Thêm mới
+                </a>
             </h1>
         </section>
 
@@ -88,8 +91,8 @@
                                                     <td style="text-align:center !important">@{{ mem.total_vote }}</td>
                                                     <td>@{{ (mem.status) ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>
-                                                        <a href="/admin/access/members/edit/@{{ mem.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                                        <a ng-click="delete(mem, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                                        <a title="Sửa" href="/admin/access/members/edit/@{{ mem.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a title="Xóa" ng-click="delete(mem, $index)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>

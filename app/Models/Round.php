@@ -3,7 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\UserRound;
+use Carbon\Carbon;
 use App\Util\Util;
+use Response;
 
 class Round extends Model
 {
@@ -49,7 +52,8 @@ class Round extends Model
         $data = self::where('id', '>', 0);
 
         if ($request->name !== 'all-round' && $request->name !== 'undefined') {
-            $data->where("name", "LIKE", "%" . $request->name . "%");
+            $data->where("name", "LIKE", "%" . $request->name . "%")
+                 ->orWhere("description", "LIKE", "%" . $request->name . "%");
         }
 
         $data = $data->orderBy('id', 'asc')->get();
@@ -61,9 +65,18 @@ class Round extends Model
     {
         $data['slug'] = Util::generateSlug($data['name']);
         if ($data['is_running'] == 1) {
-            $countRunning = self::where('is_running', 1)->count();
-            if ($countRunning >= 1) {
-                self::where('is_running', 1)->update(['is_running' => 0]);
+            $now = Carbon::now('Asia/Bangkok')->format('Y-m-d h:i:s');
+            if ($data['from_date'] <= $now && $now <= $data['to_date']) {
+                $countRunning = self::where('is_running', 1)->count();
+                if ($countRunning >= 1) {
+                    self::where('is_running', 1)->update(['is_running' => 0]);
+                }
+            } else {
+                return Response::json([
+                    'status' => false, 
+                    'message' => 'Thời gian đã vượt quá hoặc chưa đến lúc để khởi động vòng thi',
+                    'type' => 'error'
+                ]);
             }
         }
 
@@ -74,9 +87,28 @@ class Round extends Model
     {
         $data['slug'] = Util::generateSlug($data['name']);
         if ($data['is_running'] == 1) {
-            $countRunning = self::where('is_running', 1)->count();
-            if ($countRunning >= 1) {
-                self::where('is_running', 1)->update(['is_running' => 0]);
+            $now = Carbon::now('Asia/Bangkok')->format('Y-m-d h:i:s');
+            if ($data['from_date'] <= $now && $now <= $data['to_date']) {
+                $countRunning = self::where('is_running', 1)->count();
+                if ($countRunning >= 1) {
+                    self::where('is_running', 1)->update(['is_running' => 0]);
+                }
+            } else {
+                return Response::json([
+                    'status' => false, 
+                    'message' => 'Thời gian đã vượt quá hoặc chưa đến lúc để khởi động vòng thi',
+                    'type' => 'error'
+                ]);
+            }
+        }
+        $userRound = UserRound::where('round_id', $round->id)->get();
+        if ($userRound) {
+            if ($data['user_select_count'] < $userRound->count()) {
+                return Response::json([
+                    'status' => false,
+                    'message' => 'Số người lựa chọn đã nhỏ hơn số người hiện tại', 
+                    'type' => 'error'
+                ]);
             }
         }
 

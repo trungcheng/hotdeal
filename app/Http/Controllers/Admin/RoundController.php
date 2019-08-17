@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Round;
-use App\Models\User;
-use App\Models\UserRound;
-use App\Util\Util;
 use Response;
 use Validator;
 
@@ -43,6 +40,11 @@ class RoundController extends Controller
         }
 
         abort(404);
+    }
+
+    public function view(Request $request, $id)
+    {
+        var_dump($id);die;
     }
 
     public function add(Request $request)
@@ -96,16 +98,6 @@ class RoundController extends Controller
             if ($data) {
                 $round = Round::find($data['id']);
                 if ($round) {
-                    $userRound = UserRound::where('round_id', $round->id)->get();
-                    if ($userRound) {
-                        if ($data['user_select_count'] < $userRound->count()) {
-                            return Response::json([
-                                'status' => false,
-                                'message' => 'Số người lựa chọn đã nhỏ hơn số người hiện tại', 
-                                'type' => 'error'
-                            ]);
-                        }
-                    }
                     Round::updateAction($data, $round);
                     return Response::json([
                         'status' => true,

@@ -61,13 +61,13 @@
                                         <option value="0">Khóa</option>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                {{--<div class="form-group">
                                     <label>Quyền truy cập</label>
                                     <select name="role_id" class="form-control status">
                                         <option value="3">Thành viên</option>
                                         <option value="2">Admin</option>
                                     </select>
-                                </div>
+                                </div>--}}
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('add')" type="button" class="btn btn-primary">Thêm</button>

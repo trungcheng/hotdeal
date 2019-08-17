@@ -97,7 +97,7 @@ class User extends Model implements Authenticatable
             $data['content'] = '';
         }
         $data['cat_id'] = (int) $data['cat_id'];
-        $data['password'] = '123456';
+        $data['role_id'] = 3;
         $data['type'] = 1;
 
         return self::firstOrCreate($data);

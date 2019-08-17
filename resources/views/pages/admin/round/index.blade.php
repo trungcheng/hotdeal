@@ -15,7 +15,10 @@
             <h1>
                 Quản lý vòng thi
                 <!-- <small>Optional description</small> -->
-                <a href="{{ route('round-create') }}" class="pull-right btn btn-success btn-sm">Thêm vòng</a>
+                <a href="{{ route('round-create') }}" class="pull-right btn btn-success btn-sm">
+                    <i class="fa fa-plus"></i> 
+                    Thêm vòng
+                </a>
             </h1>
         </section>
 
@@ -77,8 +80,9 @@
                                                     <td>@{{ (round.is_running) ? 'Bật' : 'Tắt' }}</td>
                                                     <td>@{{ (round.visible_menu) ? 'Hiện' : 'Ẩn' }}</td>
                                                     <td>
-                                                        <a href="/admin/access/rounds/edit/@{{ round.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                                        <a ng-click="delete(round, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                                        <a title="Xem danh sách nhân vật bình chọn" href="/admin/access/rounds/view/@{{ round.id }}" style="margin-right:5px;" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>
+                                                        <a title="Sửa" href="/admin/access/rounds/edit/@{{ round.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a title="Xóa" ng-click="delete(round, $index)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
