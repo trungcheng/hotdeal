@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-16 23:30:44
+Date: 2019-08-17 09:21:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -168,6 +168,7 @@ CREATE TABLE `user_round` (
   `user_id` int(11) DEFAULT NULL,
   `round_id` int(11) DEFAULT NULL,
   `vote` int(11) DEFAULT NULL,
+  `is_selected` tinyint(1) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)

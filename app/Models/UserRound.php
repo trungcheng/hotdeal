@@ -12,7 +12,8 @@ class UserRound extends Model
     protected $fillable = [
         'user_id',
         'round_id',
-        'vote'
+        'vote',
+        'is_selected'
     ];
 
     public function round() {
