@@ -10,6 +10,7 @@
         $scope.totalItems = [];
         $scope.pager = {};
         $scope.enableSubmit = false;
+        $scope.cateId = 'all-cate';
 
         $scope.pullDownLists = {
             availableOption: [
@@ -21,17 +22,18 @@
             selectedOption: {value: 10, name: '10'}
         };
 
-        $scope.getResultsPage = function (name, perPage, pageNumber) {
+        $scope.getResultsPage = function (name, cate, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/members/getAllMembers?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/members/getAllMembers?name=' + name + '&cate=' + cate, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
                     $scope.loaded = true;
 
                     $scope.name = name;
+                    $scope.cate = cate;
                     $scope.pullDownLists.selectedOption = { value: perPage, name: perPage };
                     $scope.perPage = perPage;
                     $scope.pageNumber = pageNumber;
@@ -42,7 +44,7 @@
         }
 
         $scope.setPage = function (pageSize, currentPage) {
-            if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
+            // if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
             $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
             $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
             $scope.from = $scope.pager.startIndex + 1;
@@ -52,7 +54,7 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-member', 10, 1);
+            $scope.getResultsPage('all-member', 'all-cate', 10, 1);
         }
 
         $scope.loadInitCreate = function () {
@@ -63,20 +65,20 @@
 
         $scope.searchMemberName = function() {
             if ($scope.searchText.length >= 1) {
-                $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage($scope.searchText, $scope.cate, $scope.perPage, $scope.pageNumber);
             } else {
-                $scope.getResultsPage('all-member', $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage('all-member', $scope.cate, $scope.perPage, $scope.pageNumber);
             }
         }
 
         $scope.previousPage = function () {
             $scope.pageNumber -= 1;
-            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+            $scope.getResultsPage($scope.name, $scope.cate, $scope.perPage, $scope.pageNumber);
         }
 
         $scope.nextPage = function () {
             $scope.pageNumber += 1;
-            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+            $scope.getResultsPage($scope.name, $scope.cate, $scope.perPage, $scope.pageNumber);
         }
 
         $scope.range = function(min, max, step) {

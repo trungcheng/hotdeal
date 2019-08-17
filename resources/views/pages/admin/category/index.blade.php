@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter" style="float:right;">
-                                            <label>Search:
+                                            <label>Search
                                                 <input my-enter="searchCategoryName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
                                             </label>
                                         </div>

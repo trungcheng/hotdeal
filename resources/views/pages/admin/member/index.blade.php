@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <div ng-controller="MemberController" ng-init="loadInit()">
+    <div ng-controller="MemberController" ng-init="loadInit();loadInitCreate()">
 
         <!-- Content Header (Page header) -->
         <section class="content-header" style="padding-top:30px;">
@@ -45,8 +45,19 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter" style="float:right;">
-                                            <label>Search:
+                                            <label>Search
                                                 <input my-enter="searchMemberName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
+                                            </label>
+                                        </div>
+                                        <div ng-cloak id="example1_filter" class="dataTables_filter" style="float:right;margin-right:10px;">
+                                            <label>Khối
+                                                <select ng-change="getResultsPage(name, cateId, perPage, pageNumber)" class="form-control input-sm" ng-model="cateId">
+                                                    <option value="all-cate">Tất cả các khối</option>
+                                                    <option value="0">Không thuộc khối nào</option>
+                                                    <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                                        @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
+                                                    </option>
+                                                </select>
                                             </label>
                                         </div>
                                     </div>

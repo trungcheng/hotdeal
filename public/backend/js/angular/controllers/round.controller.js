@@ -42,7 +42,7 @@
         }
 
         $scope.setPage = function (pageSize, currentPage) {
-            if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
+            // if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
             $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
             $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
             $scope.from = $scope.pager.startIndex + 1;
@@ -65,12 +65,12 @@
 
         $scope.previousPage = function () {
             $scope.pageNumber -= 1;
-            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+            $scope.getResultsPage($scope.name, $scope.perPage, $scope.pageNumber);
         }
 
         $scope.nextPage = function () {
             $scope.pageNumber += 1;
-            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+            $scope.getResultsPage($scope.name, $scope.perPage, $scope.pageNumber);
         }
 
         $scope.range = function(min, max, step) {

@@ -19,11 +19,12 @@ class User extends Model implements Authenticatable
         'username',
         'full_name', 
         'email',
-        'password',
         'intro',
         'content',
         'avatar',
         'total_vote',
+        'password',
+        'type',
         'status'
     ];
 
@@ -74,10 +75,15 @@ class User extends Model implements Authenticatable
 
     public static function init($request)
     {
-        $data = self::where('id', '>', 0)->where('role_id', 3)->where('type', 1);
+        $data = self::where('role_id', 3)->where('type', 1);
 
-        if ($request->full_name !== 'all-member' && $request->full_name !== 'undefined') {
-            $data->where("full_name", "LIKE", "%" . $request->full_name . "%");
+        if ($request->name !== 'all-member' && $request->name !== 'undefined') {
+            $data->where("full_name", "LIKE", "%" . $request->name . "%")
+                 ->orWhere("intro", "LIKE", "%" . $request->name . "%");
+        }
+
+        if ($request->cate !== 'all-cate' && $request->cate !== 'undefined') {
+            $data->where("cat_id", (int) $request->cate);
         }
 
         $data = $data->with('category')->orderBy('id', 'desc')->get();
