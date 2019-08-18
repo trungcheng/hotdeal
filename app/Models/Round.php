@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\UserRound;
 use Carbon\Carbon;
 use App\Util\Util;
-use Response;
 
 class Round extends Model
 {
@@ -34,7 +33,8 @@ class Round extends Model
 
     public static $rules = [
         'name' => 'required|min:2',
-        'from_date' => 'required|date|after:now',
+        'from_date' => 'required|date',
+        // 'from_date' => 'required|date|after:now',
         'to_date' => 'required|date|after:from_date'
     ];
 
@@ -42,7 +42,7 @@ class Round extends Model
         'name.required' => 'Tên không được để trống',
         'name.min' => 'Tên ít nhất từ 2 ký tự',
         'from_date.required' => 'Ngày bắt đầu không được để trống',
-        'from_date.after' => 'Vui lòng chọn ngày bắt đầu trong tương lai',
+        // 'from_date.after' => 'Vui lòng chọn ngày bắt đầu trong tương lai',
         'to_date.required' => 'Ngày kết thúc không được để trống',
         'to_date.after' => 'Ngày kết thúc phải sau ngày bắt đầu'
     ];
@@ -65,54 +65,68 @@ class Round extends Model
     {
         $data['slug'] = Util::generateSlug($data['name']);
         if ($data['is_running'] == 1) {
-            $now = Carbon::now('Asia/Bangkok')->format('Y-m-d h:i:s');
+            $now = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d H:i:s');
             if ($data['from_date'] <= $now && $now <= $data['to_date']) {
                 $countRunning = self::where('is_running', 1)->count();
                 if ($countRunning >= 1) {
                     self::where('is_running', 1)->update(['is_running' => 0]);
                 }
             } else {
-                return Response::json([
+                return [
                     'status' => false, 
-                    'message' => 'Thời gian đã vượt quá hoặc chưa đến lúc để khởi động vòng thi',
+                    'message' => 'Thời gian hiện tại đã vượt quá hoặc chưa đến lúc để khởi động vòng thi',
                     'type' => 'error'
-                ]);
+                ];
             }
         }
 
-        return self::firstOrCreate($data);
+        self::firstOrCreate($data);
+
+        return [
+            'status' => true,
+            'message' => 'Thêm vòng thi thành công',
+            'type' => 'success'
+        ];
     }
 
     public static function updateAction($data, $round)
     {
         $data['slug'] = Util::generateSlug($data['name']);
+        $userRoundSelect = UserRound::where('round_id', $round->id)
+            ->where('is_selected', 1)
+            ->get();
+        if ($userRoundSelect) {
+            if ($data['user_select_count'] < $userRoundSelect->count()) {
+                return [
+                    'status' => false,
+                    'message' => 'Số người lựa chọn đã nhỏ hơn số người được lựa chọn hiện tại',
+                    'type' => 'error'
+                ];
+            }
+        }
         if ($data['is_running'] == 1) {
-            $now = Carbon::now('Asia/Bangkok')->format('Y-m-d h:i:s');
+            $now = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d H:i:s');
             if ($data['from_date'] <= $now && $now <= $data['to_date']) {
                 $countRunning = self::where('is_running', 1)->count();
                 if ($countRunning >= 1) {
                     self::where('is_running', 1)->update(['is_running' => 0]);
                 }
             } else {
-                return Response::json([
-                    'status' => false, 
-                    'message' => 'Thời gian đã vượt quá hoặc chưa đến lúc để khởi động vòng thi',
-                    'type' => 'error'
-                ]);
-            }
-        }
-        $userRound = UserRound::where('round_id', $round->id)->get();
-        if ($userRound) {
-            if ($data['user_select_count'] < $userRound->count()) {
-                return Response::json([
+                return [
                     'status' => false,
-                    'message' => 'Số người lựa chọn đã nhỏ hơn số người hiện tại', 
+                    'message' => 'Thời gian hiện tại đã vượt quá hoặc chưa đến lúc để khởi động vòng thi',
                     'type' => 'error'
-                ]);
+                ];
             }
         }
 
-        return $round->update($data);
+        $round->update($data);
+
+        return [
+            'status' => true,
+            'message' => 'Cập nhật vòng thi thành công',
+            'type' => 'success'
+        ];
     }
 
 }

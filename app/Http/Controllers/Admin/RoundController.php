@@ -61,11 +61,12 @@ class RoundController extends Controller
 
             $data = $request->all();
             if ($data) {
-                Round::addAction($data);
+                $cb = Round::addAction($data);
+                
                 return Response::json([
-                    'status' => true,
-                    'message' => 'Thêm vòng thi thành công', 
-                    'type' => 'success'
+                    'status' => $cb['status'],
+                    'message' => $cb['message'],
+                    'type' => $cb['type']
                 ]);
             }
 
@@ -98,12 +99,13 @@ class RoundController extends Controller
             if ($data) {
                 $round = Round::find($data['id']);
                 if ($round) {
-                    Round::updateAction($data, $round);
+                    $cb = Round::updateAction($data, $round);
+                    
                     return Response::json([
-                        'status' => true,
-                        'message' => 'Cập nhật vòng thi thành công',
-                        'type' => 'success'
-                    ]);
+                        'status' => $cb['status'],
+                        'message' => $cb['message'],
+                        'type' => $cb['type']
+                    ]);                        
                 } else {
                     return Response::json([
                         'status' => false,

@@ -106,11 +106,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 	<script type="text/javascript">
 		$(function () {
-	        $('#from_date').datetimepicker({
-	            format: 'YYYY-MM-DD hh:mm:ss'
-	        });
-			$('#to_date').datetimepicker({
-	            format: 'YYYY-MM-DD hh:mm:ss'
+	        $('#from_date, #to_date').datetimepicker({
+	            format: 'YYYY-MM-DD HH:mm:ss'
 	        });
 		});
 	</script>
