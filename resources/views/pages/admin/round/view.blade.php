@@ -1,10 +1,14 @@
 @extends('layouts.admin.master')
 
-@section('page')Danh sách nhân vật trong vòng
+@section('page')Danh sách nhân vật bình chọn
 @stop
 
 @section('pageCss')
-
+    <style type="text/css">
+        input[type="checkbox"] {
+            zoom: 1.5;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -69,7 +73,7 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th>
-                                                        <input style="zoom:1.5" type="checkbox" ng-model="allIsChecked" ng-change="handleChosenAllMember()" />
+                                                        <input type="checkbox" ng-model="isAllChecked" ng-change="handleChosenAllMember()" />
                                                     </th>
                                                     <th>Ảnh</th>
                                                     <th>Họ tên</th>
@@ -81,7 +85,7 @@
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="mem in items track by mem.id">
                                                     <td>
-                                                        <input style="zoom:1.5" ng-checked="mem.is_selected" type="checkbox" ng-change="handleChosenMember(mem)" ng-model="mem.isChecked" />
+                                                        <input ng-checked="mem.is_selected" type="checkbox" ng-change="handleChosenMember(mem)" ng-model="mem.isChecked" />
                                                     </td>
                                                     <td style="text-align:center !important">
                                                         <img src="@{{ mem.user.avatar }}" style="width:70px;height:65px;border-radius:50%" />
@@ -112,7 +116,13 @@
                                             <items-pagination></items-pagination>
                                         </div>
                                     </div>
+                                    <div class="col-sm-12 text-center">
+                                        <p>Số nhân vật đã chọn: <strong>@{{ selectedMembers.length }}</strong></p>
+                                        <button class="btn btn-danger text-center">Xóa nhân vật đã chọn</button>
+                                        <button class="btn btn-danger text-center">Xóa nhân vật đã chọn</button>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                         <!-- /.box-body -->

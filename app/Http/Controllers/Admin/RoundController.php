@@ -53,7 +53,13 @@ class RoundController extends Controller
     {
         $round = Round::find($id);
         if ($round) {
-            return view('pages.admin.round.view', ['round' => $round]);
+            $otherRounds = Round::where('id', '<>', $round->id)
+                ->orderBy('id', 'asc')->get();
+
+            return view('pages.admin.round.view', [
+                'round' => $round,
+                'otherRounds' => $otherRounds
+            ]);
         }
 
         abort(404);

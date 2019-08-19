@@ -57,7 +57,7 @@
 				                    </div>
 			                    </div>
                                 <div class="form-group">
-                                    <label>Số người lựa chọn</label>
+                                    <label>Số người lựa chọn (tối đa)</label>
                                     <input name="user_select_count" value="30" type="number" min="1" max="1000" class="form-control slug" placeholder="Số người lựa chọn...">
                                 </div>
                                 <div class="form-group">

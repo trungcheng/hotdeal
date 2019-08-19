@@ -14,10 +14,12 @@
 
         $scope.pullDownLists = {
             availableOption: [
+              { value: 2, name: '2' },
               { value: 10, name: '10' },
               { value: 25, name: '25' },
               { value: 50, name: '50' },
-              { value: 100, name: '100' }
+              { value: 100, name: '100' },
+              { value: 200, name: '200' }
             ],
             selectedOption: {value: 10, name: '10'}
         };
@@ -54,7 +56,7 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-member', 'all-cate', 10, 1);
+            $scope.getResultsPage('all-member', 'all-cate', 2, 1);
         }
 
         $scope.loadInitCreate = function () {

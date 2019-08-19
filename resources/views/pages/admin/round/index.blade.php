@@ -64,7 +64,7 @@
                                                     <th style="text-align:center !important;width:20%">Tên vòng</th>
                                                     <th>Từ ngày</th>
                                                     <th>Đến ngày</th>
-                                                    <th>Số người chọn</th>
+                                                    <th>Số người chọn (tối đa)</th>
                                                     <th>Trạng thái</th>
                                                     <th>Hiện menu</th>
                                                     <th>Chức năng</th>

@@ -7,7 +7,7 @@
 
     function RoundController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
-    	$scope.selected = [];
+    	$scope.selectedMembers = [];
         $scope.totalItems = [];
         $scope.pager = {};
         $scope.enableSubmit = false;
@@ -19,7 +19,8 @@
               { value: 10, name: '10' },
               { value: 25, name: '25' },
               { value: 50, name: '50' },
-              { value: 100, name: '100' }
+              { value: 100, name: '100' },
+              { value: 200, name: '200' }
             ],
             selectedOption: {value: 10, name: '10'}
         };
@@ -186,16 +187,27 @@
         $scope.handleChosenMember = function (mem) {
         	if (mem.isChecked) {
         		mem.is_selected = true;
-		        $scope.selected.push(mem.id);
+		        $scope.selectedMembers.push(mem.id);
 		    } else {
-		        var toDel = $scope.selected.indexOf(mem);
-		        $scope.selected.splice(toDel);
+		        var toDel = $scope.selectedMembers.indexOf(mem);
+		        $scope.selectedMembers.splice(toDel);
 		        mem.is_selected = false;
 		    }
         }
 
         $scope.handleChosenAllMember = function () {
-        	
+            $scope.selectedMembers = [];
+        	if ($scope.isAllChecked) {
+                angular.forEach($scope.totalItems, function (v, k) {
+                    v.is_selected = true;
+                    $scope.selectedMembers.push(v.id);
+                });
+            } else {
+                angular.forEach($scope.totalItems, function (v, k) {
+                    v.is_selected = false;
+                });
+            }
+            $scope.setPage($scope.perPage, $scope.pageNumber);
         }
 
     }
