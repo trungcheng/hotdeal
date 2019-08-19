@@ -31,6 +31,7 @@
                 // round
                 $this->get('rounds', 'Admin\RoundController@index')->name('rounds');
                 $this->get('rounds/getAllRounds', 'Admin\RoundController@getAllRounds');
+                $this->get('rounds/getAllUserRounds', 'Admin\RoundController@getAllUserRounds');
                 $this->get('rounds/create', 'Admin\RoundController@create')->name('round-create');
                 $this->get('rounds/edit/{id}', 'Admin\RoundController@edit')->name('round-edit');
                 $this->get('rounds/view/{id}', 'Admin\RoundController@view')->name('round-view');

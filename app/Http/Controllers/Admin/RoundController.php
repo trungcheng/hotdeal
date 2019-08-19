@@ -27,6 +27,13 @@ class RoundController extends Controller
         return Response::json(['status' => true, 'data' => $results]);
     }
 
+    public function getAllUserRounds(Request $request)
+    {
+        $results = Round::getAllUserByRound($request);
+            
+        return Response::json(['status' => true, 'data' => $results]);
+    }
+
     public function create(Request $request)
     {
         return view('pages.admin.round.add');
@@ -44,7 +51,12 @@ class RoundController extends Controller
 
     public function view(Request $request, $id)
     {
-        var_dump($id);die;
+        $round = Round::find($id);
+        if ($round) {
+            return view('pages.admin.round.view', ['round' => $round]);
+        }
+
+        abort(404);
     }
 
     public function add(Request $request)

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-17 09:21:05
+Date: 2019-08-19 18:22:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -101,7 +101,7 @@ CREATE TABLE `rounds` (
 -- ----------------------------
 -- Records of rounds
 -- ----------------------------
-INSERT INTO `rounds` VALUES ('1', 'Vòng 1', null, 'vong-1', null, null, '0', '0', '30', '0', '2019-08-16 01:14:43', '2019-08-16 01:14:43');
+INSERT INTO `rounds` VALUES ('1', 'Vòng 1', null, 'vong-1', '2019-08-18 15:22:41', '2019-08-30 15:22:44', '1', '0', '30', '0', '2019-08-19 15:22:55', '2019-08-19 08:22:55');
 INSERT INTO `rounds` VALUES ('2', 'Vòng 2', null, 'vong-2', null, null, '0', '0', '30', '0', '2019-08-16 01:15:24', '2019-08-16 01:15:24');
 INSERT INTO `rounds` VALUES ('3', 'Vòng kết quả', null, 'vong-ket-qua', null, null, '0', '0', '15', '0', '2019-08-16 01:15:57', '2019-08-16 01:15:57');
 
@@ -157,7 +157,9 @@ CREATE TABLE `users` (
 -- ----------------------------
 INSERT INTO `users` VALUES ('1', '1', '0', 'admin', 'Nguyễn Át Min', 'admin@admin.com', '', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', '0UZASRQ6qmaAau4oBE73eB0Xs32X3xAf1mLgLZ9LkB1iQ4akzDpO0N8ZwKe3', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
 INSERT INTO `users` VALUES ('3', '3', '2', '', 'Hoàng Văn Hải', '', 'Lập trình viên cấp cao', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '', '1', '1', '', '2019-04-23 09:28:28', '2019-04-23 09:31:06');
-INSERT INTO `users` VALUES ('5', '3', '3', '', 'Đinh Trung', '', 'Chuyên viên thiết kế animation', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '', '1', '1', '', '2019-04-24 04:21:40', '2019-04-24 04:26:28');
+INSERT INTO `users` VALUES ('5', '3', '3', '', 'Đinh Trung', '', 'Chuyên viên thiết kế animation', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '', '1', '1', '', '2019-04-24 04:21:40', '2019-08-19 04:56:43');
+INSERT INTO `users` VALUES ('6', '3', '1', null, 'Mạnh Hiển', null, 'Designer', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:14:36', '2019-08-19 18:14:36');
+INSERT INTO `users` VALUES ('7', '3', '4', null, 'Dương Hoàng', null, 'Tester', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:15:05', '2019-08-19 18:15:05');
 
 -- ----------------------------
 -- Table structure for user_round
@@ -167,13 +169,17 @@ CREATE TABLE `user_round` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `round_id` int(11) DEFAULT NULL,
-  `vote` int(11) DEFAULT NULL,
+  `vote` int(11) DEFAULT '0',
   `is_selected` tinyint(1) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_round
 -- ----------------------------
+INSERT INTO `user_round` VALUES ('1', '3', '1', '0', '0', '2019-08-19 08:22:55', '2019-08-19 08:22:55');
+INSERT INTO `user_round` VALUES ('2', '5', '1', '0', '0', '2019-08-19 08:22:55', '2019-08-19 08:22:55');
+INSERT INTO `user_round` VALUES ('3', '6', '1', '0', '0', '2019-08-19 18:15:37', '2019-08-19 18:15:37');
+INSERT INTO `user_round` VALUES ('4', '7', '1', '0', '0', '2019-08-19 18:15:40', '2019-08-19 18:15:40');

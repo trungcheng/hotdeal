@@ -7,12 +7,15 @@
 
     function RoundController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
+    	$scope.selected = [];
         $scope.totalItems = [];
         $scope.pager = {};
         $scope.enableSubmit = false;
+        $scope.cateId = 'all-cate';
 
         $scope.pullDownLists = {
             availableOption: [
+              { value: 2, name: '2' },
               { value: 10, name: '10' },
               { value: 25, name: '25' },
               { value: 50, name: '50' },
@@ -55,6 +58,12 @@
             $scope.getResultsPage('all-round', 10, 1);
         }
 
+        $scope.loadInitCreate = function () {
+            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
+                $scope.parentCates = res.data;
+            });
+        }
+
         $scope.searchRoundName = function() {
             if ($scope.searchText.length >= 1) {
                 $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
@@ -62,23 +71,6 @@
                 $scope.getResultsPage('all-round', $scope.perPage, $scope.pageNumber);
             }
         }
-
-        $scope.previousPage = function () {
-            $scope.pageNumber -= 1;
-            $scope.getResultsPage($scope.name, $scope.perPage, $scope.pageNumber);
-        }
-
-        $scope.nextPage = function () {
-            $scope.pageNumber += 1;
-            $scope.getResultsPage($scope.name, $scope.perPage, $scope.pageNumber);
-        }
-
-        $scope.range = function(min, max, step) {
-            step = step || 1;
-            var input = [];
-            for (var i = min; i <= max; i += step) input.push(i);
-            return input;
-        };
 
         $scope.process = function (type) {    
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
@@ -145,6 +137,65 @@
                     })
                 });
             });
+        }
+
+
+
+
+
+        /////////////////////  VIEW LIST USER VOTE /////////////////////
+
+
+
+
+
+        $scope.getResultsViewPage = function (roundId, name, cate, perPage, pageNumber) {
+            $scope.loading = true;
+            $scope.loaded = false;
+
+            $http.get(app.vars.baseUrl + '/rounds/getAllUserRounds?roundId=' + roundId + '&name=' + name + '&cate=' + cate, {cache: false})
+                .success(function(response) {
+
+                    $scope.loading = false;
+                    $scope.loaded = true;
+
+                    $scope.roundId = roundId;
+                    $scope.name = name;
+                    $scope.cate = cate;
+                    $scope.pullDownLists.selectedOption = { value: perPage, name: perPage };
+                    $scope.perPage = perPage;
+                    $scope.pageNumber = pageNumber;
+                    $scope.totalItems = response.data;
+                    $scope.setPage(perPage, pageNumber);
+
+                });
+        }
+
+        $scope.loadInitView = function (roundId) {
+        	$scope.getResultsViewPage(roundId, 'all-member', 'all-cate', 2, 1);
+        }
+
+        $scope.searchUserRoundName = function() {
+            if ($scope.searchText.length >= 1) {
+                $scope.getResultsViewPage($scope.roundId, $scope.searchText, $scope.cate, $scope.perPage, $scope.pageNumber);
+            } else {
+                $scope.getResultsViewPage($scope.roundId, 'all-member', $scope.cate, $scope.perPage, $scope.pageNumber);
+            }
+        }
+
+        $scope.handleChosenMember = function (mem) {
+        	if (mem.isChecked) {
+        		mem.is_selected = true;
+		        $scope.selected.push(mem.id);
+		    } else {
+		        var toDel = $scope.selected.indexOf(mem);
+		        $scope.selected.splice(toDel);
+		        mem.is_selected = false;
+		    }
+        }
+
+        $scope.handleChosenAllMember = function () {
+        	
         }
 
     }

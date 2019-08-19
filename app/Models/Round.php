@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\UserRound;
+use App\Models\User;
 use Carbon\Carbon;
 use App\Util\Util;
 
@@ -92,6 +93,7 @@ class Round extends Model
     public static function updateAction($data, $round)
     {
         $data['slug'] = Util::generateSlug($data['name']);
+        $userRound = UserRound::where('round_id', $round->id)->get();
         $userRoundSelect = UserRound::where('round_id', $round->id)
             ->where('is_selected', 1)
             ->get();
@@ -106,10 +108,23 @@ class Round extends Model
         }
         if ($data['is_running'] == 1) {
             $now = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d H:i:s');
+            // check thời gian hiện tại phải nằm trong khoảng from_date -> to_date
             if ($data['from_date'] <= $now && $now <= $data['to_date']) {
                 $countRunning = self::where('is_running', 1)->count();
                 if ($countRunning >= 1) {
                     self::where('is_running', 1)->update(['is_running' => 0]);
+                }
+                // nếu chưa có nhân vật nào trong vòng thì add toàn bộ nhân vật bình chọn vào vòng
+                if (!$userRound || $userRound->count() == 0) {
+                	$users = User::where('type', 1)->where('role_id', 3)->get();
+                	foreach ($users as $user) {
+                		UserRound::create([
+                			'user_id' => $user->id,
+                			'round_id' => $round->id,
+                			'vote' => 0,
+                			'is_selected' => 0
+                		]);
+                	}
                 }
             } else {
                 return [
@@ -127,6 +142,24 @@ class Round extends Model
             'message' => 'Cập nhật vòng thi thành công',
             'type' => 'success'
         ];
+    }
+
+    public static function getAllUserByRound($request)
+    {
+    	$users = UserRound::whereHas('user', function ($query) use ($request) {
+    		if ($request->name !== 'all-member' && $request->name !== 'undefined') {
+	            $query->where("full_name", "LIKE", "%" . $request->name . "%")
+	                  ->orWhere("intro", "LIKE", "%" . $request->name . "%");
+	        }
+	        if ($request->cate !== 'all-cate' && $request->cate !== 'undefined') {
+	            $query->where("cat_id", (int) $request->cate);
+	        }
+        })->with('user.category')
+          ->where('round_id', $request->roundId)
+          ->orderBy('vote', 'desc')
+          ->get();
+
+		return $users;
     }
 
 }
