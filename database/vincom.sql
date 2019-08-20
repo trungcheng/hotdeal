@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-19 18:22:06
+Date: 2019-08-20 16:01:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `categories` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of categories
@@ -96,14 +96,14 @@ CREATE TABLE `rounds` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of rounds
 -- ----------------------------
-INSERT INTO `rounds` VALUES ('1', 'Vòng 1', null, 'vong-1', '2019-08-18 15:22:41', '2019-08-30 15:22:44', '1', '0', '30', '0', '2019-08-19 15:22:55', '2019-08-19 08:22:55');
-INSERT INTO `rounds` VALUES ('2', 'Vòng 2', null, 'vong-2', null, null, '0', '0', '30', '0', '2019-08-16 01:15:24', '2019-08-16 01:15:24');
-INSERT INTO `rounds` VALUES ('3', 'Vòng kết quả', null, 'vong-ket-qua', null, null, '0', '0', '15', '0', '2019-08-16 01:15:57', '2019-08-16 01:15:57');
+INSERT INTO `rounds` VALUES ('1', 'Vòng 1', null, 'vong-1', '2019-08-18 15:22:41', '2019-08-30 15:22:44', '0', '0', '30', '0', '2019-08-20 11:06:45', '2019-08-20 04:06:45');
+INSERT INTO `rounds` VALUES ('2', 'Vòng 2', null, 'vong-2', '2019-08-18 10:18:57', '2019-09-29 10:19:01', '1', '0', '30', '0', '2019-08-20 11:06:45', '2019-08-20 04:06:45');
+INSERT INTO `rounds` VALUES ('3', 'Vòng kết quả', null, 'vong-ket-qua', '2019-09-10 10:19:48', '2019-09-20 10:20:01', '0', '0', '15', '0', '2019-08-20 10:20:08', '2019-08-20 03:20:08');
 
 -- ----------------------------
 -- Table structure for setting
@@ -174,12 +174,13 @@ CREATE TABLE `user_round` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_round
 -- ----------------------------
-INSERT INTO `user_round` VALUES ('1', '3', '1', '0', '0', '2019-08-19 08:22:55', '2019-08-19 08:22:55');
-INSERT INTO `user_round` VALUES ('2', '5', '1', '0', '0', '2019-08-19 08:22:55', '2019-08-19 08:22:55');
-INSERT INTO `user_round` VALUES ('3', '6', '1', '0', '0', '2019-08-19 18:15:37', '2019-08-19 18:15:37');
-INSERT INTO `user_round` VALUES ('4', '7', '1', '0', '0', '2019-08-19 18:15:40', '2019-08-19 18:15:40');
+INSERT INTO `user_round` VALUES ('9', '3', '1', '0', '1', '2019-08-20 15:04:00', '2019-08-20 08:04:00');
+INSERT INTO `user_round` VALUES ('10', '5', '1', '0', '0', '2019-08-20 15:04:00', '2019-08-20 08:04:00');
+INSERT INTO `user_round` VALUES ('11', '6', '1', '0', '0', '2019-08-20 15:04:00', '2019-08-20 08:04:00');
+INSERT INTO `user_round` VALUES ('12', '7', '1', '0', '0', '2019-08-20 15:04:00', '2019-08-20 08:04:00');
+INSERT INTO `user_round` VALUES ('21', '3', '2', '0', '0', '2019-08-20 08:04:00', '2019-08-20 08:04:00');
