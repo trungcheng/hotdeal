@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-20 16:01:17
+Date: 2019-08-21 00:24:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,11 +54,18 @@ CREATE TABLE `history` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of history
 -- ----------------------------
+INSERT INTO `history` VALUES ('1', '1', '8', '3', '1', '2019-08-20 21:59:57', '2019-08-20 21:59:57');
+INSERT INTO `history` VALUES ('2', '1', '8', '5', '1', '2019-08-20 22:00:05', '2019-08-20 22:00:05');
+INSERT INTO `history` VALUES ('3', '1', '8', '6', '1', '2019-08-20 22:00:11', '2019-08-20 22:00:11');
+INSERT INTO `history` VALUES ('4', '2', '9', '7', '1', '2019-08-20 22:05:59', '2019-08-20 22:05:59');
+INSERT INTO `history` VALUES ('5', '2', '9', '5', '1', '2019-08-20 23:43:45', '2019-08-20 23:43:45');
+INSERT INTO `history` VALUES ('6', '2', '8', '7', '1', '2019-08-20 22:07:46', '2019-08-20 22:07:46');
+INSERT INTO `history` VALUES ('7', '2', '8', '5', '1', '2019-08-20 23:43:57', '2019-08-20 23:43:57');
 
 -- ----------------------------
 -- Table structure for roles
@@ -150,7 +157,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
@@ -160,6 +167,8 @@ INSERT INTO `users` VALUES ('3', '3', '2', '', 'Hoàng Văn Hải', '', 'Lập t
 INSERT INTO `users` VALUES ('5', '3', '3', '', 'Đinh Trung', '', 'Chuyên viên thiết kế animation', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '', '1', '1', '', '2019-04-24 04:21:40', '2019-08-19 04:56:43');
 INSERT INTO `users` VALUES ('6', '3', '1', null, 'Mạnh Hiển', null, 'Designer', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:14:36', '2019-08-19 18:14:36');
 INSERT INTO `users` VALUES ('7', '3', '4', null, 'Dương Hoàng', null, 'Tester', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:15:05', '2019-08-19 18:15:05');
+INSERT INTO `users` VALUES ('8', '3', '2', 'namnt', 'Nguyễn Thành Nam', 'nam@gmail.com', null, null, '', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', null, '2019-08-20 21:55:57', '2019-08-20 21:55:57');
+INSERT INTO `users` VALUES ('9', '3', '1', 'thuynv', 'Nguyễn Văn Thủy', 'thuy@gmail.com', null, null, '', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', null, '2019-08-20 21:56:19', '2019-08-20 21:56:19');
 
 -- ----------------------------
 -- Table structure for user_round
@@ -174,13 +183,15 @@ CREATE TABLE `user_round` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_round
 -- ----------------------------
-INSERT INTO `user_round` VALUES ('9', '3', '1', '0', '1', '2019-08-20 15:04:00', '2019-08-20 08:04:00');
-INSERT INTO `user_round` VALUES ('10', '5', '1', '0', '0', '2019-08-20 15:04:00', '2019-08-20 08:04:00');
-INSERT INTO `user_round` VALUES ('11', '6', '1', '0', '0', '2019-08-20 15:04:00', '2019-08-20 08:04:00');
-INSERT INTO `user_round` VALUES ('12', '7', '1', '0', '0', '2019-08-20 15:04:00', '2019-08-20 08:04:00');
+INSERT INTO `user_round` VALUES ('9', '3', '1', '1', '1', '2019-08-20 23:42:57', '2019-08-20 23:42:57');
+INSERT INTO `user_round` VALUES ('10', '5', '1', '1', '1', '2019-08-20 23:47:06', '2019-08-20 23:47:06');
+INSERT INTO `user_round` VALUES ('11', '6', '1', '1', '0', '2019-08-20 23:45:27', '2019-08-20 23:45:27');
+INSERT INTO `user_round` VALUES ('12', '7', '1', '0', '1', '2019-08-20 23:47:08', '2019-08-20 23:47:08');
 INSERT INTO `user_round` VALUES ('21', '3', '2', '0', '0', '2019-08-20 08:04:00', '2019-08-20 08:04:00');
+INSERT INTO `user_round` VALUES ('22', '5', '2', '2', '0', '2019-08-20 23:45:08', '2019-08-20 23:45:08');
+INSERT INTO `user_round` VALUES ('23', '7', '2', '2', '0', '2019-08-20 23:46:20', '2019-08-20 23:46:20');

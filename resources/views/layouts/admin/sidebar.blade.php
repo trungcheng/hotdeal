@@ -46,7 +46,9 @@
             </ul>
         </li>
 
-        <li><a data-route="/admin/access/history" href="{{ url('/admin/access/setting') }}"><i class="fa fa-bar-chart"></i> <span>Quản lý lịch sử bình chọn</span></a></li>
+        <li><a data-route="/admin/access/statistical" href="{{ url('/admin/access/setting') }}"><i class="fa fa-bar-chart"></i> <span>Thống kê số lượt bình chọn</span></a></li>
+
+        <li><a data-route="/admin/access/history" href="{{ url('/admin/access/history') }}"><i class="fa fa-history"></i> <span>Xem lịch sử bình chọn</span></a></li>
 
         <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-info-circle"></i> <span>Quản lý thông tin chung</span></a></li>
 

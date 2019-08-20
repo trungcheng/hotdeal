@@ -55,6 +55,11 @@
                 $this->get('users/getAllUsers', 'Admin\UserController@getAllUsers');
                 $this->post('users/delete', 'Admin\UserController@delete');
 
+                //history
+                $this->get('history', 'Admin\HistoryController@index')->name('history');
+                $this->get('history/getAllHistories', 'Admin\HistoryController@getAllHistories');
+                $this->get('history/view/{roundId}/{memId}', 'Admin\HistoryController@viewDetail');
+
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');
                 $this->post('setting/update', 'Admin\SettingController@update');
