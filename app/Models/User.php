@@ -91,6 +91,19 @@ class User extends Model implements Authenticatable
         return $data;
     }
 
+    public static function initUser($request)
+    {
+        $data = self::where('role_id', 3)->where('type', 0);
+
+        if ($request->name !== 'all-user' && $request->name !== 'undefined') {
+            $data->where("username", "LIKE", "%" . $request->name . "%");
+        }
+
+        $data = $data->orderBy('id', 'desc')->get();
+
+        return $data;
+    }
+
     public static function addAction($data)
     {
         if (in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {

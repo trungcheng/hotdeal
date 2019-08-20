@@ -3,14 +3,13 @@
 
     angular
         .module('VincomCMS')
-        .controller('MemberController', MemberController);
+        .controller('UserController', UserController);
 
-    function MemberController($rootScope, $scope, $http, $window, $timeout, PagerService) {
+    function UserController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
         $scope.totalItems = [];
         $scope.pager = {};
         $scope.enableSubmit = false;
-        $scope.cateId = 'all-cate';
 
         $scope.pullDownLists = {
             availableOption: [
@@ -23,18 +22,17 @@
             selectedOption: {value: 10, name: '10'}
         };
 
-        $scope.getResultsPage = function (name, cate, perPage, pageNumber) {
+        $scope.getResultsPage = function (name, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/members/getAllMembers?name=' + name + '&cate=' + cate, {cache: false})
+            $http.get(app.vars.baseUrl + '/users/getAllUsers?name=' + name, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
                     $scope.loaded = true;
 
                     $scope.name = name;
-                    $scope.cate = cate;
                     $scope.pullDownLists.selectedOption = { value: perPage, name: perPage };
                     $scope.perPage = perPage;
                     $scope.pageNumber = pageNumber;
@@ -55,62 +53,20 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-member', 'all-cate', 10, 1);
+            $scope.getResultsPage('all-user', 10, 1);
         }
 
-        $scope.loadInitCreate = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
-                $scope.parentCates = res.data;
-            });
-        }
-
-        $scope.searchMemberName = function() {
+        $scope.searchUserName = function() {
             if ($scope.searchText.length >= 1) {
-                $scope.getResultsPage($scope.searchText, $scope.cate, $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
             } else {
-                $scope.getResultsPage('all-member', $scope.cate, $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage('all-user', $scope.perPage, $scope.pageNumber);
             }
         }
 
-        $scope.process = function (type) {    
-            var title = (type == 'add') ? 'thêm' : 'cập nhật';
-            var formData = new FormData($('#formProcess')[0]);
-            formData.append('content', CKEDITOR.instances.content.document.getBody().getHtml());
-            
+        $scope.delete = function (user, index) {
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" thành viên này ?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-success",
-                confirmButtonText: (type == 'add') ? 'Thêm' : 'Cập nhật' + ' ngay',
-                cancelButtonText: "Quay lại",
-                closeOnConfirm: false,
-                showLoaderOnConfirm: true
-            }, function () {
-                $http({
-                    method: 'POST',
-                    url: app.vars.baseUrl + '/members/' + type,
-                    data: formData,
-                    headers: { 'Content-Type': undefined },
-                    transformRequest: angular.identity
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
-                        if (isConfirm) {
-                            if (response.status) {
-                                // toastr.success(response.message, 'SUCCESS');
-                                window.location.href = app.vars.baseUrl + '/members';
-                            } else {
-                                // toastr.error(response.message, 'ERROR');
-                            }
-                        }
-                    })
-                });
-            });
-        }
-
-        $scope.delete = function (mem, index) {
-            swal({
-                title: "Bạn chắc chắn muốn xóa thành viên này ?",
+                title: "Bạn chắc chắn muốn xóa user này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
@@ -120,10 +76,10 @@
                 showLoaderOnConfirm: true
             }, function () {
                 $http({
-                    url: app.vars.baseUrl + '/members/delete',
+                    url: app.vars.baseUrl + '/users/delete',
                     method: 'POST',
                     data: {
-                        memId: mem.id
+                        userId: user.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {

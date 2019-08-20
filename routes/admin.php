@@ -38,6 +38,8 @@
                 $this->post('rounds/add', 'Admin\RoundController@add');
                 $this->post('rounds/update', 'Admin\RoundController@update');
                 $this->post('rounds/delete', 'Admin\RoundController@delete');
+                $this->post('rounds/user-round/delete', 'Admin\RoundController@deleteUserRound');
+                $this->post('rounds/user-round/submitSelectMode', 'Admin\RoundController@submitSelectMode');
 
                 // member
                 $this->get('members', 'Admin\MemberController@index')->name('members');
@@ -47,6 +49,11 @@
                 $this->post('members/add', 'Admin\MemberController@add');
                 $this->post('members/update', 'Admin\MemberController@update');
                 $this->post('members/delete', 'Admin\MemberController@delete');
+
+                // user
+                $this->get('users', 'Admin\UserController@index')->name('users');
+                $this->get('users/getAllUsers', 'Admin\UserController@getAllUsers');
+                $this->post('users/delete', 'Admin\UserController@delete');
 
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');

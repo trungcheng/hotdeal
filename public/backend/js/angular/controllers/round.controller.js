@@ -15,7 +15,6 @@
 
         $scope.pullDownLists = {
             availableOption: [
-              { value: 2, name: '2' },
               { value: 10, name: '10' },
               { value: 25, name: '25' },
               { value: 50, name: '50' },
@@ -173,7 +172,7 @@
         }
 
         $scope.loadInitView = function (roundId) {
-        	$scope.getResultsViewPage(roundId, 'all-member', 'all-cate', 2, 1);
+        	$scope.getResultsViewPage(roundId, 'all-member', 'all-cate', 10, 1);
         }
 
         $scope.searchUserRoundName = function() {
@@ -186,12 +185,10 @@
 
         $scope.handleChosenMember = function (mem) {
         	if (mem.isChecked) {
-        		mem.is_selected = true;
-		        $scope.selectedMembers.push(mem.id);
+		        $scope.selectedMembers.push(mem.user_id);
 		    } else {
 		        var toDel = $scope.selectedMembers.indexOf(mem);
 		        $scope.selectedMembers.splice(toDel);
-		        mem.is_selected = false;
 		    }
         }
 
@@ -199,15 +196,85 @@
             $scope.selectedMembers = [];
         	if ($scope.isAllChecked) {
                 angular.forEach($scope.totalItems, function (v, k) {
-                    v.is_selected = true;
-                    $scope.selectedMembers.push(v.id);
+                	v.isChecked = true;
+                    $scope.selectedMembers.push(v.user_id);
                 });
             } else {
                 angular.forEach($scope.totalItems, function (v, k) {
-                    v.is_selected = false;
+                    v.isChecked = false;
                 });
             }
             $scope.setPage($scope.perPage, $scope.pageNumber);
+        }
+
+        $scope.submitSelectModeMember = function (currentRoundId, runningRoundId, mode) {
+        	swal({
+                title: "Bạn chắc chắn muốn xác nhận hành động này?",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonClass: "btn-info",
+                confirmButtonText: 'Xác nhận ngay',
+                cancelButtonText: "Quay lại",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
+            }, function () {
+                $http({
+                    url: app.vars.baseUrl + '/rounds/user-round/submitSelectMode',
+                    method: 'POST',
+                    data: {
+                        currentRoundId: currentRoundId,
+                        runningRoundId: runningRoundId,
+                        selectedMembers: $scope.selectedMembers,
+                        mode: mode
+                    }
+                }).success(function (response) {
+                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                        if (isConfirm) {
+                            if (response.status) {
+                                // toastr.success(response.message, 'SUCCESS');
+                                $scope.loadInitView(currentRoundId);
+                                $scope.isAllChecked = false;
+                            } else {
+                                // toastr.error(response.message, 'ERROR');
+                            }
+                        }
+                    })
+                });
+            });
+        }
+
+        $scope.removeSelectedMember = function (roundId) {
+        	swal({
+                title: "Bạn chắc chắn muốn xóa những nhân vật đã lựa chọn khỏi vòng này?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: 'Xóa ngay',
+                cancelButtonText: "Quay lại",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
+            }, function () {
+                $http({
+                    url: app.vars.baseUrl + '/rounds/user-round/delete',
+                    method: 'POST',
+                    data: {
+                        roundId: roundId,
+                        members: $scope.selectedMembers
+                    }
+                }).success(function (response) {
+                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                        if (isConfirm) {
+                            if (response.status) {
+                                // toastr.success(response.message, 'SUCCESS');
+                                $scope.loadInitView(roundId);
+                                $scope.isAllChecked = false;
+                            } else {
+                                // toastr.error(response.message, 'ERROR');
+                            }
+                        }
+                    })
+                });
+            });
         }
 
     }

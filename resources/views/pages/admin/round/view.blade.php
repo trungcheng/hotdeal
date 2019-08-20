@@ -1,12 +1,23 @@
 @extends('layouts.admin.master')
 
-@section('page')Danh sách nhân vật bình chọn
+@section('page')Danh sách nhân vật đề cử
 @stop
 
 @section('pageCss')
     <style type="text/css">
         input[type="checkbox"] {
             zoom: 1.5;
+        }
+        .bottom-bar {
+            margin-bottom: 20px;
+        }
+        hr {
+            clear: both;
+            border: 1px solid #ccc;
+            width: 97%;
+        }
+        select {
+            font-weight: bold;
         }
     </style>
 @stop
@@ -17,7 +28,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header" style="padding-top:30px;">
             <h1>
-                Danh sách nhân vật bình chọn - {{ $round->name }}
+                Danh sách nhân vật đề cử - {{ $round->name }}
                 <!-- <small>Optional description</small> -->
                 <a href="{{ route('rounds') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
             </h1>
@@ -73,19 +84,20 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th>
-                                                        <input type="checkbox" ng-model="isAllChecked" ng-change="handleChosenAllMember()" />
+                                                        <input title="Chọn/Bỏ chọn tất cả" type="checkbox" ng-model="isAllChecked" ng-change="handleChosenAllMember()" />
                                                     </th>
                                                     <th>Ảnh</th>
                                                     <th>Họ tên</th>
                                                     <th>Thuộc khối</th>
                                                     <th>Vị trí</th>
                                                     <th>Số vote</th>
+                                                    <th>Bình chọn</th>
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="mem in items track by mem.id">
                                                     <td>
-                                                        <input ng-checked="mem.is_selected" type="checkbox" ng-change="handleChosenMember(mem)" ng-model="mem.isChecked" />
+                                                        <input ng-checked="mem.isChecked" type="checkbox" ng-change="handleChosenMember(mem)" ng-model="mem.isChecked" />
                                                     </td>
                                                     <td style="text-align:center !important">
                                                         <img src="@{{ mem.user.avatar }}" style="width:70px;height:65px;border-radius:50%" />
@@ -94,6 +106,7 @@
                                                     <td style="text-align:center !important">@{{ (mem.user.category) ? mem.user.category.name : 'Không' }}</td>
                                                     <td style="text-align:center !important">@{{ mem.user.intro }}</td>
                                                     <td style="text-align:center !important">@{{ mem.vote }}</td>
+                                                    <td style="text-align:center !important">@{{ (mem.is_selected) ? 'Có' : 'Không' }}</td>
                                                 </tr>
                                             </tbody>
 
@@ -116,11 +129,32 @@
                                             <items-pagination></items-pagination>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12 text-center">
-                                        <p>Số nhân vật đã chọn: <strong>@{{ selectedMembers.length }}</strong></p>
-                                        <button class="btn btn-danger text-center">Xóa nhân vật đã chọn</button>
-                                        <button class="btn btn-danger text-center">Xóa nhân vật đã chọn</button>
+                                    <hr>
+                                    <div class="col-sm-12 text-center bottom-bar" style="margin-bottom:10px !important">
+                                        <p style="font-weight:bold;">Số nhân vật đã chọn: <strong style="color:red;">@{{ selectedMembers.length }}</strong></p>
                                     </div>
+                                    @if ($runningRound)
+                                    <div class="col-sm-12 text-center bottom-bar">
+                                        <form class="form-inline" action="">
+                                            <div class="form-group">
+                                                <select class="form-control" ng-change="toggleModeSelectMember()" ng-model="modeSelectMember" ng-init="modeSelectMember='1'">
+                                                    <option value="1">
+                                                        Chuyển nhân vật đã chọn ở trên sang {{ $runningRound->name }}
+                                                    </option>
+                                                    <option value="2">
+                                                        Chuyển mặc định {{ $round->user_select_count }} nhân vật có lượt bình chọn cao nhất sang {{ $runningRound->name }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <button ng-disabled="modeSelectMember == '1' && selectedMembers.length == 0" type="button" ng-click="submitSelectModeMember({{ $round->id }}, {{ $runningRound->id }}, modeSelectMember)" class="btn btn-primary">Xác nhận</button>
+                                        </form>
+                                    </div>
+                                    @endif
+                                    @if ($round->is_running)
+                                    <div class="col-sm-12 text-center bottom-bar">
+                                        <button ng-click="removeSelectedMember({{ $round->id }})" ng-disabled="selectedMembers.length == 0" class="btn btn-danger text-center">Xóa nhân vật đã chọn</button>
+                                    </div>
+                                    @endif
                                 </div>
 
                             </div>

@@ -60,7 +60,7 @@ class MemberController extends Controller
                 User::addAction($data);
                 return Response::json([
                     'status' => true,
-                    'message' => 'Thêm thành viên thành công', 
+                    'message' => 'Thêm nhân vật thành công', 
                     'type' => 'success'
                 ]);
             }
@@ -97,13 +97,13 @@ class MemberController extends Controller
                     User::updateAction($data, $member);
                     return Response::json([
                         'status' => true, 
-                        'message' => 'Cập nhật thành viên thành công', 
+                        'message' => 'Cập nhật nhân vật thành công', 
                         'type' => 'success'
                     ]);
                 } else {
                     return Response::json([
                         'status' => false,
-                        'message' => 'Không tìm thấy thành viên', 
+                        'message' => 'Không tìm thấy nhân vật', 
                         'type' => 'error'
                     ]);
                 }
@@ -136,14 +136,14 @@ class MemberController extends Controller
 
                 return Response::json([
                     'status' => true, 
-                    'message' => 'Xóa thành viên thành công', 
+                    'message' => 'Xóa nhân vật thành công', 
                     'type' => 'success'
                 ]);
             }
 
             return Response::json([
                 'status' => false, 
-                'message' => 'Không tìm thấy thành viên', 
+                'message' => 'Không tìm thấy nhân vật', 
                 'type' => 'error'
             ]);
         }

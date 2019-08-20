@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\UserRound;
 use App\Models\Round;
 use Response;
 use Validator;
@@ -53,12 +54,12 @@ class RoundController extends Controller
     {
         $round = Round::find($id);
         if ($round) {
-            $otherRounds = Round::where('id', '<>', $round->id)
-                ->orderBy('id', 'asc')->get();
+            $runningRound = Round::where('is_running', 1)
+            	->where('id', '<>', $round->id)->first();
 
             return view('pages.admin.round.view', [
                 'round' => $round,
-                'otherRounds' => $otherRounds
+                'runningRound' => $runningRound
             ]);
         }
 
@@ -96,7 +97,8 @@ class RoundController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
+                'type' => 'error'
             ], 200);
         }
     }
@@ -141,7 +143,8 @@ class RoundController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
-                'message' => $e->getMessage()
+                'message' => $e->getMessage(),
+                'type' => 'error'
             ], 200);
         }
     }
@@ -177,5 +180,111 @@ class RoundController extends Controller
             'message' => 'Đã xảy ra lỗi', 
             'type' => 'error'
         ]);
+    }
+
+    public function deleteUserRound(Request $request)
+    {
+        $roundId = $request->roundId;
+        $members = $request->members;
+        if ($roundId && $members && !is_null($roundId)) {
+            $round = Round::find($roundId);
+            if ($round) {
+                UserRound::whereIn('user_id', $members)
+                	->where('round_id', $roundId)->delete();
+
+                return Response::json([
+                    'status' => true, 
+                    'message' => 'Xóa nhân vật đã chọn thành công', 
+                    'type' => 'success'
+                ]);
+            }
+
+            return Response::json([
+                'status' => false, 
+                'message' => 'Không tìm thấy vòng thi hoặc danh sách nhân vật xóa trống', 
+                'type' => 'error'
+            ]);
+        }
+
+        return Response::json([
+            'status' => false, 
+            'message' => 'Đã xảy ra lỗi', 
+            'type' => 'error'
+        ]);
+    }
+
+    public function submitSelectMode(Request $request)
+    {
+    	try {
+	    	$data = $request->all();
+	    	if ($data['currentRoundId'] && $data['runningRoundId'] && $data['mode']) {
+	    		$currentRound = Round::find($data['currentRoundId']);
+	    		$runningRound = Round::find($data['runningRoundId']);
+
+	    		if ($currentRound && $runningRound) {
+	    			if ($data['mode'] == '1') {
+	    				if (count($data['selectedMembers']) > 0) {
+	    					UserRound::where('round_id', $currentRound->id)->update(['is_selected' => 0]);
+	    					UserRound::where('round_id', $runningRound->id)->delete();
+		    				foreach ($data['selectedMembers'] as $memId) {
+		    					$userRound = UserRound::where('user_id', $memId)
+		    						->where('round_id', $currentRound->id)->first();
+	    						UserRound::create([
+	    							'user_id' => $memId,
+	    							'round_id' => $runningRound->id,
+	    							'vote' => ($runningRound->is_reset_vote) ? 0 : $userRound->vote,
+	    							'is_selected' => 0
+	    						]);
+	    						$userRound->update(['is_selected' => 1]);
+	    					}
+    					}
+	    			}
+	    			
+	    			if ($data['mode'] == '2') {
+	    				$userCurrentRound = UserRound::where('round_id', $currentRound->id)
+	    					->orderBy('vote', 'desc')->limit($currentRound->user_select_count)->get();
+	    				if ($userCurrentRound) {
+	    					UserRound::where('round_id', $currentRound->id)->update(['is_selected' => 0]);
+	    					UserRound::where('round_id', $runningRound->id)->delete();
+	    					foreach ($userCurrentRound as $user) {
+	    						UserRound::create([
+	    							'user_id' => $user->user_id,
+	    							'round_id' => $runningRound->id,
+	    							'vote' => ($runningRound->is_reset_vote) ? 0 : $user->vote,
+	    							'is_selected' => 0
+	    						]);
+	    					}
+	    					UserRound::where('round_id', $currentRound->id)
+	    						->orderBy('vote', 'desc')->limit($currentRound->user_select_count)
+	    						->update(['is_selected' => 1]);
+	    				}
+	    			}
+
+	    			return Response::json([
+	                    'status' => true, 
+	                    'message' => 'Chuyển nhân vật thành công', 
+	                    'type' => 'success'
+	                ]);
+	    		}
+
+	    		return Response::json([
+		            'status' => false, 
+		            'message' => 'Không tìm thấy vòng thi', 
+		            'type' => 'error'
+		        ]);
+	    	}
+
+	    	return Response::json([
+	            'status' => false, 
+	            'message' => 'Đã xảy ra lỗi', 
+	            'type' => 'error'
+	        ]);
+	    } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage(),
+                'type' => 'error'
+            ], 200);
+        }
     }
 }
