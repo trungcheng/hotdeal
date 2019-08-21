@@ -20,7 +20,7 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-8 col-md-offset-2">
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -36,9 +36,7 @@
                     <p class="alert alert-success">{{ Session::get('message') }}</p>
                 @endif
 
-                <form id="form_setting" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
-
-                    {{ csrf_field() }}
+                <form id="form_setting" onsubmit="return false;" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
                     
                     <div class="form-group">
                         <label>Logo</label>
@@ -77,6 +75,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Nội dung trang chủ</label>
+                        <textarea class="form-control" id="content_home_page">{!! $setting->content_home_page !!}</textarea>
+                    </div>
+
+                    <div class="form-group">
                         <button style="float:right;margin-left:5px;" type="reset" class="btn btn-default">Đóng</button>
                         <button style="float:right" type="submit" class="btn btn-primary">Cập nhật</button>
                     </div>
@@ -91,20 +94,52 @@
 
 @section('pageJs')
     <script type="text/javascript">
-        function openPopup() {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function(finder) {
-                    finder.on( 'files:choose', function(evt) {
-                        var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath' ).value = file.getUrl();
-                    } );
-                    finder.on('file:choose:resizedImage', function(evt) {
-                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                    });
-                }
-            });
-        }
-    </script>
+        (function($, app) {
+            function openPopup() {
+                CKFinder.popup( {
+                    chooseFiles: true,
+                    onInit: function(finder) {
+                        finder.on( 'files:choose', function(evt) {
+                            var file = evt.data.files.first();
+                            document.getElementById( 'xFilePath' ).value = file.getUrl();
+                        } );
+                        finder.on('file:choose:resizedImage', function(evt) {
+                            document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                        });
+                    }
+                });
+            }
 
+            CKEDITOR.replace('content_home_page', {height: 300});
+
+            $('#form_setting').on('submit', function () {
+                var formData = new FormData($(this)[0]);
+                formData.append('content_home_page', CKEDITOR.instances.content_home_page.document.getBody().getHtml());
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: 'POST',
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    dataType: "JSON",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: formData,
+                    success: function (response) {
+                        if (response.status) {
+                            swal('Updated!', response.message, "success");
+                        } else {
+                            swal('Error!', response.message, "error");
+                        }
+                    },
+                    error: function (response) {
+                        swal('Error!', response.message, "error");
+                    }
+                });
+
+            });
+        })($, $.app);
+    </script>
 @stop

@@ -60,8 +60,7 @@ class User extends Model implements Authenticatable
         'full_name' => 'required|min:2',
         'cat_id' => 'required',
         'avatar' => 'required',
-        'intro' => 'required',
-        'content' => 'required'
+        'intro' => 'required'
     ];
 
     public static $messages = [
@@ -69,8 +68,7 @@ class User extends Model implements Authenticatable
         'full_name.min' => 'Họ tên ít nhất từ 2 ký tự',
         'cat_id.required' => 'Thuộc khối không được để trống',
         'avatar.required' => 'Ảnh đại diện không được để trống',
-        'intro.required' => 'Vị trí không được để trống',
-        'content.required' => 'Thông điệp không được để trống'
+        'intro.required' => 'Vị trí không được để trống'
     ];
 
     public static function init($request)

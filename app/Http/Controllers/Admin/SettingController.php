@@ -25,13 +25,24 @@ class SettingController extends Controller
 
     public function update(Request $request)
     {
-        $data = $request->all();
-        unset($data['_token']);
-        
-        $setting = Setting::first();
-        $setting->update($data);
-        
-        return redirect()->back()->with('message', 'Cập nhật thành công');
+        try {
+            $data = $request->all();
+            $setting = Setting::first();
+            if (in_array($data['content_home_page'], ['<p><br></p>','<br>','<p></p>',''])) {
+                $data['content_home_page'] = '';
+            }
+            $setting->update($data);
+            
+            return Response::json([
+                'status' => true,
+                'message' => 'Cập nhật thành công'
+            ]);
+        } catch (\Exception $e) {
+            return Response::json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
     }
 
 }

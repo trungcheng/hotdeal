@@ -58,6 +58,7 @@
                 //history
                 $this->get('history', 'Admin\HistoryController@index')->name('history');
                 $this->get('history/getAllHistories', 'Admin\HistoryController@getAllHistories');
+                $this->get('history/getAllDetailHistories', 'Admin\HistoryController@getAllDetailHistories');
                 $this->get('history/view/{roundId}/{memId}', 'Admin\HistoryController@viewDetail');
 
                 //setting

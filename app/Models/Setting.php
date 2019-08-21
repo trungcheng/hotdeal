@@ -16,7 +16,8 @@ class Setting extends Model
         'mobile',
         'address',
         'work_time',
-        'logo'
+        'logo',
+        'content_home_page'
     ];
 
 }

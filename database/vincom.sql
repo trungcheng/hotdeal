@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-21 00:24:10
+Date: 2019-08-21 10:54:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -125,6 +125,7 @@ CREATE TABLE `setting` (
   `address` varchar(255) DEFAULT NULL,
   `work_time` varchar(255) DEFAULT NULL,
   `logo` varchar(255) DEFAULT NULL,
+  `content_home_page` longtext,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -133,7 +134,7 @@ CREATE TABLE `setting` (
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
-INSERT INTO `setting` VALUES ('1', 'Vincom Retail', null, null, null, null, null, null, '2019-08-16 01:09:21', '2019-08-16 01:09:21');
+INSERT INTO `setting` VALUES ('1', 'Vincom Retail', null, null, null, null, null, null, '', '2019-08-21 10:51:39', '2019-08-21 03:51:39');
 
 -- ----------------------------
 -- Table structure for users
@@ -166,7 +167,7 @@ INSERT INTO `users` VALUES ('1', '1', '0', 'admin', 'Nguyễn Át Min', 'admin@a
 INSERT INTO `users` VALUES ('3', '3', '2', '', 'Hoàng Văn Hải', '', 'Lập trình viên cấp cao', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '', '1', '1', '', '2019-04-23 09:28:28', '2019-04-23 09:31:06');
 INSERT INTO `users` VALUES ('5', '3', '3', '', 'Đinh Trung', '', 'Chuyên viên thiết kế animation', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '', '1', '1', '', '2019-04-24 04:21:40', '2019-08-19 04:56:43');
 INSERT INTO `users` VALUES ('6', '3', '1', null, 'Mạnh Hiển', null, 'Designer', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:14:36', '2019-08-19 18:14:36');
-INSERT INTO `users` VALUES ('7', '3', '4', null, 'Dương Hoàng', null, 'Tester', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:15:05', '2019-08-19 18:15:05');
+INSERT INTO `users` VALUES ('7', '3', '4', null, 'Dương Hoàng', null, 'Tester', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:15:05', '2019-08-21 03:30:29');
 INSERT INTO `users` VALUES ('8', '3', '2', 'namnt', 'Nguyễn Thành Nam', 'nam@gmail.com', null, null, '', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', null, '2019-08-20 21:55:57', '2019-08-20 21:55:57');
 INSERT INTO `users` VALUES ('9', '3', '1', 'thuynv', 'Nguyễn Văn Thủy', 'thuy@gmail.com', null, null, '', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', null, '2019-08-20 21:56:19', '2019-08-20 21:56:19');
 

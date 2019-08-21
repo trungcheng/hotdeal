@@ -45,7 +45,7 @@
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter" style="float:right;">
                                             <label>Search
-                                                <input my-enter="searchMemberName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
+                                                <input my-enter="searchMemberName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm nhân vật...">
                                             </label>
                                         </div>
                                     </div>
@@ -56,18 +56,22 @@
                                         <table id="example1" class="table table-bordered table-hover table-striped dataTable" role="grid" aria-describedby="example1_info">
                                             <thead>
                                                 <tr role="row">
-                                                	<th>STT</th>
+                                                	<th>Ảnh</th>
                                                     <th>Vòng</th>
                                                     <th>Nhân vật</th>
+                                                    <th>Khối</th>
                                                     <th>Tổng số vote</th>
                                                     <th>Xem chi tiết</th>
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="item in items track by $index">
-                                                	<td class="sorting_1">@{{ $index + 1 }}</td>
+                                                	<td style="text-align:center !important">
+                                                        <img src="@{{ item.member.avatar }}" style="width:70px;height:65px;border-radius:50%" />
+                                                    </td>
                                                     <td style="text-align:center !important">@{{ item.round.name }}</td>
-                                                    <td>@{{ item.user.full_name }}</td>
+                                                    <td>@{{ item.member.full_name }}</td>
+                                                    <td>@{{ item.member.category.name }}</td>
                                                     <td>@{{ item.totalVote }}</td>
                                                     <td>
                                                         <a title="Xem chi tiết" href="/admin/access/history/view/@{{ item.round_id }}/@{{ item.vote_for }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>

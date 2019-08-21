@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Thông điệp</label>
-                                    <textarea class="form-control" id="content">{{ $member['content'] }}</textarea>
+                                    <textarea class="form-control" id="content">{!! $member['content'] !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>

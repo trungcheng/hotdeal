@@ -64,5 +64,45 @@
             }
         }
 
+
+
+        /////////////////////////////// VIEW DETAIL PAGE /////////////////////////////////
+
+
+
+        $scope.getResultsPageView = function (roundId, memId, name, perPage, pageNumber) {
+            $scope.loading = true;
+            $scope.loaded = false;
+
+            $http.get(app.vars.baseUrl + '/history/getAllDetailHistories?roundId='+ roundId + '&memId='+ memId +'&name=' + name, {cache: false})
+                .success(function(response) {
+
+                    $scope.loading = false;
+                    $scope.loaded = true;
+
+                    $scope.roundId = roundId;
+                    $scope.memId = memId;
+                    $scope.name = name;
+                    $scope.pullDownLists.selectedOption = { value: perPage, name: perPage };
+                    $scope.perPage = perPage;
+                    $scope.pageNumber = pageNumber;
+                    $scope.totalItems = response.data;
+                    $scope.setPage(perPage, pageNumber);
+
+                });
+        }
+
+        $scope.loadInitDetail = function (roundId, memId) {
+            $scope.getResultsPageView(roundId, memId, 'all-user', 10, 1);
+        }
+
+        $scope.searchUserName = function() {
+            if ($scope.searchText.length >= 1) {
+                $scope.getResultsPageView($scope.roundId, $scope.memId, $scope.searchText, $scope.perPage, $scope.pageNumber);
+            } else {
+                $scope.getResultsPageView($scope.roundId, $scope.memId, 'all-user', $scope.perPage, $scope.pageNumber);
+            }
+        }
+
     }
 })($, $.app);

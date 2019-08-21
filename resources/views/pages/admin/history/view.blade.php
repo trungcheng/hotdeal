@@ -8,12 +8,12 @@
 @stop
 
 @section('content')
-    <div ng-controller="HistoryController" ng-init="loadInit()">
+    <div ng-controller="HistoryController" ng-init="loadInitDetail({{ $round->id }}, {{ $mem->id }})">
 
         <!-- Content Header (Page header) -->
         <section class="content-header" style="padding-top:30px;">
             <h1>
-                Lịch sử bình chọn chi tiết cho {{ $mem->full_name }} tại {{ $round->name }}
+                Lịch sử bình chọn chi tiết cho <strong>{{ $mem->full_name }}</strong> tại <strong>{{ $round->name }}</strong>
                 <!-- <small>Optional description</small> -->
                 <a href="{{ route('history') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
             </h1>
@@ -46,7 +46,7 @@
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter" style="float:right;">
                                             <label>Search
-                                                <input my-enter="searchUserName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
+                                                <input my-enter="searchUserName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm người vote...">
                                             </label>
                                         </div>
                                     </div>
@@ -58,21 +58,19 @@
                                             <thead>
                                                 <tr role="row">
                                                 	<th>STT</th>
-                                                    <th>Vòng</th>
-                                                    <th>Nhân vật</th>
-                                                    <th>Tổng số vote</th>
-                                                    <th>Xem chi tiết</th>
+                                                    <th>Người vote</th>
+                                                    <th>Nhân vật được vote</th>
+                                                    <th>Số vote</th>
+                                                    <th>Ngày vote</th>
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="item in items track by $index">
                                                 	<td class="sorting_1">@{{ $index + 1 }}</td>
-                                                    <td style="text-align:center !important">@{{ item.round.name }}</td>
-                                                    <td>@{{ item.user.full_name }}</td>
-                                                    <td>@{{ item.totalVote }}</td>
-                                                    <td>
-                                                        <a title="Xem chi tiết" href="/admin/access/history/view/@{{ item.round_id }}/@{{ item.vote_for }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
-                                                    </td>
+                                                    <td style="text-align:center !important">@{{ item.user.username }}</td>
+                                                    <td>{{ $mem->full_name }}</td>
+                                                    <td>@{{ item.vote_count }}</td>
+                                                    <td>@{{ item.created_at }}</td>
                                                 </tr>
                                             </tbody>
 

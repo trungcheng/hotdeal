@@ -28,6 +28,13 @@ class HistoryController extends Controller
         return Response::json(['status' => true, 'data' => $results]);
     }
 
+    public function getAllDetailHistories(Request $request)
+    {
+        $results = History::initDetail($request);
+            
+        return Response::json(['status' => true, 'data' => $results]);
+    }
+
     public function viewDetail(Request $request, $roundId, $memId)
     {
         $history = History::where('round_id', $roundId)
