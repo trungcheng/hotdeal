@@ -38,20 +38,20 @@ class AccessServiceProvider extends ServiceProvider
          * Accepts either string of Role Name or Role ID
          */
         Blade::directive('superadmin', function () {
-            return "<?php if (\App\Models\User::find(\Auth::id())->role->all == 1): ?>";
+            return "<?php if (\App\Models\User::find(\Auth::guard('admin')->id())->role->all == 1): ?>";
         });
         /*
          * Role based blade extensions
          * Accepts either string of Role Name or Role ID
          */
         Blade::directive('role', function ($role) {
-            return "<?php if (\App\Models\User::find(\Auth::id())->hasRole({$role})): ?>";
+            return "<?php if (\App\Models\User::find(\Auth::guard('admin')->id())->hasRole({$role})): ?>";
         });
         /*
          * Accepts array of names or id's
          */
         Blade::directive('roles', function ($roles) {
-            return "<?php if (\App\Models\User::find(\Auth::id())->hasRoles({$roles})): ?>";
+            return "<?php if (\App\Models\User::find(\Auth::guard('admin')->id())->hasRoles({$roles})): ?>";
         });
         /*
          * Generic if closer to not interfere with built in blade

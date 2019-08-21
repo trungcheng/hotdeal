@@ -62,13 +62,6 @@
                                         <option {{ ($member->status == 0) ? 'selected' : '' }} value="0">Khóa</option>
                                     </select>
                                 </div>
-                                {{--<div class="form-group">
-                                    <label>Quyền truy cập</label>
-                                    <select name="role_id" class="form-control">
-                                        <option {{ ($member->role_id == 3) ? 'selected' : '' }} value="3">Thành viên</option>
-                                        <option {{ ($member->role_id == 2) ? 'selected' : '' }} value="2">Admin</option>
-                                    </select>
-                                </div>--}}
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>

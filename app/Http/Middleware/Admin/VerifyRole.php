@@ -34,14 +34,12 @@ class VerifyRole
      * @return mixed
      * @throws \HttpOz\Roles\Exceptions\RoleDeniedException
      */
-    public function handle($request, Closure $next, ... $roles)
+    public function handle($request, Closure $next, ...$roles)
     {
-        if (Auth::guard('admin')->check()) {
-            $userId = Auth::guard('admin')->user()->id;
-            $currentUser = User::find($userId);
-            if ($currentUser->role_id !== 3) {
-                return $next($request);
-            }
+        $currentUser = User::find(Auth::guard('admin')->id());
+
+        if (Auth::guard('admin')->check() && $currentUser->hasRoles($roles)) {
+            return $next($request);
         }
 
         Auth::guard('admin')->logout();

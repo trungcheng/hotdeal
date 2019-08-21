@@ -64,6 +64,41 @@
             }
         }
 
+        $scope.process = function (type) {    
+            var title = (type == 'add') ? 'thêm' : 'cập nhật';
+            var formData = new FormData($('#formProcess')[0]);
+            
+            swal({
+                title: "Bạn chắc chắn muốn "+ title +" user này ?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-success",
+                confirmButtonText: (type == 'add') ? 'Thêm' : 'Cập nhật' + ' ngay',
+                cancelButtonText: "Quay lại",
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
+            }, function () {
+                $http({
+                    method: 'POST',
+                    url: app.vars.baseUrl + '/users/' + type,
+                    data: formData,
+                    headers: { 'Content-Type': undefined },
+                    transformRequest: angular.identity
+                }).success(function (response) {
+                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                        if (isConfirm) {
+                            if (response.status) {
+                                // toastr.success(response.message, 'SUCCESS');
+                                window.location.href = app.vars.baseUrl + '/users';
+                            } else {
+                                // toastr.error(response.message, 'ERROR');
+                            }
+                        }
+                    })
+                });
+            });
+        }
+
         $scope.delete = function (user, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa user này ?",

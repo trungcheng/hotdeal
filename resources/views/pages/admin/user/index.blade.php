@@ -48,17 +48,6 @@
                                                 <input my-enter="searchUserName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
                                             </label>
                                         </div>
-                                        <!-- <div ng-cloak id="example1_filter" class="dataTables_filter" style="float:right;margin-right:10px;">
-                                            <label>Khối
-                                                <select ng-change="getResultsPage(name, cateId, perPage, pageNumber)" class="form-control input-sm" ng-model="cateId">
-                                                    <option value="all-cate">Tất cả các khối</option>
-                                                    <option value="0">Không thuộc khối nào</option>
-                                                    <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                                        @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                                                    </option>
-                                                </select>
-                                            </label>
-                                        </div> -->
                                     </div>
                                 </div>
 
@@ -69,19 +58,27 @@
                                                 <tr role="row">
                                                 	<th>STT</th>
                                                     <th>Username</th>
+                                                    <th>Quyền truy cập</th>
                                                     <th>Trạng thái</th>
+                                                    <th>Ngày tham gia</th>
+                                                    @role('SuperAdmin')
                                                     <th>Chức năng</th>
+                                                    @end
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="user in items track by $index">
                                                 	<td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ user.username }}</td>
+                                                    <td>@{{ user.role.name }}</td>
                                                     <td>@{{ (user.status) ? 'Hoạt động' : 'Khóa' }}</td>
+                                                    <td>@{{ user.created_at }}</td>
+                                                    @role('SuperAdmin')
                                                     <td>
-                                                        <!-- <a title="Sửa" href="/admin/access/members/edit/@{{ user.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a> -->
+                                                        <a title="Sửa" href="/admin/access/users/edit/@{{ user.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a title="Xóa" ng-click="delete(user, $index)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
+                                                    @end
                                                 </tr>
                                             </tbody>
 

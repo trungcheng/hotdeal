@@ -11,12 +11,12 @@ trait UserTrait
 
     public static function user()
     {
-        return auth()->user();
+        return auth()->guard('admin')->user();
     }
 
     public static function id()
     {
-        return auth()->id();
+        return auth()->guard('admin')->id();
     }
 
     public static function isSuperAdmin()

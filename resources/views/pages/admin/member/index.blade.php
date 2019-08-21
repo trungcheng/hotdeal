@@ -92,7 +92,9 @@
                                                     <td>@{{ (mem.status) ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>
                                                         <a title="Sửa" href="/admin/access/members/edit/@{{ mem.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        @role('SuperAdmin')
                                                         <a title="Xóa" ng-click="delete(mem, $index)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                                        @end
                                                     </td>
                                                 </tr>
                                             </tbody>

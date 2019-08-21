@@ -26,7 +26,7 @@
                 $this->get('categories/edit/{id}', 'Admin\CategoryController@edit')->name('category-edit');
                 $this->post('categories/add', 'Admin\CategoryController@add');
                 $this->post('categories/update', 'Admin\CategoryController@update');
-                $this->post('categories/delete', 'Admin\CategoryController@delete');
+                $this->post('categories/delete', 'Admin\CategoryController@delete')->middleware('admin.role:Superadmin');
 
                 // round
                 $this->get('rounds', 'Admin\RoundController@index')->name('rounds');
@@ -37,8 +37,8 @@
                 $this->get('rounds/view/{id}', 'Admin\RoundController@view')->name('round-view');
                 $this->post('rounds/add', 'Admin\RoundController@add');
                 $this->post('rounds/update', 'Admin\RoundController@update');
-                $this->post('rounds/delete', 'Admin\RoundController@delete');
-                $this->post('rounds/user-round/delete', 'Admin\RoundController@deleteUserRound');
+                $this->post('rounds/delete', 'Admin\RoundController@delete')->middleware('admin.role:Superadmin');
+                $this->post('rounds/user-round/delete', 'Admin\RoundController@deleteUserRound')->middleware('admin.role:Superadmin');
                 $this->post('rounds/user-round/submitSelectMode', 'Admin\RoundController@submitSelectMode');
 
                 // member
@@ -48,12 +48,14 @@
                 $this->get('members/edit/{id}', 'Admin\MemberController@edit')->name('member-edit');
                 $this->post('members/add', 'Admin\MemberController@add');
                 $this->post('members/update', 'Admin\MemberController@update');
-                $this->post('members/delete', 'Admin\MemberController@delete');
+                $this->post('members/delete', 'Admin\MemberController@delete')->middleware('admin.role:Superadmin');
 
                 // user
                 $this->get('users', 'Admin\UserController@index')->name('users');
                 $this->get('users/getAllUsers', 'Admin\UserController@getAllUsers');
-                $this->post('users/delete', 'Admin\UserController@delete');
+                $this->get('users/edit/{id}', 'Admin\UserController@edit')->name('user-edit');
+                $this->post('users/update', 'Admin\UserController@update')->middleware('admin.role:Superadmin');
+                $this->post('users/delete', 'Admin\UserController@delete')->middleware('admin.role:Superadmin');
 
                 //history
                 $this->get('history', 'Admin\HistoryController@index')->name('history');
@@ -63,7 +65,7 @@
 
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');
-                $this->post('setting/update', 'Admin\SettingController@update');
+                $this->post('setting/update', 'Admin\SettingController@update')->middleware('admin.role:Superadmin');
 
             });
         // });

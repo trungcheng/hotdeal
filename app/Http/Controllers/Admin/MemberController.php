@@ -129,8 +129,8 @@ class MemberController extends Controller
             $mem = User::find($memId);
             if ($mem) {
                 // remove all relate section
-                $mem->user_round()->delete();
-                $mem->history()->delete();
+                $mem->userRound()->delete();
+                $mem->memberHistory()->delete();
                 // remove itself
                 $mem->delete();
 

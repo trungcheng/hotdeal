@@ -23,14 +23,14 @@
             {{ csrf_field() }}
             <div class="form-group has-feedback">
                 <!-- {!!Form::email('email', null, ['placeholder' => 'Username'])!!} -->
-                {!! Form::email('email', '', ['placeholder' => 'Enter email', 'autocomplete' => 'off', 'required', 'class' => 'form-control']) !!}
+                {!! Form::text('email', '', ['placeholder' => 'Username hoặc email', 'autocomplete' => 'off', 'required', 'class' => 'form-control']) !!}
                 <span class="fa fa-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                {!!Form::password('password', ['placeholder' => 'Password', 'autocomplete' => 'off', 'required', 'class'=>'form-control'])!!}
+                {!!Form::password('password', ['placeholder' => 'Mật khẩu', 'autocomplete' => 'off', 'required', 'class'=>'form-control'])!!}
                 <span class="fa fa-lock form-control-feedback"></span>
             </div>
-            <button type="submit" class="btn btn-primary btn-block mt20">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block mt20">Đăng nhập</button>
         </form>
     </div><!-- /.login-box-body -->
 </div>

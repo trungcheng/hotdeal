@@ -41,19 +41,23 @@ class User extends Model implements Authenticatable
     }
 
     public function role() {
-        return $this->belongsTo('App\Models\Role');
+        return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
 
     public function category() {
         return $this->belongsTo('App\Models\Category', 'cat_id', 'id');
     }
 
-    public function user_round() {
+    public function userRound() {
         return $this->hasMany('App\Models\UserRound', 'user_id', 'id');
     }
 
-    public function history() {
-        return $this->belongsTo('App\Models\History', 'vote_for', 'id');
+    public function memberHistory() {
+        return $this->hasMany('App\Models\History', 'vote_for', 'id');
+    }
+
+    public function userHistory() {
+        return $this->hasMany('App\Models\History', 'user_vote', 'id');
     }
 
     public static $rules = [
@@ -91,13 +95,13 @@ class User extends Model implements Authenticatable
 
     public static function initUser($request)
     {
-        $data = self::where('role_id', 3)->where('type', 0);
+        $data = self::where('role_id', '<>', 1)->where('type', 0)->where('id', '<>', \Auth::guard('admin')->id());
 
         if ($request->name !== 'all-user' && $request->name !== 'undefined') {
             $data->where("username", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->orderBy('id', 'desc')->get();
+        $data = $data->with('role')->orderBy('id', 'desc')->get();
 
         return $data;
     }
@@ -116,10 +120,12 @@ class User extends Model implements Authenticatable
 
     public static function updateAction($data, $member)
     {
-        if (in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
-            $data['content'] = '';
+        if (isset($data['content']) || isset($data['cat_id'])) {
+            if (in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
+                $data['content'] = '';
+            }
+            $data['cat_id'] = (int) $data['cat_id'];
         }
-        $data['cat_id'] = (int) $data['cat_id'];
 
         return $member->update($data);
     }

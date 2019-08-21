@@ -151,9 +151,11 @@
                                     </div>
                                     @endif
                                     @if ($round->is_running)
-                                    <div class="col-sm-12 text-center bottom-bar">
-                                        <button ng-click="removeSelectedMember({{ $round->id }})" ng-disabled="selectedMembers.length == 0" class="btn btn-danger text-center">Xóa nhân vật đã chọn</button>
-                                    </div>
+                                        @role('SuperAdmin')
+                                        <div class="col-sm-12 text-center bottom-bar">
+                                            <button ng-click="removeSelectedMember({{ $round->id }})" ng-disabled="selectedMembers.length == 0" class="btn btn-danger text-center">Xóa nhân vật đã chọn</button>
+                                        </div>
+                                        @end
                                     @endif
                                 </div>
 

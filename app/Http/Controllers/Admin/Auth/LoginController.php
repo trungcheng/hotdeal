@@ -47,14 +47,16 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('admin')->attempt([
-            'email' => $request->email,
-            'password' => $request->password
-        ], $request->remember)) {
+        $dataAuth = ['username' => $request->get('email'), 'password' => $request->get('password')];
+        if (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
+            $dataAuth = ['email' => $request->get('email'), 'password' => $request->get('password')];
+        }
+
+        if (Auth::guard('admin')->attempt($dataAuth, $request->remember)) {
             return redirect('/admin/access/dashboard');
         }
 
