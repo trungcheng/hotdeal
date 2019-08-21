@@ -70,7 +70,7 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="user in items track by $index">
                                                 	<td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ user.username }}</td>
-                                                    <td>@{{ user.role.name }}</td>
+                                                    <td>@{{ (user.role.name == 'User') ? 'User (Thành viên)' : user.role.name }}</td>
                                                     <td>@{{ (user.status) ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>@{{ user.created_at }}</td>
                                                     @role('SuperAdmin')

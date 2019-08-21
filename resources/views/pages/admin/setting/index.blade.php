@@ -81,9 +81,7 @@
 
                     <div class="form-group">
                         <button style="float:right;margin-left:5px;" type="reset" class="btn btn-default">Đóng</button>
-                        @role('SuperAdmin')
                         <button style="float:right" type="submit" class="btn btn-primary">Cập nhật</button>
-                        @end
                     </div>
 
                 </form>

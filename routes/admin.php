@@ -63,9 +63,12 @@
                 $this->get('history/getAllDetailHistories', 'Admin\HistoryController@getAllDetailHistories');
                 $this->get('history/view/{roundId}/{memId}', 'Admin\HistoryController@viewDetail');
 
+                //statistical
+                $this->get('statistical', 'Admin\StatisticalController@index')->name('statistical');
+
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');
-                $this->post('setting/update', 'Admin\SettingController@update')->middleware('admin.role:Superadmin');
+                $this->post('setting/update', 'Admin\SettingController@update');
 
             });
         // });

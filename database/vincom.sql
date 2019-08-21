@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-21 10:54:36
+Date: 2019-08-21 21:28:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -163,12 +163,12 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '1', '0', 'admin', 'Nguyễn Át Min', 'admin@admin.com', '', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', '0UZASRQ6qmaAau4oBE73eB0Xs32X3xAf1mLgLZ9LkB1iQ4akzDpO0N8ZwKe3', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
+INSERT INTO `users` VALUES ('1', '1', '0', 'admin', 'Nguyễn Át Min', 'admin@admin.com', '', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', '5F8UmI2EGsTqzXFOl9ZkykdDilouRpK6GTc5pIPbqiI22Ktvr8kJgBMtCyRZ', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
 INSERT INTO `users` VALUES ('3', '3', '2', '', 'Hoàng Văn Hải', '', 'Lập trình viên cấp cao', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '', '1', '1', '', '2019-04-23 09:28:28', '2019-04-23 09:31:06');
 INSERT INTO `users` VALUES ('5', '3', '3', '', 'Đinh Trung', '', 'Chuyên viên thiết kế animation', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', '', '1', '1', '', '2019-04-24 04:21:40', '2019-08-19 04:56:43');
 INSERT INTO `users` VALUES ('6', '3', '1', null, 'Mạnh Hiển', null, 'Designer', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:14:36', '2019-08-19 18:14:36');
 INSERT INTO `users` VALUES ('7', '3', '4', null, 'Dương Hoàng', null, 'Tester', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '0', null, '1', '1', null, '2019-08-19 18:15:05', '2019-08-21 03:30:29');
-INSERT INTO `users` VALUES ('8', '3', '2', 'namnt', 'Nguyễn Thành Nam', 'nam@gmail.com', null, null, '', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', null, '2019-08-20 21:55:57', '2019-08-20 21:55:57');
+INSERT INTO `users` VALUES ('8', '2', '2', 'namnt', 'Nguyễn Thành Nam', 'nam@gmail.com', null, null, '', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', 'ORaeAel7nNmhrvi9INvkBMyrNlaLq8I2nqxvc10SAYwQu08NcAdAKbNW6y3y', '2019-08-20 21:55:57', '2019-08-20 21:55:57');
 INSERT INTO `users` VALUES ('9', '3', '1', 'thuynv', 'Nguyễn Văn Thủy', 'thuy@gmail.com', null, null, '', '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', null, '2019-08-20 21:56:19', '2019-08-20 21:56:19');
 
 -- ----------------------------
