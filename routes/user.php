@@ -5,6 +5,10 @@
     \Route::get('/', 'User\HomeController@index')->name('home');
 
     \Route::get('dang-nhap', 'User\Auth\LoginController@showLoginForm')->name('getSignIn');
+    \Route::post('login', 'User\Auth\LoginController@loginLDAP');
+    \Route::get('logout', 'User\Auth\LoginController@logoutLDAP');
+
+
     \Route::post('dang-nhap', 'User\Auth\LoginController@login');
     \Route::get('dang-xuat', 'User\Auth\LoginController@logout')->name('getLogout');
     \Route::get('tao-tai-khoan', 'User\Auth\RegisterController@showRegistrationForm')->name('getSignUp');

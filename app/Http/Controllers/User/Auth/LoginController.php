@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
+use Response;
 use Session;
+use DB;
 
 class LoginController extends Controller
 {
@@ -38,6 +40,39 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('user.guest')->except('logout');
+    }
+
+    public function loginLDAP(Request $request){
+        try {
+            $data = $request->all();
+            if ($data && isset($data['username']) && isset($data['password'])) {
+
+                $ldap_dn = "uid=".$data["username"].",dc=example,dc=com";
+                $ldap_password = $data["password"];
+                $ldap_con = ldap_connect("ldap.forumsys.com");
+                ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
+
+                if(@ldap_bind($ldap_con,$ldap_dn,$ldap_password)){
+                    //check exist user
+                    $user = DB::select('select * from users where username = "'.$data['username'].'" ');
+                    if($user){
+                    }else{
+                        DB::insert('insert into users (username, full_name, status) values ("'.$data['username'].'", "'.$data['username'].'", 1)');
+                    }
+                    Session::put('username', $data["username"]);
+                    return Response::json(['status' => true, 'message' => 'Đăng nhập thành công.']);
+                }else{
+                    return Response::json(['status' => false, 'message' => 'Tên đăng nhập hoặc Mật khẩu không chính xác.']);
+                }  
+            }
+        } catch (Exception $e) {
+            return Response::json(['status' => false, 'message' => 'Xảy ra lỗi trong quá trình đăng nhập.']);
+        }
+    }
+
+    public function logoutLDAP(){
+        Session::forget('username');
+        return redirect('/');
     }
 
     public function showLoginForm(Request $request)

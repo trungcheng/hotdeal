@@ -48,6 +48,22 @@
         }
 
         $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function(e){
+                $('.submenu').css('display', 'none');
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+
+            var nav = $(".header");
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    nav.addClass("f-nav");
+                } else {
+                    nav.removeClass("f-nav");
+                }
+            });
+
             var user = $('.box-user'),
             menuUser = $('.user-dropdown'),
             openLogin = false,
@@ -62,7 +78,6 @@
                 } else {
                     menuUser.fadeIn();
                     closeUser = true;
-                    console.log('false');
                 }
                 clickBody = 0;
             });
@@ -74,7 +89,6 @@
             $('body').click(function(){
                 clickBody += 1;
                 if (clickBody > 1) {
-                    console.log('clickBody');
                     menuUser.fadeOut();
                     $('.list-child').css("display", "none");
                     closeUser = false;
@@ -82,14 +96,28 @@
                 }
             });
         });
+    </script>
 
-        $(function() {
-            var nav = $(".header");
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 50) {
-                    nav.addClass("f-nav");
-                } else {
-                    nav.removeClass("f-nav");
+    <script type="text/javascript">
+        $('#formLogin').on('submit', function (e) {
+            e.preventDefault();
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: '/login',
+                type: 'post',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json',
+                crossDomain: true,
+                data: formData,
+                success: function (response) {
+                    if (response.status) {
+                        location.reload();
+                    } else {
+                        $('.err-login').html(response.message);
+                        $('.err-login').fadeIn();
+                    }
                 }
             });
         });

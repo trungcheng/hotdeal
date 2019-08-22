@@ -154,6 +154,13 @@ figure:hover+span {
     }
 }
 
+.f-nav{
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background: #fff;
+    width: 100%;
+}
 .transition{
     -webkit-transition: all 0.6s ease;
     -moz-transition: all 0.6s ease;
@@ -255,6 +262,11 @@ ul.dropdown-menu li a, ul.list-child li a {
     background: #FDEBE4;
     z-index: 1000;
     padding: 15px 20px;
+}
+.err-login{
+    display: none;
+    color: #ff0303;
+    font-size: 13px;
 }
 .btn-default {
     padding-left: 0;
@@ -668,9 +680,12 @@ input[type=number] {
     }
     .submenu{
         position: initial;
+        background: #fdebe4;
     }
-    .submenu {
-        padding-left: 20px !important;
+    .submenu li a{
+        z-index: 99;
+        position: relative;
+        padding-left: 45px !important;
     }
     .inner-bg {
         margin-top: 20px;

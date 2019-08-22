@@ -137,13 +137,6 @@
 @section('pageJs')
 	<script type="text/javascript">
 	   $(document).ready(function(){
-	    	$('.dropdown-submenu a.test').on("click", function(e){
-	    		$('.submenu').css('display', 'none');
-	        	$(this).next('ul').toggle();
-	        	e.stopPropagation();
-	        	e.preventDefault();
-	        });
-
 	        cal_img();
 	    });
 
