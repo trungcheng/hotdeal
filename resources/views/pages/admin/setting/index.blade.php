@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Nội dung trang chủ</label>
+                        <label>Nội dung trang chủ (Thể lệ)</label>
                         <textarea class="form-control" id="content_home_page">{!! $setting->content_home_page !!}</textarea>
                     </div>
 
@@ -94,52 +94,50 @@
 
 @section('pageJs')
     <script type="text/javascript">
-        (function($, app) {
-            function openPopup() {
-                CKFinder.popup( {
-                    chooseFiles: true,
-                    onInit: function(finder) {
-                        finder.on( 'files:choose', function(evt) {
-                            var file = evt.data.files.first();
-                            document.getElementById( 'xFilePath' ).value = file.getUrl();
-                        } );
-                        finder.on('file:choose:resizedImage', function(evt) {
-                            document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                        });
-                    }
-                });
-            }
+        function openPopup() {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function(finder) {
+                    finder.on( 'files:choose', function(evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                    } );
+                    finder.on('file:choose:resizedImage', function(evt) {
+                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        }
 
-            CKEDITOR.replace('content_home_page', {height: 300});
+        CKEDITOR.replace('content_home_page', {height: 300});
 
-            $('#form_setting').on('submit', function () {
-                var formData = new FormData($(this)[0]);
-                formData.append('content_home_page', CKEDITOR.instances.content_home_page.document.getBody().getHtml());
+        $('#form_setting').on('submit', function () {
+            var formData = new FormData($(this)[0]);
+            formData.append('content_home_page', CKEDITOR.instances.content_home_page.document.getBody().getHtml());
 
-                $.ajax({
-                    url: $(this).attr('action'),
-                    method: 'POST',
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-                    dataType: "JSON",
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: formData,
-                    success: function (response) {
-                        if (response.status) {
-                            swal('Updated!', response.message, "success");
-                        } else {
-                            swal('Error!', response.message, "error");
-                        }
-                    },
-                    error: function (response) {
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'POST',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: "JSON",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: formData,
+                success: function (response) {
+                    if (response.status) {
+                        swal('Updated!', response.message, "success");
+                    } else {
                         swal('Error!', response.message, "error");
                     }
-                });
-
+                },
+                error: function (response) {
+                    swal('Error!', response.message, "error");
+                }
             });
-        })($, $.app);
+
+        });
     </script>
 @stop

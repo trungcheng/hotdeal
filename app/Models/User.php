@@ -22,6 +22,7 @@ class User extends Model implements Authenticatable
         'intro',
         'content',
         'avatar',
+        'video',
         'total_vote',
         'password',
         'type',
@@ -85,12 +86,33 @@ class User extends Model implements Authenticatable
         }
 
         if ($request->cate !== 'all-cate' && $request->cate !== 'undefined') {
-            $data->where("cat_id", (int) $request->cate);
+            $category = Category::find((int)$request->cate);
+            if ($category->parent_id == 0) {
+                $arrCateIds = [$category->id];
+                $childCates = Category::where('parent_id', $category->id)->select('id')->get();
+                foreach ($childCates as $child) {
+                    $arrCateIds[] = $child->id;
+                }
+                $data->whereIn("cat_id", $arrCateIds);
+            } else {
+                $data->where("cat_id", (int) $request->cate);
+            }
         }
 
-        $data = $data->with('category')->orderBy('id', 'desc')->get();
+        $data = $data->with(['category' => function ($query) {
+            $query->orderBy('parent_id');
+        }]);
 
-        return $data;
+        if ($request->order !== 'default' && $request->order !== 'undefined') {
+            $condition = explode('-', $request->order);
+            if (isset($condition[1])) {
+                $data = $data->orderBy($condition[0], $condition[1]);    
+            } else {
+                $data = $data->orderBy($condition[0]);
+            }
+        }
+
+        return $data->get();
     }
 
     public static function initUser($request)

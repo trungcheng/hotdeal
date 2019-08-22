@@ -3,4 +3,5 @@ var app = angular.module('VincomCMS', [
     'ngSanitize',
     'ngMessages',
     'angucomplete-alt'
+    // 'highcharts-ng',
 ]);

@@ -65,6 +65,7 @@
 
                 //statistical
                 $this->get('statistical', 'Admin\StatisticalController@index')->name('statistical');
+                $this->get('statistical/loadDataChart', 'Admin\StatisticalController@loadDataChart')->name('loadDataChart');
 
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');

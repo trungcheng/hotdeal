@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\User;
 use App\Util\Util;
 use Response;
@@ -24,6 +25,15 @@ class MemberController extends Controller
     public function getAllMembers(Request $request)
     {
         $results = User::init($request);
+        if ($results) {
+            foreach ($results as $result) {
+                if ($result->category->parent_id > 0) {
+                    $result->parentCate = Category::find($result->category->parent_id)->name;
+                } else {
+                    $result->parentCate = null;
+                }
+            }
+        }
             
         return Response::json(['status' => true, 'data' => $results]);
     }

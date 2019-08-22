@@ -36,7 +36,6 @@
                                 <div class="form-group">
                                     <label>Thuộc khối</label>
                                     <select class="form-control cate" name="cat_id">
-                                        <option ng-selected="{{ $member['cat_id'] }} == 0" value="0">Không thuộc khối nào</option>
                                         <option ng-selected="item.id == {{ $member['cat_id'] }}" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
                                             @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
                                         </option>
@@ -44,8 +43,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>
-                                    <input value="{{ $member->avatar }}" name="avatar" type="text" size="48" class="form-control" id="xFilePath" />
-                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                                    <input value="{{ $member->avatar }}" name="avatar" type="text" size="48" class="form-control" id="avatar" />
+                                    <button class="btn btn-primary btn-upload" onclick="openPopup('avatar')">Tải ảnh lên</button>
+                                </div>
+                                <div class="form-group">
+                                    <label>Video</label>
+                                    <input value="{{ $member->video }}" name="video" type="text" size="48" class="form-control" id="video" />
+                                    <button class="btn btn-primary btn-upload" onclick="openPopup('video')">Tải video lên</button>
                                 </div>
                                 <div class="form-group">
                                     <label>Vị trí</label>
@@ -84,19 +88,19 @@
     {!! Html::script('backend/js/angular/controllers/member.controller.js') !!}
 
     <script type="text/javascript">
-        function openPopup() {
-            CKFinder.popup( {
+        function openPopup(type) {
+            CKFinder.popup({
                 chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
+                onInit: function(finder) {
+                    finder.on('files:choose', function(evt) {
                         var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath' ).value = file.getUrl();
-                    } );
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                    } );
+                        document.getElementById(type).value = file.getUrl();
+                    });
+                    finder.on('file:choose:resizedImage', function(evt) {
+                        document.getElementById(type).value = evt.data.resizedUrl;
+                    });
                 }
-            } );
+            });
         }
         CKEDITOR.replace('content', {height: 300});
     </script>

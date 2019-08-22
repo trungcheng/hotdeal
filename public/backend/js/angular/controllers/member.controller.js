@@ -11,23 +11,23 @@
         $scope.pager = {};
         $scope.enableSubmit = false;
         $scope.cateId = 'all-cate';
+        $scope.order = 'default';
 
         $scope.pullDownLists = {
             availableOption: [
-              { value: 10, name: '10' },
-              { value: 25, name: '25' },
+              { value: 30, name: '30' },
               { value: 50, name: '50' },
               { value: 100, name: '100' },
-              { value: 200, name: '200' }
+              { value: 150, name: '150' }
             ],
-            selectedOption: {value: 10, name: '10'}
+            selectedOption: {value: 30, name: '30'}
         };
 
-        $scope.getResultsPage = function (name, cate, perPage, pageNumber) {
+        $scope.getResultsPage = function (name, cate, order, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/members/getAllMembers?name=' + name + '&cate=' + cate, {cache: false})
+            $http.get(app.vars.baseUrl + '/members/getAllMembers?name=' + name + '&cate=' + cate + '&order=' + order, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -35,6 +35,7 @@
 
                     $scope.name = name;
                     $scope.cate = cate;
+                    $scope.order = order;
                     $scope.pullDownLists.selectedOption = { value: perPage, name: perPage };
                     $scope.perPage = perPage;
                     $scope.pageNumber = pageNumber;
@@ -55,7 +56,7 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-member', 'all-cate', 10, 1);
+            $scope.getResultsPage('all-member', 'all-cate', 'default', 30, 1);
         }
 
         $scope.loadInitCreate = function () {
@@ -66,9 +67,9 @@
 
         $scope.searchMemberName = function() {
             if ($scope.searchText.length >= 1) {
-                $scope.getResultsPage($scope.searchText, $scope.cate, $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage($scope.searchText, $scope.cate, $scope.order, $scope.perPage, $scope.pageNumber);
             } else {
-                $scope.getResultsPage('all-member', $scope.cate, $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage('all-member', $scope.cate, $scope.order, $scope.perPage, $scope.pageNumber);
             }
         }
 

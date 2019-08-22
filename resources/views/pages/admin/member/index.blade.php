@@ -37,26 +37,36 @@
                         <div class="box-body">
                             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                                 <div class="row" style="margin-bottom:10px;">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="dataTables_length" id="example1_length">
                                             <label>
                                                 Hiển thị
                                                 <select ng-change="setPage(pullDownLists.selectedOption, pageNumber)" ng-model="pullDownLists.selectedOption" ng-options="item.value as item.name for item in pullDownLists.availableOption track by item.value" name="example_length" aria-controls="example" class="form-control input-sm" style="margin: 0 5px;width: 63px;">
-                                                </select> người
+                                                </select> nhân vật
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div id="example1_filter" class="dataTables_filter" style="float:right;">
+                                    <div class="col-sm-8">
+                                        <div id="example_filter" class="dataTables_filter" style="float:right;">
                                             <label>Search
-                                                <input my-enter="searchMemberName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
+                                                <input my-enter="searchMemberName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm nhân vật, vị trí...">
                                             </label>
                                         </div>
-                                        <div ng-cloak id="example1_filter" class="dataTables_filter" style="float:right;margin-right:10px;">
+                                        <div id="example1_filter" class="dataTables_filter" style="float:right;margin-right:10px;">
+                                            <label>Sắp xếp
+                                                <select ng-change="getResultsPage(name, cateId, order, perPage, pageNumber)" class="form-control input-sm" ng-model="order">
+                                                    <option value="default">Mặc định</option>
+                                                    <option value="total_vote-desc">Lượt bình chọn giảm dần</option>
+                                                    <option value="total_vote-asc">Lượt bình chọn tăng dần</option>
+                                                    <option value="cat_id">Alphabet khối</option>
+                                                    <option value="full_name">Alphabet nhân vật</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                        <div ng-cloak id="example2_filter" class="dataTables_filter" style="float:right;margin-right:10px;">
                                             <label>Khối
-                                                <select ng-change="getResultsPage(name, cateId, perPage, pageNumber)" class="form-control input-sm" ng-model="cateId">
+                                                <select ng-change="getResultsPage(name, cateId, order, perPage, pageNumber)" class="form-control input-sm" ng-model="cateId">
                                                     <option value="all-cate">Tất cả các khối</option>
-                                                    <option value="0">Không thuộc khối nào</option>
                                                     <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
                                                         @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
                                                     </option>
@@ -72,10 +82,10 @@
                                             <thead>
                                                 <tr role="row">
                                                     <th>Ảnh</th>
-                                                    <th>Họ tên</th>
-                                                    <th>Thuộc khối</th>
+                                                    <th>Khối (Phòng/Ban)</th>
+                                                    <th>Nhân vật</th>
                                                     <th>Vị trí</th>
-                                                    <th>Tổng vote</th>
+                                                    <th>Tổng lượt bình chọn</th>
                                                     <th>Trạng thái</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -85,8 +95,8 @@
                                                     <td style="text-align:center !important">
                                                         <img src="@{{ mem.avatar }}" style="width:70px;height:65px;border-radius:50%" />
                                                     </td>
+                                                    <td style="text-align:center !important">@{{ (mem.parentCate) ? mem.category.name+' ('+mem.parentCate+')' : mem.category.name }}</td>
                                                     <td style="text-align:center !important">@{{ mem.full_name }}</td>
-                                                    <td style="text-align:center !important">@{{ (mem.category) ? mem.category.name : 'Không' }}</td>
                                                     <td style="text-align:center !important">@{{ mem.intro }}</td>
                                                     <td style="text-align:center !important">@{{ mem.total_vote }}</td>
                                                     <td>@{{ (mem.status) ? 'Hoạt động' : 'Khóa' }}</td>
@@ -104,14 +114,14 @@
                                             <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:46%;margin-top:0%">
                                         </div>
                                         <div ng-cloak ng-if="!loading && items.length === 0">
-                                            <h5 style="font-size:16px;color:#f00;">Oops! Không tìm thấy người nào!</h5>
+                                            <h5 style="font-size:16px;color:#f00;">Oops! Không tìm thấy nhân vật nào!</h5>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="row" ng-cloak ng-if="!loading && items.length > 0">
                                     <div class="col-sm-5" style="padding-top:5px;">
-                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Hiển thị từ <strong>@{{ from }}</strong> đến <strong>@{{ to }}</strong> của <strong>@{{ total }}</strong> người</div>
+                                        <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Hiển thị từ <strong>@{{ from }}</strong> đến <strong>@{{ to }}</strong> của <strong>@{{ total }}</strong> nhân vật</div>
                                     </div>
                                     <div class="col-sm-7">
                                         <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style="margin-top:-20px;float:right">
