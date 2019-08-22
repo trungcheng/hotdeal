@@ -20,54 +20,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="{{ asset('backend/img/favicon.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('frontend/rs-plugin/css/settings.css') }}" media="screen" />
-    <link rel="stylesheet" href="{{ asset('frontend/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/font-awesome/css/font-awesome.min.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
     @section('pageCss')
     @show
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-    <script src="{{ asset('frontend/js/vendors/modernizr.custom.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
 </head>
 <body>
-    <!-- Page Wrapper -->
-    <div id="wrap" class="layout-1"> 
-        <!-- Header -->
-        @include('layouts.user.header')
-        <!-- Content -->
-        <div id="content"> 
-            @yield('content')
-        </div>
-        <!-- Footer -->
-        @include('layouts.user.footer')
-        <!-- GO TO TOP  --> 
-        <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a> 
-        <!-- GO TO TOP End --> 
+    <!-- Header -->
+    @include('layouts.user.header')
+    <!-- Content -->
+    <div id="content"> 
+        @yield('content')
     </div>
-    <!-- End Page Wrapper --> 
+    <!-- Footer -->
+    @include('layouts.user.footer')
 
     <!-- JavaScripts --> 
-    <script src="{{ asset('frontend/js/vendors/modernizr.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendors/jquery/jquery.min.js') }}"></script> 
-    <script src="{{ asset('frontend/js/vendors/wow.min.js') }}"></script> 
-    <script src="{{ asset('frontend/js/vendors/bootstrap.min.js') }}"></script> 
-    <script src="{{ asset('frontend/js/vendors/own-menu.js') }}"></script> 
-    <script src="{{ asset('frontend/js/vendors/jquery.sticky.js') }}"></script> 
-    <script src="{{ asset('frontend/js/vendors/owl.carousel.min.js') }}"></script> 
-    <script src="{{ asset('frontend/js/vendors/swiper.min.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendors/jquery.mCustomScrollbar.js') }}"></script>
-    <script src="{{ asset('frontend/js/vendors/jquery.magnific-popup.min.js') }}"></script>
+    <script>
+        var clickBody = 1;
+        function open_group(id){
+            $('.list-child').css("display", "none");
+            $('.list-'+id).css("display", "block");
+            clickBody = 0;
+        }
 
-    <!-- SLIDER REVOLUTION 4.x SCRIPTS  --> 
-    <script src="{{ asset('frontend/rs-plugin/js/jquery.tp.t.min.js') }}"></script> 
-    <script src="{{ asset('frontend/rs-plugin/js/jquery.tp.min.js') }}"></script> 
-    <script src="{{ asset('frontend/js/main.js') }}"></script>
-    <script src="{{ asset('frontend/js/plugins.js') }}"></script>
-    <script src="{{ asset('frontend/js/custom.js') }}"></script>
+        $(document).ready(function () {
+            var user = $('.box-user'),
+            menuUser = $('.user-dropdown'),
+            openLogin = false,
+            closeUser = false;
+            $('.box-user').click(function(){
+                if (closeUser == true) {
+                    if(openLogin == false){
+                        menuUser.fadeOut();
+                        closeUser = false;
+                        console.log('true');
+                    }
+                } else {
+                    menuUser.fadeIn();
+                    closeUser = true;
+                    console.log('false');
+                }
+                clickBody = 0;
+            });
+
+            $('.login').click(function(){
+                openLogin = true;
+            });
+
+            $('body').click(function(){
+                clickBody += 1;
+                if (clickBody > 1) {
+                    console.log('clickBody');
+                    menuUser.fadeOut();
+                    $('.list-child').css("display", "none");
+                    closeUser = false;
+                    openLogin = false;
+                }
+            });
+        });
+
+        $(function() {
+            var nav = $(".header");
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 50) {
+                    nav.addClass("f-nav");
+                } else {
+                    nav.removeClass("f-nav");
+                }
+            });
+        });
+    </script>
 
     @section('pageJs')
     @show
