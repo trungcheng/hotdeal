@@ -21,6 +21,9 @@ class WebController extends Controller
     }
 
     public function processPage(Request $request, $slug) {
+        if ($slug == 'admin') {
+            return redirect('/admin/access/login');
+        }
         $category = DB::table('categories')->where('slug', $slug)->where('status', 1)->first();
         if($category) {
             $users = DB::table('users')->select('id', 'full_name', 'avatar', 'intro', 'total_vote')->where('cat_id', $category->id)->where('role_id', 3)->where('status', 1)->get();
