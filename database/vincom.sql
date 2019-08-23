@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-08-23 00:46:38
+Date: 2019-08-23 12:13:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -125,6 +125,7 @@ CREATE TABLE `setting` (
   `address` varchar(255) DEFAULT NULL,
   `work_time` varchar(255) DEFAULT NULL,
   `logo` varchar(255) DEFAULT NULL,
+  `image_home_page` varchar(255) DEFAULT NULL,
   `content_home_page` longtext,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -134,7 +135,7 @@ CREATE TABLE `setting` (
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
-INSERT INTO `setting` VALUES ('1', 'Vincom Retail', null, null, null, null, null, null, '', '2019-08-21 10:51:39', '2019-08-21 03:51:39');
+INSERT INTO `setting` VALUES ('1', 'Vincom Retail', null, null, null, null, null, null, null, '', '2019-08-21 10:51:39', '2019-08-21 03:51:39');
 
 -- ----------------------------
 -- Table structure for users
@@ -165,10 +166,10 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` VALUES ('1', '1', '0', 'admin', 'Nguyễn Át Min', 'admin@admin.com', '', null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', null, '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', '5F8UmI2EGsTqzXFOl9ZkykdDilouRpK6GTc5pIPbqiI22Ktvr8kJgBMtCyRZ', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
-INSERT INTO `users` VALUES ('3', '3', '2', '', 'Hoàng Văn Hải', '', 'Lập trình viên cấp cao', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '/backend/uploads/videos/1512914346-big_buck_bunny_720p_1mb.mp4', '4', '', '1', '1', '', '2019-04-23 09:28:28', '2019-08-22 11:39:02');
-INSERT INTO `users` VALUES ('5', '3', '3', '', 'Đinh Trung', '', 'Chuyên viên thiết kế animation', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '/backend/uploads/videos/1512914346-big_buck_bunny_720p_1mb.mp4', '1', '', '1', '1', '', '2019-04-24 04:21:40', '2019-08-22 11:38:48');
-INSERT INTO `users` VALUES ('6', '3', '4', null, 'Mạnh Hiển', null, 'Designer', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '/backend/uploads/videos/1512914346-big_buck_bunny_720p_1mb.mp4', '2', null, '1', '1', null, '2019-08-19 18:14:36', '2019-08-22 12:57:08');
-INSERT INTO `users` VALUES ('7', '3', '5', null, 'Dương Hoàng', null, 'Tester', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '/backend/uploads/videos/1512914346-big_buck_bunny_720p_1mb.mp4', '3', null, '1', '1', null, '2019-08-19 18:15:05', '2019-08-22 12:57:26');
+INSERT INTO `users` VALUES ('3', '3', '2', '', 'Hoàng Văn Hải', '', 'Lập trình viên cấp cao', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '/backend/uploads/videos/1512914346-big_buck_bunny_720p_1mb.mp4', '1', '', '1', '1', '', '2019-04-23 09:28:28', '2019-08-22 11:39:02');
+INSERT INTO `users` VALUES ('5', '3', '3', '', 'Đinh Trung', '', 'Chuyên viên thiết kế animation', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '/backend/uploads/videos/1512914346-big_buck_bunny_720p_1mb.mp4', '3', '', '1', '1', '', '2019-04-24 04:21:40', '2019-08-22 11:38:48');
+INSERT INTO `users` VALUES ('6', '3', '4', null, 'Mạnh Hiển', null, 'Designer', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '/backend/uploads/videos/1512914346-big_buck_bunny_720p_1mb.mp4', '1', null, '1', '1', null, '2019-08-19 18:14:36', '2019-08-22 12:57:08');
+INSERT INTO `users` VALUES ('7', '3', '5', null, 'Dương Hoàng', null, 'Tester', '', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '/backend/uploads/videos/1512914346-big_buck_bunny_720p_1mb.mp4', '2', null, '1', '1', null, '2019-08-19 18:15:05', '2019-08-22 12:57:26');
 INSERT INTO `users` VALUES ('8', '2', '2', 'namnt', 'Nguyễn Thành Nam', 'nam@gmail.com', null, null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', null, '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', 'ORaeAel7nNmhrvi9INvkBMyrNlaLq8I2nqxvc10SAYwQu08NcAdAKbNW6y3y', '2019-08-20 21:55:57', '2019-08-20 21:55:57');
 INSERT INTO `users` VALUES ('9', '3', '1', 'thuynv', 'Nguyễn Văn Thủy', 'thuy@gmail.com', null, null, 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', null, '0', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', null, '2019-08-20 21:56:19', '2019-08-20 21:56:19');
 

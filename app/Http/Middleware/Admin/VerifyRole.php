@@ -39,7 +39,11 @@ class VerifyRole
         $currentUser = User::find(Auth::guard('admin')->id());
 
         if (Auth::guard('admin')->check() && $currentUser->hasRoles($roles)) {
-            return $next($request);
+            if ($currentUser->status) {
+                return $next($request);
+            }
+
+            return response()->view('errors.403-Blocked');
         }
 
         Auth::guard('admin')->logout();

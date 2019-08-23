@@ -67,7 +67,7 @@
         <p class="enormous-font bree-font"> 403 </p>
         <p class="big-font">Your account has been blocked... </p>
         <hr>
-        <p class="big-font"><a href="{!! action('Admin\DashboardController@index') !!}">Come back</a></p>
+        <p class="big-font"><a href="{{ route('login') }}">Come back</a></p>
     </div>
 </div>
 </body>

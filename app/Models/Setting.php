@@ -17,6 +17,7 @@ class Setting extends Model
         'address',
         'work_time',
         'logo',
+        'image_home_page',
         'content_home_page'
     ];
 

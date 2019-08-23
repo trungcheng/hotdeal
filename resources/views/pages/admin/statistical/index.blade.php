@@ -9,7 +9,7 @@
             border: 1px solid #ccc;
             float: right;
             padding: 0;
-            width: 18%;
+            width: 19%;
         }
         #daterange {
             border: none;
@@ -63,7 +63,10 @@
                                 <i id="daterange-icon" class="fa fa-calendar"></i>
                             </div>
                             <div ng-cloak ng-if="loading">
-                                <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:46%;margin-top:20%">
+                                <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:47%;margin-top:20%">
+                            </div>
+                            <div style="padding-top:20%" ng-cloak ng-if="!loading && data.length == 0">
+                                <p class="text-center">Không có dữ liệu</p>
                             </div>
                             <div id="chart-container"></div>
                         </div>

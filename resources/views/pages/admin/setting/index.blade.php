@@ -40,8 +40,8 @@
                     
                     <div class="form-group">
                         <label>Logo</label>
-                        <input value="{{ ($setting != '') ? $setting->logo : '' }}" name="logo" type="text" size="48" class="form-control" id="xFilePath" />
-                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                        <input value="{{ ($setting != '') ? $setting->logo : '' }}" name="logo" type="text" size="48" class="form-control" id="logo" />
+                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('logo')">Tải ảnh lên</button>
                     </div>
 
                     <div class="form-group">
@@ -75,6 +75,12 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Ảnh trang chủ</label>
+                        <input value="{{ ($setting != '') ? $setting->image_home_page : '' }}" name="image_home_page" type="text" size="48" class="form-control" id="image_home_page" />
+                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('image_home_page')">Tải ảnh lên</button>
+                    </div>
+
+                    <div class="form-group">
                         <label>Nội dung trang chủ (Thể lệ)</label>
                         <textarea class="form-control" id="content_home_page">{!! $setting->content_home_page !!}</textarea>
                     </div>
@@ -94,16 +100,16 @@
 
 @section('pageJs')
     <script type="text/javascript">
-        function openPopup() {
-            CKFinder.popup( {
+        function openPopup(type) {
+            CKFinder.popup({
                 chooseFiles: true,
                 onInit: function(finder) {
-                    finder.on( 'files:choose', function(evt) {
+                    finder.on('files:choose', function(evt) {
                         var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath' ).value = file.getUrl();
-                    } );
+                        document.getElementById(type).value = file.getUrl();
+                    });
                     finder.on('file:choose:resizedImage', function(evt) {
-                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                        document.getElementById(type).value = evt.data.resizedUrl;
                     });
                 }
             });
