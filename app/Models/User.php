@@ -99,10 +99,6 @@ class User extends Model implements Authenticatable
             }
         }
 
-        $data = $data->with(['category' => function ($query) {
-            $query->orderBy('parent_id');
-        }]);
-
         if ($request->order !== 'default' && $request->order !== 'undefined') {
             $condition = explode('-', $request->order);
             if (isset($condition[1])) {
@@ -110,9 +106,11 @@ class User extends Model implements Authenticatable
             } else {
                 $data = $data->orderBy($condition[0]);
             }
+        } else {
+            $data->orderBy('cat_id');
         }
 
-        return $data->get();
+        return $data->with('category')->get();
     }
 
     public static function initUser($request)
