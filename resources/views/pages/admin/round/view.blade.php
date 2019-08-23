@@ -61,14 +61,13 @@
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter" style="float:right;">
                                             <label>Search
-                                                <input my-enter="searchUserRoundName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
+                                                <input my-enter="searchUserRoundName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm nhân vật, vị trí...">
                                             </label>
                                         </div>
                                         <div ng-cloak id="example1_filter" class="dataTables_filter" style="float:right;margin-right:10px;">
                                             <label>Khối
                                                 <select ng-change="getResultsViewPage(roundId, name, cateId, perPage, pageNumber)" class="form-control input-sm" ng-model="cateId">
                                                     <option value="all-cate">Tất cả các khối</option>
-                                                    <option value="0">Không thuộc khối nào</option>
                                                     <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
                                                         @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
                                                     </option>
@@ -87,11 +86,11 @@
                                                         <input title="Chọn/Bỏ chọn tất cả" type="checkbox" ng-model="isAllChecked" ng-change="handleChosenAllMember()" />
                                                     </th>
                                                     <th>Ảnh</th>
-                                                    <th>Họ tên</th>
+                                                    <th>Nhân vật</th>
                                                     <th>Thuộc khối</th>
                                                     <th>Vị trí</th>
                                                     <th>Số vote</th>
-                                                    <th>Bình chọn</th>
+                                                    <th>Chọn</th>
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
