@@ -1,43 +1,56 @@
 @extends('layouts.user.master')
 
-@section('page') 404 Page
+@section('page')404 Not Found
 @stop
 
-@section('image') {{ url('/') }}/{{ $setting->logo }}
+@section('description')
 @stop
 
-@section('description') {{ $setting->metades }}
+@section('keywords')
 @stop
 
-@section('keywords') {{ $setting->metakey }}
+@section('canonical'){{ URL::current() }}
+@stop
+
+@section('alternate'){{ URL::current() }}
+@stop
+
+@section('propName')
+@stop
+
+@section('propDesc')
+@stop
+
+@section('ogTitle')
+@stop
+
+@section('ogDesc')
+@stop
+
+@section('ogUrl'){{ route('home') }}/
 @stop
 
 @section('pageCss')
+    
 @stop
 
 @section('content')
-
-<div id=Col41 class=col-md-9>
-    <div class=startchange></div>
-    <div class=margin-left-right-15>
-        <div class="tdHeader">
-            <div class="pull-left">
-                <a class="TitleLink" href="{{ url('/') }}"><i class="fa fa-home"></i> Trang chủ</a>
-                <a class="TitleLink" href="#"> / 404</a> 
+    <div class="wrapper">
+        <div class="container">
+            <div class="row content" style="text-align: center; font-size: 20px; line-height: 35px; padding-top: 50px;">
+                <p class="s404-tb">Ooops... Error 404</p>
+                <p class="s404-tm">Sorry, but the page you are looking for doesn't exist.</p>
+                <a class="btn-vote-item transition" style="width: 250px; margin: 10px auto 50px; float: none;" href="{{ url('/') }}">Về Trang chủ</a>
             </div>
         </div>
-
-        <div class="row content" style="text-align: center; font-size: 20px; line-height: 35px;">
-            <p class="s404-tb">Ooops... Error 404</p>
-            <p class="s404-tm">Sorry, but the page you are looking for doesn't exist.</p>
-            <a class="btn btn-danger" data-animation="animated  delay4s swing" href="{{ url('/') }}">
-            	<i class="fa fa-home"></i> &nbsp Về Trang chủ
-            </a>
-        </div>
-    </div>    
-</div>
-
+    </div>
 @stop
 
 @section('pageJs')
+    <script type="text/javascript">
+        $(function() {
+            var height = window.innerHeight;
+            $('.content').css('min-height', height-220);
+        });
+    </script>
 @stop
