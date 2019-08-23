@@ -67,7 +67,12 @@
                         </div>
                     </div>
                     <a class="btn-back transition" onclick="window.history.back();">Quay lại</a>
-                    <a onclick="vote({{ $data->id }});" class="btn-vote-detail transition">Bình chọn</a>
+                    
+                    @if($data->vote_today == 0)
+                        <a class="btn-vote-detail transition" onclick="vote({{ $data->id }});">Bình chọn</a>
+                    @else
+                        <a class="btn-vote-item transition active-vote-detail">Đã bình chọn &nbsp<img src="{{ asset('frontend/images/active.png') }}" /></a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -94,27 +99,45 @@
             </div>
         </div>
     </div>
-@stop
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="images/success.png" />
-                <p class="reg-success">bình chọn thành công</p>
-                <p class="name-success">Lê Đặng Mai Khanh</p>
-                <p class="position-success">Chuyên viên phòng Phát triển ứng dụng</p>
-                <a class="btn-back transition" href="#">quay về trang chủ</a>
-                <a class="btn-vote-detail transition" href="#">tiếp tục bình chọn</a>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="{{ asset('frontend/images/success.png') }}" />
+                    <p class="reg-success">bình chọn thành công</p>
+                    <p class="name-success"></p>
+                    <p class="position-success"></p>
+                    <a class="btn-back transition" href="{{ url('/') }}">quay về trang chủ</a>
+                    <a class="btn-vote-detail transition" onclick="location.reload();">tiếp tục bình chọn</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+@stop
 
 @section('pageJs')
     <script type="text/javascript">
         function vote(id){
-            $('#myModal').modal('show'); 
+            $.ajax({
+                type:'POST',
+                url:'/vote',
+                data:{
+                    _token: "{{ csrf_token() }}",
+                    user: 3,
+                    vote: id
+                },
+                success: function(response) {
+                    if (response.status) {
+                        $('#myModal').modal('show');
+                        $('.name-success').html(response.name);
+                        $('.position-success').html(response.position);
+                    } else {
+                        console.log('false');
+                        // console.log(response.message);
+                    }
+                }
+            });
         }
     </script>
 @stop

@@ -455,6 +455,7 @@ a.btn-detail {
     height: 60px;
     padding-top: 19px;
     float: left;
+    cursor: pointer;
 }
 a.btn-vote-item {
     font-size: 15px;
@@ -468,6 +469,7 @@ a.btn-vote-item {
     height: 60px;
     padding-top: 19px;
     float: left;
+    cursor: pointer;
 }
 .btn-item {
     height: 60px;
@@ -486,6 +488,16 @@ p.total-vote {
 }
 .active-vote {
     background: #219653 !important;
+    cursor: default !important;
+    pointer-events: none;
+}
+.active-vote-detail {
+    background: #219653 !important;
+    cursor: default !important;
+    pointer-events: none;
+    float: none !important;
+    width: 205px !important;
+    margin-left: 20px;
 }
 .btn-vote-item img{
     vertical-align: top;

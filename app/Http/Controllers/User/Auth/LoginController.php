@@ -57,7 +57,14 @@ class LoginController extends Controller
                     $user = DB::select('select * from users where username = "'.$data['username'].'" ');
                     if($user){
                     }else{
-                        DB::insert('insert into users (username, full_name, status, type, role_id, cat_id) values ("'.$data['username'].'", "'.$data['username'].'", 1, 0, 3, 0)');
+                        DB::table('users')->insert([
+                            'username'   => $data["username"], 
+                            'full_name'  => $data['username'],
+                            'status'     => 1,
+                            'type'       => 0,
+                            'role_id'    => 3,
+                            'cat_id'     => 0
+                        ]);
                     }
                     Session::put('username', $data["username"]);
                     return Response::json(['status' => true, 'message' => 'Đăng nhập thành công.']);

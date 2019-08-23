@@ -10,6 +10,8 @@
 
     \Route::get('/{slug}', 'User\WebController@processPage');
 
+    \Route::post('vote', 'User\WebController@voteMember');
+
 
     // \Route::post('dang-nhap', 'User\Auth\LoginController@login');
     // \Route::get('dang-xuat', 'User\Auth\LoginController@logout')->name('getLogout');
