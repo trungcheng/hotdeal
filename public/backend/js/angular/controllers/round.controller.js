@@ -15,13 +15,12 @@
 
         $scope.pullDownLists = {
             availableOption: [
-              { value: 10, name: '10' },
-              { value: 25, name: '25' },
+              { value: 30, name: '30' },
               { value: 50, name: '50' },
               { value: 100, name: '100' },
-              { value: 200, name: '200' }
+              { value: 150, name: '150' }
             ],
-            selectedOption: {value: 10, name: '10'}
+            selectedOption: {value: 30, name: '30'}
         };
 
         $scope.getResultsPage = function (name, perPage, pageNumber) {
@@ -55,7 +54,7 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-round', 10, 1);
+            $scope.getResultsPage('all-round', 30, 1);
         }
 
         $scope.loadInitCreate = function () {
@@ -172,7 +171,7 @@
         }
 
         $scope.loadInitView = function (roundId) {
-        	$scope.getResultsViewPage(roundId, 'all-member', 'all-cate', 10, 1);
+        	$scope.getResultsViewPage(roundId, 'all-member', 'all-cate', 30, 1);
         }
 
         $scope.searchUserRoundName = function() {
