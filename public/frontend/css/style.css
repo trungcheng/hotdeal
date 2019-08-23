@@ -505,7 +505,7 @@ p.line {
 }
 .img-detail {
     width: 100%;
-    min-height: 350px;
+    height: 350px;
     overflow: hidden;
     margin: 0 auto 15px;
 }

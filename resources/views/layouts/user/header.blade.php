@@ -24,7 +24,7 @@
 			</div>
 		</div>
 		<div class="logo col-lg-4 col-xs-8">
-			<a href="{{ url('/') }}"><img src="{{ asset('frontend/images/logo.png') }}"></a>
+			<a href="{{ url('/') }}"><img src="{{ $setting->logo }}"></a>
 		</div>
 		<div class="box-user col-lg-4 col-xs-2">
 			<?php $username = Session::get('username'); ?>
