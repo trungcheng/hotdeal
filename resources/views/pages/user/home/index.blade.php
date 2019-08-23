@@ -51,7 +51,7 @@
 						</div>
 					</div>
 					<div class="col-lg-7 col-xs-12 inner-bg">
-						<img class="bg-slogan" src="{{ asset('frontend/images/bg-home.png') }}">
+						<img class="bg-slogan" src="{{ $setting->image_home_page }}">
 					</div>
 				</div>
 			</div>
@@ -59,75 +59,29 @@
 			<div class="box-button mg-t-50 pd-t-30 pd-b-20">
 				<div class="container txt-center">
 					<h3>Bình chọn ngay cho những gương mặt tiêu biểu đến từ các khối, phòng ban</h3>
-					<div class="box-btn-vote">
-						<a class="btn-vote btn-vote-2 wfm transition" onclick="open_group(1);">Khối vận hành</a>	
-						<ul class="list-child list-1 transition">
-							<li><a class="transition" href="#">Miền Bắc 1</a></li>
-							<li><a class="transition" href="#">Miền Bắc 2</a></li>
-							<li><a class="transition" href="#">Miền Bắc 3</a></li>
-							<li><a class="transition" href="#">Miền Bắc 4</a></li>
-							<li><a class="transition" href="#">Miền Bắc 5</a></li>
-						</ul>
-					</div>
-
-					<div class="box-btn-vote">
-						<a class="btn-vote btn-vote-2 wfm transition" onclick="open_group(2);">Khối xây dựng</a>	
-						<ul class="list-child list-2 transition">
-							<li><a class="transition" href="#">Miền Bắc 1</a></li>
-							<li><a class="transition" href="#">Miền Bắc 2</a></li>
-							<li><a class="transition" href="#">Miền Bắc 3</a></li>
-							<li><a class="transition" href="#">Miền Bắc 4</a></li>
-							<li><a class="transition" href="#">Miền Bắc 5</a></li>
-						</ul>
-					</div>
-
-					<div class="box-btn-vote">
-						<a class="btn-vote btn-vote-2 wfm transition" onclick="open_group(3);">Khối tài chính - hành chính</a>	
-						<ul class="list-child list-3 transition">
-							<li><a class="transition" href="#">Miền Bắc 1</a></li>
-							<li><a class="transition" href="#">Miền Bắc 2</a></li>
-							<li><a class="transition" href="#">Miền Bắc 3</a></li>
-							<li><a class="transition" href="#">Miền Bắc 4</a></li>
-							<li><a class="transition" href="#">Miền Bắc 5</a></li>
-						</ul>
-					</div>
-
-					<div class="box-btn-vote">
-						<a class="btn-vote btn-vote-2 wfm transition" onclick="open_group(4);">Các khối phòng ban khác</a>	
-						<ul class="list-child list-4 transition">
-							<li><a class="transition" href="#">Miền Bắc 1</a></li>
-							<li><a class="transition" href="#">Miền Bắc 2</a></li>
-							<li><a class="transition" href="#">Miền Bắc 3</a></li>
-							<li><a class="transition" href="#">Miền Bắc 4</a></li>
-							<li><a class="transition" href="#">Miền Bắc 5</a></li>
-						</ul>
-					</div>
+					<?php $i = 0; ?>
+					@foreach ($categories as $cate)
+						<?php $i++; ?>
+						<div class="box-btn-vote">
+							<a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
+                        @if (isset($cate['childrens']))
+                        	<ul class="list-child list-{{ $i }} transition">
+                        		@foreach ($cate['childrens'] as $child)
+                        			<li><a class="transition" href="/{{ $child['slug'] }}">{{ $child['name'] }}</a></li>
+                                @endforeach
+							</ul>
+                        @else
+                        <a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
+                        @endif
+                        </div>
+                    @endforeach
 				</div>
 			</div>
 
 			<div class="container">
 				<div class="content-home">
 					<div class="img-content hidden-mobile"><img src="{{ asset('frontend/images/vn.png') }}"> </div>
-					<h3>tiêu chí đánh giá</h3>
-					<h4>1. Là tấm gương tiêu biểu trong công việc</h4>
-					<ul>
-						<li>- Cung cấp dịch vụ tốt ngoài mong đợi</li>
-						<li>- Kết quả đánh giá Quý đạt 80% trở lên</li>
-						<li>- Có những sáng tạo hoặc cải tiến hiệu quả trong công việc</li>
-					</ul>
-					<h4>2. Là tấm gương tiêu biểu của tinh thần dịch vụ vincom</h4>
-					<p>Thể hiện tốt các nguyên tắc văn hoá dịch vụ 4C - 4K.</p>
-					<h4>3. ưu tiên các trường hợp được vinh danh trên truyền thông</h4>
-					<p>Các trường hợp được vinh danh trên truyền thông sẽ được ưu tiên (VD: Vinh danh trên báo chí, Vinclub, quyết định khen thưởng như: Cứu người gặp nạn, nhặt được của rơi trả lại người mất, giúp đỡ khách hàng, phát hiện và ngăn chặn kịp thời các rủi ro xảy ra, phát hiện, báo cáo, đấu tranh, ngăn chặn các hành vi sai phạm, tiêu cực, hành vi vi phạm pháp luật, ...)</p>
-
-					<h3>thể thức tham gia</h3>
-					<ul>
-						<li>- Thời gian tham gia bình chọn: 1/9/2019 - 30/9/2019</li>
-						<li>- Đối tượng: Toàn thể CBNV công ty</li>
-						<li>- Hình thức dự thi: Bình chọn online trên hệ thống</li>
-						<li>- Cách thức tổ chức: Thi đấu bình chọn của CBNV theo vòng từ cấp bộ phận, cơ sở, vùng và toàn công ty. </li>
-						Đến cấp vùng/công ty, mỗi ứng viên sẽ có các clip giới thiệu bản thân để CBNV toàn quốc có thể bình chọn dễ dàng. </li>
-					</ul>
+					{!! $setting->content_home_page !!}
 				</div>
 			</div>
 		</div>
