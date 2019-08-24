@@ -27,9 +27,8 @@
 			<a href="{{ url('/') }}"><img src="{{ $setting->logo }}"></a>
 		</div>
 		<div class="box-user col-lg-4 col-xs-2">
-			<?php $username = Session::get('username'); ?>
-			@if($username)
-			<a class="link-info">{{ $username }} &nbsp<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+			@if(Auth::guard('user')->check())
+			<a class="link-info">{{ Auth::guard('user')->user()->username }} &nbsp<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 			<div class="user">
 				<a class="avatar"><img src="{{ asset('frontend/images/user.jpg') }}"></a>
 				<ul class="user-dropdown box-menu">

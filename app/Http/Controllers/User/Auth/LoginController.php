@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Response;
 use Session;
@@ -54,10 +55,11 @@ class LoginController extends Controller
 
                 if(@ldap_bind($ldap_con,$ldap_dn,$ldap_password)){
                     //check exist user
-                    $user = DB::select('select * from users where username = "'.$data['username'].'" ');
+                    $user = DB::table('users')->where('username', $data['username'])->where('status', 1)->first();
                     if($user){
+                        $userId = $user->id;
                     }else{
-                        DB::table('users')->insert([
+                        $userId = DB::table('users')->insertGetId([
                             'username'   => $data["username"], 
                             'full_name'  => $data['username'],
                             'status'     => 1,
@@ -66,7 +68,7 @@ class LoginController extends Controller
                             'cat_id'     => 0
                         ]);
                     }
-                    Session::put('username', $data["username"]);
+                    Auth::guard('user')->loginUsingId($userId);
                     return Response::json(['status' => true, 'message' => 'Đăng nhập thành công.']);
                 }else{
                     return Response::json(['status' => false, 'message' => 'Tên đăng nhập hoặc Mật khẩu không chính xác.']);
@@ -77,8 +79,10 @@ class LoginController extends Controller
         }
     }
 
-    public function logoutLDAP(){
-        Session::forget('username');
+    public function logoutLDAP(Request $request){
+        Auth::guard('admin')->logout();
+        $request->session()->flush();
+        $request->session()->regenerate();
         return redirect('/');
     }
 

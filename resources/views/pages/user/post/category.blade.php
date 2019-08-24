@@ -121,7 +121,7 @@
           url:'/vote',
           data:{
             _token: "{{ csrf_token() }}",
-            user: 3,
+            user: 300,
             vote: id
           },
           success: function(response) {
