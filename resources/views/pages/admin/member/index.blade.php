@@ -37,7 +37,7 @@
                         <div class="box-body">
                             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                                 <div class="row" style="margin-bottom:10px;">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="dataTables_length" id="example1_length">
                                             <label>
                                                 Hiển thị
@@ -46,7 +46,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-9">
                                         <div id="example_filter" class="dataTables_filter" style="float:right;">
                                             <label>Search
                                                 <input my-enter="searchMemberName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm nhân vật, vị trí...">
