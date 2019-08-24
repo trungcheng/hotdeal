@@ -5,3 +5,4 @@
 5. install bower -g
 6. bower install
 7. php artisan config:cache
+8. php artisan serve

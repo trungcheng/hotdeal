@@ -99,7 +99,7 @@
     </script>
 
     <script type="text/javascript">
-        $('#formLogin').on('submit', function (e) {
+        $('#formLogin, #formLogin1').on('submit', function (e) {
             e.preventDefault();
             var formData = new FormData($(this)[0]);
             $.ajax({

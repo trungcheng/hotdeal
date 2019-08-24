@@ -97,44 +97,68 @@
   </div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="{{ asset('frontend/images/success.png') }}" />
-                <p class="reg-success">bình chọn thành công</p>
-                <p class="name-success"></p>
-                <p class="position-success"></p>
-                <a class="btn-back transition" href="{{ url('/') }}">quay về trang chủ</a>
-                <a class="btn-vote-detail transition" onclick="location.reload();">tiếp tục bình chọn</a>
+  @if(Auth::guard('user')->check())
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="{{ asset('frontend/images/success.png') }}" />
+                    <p class="reg-success">bình chọn thành công</p>
+                    <p class="name-success"></p>
+                    <p class="position-success"></p>
+                    <a class="btn-back transition" href="{{ url('/') }}">quay về trang chủ</a>
+                    <a class="btn-vote-detail transition" onclick="location.reload();">tiếp tục bình chọn</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+  @else
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                <div class="login" style="background: #fff; text-align: left;">
+                    <form method="POST" id="formLogin1" name="formLogin" onsubmit="return false;" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <p>Tên đăng nhập:</p>
+                        <input type="text" required class="form-control" name="username" />
+                        <p style="margin-top: 25px;">Mật khẩu:</p>
+                        <input type="password" required class="form-control" name="password" />
+                        <input type="submit" class="btn-vote btn-login transition" value="Đăng nhập">
+                    </form>
+                    <span class="err-login"></span>
+                </div>
+             </div>
+         </div>
+    </div>
+  @endif
 @stop
 
 @section('pageJs')
   <script type="text/javascript">
-    function vote(id){
-      $.ajax({
-          type:'POST',
-          url:'/vote',
-          data:{
-            _token: "{{ csrf_token() }}",
-            user: 300,
-            vote: id
-          },
-          success: function(response) {
-            if (response.status) {
+        function vote(id){
+            @if(Auth::guard('user')->check())
+            $.ajax({
+                type:'POST',
+                url:'/vote',
+                data:{
+                    _token: "{{ csrf_token() }}",
+                    user: {{ Auth::guard('user')->id() }},
+                    vote: id
+                },
+                success: function(response) {
+                    if (response.status) {
+                        $('#myModal').modal('show');
+                        $('.name-success').html(response.name);
+                        $('.position-success').html(response.position);
+                    } else {
+                        console.log('false');
+                        // console.log(response.message);
+                    }
+                }
+            });
+            @else
                 $('#myModal').modal('show');
-                $('.name-success').html(response.name);
-                $('.position-success').html(response.position);
-            } else {
-              console.log('false');
-                // console.log(response.message);
-            }
-          }
-      });
-    }
-  </script>
+            @endif
+        }
+    </script>
 @stop

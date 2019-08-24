@@ -9,6 +9,7 @@ use App\Models\Admin;
 use App\Models\Category;
 use App\Models\User;
 use App\Util\Util;
+use Illuminate\Support\Facades\Auth;
 use Response;
 use Session;
 use DB;
@@ -24,6 +25,12 @@ class WebController extends Controller
         if ($slug == 'admin') {
             return redirect('/admin/access/login');
         }
+        if(Auth::guard('user')->check()){
+            $userId = Auth::guard('user')->id();
+        }else{
+            $userId = 0;
+        }
+
         $category = DB::table('categories')->where('slug', $slug)->where('status', 1)->first();
         if($category) {
             $users = DB::table('users')->select('id', 'full_name', 'avatar', 'intro', 'total_vote')->where('cat_id', $category->id)->where('role_id', 3)->where('status', 1)->get();
@@ -37,7 +44,7 @@ class WebController extends Controller
                 $list[$i]['intro']      = $user->intro;
                 $list[$i]['total_vote'] = $user->total_vote;
 
-                $vote_today = $this->check_vote_today(3, $user->id);
+                $vote_today = $this->check_vote_today($userId, $user->id);
                 if($vote_today){
                     $list[$i]['vote_today'] = 1;
                 }else{
@@ -52,7 +59,7 @@ class WebController extends Controller
         }else{
             $user = DB::table('users')->where('id', $slug)->where('status', 1)->first();
             if($user) {
-                $vote_today = $this->check_vote_today(3, $user->id);
+                $vote_today = $this->check_vote_today($userId, $user->id);
                 if($vote_today){
                     $user->vote_today = 1;
                 }else{
@@ -75,45 +82,48 @@ class WebController extends Controller
 
     public function voteMember(Request $request){
         try {
-            $data = $request->all();
-            if ($data && isset($data['user']) && isset($data['vote'])) {
-                
-                $user_vote = $data['user'];
-                $vote_for  = $data['vote'];
+            if(Auth::guard('user')->check()){
+                $data = $request->all();
+                if ($data && isset($data['user']) && isset($data['vote'])) {
+                    $user_vote = $data['user'];
+                    $vote_for  = $data['vote'];
+                    $check_user_vote = DB::table('users')->where('id', $user_vote)->first();
+                    if($check_user_vote){
+                        $vote_today = $this->check_vote_today($user_vote, $vote_for);
+                        if($vote_today){
+                            return Response::json(['status' => false, 'message' => 'Vui lòng bình chọn cho thành viên này vào ngày mai.']);
+                        }else{
+                            //insert table history
+                            $round = DB::table('rounds')->where('is_running', 1)->first();
+                            DB::table('history')->insert([
+                                'round_id'   => $round->id, 
+                                'user_vote'  => $user_vote,
+                                'vote_for'   => $vote_for,
+                                'vote_count' => 1
+                            ]);
 
-                $check_user_vote = DB::table('users')->where('id', $user_vote)->first();
-                if($check_user_vote){
-                    $vote_today = $this->check_vote_today($user_vote, $vote_for);
-                    if($vote_today){
-                        return Response::json(['status' => false, 'message' => 'Vui lòng bình chọn cho thành viên này vào ngày mai.']);
-                    }else{
-                        //insert table history
-                        $round = DB::table('rounds')->where('is_running', 1)->first();
-                        DB::table('history')->insert([
-                            'round_id'   => $round->id, 
-                            'user_vote'  => $user_vote,
-                            'vote_for'   => $vote_for,
-                            'vote_count' => 1
-                        ]);
+                            //update table users
+                            $user = DB::table('users')->where('id', $vote_for)->first();
+                            $total = $user->total_vote + 1;
+                            DB::table('users')->where('id', $vote_for)->update(['total_vote' => $total]);
 
-                        //update table users
-                        $user = DB::table('users')->where('id', $vote_for)->first();
-                        $total = $user->total_vote + 1;
-                        DB::table('users')->where('id', $vote_for)->update(['total_vote' => $total]);
+                            //update table user_round
+                            $user_round = DB::table('user_round')->where('user_id', $vote_for)->where('round_id', $round->id)->first();
+                            if($user_round){
+                               $total_vote = $user_round->vote + 1;
+                                DB::table('user_round')->where('user_id', $vote_for)->where('round_id', $round->id)->update(['vote' => $total_vote]); 
+                            }
 
-                        //update table user_round
-                        $user_round = DB::table('user_round')->where('user_id', $vote_for)->where('round_id', $round->id)->first();
-                        if($user_round){
-                           $total_vote = $user_round->vote + 1;
-                            DB::table('user_round')->where('user_id', $vote_for)->where('round_id', $round->id)->update(['vote' => $total_vote]); 
+                            return Response::json(['status' => true, 'message' => 'Bình chọn thành công', 'name' => $user->full_name, 'position'=> $user->intro]);
                         }
-
-                        return Response::json(['status' => true, 'message' => 'Bình chọn thành công', 'name' => $user->full_name, 'position'=> $user->intro]);
+                    }else{
+                        return Response::json(['status' => false, 'message' => 'Không tồn tại người dùng này.']);
                     }
-                }else{
-                    return Response::json(['status' => false, 'message' => 'Không tồn tại người dùng này.']);
                 }
+            }else{
+                return Response::json(['status' => false, 'message' => 'Unauthenticated']);
             }
+            
         } catch (Exception $e) {
             return Response::json(['status' => false, 'message' => 'Xảy ra lỗi trong quá trình bình chọn.']);
         }

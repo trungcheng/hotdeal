@@ -100,6 +100,7 @@
         </div>
     </div>
 
+    @if(Auth::guard('user')->check())
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -114,17 +115,37 @@
             </div>
         </div>
     </div>
+    @else
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                <div class="login" style="background: #fff; text-align: left;">
+                    <form method="POST" id="formLogin1" name="formLogin" onsubmit="return false;" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <p>Tên đăng nhập:</p>
+                        <input type="text" required class="form-control" name="username" />
+                        <p style="margin-top: 25px;">Mật khẩu:</p>
+                        <input type="password" required class="form-control" name="password" />
+                        <input type="submit" class="btn-vote btn-login transition" value="Đăng nhập">
+                    </form>
+                    <span class="err-login"></span>
+                </div>
+             </div>
+         </div>
+    </div>
+    @endif
 @stop
 
 @section('pageJs')
     <script type="text/javascript">
         function vote(id){
+            @if(Auth::guard('user')->check())
             $.ajax({
                 type:'POST',
                 url:'/vote',
                 data:{
                     _token: "{{ csrf_token() }}",
-                    user: 3,
+                    user: {{ Auth::guard('user')->id() }},
                     vote: id
                 },
                 success: function(response) {
@@ -138,6 +159,9 @@
                     }
                 }
             });
+            @else
+                $('#myModal').modal('show');
+            @endif
         }
     </script>
 @stop
