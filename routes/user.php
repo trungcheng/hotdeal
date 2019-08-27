@@ -8,6 +8,8 @@
     \Route::post('login', 'User\Auth\LoginController@loginLDAP');
     \Route::get('logout', 'User\Auth\LoginController@logoutLDAP');
 
+    \Route::get('/gen_member', 'User\WebController@gen_member');
+    
     \Route::get('/{slug}', 'User\WebController@processPage');
 
     \Route::post('vote', 'User\WebController@voteMember');

@@ -21,6 +21,31 @@ class WebController extends Controller
         // $this->middleware('');
     }
 
+    public function gen_member(){
+        $ho = ['Hoàng', 'Nguyễn', 'Trần', 'Lê', 'Đinh', 'Phan', 'Đào'];
+        $dem = ['Thị', 'Văn', 'Khánh', 'Hương', 'Mạnh', 'Hoa', 'Thùy'];
+        $ten = ['Hồng', 'Huyền', 'Tùng', 'Dũng', 'Linh', 'Tam', 'Anh', 'Quân', 'Lan', 'Hương', 'Dung'];
+        $cate = [2, 3, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16];
+        $position = ['Trưởng Phòng', 'Nhân viên', 'Giám đốc', 'Leader', 'Công nhân', 'Bác sĩ', 'Quét rác'];
+        $total_vote = [100, 200,300,400,500,600,700,800,150,210,321,489,587,639,825,111,621,522,301,980,268,751,486,624];
+        $avatar = ['https://images.pexels.com/photos/61100/pexels-photo-61100.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/355164/pexels-photo-355164.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/206407/pexels-photo-206407.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/89790/beauty-woman-portrait-face-89790.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/604146/pexels-photo-604146.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/459947/pexels-photo-459947.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/458718/pexels-photo-458718.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/458766/pexels-photo-458766.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/247917/pexels-photo-247917.jpeg?h=350&auto=compress&cs=tinysrgb', 'https://images.pexels.com/photos/247885/pexels-photo-247885.jpeg?h=350&auto=compress&cs=tinysrgb'];
+        for ($i=0; $i < 300 ; $i++) { 
+            DB::table('users')->insert([
+                'role_id'   => 3, 
+                'cat_id'  => $cate[array_rand($cate)],
+                'username'   => '',
+                'total_vote'   => $total_vote[array_rand($total_vote)],
+                'avatar'  => $avatar[array_rand($avatar)],
+                'full_name'   => $ho[array_rand($ho)].' '.$dem[array_rand($dem)].' '.$ten[array_rand($ten)],
+                'intro' => $position[array_rand($position)],
+                'content' => '<ul><li>- Cung cấp dịch vụ tốt ngoài mong đợi.</li><li>- Kết quả đánh giá Quý đạt trên 80%.</li><li>- Có những sáng tạo hoặc cải tiến hiệu quả trong công việc.</li><li>- Thể hiện tốt các nguyên tắc văn hoá dịch vụ 4C - 4K.</li><li>- Có tinh thần giúp đỡ đồng nghiệp</li><li>- Tham gia đầy đủ các hoạt động cộng đồng trong công ty.</li></ul>',
+                'type' => 1,
+                'status' => 1
+            ]);
+        }
+        echo 'done';
+    }
+
     public function processPage(Request $request, $slug) {
         if ($slug == 'admin') {
             return redirect('/admin/access/login');
