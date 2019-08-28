@@ -5,6 +5,9 @@
 
 @section('pageCss')
     <style type="text/css">
+        .form-control {
+            height: 35px !important;
+        }
         .box-calendar {
             border: 1px solid #ccc;
             float: right;
@@ -22,13 +25,21 @@
             top: 10px;
         }
         #chart-container {
-            margin-top: 50px;
+            margin-top: 10px;
         }
         .highcharts-credits {
             display: none;
         }
         .box-body {
             min-height: 520px;
+        }
+        .select2-container .select2-selection--multiple {
+            min-height: 34px !important;
+            border-radius: 0px !important;
+            border: none !important;
+        }
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            color: #555 !important;
         }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css" rel="stylesheet" />
@@ -37,7 +48,7 @@
 @stop
 
 @section('content')
-    <div ng-controller="StatisticalController" ng-init="loadInit()">
+    <div ng-controller="StatisticalController" ng-init="loadInit({{ $rounds[0]['id'] }}, {{ $categories[0]['id'] }})">
 
         <!-- Content Header (Page header) -->
         <section class="content-header" style="padding-top:30px;">
@@ -60,24 +71,26 @@
                         <!-- /.box-header -->
 
                         <div class="box-body">
-
-                            <div class="col-sm-3 box-calendar">
-                                <input id="daterange" type="text" class="form-control" name="daterange" value="" />
-                                <i id="daterange-icon" class="fa fa-calendar"></i>
+                            <div style="width:100%;height:90px;">
+                                <div class="col-sm-3 box-calendar">
+                                    <input id="daterange" type="text" class="form-control" name="daterange" value="" />
+                                    <i id="daterange-icon" class="fa fa-calendar"></i>
+                                </div>
+                                <div class="col-sm-3 box-calendar" style="width:40%;">
+                                    <select class="form-control" name="cate[]" id="category-filter" multiple="multiple">
+                                        @foreach ($categories as $cate)
+                                            <option value="{{ $cate['id'] }}">{{ $cate['name'] }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-sm-3 box-calendar" style="border:none !important">
+                                    <select class="form-control" name="round" id="round-filter">
+                                        @foreach ($rounds as $round)
+                                            <option value="{{ $round->id }}">{{ $round->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                            <div class="col-sm-3 box-calendar">
-                                <select class="form-control" name="cate[]" id="category-filter" multiple="multiple">
-                                    <option>Khối 1</option>
-                                    <option>Khối 2</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-3 box-calendar">
-                                <select class="form-control" name="round" id="round-filter">
-                                    <option>Vòng 1</option>
-                                    <option>Vòng 2</option>
-                                </select>
-                            </div>
-                            
                             <div ng-cloak ng-if="loading">
                                 <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:47%;margin-top:20%">
                             </div>
@@ -102,7 +115,11 @@
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script type="text/javascript">
     $(function () {
-        $('#category-filter').select2();
+        var selectVal = "{{ $categories[0]['id'] }}";
+        $('#category-filter').select2({
+            placeholder: 'Chọn khối...',
+            tags: true
+        }).val(selectVal).trigger("change");
         $('input[name="daterange"]').daterangepicker({
             opens: 'left',
             startDate: '2019/09/02',

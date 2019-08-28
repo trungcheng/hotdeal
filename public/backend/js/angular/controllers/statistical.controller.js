@@ -9,31 +9,32 @@
 
         $scope.data = [];
 
-        $scope.getResultPages = function (date) {
+        $scope.getResultPages = function (roundId, categories, date) {
             $scope.loading = true;
 
-            $http.get(app.vars.baseUrl + '/statistical/loadDataChart?date=' + date, {cache: false})
+            $http.get(app.vars.baseUrl + '/statistical/loadDataChart?roundId=' + roundId + '&categories=' + categories + '&date=' + date, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
                     var data = [];
 
-                    if (Array.isArray(response.data) && response.data.length > 0) {
-                        data = response.data.map(function (item) {
-                            return {
-                                name: (item.parentCate !== null) ? item.name + ' ('+item.parentCate+')' : item.name,
-                                y: parseInt(item.totalVote)
-                            }
-                        });
-                        $scope.data = data;
-                        $scope.loadChart(data);
-                    }
+                    // if (Array.isArray(response.data) && response.data.length > 0) {
+                    //     data = response.data.map(function (item) {
+                    //         return {
+                    //             name: (item.parentCate !== null) ? item.name + ' ('+item.parentCate+')' : item.name,
+                    //             y: parseInt(item.totalVote)
+                    //         }
+                    //     });
+                    //     $scope.data = data;
+                    //     $scope.loadChart(data);
+                    // }
 
                 });
         };
 
-        $scope.loadInit = function () {
-            $scope.getResultPages('2019-09-02 00:00:00,2019-10-31 23:59:59');
+        $scope.loadInit = function (roundId, categories) {
+            var date = '2019-09-02 00:00:00,2019-10-31 23:59:59';
+            $scope.getResultPages(roundId, categories, date);
         }
 
         $('#daterange').on('apply.daterangepicker', function (ev, picker) {

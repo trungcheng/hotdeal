@@ -23,21 +23,33 @@ class StatisticalController extends Controller
 
     public function index()
     {
-        return view('pages.admin.statistical.index', []);
+		$rounds = Round::all();
+		$categories = Category::where('parent_id', 0)->where('status', 1)->get();
+
+        return view('pages.admin.statistical.index', [
+			'rounds' => $rounds,
+			'categories' => $categories
+		]);
     }
 
     public function loadDataChart(Request $request)
     {	
+		$round = Round::find($request->roundId);
     	$categories = Category::select('id', 'parent_id', 'name')->get();
-    	$users = History::groupBy('vote_for')
-    		->selectRaw('vote_for, sum(vote_count) as totalVote');
+		$users = History::groupBy('vote_for')
+			->where('round_id', $round->id)
+			->selectRaw('vote_for, sum(vote_count) as totalVote');
 
     	if ($request->date) {
     		$dates = explode(',', $request->date);
     		$users->where('created_at', '>=', $dates[0])->where('created_at', '<=', $dates[1]);
     	}
 
-    	$users = $users->get();
+		$users = $users->get();
+		
+		if ($round->visible_menu == 0) {
+			
+		}
     	
     	if ($categories && $users) {
     		foreach ($categories as $key => $cate) {
