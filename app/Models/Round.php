@@ -116,7 +116,7 @@ class Round extends Model
                 }
                 // nếu chưa có nhân vật nào trong vòng thì add toàn bộ nhân vật bình chọn vào vòng
                 if (!$userRound || $userRound->count() == 0) {
-                	$users = User::where('type', 1)->where('role_id', 3)->get();
+                	$users = User::where('type', 1)->where('status', 1)->get();
                 	foreach ($users as $user) {
                 		UserRound::create([
                 			'user_id' => $user->id,

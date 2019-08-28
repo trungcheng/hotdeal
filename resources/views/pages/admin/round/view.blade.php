@@ -127,7 +127,10 @@
                                         <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate" style="margin-top:-20px;float:right">
                                             <items-pagination></items-pagination>
                                         </div>
-                                    </div>
+                                    </div>                                    
+                                </div>
+
+                                <div class="row" ng-cloak ng-if="!loading">
                                     <hr>
                                     <div class="col-sm-12 text-center bottom-bar" style="margin-bottom:10px !important">
                                         <p style="font-weight:bold;">Số nhân vật đã chọn: <strong style="color:red;">@{{ selectedMembers.length }}</strong></p>

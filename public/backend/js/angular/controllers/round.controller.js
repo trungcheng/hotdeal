@@ -165,6 +165,17 @@
                     $scope.perPage = perPage;
                     $scope.pageNumber = pageNumber;
                     $scope.totalItems = response.data;
+
+                    if ($scope.selectedMembers.length > 0 && $scope.totalItems.length > 0) {
+                        angular.forEach($scope.selectedMembers, function (id, idx) {
+                            angular.forEach($scope.totalItems, function (v, k) {
+                                if (v.user_id == id) {
+                                    v.isChecked = true;
+                                }
+                            });
+                        });
+                    }
+                    
                     $scope.setPage(perPage, pageNumber);
 
                 });
