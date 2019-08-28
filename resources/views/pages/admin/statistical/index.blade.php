@@ -10,6 +10,7 @@
             float: right;
             padding: 0;
             width: 19%;
+            margin-left: 10px;
         }
         #daterange {
             border: none;
@@ -30,6 +31,7 @@
             min-height: 520px;
         }
     </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 @stop
@@ -58,10 +60,24 @@
                         <!-- /.box-header -->
 
                         <div class="box-body">
+
                             <div class="col-sm-3 box-calendar">
                                 <input id="daterange" type="text" class="form-control" name="daterange" value="" />
                                 <i id="daterange-icon" class="fa fa-calendar"></i>
                             </div>
+                            <div class="col-sm-3 box-calendar">
+                                <select class="form-control" name="cate[]" id="category-filter" multiple="multiple">
+                                    <option>Khối 1</option>
+                                    <option>Khối 2</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3 box-calendar">
+                                <select class="form-control" name="round" id="round-filter">
+                                    <option>Vòng 1</option>
+                                    <option>Vòng 2</option>
+                                </select>
+                            </div>
+                            
                             <div ng-cloak ng-if="loading">
                                 <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:47%;margin-top:20%">
                             </div>
@@ -82,9 +98,11 @@
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/statistical.controller.js') !!}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script type="text/javascript">
     $(function () {
+        $('#category-filter').select2();
         $('input[name="daterange"]').daterangepicker({
             opens: 'left',
             startDate: '2019/09/02',
