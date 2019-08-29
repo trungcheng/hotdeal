@@ -27,6 +27,23 @@
         #chart-container {
             margin-top: 10px;
         }
+        .group-title {
+            color: #f00 !important;
+        }
+        .category-title {
+            font-size: 20px;
+            font-weight: bold;
+            padding-top: 10px;
+        }
+        .no-data {
+            line-height: 300px;
+        }
+        .chart-row {
+            width: 100%;
+            min-height: 300px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
         .highcharts-credits {
             display: none;
         }
@@ -72,6 +89,9 @@
 
                         <div class="box-body">
                             <div style="width:100%;height:90px;">
+                                <div class="col-sm-3 box-calendar" style="width:5%;border-radius:5px;">
+                                    <button ng-click="filter()" class="btn btn-sm btn-success" style="height:35px;font-size:15px;width:100%;">LỌC</button>
+                                </div>
                                 <div class="col-sm-3 box-calendar">
                                     <input id="daterange" type="text" class="form-control" name="daterange" value="" />
                                     <i id="daterange-icon" class="fa fa-calendar"></i>
@@ -92,12 +112,24 @@
                                 </div>
                             </div>
                             <div ng-cloak ng-if="loading">
-                                <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:47%;margin-top:20%">
+                                <img src="{{ asset('backend/img/ajax_loader.gif') }}" style="width:3%;margin-left:47%;margin-top:17%">
                             </div>
-                            <div style="padding-top:20%" ng-cloak ng-if="!loading && data.length == 0">
+                            <div style="padding-top:17%" ng-cloak ng-if="!loading && parents.length == 0">
                                 <p class="text-center">Không có dữ liệu</p>
                             </div>
-                            <div id="chart-container"></div>
+                            <div ng-if="parents.length > 0 && !loading" ng-cloak id="chart-container">
+                                <div ng-repeat="child in parents" style="text-align:center">
+                                    <h3 class="group-title text-center">@{{ child.name }}</h3>
+                                    <div class="chart-row">
+                                        <div ng-if="child.childrens.length == 1" id="@{{ item.slug }}" class="col-md-12" ng-repeat="item in child.childrens">
+                                            
+                                        </div>
+                                        <div ng-if="child.childrens.length > 1" id="@{{ item.slug }}" class="col-md-6" ng-repeat="item in child.childrens">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.box-body -->
                     </div>
@@ -126,7 +158,7 @@
             endDate: '2019/10/31',
             locale: {
                 format: 'YYYY/MM/DD',
-                applyLabel: "Lọc",
+                applyLabel: "Chọn",
                 cancelLabel: "Trở lại"
             }
         });

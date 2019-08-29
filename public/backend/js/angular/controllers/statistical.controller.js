@@ -7,7 +7,7 @@
 
     function StatisticalController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
-        $scope.data = [];
+        $scope.parents = [];
 
         $scope.getResultPages = function (roundId, categories, date) {
             $scope.loading = true;
@@ -16,56 +16,63 @@
                 .success(function(response) {
 
                     $scope.loading = false;
-                    var data = [];
 
-                    // if (Array.isArray(response.data) && response.data.length > 0) {
-                    //     data = response.data.map(function (item) {
-                    //         return {
-                    //             name: (item.parentCate !== null) ? item.name + ' ('+item.parentCate+')' : item.name,
-                    //             y: parseInt(item.totalVote)
-                    //         }
-                    //     });
-                    //     $scope.data = data;
-                    //     $scope.loadChart(data);
-                    // }
+                    $scope.parents = response.data;
+
+                    $timeout(function() {
+                        if ($scope.parents.length > 0) {
+                            angular.forEach($scope.parents, function (child, idx) {
+                                angular.forEach(child.childrens, function (item, k) {
+                                    if (item.users.length > 0) {
+                                        $scope.loadChart(item.slug, item);
+                                        $('#' + item.slug).prepend('<p class="text-center category-title">'+item.name+'</p>');
+                                    } else {
+                                        $('#' + item.slug).html('<p class="text-center category-title">'+item.name+'</p><p class="text-center no-data">Không có dữ liệu</p>');
+                                    }
+                                });
+                            });
+                        }
+                    }, 0);
 
                 });
         };
 
         $scope.loadInit = function (roundId, categories) {
-            var date = '2019-09-02 00:00:00,2019-10-31 23:59:59';
+            var date = '2019-09-02,2019-10-31';
+            $scope.getResultPages(roundId, categories, date);
+        }
+
+        $scope.filter = function () {
+            var roundId = $('#round-filter').val();
+            var categories = $('#category-filter').select2('data');
+            categories = categories.map(function (cate) {
+                return cate.id;
+            });
+            var date = $('#daterange').val();
+            date = date.replace(/ /g, '');
+            var dates = date.split('-');
+            dates = dates.map(function (item) {
+                item = item.replace(new RegExp('/', 'g'), '-');
+                return item;
+            });
+            date = dates.join(',');
             $scope.getResultPages(roundId, categories, date);
         }
 
         $('#daterange').on('apply.daterangepicker', function (ev, picker) {
-            var start_time = $(this).data('daterangepicker').startDate.format('YYYY-MM-DD');
-            var end_time = $(this).data('daterangepicker').endDate.format('YYYY-MM-DD');
-            var date = start_time + ' 00:00:00' + ',' + end_time + ' 23:59:59';
-            $scope.getResultPages(date);
+            // var start_time = $(this).data('daterangepicker').startDate.format('YYYY-MM-DD');
+            // var end_time = $(this).data('daterangepicker').endDate.format('YYYY-MM-DD');
+            // var date = start_time + ' 00:00:00' + ',' + end_time + ' 23:59:59';
+            // $scope.getResultPages(date);
         });
 
         $('#daterange').on('cancel.daterangepicker', function (ev, picker) {
             $('#daterange').val('2019/09/02 - 2019/10/31');
-            $scope.loadInit();
+            // $scope.loadInit();
         });
 
-        $scope.loadChart = function (data) {
-            // Highcharts.setOptions({
-            //     colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
-            //         return {
-            //             radialGradient: {
-            //                 cx: 0.5,
-            //                 cy: 0.3,
-            //                 r: 0.7
-            //             },
-            //             stops: [
-            //                 [0, color],
-            //                 [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
-            //             ]
-            //         };
-            //     })
-            // });
-            Highcharts.chart('chart-container', {
+        $scope.loadChart = function (DOM, data) {
+            Highcharts.chart(DOM, {
                 chart: {
                     plotBackgroundColor: null,
                     plotBorderWidth: null,
@@ -73,10 +80,11 @@
                     type: 'pie'
                 },
                 title: {
-                    text: 'Thống kê số lượt bình chọn theo khối (phòng/ban)'
+                    // text: (data.name !== '') ? data.name : ''
+                    text: ''
                 },
                 tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    pointFormat: '{series.name}: <b>{point.y} - ({point.percentage:.1f}%)</b>'
                 },
                 plotOptions: {
                     pie: {
@@ -84,7 +92,7 @@
                         cursor: 'pointer',
                         dataLabels: {
                             enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            format: '{point.name}: <b>{point.y} - ({point.percentage:.1f}%)</b>',
                             style: {
                                 color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                             },
@@ -93,8 +101,8 @@
                     }
                 },
                 series: [{
-                    name: 'Tỉ lệ bình chọn',
-                    data: data
+                    name: 'Lượt bình chọn',
+                    data: data.users
                 }]
             });
         };
