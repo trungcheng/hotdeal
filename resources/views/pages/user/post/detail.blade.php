@@ -75,27 +75,47 @@
                     @endif
                 </div>
             </div>
+
+            @if($data->video)
+            <div class="container pd-m-0">
+                <div class="video-detail">
+                    <?php
+                        $search = 'youtube.com';
+                        if(preg_match("/{$search}/i", $data->video)) {
+                            $link = str_replace("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/", $data->video);
+                            echo '<iframe width="100%" src="'.$link.'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                        }else{
+                            echo '<video width="100%" controls><source src="'.$data->video.'" type="video/mp4"></video>';
+                        }
+                    ?>
+                </div>
+            </div>
+            @endif
         </div>
 
         <div class="box-button mg-t-50 pd-t-30 pd-b-20">
             <div class="container txt-center">
                 <h3>Bình chọn ngay cho những gương mặt tiêu biểu đến từ các khối, phòng ban</h3>
-                <?php $i = 0; ?>
-                @foreach ($categories as $cate)
-                    <?php $i++; ?>
-                    <div class="box-btn-vote">
+                @if($round->visible_menu == 1)
+                    <?php $i = 0; ?>
+                    @foreach ($categories as $cate)
+                        <?php $i++; ?>
+                        <div class="box-btn-vote">
+                            <a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
+                        @if (isset($cate['childrens']))
+                            <ul class="list-child list-{{ $i }} transition">
+                                @foreach ($cate['childrens'] as $child)
+                                    <li><a class="transition" href="/{{ $cate['slug'] }}/{{ $child['slug'] }}.html">{{ $child['name'] }}</a></li>
+                                @endforeach
+                            </ul>
+                        @else
                         <a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
-                    @if (isset($cate['childrens']))
-                        <ul class="list-child list-{{ $i }} transition">
-                            @foreach ($cate['childrens'] as $child)
-                                <li><a class="transition" href="/{{ $child['slug'] }}">{{ $child['name'] }}</a></li>
-                            @endforeach
-                        </ul>
-                    @else
-                    <a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
-                    @endif
-                    </div>
-                @endforeach
+                        @endif
+                        </div>
+                    @endforeach
+                @else
+                    <a style="margin-left: 0;" class="btn-vote transition" href="/vong-thi/{{ $round->slug }}.html">Bình chọn {{ $round->name }}</a>
+                @endif
             </div>
         </div>
     </div>

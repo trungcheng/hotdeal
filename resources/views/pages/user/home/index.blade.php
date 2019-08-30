@@ -47,7 +47,10 @@
 							<h3>Bình chọn</h3>
 							<h4>Đại sứ trái tim</h4>
 							<p>Bình chọn 15 gương mặt đại sứ dịch vụ tiêu biểu nhận danh hiệu "Đại sứ trái tim"</p>
+
+							@if($round->visible_menu == 1)
 							<a style="margin-left: 0;" class="btn-vote transition" href="#">Bình chọn ngay</a>
+							@endif
 						</div>
 					</div>
 					<div class="col-lg-7 col-xs-12 inner-bg">
@@ -59,22 +62,26 @@
 			<div class="box-button mg-t-50 pd-t-30 pd-b-20">
 				<div class="container txt-center">
 					<h3>Bình chọn ngay cho những gương mặt tiêu biểu đến từ các khối, phòng ban</h3>
-					<?php $i = 0; ?>
-					@foreach ($categories as $cate)
-						<?php $i++; ?>
-						<div class="box-btn-vote">
-							<a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
-                        @if (isset($cate['childrens']))
-                        	<ul class="list-child list-{{ $i }} transition">
-                        		@foreach ($cate['childrens'] as $child)
-                        			<li><a class="transition" href="/{{ $child['slug'] }}">{{ $child['name'] }}</a></li>
-                                @endforeach
-							</ul>
-                        @else
-                        <a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
-                        @endif
-                        </div>
-                    @endforeach
+					@if($round->visible_menu == 1)
+						<?php $i = 0; ?>
+						@foreach ($categories as $cate)
+							<?php $i++; ?>
+							<div class="box-btn-vote">
+								<a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
+	                        @if (isset($cate['childrens']))
+	                        	<ul class="list-child list-{{ $i }} transition">
+	                        		@foreach ($cate['childrens'] as $child)
+	                        			<li><a class="transition" href="/{{ $cate['slug'] }}/{{ $child['slug'] }}.html">{{ $child['name'] }}</a></li>
+	                                @endforeach
+								</ul>
+	                        @else
+	                        <a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
+	                        @endif
+	                        </div>
+	                    @endforeach
+                    @else
+	                    <a style="margin-left: 0;" class="btn-vote transition" href="/vong-thi/{{ $round->slug }}.html">Bình chọn {{ $round->name }}</a>
+	                @endif
 				</div>
 			</div>
 

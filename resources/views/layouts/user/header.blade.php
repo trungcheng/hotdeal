@@ -6,20 +6,25 @@
 			   		<i class="fa fa-bars" aria-hidden="true"></i>
 			    </button>
 			    <ul class="dropdown-menu">
-			    	@foreach ($categories as $cate)
-                        @if (isset($cate['childrens']))
-                            <li class="dropdown-submenu transition">
-						        <a class="test transition" tabindex="-1">{{ $cate['name'] }} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-						        <ul class="dropdown-menu submenu">
-						        	@foreach ($cate['childrens'] as $child)
-                                        <li><a class="transition" tabindex="-1" href="/{{ $child['slug'] }}">{{ $child['name'] }}</a></li>
-                                    @endforeach
-						        </ul>
-						    </li>
-                        @else
-                        <li><a class="transition" tabindex="-1" href="/{{ $cate['slug'] }}">{{ $cate['name'] }}</a></li>
-                        @endif
-                    @endforeach
+			    	@if($round->visible_menu == 1)
+				    	@foreach ($categories as $cate)
+	                        @if (isset($cate['childrens']))
+	                            <li class="dropdown-submenu transition">
+							        <a class="test transition" tabindex="-1">{{ $cate['name'] }} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+							        <ul class="dropdown-menu submenu">
+							        	@foreach ($cate['childrens'] as $child)
+	                                        <li><a class="transition" tabindex="-1" href="/{{ $cate['slug'] }}/{{ $child['slug'] }}.html">{{ $child['name'] }}</a></li>
+	                                    @endforeach
+							        </ul>
+							    </li>
+	                        @else
+	                        <li><a class="transition" tabindex="-1" href="/{{ $cate['slug'] }}.html">{{ $cate['name'] }}</a></li>
+	                        @endif
+	                    @endforeach
+	                @else
+	                	<li><a class="transition" tabindex="-1" href="{{ url('/') }}">Trang chủ</a></li>
+	                	<li><a class="transition" tabindex="-1" href="/vong-thi/{{ $round->slug }}.html">{{ $round->name }}</a></li>
+	                @endif
 				</ul>			 
 			</div>
 		</div>

@@ -612,6 +612,14 @@ p.name-success {
     text-align: center;
     color: #404040;
 }
+.video-detail {
+    width: 80%;
+    margin: 0 auto;
+    padding: 65px 0 0 0;
+}
+.video-detail iframe, .video-detail video{
+    height: 515px;
+}
 
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
@@ -627,6 +635,14 @@ input[type=number] {
 }
 
 @media screen and (max-width: 1024px){
+    .video-detail iframe, .video-detail video{
+        height: 375px;
+    }
+    .video-detail {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px 0 0 0;
+    }
     .btn-back {
         float: left;
         width: 48%;
@@ -726,6 +742,9 @@ input[type=number] {
 
 /***** Mobile *****/
 @media screen and (max-width: 480px) {
+    .video-detail iframe, .video-detail video{
+        height: 210px;
+    }
     span.label-vote {
         position: unset;
         margin-top: 15px;

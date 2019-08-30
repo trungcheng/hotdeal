@@ -47,7 +47,7 @@
                                     <button class="btn btn-primary btn-upload" onclick="openPopup('avatar')">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
-                                    <label>Video</label>
+                                    <label>Video</label> (Upload Video hoặc paste link video Youtube (Link Youtube phải có dạng:<b style="font-size: 16px;"> https://www.youtube.com/watch?v=</b>xxxxx))
                                     <input value="{{ $member->video }}" name="video" type="text" size="48" class="form-control" id="video" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup('video')">Tải video lên</button>
                                 </div>

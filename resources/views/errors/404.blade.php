@@ -1,25 +1,56 @@
 @extends('layouts.user.master')
 
-@section('page')Không tìm thấy trang
+@section('page')404 Not Found
+@stop
+
+@section('description')
+@stop
+
+@section('keywords')
+@stop
+
+@section('canonical'){{ URL::current() }}
+@stop
+
+@section('alternate'){{ URL::current() }}
+@stop
+
+@section('propName')
+@stop
+
+@section('propDesc')
+@stop
+
+@section('ogTitle')
+@stop
+
+@section('ogDesc')
+@stop
+
+@section('ogUrl'){{ route('home') }}/
 @stop
 
 @section('pageCss')
-
+    
 @stop
 
 @section('content')
-    <!-- Error Page -->
-    <section>
-      <div class="container">
-        <div class="order-success error-page"> <img src="{{ asset('frontend/images/error-img.jpg') }}" alt="" >
-          <h3>Lỗi <span>404</span> Không tìm thấy trang</h3>
-          <p>Không tìm thấy trang bạn đang truy cập.<br>
-            Quay lại <a href="{{ route('home') }}">trang chủ</a></p>
+    <div class="wrapper">
+        <div class="container">
+            <div class="row content" style="text-align: center; font-size: 20px; line-height: 35px; padding-top: 50px;">
+                <p class="s404-tb">Lỗi <span>404</span> Không tìm thấy trang</p>
+                <p class="s404-tm">Không tìm thấy trang bạn đang truy cập.</p>
+                <a class="btn-vote-item transition" style="width: 250px; margin: 10px auto 50px; float: none;" href="{{ url('/') }}">Về Trang chủ</a>
+            </div>
         </div>
-      </div>
-    </section>
+    </div>
 @stop
 
 @section('pageJs')
-
+    <script type="text/javascript">
+        $(function() {
+            var height = window.innerHeight;
+            $('.content').css('min-height', height-220);
+        });
+    </script>
 @stop

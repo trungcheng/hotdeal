@@ -17,8 +17,8 @@ class HomeController extends Controller
         return view('pages.user.home.index', []);
     }
 
-    public function navigate(Request $request, $slug)
+    public function navigate(Request $request)
     {
-    	if ($slug == 'admin') return redirect('/admin/access/login');
+    	return redirect('/admin/access/login');
     }
 }

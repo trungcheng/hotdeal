@@ -46,19 +46,22 @@ class WebController extends Controller
         echo 'done';
     }
 
-    public function processPage(Request $request, $slug) {
-        if ($slug == 'admin') {
-            return redirect('/admin/access/login');
-        }
+    public function processPage(Request $request, $parent, $slug) {
         if(Auth::guard('user')->check()){
             $userId = Auth::guard('user')->id();
         }else{
             $userId = 0;
         }
 
+        $round = DB::table('rounds')->where('is_running', 1)->first();
+        if($round->visible_menu == 0){
+            return view('pages.user.post.404', []);
+        }
+
         $category = DB::table('categories')->where('slug', $slug)->where('status', 1)->first();
         if($category) {
             $users = DB::table('users')->select('id', 'full_name', 'avatar', 'intro', 'total_vote')->where('cat_id', $category->id)->where('role_id', 3)->where('status', 1)->get();
+            $cate_parent = DB::table('categories')->where('id', $category->parent_id)->where('status', 1)->first();
             $round = DB::table('rounds')->where('is_running', 1)->first();
             $i = 0;
             $list = array();
@@ -79,29 +82,95 @@ class WebController extends Controller
             }
             return view('pages.user.post.category', [
                 'cate' => $category,
+                'parent' => $cate_parent,
                 'data' => $list
             ]);
         }else{
-            $user = DB::table('users')->where('id', $slug)->where('status', 1)->first();
-            if($user) {
-                $vote_today = $this->check_vote_today($userId, $user->id);
-                if($vote_today){
-                    $user->vote_today = 1;
-                }else{
-                    $user->vote_today = 0;
-                }
+            return view('pages.user.post.404', [
+            ]);
+        }
+    }
 
-                $category = DB::table('categories')->where('id', $user->cat_id)->where('status', 1)->first();
-                $parent = DB::table('categories')->where('id', $category->parent_id)->where('status', 1)->first();
-                return view('pages.user.post.detail', [
-                    'cate' => $category,
-                    'parent' => $parent,
-                    'data' => $user
-                ]);
-            }else{// 404
-                return view('pages.user.post.404', [
-                ]);
+    public function processPageMember(Request $request, $parent, $cate_child, $member) {
+        if(Auth::guard('user')->check()){
+            $userId = Auth::guard('user')->id();
+        }else{
+            $userId = 0;
+        }
+
+        $user = DB::table('users')->where('id', $member)->where('status', 1)->first();
+        if($user) {
+            $vote_today = $this->check_vote_today($userId, $user->id);
+            if($vote_today){
+                $user->vote_today = 1;
+            }else{
+                $user->vote_today = 0;
             }
+
+            $category = DB::table('categories')->where('id', $user->cat_id)->where('status', 1)->first();
+            $parent = DB::table('categories')->where('id', $category->parent_id)->where('status', 1)->first();
+            return view('pages.user.post.detail', [
+                'cate' => $category,
+                'parent' => $parent,
+                'data' => $user
+            ]);
+        }else{// 404
+            return view('pages.user.post.404', [
+            ]);
+        }
+    }
+
+    public function roundsMember(Request $request, $slug) {
+        if(Auth::guard('user')->check()){
+            $userId = Auth::guard('user')->id();
+        }else{
+            $userId = 0;
+        }
+
+        $round = DB::table('rounds')->where('slug', $slug)->where('is_running', 1)->first();
+        if($round){
+            if($round->visible_menu == 1){
+                return view('pages.user.post.404', []);
+            }
+        }else{
+            return view('pages.user.post.404', []);
+        }
+        
+
+        $list_users = DB::table('user_round')->join('users', 'users.id', '=', 'user_round.user_id')
+                                             ->select('user_round.*', 'users.full_name', 'users.avatar', 'users.intro', 'users.cat_id')
+                                             ->where('round_id', $round->id)
+                                             ->get();
+        if($list_users) {
+            $i = 0;
+            $list = array();
+            foreach ($list_users as $user) {
+                $cate_child  = DB::table('categories')->where('id', $user->cat_id)->where('status', 1)->first();
+                $cate_parent = DB::table('categories')->where('id', $cate_child->parent_id)->where('status', 1)->first();
+                
+                $list[$i]['id']         = $user->user_id;
+                $list[$i]['full_name']  = $user->full_name;
+                $list[$i]['avatar']     = $user->avatar;
+                $list[$i]['intro']      = $user->intro;
+                $list[$i]['total_vote'] = $user->vote;
+
+                $vote_today = $this->check_vote_today($userId, $user->user_id);
+                if($vote_today){
+                    $list[$i]['vote_today'] = 1;
+                }else{
+                    $list[$i]['vote_today'] = 0;
+                }
+                $i++;
+            }
+            return view('pages.user.post.rounds', [
+                'cate_parent' => $cate_parent,
+                'cate_child' => $cate_child,
+                'round' => $round,
+                'data' => $list
+            ]);
+        }else{
+            return view('pages.user.post.404', [
+            ]);
         }
     }
 

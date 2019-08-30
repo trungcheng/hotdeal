@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page') {{ $cate->name }}
+@section('page') {{ $round->name }}
 @stop
 
 @section('description')
@@ -38,9 +38,9 @@
 <div class="wrapper">
   <div class="box-button pd-t-50 pd-b-50">
     <div class="container txt-center">
-      <h3 class="label-list">{{ $cate->name }}</h3>
+      <h3 class="label-list">Bình chọn {{ $round->name }}</h3>
       <div class="description wfm">
-        {{ $cate->description }}
+        {{ $round->description }}
       </div>
     </div>
   </div>
@@ -54,13 +54,13 @@
               <figure><img alt="{{ $item['full_name'] }}" src="{{ $item['avatar'] }}" /></figure>
             </div>
             <div class="info">
-              <a href="/{{ $parent->slug }}/{{ $cate->slug }}/{{ $item['id'] }}.html">{{ $item['full_name'] }}</a>
+              <a href="/{{ $cate_parent->slug }}/{{ $cate_child->slug }}/{{ $item['id'] }}.html">{{ $item['full_name'] }}</a>
               <div class="desc-item">
                 {{ $item['intro'] }}
               </div>
             </div>
             <div class="btn-item">
-              <a class="btn-detail transition" href="/{{ $parent->slug }}/{{ $cate->slug }}/{{ $item['id'] }}.html">Chi tiết</a>
+              <a class="btn-detail transition" href="/{{ $cate_parent->slug }}/{{ $cate_child->slug }}/{{ $item['id'] }}.html">Chi tiết</a>
               @if($item['vote_today'] == 0)
               <a class="btn-vote-item transition" onclick="vote({{ $item['id'] }})">Bình chọn</a>
               @else
@@ -77,22 +77,7 @@
   <div class="box-button mg-t-50 pd-t-30 pd-b-20">
     <div class="container txt-center">
         <h3>Bình chọn ngay cho những gương mặt tiêu biểu đến từ các khối, phòng ban</h3>
-        <?php $i = 0; ?>
-        @foreach ($categories as $cate)
-          <?php $i++; ?>
-          <div class="box-btn-vote">
-            <a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
-            @if (isset($cate['childrens']))
-              <ul class="list-child list-{{ $i }} transition">
-                @foreach ($cate['childrens'] as $child)
-                  <li><a class="transition" href="/{{ $cate['slug'] }}/{{ $child['slug'] }}.html">{{ $child['name'] }}</a></li>
-                @endforeach
-              </ul>
-            @else
-            <a class="btn-vote btn-vote-2 wfm transition" onclick="open_group({{ $i }});">{{ $cate['name'] }}</a>
-            @endif
-          </div>
-        @endforeach
+        <a style="margin-left: 0;" class="btn-vote transition" href="/vong-thi/{{ $round->slug }}.html">Bình chọn {{ $round->name }}</a>
       </div>
   </div>
 </div>
