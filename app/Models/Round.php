@@ -106,7 +106,7 @@ class Round extends Model
                 ];
             }
         }
-        if ($data['is_running'] == 1) {
+        if ($data['is_running'] == 1 && $round->is_running == 0) {
             $now = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d H:i:s');
             // check thời gian hiện tại phải nằm trong khoảng from_date -> to_date
             if ($data['from_date'] <= $now && $now <= $data['to_date']) {
