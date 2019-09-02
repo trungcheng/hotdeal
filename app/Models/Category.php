@@ -9,6 +9,11 @@ class Category extends Model
 {
     protected $table = 'categories';
 
+    protected $cats = [
+        'parent_id' => 'integer',
+        'status' => 'boolean'
+    ];
+
     protected $fillable = [
         'parent_id',
         'name',

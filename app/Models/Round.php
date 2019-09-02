@@ -12,6 +12,13 @@ class Round extends Model
 {
     protected $table = 'rounds';
 
+    protected $cats = [
+        'is_running' => 'boolean',
+        'is_reset_vote' => 'boolean',
+        'user_select_count' => 'integer',
+        'visible_menu' => 'boolean'
+    ];
+
     protected $fillable = [
         'name',
         'description',

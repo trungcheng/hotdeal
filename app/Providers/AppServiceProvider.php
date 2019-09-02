@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         $this->setting = Setting::find(1);
         $this->round = Round::where('is_running', 1)->first();
 
-        view()->composer('*', function($view) {
+        view()->composer('pages.user.*', function($view) {
             $view->with('categories', $this->categories);
             $view->with('setting', $this->setting);
             $view->with('round', $this->round);

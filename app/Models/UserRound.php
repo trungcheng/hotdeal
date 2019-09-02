@@ -8,6 +8,13 @@ class UserRound extends Model
 {
 
     protected $table = 'user_round';
+
+    protected $cats = [
+        'user_id' => 'integer',
+        'round_id' => 'integer',
+        'vote' => 'integer',
+        'is_selected' => 'boolean'
+    ];
    
     protected $fillable = [
         'user_id',

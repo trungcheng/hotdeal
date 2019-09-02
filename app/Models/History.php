@@ -8,6 +8,13 @@ class History extends Model
 {
 
     protected $table = 'history';
+
+    protected $cats = [
+        'round_id' => 'integer',
+        'user_vote' => 'integer',
+        'vote_for' => 'integer',
+        'vote_count' => 'integer'
+    ];
    
     protected $fillable = [
         'round_id',

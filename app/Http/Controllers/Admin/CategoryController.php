@@ -28,7 +28,9 @@ class CategoryController extends Controller
         if ($results) {
             foreach ($results as $result) {
                 if ($result->parent_id !== 0) {
-                    $result['parent'] = Category::find($result->parent_id)->name;
+                    if (Category::find($result->parent_id)) {
+                        $result['parent'] = Category::find($result->parent_id)->name;
+                    }
                 }
             }
         }

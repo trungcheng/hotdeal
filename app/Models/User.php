@@ -12,6 +12,14 @@ class User extends Model implements Authenticatable
     use UserTrait, AuthenticableTrait;
 
     protected $table = 'users';
+
+    protected $cats = [
+        'role_id' => 'integer',
+        'cat_id' => 'integer',
+        'total_vote' => 'integer',
+        'type' => 'boolean',
+        'status' => 'boolean'
+    ];
    
     protected $fillable = [
         'role_id',
