@@ -21,6 +21,13 @@ class WebController extends Controller
         // $this->middleware('');
     }
 
+    public function update_slug(){
+        $users = DB::table('users')->select('id', 'full_name')->where('role_id', 3)->where('type', 1)->where('status', 1)->get();
+            foreach ($users as $user) {
+                DB::table('users')->where('id', $user->id)->update(['username' => str_slug($user->full_name, '-')]);
+            }
+    }
+
     public function gen_member(){
         $ho = ['Hoàng', 'Nguyễn', 'Trần', 'Lê', 'Đinh', 'Phan', 'Đào'];
         $dem = ['Thị', 'Văn', 'Khánh', 'Hương', 'Mạnh', 'Hoa', 'Thùy'];
@@ -60,7 +67,7 @@ class WebController extends Controller
 
         $category = DB::table('categories')->where('slug', $slug)->where('status', 1)->first();
         if($category) {
-            $users = DB::table('users')->select('id', 'full_name', 'avatar', 'intro', 'total_vote')->where('cat_id', $category->id)->where('role_id', 3)->where('status', 1)->get();
+            $users = DB::table('users')->select('id', 'username', 'full_name', 'avatar', 'intro', 'total_vote')->where('cat_id', $category->id)->where('role_id', 3)->where('status', 1)->get();
             $cate_parent = DB::table('categories')->where('id', $category->parent_id)->where('status', 1)->first();
             $round = DB::table('rounds')->where('is_running', 1)->first();
             $i = 0;
@@ -68,6 +75,7 @@ class WebController extends Controller
             foreach ($users as $user) {
                 $list[$i]['id']         = $user->id;
                 $list[$i]['full_name']  = $user->full_name;
+                $list[$i]['username']   = $user->username;
                 $list[$i]['avatar']     = $user->avatar;
                 $list[$i]['intro']      = $user->intro;
                 $list[$i]['total_vote'] = $user->total_vote;
@@ -98,7 +106,7 @@ class WebController extends Controller
             $userId = 0;
         }
 
-        $user = DB::table('users')->where('id', $member)->where('status', 1)->first();
+        $user = DB::table('users')->where('username', $member)->where('status', 1)->first();
         if($user) {
             $vote_today = $this->check_vote_today($userId, $user->id);
             if($vote_today){
@@ -138,7 +146,7 @@ class WebController extends Controller
         
 
         $list_users = DB::table('user_round')->join('users', 'users.id', '=', 'user_round.user_id')
-                                             ->select('user_round.*', 'users.full_name', 'users.avatar', 'users.intro', 'users.cat_id')
+                                             ->select('user_round.*', 'users.full_name', 'users.username', 'users.avatar', 'users.intro', 'users.cat_id')
                                              ->where('round_id', $round->id)
                                              ->get();
         if($list_users) {
@@ -150,6 +158,7 @@ class WebController extends Controller
                 
                 $list[$i]['id']         = $user->user_id;
                 $list[$i]['full_name']  = $user->full_name;
+                $list[$i]['username']   = $user->username;
                 $list[$i]['avatar']     = $user->avatar;
                 $list[$i]['intro']      = $user->intro;
                 $list[$i]['total_vote'] = $user->vote;

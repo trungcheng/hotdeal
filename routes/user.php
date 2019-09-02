@@ -10,6 +10,7 @@
     \Route::get('logout', 'User\Auth\LoginController@logoutLDAP');
 
     // \Route::get('/gen_member', 'User\WebController@gen_member');
+    \Route::get('/update_slug', 'User\WebController@update_slug');
 
     \Route::post('vote', 'User\WebController@voteMember');
 
