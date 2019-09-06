@@ -149,13 +149,11 @@ class User extends Model implements Authenticatable
 
     public static function updateAction($data, $member)
     {
-        if (isset($data['content']) || isset($data['cat_id'])) {
-            if (in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
-                $data['content'] = '';
-            }
-            $data['cat_id'] = (int) $data['cat_id'];
-            $data['username'] = str_slug($data['full_name'], '-');
+        if (in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['content'] = '';
         }
+        $data['cat_id'] = (int) $data['cat_id'];
+        $data['username'] = str_slug($data['full_name'], '-');
 
         return $member->update($data);
     }
