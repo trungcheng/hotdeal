@@ -17,6 +17,11 @@
 
                 // dashboard
                 $this->get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
+
+                // profile
+                $this->get('/profile', 'Admin\ProfileController@index')->name('profile');
+                $this->post('/profile', 'Admin\ProfileController@updateProfile')->name('profile');
+                $this->post('/changePass', 'Admin\ProfileController@changePass')->name('change-pass');
                 
                 // category
                 $this->get('categories', 'Admin\CategoryController@index')->name('categories');

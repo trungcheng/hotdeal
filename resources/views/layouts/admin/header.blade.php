@@ -33,15 +33,15 @@
               <li class="user-header">
                 <img src="{{ asset('components/admin-lte/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="Admin">
                 <p>
-                  {{ $authAdminUser->fullname }} - Administrator
-                  <small>Member since April. 2018</small>
+                  {{ ($authAdminUser->full_name) ? $authAdminUser->full_name : $authAdminUser->username }} - Administrator
+                  <!-- <small>Member since April. 2018</small> -->
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <!-- <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div> -->
+                <div class="pull-left">
+                  <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Profile</a>
+                </div>
                 <div class="pull-right">
                   <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="btn btn-default btn-flat">Sign out</a>
                 </div>
