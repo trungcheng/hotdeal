@@ -142,6 +142,7 @@ class User extends Model implements Authenticatable
         $data['cat_id'] = (int) $data['cat_id'];
         $data['role_id'] = 3;
         $data['type'] = 1;
+        $data['username'] = str_slug($data['full_name'], '-');
 
         return self::firstOrCreate($data);
     }
@@ -153,6 +154,7 @@ class User extends Model implements Authenticatable
                 $data['content'] = '';
             }
             $data['cat_id'] = (int) $data['cat_id'];
+            $data['username'] = str_slug($data['full_name'], '-');
         }
 
         return $member->update($data);

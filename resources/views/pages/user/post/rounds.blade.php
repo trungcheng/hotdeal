@@ -54,13 +54,13 @@
               <figure><img alt="{{ $item['full_name'] }}" src="{{ $item['avatar'] }}" /></figure>
             </div>
             <div class="info">
-              <a href="/{{ $cate_parent->slug }}/{{ $cate_child->slug }}/{{ $item['id'] }}.html">{{ $item['full_name'] }}</a>
+              <a href="/{{ $cate_parent->slug }}/{{ $cate_child->slug }}/{{ $item['username'] }}.html">{{ $item['full_name'] }}</a>
               <div class="desc-item">
                 {{ $item['intro'] }}
               </div>
             </div>
             <div class="btn-item">
-              <a class="btn-detail transition" href="/{{ $cate_parent->slug }}/{{ $cate_child->slug }}/{{ $item['id'] }}.html">Chi tiết</a>
+              <a class="btn-detail transition" href="/{{ $cate_parent->slug }}/{{ $cate_child->slug }}/{{ $item['username'] }}.html">Chi tiết</a>
               @if($item['vote_today'] == 0)
               <a class="btn-vote-item transition" onclick="vote({{ $item['id'] }})">Bình chọn</a>
               @else
