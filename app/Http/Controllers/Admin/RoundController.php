@@ -25,14 +25,14 @@ class RoundController extends Controller
     {
         $results = Round::init($request);
             
-        return Response::json(['status' => true, 'data' => $results]);
+        return Response::json(['status' => true, 'data' => $results], 200, [], JSON_NUMERIC_CHECK);
     }
 
     public function getAllUserRounds(Request $request)
     {
         $results = Round::getAllUserByRound($request);
             
-        return Response::json(['status' => true, 'data' => $results]);
+        return Response::json(['status' => true, 'data' => $results], 200, [], JSON_NUMERIC_CHECK);
     }
 
     public function create(Request $request)

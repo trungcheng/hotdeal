@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         $results = User::initUser($request);
             
-        return Response::json(['status' => true, 'data' => $results]);
+        return Response::json(['status' => true, 'data' => $results], 200, [], JSON_NUMERIC_CHECK);
     }
 
     public function edit(Request $request, $id)
