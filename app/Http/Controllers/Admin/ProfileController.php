@@ -30,7 +30,7 @@ class ProfileController extends Controller
 
     	$user = User::find($data['id']);
     	if ($user) {
-    		$user->update($data);
+    		$user->update(['full_name' => $data['full_name']]);
     	}
 
         return redirect()->back()->with('message', 'Cập nhật thành công');
@@ -39,8 +39,8 @@ class ProfileController extends Controller
     public function changePass(Request $request)
     {
     	$validator = Validator::make($request->all(), [
-			'password'=>'min:6|required|confirmed',
-        	'password_confirmation'=>'required_with:password'
+			'password' => 'min:6|required|confirmed',
+        	'password_confirmation' => 'required_with:password'
 		], [
 			'password.required' => 'Mật khẩu mới không được để trống',
 			'password.min' => 'Mật khẩu mới ít nhất 6 ký tự',

@@ -18,8 +18,7 @@ class DashboardController extends Controller
     public function index()
     {
     	$userCount = User::where('type', 0)
-            ->where('id', '<>', \Auth::guard('admin')->id())
-            ->where('role_id', '<>', 1)->count();
+            ->where('role_id', 2)->count();
     	$memberCount = User::where('type', 1)->count();
     	$categoryCount = Category::count();
     	$voteCount = History::whereDate('created_at', Carbon::today())

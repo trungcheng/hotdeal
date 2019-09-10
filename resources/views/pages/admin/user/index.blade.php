@@ -15,6 +15,10 @@
             <h1>
                 Quản lý user
                 <!-- <small>Optional description</small> -->
+                <a href="{{ route('user-create') }}" class="pull-right btn btn-success btn-sm">
+                    <i class="fa fa-plus"></i> 
+                    Thêm mới
+                </a>
             </h1>
         </section>
 
@@ -58,27 +62,21 @@
                                                 <tr role="row">
                                                 	<th>STT</th>
                                                     <th>Username</th>
-                                                    <th>Quyền truy cập</th>
                                                     <th>Trạng thái</th>
                                                     <th>Ngày tham gia</th>
-                                                    @role('SuperAdmin')
                                                     <th>Chức năng</th>
-                                                    @end
                                                 </tr>
                                             </thead>
                                             <tbody ng-cloak>
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="user in items track by $index">
                                                 	<td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ user.username }}</td>
-                                                    <td>@{{ (user.role.name == 'User') ? 'User (Thành viên)' : user.role.name }}</td>
                                                     <td>@{{ (user.status) ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>@{{ user.created_at }}</td>
-                                                    @role('SuperAdmin')
                                                     <td>
                                                         <a title="Sửa" href="/admin/access/users/edit/@{{ user.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a title="Xóa" ng-click="delete(user, $index)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
-                                                    @end
                                                 </tr>
                                             </tbody>
 

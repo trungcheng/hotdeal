@@ -52,7 +52,9 @@
 
         <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-info-circle"></i> <span>Quản lý thông tin chung</span></a></li>
 
+        @superadmin
         <li><a data-route="/admin/access/users" href="{{ url('/admin/access/users') }}"><i class="fa fa-users"></i> <span>Quản lý user</span></a></li>
+        @end
 
         <!-- <li class="treeview">
             <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý user</span>

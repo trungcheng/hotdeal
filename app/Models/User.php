@@ -69,6 +69,28 @@ class User extends Model implements Authenticatable
         return $this->hasMany('App\Models\History', 'user_vote', 'id');
     }
 
+    public static $rulesUserAdd = [
+        'username' => 'required|unique:users|min:2',
+        'password' => 'required|min:6',
+    ];
+
+    public static $messagesUserAdd = [
+        'username.required' => 'Username không được để trống',
+        'username.unique' => 'Username đã tồn tại',
+        'username.min' => 'Username ít nhất từ 2 ký tự',
+        'password.required' => 'Mật khẩu không được để trống',
+        'password.min' => 'Mật khẩu ít nhất 6 ký tự'
+    ];
+
+    public static $rulesUserUpdate = [
+        'username' => 'required|min:2'
+    ];
+
+    public static $messagesUserUpdate = [
+        'username.required' => 'Username không được để trống',
+        'username.min' => 'Username ít nhất từ 2 ký tự'
+    ];
+
     public static $rules = [
         'full_name' => 'required|min:2',
         'cat_id' => 'required',
@@ -123,10 +145,12 @@ class User extends Model implements Authenticatable
 
     public static function initUser($request)
     {
-        $data = self::where('role_id', '<>', 1)->where('type', 0)->where('id', '<>', \Auth::guard('admin')->id());
+        $data = self::where('role_id', 2)->where('type', 0);
 
         if ($request->name !== 'all-user' && $request->name !== 'undefined') {
-            $data->where("username", "LIKE", "%" . $request->name . "%");
+            $data->where("username", "LIKE", "%" . $request->name . "%")
+                 ->orWhere("full_name", "LIKE", "%" . $request->name . "%")
+                 ->orWhere("email", "LIKE", "%" . $request->name . "%");
         }
 
         $data = $data->with('role')->orderBy('id', 'desc')->get();
@@ -134,7 +158,24 @@ class User extends Model implements Authenticatable
         return $data;
     }
 
-    public static function addAction($data)
+    public static function addUser($data)
+    {
+        $data['role_id'] = 2;
+        $data['type'] = 0;
+
+        return self::firstOrCreate($data);
+    }
+
+    public static function updateUser($data, $user)
+    {
+        if ($data['password'] == '') {
+            unset($data['password']);
+        }
+
+        return $user->update($data);
+    }
+
+    public static function addMember($data)
     {
         if (isset($data['content']) && in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
             $data['content'] = '';
@@ -147,15 +188,13 @@ class User extends Model implements Authenticatable
         return self::firstOrCreate($data);
     }
 
-    public static function updateAction($data, $member)
+    public static function updateMember($data, $member)
     {
-        if (isset($data['content'])) {
-            if (in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
-                $data['content'] = '';
-            }
-            $data['cat_id'] = (int) $data['cat_id'];
-            $data['username'] = str_slug($data['full_name'], '-');
+        if (isset($data['content']) && in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['content'] = '';
         }
+        $data['cat_id'] = (int) $data['cat_id'];
+        $data['username'] = str_slug($data['full_name'], '-');
 
         return $member->update($data);
     }

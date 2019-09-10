@@ -26,7 +26,7 @@
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>{{ $userCount }}</h3>
-                            <p>Tổng số thành viên</p>
+                            <p>Tổng số user</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>

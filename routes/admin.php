@@ -56,11 +56,15 @@
                 $this->post('members/delete', 'Admin\MemberController@delete')->middleware('admin.role:Superadmin');
 
                 // user
-                $this->get('users', 'Admin\UserController@index')->name('users');
-                $this->get('users/getAllUsers', 'Admin\UserController@getAllUsers');
-                $this->get('users/edit/{id}', 'Admin\UserController@edit')->name('user-edit');
-                $this->post('users/update', 'Admin\UserController@update')->middleware('admin.role:Superadmin');
-                $this->post('users/delete', 'Admin\UserController@delete')->middleware('admin.role:Superadmin');
+                Route::group(['middleware' => 'admin.role:Superadmin'], function () {
+                    $this->get('users', 'Admin\UserController@index')->name('users');
+                    $this->get('users/getAllUsers', 'Admin\UserController@getAllUsers');
+                    $this->get('users/create', 'Admin\UserController@create')->name('user-create');
+                    $this->get('users/edit/{id}', 'Admin\UserController@edit')->name('user-edit');
+                    $this->post('users/add', 'Admin\UserController@add');
+                    $this->post('users/update', 'Admin\UserController@update');
+                    $this->post('users/delete', 'Admin\UserController@delete');
+                });
 
                 //history
                 $this->get('history', 'Admin\HistoryController@index')->name('history');

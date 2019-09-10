@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Cập nhật user
+@section('page')Thêm mới user
 @stop
 
 @section('pageCss')
@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Cập nhật user
+            Thêm mới user
             <a href="{{ route('users') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>
@@ -28,33 +28,32 @@
                     <div class="box-body">
                         <form id="formProcess" onsubmit="return false;" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
-                            	<input type="hidden" name="id" value="{{ $user->id }}">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input value="{{ $user->username }}" name="username" type="text" class="form-control" placeholder="Username...">
+                                    <input name="username" type="text" class="form-control" placeholder="Username...">
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input value="{{ $user->email }}" name="email" type="email" class="form-control" placeholder="Email...">
+                                    <input name="email" type="email" class="form-control" placeholder="Email...">
                                 </div>
                                 <div class="form-group">
                                     <label>Họ tên</label>
-                                    <input value="{{ $user->full_name }}" name="full_name" type="text" class="form-control" placeholder="Họ tên...">
+                                    <input name="full_name" type="text" class="form-control" placeholder="Họ tên...">
                                 </div>
                                 <div class="form-group">
                                     <label>Mật khẩu</label>
-                                    <input value="" name="password" type="password" class="form-control" placeholder="Mật khẩu...">
+                                    <input name="password" type="password" class="form-control" placeholder="Mật khẩu...">
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select name="status" class="form-control status">
-                                        <option {{ ($user->status == 1) ? 'selected' : '' }} value="1">Hoạt động</option>
-                                        <option {{ ($user->status == 0) ? 'selected' : '' }} value="0">Khóa</option>
+                                        <option value="1">Hoạt động</option>
+                                        <option value="0">Khóa</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>
+                                <button ng-click="process('add')" type="button" class="btn btn-primary">Thêm</button>
                                 <a href="{{ route('users') }}" class="btn btn-default">Quay lại</a>
                             </div>
                         </form>

@@ -67,7 +67,7 @@ class MemberController extends Controller
 
             $data = $request->all();
             if ($data) {
-                User::addAction($data);
+                User::addMember($data);
                 return Response::json([
                     'status' => true,
                     'message' => 'Thêm nhân vật thành công', 
@@ -104,7 +104,7 @@ class MemberController extends Controller
             if ($data) {
                 $member = User::find($data['id']);
                 if ($member) {
-                    User::updateAction($data, $member);
+                    User::updateMember($data, $member);
                     return Response::json([
                         'status' => true, 
                         'message' => 'Cập nhật nhân vật thành công', 
