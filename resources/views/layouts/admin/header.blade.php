@@ -81,4 +81,12 @@
     .skin-blue .main-header .logo:hover {
       background-color: #d1232a;
     }
+    .main-header .logo .logo-lg img {
+      max-width: 200px;
+      max-height: 50px;
+    }
+    .main-header .logo .logo-mini img {
+      max-width: 50px;
+      max-height: 50px;
+    }
   </style>
