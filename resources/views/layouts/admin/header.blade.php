@@ -4,9 +4,11 @@
     <!-- Logo -->
     <a href="{{ route('dashboard') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>V</b>C</span>
+      <span class="logo-mini"><img src="/backend/img/vincomretail.png" /></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Vincom</b>CMS</span>
+      <span class="logo-lg" style="text-transform: uppercase;">
+        <img style="float: left;" src="/backend/img/vincomretail.png" /> 
+        <span style="float: left; margin-top: 3px;">Vincom Retail</span></span>
     </a>
 
     <!-- Header Navbar -->
@@ -24,14 +26,14 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{ asset('components/admin-lte/dist/img/user2-160x160.jpg') }}" class="user-image" alt="Admin">
+              <img src="{{ asset('backend/img/logo.jpg') }}" class="user-image" alt="Admin">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">{{ ($authAdminUser && $authAdminUser->username !== '' && $authAdminUser->username !== null) ? $authAdminUser->username : 'anonymous' }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{ asset('components/admin-lte/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="Admin">
+                <img src="{{ asset('backend/img/logo.jpg') }}" class="img-circle" alt="Admin">
                 <p>
                   {{ ($authAdminUser->full_name) ? $authAdminUser->full_name : $authAdminUser->username }} - Administrator
                   <!-- <small>Member since April. 2018</small> -->
@@ -59,3 +61,24 @@
       </div>
     </nav>
   </header>
+
+  <style type="text/css">
+    .skin-blue .main-header .logo{
+      background: #c3050d;
+    }
+    .skin-blue .main-header .navbar{
+      background: #d1232a;
+    }
+    .skin-blue .sidebar-menu>li.active>a {
+      border-left-color: #d1232a;
+    }
+    .skin-blue .main-header li.user-header {
+      background-color: #d1232a;
+    }
+    .skin-blue .main-header .navbar .sidebar-toggle:hover {
+      background-color: #c3050d;
+    }
+    .skin-blue .main-header .logo:hover {
+      background-color: #d1232a;
+    }
+  </style>

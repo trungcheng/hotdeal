@@ -3,8 +3,15 @@ html {
     height: 100%;
     width: 100%;
 }
+.btn-primary {
+    background-color: #d1232a;
+    border-color: #d1232a;
+}
+.btn-primary:hover {
+    background-color: #c3050d;
+}
 body.login-page {
-    background-color: #0080ff;
+    background-color: #d1232a;
         /* background: -webkit-linear-gradient(150.76deg,#7b94ff 0,#b288ff 47.43%,#ffb0d0 99.5%);
         background: linear-gradient(-60.76deg,#7b94ff 0,#b288ff 47.43%,#ffb0d0 99.5%); */
         display: table-cell;
