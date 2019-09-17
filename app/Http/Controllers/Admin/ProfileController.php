@@ -30,10 +30,15 @@ class ProfileController extends Controller
 
     	$user = User::find($data['id']);
     	if ($user) {
-    		$user->update(['full_name' => $data['full_name']]);
+    		$user->update(['full_name' => $data['full_name'], 'avatar' => $data['avatar']]);
     	}
 
-        return redirect()->back()->with('message', 'Cập nhật thành công');
+        // return redirect()->back()->with('message', 'Cập nhật thành công');
+        return Response::json([
+            'status' => true,
+            'message' => 'Cập nhật thành công', 
+            'type' => 'success'
+        ]);
     }
 
     public function changePass(Request $request)

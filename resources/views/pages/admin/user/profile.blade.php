@@ -49,7 +49,7 @@
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="{{ asset('components/admin-lte/dist/img/user2-160x160.jpg') }}" alt="User profile picture">
+              <img class="profile-user-img img-responsive img-circle" src="{{ $user->avatar }}" alt="User profile picture">
 
               <h3 class="profile-username text-center">{{ ($authAdminUser->full_name) ? $authAdminUser->full_name : $authAdminUser->username }}</h3>
 
@@ -70,7 +70,7 @@
             <div class="tab-content">
 
               <div class="tab-pane active" id="setting">
-                <form class="form-horizontal" method="post" action="{{ route('profile') }}">
+                <form id="formProfile" class="form-horizontal">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $user->id }}">
                   <div class="form-group">
@@ -93,6 +93,13 @@
                     <div class="col-sm-10">
                       <input value="{{ $user->full_name }}" type="text" name="full_name" class="form-control" placeholder="Họ tên">
                     </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="inputName" class="col-sm-2 control-label">Ảnh đại diện</label>
+                      <div class="col-sm-10">
+                        <input value="{{ $user->avatar }}" name="avatar" type="text" size="48" class="form-control" id="avatar" />
+                        <a class="btn btn-primary btn-upload" onclick="openPopup('avatar')">Tải ảnh lên</a>
+                      </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
@@ -145,5 +152,43 @@
 @section('pageJs')
     <script type="text/javascript">
         $('.alert').delay(3000).fadeOut();
+    </script>
+    <script type="text/javascript">
+        function openPopup(type) {
+            CKFinder.popup({
+                chooseFiles: true,
+                onInit: function(finder) {
+                    finder.on('files:choose', function(evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById(type).value = file.getUrl();
+                        return false;
+                    });
+                    finder.on('file:choose:resizedImage', function(evt) {
+                        document.getElementById(type).value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        }
+
+        $('#formProfile').on('submit', function (e) {
+            e.preventDefault();
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: "{{ route('profile') }}",
+                type: 'post',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: 'json',
+                crossDomain: true,
+                data: formData,
+                success: function (response) {
+                    if (response.status) {
+                      console.log('sfdfds');
+                      location.reload();
+                    } else {}
+                }
+            });
+        });
     </script>
 @stop
