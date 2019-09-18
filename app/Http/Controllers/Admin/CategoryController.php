@@ -61,7 +61,7 @@ class CategoryController extends Controller
             return view('pages.admin.category.edit', ['category' => $category]);
         }
 
-        abort(404);
+        return response()->view('errors.404-Backend');
     }
 
     public function add(Request $request)

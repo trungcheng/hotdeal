@@ -40,7 +40,7 @@ class UserController extends Controller
             return view('pages.admin.user.edit', ['user' => $user]);
         }
 
-        abort(404);
+        return response()->view('errors.404-Backend');
     }
 
     public function add(Request $request)

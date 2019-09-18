@@ -48,7 +48,7 @@ class HistoryController extends Controller
             ]);
         }
 
-        abort(404);
+        return response()->view('errors.404-Backend');
     }
 
 }

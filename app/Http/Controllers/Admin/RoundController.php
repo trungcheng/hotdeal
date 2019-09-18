@@ -47,7 +47,7 @@ class RoundController extends Controller
             return view('pages.admin.round.edit', ['round' => $round]);
         }
 
-        abort(404);
+        return response()->view('errors.404-Backend');
     }
 
     public function view(Request $request, $id)
@@ -63,7 +63,7 @@ class RoundController extends Controller
             ]);
         }
 
-        abort(404);
+        return response()->view('errors.404-Backend');
     }
 
     public function add(Request $request)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Util\Util;
@@ -28,17 +29,14 @@ class ProfileController extends Controller
     	$data = $request->all();
     	unset($data['_token']);
 
-    	$user = User::find($data['id']);
+    	$user = User::find(\Auth::guard('admin')->id());
     	if ($user) {
     		$user->update(['full_name' => $data['full_name'], 'avatar' => $data['avatar']]);
+
+            return redirect()->back()->with('message', 'Cập nhật thông tin thành công');
     	}
 
-        // return redirect()->back()->with('message', 'Cập nhật thành công');
-        return Response::json([
-            'status' => true,
-            'message' => 'Cập nhật thành công', 
-            'type' => 'success'
-        ]);
+        return redirect()->back()->withErrors('Có lỗi xảy ra')->withInput();
     }
 
     public function changePass(Request $request)
@@ -60,12 +58,19 @@ class ProfileController extends Controller
     	unset($data['_token']);
     	unset($data['password_confirmation']);
 
-    	$user = User::find($data['id']);
+    	$user = User::find(\Auth::guard('admin')->id());
     	if ($user) {
-    		$user->update($data);
+            if (Hash::check($data['old_password'], $user->password)) {
+                unset($data['old_password']);
+    		    $user->update($data);
+
+                return redirect()->back()->with('message', 'Cập nhật mật khẩu thành công');
+            } else {
+                return redirect()->back()->withErrors('Mật khẩu cũ không đúng')->withInput();
+            }
     	}
 
-        return redirect()->back()->with('message', 'Cập nhật thành công');
+        return redirect()->back()->withErrors('Có lỗi xảy ra')->withInput();
     }
 
 }

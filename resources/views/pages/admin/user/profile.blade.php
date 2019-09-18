@@ -70,9 +70,8 @@
             <div class="tab-content">
 
               <div class="tab-pane active" id="setting">
-                <form id="formProfile" class="form-horizontal">
+                <form method="post" class="form-horizontal" action="{{ route('profile') }}">
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $user->id }}">
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Username</label>
 
@@ -102,8 +101,8 @@
                       </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <div class="col-sm-offset-2 col-sm-10" style="text-align: center;">
+                      <button type="submit" class="btn btn-success">Cập nhật</button>
                     </div>
                   </div>
                 </form>
@@ -113,7 +112,13 @@
               <div class="tab-pane" id="change-pass">
                 <form class="form-horizontal" method="post" action="{{ route('change-pass') }}">
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $user->id }}">
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">Mật khẩu cũ</label>
+
+                    <div class="col-sm-9">
+                      <input type="password" name="old_password" class="form-control" placeholder="Mật khẩu cũ">
+                    </div>
+                  </div>
                   <div class="form-group">
                     <label for="inputName" class="col-sm-3 control-label">Mật khẩu mới</label>
 
@@ -129,8 +134,8 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-3 col-sm-9">
-                      <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <div class="col-sm-offset-3 col-sm-9" style="text-align: center;">
+                      <button type="submit" class="btn btn-success">Cập nhật</button>
                     </div>
                   </div>
                 </form>
@@ -169,26 +174,5 @@
                 }
             });
         }
-
-        $('#formProfile').on('submit', function (e) {
-            e.preventDefault();
-            var formData = new FormData($(this)[0]);
-            $.ajax({
-                url: "{{ route('profile') }}",
-                type: 'post',
-                processData: false,
-                contentType: false,
-                cache: false,
-                dataType: 'json',
-                crossDomain: true,
-                data: formData,
-                success: function (response) {
-                    if (response.status) {
-                      console.log('sfdfds');
-                      location.reload();
-                    } else {}
-                }
-            });
-        });
     </script>
 @stop

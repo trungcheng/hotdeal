@@ -50,7 +50,7 @@ class MemberController extends Controller
             return view('pages.admin.member.edit', ['member' => $member]);
         }
 
-        abort(404);
+        return response()->view('errors.404-Backend');
     }
 
     public function add(Request $request)
