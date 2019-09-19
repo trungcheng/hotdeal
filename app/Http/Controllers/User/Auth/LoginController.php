@@ -81,6 +81,7 @@ class LoginController extends Controller
 
     public function logoutLDAP(Request $request){
         Auth::guard('admin')->logout();
+        Auth::guard('user')->logout();
         $request->session()->flush();
         $request->session()->regenerate();
         return redirect('/');

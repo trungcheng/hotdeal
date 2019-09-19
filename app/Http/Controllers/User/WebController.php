@@ -187,8 +187,8 @@ class WebController extends Controller
         try {
             if(Auth::guard('user')->check()){
                 $data = $request->all();
-                if ($data && isset($data['user']) && isset($data['vote'])) {
-                    $user_vote = $data['user'];
+                if ($data && isset($data['vote'])) {
+                    $user_vote = Auth::guard('user')->id();
                     $vote_for  = $data['vote'];
                     $check_user_vote = DB::table('users')->where('id', $user_vote)->first();
                     if($check_user_vote){

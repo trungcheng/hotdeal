@@ -165,7 +165,6 @@
                 url:'/vote',
                 data:{
                     _token: "{{ csrf_token() }}",
-                    user: {{ Auth::guard('user')->id() }},
                     vote: id
                 },
                 success: function(response) {

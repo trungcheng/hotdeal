@@ -26,14 +26,14 @@
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="{{ asset('backend/img/logo.jpg') }}" class="user-image" alt="Admin">
+              <img src="{{ ($authAdminUser->avatar) ? $authAdminUser->avatar : asset('backend/img/logo.jpg') }}" class="user-image" alt="Admin">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">{{ ($authAdminUser && $authAdminUser->username !== '' && $authAdminUser->username !== null) ? $authAdminUser->username : 'anonymous' }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="{{ asset('backend/img/logo.jpg') }}" class="img-circle" alt="Admin">
+                <img src="{{ ($authAdminUser->avatar) ? $authAdminUser->avatar : asset('backend/img/logo.jpg') }}" class="img-circle" alt="Admin">
                 <p>
                   {{ ($authAdminUser->full_name) ? $authAdminUser->full_name : $authAdminUser->username }} - Administrator
                   <!-- <small>Member since April. 2018</small> -->
