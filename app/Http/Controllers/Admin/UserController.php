@@ -81,7 +81,22 @@ class UserController extends Controller
     public function update(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), User::$rulesUserUpdate, User::$messagesUserUpdate);
+            $data = $request->all();
+            $rulesUserUpdate = [
+                'username' => 'required|min:2'
+            ];
+            $messagesUserUpdate = [
+                'username.required' => 'Username không được để trống',
+                'username.min' => 'Username ít nhất từ 2 ký tự'
+            ];
+
+            if (isset($data['password']) && $data['password'] !== '') {
+                $rulesUserUpdate['password'] = 'min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/';
+                $messagesUserUpdate['password.min'] = 'Mật khẩu ít nhất 8 ký tự';
+                $messagesUserUpdate['password.regex'] = 'Mật khẩu chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt';
+            }
+
+            $validator = Validator::make($request->all(), $rulesUserUpdate, $messagesUserUpdate);
             if ($validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -90,7 +105,6 @@ class UserController extends Controller
                 ]);
             }
 
-            $data = $request->all();
             if ($data) {
                 $user = User::find($data['id']);
                 if ($user) {

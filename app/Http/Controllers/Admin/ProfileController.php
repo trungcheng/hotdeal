@@ -42,12 +42,15 @@ class ProfileController extends Controller
     public function changePass(Request $request)
     {
     	$validator = Validator::make($request->all(), [
-			'password' => 'min:6|required|confirmed',
+            'old_password' => 'required',
+			'password' => 'required|min:8|confirmed|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
         	'password_confirmation' => 'required_with:password'
 		], [
-			'password.required' => 'Mật khẩu mới không được để trống',
-			'password.min' => 'Mật khẩu mới ít nhất 6 ký tự',
-			'password.confirmed' => 'Mật khẩu không khớp'
+			'old_password.required' => 'Mật khẩu cũ không được để trống',
+            'password.required' => 'Mật khẩu mới không được để trống',
+			'password.min' => 'Mật khẩu mới ít nhất 8 ký tự',
+			'password.confirmed' => 'Mật khẩu xác nhận không khớp',
+            'password.regex' => 'Mật khẩu chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt'
 		]);
 
         if ($validator->fails()) {

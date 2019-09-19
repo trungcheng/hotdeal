@@ -28,6 +28,10 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/admin/access/dashboard';
+    
+    protected $maxLoginAttempts = 5; // Amount of bad attempts user can make
+    
+    protected $lockoutTime = 60; // Time for which user is going to be blocked in seconds
 
     /**
      * Create a new controller instance.
@@ -44,23 +48,59 @@ class LoginController extends Controller
         return view('pages.admin.auth.login');
     }
 
+    // public function login(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'email' => 'required',
+    //         'password' => 'required|min:6'
+    //     ]);
+
+    //     $dataAuth = ['username' => $request->get('email'), 'password' => $request->get('password')];
+    //     if (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
+    //         $dataAuth = ['email' => $request->get('email'), 'password' => $request->get('password')];
+    //     }
+
+    //     if (Auth::guard('admin')->attempt($dataAuth, $request->remember)) {
+    //         return redirect('/admin/access/dashboard');
+    //     }
+
+    //     return redirect()->back()->withInput($request->only('email', 'remember'));
+    // }
+
     public function login(Request $request)
     {
         $this->validate($request, [
             'email' => 'required',
-            'password' => 'required|min:6'
+            'password' => 'required'
         ]);
 
-        $dataAuth = ['username' => $request->get('email'), 'password' => $request->get('password')];
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request);
+        }
+
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        return Auth::guard('admin')->attempt($this->credentials($request), $request->remember);
+    }
+
+    protected function credentials(Request $request)
+    {
         if (filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)) {
-            $dataAuth = ['email' => $request->get('email'), 'password' => $request->get('password')];
+            return ['email' => $request->get('email'), 'password' => $request->get('password')];
         }
 
-        if (Auth::guard('admin')->attempt($dataAuth, $request->remember)) {
-            return redirect('/admin/access/dashboard');
-        }
-
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        return ['username' => $request->get('email'), 'password' => $request->get('password')];
     }
 
     public function logout(Request $request)

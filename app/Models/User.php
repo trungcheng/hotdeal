@@ -71,7 +71,7 @@ class User extends Model implements Authenticatable
 
     public static $rulesUserAdd = [
         'username' => 'required|unique:users|min:2',
-        'password' => 'required|min:6',
+        'password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
     ];
 
     public static $messagesUserAdd = [
@@ -79,16 +79,8 @@ class User extends Model implements Authenticatable
         'username.unique' => 'Username đã tồn tại',
         'username.min' => 'Username ít nhất từ 2 ký tự',
         'password.required' => 'Mật khẩu không được để trống',
-        'password.min' => 'Mật khẩu ít nhất 6 ký tự'
-    ];
-
-    public static $rulesUserUpdate = [
-        'username' => 'required|min:2'
-    ];
-
-    public static $messagesUserUpdate = [
-        'username.required' => 'Username không được để trống',
-        'username.min' => 'Username ít nhất từ 2 ký tự'
+        'password.min' => 'Mật khẩu ít nhất 8 ký tự',
+        'password.regex' => 'Mật khẩu chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt'
     ];
 
     public static $rules = [
