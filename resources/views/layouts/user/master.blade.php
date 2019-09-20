@@ -115,6 +115,7 @@
                     if (response.status) {
                         location.reload();
                     } else {
+                        console.log(response);
                         $('.err-login').html(response.message);
                         $('.err-login').fadeIn();
                     }

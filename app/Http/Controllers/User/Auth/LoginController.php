@@ -26,6 +26,10 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    protected $maxLoginAttempts = 5; // Amount of bad attempts user can make
+    
+    protected $lockoutTime = 60; // Time for which user is going to be blocked in seconds
+
     /**
      * Where to redirect users after login.
      *
@@ -48,10 +52,12 @@ class LoginController extends Controller
             $data = $request->all();
             if ($data && isset($data['username']) && isset($data['password'])) {
 
-                $ldap_dn = "uid=".$data["username"].",dc=example,dc=com";
-                $ldap_password = $data["password"];
-                $ldap_con = ldap_connect("ldap.forumsys.com");
-                ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
+                if ($this->hasTooManyLoginAttempts($request)) {
+                    $this->fireLockoutEvent($request);
+
+                    return $this->sendLockoutResponse($request);
+                    // return Response::json(['status' => false, 'message' => 'Đăng nhập quá nhiều lần. Vui lòng thử lại sau 60 giây.'], 429);
+                }
 
                 if(@ldap_bind($ldap_con,$ldap_dn,$ldap_password)){
                     //check exist user
@@ -70,9 +76,11 @@ class LoginController extends Controller
                     }
                     Auth::guard('user')->loginUsingId($userId);
                     return Response::json(['status' => true, 'message' => 'Đăng nhập thành công.']);
-                }else{
-                    return Response::json(['status' => false, 'message' => 'Tên đăng nhập hoặc Mật khẩu không chính xác.']);
-                }  
+                }
+
+                $this->incrementLoginAttempts($request);
+
+                return Response::json(['status' => false, 'message' => 'Tên đăng nhập hoặc Mật khẩu không chính xác.']);
             }
         } catch (Exception $e) {
             return Response::json(['status' => false, 'message' => 'Xảy ra lỗi trong quá trình đăng nhập.']);
