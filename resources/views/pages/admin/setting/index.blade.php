@@ -40,8 +40,8 @@
                     
                     <div class="form-group">
                         <label>Logo</label>
-                        <input value="{{ ($setting != '') ? $setting->logo : '' }}" name="logo" type="text" size="48" class="form-control" id="logo" />
-                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('logo')">Tải ảnh lên</button>
+                        <input type="file" name="logo" value="{{ ($setting) ? $setting->logo : '' }}" class="form-control">
+                        <input value="{{ ($setting) ? $setting->logo : '' }}" name="logo" type="hidden" size="48" class="form-control" id="logo" />
                     </div>
 
                     <div class="form-group">
@@ -76,8 +76,8 @@
 
                     <div class="form-group">
                         <label>Ảnh trang chủ</label>
-                        <input value="{{ ($setting != '') ? $setting->image_home_page : '' }}" name="image_home_page" type="text" size="48" class="form-control" id="image_home_page" />
-                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('image_home_page')">Tải ảnh lên</button>
+                        <input type="file" name="image_home_page" value="{{ ($setting) ? $setting->image_home_page : '' }}" class="form-control">
+                        <input value="{{ ($setting) ? $setting->image_home_page : '' }}" name="image_home_page" type="hidden" size="48" class="form-control" id="image_home_page" />
                     </div>
 
                     <div class="form-group">
@@ -100,21 +100,6 @@
 
 @section('pageJs')
     <script type="text/javascript">
-        function openPopup(type) {
-            CKFinder.popup({
-                chooseFiles: true,
-                onInit: function(finder) {
-                    finder.on('files:choose', function(evt) {
-                        var file = evt.data.files.first();
-                        document.getElementById(type).value = file.getUrl();
-                    });
-                    finder.on('file:choose:resizedImage', function(evt) {
-                        document.getElementById(type).value = evt.data.resizedUrl;
-                    });
-                }
-            });
-        }
-
         CKEDITOR.replace('content_home_page', {height: 300});
 
         $('#form_setting').on('submit', function () {

@@ -31,6 +31,31 @@ class SettingController extends Controller
             if (in_array($data['content_home_page'], ['<p><br></p>','<br>','<p></p>',''])) {
                 $data['content_home_page'] = '';
             }
+
+            if ($request->hasFile('logo')) {
+                $logo = $request->file('logo');
+                $nameLogo = time().'-'.$logo->getClientOriginalName();
+                $destinationPath = public_path('/uploads/');
+                $logo->move($destinationPath, $nameLogo);
+                if (\File::exists(public_path().$setting->logo)) {
+                    \File::delete(public_path().$setting->logo);
+                }
+                $link_logo = '/uploads/'.$nameLogo;
+                $data['logo'] = $link_logo;
+            }
+
+            if ($request->hasFile('image_home_page')) {
+                $image = $request->file('image_home_page');
+                $name = time().'-'.$image->getClientOriginalName();
+                $destinationPath = public_path('/uploads/');
+                $image->move($destinationPath, $name);
+                if (\File::exists(public_path().$setting->image_home_page)) {
+                    \File::delete(public_path().$setting->image_home_page);
+                }
+                $link_image_home_page = '/uploads/'.$name;
+                $data['image_home_page'] = $link_image_home_page;
+            }
+
             $setting->update($data);
             
             return Response::json([

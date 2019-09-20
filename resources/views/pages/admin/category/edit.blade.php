@@ -47,11 +47,6 @@
                                     <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả...">{{ $category['description'] }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Ảnh</label>
-                                    <input value="{{ $category->image }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />
-                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
-                                </div>
-                                <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select class="form-control status" name="status">
                                         <option {{ ($category['status'] == 1) ? 'selected' : '' }} value="1">Hoạt động</option>

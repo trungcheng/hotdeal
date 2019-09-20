@@ -81,19 +81,19 @@ class MemberController extends Controller
             unset($data['cvideo']);
             if ($request->hasFile('avatar')) {
                 $image = $request->file('avatar');
-                $name = time().'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/');
-                $image->move($destinationPath, $name);
-                $link_avatar = '/uploads/'.$name;
+                $nameAvatar = time().'-'.$image->getClientOriginalName();
+                $destinationPathAvatar = public_path('/uploads/');
+                $image->move($destinationPathAvatar, $nameAvatar);
+                $link_avatar = '/uploads/'.$nameAvatar;
                 $data['avatar'] = $link_avatar;
             }
 
             if ($request->hasFile('video')) {
                 $video = $request->file('video');
-                $name = time().'.'.$video->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/videos/');
-                $video->move($destinationPath, $name);
-                $link_video = '/uploads/video/'.$name;
+                $nameVideo = time().'-'.$video->getClientOriginalName();
+                $destinationPathVideo = public_path('/uploads/videos/');
+                $video->move($destinationPathVideo, $nameVideo);
+                $link_video = '/uploads/video/'.$nameVideo;
                 $data['video'] = $link_video;
             }
 
@@ -138,19 +138,25 @@ class MemberController extends Controller
                 if ($member) {
                     if ($request->hasFile('avatar')) {
                         $image = $request->file('avatar');
-                        $name = time().'.'.$image->getClientOriginalExtension();
-                        $destinationPath = public_path('/uploads/');
-                        $image->move($destinationPath, $name);
-                        $link_avatar = '/uploads/'.$name;
+                        $nameAvatar = time().'-'.$image->getClientOriginalName();
+                        $destinationPathAvatar = public_path('/uploads/');
+                        $image->move($destinationPathAvatar, $nameAvatar);
+                        if (\File::exists(public_path().$member->avatar)) {
+                            \File::delete(public_path().$member->avatar);
+                        }
+                        $link_avatar = '/uploads/'.$nameAvatar;
                         $data['avatar'] = $link_avatar;
                     }
 
                     if ($request->hasFile('video')) {
                         $video = $request->file('video');
-                        $name = time().'.'.$video->getClientOriginalExtension();
-                        $destinationPath = public_path('/uploads/videos/');
-                        $video->move($destinationPath, $name);
-                        $link_video = '/uploads/video/'.$name;
+                        $nameVideo = time().'-'.$video->getClientOriginalName();
+                        $destinationPathVideo = public_path('/uploads/videos/');
+                        $video->move($destinationPathVideo, $nameVideo);
+                        if (\File::exists(public_path().$member->video)) {
+                            \File::delete(public_path().$member->video);
+                        }
+                        $link_video = '/uploads/video/'.$nameVideo;
                         $data['video'] = $link_video;
                     }
 

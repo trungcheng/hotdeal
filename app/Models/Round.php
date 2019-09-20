@@ -86,6 +86,15 @@ class Round extends Model
                     'type' => 'error'
                 ];
             }
+        } else {
+            $countRoundOn = Round::where('is_running', 1)->count();
+            if ($countRoundOn == 0) {
+                return [
+                    'status' => false,
+                    'message' => 'Phải có ít nhất 1 vòng thi được khởi động',
+                    'type' => 'error'
+                ];       
+            }
         }
 
         self::firstOrCreate($data);
@@ -139,6 +148,17 @@ class Round extends Model
                     'message' => 'Thời gian hiện tại đã vượt quá hoặc chưa đến lúc để khởi động vòng thi',
                     'type' => 'error'
                 ];
+            }
+        } else {
+            if ($round->is_running == 1) {
+                $checkAllOff = Round::where('is_running', 0)->count() == Round::count() - 1;
+                if ($checkAllOff) {
+                    return [
+                        'status' => false,
+                        'message' => 'Phải có ít nhất 1 vòng thi được khởi động',
+                        'type' => 'error'
+                    ];       
+                }
             }
         }
 

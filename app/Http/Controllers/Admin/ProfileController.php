@@ -29,16 +29,19 @@ class ProfileController extends Controller
     	$data = $request->all();
     	unset($data['_token']);
 
-        if ($request->hasFile('avatar')) {
-            $image = $request->file('avatar');
-            $name = time().'.'.$image->getClientOriginalExtension();
-            $destinationPath = public_path('/uploads/');
-            $image->move($destinationPath, $name);
-            $link_avatar = '/uploads/'.$name;
-            $data['avatar'] = $link_avatar;
-        }
     	$user = User::find(\Auth::guard('admin')->id());
     	if ($user) {
+            if ($request->hasFile('avatar')) {
+                $image = $request->file('avatar');
+                $name = time().'-'.$image->getClientOriginalName();
+                $destinationPath = public_path('/uploads/');
+                $image->move($destinationPath, $name);
+                if (\File::exists(public_path().$user->avatar)) {
+                    \File::delete(public_path().$user->avatar);
+                }
+                $link_avatar = '/uploads/'.$name;
+                $data['avatar'] = $link_avatar;
+            }
     		$user->update(['full_name' => $data['full_name'], 'avatar' => $data['avatar']]);
 
             return redirect()->back()->with('message', 'Cập nhật thông tin thành công');
