@@ -70,7 +70,7 @@
             <div class="tab-content">
 
               <div class="tab-pane active" id="setting">
-                <form method="POST" enctype="multipart/form-data" class="form-horizontal" action="{{ route('profile') }}">
+                <form method="post" class="form-horizontal" action="{{ route('profile') }}">
                     {{ csrf_field() }}
                   <div class="form-group">
                     <label for="inputName" class="col-sm-2 control-label">Username</label>
@@ -96,8 +96,8 @@
                   <div class="form-group">
                       <label for="inputName" class="col-sm-2 control-label">Ảnh đại diện</label>
                       <div class="col-sm-10">
-                        <input type="file" name="avatar" value="{{ $user->avatar }}" class="form-control">
-                        <input value="{{ $user->avatar }}" name="avatar" type="hidden" size="48" class="form-control" id="avatar" />
+                        <input value="{{ $user->avatar }}" name="avatar" type="text" size="48" class="form-control" id="avatar" />
+                        <a class="btn btn-primary btn-upload" onclick="openPopup('avatar')">Tải ảnh lên</a>
                       </div>
                   </div>
                   <div class="form-group">
@@ -157,5 +157,22 @@
 @section('pageJs')
     <script type="text/javascript">
         $('.alert').delay(3000).fadeOut();
+    </script>
+    <script type="text/javascript">
+        function openPopup(type) {
+            CKFinder.popup({
+                chooseFiles: true,
+                onInit: function(finder) {
+                    finder.on('files:choose', function(evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById(type).value = file.getUrl();
+                        return false;
+                    });
+                    finder.on('file:choose:resizedImage', function(evt) {
+                        document.getElementById(type).value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        }
     </script>
 @stop

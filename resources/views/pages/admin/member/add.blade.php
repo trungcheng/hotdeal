@@ -42,17 +42,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>
-                                    <input type="file" name="avatar" class="form-control">
+                                    <input name="avatar" type="text" size="48" class="form-control" id="avatar" />
+                                    <button class="btn btn-primary btn-upload" onclick="openPopup('avatar')">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
                                     <label>Video</label>
-                                    <p>
-                                        <input class="choose_video" name="cvideo" type="radio" value="1" checked> Upload Video &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                        <input class="choose_video" name="cvideo" type="radio" value="2"> Video Youtube
-                                    </p>
-                                    <div class="box_video">
-                                        <input type="file" name="video" value="" class="form-control">
-                                    </div>
+                                    <input name="video" type="text" size="48" class="form-control" id="video" />
+                                    <button class="btn btn-primary btn-upload" onclick="openPopup('video')">Tải video lên</button>
                                 </div>
                                 <div class="form-group">
                                     <label>Vị trí</label>
@@ -91,16 +87,20 @@
     {!! Html::script('backend/js/angular/controllers/member.controller.js') !!}
 
     <script type="text/javascript">
-        $(document).ready(function(){
-            $('.choose_video').change(function(){
-                var video = selected_value = $("input[name='cvideo']:checked").val();
-                if (video == 1) {
-                    $('.box_video').html('<input type="file" name="video" value="" class="form-control">');
-                }else{
-                    $('.box_video').html('<input type="text" name="video" value="" class="form-control" placeholder="Link Youtube phải có dạng: https://www.youtube.com/watch?v=xxxxx">');
+        function openPopup(type) {
+            CKFinder.popup({
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on('files:choose', function(evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById(type).value = file.getUrl();
+                    });
+                    finder.on('file:choose:resizedImage', function(evt) {
+                        document.getElementById(type).value = evt.data.resizedUrl;
+                    });
                 }
             });
-        });
+        }
         CKEDITOR.replace('content', {height: 300});
     </script>
 @stop

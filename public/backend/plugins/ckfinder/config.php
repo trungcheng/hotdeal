@@ -1,7 +1,4 @@
 <?php
-
-use App\Models\User;
-
 /*
  * CKFinder Configuration File
  *
@@ -27,18 +24,8 @@ $config = array();
 /*============================ Enable PHP Connector HERE ==============================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_authentication
 
-require __DIR__ . '/../../../../vendor/autoload.php';
-$app = require_once __DIR__ . '/../../../../bootstrap/app.php';
-$request = Illuminate\Http\Request::capture();
-$request->setMethod('GET');
-
-$app->make('Illuminate\Contracts\Http\Kernel')
-    ->handle($request);
-
 $config['authentication'] = function () {
-    $check = auth()->guard('admin')->check() && User::find(auth()->guard('admin')->id())->hasRole('Admin');
-    
-    return $check;
+    return true;
 };
 
 /*============================ License Key ============================================*/

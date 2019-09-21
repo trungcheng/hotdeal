@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
 use App\Util\Util;
-use App\Traits\UploadTrait;
 use Response;
 use Validator;
 
@@ -57,18 +56,7 @@ class MemberController extends Controller
     public function add(Request $request)
     {
         try {
-            if ($request->hasFile('video')) {
-                $rulesUserUpdate = [
-                    'avatar' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048',
-                    'video' => 'mimes:mp4|max:2048'
-                ];
-            }else{
-                $rulesUserUpdate = [
-                    'avatar' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048'
-                ];
-            }
-
-            $validator = Validator::make($request->all(), $rulesUserUpdate, User::$messages);
+            $validator = Validator::make($request->all(), User::$rules, User::$messages);
             if ($validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -78,25 +66,6 @@ class MemberController extends Controller
             }
 
             $data = $request->all();
-            unset($data['cvideo']);
-            if ($request->hasFile('avatar')) {
-                $image = $request->file('avatar');
-                $nameAvatar = time().'-'.$image->getClientOriginalName();
-                $destinationPathAvatar = public_path('/uploads/');
-                $image->move($destinationPathAvatar, $nameAvatar);
-                $link_avatar = '/uploads/'.$nameAvatar;
-                $data['avatar'] = $link_avatar;
-            }
-
-            if ($request->hasFile('video')) {
-                $video = $request->file('video');
-                $nameVideo = time().'-'.$video->getClientOriginalName();
-                $destinationPathVideo = public_path('/uploads/videos/');
-                $video->move($destinationPathVideo, $nameVideo);
-                $link_video = '/uploads/video/'.$nameVideo;
-                $data['video'] = $link_video;
-            }
-
             if ($data) {
                 User::addMember($data);
                 return Response::json([
@@ -132,34 +101,9 @@ class MemberController extends Controller
             }
 
             $data = $request->all();
-            unset($data['cvideo']);
             if ($data) {
                 $member = User::find($data['id']);
                 if ($member) {
-                    if ($request->hasFile('avatar')) {
-                        $image = $request->file('avatar');
-                        $nameAvatar = time().'-'.$image->getClientOriginalName();
-                        $destinationPathAvatar = public_path('/uploads/');
-                        $image->move($destinationPathAvatar, $nameAvatar);
-                        if (\File::exists(public_path().$member->avatar)) {
-                            \File::delete(public_path().$member->avatar);
-                        }
-                        $link_avatar = '/uploads/'.$nameAvatar;
-                        $data['avatar'] = $link_avatar;
-                    }
-
-                    if ($request->hasFile('video')) {
-                        $video = $request->file('video');
-                        $nameVideo = time().'-'.$video->getClientOriginalName();
-                        $destinationPathVideo = public_path('/uploads/videos/');
-                        $video->move($destinationPathVideo, $nameVideo);
-                        if (\File::exists(public_path().$member->video)) {
-                            \File::delete(public_path().$member->video);
-                        }
-                        $link_video = '/uploads/video/'.$nameVideo;
-                        $data['video'] = $link_video;
-                    }
-
                     User::updateMember($data, $member);
                     return Response::json([
                         'status' => true, 
