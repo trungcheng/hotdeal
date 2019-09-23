@@ -31,7 +31,11 @@
 @stop
 
 @section('pageCss')
-    
+    <style>
+    .grecaptcha-badge{
+      display:none;
+    }
+    </style>
 @stop
 
 @section('content')
@@ -87,7 +91,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <img src="{{ asset('frontend/images/success.png') }}" />
+                    <img class="img-notification" src="" />
                     <p class="reg-success">bình chọn thành công</p>
                     <p class="name-success"></p>
                     <p class="position-success"></p>
@@ -119,24 +123,47 @@
 @stop
 
 @section('pageJs')
+<?php 
+  $site_key=env('SITE_KEY','');
+?>
+<script src="https://www.google.com/recaptcha/api.js?render={{ $site_key }}"></script>
+<script>
+var grecaptchaSiteKey = '{{ $site_key }}';
+var _RECAPTCHA = _RECAPTCHA || {};
+_RECAPTCHA.init = function() {
+  grecaptcha.ready(function() {
+    grecaptcha.execute(grecaptchaSiteKey, {action: 'homepage'}).then(function(token) {
+      $('.description').append('<input type="hidden" class="grecaptchaToken" value="' +token+ '" />');
+    });
+  });
+}
+_RECAPTCHA.init();
+</script>
+
   <script type="text/javascript">
         function vote(id){
             @if(Auth::guard('user')->check())
+      var v_captcha = $('.grecaptchaToken').val();
             $.ajax({
                 type:'POST',
                 url:'/vote',
                 data:{
                     _token: "{{ csrf_token() }}",
+          captcha: v_captcha,
                     vote: id
                 },
                 success: function(response) {
                     if (response.status) {
                         $('#myModal').modal('show');
+            $('.img-notification').attr('src','{{ asset("frontend/images/success.png") }}');
                         $('.name-success').html(response.name);
                         $('.position-success').html(response.position);
                     } else {
-                        console.log('false');
-                        // console.log(response.message);
+                        $('#myModal').modal('show');
+            $('.img-notification').attr('src','{{ asset("frontend/images/false.png") }}');
+                        $('.name-success').html(response.message);
+                        $('.position-success').html('');
+            $('.reg-success').html('');
                     }
                 }
             });

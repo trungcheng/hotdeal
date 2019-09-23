@@ -59,6 +59,11 @@ class LoginController extends Controller
                     // return Response::json(['status' => false, 'message' => 'Đăng nhập quá nhiều lần. Vui lòng thử lại sau 60 giây.'], 429);
                 }
 
+                $ldap_dn = "uid=".$data["username"].",dc=example,dc=com";
+                $ldap_password = $data["password"];
+                $ldap_con = ldap_connect("ldap.forumsys.com");
+                ldap_set_option($ldap_con, LDAP_OPT_PROTOCOL_VERSION, 3);
+                
                 if(@ldap_bind($ldap_con,$ldap_dn,$ldap_password)){
                     //check exist user
                     $user = DB::table('users')->where('username', $data['username'])->where('status', 1)->first();

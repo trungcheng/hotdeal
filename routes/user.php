@@ -3,7 +3,7 @@
 \Route::group(['middleware' => ['user.values', 'cors']], function () {
 
     \Route::get('/', 'User\HomeController@index')->name('home');
-    \Route::get('/admin', 'User\HomeController@navigate');
+    \Route::get('/vcr19dtbcdscms=rotartsinimda', 'User\HomeController@navigate');
 
     \Route::get('dang-nhap', 'User\Auth\LoginController@showLoginForm')->name('getSignIn');
     \Route::post('login', 'User\Auth\LoginController@loginLDAP');
@@ -32,4 +32,3 @@
     // });
 
 });
-

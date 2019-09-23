@@ -184,49 +184,60 @@ class WebController extends Controller
     }
 
     public function voteMember(Request $request){
-        try {
+        try {       
+            $data = $request->all();
             if(Auth::guard('user')->check()){
-                $data = $request->all();
-                if ($data && isset($data['vote'])) {
+                if ($data && isset($data['vote']) && isset($data['captcha'])) {
                     $user_vote = Auth::guard('user')->id();
                     $vote_for  = $data['vote'];
-                    $check_user_vote = DB::table('users')->where('id', $user_vote)->first();
-                    if($check_user_vote){
-                        $vote_today = $this->check_vote_today($user_vote, $vote_for);
-                        if($vote_today){
-                            return Response::json(['status' => false, 'message' => 'Vui lòng bình chọn cho thành viên này vào ngày mai.']);
-                        }else{
-                            //insert table history
-                            $round = DB::table('rounds')->where('is_running', 1)->first();
-                            DB::table('history')->insert([
-                                'round_id'   => $round->id, 
-                                'user_vote'  => $user_vote,
-                                'vote_for'   => $vote_for,
-                                'vote_count' => 1
-                            ]);
-
-                            //update table users
-                            $user = DB::table('users')->where('id', $vote_for)->first();
-                            $total = $user->total_vote + 1;
-                            DB::table('users')->where('id', $vote_for)->update(['total_vote' => $total]);
-
-                            //update table user_round
-                            $user_round = DB::table('user_round')->where('user_id', $vote_for)->where('round_id', $round->id)->first();
-                            if($user_round){
-                               $total_vote = $user_round->vote + 1;
-                                DB::table('user_round')->where('user_id', $vote_for)->where('round_id', $round->id)->update(['vote' => $total_vote]); 
-                            }
-
-                            return Response::json(['status' => true, 'message' => 'Bình chọn thành công', 'name' => $user->full_name, 'position'=> $user->intro]);
-                        }
+                    
+                    //reCaptcha
+                    //$secretKey = '6LdN1LkUAAAAAITEpoT-EHlxRrZrMfzv1v70DBsJ';
+                    $secretKey = env('SECRET_KEY','');
+                    $response = $data['captcha'];                   
+                    $verify=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secretKey."&response=".$response."");
+                    $captcha_success=json_decode($verify);
+                    
+                    if ($captcha_success->success==false){
+                        return Response::json(['status' => false, 'message' => 'Có lỗi trong quá trình bình chọn.']);
                     }else{
-                        return Response::json(['status' => false, 'message' => 'Không tồn tại người dùng này.']);
+                        $check_user_vote = DB::table('users')->where('id', $user_vote)->first();
+                        if($check_user_vote){
+                            $vote_today = $this->check_vote_today($user_vote, $vote_for);
+                            if($vote_today){
+                                return Response::json(['status' => false, 'message' => 'Vui lòng bình chọn cho thành viên này vào ngày mai.']);
+                            }else{
+                                //insert table history
+                                $round = DB::table('rounds')->where('is_running', 1)->first();
+                                DB::table('history')->insert([
+                                    'round_id'   => $round->id, 
+                                    'user_vote'  => $user_vote,
+                                    'vote_for'   => $vote_for,
+                                    'vote_count' => 1
+                                ]);
+
+                                //update table users
+                                $user = DB::table('users')->where('id', $vote_for)->first();
+                                $total = $user->total_vote + 1;
+                                DB::table('users')->where('id', $vote_for)->update(['total_vote' => $total]);
+
+                                //update table user_round
+                                $user_round = DB::table('user_round')->where('user_id', $vote_for)->where('round_id', $round->id)->first();
+                                if($user_round){
+                                   $total_vote = $user_round->vote + 1;
+                                    DB::table('user_round')->where('user_id', $vote_for)->where('round_id', $round->id)->update(['vote' => $total_vote]); 
+                                }
+
+                                return Response::json(['status' => true, 'message' => 'Bình chọn thành công', 'name' => $user->full_name, 'position'=> $user->intro]);
+                            }
+                        }else{
+                            return Response::json(['status' => false, 'message' => 'Không tồn tại người dùng này.']);
+                        }
                     }
                 }
             }else{
                 return Response::json(['status' => false, 'message' => 'Unauthenticated']);
-            }
-            
+            }      
         } catch (Exception $e) {
             return Response::json(['status' => false, 'message' => 'Xảy ra lỗi trong quá trình bình chọn.']);
         }

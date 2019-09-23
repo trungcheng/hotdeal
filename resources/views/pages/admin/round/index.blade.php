@@ -80,8 +80,8 @@
                                                     <td>@{{ (round.is_running) ? 'Bật' : 'Tắt' }}</td>
                                                     <td>@{{ (round.visible_menu) ? 'Hiện' : 'Ẩn' }}</td>
                                                     <td>
-                                                        <a title="Xem danh sách nhân vật bình chọn" href="/admin/access/rounds/view/@{{ round.id }}" style="margin-right:5px;" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>
-                                                        <a title="Sửa" href="/admin/access/rounds/edit/@{{ round.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a title="Xem danh sách nhân vật bình chọn" href="/vcr19dtbcdscms=rotartsinimda/access/rounds/view/@{{ round.id }}" style="margin-right:5px;" class="btn btn-info btn-xs"><i class="fa fa-eye"></i></a>
+                                                        <a title="Sửa" href="/vcr19dtbcdscms=rotartsinimda/access/rounds/edit/@{{ round.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         @role('SuperAdmin')
                                                         <a title="Xóa" ng-click="delete(round, $index)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                         @end

@@ -49,6 +49,6 @@ class VerifyRole
         Auth::guard('admin')->logout();
         $request->session()->flush();
 
-        return redirect('admin/access/login');
+        return redirect('vcr19dtbcdscms=rotartsinimda/access/login');
     }
 }

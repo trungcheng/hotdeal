@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/access/dashboard';
+    protected $redirectTo = '/vcr19dtbcdscms=rotartsinimda/access/dashboard';
     
     protected $maxLoginAttempts = 5; // Amount of bad attempts user can make
     
@@ -107,7 +107,7 @@ class LoginController extends Controller
     {
         Auth::guard('admin')->logout();
 
-        return redirect('/admin/access/login');
+        return redirect('/vcr19dtbcdscms=rotartsinimda/access/login');
     }
 
 }

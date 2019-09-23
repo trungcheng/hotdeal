@@ -19,6 +19,6 @@ class HomeController extends Controller
 
     public function navigate(Request $request)
     {
-    	return redirect('/admin/access/login');
+    	return redirect('/vcr19dtbcdscms=rotartsinimda/access/login');
     }
 }

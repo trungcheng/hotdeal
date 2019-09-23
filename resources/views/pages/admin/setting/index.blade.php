@@ -36,7 +36,7 @@
                     <p class="alert alert-success">{{ Session::get('message') }}</p>
                 @endif
 
-                <form id="form_setting" onsubmit="return false;" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
+                <form id="form_setting" onsubmit="return false;" action="{{ url('/vcr19dtbcdscms=rotartsinimda/access/setting/update') }}" enctype="multipart/form-data" method="post">
                     
                     <div class="form-group">
                         <label>Logo</label>

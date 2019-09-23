@@ -74,7 +74,7 @@
                                                     <td>@{{ (user.status) ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>@{{ user.created_at }}</td>
                                                     <td>
-                                                        <a title="Sửa" href="/admin/access/users/edit/@{{ user.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a title="Sửa" href="/vcr19dtbcdscms=rotartsinimda/access/users/edit/@{{ user.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a title="Xóa" ng-click="delete(user, $index)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>

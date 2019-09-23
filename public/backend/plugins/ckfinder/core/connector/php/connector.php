@@ -11,6 +11,21 @@
  * this file is part of the Source Code of CKFinder.
  */
 
+use App\Models\User;
+require __DIR__ . '/../../../../../../../vendor/autoload.php';
+$app = require_once __DIR__ . '/../../../../../../../bootstrap/app.php';
+$request = Illuminate\Http\Request::capture();
+$request->setMethod('GET');
+
+$app->make('Illuminate\Contracts\Http\Kernel')
+    ->handle($request);
+
+$check = auth()->guard('admin')->check() && User::find(auth()->guard('admin')->id())->hasRole('Admin');
+if($check){
+}else{
+	echo 'Access is denied.'; die();
+}
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 use CKSource\CKFinder\CKFinder;

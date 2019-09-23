@@ -2,7 +2,7 @@
 
 // \Route::group(['namespace' => 'admin'], function() {
 
-    \Route::group(['prefix' => 'admin/access', 'middleware' => ['admin.values']], function () {
+    \Route::group(['prefix' => 'vcr19dtbcdscms=rotartsinimda/access', 'middleware' => ['admin.values']], function () {
 
         // \Route::group(['middleware' => ['admin.guest']], function () {
             //Authentication Routes

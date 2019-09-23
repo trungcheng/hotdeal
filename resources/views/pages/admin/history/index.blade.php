@@ -74,7 +74,7 @@
                                                     <td>@{{ item.member.category.name }}</td>
                                                     <td>@{{ item.totalVote }}</td>
                                                     <td>
-                                                        <a title="Xem chi tiết" href="/admin/access/history/view/@{{ item.round_id }}/@{{ item.vote_for }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
+                                                        <a title="Xem chi tiết" href="/vcr19dtbcdscms=rotartsinimda/access/history/view/@{{ item.round_id }}/@{{ item.vote_for }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
