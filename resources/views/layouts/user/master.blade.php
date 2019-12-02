@@ -25,8 +25,10 @@
     <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-buttons.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-thumbs.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/vinastar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/viewport.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/viewport.css') }}" />    
+    
     @section('pageCss')
+        
     @show
 </head>
 
