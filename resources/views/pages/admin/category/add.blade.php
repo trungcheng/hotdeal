@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Thêm mới khối
+@section('page')Thêm mới danh mục
 @stop
 
 @section('pageCss')
@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Thêm mới khối
+            Thêm mới danh mục
             <a href="{{ route('categories') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>
@@ -29,13 +29,13 @@
                         <form id="formProcess" onsubmit="return false;" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Tên khối</label>
-                                    <input name="name" type="text" class="form-control slug" placeholder="Tên khối...">
+                                    <label>Tên danh mục</label>
+                                    <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Thuộc khối</label>
+                                    <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="parent_id">
-                                        <option value="0">Không thuộc khối nào</option>
+                                        <option value="0">Không thuộc danh mục nào</option>
                                         <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
                                             @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
                                         </option>

@@ -33,27 +33,14 @@
                 $this->post('categories/update', 'Admin\CategoryController@update');
                 $this->post('categories/delete', 'Admin\CategoryController@delete')->middleware('admin.role:Superadmin');
 
-                // round
-                $this->get('rounds', 'Admin\RoundController@index')->name('rounds');
-                $this->get('rounds/getAllRounds', 'Admin\RoundController@getAllRounds');
-                $this->get('rounds/getAllUserRounds', 'Admin\RoundController@getAllUserRounds');
-                $this->get('rounds/create', 'Admin\RoundController@create')->name('round-create');
-                $this->get('rounds/edit/{id}', 'Admin\RoundController@edit')->name('round-edit');
-                $this->get('rounds/view/{id}', 'Admin\RoundController@view')->name('round-view');
-                $this->post('rounds/add', 'Admin\RoundController@add');
-                $this->post('rounds/update', 'Admin\RoundController@update');
-                $this->post('rounds/delete', 'Admin\RoundController@delete')->middleware('admin.role:Superadmin');
-                $this->post('rounds/user-round/delete', 'Admin\RoundController@deleteUserRound')->middleware('admin.role:Superadmin');
-                $this->post('rounds/user-round/submitSelectMode', 'Admin\RoundController@submitSelectMode');
-
-                // member
-                $this->get('members', 'Admin\MemberController@index')->name('members');
-                $this->get('members/getAllMembers', 'Admin\MemberController@getAllMembers');
-                $this->get('members/create', 'Admin\MemberController@create')->name('member-create');
-                $this->get('members/edit/{id}', 'Admin\MemberController@edit')->name('member-edit');
-                $this->post('members/add', 'Admin\MemberController@add');
-                $this->post('members/update', 'Admin\MemberController@update');
-                $this->post('members/delete', 'Admin\MemberController@delete')->middleware('admin.role:Superadmin');
+                // article
+                $this->get('articles', 'Admin\ArticleController@index')->name('articles');
+                $this->get('articles/getAllArticles', 'Admin\ArticleController@getAllArticles');
+                $this->get('articles/create', 'Admin\ArticleController@create')->name('article-create');
+                $this->get('articles/edit/{id}', 'Admin\ArticleController@edit')->name('article-edit');
+                $this->post('articles/add', 'Admin\ArticleController@add');
+                $this->post('articles/update', 'Admin\ArticleController@update');
+                $this->post('articles/delete', 'Admin\ArticleController@delete');
 
                 // user
                 Route::group(['middleware' => 'admin.role:Superadmin'], function () {
@@ -65,16 +52,6 @@
                     $this->post('users/update', 'Admin\UserController@update');
                     $this->post('users/delete', 'Admin\UserController@delete');
                 });
-
-                //history
-                $this->get('history', 'Admin\HistoryController@index')->name('history');
-                $this->get('history/getAllHistories', 'Admin\HistoryController@getAllHistories');
-                $this->get('history/getAllDetailHistories', 'Admin\HistoryController@getAllDetailHistories');
-                $this->get('history/view/{roundId}/{memId}', 'Admin\HistoryController@viewDetail');
-
-                //statistical
-                $this->get('statistical', 'Admin\StatisticalController@index')->name('statistical');
-                $this->get('statistical/loadDataChart', 'Admin\StatisticalController@loadDataChart')->name('loadDataChart');
 
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');

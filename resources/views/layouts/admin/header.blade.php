@@ -4,11 +4,9 @@
     <!-- Logo -->
     <a href="{{ route('dashboard') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><img src="/backend/img/vincomretail.png" /></span>
+      <span class="logo-mini"><b>T</b>C</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg" style="text-transform: uppercase;">
-        <img style="float: left;" src="/backend/img/vincomretail.png" /> 
-        <span style="float: left; margin-top: 3px;">Vincom Retail</span></span>
+      <span class="logo-lg"><b>Taseco</b>CMS</span>
     </a>
 
     <!-- Header Navbar -->

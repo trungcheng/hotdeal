@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('VincomCMS')
+        .module('TasecoCMS')
         .controller('UserController', UserController);
 
     function UserController($rootScope, $scope, $http, $window, $timeout, PagerService) {

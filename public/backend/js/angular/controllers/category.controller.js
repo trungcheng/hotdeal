@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('VincomCMS')
+        .module('TasecoCMS')
         .controller('CategoryController', CategoryController);
 
     function CategoryController($rootScope, $scope, $http, $window, $timeout, PagerService) {

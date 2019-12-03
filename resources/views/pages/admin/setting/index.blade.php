@@ -74,22 +74,6 @@
                         <input type="text" name="work_time" value="{{ ($setting != '') ? $setting->work_time : '' }}" class="form-control" placeholder="Giờ làm việc...">
                     </div>
 
-                    <div class="form-group">
-                        <label>Ảnh trang chủ</label>
-                        <input type="file" name="image_home_page" value="{{ ($setting) ? $setting->image_home_page : '' }}" class="form-control">
-                        <input value="{{ ($setting) ? $setting->image_home_page : '' }}" name="image_home_page" type="hidden" size="48" class="form-control" id="image_home_page" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nội dung trang chủ (Thể lệ)</label>
-                        <textarea class="form-control" id="content_home_page">{!! $setting->content_home_page !!}</textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <button style="float:right;margin-left:5px;" type="reset" class="btn btn-default">Đóng</button>
-                        <button style="float:right" type="submit" class="btn btn-primary">Cập nhật</button>
-                    </div>
-
                 </form>
 
             </div>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\History;
+use App\Models\Article;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -17,18 +17,16 @@ class DashboardController extends Controller
 
     public function index()
     {
-    	$userCount = User::where('type', 0)
-            ->where('role_id', 2)->count();
-    	$memberCount = User::where('type', 1)->count();
-    	$categoryCount = Category::count();
-    	$voteCount = History::whereDate('created_at', Carbon::today())
-    		->selectRaw('sum(vote_count) as vote')->get();
+    	$countUsers = User::count();
+    	$countCategories = Category::count();
+    	$countArticles = Article::count();
+    	$countArticleTodays = Article::where('created_at', Carbon::today())->count();
 
-        return view('pages.admin.dashboard.index', [
-            'userCount' => $userCount,
-            'memberCount' => $memberCount,
-            'categoryCount' => $categoryCount,
-            'voteCount' => $voteCount
-        ]);
+    	return view('pages.admin.dashboard.index', [
+    		'countUsers' => $countUsers,
+    		'countCategories' => $countCategories,
+    		'countArticles' => $countArticles,
+    		'countArticleTodays' => $countArticleTodays
+    	]);
     }
 }

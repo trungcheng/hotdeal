@@ -57,18 +57,6 @@ class User extends Model implements Authenticatable
         return $this->belongsTo('App\Models\Category', 'cat_id', 'id');
     }
 
-    public function userRound() {
-        return $this->hasMany('App\Models\UserRound', 'user_id', 'id');
-    }
-
-    public function memberHistory() {
-        return $this->hasMany('App\Models\History', 'vote_for', 'id');
-    }
-
-    public function userHistory() {
-        return $this->hasMany('App\Models\History', 'user_vote', 'id');
-    }
-
     public static $rulesUserAdd = [
         'username' => 'required|unique:users|min:2',
         'password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
@@ -137,7 +125,7 @@ class User extends Model implements Authenticatable
 
     public static function initUser($request)
     {
-        $data = self::where('role_id', 2)->where('type', 0);
+        $data = self::where('role_id', '<>', 1);
 
         if ($request->name !== 'all-user' && $request->name !== 'undefined') {
             $data->where("username", "LIKE", "%" . $request->name . "%")

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('VincomCMS')
+    .module('TasecoCMS')
     .controller('DashboardController', DashboardController);
 
     function DashboardController($rootScope, $scope, $http, $window, $timeout) {

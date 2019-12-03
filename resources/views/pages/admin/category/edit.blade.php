@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Cập nhật khối
+@section('page')Cập nhật danh mục
 @stop
 
 @section('pageCss')
@@ -13,7 +13,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Cập nhật khối
+            Cập nhật danh mục
             <a href="{{ route('categories') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>
@@ -30,13 +30,13 @@
                             <div class="modal-body">
                                 <input type="hidden" id="id" name="id" value="{{ $category->id }}">
                                 <div class="form-group">
-                                    <label>Tên khối</label>
-                                    <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên khối...">
+                                    <label>Tên danh mục</label>
+                                    <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Thuộc khối</label>
+                                    <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="parent_id">
-                                        <option ng-selected="{{ $category['parent_id'] }} == 0" value="0">Không thuộc khối nào</option>
+                                        <option ng-selected="{{ $category['parent_id'] }} == 0" value="0">Không thuộc danh mục nào</option>
                                         <option ng-selected="item.id == {{ $category['parent_id'] }}" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
                                             @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
                                         </option>

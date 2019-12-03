@@ -25,26 +25,26 @@
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>{{ $userCount }}</h3>
+                            <h3>{{ $countUsers }}</h3>
                             <p>Tổng số user</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="{{ route('users') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>{{ $memberCount }}</h3>
-                            <p>Tổng số nhân vật</p>
+                            <h3>{{ $countCategories }}</h3>
+                            <p>Tổng số danh mục</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="{{ route('members') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -52,13 +52,13 @@
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>{{ $categoryCount }}<sup style="font-size: 20px"></sup></h3>
-                            <p>Tổng số khối (Phòng/Ban)</p>
+                            <h3>{{ $countArticles }}<sup style="font-size: 20px"></sup></h3>
+                            <p>Tổng số bài viết</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="{{ route('categories') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -66,13 +66,13 @@
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>{{ ($voteCount[0]['vote']) ? $voteCount[0]['vote'] : 0 }}</h3>
-                            <p>Tổng lượt bình chọn hôm nay</p>
+                            <h3>{{ $countArticleTodays }}</h3>
+                            <p>Tổng số bài viết hôm nay</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="{{ route('statistical') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
