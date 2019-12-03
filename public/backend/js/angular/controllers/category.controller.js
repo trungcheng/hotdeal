@@ -75,7 +75,7 @@
             var formData = new FormData($('#formProcess')[0]);
             
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" khối này ?",
+                title: "Bạn chắc chắn muốn "+ title +" danh mục này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -107,7 +107,7 @@
 
         $scope.delete = function (cate, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa khối này?",
+                title: "Bạn chắc chắn muốn xóa danh mục này?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",

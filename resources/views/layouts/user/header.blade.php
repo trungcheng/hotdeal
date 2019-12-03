@@ -38,73 +38,19 @@
                 <div class="navbar-collapse collapse" id="menu_rps">
                     <ul class="navbar-nav nav">
                         <li class="menu_ichome"><a href="{{ url('') }}" style="border:none"><i class="fa fa-home fa-2x"></i></a></li>
-                        <li><a href="https://taseco.vn/#.html">Giới thiệu<span class="caret"></span></a>
+                        @foreach ($categories as $cate)
+                        <li>
+                            <a href="#">{{ $cate->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu_ed">
-                                <li><a href="https://taseco.vn/gioi-thieu.html">Tổng quan</a>
+                                @foreach ($cate->childrens as $child)
+                                <li>
+                                    <a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                 </li>
-                                <li><a href="https://taseco.vn/triet-ly-kinh-doanh.html">Triết lý kinh doanh</a>
-                                </li>
-                                <li><a href="https://taseco.vn/co-cau-to-chuc.html">Cơ cấu tổ chức</a>
-                                </li>
-                                <li><a href="https://taseco.vn/thanh-tich-va-giai-thuong.html">Thành tích và giải thưởng</a>
-                                </li>
-                                <li><a href="https://taseco.vn/thu-vien-anh.html">Thư viện hình ảnh</a>
-                                </li>
-                                <li><a href="https://taseco.vn/video.html">Video</a>
-                                </li>
+                                @endforeach
                             </ul>
                         </li>
-                        <li><a href="https://taseco.vn/#.html">Tin tức - Sự kiện<span class="caret"></span></a>
-                            <ul class="dropdown-menu dropdown-menu_ed">
-                                <li><a href="https://taseco.vn/tin-taseco.html">Tin Taseco</a>
-                                </li>
-                                <li><a href="https://taseco.vn/bao-chi-va-taseco.html">Báo chí và Taseco</a>
-                                </li>
-                                <li><a href="https://taseco.vn/tin-lien-quan.html">Tin liên quan</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="https://taseco.vn/#.html">Lĩnh vực đầu tư<span class="caret"></span></a>
-                            <ul class="dropdown-menu dropdown-menu_ed">
-                                <li><a href="https://taseco.vn/kinh-doanh-bat-dong-san.html">Kinh doanh Bất động sản</a>
-                                </li>
-                                <li><a href="https://taseco.vn/dich-vu-phi-hang-khongkhach-san.html">DV phi hàng không, khách sạn</a>
-                                </li>
-                                <li><a href="https://taseco.vn/dau-tu-tai-chinh.html">Đầu tư tài chính</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="https://taseco.vn/#.html">Đơn vị thành viên<span class="caret"></span></a>
-                            <ul class="dropdown-menu dropdown-menu_ed">
-                                <li><a href="https://taseco.vn/taseco-land.html">Taseco Land</a>
-                                </li>
-                                <li><a href="https://taseco.vn/taseco-airs.html">Taseco Airs</a>
-                                </li>
-                                <li><a href="https://taseco.vn/cong-ty-lien-ket.html">Công ty liên kết</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="https://taseco.vn/#.html">Văn hóa Taseco<span class="caret"></span></a>
-                            <ul class="dropdown-menu dropdown-menu_ed">
-                                <li><a href="https://taseco.vn/cac-hoat-dong-doan-the.html">Các hoạt động đoàn thể</a>
-                                </li>
-                                <li><a href="https://taseco.vn/trach-nhiem-xa-hoi.html">Trách nhiệm xã hội</a>
-                                </li>
-                                <li><a href="https://taseco.vn/hoc-bong-taseco.html">Học bổng Taseco</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="https://taseco.vn/#.html">Tuyển dụng<span class="caret"></span></a>
-                            <ul class="dropdown-menu dropdown-menu_ed">
-                                <li><a href="https://taseco.vn/thong-tin-tuyen-dung.html">Thông tin tuyển dụng</a>
-                                </li>
-                                <li><a href="https://taseco.vn/nop-ho-so-truc-tuyen.html">Nộp hồ sơ trực tuyến</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li><a href="https://taseco.vn/lien-he.html">Liên hệ</a></li>
-                        <!--<li class="menu_icfb"><a href="https://taseco.vn/lien-he.html"><i class="fa fa-facebook-official fa-2x"></i></a></li>-->
+                        @endforeach
+                        <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                     </ul>
                 </div>
             </div>

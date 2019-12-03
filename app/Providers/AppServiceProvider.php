@@ -18,8 +18,8 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $categories = Category::where('status', 1)->get();
-        $this->categories = Util::buildTree($categories->toArray());
+        $categories = Category::where('status', 1)->orderBy('order', 'asc')->get();
+        $this->categories = Util::buildTree($categories);
         $this->setting = Setting::find(1);
 
         view()->composer(['pages.user.*', 'layouts.user.*'], function($view) {

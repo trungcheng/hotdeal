@@ -42,9 +42,29 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                {{--<div class="form-group">
                                     <label>Mô tả</label>
                                     <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả...">{{ $category['description'] }}</textarea>
+                                </div>--}}
+                                <div class="form-group">
+                                    <label>Ảnh đại diện</label>
+                                    <input value="{{ ($category != '') ? $category['image'] : '' }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />
+                                    <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('xFilePath')">Tải ảnh lên</button>
+                                </div>
+                                <div class="form-group">
+                                    <label>Thứ tự</label>
+                                    <select class="form-control status" name="order">
+                                        <option {{ ($category['order'] == 1) ? 'selected' : '' }} value="1">1</option>
+                                        <option {{ ($category['order'] == 2) ? 'selected' : '' }} value="2">2</option>
+                                        <option {{ ($category['order'] == 3) ? 'selected' : '' }} value="3">3</option>
+                                        <option {{ ($category['order'] == 4) ? 'selected' : '' }} value="4">4</option>
+                                        <option {{ ($category['order'] == 5) ? 'selected' : '' }} value="5">5</option>
+                                        <option {{ ($category['order'] == 6) ? 'selected' : '' }} value="6">6</option>
+                                        <option {{ ($category['order'] == 7) ? 'selected' : '' }} value="7">7</option>
+                                        <option {{ ($category['order'] == 8) ? 'selected' : '' }} value="8">8</option>
+                                        <option {{ ($category['order'] == 9) ? 'selected' : '' }} value="9">9</option>
+                                        <option {{ ($category['order'] == 10) ? 'selected' : '' }} value="10">10</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>

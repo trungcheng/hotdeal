@@ -40,8 +40,8 @@ class CategoryController extends Controller
 
     public function getAllParentCates(Request $request)
     {
-        $categories = Category::all();
-        $categoriesPaged = Util::buildArray($categories->toArray());
+        $categories = Category::orderBy('order', 'asc')->get();
+        $categoriesPaged = Util::buildArray($categories);
         if ($categoriesPaged) {
             return Response::json(['status' => true, 'data' => $categoriesPaged]);
         }
@@ -81,7 +81,7 @@ class CategoryController extends Controller
                 Category::addAction($data);
                 return Response::json([
                     'status' => true,
-                    'message' => 'Thêm khối thành công', 
+                    'message' => 'Thêm danh mục thành công', 
                     'type' => 'success'
                 ]);
             }
@@ -118,13 +118,13 @@ class CategoryController extends Controller
                     Category::updateAction($category, $data);
                     return Response::json([
                         'status' => true, 
-                        'message' => 'Cập nhật khối thành công', 
+                        'message' => 'Cập nhật danh mục thành công', 
                         'type' => 'success'
                     ]);
                 } else {
                     return Response::json([
                         'status' => false,
-                        'message' => 'Không tìm thấy khối', 
+                        'message' => 'Không tìm thấy danh mục', 
                         'type' => 'error'
                     ]);
                 }
@@ -156,14 +156,14 @@ class CategoryController extends Controller
 
                 return Response::json([
                     'status' => true, 
-                    'message' => 'Xóa khối thành công', 
+                    'message' => 'Xóa danh mục thành công', 
                     'type' => 'success'
                 ]);
             }
 
             return Response::json([
                 'status' => false, 
-                'message' => 'Không tìm thấy khối', 
+                'message' => 'Không tìm thấy danh mục', 
                 'type' => 'error'
             ]);
         }

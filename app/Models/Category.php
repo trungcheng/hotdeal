@@ -20,7 +20,8 @@ class Category extends Model
         'description',
         'slug',
         'image',
-        'status'
+        'status',
+        'order'
     ];
 
     public function user() {

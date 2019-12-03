@@ -91,25 +91,25 @@ class Util
         return $result.$productId;
     }
 
-    public static function buildTree(array $elements, $parentId = 0) {
+    public static function buildTree($elements, $parentId = 0) {
         $branch = array();
-        foreach ($elements as $element) {
-            if ($element['parent_id'] == $parentId) {
-                $children = self::buildTree($elements, $element['id']);
+        foreach ($elements->sortBy('order') as $element) {
+            if ($element->parent_id == $parentId) {
+                $children = self::buildTree($elements, $element->id);
                 if ($children) {
                     $element['childrens'] = $children;
                 }
                 $branch[] = $element;
             }
         }
-        
+
         return $branch;
     }
 
-    public static function buildArray(array $objects, array &$result=array(), $parent=0, $depth=0)
+    public static function buildArray($objects, array &$result=array(), $parent=0, $depth=0)
     {
-        foreach ($objects as $key => $object) {
-            if ($object['parent_id'] == $parent) {
+        foreach ($objects->sortBy('order') as $key => $object) {
+            if ($object->parent_id == $parent) {
                 $object['depth'] = $depth;
                 array_push($result, $object);
                 unset($objects[$key]);

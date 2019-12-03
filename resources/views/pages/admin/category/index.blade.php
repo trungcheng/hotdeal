@@ -63,6 +63,7 @@
                                                     <th>STT</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
                                                     <th>Thuộc danh mục</th>
+                                                    <th>Thứ tự</th>
                                                     <th>Trạng thái</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -71,7 +72,8 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in items track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
-                                                    <td style="text-align:center !important">@{{ (cate.parent) ? cate.parent : 'Không' }}</td>
+                                                    <td style="text-align:center !important">@{{ (cate.parent) ? cate.parent : 'Không thuộc danh mục nào' }}</td>
+                                                    <td>@{{ cate.order }}</td>
                                                     <td>@{{ (cate.status) ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>
                                                         <a title="Sửa" href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
