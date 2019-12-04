@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Thông tin chung
+@section('page')Cấu hình chung
 @stop
 
 @section('pageCss')
@@ -11,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Thông tin chung
+            Cấu hình chung
             <!-- <small>Optional description</small> -->
         </h1>
     </section>
@@ -39,9 +39,9 @@
                 <form id="form_setting" onsubmit="return false;" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
                     
                     <div class="form-group">
-                        <label>Logo</label>
-                        <input type="file" name="logo" value="{{ ($setting) ? $setting->logo : '' }}" class="form-control">
-                        <input value="{{ ($setting) ? $setting->logo : '' }}" name="logo" type="hidden" size="48" class="form-control" id="logo" />
+                        <label class="control-label">Logo</label>
+                        <input name="logo" type="text" value="{{ ($setting != '') ? $setting->logo : '' }}" size="48" class="form-control" id="xFilePath" />
+                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('xFilePath')">Tải logo lên</button>
                     </div>
 
                     <div class="form-group">
@@ -74,6 +74,11 @@
                         <input type="text" name="work_time" value="{{ ($setting != '') ? $setting->work_time : '' }}" class="form-control" placeholder="Giờ làm việc...">
                     </div>
 
+                    <div class="form-group">
+                        <button style="float:right;margin-left:5px;" type="reset" class="btn btn-default">Đóng</button>
+                        <button style="float:right" type="submit" class="btn btn-primary">Cập nhật</button>
+                    </div>
+
                 </form>
 
             </div>
@@ -84,12 +89,8 @@
 
 @section('pageJs')
     <script type="text/javascript">
-        CKEDITOR.replace('content_home_page', {height: 300});
-
         $('#form_setting').on('submit', function () {
             var formData = new FormData($(this)[0]);
-            formData.append('content_home_page', CKEDITOR.instances.content_home_page.document.getBody().getHtml());
-
             $.ajax({
                 url: $(this).attr('action'),
                 method: 'POST',
@@ -114,5 +115,37 @@
             });
 
         });
+    </script>
+
+    <script type="text/javascript">
+        function openPopup() {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                    } );
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                    } );
+                }
+            } );
+        }
+        
+        function openPopupMulti(id) {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath'+id ).value = file.getUrl();
+                    });
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        }
     </script>
 @stop

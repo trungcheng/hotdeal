@@ -42,10 +42,10 @@
                                         </option>
                                     </select>
                                 </div>
-                                {{--<div class="form-group">
+                                <div class="form-group">
                                     <label>Mô tả</label>
                                     <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả...">{{ $category['description'] }}</textarea>
-                                </div>--}}
+                                </div>
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>
                                     <input value="{{ ($category != '') ? $category['image'] : '' }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />

@@ -8,7 +8,9 @@
 
     \Route::get('/lien-he.html', 'User\WebController@contact')->name('contact');
 
-    \Route::get('/{slug}.html', 'User\WebController@processPage')->name('detail');
+    \Route::get('/{slug}.html', 'User\WebController@processPageLevelOne')->name('detail');
+
+    \Route::get('/{parent}/{slug}.html', 'User\WebController@processPageLevelTwo')->name('detail-article');
 
 });
 

@@ -36,15 +36,26 @@
 
 @section('content')
 <div class="main_w w_gr clearfix">
-    @if ($category->image)
     <div class="carousel slide" id="carousel_main">
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
+            <div class="item">
+                <img alt="slide3" src="https://taseco.vn/upload/grouptintuc/146615238810.jpg">
+            </div>
+            <div class="item">
+                <img alt="slide3" src="https://taseco.vn/upload/grouptintuc/146615225012.jpg">
+            </div>
+            <div class="item">
+                <img alt="slide3" src="https://taseco.vn/upload/grouptintuc/14661522436.jpg">
+            </div>
             <div class="item active">
-                <img alt="slide3" src="{{ $category->image }}">
+                <img alt="slide3" src="https://taseco.vn/upload/grouptintuc/14661522385.jpg">
+            </div>
+            <div class="item">
+                <img alt="slide3" src="https://taseco.vn/upload/grouptintuc/14661522334.jpg">
             </div>
         </div>
-
+    
         <!-- Controls -->
         <a data-slide="prev" href="#carousel_main" class="left carousel-control">
             <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
@@ -55,7 +66,6 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-    @endif
     <div class="bread">
         <ol class="breadcrumb">
             <li><a href="{{ url('') }}">Trang chủ</a></li>
@@ -73,75 +83,30 @@
         <div class="main_col4">
             <div class="main_list_news">
                 <ul>
+                    {{ dd($type) }}
+                    @foreach ($articles as $article)
                     <li>
-                        <a class="panel_img" href="https://taseco.vn/gioi-thieu/gioi-thieu.html"><img alt="" src="https://taseco.vn/upload/tintuc/1535080534Untitled-1.jpg"></a>
+                        <a class="panel_img" href="#">
+                            <img alt="" src="{{ $article->image }}">
+                        </a>
                         <div class="panel_txt">
-                            <h2 class="panel_tlt"><a href="https://taseco.vn/gioi-thieu/gioi-thieu.html">Thông điệp của Ban lãnh đạo
-
-                                </a></h2>
-                            <p>Trải qua hơn một thập kỷ hình thành và phát triển, TASECO tự hào đã và đang đạt được nhiều thành công trên các lĩnh vực hoạt động của mình. Từ một doanh nghiệp khi thành lập có quy mô nhỏ, kinh doanh dịch vụ phi hàng không tại Cảng hàng không quốc tế Nội Bài. Công ty đã có quá trình phát triển vững chắc...</p>
+                            <h2 class="panel_tlt">
+                                <a href="#">{{ ($type == 'article') ? $article->title : $article->name }}</a>
+                            </h2>
+                            {!! ($type == 'article') ? $article->intro : $article->description !!}
+                            <!-- <p>Trải qua hơn một thập kỷ hình thành và phát triển, TASECO tự hào đã và đang đạt được nhiều thành công trên các lĩnh vực hoạt động của mình. Từ một doanh nghiệp khi thành lập có quy mô nhỏ, kinh doanh dịch vụ phi hàng không tại Cảng hàng không quốc tế Nội Bài. Công ty đã có quá trình phát triển vững chắc...</p> -->
                             <!--<a class="btn btn-primary" href="https://taseco.vn/gioi-thieu/gioi-thieu.html">Xem thêm</a>-->
                         </div>
                     </li>
-                    <li>
-                        <a class="panel_img" href="https://taseco.vn/gioi-thieu/thong-thieu-cong-ty.html"><img alt="" src="https://taseco.vn/upload/tintuc/1460427681Untitled-1.jpg"></a>
-                        <div class="panel_txt">
-                            <h2 class="panel_tlt"><a href="https://taseco.vn/gioi-thieu/thong-thieu-cong-ty.html">Giới thiệu Công ty
-
-                                </a></h2>
-                            <p>CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG</p>
-                            <!--<a class="btn btn-primary" href="https://taseco.vn/gioi-thieu/thong-thieu-cong-ty.html">Xem thêm</a>-->
-                        </div>
-                    </li>
-                    <li>
-                        <a class="panel_img" href="https://taseco.vn/gioi-thieu/qua-trinh-hinh-thanh-va-phat-trien.html"><img alt="" src="https://taseco.vn/upload/tintuc/1457405646phattrien.png"></a>
-                        <div class="panel_txt">
-                            <h2 class="panel_tlt"><a href="https://taseco.vn/gioi-thieu/qua-trinh-hinh-thanh-va-phat-trien.html">Quá trình hình thành và phát triển
-
-                                </a></h2>
-                            <p>Công ty Cổ phần Dịch vụ hàng không Thăng Long (TASECO) được thành lập với vốn điều lệ 5 tỉ đồng, kinh doanh dịch vụ phi hàng không tại Sân bay quốc tế Nội Bà</p>
-                            <!--<a class="btn btn-primary" href="https://taseco.vn/gioi-thieu/qua-trinh-hinh-thanh-va-phat-trien.html">Xem thêm</a>-->
-                        </div>
-                    </li>
-                    <li>
-                        <a class="panel_img" href="https://taseco.vn/gioi-thieu/linh-vuc-kinh-doanh.html"><img alt="" src="https://taseco.vn/upload/tintuc/1457541277kd1.jpg"></a>
-                        <div class="panel_txt">
-                            <h2 class="panel_tlt"><a href="https://taseco.vn/gioi-thieu/linh-vuc-kinh-doanh.html">Lĩnh vực kinh doanh
-
-                                </a></h2>
-                            <p>Các ngành nghề kinh doanh của TASECO bao gồm:
-
-                                - Dịch vụ hàng không
-
-                                - Kinh doanh bất động sản
-
-                                - Kinh doanh dịch vụ nhà hàng - khách sạn
-
-                                - Đầu tư tài chính
-
-                                - Quảng cáo thương mại
-
-                                - Kinh doanh hàng mỹ nghệ, bách hoá, lưu niệm
-
-                                - Đại lý cung cấp dịch vụ bưu chính viễn thông
-
-                                - Đại lý thu đổi ngoại tệ
-
-                                - Vận tải hàng hoá, vận chuyển hành khách bằng ôtô
-
-                                - Dịch vụ lữ hành nội địa
-
-                                -...</p>
-                            <!--<a class="btn btn-primary" href="https://taseco.vn/gioi-thieu/linh-vuc-kinh-doanh.html">Xem thêm</a>-->
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
-            <div class="pagi">
+            {{ $articles->links() }}
+            <!-- <div class="pagi">
                 <ul class="pagination">
                     <link href="https://taseco.vn/lib/paging/style.css" rel="stylesheet" type="text/css"><span class="paging_div">&nbsp;<span class="span_select_class">&nbsp;1&nbsp;</span>&nbsp;</span>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <div class="main_col3">
             <div class="sidebar">
@@ -151,14 +116,20 @@
                     </div>
                     <div class="panel-body">
                         <div class="sidebar_ul">
-                            @if (count($childCates) > 0)
+                            @if ($childCates)
                             <ul>
                                 @foreach ($childCates as $cate)
                                 <li>
-                                    <a href="{{ route('detail', ['slug' => $cate->slug]) }}">
-                                        {{ $cate->name }}
-                                    </a>
-                                    @if (count($cate->childrens) > 0)
+                                    @if ($cate->id == $category->id)
+                                        <a style="font-weight:bold" href="{{ route('detail', ['slug' => $cate->slug]) }}">
+                                            {{ $cate->name }}
+                                        </a>
+                                    @else
+                                        <a href="{{ route('detail', ['slug' => $cate->slug]) }}">
+                                            {{ $cate->name }}
+                                        </a>
+                                    @endif
+                                    @if ($cate->childrens)
                                     <ul>
                                         @foreach ($cate->childrens as $child)
                                             <li><a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a></li>

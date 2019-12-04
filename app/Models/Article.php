@@ -52,9 +52,11 @@ class Article extends Model
     {
         $data = self::where('id', '>', 0);
         if ($request->name !== 'all-article' && $request->name !== 'undefined') {
-            $data->where("name", "LIKE", "%" . $request->name . "%");
+            $data->where("title", "LIKE", "%" . $request->name . "%")
+                ->orWhere("intro", "LIKE", "%" . $request->name . "%");
         }
         $data = $data->with(['category', 'user'])->orderBy('id', 'desc')->get();
+        
         return $data;
     }
 
