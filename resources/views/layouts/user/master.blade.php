@@ -5,24 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('page') | CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG</title>
+    <title>@yield('page') | {{ $setting->slogan }}</title>
     
-    <meta name="description" content="TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập" />
-    <meta name="keywords" content="taseco, công ty taseco,hàng không thăng long" />
+    <meta name="description" content="@yield('description')" />
+    <meta name="keywords" content="@yield('keywords')" />
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="@yield('canonical')">
-    <link rel="alternate" href="@yield('alternate')" hreflang="vi-vn">
+    <link rel="alternate" href="@yield('alternate')">
     <meta itemprop="name" content="@yield('propName')">
     <meta itemprop="description" content="@yield('propDesc')">
     <meta property="og:title" content="@yield('ogTitle')" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="@yield('ogUrl')" />
-    <meta property="og:image" content="https://taseco.vn/logo.jpg" />
+    <meta property="og:image" content="@yield('ogImage')" />
     <meta property="og:description" content="@yield('ogDesc')" />
-    <meta property="og:site_name" content="CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG" />
+    <meta property="og:site_name" content="{{ $setting->slogan }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
-    <link rel="shortcut icon" href="https://taseco.vn/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('frontend/upload/advert/favicon.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/bootstrap.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-buttons.css') }}">

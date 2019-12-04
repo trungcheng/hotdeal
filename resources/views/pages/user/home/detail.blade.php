@@ -3,10 +3,10 @@
 @section('page'){{ $category->name }}
 @stop
 
-@section('description')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('description'){{ $setting->seo_desc }}
 @stop
 
-@section('keywords')taseco, công ty taseco,hàng không thăng long
+@section('keywords'){{ $setting->seo_keyword }}
 @stop
 
 @section('canonical'){{ route('detail', ['slug' => $category->slug]) }}/
@@ -15,23 +15,30 @@
 @section('alternate'){{ route('detail', ['slug' => $category->slug]) }}/
 @stop
 
-@section('propName')CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG
+@section('propName'){{ $setting->slogan }}
 @stop
 
-@section('propDesc')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('propDesc'){{ $setting->seo_desc }}
 @stop
 
-@section('ogTitle')CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG
+@section('ogTitle'){{ $category->name }}
 @stop
 
-@section('ogDesc')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('ogDesc'){{ $setting->seo_desc }}
 @stop
 
 @section('ogUrl'){{ route('detail', ['slug' => $category->slug]) }}/
 @stop
 
-@section('pageCss')
+@section('ogImage'){{ $category->image }}
+@stop
 
+@section('pageCss')
+    <style>
+        .pagination li a {
+            height: 30px !important;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -83,15 +90,18 @@
         <div class="main_col4">
             <div class="main_list_news">
                 <ul>
-                    {{ dd($type) }}
                     @foreach ($articles as $article)
                     <li>
-                        <a class="panel_img" href="#">
-                            <img alt="" src="{{ $article->image }}">
+                        <a class="panel_img" href="{{ ($type == 'article') ? route('detail-article', ['parent' => $category->slug, 'slug' => $article->slug]) : route('detail', ['slug' => $article->slug]) }}">
+                            <img alt="{{ ($type == 'article') ? $article->title : $article->name }}" src="{{ $article->image }}">
                         </a>
                         <div class="panel_txt">
                             <h2 class="panel_tlt">
-                                <a href="#">{{ ($type == 'article') ? $article->title : $article->name }}</a>
+                                <a href="{{ ($type == 'article') ? route('detail-article', ['parent' => $category->slug, 'slug' => $article->slug]) : route('detail', ['slug' => $article->slug]) }}">{{ ($type == 'article') ? $article->title : $article->name }}
+                                    @if ($type == 'article' && $article->is_feature == 1)
+                                        <img src="{{ asset('frontend/themes/default/images/new.gif') }}">
+                                    @endif
+                                </a>
                             </h2>
                             {!! ($type == 'article') ? $article->intro : $article->description !!}
                             <!-- <p>Trải qua hơn một thập kỷ hình thành và phát triển, TASECO tự hào đã và đang đạt được nhiều thành công trên các lĩnh vực hoạt động của mình. Từ một doanh nghiệp khi thành lập có quy mô nhỏ, kinh doanh dịch vụ phi hàng không tại Cảng hàng không quốc tế Nội Bài. Công ty đã có quá trình phát triển vững chắc...</p> -->
@@ -101,12 +111,12 @@
                     @endforeach
                 </ul>
             </div>
-            {{ $articles->links() }}
-            <!-- <div class="pagi">
-                <ul class="pagination">
+            <div class="pagi">
+                {{ $articles->links() }}
+                {{--<ul class="pagination">
                     <link href="https://taseco.vn/lib/paging/style.css" rel="stylesheet" type="text/css"><span class="paging_div">&nbsp;<span class="span_select_class">&nbsp;1&nbsp;</span>&nbsp;</span>
-                </ul>
-            </div> -->
+                </ul>--}}
+            </div>
         </div>
         <div class="main_col3">
             <div class="sidebar">

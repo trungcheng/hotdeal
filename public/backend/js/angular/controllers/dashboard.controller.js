@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('TasecoCMS')
+    .module('UticoCMS')
     .controller('DashboardController', DashboardController);
 
     function DashboardController($rootScope, $scope, $http, $window, $timeout) {

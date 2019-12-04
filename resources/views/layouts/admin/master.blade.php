@@ -3,13 +3,13 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html data-ng-app="TasecoCMS">
+<html data-ng-app="UticoCMS">
 <head>
   	<meta charset="UTF-8">
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-  	<title>TasecoCMS | @yield('page')</title>
+  	<title>UTICO CMS | @yield('page')</title>
   	
   	<link rel="stylesheet" href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" />
   	<!-- Font Awesome -->
@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   	<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}" />
 
-  	<link rel="shortcut icon" href="{{ asset('backend/img/favicon.png') }}" type="image/x-icon">
+  	<link rel="shortcut icon" href="{{ asset('frontend/upload/advert/favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
   	<!-- Google Font -->
   	<link rel="stylesheet"

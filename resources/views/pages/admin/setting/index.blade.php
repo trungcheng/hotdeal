@@ -55,13 +55,23 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label">Website</label>
+                        <input type="text" name="website" value="{{ ($setting != '') ? $setting->website : '' }}" class="form-control" placeholder="Website...">
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label">Email</label>
-                        <input type="text" name="email" value="{{ ($setting != '') ? $setting->email : '' }}" class="form-control" placeholder="Địa chỉ email...">
+                        <input type="email" name="email" value="{{ ($setting != '') ? $setting->email : '' }}" class="form-control" placeholder="Địa chỉ email...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Điện thoại</label>
                         <input type="text" name="mobile" value="{{ ($setting != '') ? $setting->mobile : '' }}" class="form-control" placeholder="Điện thoại...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Fax</label>
+                        <input type="text" name="fax" value="{{ ($setting != '') ? $setting->fax : '' }}" class="form-control" placeholder="Fax...">
                     </div>
 
                     <div class="form-group">
@@ -72,6 +82,21 @@
                     <div class="form-group">
                         <label class="control-label">Giờ làm việc</label>
                         <input type="text" name="work_time" value="{{ ($setting != '') ? $setting->work_time : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">SEO Title</label>
+                        <input type="text" name="seo_title" value="{{ ($setting != '') ? $setting->seo_title : '' }}" class="form-control" placeholder="SEO Title...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">SEO Description</label>
+                        <input type="text" name="seo_desc" value="{{ ($setting != '') ? $setting->seo_desc : '' }}" class="form-control" placeholder="SEO Description...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">SEO Keyword</label>
+                        <input type="text" name="seo_keyword" value="{{ ($setting != '') ? $setting->seo_keyword : '' }}" class="form-control" placeholder="SEO Keyword...">
                     </div>
 
                     <div class="form-group">

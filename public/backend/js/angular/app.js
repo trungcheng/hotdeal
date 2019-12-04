@@ -1,4 +1,4 @@
-var app = angular.module('TasecoCMS', [
+var app = angular.module('UticoCMS', [
 	'ui.bootstrap',
     'ngSanitize',
     'ngMessages',

@@ -3,10 +3,10 @@
 @section('page')Liên hệ
 @stop
 
-@section('description')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('description'){{ $setting->seo_desc }}
 @stop
 
-@section('keywords')taseco, công ty taseco,hàng không thăng long
+@section('keywords'){{ $setting->seo_keyword }}
 @stop
 
 @section('canonical'){{ route('contact') }}/
@@ -15,19 +15,22 @@
 @section('alternate'){{ route('contact') }}/
 @stop
 
-@section('propName')CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG
+@section('propName'){{ $setting->seo_title }}
 @stop
 
-@section('propDesc')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('propDesc'){{ $setting->seo_desc }}
 @stop
 
-@section('ogTitle')CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG
+@section('ogTitle'){{ $setting->seo_title }}
 @stop
 
-@section('ogDesc')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('ogDesc'){{ $setting->seo_desc }}
 @stop
 
 @section('ogUrl'){{ route('contact') }}/
+@stop
+
+@section('ogImage'){{ url('') }}{{ $setting->logo }}
 @stop
 
 @section('pageCss')
@@ -66,16 +69,15 @@
 
                 <div class="taseco_form1">
 
-                    <h2>
-                        CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG</h2>
+                    <h2>{{ $setting->slogan }}</h2>
                     <p>
-                        <b>Địa chỉ:</b><span style="font-family: arial, sans-serif; font-size: 12.8px;">&nbsp;Tòa nhà NO2-T1, khu Đoàn Ngoại Giao, phố Đỗ Nhuận, phường Xuân Tảo, quận Bắc Từ Liêm, TP Hà Nội.</span></p>
+                        <b>Địa chỉ:</b><span style="font-family: arial, sans-serif; font-size: 12.8px;">&nbsp;{!! $setting->address !!}</span></p>
                     <p>
-                        <strong>Điện thoại:&nbsp;</strong><a href="tel:0437675168">+84. 24 3767 5168</a>&nbsp;- Fax: +84. 24 3767 5169&nbsp;</p>
+                        <strong>Điện thoại:&nbsp;</strong><a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>&nbsp;- Fax: {!! $setting->fax !!}&nbsp;</p>
                     <p>
-                        <strong>Website:</strong><a href="{{ url('') }}">{{ url('') }}</a></p>
+                        <strong>Website:</strong><a href="{!! $setting->website !!}">{!! $setting->website !!}</a></p>
                     <p>
-                        <strong>Email:</strong><a href="mailto:info@taseco.vn">info@taseco.vn</a></p>
+                        <strong>Email:</strong><a href="mailto:{!! $setting->email !!}">{!! $setting->email !!}</a></p>
 
 
                 </div>

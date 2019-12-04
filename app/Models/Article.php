@@ -63,11 +63,14 @@ class Article extends Model
     public static function addAction($data)
     {
         $data['slug'] = Util::generateSlug($data['title']);
+
         return self::firstOrCreate($data);
     }
     
-    public static function updateAction($data, $pro)
+    public static function updateAction($data, $article)
     {
-        return $pro->update($data);
+        $data['slug'] = Util::generateSlug($data['title']);
+
+        return $article->update($data);
     }
 }

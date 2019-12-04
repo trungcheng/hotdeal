@@ -56,8 +56,8 @@
                                     <textarea class="form-control" id="full_content"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Trang giới thiệu</label>
-                                    <select name="is_about" class="form-control">
+                                    <label>Tin mới</label>
+                                    <select name="is_feature" class="form-control">
                                         <option value="0">Không</option>
                                         <option value="1">Có</option>
                                     </select>

@@ -3,10 +3,10 @@
 @section('page')Trang chủ
 @stop
 
-@section('description')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('description'){{ $setting->seo_desc }}
 @stop
 
-@section('keywords')taseco, công ty taseco,hàng không thăng long
+@section('keywords'){{ $setting->seo_keyword }}
 @stop
 
 @section('canonical'){{ route('home') }}/
@@ -15,19 +15,22 @@
 @section('alternate'){{ route('home') }}/
 @stop
 
-@section('propName')CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG
+@section('propName'){{ $setting->seo_title }}
 @stop
 
-@section('propDesc')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('propDesc'){{ $setting->seo_desc }}
 @stop
 
-@section('ogTitle')CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG
+@section('ogTitle'){{ $setting->seo_title }}
 @stop
 
-@section('ogDesc')TASECO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Taseco với hơn 10 năm thành lập
+@section('ogDesc'){{ $setting->seo_desc }}
 @stop
 
 @section('ogUrl'){{ route('home') }}/
+@stop
+
+@section('ogImage'){{ url('') }}{{ $setting->logo }}
 @stop
 
 @section('pageCss')
@@ -183,36 +186,21 @@
     <div class="fie_w">
         <div class="w_gr">
             <div class="fie_top">
-                <h1>Lĩnh vực đầu tư</h1>
+                <h1>{{ $lvDautu->name }}</h1>
             </div>
             <div id="owl_fie" class="owl-carousel owl-theme">
-
+                @foreach ($childs as $child)
                 <div class="item">
                     <div class="thumbnail">
-                        <a href="https://taseco.vn/kinh-doanh-bat-dong-san.html" class="thumbnail_img"><img src="https://taseco.vn/upload/grouptintuc/1543473851avartar kinh doanh BDS.jpg" alt="Kinh doanh Bất động sản"></a>
+                        <a href="{{ route('detail', ['slug' => $child->slug]) }}" class="thumbnail_img">
+                            <img src="{{ $child->image }}" alt="{{ $child->name }}">
+                        </a>
                         <div class="caption">
-                            <h3><a href="https://taseco.vn/kinh-doanh-bat-dong-san.html">Kinh doanh Bất động sản</a></h3>
+                            <h3><a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a></h3>
                         </div>
                     </div>
                 </div>
-
-                <div class="item">
-                    <div class="thumbnail">
-                        <a href="https://taseco.vn/dich-vu-phi-hang-khongkhach-san.html" class="thumbnail_img"><img src="https://taseco.vn/upload/grouptintuc/152466833814592223880814-AJS-A-La-Carte-Danang-4549.jpg" alt="DV phi hàng không, khách sạn"></a>
-                        <div class="caption">
-                            <h3><a href="https://taseco.vn/dich-vu-phi-hang-khongkhach-san.html">DV phi hàng không, khách sạn</a></h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="thumbnail">
-                        <a href="https://taseco.vn/dau-tu-tai-chinh.html" class="thumbnail_img"><img src="https://taseco.vn/upload/grouptintuc/1459332897investment.jpg" alt="Đầu tư tài chính"></a>
-                        <div class="caption">
-                            <h3><a href="https://taseco.vn/dau-tu-tai-chinh.html">Đầu tư tài chính</a></h3>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -221,12 +209,16 @@
             <div class="box_newsw">
                 <div class="box_newsw1">
                     <div class="head_news_2013">
-                        <h2><a href="https://taseco.vn/#.html">Tin tức - Sự kiện</a></h2>
+                        <h2><a href="#">{{ $ttSukien->name }}</a></h2>
                     </div>
                     <div class="hotsiteleft">
-                        <a class="thumbnail" href="https://taseco.vn/tin-taseco/phat-dong-cuoc-thi-tim-kiem-tai-nang-tasecos-gottalent.html"><img src="https://taseco.vn/upload/tintuc/156871348871508737_2177218862570870_2032073294026375168_n.jpg"></a>
-                        <h2><a href="https://taseco.vn/tin-taseco/phat-dong-cuoc-thi-tim-kiem-tai-nang-tasecos-gottalent.html">PHÁT ĐỘNG CUỘC THI TÌM KIẾM TÀI NĂNG TASECOS GOT TALENT</a></h2>
-                        <h3>Hướng tới kỷ niệm 15 năm thành lập Công ty Cổ phần Dịch vụ Hàng không Thăng Long (24/2/2005-24/2/2019), Taseco đã và đang tổ chức các hoạt động đẩy mạnh...</h3>
+                        <a class="thumbnail" href="{{ route('detail-article', ['parent' => $firstCate->slug, 'slug' => $hotNew->slug]) }}">
+                            <img src="{{ $hotNew->image }}">
+                        </a>
+                        <h2>
+                            <a id="title" href="{{ route('detail-article', ['parent' => $firstCate->slug, 'slug' => $hotNew->slug]) }}">{{ $hotNew->title }}</a>
+                        </h2>
+                        <h3 id="intro">{!! $hotNew->intro !!}</h3>
                     </div>
                 </div>
 
@@ -234,76 +226,17 @@
                     <div class="panel panel-success">
                         <div class="panel-body">
                             <ul class="news_tb news_tded">
+                                @foreach ($listNews as $new)
                                 <li class="news-item">
-                                    <a href="https://taseco.vn/bao-chi-va-taseco/taseco-landthuong-hieu-dinh-hinh-tu-uy-tin.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/15681020181.jpg" /></a>
-                                    <a href="https://taseco.vn/bao-chi-va-taseco/taseco-landthuong-hieu-dinh-hinh-tu-uy-tin.html" class="news_item_txt">TASECO Land: Thương hiệu định hình từ uy tín
-                                        <!--<span class="date_newsty"><span class="date_newsty">(10/09/2019)</span></span>--></a>
+                                    <a href="{{ route('detail-article', ['parent' => $new->category->slug, 'slug' => $new->slug]) }}" class="news_item_img">
+                                        <img src="{{ $new->image }}" />
+                                    </a>
+                                    <a href="{{ route('detail-article', ['parent' => $new->category->slug, 'slug' => $new->slug]) }}" class="news_item_txt">
+                                        {{ $new->title }}
+                                        <!--<span class="date_newsty"><span class="date_newsty">(10/09/2019)</span></span>-->
+                                    </a>
                                 </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-lien-quan/mua-chi-phoi-cong-ty-hang-mien-thuetaseco-airs-bao-lai-quy-2-2019-tang-77-so-voi-cung-ky-nam-truoc.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/1564640993taseco20airs-thue-vnf-1549964942446502811166-crop-1549964948186219703544-15646256040501058499412-crop-15646256773171952195765.jpg" /></a>
-                                    <a href="https://taseco.vn/tin-lien-quan/mua-chi-phoi-cong-ty-hang-mien-thuetaseco-airs-bao-lai-quy-2-2019-tang-77-so-voi-cung-ky-nam-truoc.html" class="news_item_txt">MUA CHI PHỐI CÔNG TY HÀNG MIỄN THUẾ, TASECO AIRS BÁO LÃI QUÝ 2/2019 TĂNG 77% SO VỚI CÙNG KỲ NĂM TRƯỚC
-                                        <!--<span class="date_newsty"><span class="date_newsty">(01/08/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-lien-quan/cong-ty-co-phan-dich-vu-hang-khong-taseco-(taseco-airsvinh-du-duoc-cong-nhẬn-la-mot-trong-500-dn-tang-truong-va-thinh-vuong-nam-2019.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/15584942001(100).jpg" /></a>
-                                    <a href="https://taseco.vn/tin-lien-quan/cong-ty-co-phan-dich-vu-hang-khong-taseco-(taseco-airsvinh-du-duoc-cong-nhẬn-la-mot-trong-500-dn-tang-truong-va-thinh-vuong-nam-2019.html" class="news_item_txt">CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG TASECO (TASECO AIRS) VINH DỰ ĐƯỢC CÔNG NHẬN LÀ MỘT TRONG 500 DN TĂNG TRƯỞNG VÀ THỊNH VƯỢNG NĂM 2019
-                                        <!--<span class="date_newsty"><span class="date_newsty">(22/05/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-lien-quan/dich-vu-suat-an-hang-khong-kinh-doanh-co-laitaseco-airs-bao-lai-tang-truong-23-trong-quy-1-2019.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/1556848357IMG_5887(2).jpg" /></a>
-                                    <a href="https://taseco.vn/tin-lien-quan/dich-vu-suat-an-hang-khong-kinh-doanh-co-laitaseco-airs-bao-lai-tang-truong-23-trong-quy-1-2019.html" class="news_item_txt">DỊCH VỤ SUẤT ĂN HÀNG KHÔNG KINH DOANH CÓ LÃI, TASECO AIRS BÁO LÃI TĂNG TRƯỞNG 23% TRONG QUÝ 1/2019
-                                        <!--<span class="date_newsty"><span class="date_newsty">(03/05/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-lien-quan/vinacs-vinh-du-don-nhẬn-cu-dup-danh-heu-best-global-network-caterer-va-best-caterer-in-asia-pacific-do-qatar-airways-trao-tang.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/15554881491(98).jpg" /></a>
-                                    <a href="https://taseco.vn/tin-lien-quan/vinacs-vinh-du-don-nhẬn-cu-dup-danh-heu-best-global-network-caterer-va-best-caterer-in-asia-pacific-do-qatar-airways-trao-tang.html" class="news_item_txt">VINACS VINH DỰ ĐÓN NHẬN CÚ ĐÚP DANH HIỆU BEST GLOBAL NETWORK CATERER VÀ BEST CATERER IN ASIA PACIFIC DO QATAR AIRWAYS TRAO TẶNG
-                                        <!--<span class="date_newsty"><span class="date_newsty">(17/04/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/bao-chi-va-taseco/hoan-tat-dam-phan-voi-doi-tac-jalux-nhẬt-banast-chinh-thuc-nang-ty-le-so-huu-tai-chuoi-cua-hang-mien-thue-nhẬt-len-51.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/1553067451img_201903200836104984.jpg" /></a>
-                                    <a href="https://taseco.vn/bao-chi-va-taseco/hoan-tat-dam-phan-voi-doi-tac-jalux-nhẬt-banast-chinh-thuc-nang-ty-le-so-huu-tai-chuoi-cua-hang-mien-thue-nhẬt-len-51.html" class="news_item_txt">HOÀN TẤT ĐÀM PHÁN VỚI ĐỐI TÁC JALUX - NHẬT BẢN, AST CHÍNH THỨC NÂNG TỶ LỆ SỞ HỮU TẠI CHUỖI CỬA HÀNG MIỄN THUẾ NHẬT LÊN 51%
-                                        <!--<span class="date_newsty"><span class="date_newsty">(20/03/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-lien-quan/hoi-nghi-tong-ket-cong-tac-dang-nam-2018-va-trien-khai-nhiem-vu-nam-2019..html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/15519436663.jpg" /></a>
-                                    <a href="https://taseco.vn/tin-lien-quan/hoi-nghi-tong-ket-cong-tac-dang-nam-2018-va-trien-khai-nhiem-vu-nam-2019..html" class="news_item_txt">HỘI NGHỊ TỔNG KẾT CÔNG TÁC ĐẢNG NĂM 2018 VÀ TRIỂN KHAI NHIỆM VỤ NĂM 2019.
-                                        <!--<span class="date_newsty"><span class="date_newsty">(07/03/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-lien-quan/chao-xuan-moivinacs-don-chao-bamboo-airways.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/15482080824.jpg" /></a>
-                                    <a href="https://taseco.vn/tin-lien-quan/chao-xuan-moivinacs-don-chao-bamboo-airways.html" class="news_item_txt">CHÀO XUÂN MỚI, VINACS ĐÓN CHÀO BAMBOO AIRWAYS
-                                        <!--<span class="date_newsty"><span class="date_newsty">(23/01/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-lien-quan/mot-nam-tren-hosetaseco-airs-tro-thanh--ngoi-saocua-nhom-co-phieu-dich-vu-hang-khong.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/1546912206a1bast-anh.png" /></a>
-                                    <a href="https://taseco.vn/tin-lien-quan/mot-nam-tren-hosetaseco-airs-tro-thanh--ngoi-saocua-nhom-co-phieu-dich-vu-hang-khong.html" class="news_item_txt">MỘT NĂM TRÊN HOSE, TASECO AIRS TRỞ THÀNH "NGÔI SAO" CỦA NHÓM CỔ PHIẾU DỊCH VỤ HÀNG KHÔNG
-                                        <!--<span class="date_newsty"><span class="date_newsty">(08/01/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/bao-chi-va-taseco/-tan-binhtaseco-airs-lot-top-100-doanh-nghiep-niem-yet-quan-tri-tai-chinh-tot-nhat-2018.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/1543671602b1eimg2479-enternews-1543636026.JPG" /></a>
-                                    <a href="https://taseco.vn/bao-chi-va-taseco/-tan-binhtaseco-airs-lot-top-100-doanh-nghiep-niem-yet-quan-tri-tai-chinh-tot-nhat-2018.html" class="news_item_txt">"TÂN BINH" TASECO AIRS LỌT TOP 100 DOANH NGHIỆP NIÊM YẾT QUẢN TRỊ TÀI CHÍNH TỐT NHẤT 2018
-                                        <!--<span class="date_newsty"><span class="date_newsty">(01/12/2018)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/bao-chi-va-taseco/cac-cua-hang-hoat-dong-on-dinhlai-mang-cot-loi-cua-taseco-airs-tang-38-trong-nua-dau-2018.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/1533797427LONG7125.jpg" /></a>
-                                    <a href="https://taseco.vn/bao-chi-va-taseco/cac-cua-hang-hoat-dong-on-dinhlai-mang-cot-loi-cua-taseco-airs-tang-38-trong-nua-dau-2018.html" class="news_item_txt">CÁC CỬA HÀNG HOẠT ĐỘNG ỔN ĐỊNH, LÃI MẢNG CỐT LÕI CỦA TASECO AIRS TĂNG 38% TRONG NỬA ĐẦU 2018
-                                        <!--<span class="date_newsty"><span class="date_newsty">(09/08/2018)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-taseco/tung-bung-gap-goruc-ro-don-xuan.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/15499434031.jpg" /></a>
-                                    <a href="https://taseco.vn/tin-taseco/tung-bung-gap-goruc-ro-don-xuan.html" class="news_item_txt">TƯNG BỪNG GẶP GỠ, RỰC RỠ ĐÓN XUÂN
-                                        <!--<span class="date_newsty"><span class="date_newsty">(12/02/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-lien-quan/hop-tac-toan-dien-giua-vinacs-va-vietjet-air.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/1546484147a1.jpg" /></a>
-                                    <a href="https://taseco.vn/tin-lien-quan/hop-tac-toan-dien-giua-vinacs-va-vietjet-air.html" class="news_item_txt">HỢP TÁC TOÀN DIỆN GIỮA VINACS VÀ VIETJET AIR
-                                        <!--<span class="date_newsty"><span class="date_newsty">(03/01/2019)</span></span>--></a>
-                                </li>
-                                <li class="news-item">
-                                    <a href="https://taseco.vn/tin-taseco/taseco-airs-khai-truong-mo-lai-cac-diem-kinh-doanh.html" class="news_item_img"><img src="https://taseco.vn/upload/tintuc/thumb/15415605914.jpg" /></a>
-                                    <a href="https://taseco.vn/tin-taseco/taseco-airs-khai-truong-mo-lai-cac-diem-kinh-doanh.html" class="news_item_txt">TASECO AIRS KHAI TRƯƠNG MỞ LẠI CÁC ĐIỂM KINH DOANH
-                                        <!--<span class="date_newsty"><span class="date_newsty">(07/11/2018)</span></span>--></a>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="panel-footer">
@@ -313,15 +246,31 @@
                 </div>
             </div>
             <div class="box_news2303_qc">
-                <a href="https://taseco.vn/thu-vien-anh.html" class="thumbnail"><img src="https://taseco.vn/upload/grouptintuc/1543474581video-1.gif" alt="Thư viện hình ảnh" class="img-responsive"><span class="box_news2303_tlt">Thư viện hình ảnh</span></a>
-                <a href="https://taseco.vn/video.html" class="thumbnail"><img src="https://taseco.vn/upload/grouptintuc/1543474825avarta video.jpg" alt="Video" class="img-responsive"><span class="box_news2303_tlt">Video</span></a>
+                <a href="#" class="thumbnail"><img src="https://taseco.vn/upload/grouptintuc/1543474581video-1.gif" alt="Thư viện hình ảnh" class="img-responsive"><span class="box_news2303_tlt">Thư viện hình ảnh</span></a>
+                <a href="#" class="thumbnail"><img src="https://taseco.vn/upload/grouptintuc/1543474825avarta video.jpg" alt="Video" class="img-responsive"><span class="box_news2303_tlt">Video</span></a>
             </div>
         </div>
     </div>
 @stop
 
 @section('pageJs')
-	<script type="text/javascript">
-	   	
-	</script>
+    <script type="text/javascript">
+        var title = $('#title').text();
+        title = trimText(title, 20);
+        var intro = $('#intro').text();
+        intro = trimText(intro, 40);
+        $('#title').text(title);
+        $('#intro').text(intro);
+
+        function trimText(str ,wordCount) {
+            var strArray = str.split(' ');
+            var subArray = strArray.slice(0, wordCount);
+            var result = subArray.join(" ");
+            if (strArray.length < wordCount) {
+                return result;
+            } else {
+                return result + '...';
+            }
+        }
+    </script>
 @stop

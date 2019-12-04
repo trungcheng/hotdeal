@@ -88,9 +88,9 @@ class ArticleController extends Controller
             if ($data) {
                 $article = Article::find($data['id']);
                 if ($article) {
-                    if ($data['is_about'] == 1) {
-                        Article::where('id', '>', 0)->update(['is_about' => 0]);
-                    }
+                    // if ($data['is_about'] == 1) {
+                    //     Article::where('id', '>', 0)->update(['is_about' => 0]);
+                    // }
                     Article::updateAction($data, $article);
                     
                     return Response::json([

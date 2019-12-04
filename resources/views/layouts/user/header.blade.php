@@ -1,12 +1,12 @@
 <header id="header">
     <div class="header_top w_gr clearfix">
         <div class="header_logo">
-            <a href="{{ url('') }}"><img src="https://taseco.vn/upload/advert/15516689051538281901logo web (2).png" alt="" class="img-responsive"></a>
+            <a href="{{ url('') }}"><img src="{{ url('') }}{{ $setting->logo }}" alt="{{ $setting->name }}" class="img-responsive"></a>
         </div>
         <div class="header_slg">
             <div class="tlt">
                 <ul class="texts" style="display: none">
-                    <li>CÔNG TY CỔ PHẦN DỊCH VỤ HÀNG KHÔNG THĂNG LONG</li>
+                    <li>{{ $setting->slogan }}</li>
                 </ul>
             </div>
         </div>
@@ -20,8 +20,8 @@
                 </form>
             </div>
             <div class="header_language">
-                <a href="#"><img src="https://taseco.vn/themes/default/images/vn.jpg" alt="vn"></a>
-                <a href="#"><img src="https://taseco.vn/themes/default/images/emn.jpg" alt="en"></a>
+                <a href="#"><img src="{{ asset('frontend/themes/default/images/vn.jpg') }}" alt="vn"></a>
+                <a href="#"><img src="{{ asset('frontend/themes/default/images/emn.jpg') }}" alt="en"></a>
             </div>
         </div>
     </div>

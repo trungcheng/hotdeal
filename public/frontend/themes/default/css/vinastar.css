@@ -107,7 +107,7 @@ a:hover {
 }
 
 #backTop {
-	background: #076D99;
+	background: #d1232a;
 	height: 40px;
 	width: 40px;
 	border-radius: 2px;
@@ -298,12 +298,16 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 
 .header_logo {
 	float: left;
-	margin: 15px 0 0;
+	/* margin: 15px 0 0; */
+}
+
+.header_logo a img {
+	width: 85px;
 }
 
 .header_slg {
 	float: left;
-	padding: 26px 0 0 20px;
+	padding: 31px 0 0 20px;
 }
 
 .header_slg p {
@@ -316,7 +320,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 
 .header_searchw {
 	float: right;
-	padding-top: 18px;
+	padding-top: 23px;
 }
 
 .header_searchw .header_search {
@@ -363,7 +367,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 #footer {
-	background: url(../images/bg_footer.png) repeat-x top left #076D99;
+	background: url(../images/bg_footer.png) repeat-x top left #d1232a;
 	margin-top: 2px;
 	padding: 15px 0;
 }
@@ -459,7 +463,8 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .bread .breadcrumb li a {
-	color: #004D73;
+	/* color: #004D73; */
+	color: #000;
 }
 
 .main_col1 {
@@ -687,7 +692,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 
 .box_newsw {
 	/*background:url(../images/icons/line_2013.png) no-repeat right top;*/
-	border: 1px solid #076D99;
+	border: 1px solid #d1232a;
 	margin: 20px 0;
 	margin-bottom: 0;
 }
@@ -870,7 +875,8 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 	line-height: 20px;
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 10px;
-	color: #1d5a7e;
+	/* color: #1d5a7e; */
+	color: #000;
 }
 
 .news_dtw img {
@@ -885,7 +891,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .main_col4 .news_dtw ul {
-	margin-left: 40px;
+	/* margin-left: 40px; */
 }
 
 .main_col4 .news_dtlq ul li {
@@ -947,7 +953,8 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 /**END CSS CONTACT**/
 
 .header_slg .tlt {
-	color: #004d73;
+	/* color: #004d73; */
+	color: #d1232a;
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 0;
@@ -994,13 +1001,17 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 #menu_rps .nav li .dropdown-menu_ed {
-	background: rgba(7, 109, 153, 0.7);
-	border-color: #274896;
+	/* background: rgba(7, 109, 153, 0.7);
+	border-color: #274896; */
+	background: rgba(240,0,0,0.5);
+    border-color: #f00;
 }
 
 #menu_rps .nav li .dropdown-menu_ed1 {
-	background: rgba(7, 109, 153, 0.9);
-	border-color: #274896;
+	/* background: rgba(7, 109, 153, 0.9);
+	border-color: #274896; */
+	background: rgba(240,0,0,0.5);
+    border-color: #f00;
 }
 
 .vinastar-modal-bg {
@@ -1230,11 +1241,13 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .main_list_news .panel_tlt a {
-	color: #004D73;
+	/* color: #004D73; */
+	color: #000;
 }
 
 .panel_w .panel_tlt a, .panel_txt .panel_tlt a, .footer_link span {
-	color: #004D73;
+	/* color: #004D73; */
+	color: #000;
 }
 
 .header_searchw .news_social {
@@ -1711,7 +1724,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 	-ms-border-radius: 15px;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
-	border: 1px solid #076D99;
+	border: 1px solid #d1232a;
 	padding: 10px 20px 10px 70px;
 }
 
@@ -1729,7 +1742,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 	position: absolute;
 	left: -70px;
 	top: -3px;
-	border: 5px solid #076D99;
+	border: 5px solid #d1232a;
 	transition: all 500ms;
 	-o-transition: all 500ms;
 	-ms-transition: all 500ms;
@@ -1790,7 +1803,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 #owl_fie .thumbnail .caption {
-	background: #076D99;
+	background: #d1232a;
 	width: 100%;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -1918,7 +1931,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 
 .gallery_it .gallery_txt {
 	padding: 10px 5%;
-	background: #076D99;
+	background: #d1232a;
 }
 
 .gallery_it .gallery_txt h3 {
@@ -1984,7 +1997,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .gallery_vd .gallery_txt {
-	background: #076D99 none repeat scroll 0 0;
+	background: #d1232a none repeat scroll 0 0;
 	padding: 10px 5%;
 }
 
@@ -2031,7 +2044,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .gallery_vd .gallery_txt {
-	background: #076D99;
+	background: #d1232a;
 	text-align: center;
 }
 
@@ -2086,7 +2099,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .news_dv3003_img .bnews_bootstrap .panel-heading {
-	background: #076D99;
+	background: #d1232a;
 	text-align: center;
 }
 

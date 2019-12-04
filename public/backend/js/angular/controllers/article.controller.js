@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('TasecoCMS')
+        .module('UticoCMS')
         .controller('ArticleController', ArticleController);
 
     function ArticleController($rootScope, $scope, $http, $window, $timeout, PagerService) {

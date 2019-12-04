@@ -12,13 +12,16 @@ class Setting extends Model
     protected $fillable = [
         'name',
         'slogan',
+        'website',
         'email',
         'mobile',
+        'fax',
         'address',
         'work_time',
         'logo',
-        'image_home_page',
-        'content_home_page'
+        'seo_title',
+        'seo_desc',
+        'seo_keyword'
     ];
 
 }

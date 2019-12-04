@@ -2,8 +2,9 @@
 /* CSS Document */
 @media screen and (min-width:802px) {
 	.btn-primary{
-	background:#076D99;
-	border-color:#034A6B;
+	background: #d1232a;
+	/* border-color:#034A6B; */
+	border-color: #d1232a;
 	text-transform:none;
 	padding:5px;
 	}
@@ -30,7 +31,8 @@
 		text-transform: uppercase;
 		color:#fff;
 		font-size:11px;
-		border-right: 2px groove rgba(59,91,173,0.8);
+		/* border-right: 2px groove rgba(59,91,173,0.8); */
+		border-right: 2px groove rgba(240,0,0,0.5);
 		transition:all 400ms;
 		-o-transition:all 400ms;
 		-ms-transition:all 400ms;
@@ -46,7 +48,7 @@
 		}
 	.news_social{
 		margin-bottom:5px;
-		margin-left:10px;
+		/* margin-left:10px; */
 		float: left;
 		}
 	#menu_rps{
@@ -80,7 +82,7 @@
 	.navbar_ed{
 	margin-bottom:0;
 	border-bottom:none!important;
-	background:#076D99;
+	background: #d1232a;
 	
 	
 	}
