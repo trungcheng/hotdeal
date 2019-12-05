@@ -30,8 +30,12 @@
                             <div class="modal-body">
                                 <input type="hidden" id="id" name="id" value="{{ $category->id }}">
                                 <div class="form-group">
-                                    <label>Tên danh mục</label>
+                                    <label>Tên danh mục (Vietnamese)</label>
                                     <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tên danh mục (Koreanese)</label>
+                                    <input value="{{ $category->getTranslation('ko')->name }}" name="ko_name" type="text" class="form-control title" placeholder="카테고리 이름...">
                                 </div>
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
@@ -43,8 +47,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả</label>
+                                    <label>Mô tả (Vietnamese)</label>
                                     <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả...">{{ $category['description'] }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mô tả (Koreanese)</label>
+                                    <textarea style="height: 100px;" name="ko_description" class="form-control description" placeholder="설명...">{{ $category->getTranslation('ko')->description }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>

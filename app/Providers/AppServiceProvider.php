@@ -5,8 +5,8 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Util\Util;
 use App\Models\Setting;
-
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +18,8 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        Schema::defaultStringLength(191);
+
         $categories = Category::where('status', 1)->orderBy('order', 'asc')->get();
         $this->categories = Util::buildTree($categories);
         $this->setting = Setting::find(1);

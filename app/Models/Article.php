@@ -7,7 +7,11 @@ use App\Util\Util;
 
 class Article extends Model
 {
+    use \Dimsav\Translatable\Translatable;
+
     protected $table = 'articles';
+
+    public $translatedAttributes = ['title', 'intro', 'fulltext'];
 
     protected $fillable = [
         'user_id', 
@@ -64,13 +68,42 @@ class Article extends Model
     {
         $data['slug'] = Util::generateSlug($data['title']);
 
-        return self::firstOrCreate($data);
+        $article = new Article();
+        foreach (\Config::get('translatable.locales') as $locale) {
+            $article->translateOrNew($locale)->title = ($locale == 'vi') ? $data['title'] : $data[$locale.'_title'];
+            $article->translateOrNew($locale)->intro = ($locale == 'vi') ? $data['intro'] : $data[$locale.'_intro'];
+            $article->translateOrNew($locale)->fulltext = ($locale == 'vi') ? $data['fulltext'] : $data[$locale.'_fulltext'];
+        }
+
+        unset($data['ko_title']);
+        unset($data['ko_intro']);
+        unset($data['ko_fulltext']);
+
+        foreach ($data as $key => $value) {
+            $article[$key] = $value;
+        }
+
+        return $article->save();
     }
     
     public static function updateAction($data, $article)
     {
         $data['slug'] = Util::generateSlug($data['title']);
 
-        return $article->update($data);
+        foreach (\Config::get('translatable.locales') as $locale) {
+            $article->translateOrNew($locale)->title = ($locale == 'vi') ? $data['title'] : $data[$locale.'_title'];
+            $article->translateOrNew($locale)->intro = ($locale == 'vi') ? $data['intro'] : $data[$locale.'_intro'];
+            $article->translateOrNew($locale)->fulltext = ($locale == 'vi') ? $data['fulltext'] : $data[$locale.'_fulltext'];
+        }
+
+        unset($data['ko_title']);
+        unset($data['ko_intro']);
+        unset($data['ko_fulltext']);
+
+        foreach ($data as $key => $value) {
+            $article[$key] = $value;
+        }
+
+        return $article->save();
     }
 }

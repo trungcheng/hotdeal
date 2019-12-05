@@ -37,6 +37,7 @@ class ArticleController extends Controller
         if ($article) {
             return view('pages.admin.article.edit', ['article' => $article]);
         }
+
         abort(404);
     }
 
@@ -51,15 +52,18 @@ class ArticleController extends Controller
                     'type' => 'error'
                 ]);
             }
+
             $data = $request->all();
             if ($data) {
                 Article::addAction($data);
+
                 return Response::json([
                     'status' => true,
                     'message' => 'Thêm bài viết thành công', 
                     'type' => 'success'
                 ]);
             }
+
             return Response::json([
                 'status' => false, 
                 'message' => 'Đã xảy ra lỗi', 
@@ -84,6 +88,7 @@ class ArticleController extends Controller
                     'type' => 'error'
                 ]);
             }
+
             $data = $request->all();
             if ($data) {
                 $article = Article::find($data['id']);
@@ -126,18 +131,21 @@ class ArticleController extends Controller
             $article = Article::find($articleId);
             if ($article) {
                 $article->delete();
+
                 return Response::json([
                     'status' => true, 
                     'message' => 'Xóa bài viết thành công', 
                     'type' => 'success'
                 ]);
             }
+
             return Response::json([
                 'status' => false, 
                 'message' => 'Không tìm thấy bài viết', 
                 'type' => 'error'
             ]);
         }
+        
         return Response::json([
             'status' => false, 
             'message' => 'Đã xảy ra lỗi', 

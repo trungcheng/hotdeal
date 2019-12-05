@@ -7,7 +7,11 @@ use App\Util\Util;
 
 class Category extends Model
 {
+    use \Dimsav\Translatable\Translatable;
+
     protected $table = 'categories';
+
+    public $translatedAttributes = ['name', 'description'];
 
     protected $cats = [
         'parent_id' => 'integer',
@@ -54,14 +58,39 @@ class Category extends Model
     {
         $data['slug'] = Util::generateSlug($data['name']);
 
-        return self::firstOrCreate($data);
+        $category = new Category();
+        foreach (\Config::get('translatable.locales') as $locale) {
+            $category->translateOrNew($locale)->name = ($locale == 'vi') ? $data['name'] : $data[$locale.'_name'];
+            $category->translateOrNew($locale)->description = ($locale == 'vi') ? $data['description'] : $data[$locale.'_description'];
+        }
+
+        unset($data['ko_name']);
+        unset($data['ko_description']);
+
+        foreach ($data as $key => $value) {
+            $category[$key] = $value;
+        }
+
+        return $category->save();
     }
 
     public static function updateAction($cate, $data)
     {
         $data['slug'] = Util::generateSlug($data['name']);
 
-        return $cate->update($data);
+        foreach (\Config::get('translatable.locales') as $locale) {
+            $cate->translateOrNew($locale)->name = ($locale == 'vi') ? $data['name'] : $data[$locale.'_name'];
+            $cate->translateOrNew($locale)->description = ($locale == 'vi') ? $data['description'] : $data[$locale.'_description'];
+        }
+
+        unset($data['ko_name']);
+        unset($data['ko_description']);
+
+        foreach ($data as $key => $value) {
+            $cate[$key] = $value;
+        }
+
+        return $cate->save();
 
     }
 

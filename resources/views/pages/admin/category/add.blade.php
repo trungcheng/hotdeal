@@ -29,8 +29,12 @@
                         <form id="formProcess" onsubmit="return false;" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Tên danh mục</label>
+                                    <label>Tên danh mục (Vietnamese)</label>
                                     <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tên danh mục (Koreanese)</label>
+                                    <input name="ko_name" type="text" class="form-control slug" placeholder="카테고리 이름...">
                                 </div>
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
@@ -42,8 +46,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả</label>
+                                    <label>Mô tả (Vietnamese)</label>
                                     <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mô tả (Koreanese)</label>
+                                    <textarea style="height: 100px;" name="ko_description" class="form-control description" placeholder="설명..."></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>

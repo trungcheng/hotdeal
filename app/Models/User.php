@@ -15,23 +15,15 @@ class User extends Model implements Authenticatable
 
     protected $cats = [
         'role_id' => 'integer',
-        'cat_id' => 'integer',
-        'total_vote' => 'integer',
         'type' => 'boolean',
         'status' => 'boolean'
     ];
    
     protected $fillable = [
         'role_id',
-        'cat_id',
         'username',
         'full_name', 
         'email',
-        'intro',
-        'content',
-        'avatar',
-        'video',
-        'total_vote',
         'password',
         'type',
         'status'
@@ -53,10 +45,6 @@ class User extends Model implements Authenticatable
         return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
 
-    public function category() {
-        return $this->belongsTo('App\Models\Category', 'cat_id', 'id');
-    }
-
     public static $rulesUserAdd = [
         'username' => 'required|unique:users|min:2',
         'password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
@@ -73,17 +61,13 @@ class User extends Model implements Authenticatable
 
     public static $rules = [
         'full_name' => 'required|min:2',
-        'cat_id' => 'required',
-        'avatar' => 'required',
-        'intro' => 'required'
+        'avatar' => 'required'
     ];
 
     public static $messages = [
         'full_name.required' => 'Họ tên không được để trống',
         'full_name.min' => 'Họ tên ít nhất từ 2 ký tự',
-        'cat_id.required' => 'Thuộc khối không được để trống',
-        'avatar.required' => 'Ảnh đại diện không được để trống',
-        'intro.required' => 'Vị trí không được để trống'
+        'avatar.required' => 'Ảnh đại diện không được để trống'
     ];
 
     public static function init($request)
@@ -153,30 +137,6 @@ class User extends Model implements Authenticatable
         }
 
         return $user->update($data);
-    }
-
-    public static function addMember($data)
-    {
-        if (isset($data['content']) && in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
-            $data['content'] = '';
-        }
-        $data['cat_id'] = (int) $data['cat_id'];
-        $data['role_id'] = 3;
-        $data['type'] = 1;
-        $data['username'] = str_slug($data['full_name'], '-');
-
-        return self::firstOrCreate($data);
-    }
-
-    public static function updateMember($data, $member)
-    {
-        if (isset($data['content']) && in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
-            $data['content'] = '';
-        }
-        $data['cat_id'] = (int) $data['cat_id'];
-        $data['username'] = str_slug($data['full_name'], '-');
-
-        return $member->update($data);
     }
 
 }
