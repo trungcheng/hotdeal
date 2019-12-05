@@ -30,8 +30,12 @@
                             <div class="modal-body">
                                 <input type="hidden" id="user_id" name="user_id" value="{{ $authAdminUser->id }}">
                                 <div class="form-group">
-                                    <label>Tiêu đề</label>
+                                    <label>Tiêu đề (Vietnamese)</label>
                                     <input name="title" type="text" class="form-control slug" placeholder="Tiêu đề bài viết...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tiêu đề (Koreanese)</label>
+                                    <input name="ko_title" type="text" class="form-control slug" placeholder="기사 제목...">
                                 </div>
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
@@ -48,12 +52,20 @@
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả ngắn</label>
+                                    <label>Mô tả ngắn (Vietnamese)</label>
                                     <textarea class="form-control" id="short_content"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nội dung</label>
+                                    <label>Mô tả ngắn (Koreanese)</label>
+                                    <textarea class="form-control" id="ko_short_content"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung (Vietnamese)</label>
                                     <textarea class="form-control" id="full_content"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung (Koreanese)</label>
+                                    <textarea class="form-control" id="ko_full_content"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Tin mới</label>
@@ -147,7 +159,9 @@
     <script type="text/javascript">
         $(function () {
             CKEDITOR.replace('short_content', { height: 300 }); 
+            CKEDITOR.replace('ko_short_content', { height: 300 }); 
             CKEDITOR.replace('full_content'); 
+            CKEDITOR.replace('ko_full_content'); 
         });
     </script>
 @stop

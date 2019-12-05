@@ -80,7 +80,8 @@ class Kernel extends HttpKernel
         'user.auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'user.guest' => \App\Http\Middleware\User\RedirectIfAuthenticated::class,
         'user.values' => \App\Http\Middleware\User\SetDefaultValues::class,
+        'user.language' => \App\Http\Middleware\User\LanguageSwitcher::class,
         'cors' => \App\Http\Middleware\Cors::class, 
-        'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class
+        'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class,
     ];
 }

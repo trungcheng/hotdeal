@@ -18,6 +18,7 @@ class Locale
     {
         // $locale = \LocaleHelper::getLocale();
         // \App::setLocale($locale);
+
         return $next($request);
     }
 }

@@ -12,5 +12,9 @@
 
     \Route::get('/{parent}/{slug}.html', 'User\WebController@processPageLevelTwo')->name('detail-article');
 
+    \Route::group(['middleware' => 'user.language'], function () {
+        \Route::get('/lang/{locale}', 'User\WebController@changeLocale')->name('locale');
+    });
+
 });
 

@@ -44,9 +44,9 @@
 
             <ol class="breadcrumb">
 
-                <li><a href="{{ url('') }}">Trang chủ</a></li>
+                <li><a href="{{ url('') }}">{{ trans('general.home_page') }}</a></li>
 
-                <li class="active">Liên hệ</li>
+                <li class="active">{{ trans('general.contact') }}</li>
 
             </ol>
 
@@ -73,23 +73,23 @@
                     <p>
                         <b>Địa chỉ:</b><span style="font-family: arial, sans-serif; font-size: 12.8px;">&nbsp;{!! $setting->address !!}</span></p>
                     <p>
-                        <strong>Điện thoại:&nbsp;</strong><a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>&nbsp;- Fax: {!! $setting->fax !!}&nbsp;</p>
+                        <strong>{{ trans('general.mobile') }}:&nbsp;</strong><a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>&nbsp;- {{ trans('general.fax') }}: {!! $setting->fax !!}&nbsp;</p>
                     <p>
-                        <strong>Website:</strong><a href="{!! $setting->website !!}">{!! $setting->website !!}</a></p>
+                        <strong>{{ trans('general.website') }}:</strong><a href="{!! $setting->website !!}">{!! $setting->website !!}</a></p>
                     <p>
-                        <strong>Email:</strong><a href="mailto:{!! $setting->email !!}">{!! $setting->email !!}</a></p>
+                        <strong>{{ trans('general.email') }}:</strong><a href="mailto:{!! $setting->email !!}">{!! $setting->email !!}</a></p>
 
 
                 </div>
 
                 <div class="taseco_form2">
 
-                    <h3>Để tiện liên hệ, xin vui lòng cung cấp các thông tin sau:</h3>
+                    <h3>{{ trans('general.contact_title') }}:</h3>
 
                     <form name="frm_contact" style="display:block" method="post" onsubmit="return validateForm(this);">
                         <div class="form-group clearfix">
 
-                            <label>Họ và Tên:<span>*</span></label>
+                            <label>{{ trans('general.contact_fullname') }}:<span>*</span></label>
 
                             <input type="text" name="txt_name" class="form-control" placeholder="">
 
@@ -97,7 +97,7 @@
 
                         <div class="form-group clearfix">
 
-                            <label>Email:<span>*</span></label>
+                            <label>{{ trans('general.email') }}:<span>*</span></label>
 
                             <input type="text" name="txt_email" class="form-control" placeholder="">
 
@@ -105,7 +105,7 @@
 
                         <div class="form-group clearfix">
 
-                            <label>Điện thoại:<span>*</span></label>
+                            <label>{{ trans('general.mobile') }}:<span>*</span></label>
 
                             <input type="text" name="txt_phone" class="form-control" placeholder="">
 
@@ -113,7 +113,7 @@
 
                         <div class="form-group clearfix">
 
-                            <label>Địa chỉ:<span>*</span></label>
+                            <label>{{ trans('general.contact_address') }}:<span>*</span></label>
 
                             <input type="text" name="txt_address" class="form-control" placeholder="">
 
@@ -121,7 +121,7 @@
 
                         <div class="form-group clearfix">
 
-                            <label>Nội dung:<span>*</span></label>
+                            <label>{{ trans('general.contact_content') }}:<span>*</span></label>
 
                             <textarea name="txt_content" class="form-control" rows="6"></textarea>
 
@@ -129,7 +129,7 @@
 
                         <div class="form-group captcha clearfix">
 
-                            <label>Mã bảo mật:<span>*</span></label>
+                            <label>{{ trans('general.security_code') }}:<span>*</span></label>
 
                             <input class="form-control" name="txt_captcha" type="text">
 
@@ -139,9 +139,9 @@
 
                         <div class="form-group form_btn clearfix">
 
-                            <input type="reset" value="Làm lại" name="" class="btn btn-default">
+                            <input type="reset" value="{{ trans('general.contact_reset') }}" name="" class="btn btn-default">
 
-                            <input type="submit" value="Gửi liên hệ" name="" class="btn btn-primary">
+                            <input type="submit" value="{{ trans('general.contact_send') }}" name="" class="btn btn-primary">
 
                         </div>
 

@@ -14,14 +14,14 @@
             <div class="header_search">
                 <form method="post" action="">
                     <div class="form-group">
-                        <input type="text" name="p" class="form-control" placeholder="Tìm kiếm">
+                        <input type="text" name="p" class="form-control" placeholder="{{ trans('general.search') }}">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </div>
                 </form>
             </div>
             <div class="header_language">
-                <a href="#"><img src="{{ asset('frontend/themes/default/images/vn.jpg') }}" alt="vn"></a>
-                <a href="#"><img src="{{ asset('frontend/themes/default/images/emn.jpg') }}" alt="en"></a>
+                <a title="Vietnamese" href="{{ route('locale', ['locale' => 'vi']) }}"><img style="box-shadow: 2px 2px #dcdcdc;margin-right:3px" src="{{ asset('frontend/themes/default/images/vietnam.png') }}" alt="vi"></a>
+                <a title="Koreanese" href="{{ route('locale', ['locale' => 'ko']) }}"><img style="box-shadow: 2px 2px #dcdcdc;" src="{{ asset('frontend/themes/default/images/korean.png') }}" alt="ko"></a>
             </div>
         </div>
     </div>
@@ -40,17 +40,17 @@
                         <li class="menu_ichome"><a href="{{ url('') }}" style="border:none"><i class="fa fa-home fa-2x"></i></a></li>
                         @foreach ($categories as $cate)
                         <li>
-                            <a href="#">{{ $cate->name }} <span class="caret"></span></a>
+                            <a href="#">{{ $cate->getTranslation(app()->getLocale())->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu_ed">
                                 @foreach ($cate->childrens as $child)
                                 <li>
-                                    <a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                    <a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a>
                                 </li>
                                 @endforeach
                             </ul>
                         </li>
                         @endforeach
-                        <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                        <li><a href="{{ route('contact') }}">{{ trans('general.contact') }}</a></li>
                     </ul>
                 </div>
             </div>

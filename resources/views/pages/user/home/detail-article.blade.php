@@ -72,17 +72,17 @@
     </div>
     <div class="bread">
         <ol class="breadcrumb">
-            <li><a href="{{ url('') }}">Trang chủ</a></li>
-            <li><a href="">{{ $parentOfParent->name }}</a></li>
-            <li class="active">{{ $parent->name }}</li>
+            <li><a href="{{ url('') }}">{{ trans('general.home_page') }}</a></li>
+            <li><a href="">{{ $parentOfParent->getTranslation(app()->getLocale())->name }}</a></li>
+            <li class="active">{{ $parent->getTranslation(app()->getLocale())->name }}</li>
         </ol>
     </div>
     <div class="main">
         <div class="main_col4">
             <div class="news_dtw">
-                <h1>{{ $article->title }}</h1>
+                <h1>{{ $article->getTranslation(app()->getLocale())->title }}</h1>
                 <div class="content-detail">    
-                    {!! $article->fulltext !!}
+                    {!! $article->getTranslation(app()->getLocale())->fulltext !!}
                 </div>
                 <!----SHRE--->
                 <div class="news_social clearfix">
@@ -100,12 +100,12 @@
             </div>
 
             <div class="news_dtlq">
-                <h4 style="background: url({{ asset('frontend/themes/default/images/tin_bai_lienquan.png') }}) no-repeat bottom left">Tin tức khác</h4>
+                <h4 style="background: url({{ asset('frontend/themes/default/images/tin_bai_lienquan.png') }}) no-repeat bottom left">{{ trans('general.other_new') }}</h4>
                 <ul>
                     @foreach ($relatedArticles as $relate)
                     <li>
                         <a title="{{ $relate->title }}" href="{{ route('detail-article', ['parent' => $parent->slug, 'slug' => $relate->slug]) }}">
-                            {{ $relate->title }}
+                            {{ $relate->getTranslation(app()->getLocale())->title }}
                             <!--<span>(15/11/2019)</span>-->
                         </a>
                     </li>
@@ -118,7 +118,7 @@
             <div class="sidebar">
                 <div class="panel panel-success">
                     <div class="panel_icon" style="background: url({{ asset('frontend/themes/default/images/col_left_detail.png') }}) no-repeat top">
-                        <h1>Danh mục</h1>
+                        <h1>{{ trans('general.category') }}</h1>
                     </div>
                     <div class="panel-body">
                         <div class="sidebar_ul">
@@ -126,9 +126,9 @@
                                 @foreach ($childCates as $child)
                                     <li>
                                         @if ($child->id == $parent->id)
-                                            <a style="font-weight:bold" href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                            <a style="font-weight:bold" href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a>
                                         @else
-                                            <a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                            <a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a>
                                         @endif
                                     </li>
                                 @endforeach

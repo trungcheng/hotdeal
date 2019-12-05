@@ -1,5 +1,5 @@
 <div class="box_dttaseco clearfix w_gr">
-    <h3>CÁC ĐƠN VỊ THÀNH VIÊN, LIÊN Kết:</h3>
+    <h3>{{ trans('general.partners') }}:</h3>
     <div id="owl_carousel" class="owl-carousel owl-theme">
         <div class="item">
             <div class="item_w">
@@ -318,23 +318,23 @@
                     <h3>
                         {!! $setting->address !!}</h3>
                     <p>
-                        <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;">Điện thoại:&nbsp;<a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>&nbsp;-&nbsp;Fax:&nbsp;{!! $setting->fax !!}</span></span>
+                        <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;">{{ trans('general.mobile') }}:&nbsp;<a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>&nbsp;-&nbsp;{{ trans('general.fax') }}:&nbsp;{!! $setting->fax !!}</span></span>
                     </p>
                     <p>
-                        <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;">Website:&nbsp;<a href="{{ url('') }}">{!! $setting->website !!}</a>&nbsp;-&nbsp;Email:&nbsp;<a href="mailto:{!! $setting->email !!}">{!! $setting->email !!}</a></span></span></p>
+                        <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;">{{ trans('general.website') }}:&nbsp;<a href="{{ url('') }}">{!! $setting->website !!}</a>&nbsp;-&nbsp;{{ trans('general.email') }}:&nbsp;<a href="mailto:{!! $setting->email !!}">{!! $setting->email !!}</a></span></span></p>
                     <h2 id="kumop" style="position: fixed;right:-900px; top: -800px; overflow: hidden;width:250px">
                 </p>
             </div>
             <div class="footer_tkct">
                 <div class="tkct clearfix">
                     <ul>
-                        <li><a href="{{ url('') }}">Trang chủ</a></li>
-                        <li><a href="{{ url('') }}/thong-tin-tuyen-dung.html">Tuyển dụng</a></li>
-                        <li><a style="border:none" href="{{ route('contact') }}">Liên hệ</a></li>
+                        <li><a href="{{ url('') }}">{{ trans('general.home_page') }}</a></li>
+                        <li><a href="{{ url('') }}/thong-tin-tuyen-dung.html">{{ trans('general.recruiter_page') }}</a></li>
+                        <li><a style="border:none" href="{{ route('contact') }}">{{ trans('general.contact') }}</a></li>
                     </ul>
                 </div>
-                <p><span class="tkct_txt">Số người truy cập</span><span style="color:#F00; display:inline-block; margin:0 5px">2287390</span></p>
-                <p>Designed by <a href="https://thachvu.com">Thạch Vũ</a></p>
+                <p><span class="tkct_txt">{{ trans('general.user_access_count') }}</span><span style="color:#fff;display:inline-block;margin:0 5px;font-weight:bold;">2287390</span></p>
+                <p>Designed by <a href="https://utico.vn">Utico Team.</a></p>
             </div>
         </div>
         

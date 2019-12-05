@@ -4,9 +4,11 @@
     <!-- Logo -->
     <a href="{{ route('dashboard') }}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>U</b>T</span>
+      <span class="logo-mini"><img style="height:50px" src="/backend/uploads/images/logo.png" /></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>UTICO</b>CMS</span>
+      <span class="logo-lg" style="text-transform: uppercase;">
+        <img style="float:left;" src="/backend/uploads/images/logo.png" /> 
+        <span style="float:left;margin-top:3px;margin-left:10px;"><b>UTICO</b>CMS</span></span>
     </a>
 
     <!-- Header Navbar -->

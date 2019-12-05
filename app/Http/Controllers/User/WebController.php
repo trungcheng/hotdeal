@@ -34,6 +34,8 @@ class WebController extends Controller
             ->where('id', '<>', $hotNew->id)
             ->with('category')
             ->get();
+        $tvHinhanh = Category::find(19);
+        $video = Category::find(20);
 
         return view('pages.user.home.index', [
             'lvDautu' => $lvDautu,
@@ -41,13 +43,22 @@ class WebController extends Controller
             'ttSukien' => $ttSukien,
             'firstCate' => $firstCate,
             'hotNew' => $hotNew,
-            'listNews' => $listNews
+            'listNews' => $listNews,
+            'tvHinhanh' => $tvHinhanh,
+            'video' => $video
         ]);
     }
 
     public function navigate(Request $request)
     {
     	return redirect('/admin/access/login');
+    }
+
+    public function changeLocale(Request $request, $locale)
+    {
+        \Session::put('locale', $locale);
+
+        return redirect()->back();
     }
 
     public function contact()

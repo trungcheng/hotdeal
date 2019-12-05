@@ -75,15 +75,15 @@
     </div>
     <div class="bread">
         <ol class="breadcrumb">
-            <li><a href="{{ url('') }}">Trang chủ</a></li>
+            <li><a href="{{ url('') }}">{{ trans('general.home_page') }}</a></li>
             @if ($parentCate)
                 @if ($parentCate->parent_id == 0)
-                    <li><a href="{{ url('') }}">{{ $parentCate->name }}</a></li>
+                    <li><a href="{{ url('') }}">{{ $parentCate->getTranslation(app()->getLocale())->name }}</a></li>
                 @else
-                    <li><a href="{{ route('detail', ['slug' => $parentCate->slug]) }}">{{ $parentCate->name }}</a></li>
+                    <li><a href="{{ route('detail', ['slug' => $parentCate->slug]) }}">{{ $parentCate->getTranslation(app()->getLocale())->name }}</a></li>
                 @endif
             @endif
-            <li class="active">{{ $category->name }}</li>
+            <li class="active">{{ $category->getTranslation(app()->getLocale())->name }}</li>
         </ol>
     </div>
     <div class="main">
@@ -97,15 +97,13 @@
                         </a>
                         <div class="panel_txt">
                             <h2 class="panel_tlt">
-                                <a href="{{ ($type == 'article') ? route('detail-article', ['parent' => $category->slug, 'slug' => $article->slug]) : route('detail', ['slug' => $article->slug]) }}">{{ ($type == 'article') ? $article->title : $article->name }}
+                                <a href="{{ ($type == 'article') ? route('detail-article', ['parent' => $category->slug, 'slug' => $article->slug]) : route('detail', ['slug' => $article->slug]) }}">{{ ($type == 'article') ? $article->getTranslation(app()->getLocale())->title : $article->getTranslation(app()->getLocale())->name }}
                                     @if ($type == 'article' && $article->is_feature == 1)
                                         <img src="{{ asset('frontend/themes/default/images/new.gif') }}">
                                     @endif
                                 </a>
                             </h2>
-                            {!! ($type == 'article') ? $article->intro : $article->description !!}
-                            <!-- <p>Trải qua hơn một thập kỷ hình thành và phát triển, TASECO tự hào đã và đang đạt được nhiều thành công trên các lĩnh vực hoạt động của mình. Từ một doanh nghiệp khi thành lập có quy mô nhỏ, kinh doanh dịch vụ phi hàng không tại Cảng hàng không quốc tế Nội Bài. Công ty đã có quá trình phát triển vững chắc...</p> -->
-                            <!--<a class="btn btn-primary" href="https://taseco.vn/gioi-thieu/gioi-thieu.html">Xem thêm</a>-->
+                            {!! ($type == 'article') ? $article->getTranslation(app()->getLocale())->intro : $article->getTranslation(app()->getLocale())->description !!}
                         </div>
                     </li>
                     @endforeach
@@ -122,7 +120,7 @@
             <div class="sidebar">
                 <div class="panel panel-success">
                     <div class="panel_icon" style="background: url({{ asset('frontend/themes/default/images/col_left_detail.png') }}) no-repeat top">
-                        <h1>Danh mục</h1>
+                        <h1>{{ trans('general.category') }}</h1>
                     </div>
                     <div class="panel-body">
                         <div class="sidebar_ul">
@@ -132,17 +130,17 @@
                                 <li>
                                     @if ($cate->id == $category->id)
                                         <a style="font-weight:bold" href="{{ route('detail', ['slug' => $cate->slug]) }}">
-                                            {{ $cate->name }}
+                                            {{ $cate->getTranslation(app()->getLocale())->name }}
                                         </a>
                                     @else
                                         <a href="{{ route('detail', ['slug' => $cate->slug]) }}">
-                                            {{ $cate->name }}
+                                            {{ $cate->getTranslation(app()->getLocale())->name }}
                                         </a>
                                     @endif
                                     @if ($cate->childrens)
                                     <ul>
                                         @foreach ($cate->childrens as $child)
-                                            <li><a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a></li>
+                                            <li><a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a></li>
                                         @endforeach
                                     </ul>
                                     @endif
