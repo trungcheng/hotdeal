@@ -334,7 +334,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 .header_searchw .header_language {
 	float: right;
 	margin-left: 15px;
-	padding-top: 6px;
+	padding-top: 5px;
 }
 
 .header_search .form-control {
@@ -1915,7 +1915,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 	-ms-transform: scale(0);
 	-moz-transform: scale(0);
 	-webkit-transform: scale(0);
-	background: url(../images/icons/hove-view-hyperlink.png) no-repeat center center rgba(1, 77, 115, 0.8);
+	background: url(../images/icons/hove-view-hyperlink.png) no-repeat center center rgba(240, 0, 0, 0.8);
 	transition: all 0.5s ease 0s;
 	-o-transition: all 0.5s ease 0s;
 	-ms-transition: all 0.5s ease 0s;
@@ -2062,7 +2062,8 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .gallery_it .gallery_img .gallery_bg {
-	background: rgba(7, 109, 153, 0.9) url(../images/icons/hove-view-hyperlink.png) no-repeat center center;
+	/* background: rgba(7, 109, 153, 0.9) url(../images/icons/hove-view-hyperlink.png) no-repeat center center; */
+	background: url(../images/icons/hove-view-hyperlink.png) no-repeat center center rgba(240, 0, 0, 0.8);
 }
 
 #owl_fie .thumbnail:hover .caption {

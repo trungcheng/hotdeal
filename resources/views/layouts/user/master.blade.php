@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@yield('page') | {{ $setting->slogan }}</title>
+    <title>@yield('page') | {{ $setting->getTranslation(app()->getLocale())->name }}</title>
     
     <meta name="description" content="@yield('description')" />
     <meta name="keywords" content="@yield('keywords')" />
@@ -19,7 +19,7 @@
     <meta property="og:url" content="@yield('ogUrl')" />
     <meta property="og:image" content="@yield('ogImage')" />
     <meta property="og:description" content="@yield('ogDesc')" />
-    <meta property="og:site_name" content="{{ $setting->slogan }}" />
+    <meta property="og:site_name" content="{{ $setting->getTranslation('vi')->name }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="{{ asset('frontend/upload/advert/favicon.ico') }}" type="image/x-icon">

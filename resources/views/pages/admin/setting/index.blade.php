@@ -45,13 +45,23 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Tên công ty</label>
+                        <label class="control-label">Tên công ty (Vietnamese)</label>
                         <input type="text" name="name" value="{{ ($setting != '') ? $setting->name : '' }}" class="form-control" placeholder="Tên công ty...">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Slogan</label>
+                        <label class="control-label">Tên công ty (Koreanese)</label>
+                        <input type="text" name="ko_name" value="{{ ($setting != '') ? $setting->getTranslation('ko')->name : '' }}" class="form-control" placeholder="회사 명...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Slogan (Vietnamese)</label>
                         <input type="text" name="slogan" value="{{ ($setting != '') ? $setting->slogan : '' }}" class="form-control" placeholder="Slogan...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Slogan (Koreanese)</label>
+                        <input type="text" name="ko_slogan" value="{{ ($setting != '') ? $setting->getTranslation('ko')->slogan : '' }}" class="form-control" placeholder="슬로건...">
                     </div>
 
                     <div class="form-group">
@@ -75,8 +85,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Địa chỉ</label>
+                        <label class="control-label">Địa chỉ (Vietnamese)</label>
                         <input type="text" name="address" value="{{ ($setting != '') ? $setting->address : '' }}" class="form-control" placeholder="Địa chỉ...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Địa chỉ (Koreanese)</label>
+                        <input type="text" name="ko_address" value="{{ ($setting != '') ? $setting->getTranslation('ko')->address : '' }}" class="form-control" placeholder="주소...">
                     </div>
 
                     <div class="form-group">

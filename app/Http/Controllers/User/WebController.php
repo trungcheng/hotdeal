@@ -36,6 +36,9 @@ class WebController extends Controller
             ->get();
         $tvHinhanh = Category::find(19);
         $video = Category::find(20);
+        $slides = Article::where('type', 'slide')
+            ->where('status', 1)
+            ->get();
 
         return view('pages.user.home.index', [
             'lvDautu' => $lvDautu,
@@ -45,7 +48,8 @@ class WebController extends Controller
             'hotNew' => $hotNew,
             'listNews' => $listNews,
             'tvHinhanh' => $tvHinhanh,
-            'video' => $video
+            'video' => $video,
+            'slides' => $slides
         ]);
     }
 

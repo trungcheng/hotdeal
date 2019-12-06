@@ -6,16 +6,18 @@
         <div class="header_slg">
             <div class="tlt">
                 <ul class="texts" style="display: none">
-                    <li>{{ $setting->slogan }}</li>
+                    <li>{{ $setting->getTranslation(app()->getLocale())->name }}</li>
                 </ul>
             </div>
         </div>
         <div class="header_searchw">
             <div class="header_search">
-                <form method="post" action="#">
+                <form method="get" action="{{ url('') }}">
                     <div class="form-group">
-                        <input type="text" name="p" class="form-control" placeholder="{{ trans('general.search') }}">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                        <input type="text" name="keyword" class="form-control" placeholder="{{ trans('general.search') }}">
+                        <button type="submit" class="btn btn-primary">
+                            <i style="position:relative;top:2px;" class="fa fa-search"></i>
+                        </button>
                     </div>
                 </form>
             </div>

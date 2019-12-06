@@ -42,7 +42,7 @@
                                                 <div class="item-img add_<?php echo $i; ?>">
                                                     <p class="image">
                                                         <span style="display:block;">
-                                                            <input placeholder="Logo..." type="text" value="{{ $logo->image }}" size="48" name="partner_logos[]" class="form-control list-img" id="xFilePath<?php echo $i; ?>" />
+                                                            <input placeholder="Link logo..." type="text" value="{{ $logo->image }}" size="48" name="partner_logos[]" class="form-control list-img" id="xFilePath<?php echo $i; ?>" />
                                                             <button class="btn btn-primary btn-upload" onclick="openPopupMulti(<?php echo $i; ?>)">Tải logo lên</button>
                                                             <button onclick="del_accads(<?php echo $i; ?>);" type="button" class="btn btn-danger">Xóa</button>
                                                         </span>
@@ -110,7 +110,7 @@
     var i = 50;
     function add_img() {
         i++;
-        var insert = '<div class="item-img add_'+i+'"><p class="image"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="partner_logos[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-danger">Xóa</button></span></p><p class="link"><span style="display:block;"><input placeholder="Link trang web đối tác..." type="text" size="48" name="link[]" class="form-control list-img" /></span></p></div>';
+        var insert = '<div class="item-img add_'+i+'"><p class="image"><span style="display:block;"><input placeholder="Link logo..." type="text" size="48" class="form-control list-img" name="partner_logos[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-danger">Xóa</button></span></p><p class="link"><span style="display:block;"><input placeholder="Link trang web đối tác..." type="text" size="48" name="link[]" class="form-control list-img" /></span></p></div>';
         $(insert).appendTo('.box-img');
     }
     

@@ -1,306 +1,13 @@
-<div class="box_dttaseco clearfix w_gr">
+<div class="box_dttaseco clearfix w_gr" style="margin-top:40px;">
     <h3>{{ trans('general.partners') }}:</h3>
     <div id="owl_carousel" class="owl-carousel owl-theme">
+        @foreach (json_decode($setting['partner_logos']) as $logo)
         <div class="item">
             <div class="item_w">
-                <a href="#" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1508921287logo cty lien ket.jpg"></a>
+                <a href="{{ $logo->link }}" class="owlitem_img"><img src="{{ $logo->image }}"></a>
             </div>
         </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://pml.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1461397070Untitled-2.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://greenparkmongcai.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459824703iudt.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://imcs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1479875820Untitled-1.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://www.alacartedanangbeach.com/vi/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520398069logo alacarte nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397525logo cty nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459825340jalux.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://acsv.com.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844082ACSV.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://danangairportterminal.vn/vi/corporate/about-us/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/14605224631234.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://vinacs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844811vinacs.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://tasecoairs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397571logo nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1557304639taseco invest.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1508921287logo cty lien ket.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://pml.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1461397070Untitled-2.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://greenparkmongcai.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459824703iudt.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://imcs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1479875820Untitled-1.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://www.alacartedanangbeach.com/vi/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520398069logo alacarte nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397525logo cty nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459825340jalux.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://acsv.com.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844082ACSV.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://danangairportterminal.vn/vi/corporate/about-us/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/14605224631234.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://vinacs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844811vinacs.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://tasecoairs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397571logo nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1557304639taseco invest.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1508921287logo cty lien ket.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://pml.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1461397070Untitled-2.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://greenparkmongcai.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459824703iudt.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://imcs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1479875820Untitled-1.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://www.alacartedanangbeach.com/vi/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520398069logo alacarte nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397525logo cty nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459825340jalux.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://acsv.com.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844082ACSV.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://danangairportterminal.vn/vi/corporate/about-us/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/14605224631234.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://vinacs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844811vinacs.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://tasecoairs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397571logo nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1557304639taseco invest.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1508921287logo cty lien ket.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://pml.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1461397070Untitled-2.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://greenparkmongcai.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459824703iudt.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://imcs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1479875820Untitled-1.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://www.alacartedanangbeach.com/vi/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520398069logo alacarte nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397525logo cty nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459825340jalux.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://acsv.com.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844082ACSV.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://danangairportterminal.vn/vi/corporate/about-us/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/14605224631234.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://vinacs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844811vinacs.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://tasecoairs.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397571logo nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1557304639taseco invest.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1508921287logo cty lien ket.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://pml.vn/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1461397070Untitled-2.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://greenparkmongcai.vn/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459824703iudt.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://imcs.vn/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1479875820Untitled-1.png"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://www.alacartedanangbeach.com/vi/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520398069logo alacarte nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397525logo cty nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459825340jalux.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://acsv.com.vn/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844082ACSV.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://danangairportterminal.vn/vi/corporate/about-us/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/14605224631234.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://vinacs.vn/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1459844811vinacs.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="http://tasecoairs.vn/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1520397571logo nho.jpg"></a>
-            </div>
-        </div>
-        <div class="item">
-            <div class="item_w">
-                <a href="https://tasecoland.vn/" target="_blank" class="owlitem_img"><img src="https://taseco.vn/upload/partner/1557304639taseco invest.jpg"></a>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 <footer id="footer">
@@ -311,12 +18,12 @@
                 <p>
                     <h3>
                         <span style="font-size:14px;"><strong><span style="font-family:arial,helvetica,sans-serif;">
-                            {!! $setting->slogan !!}
+                            {!! $setting->getTranslation(app()->getLocale())->name !!}
                         </span></strong></span></h3>
                     <p>
                         ---------------------------------------------------------------------------------------------------------------------------</p>
                     <h3>
-                        {!! $setting->address !!}</h3>
+                        {!! $setting->getTranslation(app()->getLocale())->address !!}</h3>
                     <p>
                         <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;">{{ trans('general.mobile') }}:&nbsp;<a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>&nbsp;-&nbsp;{{ trans('general.fax') }}:&nbsp;{!! $setting->fax !!}</span></span>
                     </p>
@@ -333,7 +40,7 @@
                         <li><a style="border:none" href="{{ route('contact') }}">{{ trans('general.contact') }}</a></li>
                     </ul>
                 </div>
-                <p><span class="tkct_txt">{{ trans('general.user_access_count') }}</span><span style="color:#fff;display:inline-block;margin:0 5px;font-weight:bold;">2287390</span></p>
+                <p><span class="tkct_txt">{{ trans('general.user_access_count') }}</span><span style="color:#fff;display:inline-block;margin:0 5px;font-weight:bold;">{{ $user_online_data[2] }}</span></p>
                 <p>Designed by <a href="https://utico.vn">Utico Team.</a></p>
             </div>
         </div>

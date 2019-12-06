@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Trang chủ
+@section('page'){{ trans('general.home_page') }}
 @stop
 
 @section('description'){{ $setting->seo_desc }}
@@ -42,69 +42,14 @@
         <div id="carousel_pri" class="carousel slide carousel-fade" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/156584134015.8.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/150114405620.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/150242156222.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/1542169361alacate.jpg" alt="PHỐI CẢNH ALACARTE HẠ LONG BAY"></a>
+                @foreach ($slides as $slide)
+                <div class="item {!! $loop->first ? 'active': '' !!}">
+                    <a href="#"><img src="{{ $slide->image }}" alt="{{ $slide->getTranslation(app()->getLocale())->title }}"></a>
                     <div class="carousel-caption caption_ed">
-                        <h3>PHỐI CẢNH ALACARTE HẠ LONG BAY</h3>
+                        <h3>{{ $slide->getTranslation(app()->getLocale())->title }}</h3>
                     </div>
                 </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/1522289295alacarte ha long 2.jpg" alt="PHỐI CẢNH ALACARTE HẠ LONG BAY"></a>
-                    <div class="carousel-caption caption_ed">
-                        <h3>PHỐI CẢNH ALACARTE HẠ LONG BAY</h3>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/1542012277N02T1 3.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/1542179387NĐ3.jpg" alt="Khu ĐT dệt may Nam Định"></a>
-                    <div class="carousel-caption caption_ed">
-                        <h3>Khu ĐT dệt may Nam Định</h3>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/1543473293alacarte.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/146501482412.jpg" alt="Lucky Restaurant nhà ga T2 - CHK Quốc Tế Nội Bài"></a>
-                    <div class="carousel-caption caption_ed">
-                        <h3>Lucky Restaurant nhà ga T2 - CHK Quốc Tế Nội Bài</h3>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/1519890751san bay aht 2.jpg" alt="Cảng Hàng không Quốc tế Đà Nẵng"></a>
-                    <div class="carousel-caption caption_ed">
-                        <h3>Cảng Hàng không Quốc tế Đà Nẵng</h3>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/1519890787san bay aht.jpg" alt="Cảng Hàng không Quốc tế Đà Nẵng"></a>
-                    <div class="carousel-caption caption_ed">
-                        <h3>Cảng Hàng không Quốc tế Đà Nẵng</h3>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/1505356866vinacs1.jpg" alt="VINACS NỘI BÀI"></a>
-                    <div class="carousel-caption caption_ed">
-                        <h3>VINACS NỘI BÀI</h3>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/15541939782019 2.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href=""><img src="https://taseco.vn/upload/slideshow/15511703302019.jpg" alt=""></a>
-                </div>
+                @endforeach
             </div>
 
             <!-- Controls -->
@@ -238,8 +183,14 @@
                 </div>
             </div>
             <div class="box_news2303_qc">
-                <a href="#" class="thumbnail"><img src="https://taseco.vn/upload/grouptintuc/1543474581video-1.gif" alt="Thư viện hình ảnh" class="img-responsive"><span class="box_news2303_tlt">{{ $tvHinhanh->getTranslation(app()->getLocale())->name }}</span></a>
-                <a href="#" class="thumbnail"><img src="https://taseco.vn/upload/grouptintuc/1543474825avarta video.jpg" alt="Video" class="img-responsive"><span class="box_news2303_tlt">{{ $video->getTranslation(app()->getLocale())->name }}</span></a>
+                <a href="{{ route('detail', ['slug' => $tvHinhanh->slug]) }}" class="thumbnail">
+                    <img src="https://taseco.vn/upload/grouptintuc/1543474581video-1.gif" alt="Thư viện hình ảnh" class="img-responsive">
+                    <span class="box_news2303_tlt">{{ $tvHinhanh->getTranslation(app()->getLocale())->name }}</span>
+                </a>
+                <a href="{{ route('detail', ['slug' => $video->slug]) }}" class="thumbnail">
+                    <img src="https://taseco.vn/upload/grouptintuc/1543474825avarta video.jpg" alt="Video" class="img-responsive">
+                    <span class="box_news2303_tlt">{{ $video->getTranslation(app()->getLocale())->name }}</span>
+                </a>
             </div>
         </div>
     </div>

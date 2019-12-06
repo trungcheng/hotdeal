@@ -172,6 +172,7 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
+        App\Providers\UserOnlineProvider::class,
 
         /*
          * Application Service Providers...

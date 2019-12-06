@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
+    use \Dimsav\Translatable\Translatable;
 
     protected $table = 'setting';
+
+    public $translatedAttributes = ['name', 'slogan', 'address'];
    
     protected $fillable = [
         'name',
