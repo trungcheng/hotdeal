@@ -42,6 +42,37 @@
                 $this->post('articles/update', 'Admin\ArticleController@update');
                 $this->post('articles/delete', 'Admin\ArticleController@delete');
 
+                // media photos
+                $this->get('media/photos', 'Admin\MediaController@photos')->name('media-photos');
+                $this->get('media/photos/getAllPhotos', 'Admin\MediaController@getAllPhotos');
+                $this->get('media/photos/create', 'Admin\MediaController@createPhoto')->name('media-photo-create');
+                $this->get('media/photos/edit/{id}', 'Admin\MediaController@editPhoto')->name('media-photo-edit');
+                $this->post('media/photos/add', 'Admin\MediaController@addPhoto');
+                $this->post('media/photos/update', 'Admin\MediaController@updatePhoto');
+                $this->post('media/photos/delete', 'Admin\MediaController@deletePhoto');
+
+                // media videos
+                $this->get('media/videos', 'Admin\MediaController@videos')->name('media-videos');
+                $this->get('media/videos/getAllVideos', 'Admin\MediaController@getAllVideos');
+                $this->get('media/videos/create', 'Admin\MediaController@createVideo')->name('media-video-create');
+                $this->get('media/videos/edit/{id}', 'Admin\MediaController@editVideo')->name('media-video-edit');
+                $this->post('media/videos/add', 'Admin\MediaController@addVideo');
+                $this->post('media/videos/update', 'Admin\MediaController@updateVideo');
+                $this->post('media/videos/delete', 'Admin\MediaController@deleteVideo');
+
+                // media slides
+                $this->get('media/slides', 'Admin\MediaController@slides')->name('media-slides');
+                $this->get('media/slides/getAllSlides', 'Admin\MediaController@getAllSlides');
+                $this->get('media/slides/create', 'Admin\MediaController@createSlide')->name('media-slide-create');
+                $this->get('media/slides/edit/{id}', 'Admin\MediaController@editSlide')->name('media-slide-edit');
+                $this->post('media/slides/add', 'Admin\MediaController@addSlide');
+                $this->post('media/slides/update', 'Admin\MediaController@updateSlide');
+                $this->post('media/slides/delete', 'Admin\MediaController@deleteSlide');
+
+                // media partner logos
+                $this->get('media/partner-logos', 'Admin\SettingController@partnerLogos')->name('media-partner-logos');
+                $this->post('media/partner-logos/update', 'Admin\SettingController@updatePartnerLogos');
+
                 // user
                 Route::group(['middleware' => 'admin.role:Superadmin'], function () {
                     $this->get('users', 'Admin\UserController@index')->name('users');

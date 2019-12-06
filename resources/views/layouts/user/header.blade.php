@@ -12,7 +12,7 @@
         </div>
         <div class="header_searchw">
             <div class="header_search">
-                <form method="post" action="">
+                <form method="post" action="#">
                     <div class="form-group">
                         <input type="text" name="p" class="form-control" placeholder="{{ trans('general.search') }}">
                         <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>

@@ -55,7 +55,7 @@ class ArticleController extends Controller
 
             $data = $request->all();
             if ($data) {
-                Article::addAction($data);
+                Article::addAction($data, 'article');
 
                 return Response::json([
                     'status' => true,
@@ -93,10 +93,7 @@ class ArticleController extends Controller
             if ($data) {
                 $article = Article::find($data['id']);
                 if ($article) {
-                    // if ($data['is_about'] == 1) {
-                    //     Article::where('id', '>', 0)->update(['is_about' => 0]);
-                    // }
-                    Article::updateAction($data, $article);
+                    Article::updateAction($data, $article, 'article');
                     
                     return Response::json([
                         'status' => true, 

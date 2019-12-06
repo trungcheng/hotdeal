@@ -34,33 +34,19 @@
             </ul>
         </li>
 
-        <!-- <li class="treeview">
-            <a href="javascript:void(0)"><i class="fa fa-codiepie"></i> <span>Quản lý vòng thi</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a> 
-            <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/access/rounds" href="{{ url('/admin/access/rounds') }}"><i class="fa fa-list-ol"></i> Danh sách</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/access/rounds/create" href="{{ url('/admin/access/rounds/create') }}"><i class="fa fa-plus"></i> Thêm mới</a></li>
-            </ul>
-        </li>
-        
         <li class="treeview">
-            <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý nhân vật bình chọn</span>
+            <a href="javascript:void(0)"><i class="fa fa-picture-o"></i> <span>Quản lý media</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/access/members" href="{{ url('/admin/access/members') }}"><i class="fa fa-list-ol"></i> Danh sách</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/access/members/create" href="{{ url('/admin/access/members/create') }}"><i class="fa fa-plus"></i> Thêm mới</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/photos" href="{{ url('/admin/access/media/photos') }}"><i class="fa fa-list-ol"></i> Album ảnh</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/videos" href="{{ url('/admin/access/media/videos') }}"><i class="fa fa-list-ol"></i> Video</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/partner-logos" href="{{ url('/admin/access/media/partner-logos') }}"><i class="fa fa-list-ol"></i> Logo đối tác</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/slides" href="{{ url('/admin/access/media/slides') }}"><i class="fa fa-list-ol"></i> Slide trang chủ</a></li>
             </ul>
         </li>
-
-        <li><a data-route="/admin/access/statistical" href="{{ url('/admin/access/statistical') }}"><i class="fa fa-bar-chart"></i> <span>Thống kê số lượt bình chọn</span></a></li>
-
-        <li><a data-route="/admin/access/history" href="{{ url('/admin/access/history') }}"><i class="fa fa-history"></i> <span>Xem lịch sử bình chọn</span></a></li> -->
 
         @superadmin
         <li class="treeview">
@@ -77,17 +63,6 @@
         @end
 
         <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-info-circle"></i> <span>Cấu hình chung</span></a></li>
-
-        <!-- <li class="treeview">
-            <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý user</span>
-                <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/access/users" href="{{ url('/admin/access/users') }}"><i class="fa fa-list-ol"></i> Danh sách</a></li>
-            </ul>
-        </li> -->
         
       </ul>
       <!-- /.sidebar-menu -->

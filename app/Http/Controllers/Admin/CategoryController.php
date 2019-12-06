@@ -40,8 +40,14 @@ class CategoryController extends Controller
 
     public function getAllParentCates(Request $request)
     {
-        $categories = Category::orderBy('order', 'asc')->get();
-        $categoriesPaged = Util::buildArray($categories);
+        $ids = [];
+        if (isset($request->ids)) {
+            $ids = explode(',', $request->ids);
+            $categoriesPaged = Category::whereIn('id', $ids)->get();
+        } else {
+            $categories = Category::orderBy('order', 'asc')->get();
+            $categoriesPaged = Util::buildArray($categories);
+        }
         if ($categoriesPaged) {
             return Response::json(['status' => true, 'data' => $categoriesPaged]);
         }

@@ -19,6 +19,7 @@ class Setting extends Model
         'address',
         'work_time',
         'logo',
+        'partner_logos',
         'seo_title',
         'seo_desc',
         'seo_keyword'

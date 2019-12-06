@@ -73,23 +73,6 @@
             }
         }
 
-        $scope.previousPage = function () {
-            $scope.pageNumber -= 1;
-            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
-        }
-
-        $scope.nextPage = function () {
-            $scope.pageNumber += 1;
-            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
-        }
-
-        $scope.range = function(min, max, step) {
-            step = step || 1;
-            var input = [];
-            for (var i = min; i <= max; i += step) input.push(i);
-            return input;
-        };
-
         $scope.process = function (type) {
             
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
