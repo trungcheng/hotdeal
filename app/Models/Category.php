@@ -25,11 +25,17 @@ class Category extends Model
         'slug',
         'image',
         'status',
-        'order'
+        'order',
+        'is_home',
+        'layout'
     ];
 
     public function user() {
-    	return $this->hasMany('App\Models\User', 'cat_id' , 'id');
+    	return $this->hasMany('App\Models\User', 'user_id' , 'id');
+    }
+
+    public function article() {
+    	return $this->hasMany('App\Models\Article', 'cat_id' , 'id');
     }
 
     public static $rules = [

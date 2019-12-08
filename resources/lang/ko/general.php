@@ -43,6 +43,7 @@ return [
         'invalide_email' => '유효하지 않은 이메일을 보내!',
         'security_incorrect' => '보안 코드가 올바르지 않습니다!'
     ],
-    'album_photo' => '사진첩'
+    'album_photo' => '사진첩',
+    'designed_by' => '에 의해 설계된'
 
 ];

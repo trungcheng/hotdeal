@@ -74,6 +74,20 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label>Hiển thị lên trang chủ</label>
+                                    <select class="form-control status" name="is_home">
+                                        <option value="0">Không</option>
+                                        <option value="1">Có</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dạng hiển thị</label>
+                                    <select class="form-control status" name="layout">
+                                        <option value="1">Slide ngang</option>
+                                        <option value="2">Tin tức</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select class="form-control status" name="status">
                                         <option value="1">Hoạt động</option>

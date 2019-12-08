@@ -75,6 +75,20 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label>Hiển thị lên trang chủ</label>
+                                    <select class="form-control status" name="is_home">
+                                        <option {{ ($category['is_home'] == 0) ? 'selected' : '' }} value="0">Không</option>
+                                        <option {{ ($category['is_home'] == 1) ? 'selected' : '' }} value="1">Có</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dạng hiển thị</label>
+                                    <select class="form-control status" name="layout">
+                                        <option {{ ($category['layout'] == 1) ? 'selected' : '' }} value="1">Slide ngang</option>
+                                        <option {{ ($category['layout'] == 2) ? 'selected' : '' }} value="2">Tin tức</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select class="form-control status" name="status">
                                         <option {{ ($category['status'] == 1) ? 'selected' : '' }} value="1">Hoạt động</option>

@@ -38,6 +38,7 @@
 @stop
 
 @section('content')
+    @if (count($slides) > 0)
     <div class="slider_w">
         <div id="carousel_pri" class="carousel slide carousel-fade" data-ride="carousel">
             <!-- Wrapper for slides -->
@@ -63,6 +64,8 @@
             </a>
         </div>
     </div>
+    @endif
+
     <div class="slg_taseco">
         <div class="w_gr slg_tasecow">
             <div id="owl_slgtaseco" class="owl-carousel owl-theme">
@@ -120,90 +123,103 @@
             </div>-->
         </div>
     </div>
-    <div class="fie_w">
-        <div class="w_gr">
-            <div class="fie_top">
-                <h1>{{ $lvDautu->getTranslation(app()->getLocale())->name }}</h1>
-            </div>
-            <div id="owl_fie" class="owl-carousel owl-theme">
-                @foreach ($childs as $child)
-                <div class="item">
-                    <div class="thumbnail">
-                        <a href="{{ route('detail', ['slug' => $child->slug]) }}" class="thumbnail_img">
-                            <img src="{{ $child->image }}" alt="{{ $child->name }}">
-                        </a>
-                        <div class="caption">
-                            <h3><a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a></h3>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <div class="box_news2303">
-        <div class="w_gr box_news2303w clearfix">
-            <div class="box_newsw">
-                <div class="box_newsw1">
-                    <div class="head_news_2013">
-                        <h2><a href="#">{{ $ttSukien->getTranslation(app()->getLocale())->name }}</a></h2>
-                    </div>
-                    <div class="hotsiteleft">
-                        <a class="thumbnail" href="{{ route('detail-article', ['parent' => $firstCate->slug, 'slug' => $hotNew->slug]) }}">
-                            <img src="{{ $hotNew->image }}">
-                        </a>
-                        <h2>
-                            <a id="title" href="{{ route('detail-article', ['parent' => $firstCate->slug, 'slug' => $hotNew->slug]) }}">{{ $hotNew->getTranslation(app()->getLocale())->title }}</a>
-                        </h2>
-                        <h3 id="intro">{!! $hotNew->getTranslation(app()->getLocale())->intro !!}</h3>
-                    </div>
-                </div>
 
-                <div class="bnews_bootstrap">
-                    <div class="panel panel-success">
-                        <div class="panel-body">
-                            <ul class="news_tb news_tded">
-                                @foreach ($listNews as $new)
-                                <li class="news-item">
-                                    <a href="{{ route('detail-article', ['parent' => $new->category->slug, 'slug' => $new->slug]) }}" class="news_item_img">
-                                        <img src="{{ $new->image }}" />
-                                    </a>
-                                    <a href="{{ route('detail-article', ['parent' => $new->category->slug, 'slug' => $new->slug]) }}" class="news_item_txt">
-                                        {{ $new->getTranslation(app()->getLocale())->title }}
-                                        <!--<span class="date_newsty"><span class="date_newsty">(10/09/2019)</span></span>-->
-                                    </a>
-                                </li>
+    @if (count($cateTypes) > 0)
+        @foreach ($cateTypes as $cate)
+            @if ($cate->layout == 1)
+                <div class="fie_w">
+                    <div class="w_gr">
+                        <div class="fie_top">
+                            <h1>{{ $cate->getTranslation(app()->getLocale())->name }}</h1>
+                        </div>
+                        @if (count($cate['childCates']) > 0)
+                            <div id="owl_fie" class="owl-carousel owl-theme">
+                                @foreach ($cate['childCates'] as $child)
+                                    <div class="item">
+                                        <div class="thumbnail">
+                                            <a href="{{ route('detail', ['slug' => $child->slug]) }}" class="thumbnail_img">
+                                                <img src="{{ $child->image }}" alt="{{ $child->name }}">
+                                            </a>
+                                            <div class="caption">
+                                                <h3><a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a></h3>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endforeach
-                            </ul>
-                        </div>
-                        <div class="panel-footer">
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            @else
+                <div class="box_news2303">
+                    <div class="w_gr box_news2303w clearfix">
+                        <div class="box_newsw">
+                            <div class="box_newsw1">
+                                <div class="head_news_2013">
+                                    <h2><a href="#">{{ $cate->getTranslation(app()->getLocale())->name }}</a></h2>
+                                </div>
+                                @if ($cate['hotNew'] && $cate['firstCate'])
+                                <div class="hotsiteleft">
+                                    <a class="thumbnail" href="{{ route('detail-article', ['parent' => $cate['firstCate']->slug, 'slug' => $cate['hotNew']->slug]) }}">
+                                        <img src="{{ $cate['hotNew']->image }}">
+                                    </a>
+                                    <h2>
+                                        <a class="title" href="{{ route('detail-article', ['parent' => $cate['firstCate']->slug, 'slug' => $cate['hotNew']->slug]) }}">{{ $cate['hotNew']->getTranslation(app()->getLocale())->title }}</a>
+                                    </h2>
+                                    <h3 class="intro">{!! $cate['hotNew']->getTranslation(app()->getLocale())->intro !!}</h3>
+                                </div>
+                                @endif
+                            </div>
+                            @if (count($cate['listNews']) > 0)
+                            <div class="bnews_bootstrap">
+                                <div class="panel panel-success">
+                                    <div class="panel-body">
+                                        <ul class="news_tb news_tded">
+                                            @foreach ($cate['listNews'] as $new)
+                                            <li class="news-item">
+                                                <a href="{{ route('detail-article', ['parent' => $new->category->slug, 'slug' => $new->slug]) }}" class="news_item_img">
+                                                    <img src="{{ $new->image }}" />
+                                                </a>
+                                                <a href="{{ route('detail-article', ['parent' => $new->category->slug, 'slug' => $new->slug]) }}" class="news_item_txt">
+                                                    {{ $new->getTranslation(app()->getLocale())->title }}
+                                                    <!--<span class="date_newsty"><span class="date_newsty">(10/09/2019)</span></span>-->
+                                                </a>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="panel-footer">
 
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+                        </div>
+                        <div class="box_news2303_qc">
+                            <a href="{{ route('detail', ['slug' => $tvHinhanh->slug]) }}" class="thumbnail">
+                                <img src="https://taseco.vn/upload/grouptintuc/1543474581video-1.gif" alt="Thư viện hình ảnh" class="img-responsive">
+                                <span class="box_news2303_tlt">{{ $tvHinhanh->getTranslation(app()->getLocale())->name }}</span>
+                            </a>
+                            <a href="{{ route('detail', ['slug' => $video->slug]) }}" class="thumbnail">
+                                <img src="https://taseco.vn/upload/grouptintuc/1543474825avarta video.jpg" alt="Video" class="img-responsive">
+                                <span class="box_news2303_tlt">{{ $video->getTranslation(app()->getLocale())->name }}</span>
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="box_news2303_qc">
-                <a href="{{ route('detail', ['slug' => $tvHinhanh->slug]) }}" class="thumbnail">
-                    <img src="https://taseco.vn/upload/grouptintuc/1543474581video-1.gif" alt="Thư viện hình ảnh" class="img-responsive">
-                    <span class="box_news2303_tlt">{{ $tvHinhanh->getTranslation(app()->getLocale())->name }}</span>
-                </a>
-                <a href="{{ route('detail', ['slug' => $video->slug]) }}" class="thumbnail">
-                    <img src="https://taseco.vn/upload/grouptintuc/1543474825avarta video.jpg" alt="Video" class="img-responsive">
-                    <span class="box_news2303_tlt">{{ $video->getTranslation(app()->getLocale())->name }}</span>
-                </a>
-            </div>
-        </div>
-    </div>
+            @endif
+        @endforeach
+    @endif
 @stop
 
 @section('pageJs')
     <script type="text/javascript">
-        var title = $('#title').text();
+        var title = $('.title').text();
         title = trimText(title, 20);
-        var intro = $('#intro').text();
+        var intro = $('.intro').text();
         intro = trimText(intro, 40);
-        $('#title').text(title);
-        $('#intro').text(intro);
+        $('.title').text(title);
+        $('.intro').text(intro);
 
         function trimText(str ,wordCount) {
             var strArray = str.split(' ');

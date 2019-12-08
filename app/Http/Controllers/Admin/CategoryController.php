@@ -155,16 +155,24 @@ class CategoryController extends Controller
         if ($cateId && !is_null($cateId)) {
             $cate = Category::find($cateId);
             if ($cate) {
-                // remove all relate section
-                User::where('cat_id', $cateId)->update(['cat_id' => 0]);
-                // remove itself
-                $cate->delete();
+                if (!in_array($cate->id, [19,20])) {
+                    // remove all relate section
+                    User::where('cat_id', $cateId)->update(['cat_id' => 0]);
+                    // remove itself
+                    $cate->delete();
 
-                return Response::json([
-                    'status' => true, 
-                    'message' => 'Xóa danh mục thành công', 
-                    'type' => 'success'
-                ]);
+                    return Response::json([
+                        'status' => true, 
+                        'message' => 'Xóa danh mục thành công', 
+                        'type' => 'success'
+                    ]);
+                } else {
+                    return Response::json([
+                        'status' => false, 
+                        'message' => 'Không thể xóa danh mục này', 
+                        'type' => 'error'
+                    ]);
+                }
             }
 
             return Response::json([

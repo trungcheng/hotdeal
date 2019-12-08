@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-12-07 01:21:53
+Date: 2019-12-08 23:58:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,7 +54,7 @@ INSERT INTO `articles` VALUES ('7', '1', null, 'phoi-canh-alacarte-ha-long-bay',
 INSERT INTO `articles` VALUES ('8', '1', null, 'khu-dau-tu-det-may-nam-dinh', null, null, 'https://taseco.vn/upload/slideshow/1542179387NĐ3.jpg', null, null, '0', '0', '1', '0', 'slide', null, null, null, '2019-12-06 21:46:48', '2019-12-06 21:46:48');
 INSERT INTO `articles` VALUES ('9', '1', null, 'lucky-restaurant-nha-ga-t2-cang-hang-khong-quoc-te-noi-bai', null, null, 'https://taseco.vn/upload/slideshow/146501482412.jpg', null, null, '0', '0', '1', '0', 'slide', null, null, null, '2019-12-06 21:47:46', '2019-12-06 21:47:46');
 INSERT INTO `articles` VALUES ('10', '1', null, 'cang-hang-khong-quoc-te-da-nang', null, null, 'https://taseco.vn/upload/slideshow/1519890751san bay aht 2.jpg', null, null, '0', '0', '1', '0', 'slide', null, null, null, '2019-12-06 21:48:57', '2019-12-06 21:48:57');
-INSERT INTO `articles` VALUES ('11', '1', null, 'vinacs-noi-bai', null, null, 'https://taseco.vn/upload/slideshow/1505356866vinacs1.jpg', null, null, '0', '0', '1', '0', 'slide', null, null, null, '2019-12-06 21:49:43', '2019-12-06 21:49:43');
+INSERT INTO `articles` VALUES ('11', '1', null, 'chung-cu-imperia-garden-203-nguyen-huy-tuong', null, null, '/backend/uploads/images/Du%20an/02Imperia.jpg', null, null, '0', '0', '1', '0', 'slide', null, null, null, '2019-12-06 21:49:43', '2019-12-08 14:40:30');
 INSERT INTO `articles` VALUES ('12', '1', null, 'ha-long-2019', null, null, 'https://taseco.vn/upload/album/thumb/15522931074.jpg', 'https://taseco.vn/upload/album/thumb/15522931074.jpg,https://taseco.vn/upload/album/15522931151.jpg,https://taseco.vn/upload/album/15522931202.jpg,https://taseco.vn/upload/album/155229312813.jpg,https://taseco.vn/upload/album/15522931343.jpg,https://taseco.vn/upload/album/15522931394.jpg,https://taseco.vn/upload/album/15522931578.jpg,https://taseco.vn/upload/album/155229316210.jpg,https://taseco.vn/upload/album/15522931679.jpg', null, '0', '0', '1', '19', null, null, null, null, '2019-12-06 22:52:58', '2019-12-06 22:52:58');
 INSERT INTO `articles` VALUES ('13', '1', null, 'ngay-phu-nu-viet-nam-20-10-2019', null, null, 'https://taseco.vn/upload/album/thumb/154287232012.jpg', 'https://taseco.vn/upload/album/15428723271.jpg,https://taseco.vn/upload/album/15428723312.jpg,https://taseco.vn/upload/album/15428723363.jpg,https://taseco.vn/upload/album/15428723455.jpg,https://taseco.vn/upload/album/154287237611.jpg,https://taseco.vn/upload/album/154287238713.jpg', null, '0', '0', '1', '19', null, null, null, null, '2019-12-06 22:57:12', '2019-12-06 22:57:12');
 INSERT INTO `articles` VALUES ('14', '1', null, 'khu-do-thi-ket-hop-cong-vien-cay-xanh-video-2', null, null, 'https://taseco.vn/upload/video/1466413720video.jpg', null, 'https://www.youtube.com/watch?v=XWoVinHdwq0', '0', '0', '1', '20', null, null, null, null, '2019-12-06 23:46:21', '2019-12-06 23:46:21');
@@ -98,8 +98,8 @@ INSERT INTO `article_translations` VALUES ('17', '9', 'Lucky Restaurant nhà ga 
 INSERT INTO `article_translations` VALUES ('18', '9', '럭키 레스토랑 터미널 T2-노이 바이 국제 공항', '', '', 'ko');
 INSERT INTO `article_translations` VALUES ('19', '10', 'Cảng Hàng Không Quốc Tế Đà Nẵng', '', '', 'vi');
 INSERT INTO `article_translations` VALUES ('20', '10', '다낭 국제 공항', '', '', 'ko');
-INSERT INTO `article_translations` VALUES ('21', '11', 'VINACS NỘI BÀI', '', '', 'vi');
-INSERT INTO `article_translations` VALUES ('22', '11', 'VINACS 노이 바이', '', '', 'ko');
+INSERT INTO `article_translations` VALUES ('21', '11', 'Chung cư Imperia Garden, 203 Nguyễn Huy Tưởng', '', '', 'vi');
+INSERT INTO `article_translations` VALUES ('22', '11', 'Imperia Garden', '', '', 'ko');
 INSERT INTO `article_translations` VALUES ('23', '12', 'Hạ Long 2019', '', '', 'vi');
 INSERT INTO `article_translations` VALUES ('24', '12', '하롱 2019', '', '', 'ko');
 INSERT INTO `article_translations` VALUES ('25', '13', 'Ngày Phụ Nữ Việt Nam 20/10/2019', '', '', 'vi');
@@ -122,6 +122,8 @@ CREATE TABLE `categories` (
   `image` varchar(255) DEFAULT NULL,
   `status` tinyint(1) DEFAULT '1',
   `order` int(11) DEFAULT NULL,
+  `is_home` tinyint(1) DEFAULT '1',
+  `layout` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) USING BTREE
@@ -130,31 +132,31 @@ CREATE TABLE `categories` (
 -- ----------------------------
 -- Records of categories
 -- ----------------------------
-INSERT INTO `categories` VALUES ('1', '3', 'Triết lý kinh doanh', null, 'triet-ly-kinh-doanh', null, '1', '2', '2019-04-01 09:21:04', '2019-12-03 21:00:09');
-INSERT INTO `categories` VALUES ('2', '3', 'Tổng quan', null, 'tong-quan', null, '1', '1', '2019-04-02 05:02:08', '2019-12-03 20:59:43');
-INSERT INTO `categories` VALUES ('3', '0', 'Giới thiệu', null, 'gioi-thieu', null, '1', '1', '2019-04-18 16:02:05', '2019-12-03 20:53:05');
-INSERT INTO `categories` VALUES ('4', '6', 'Nộp hồ sơ trực tuyến', null, 'nop-ho-so-truc-tuyen', null, '1', '2', '2019-04-23 10:32:59', '2019-12-03 20:45:42');
-INSERT INTO `categories` VALUES ('5', '6', 'Thông tin tuyển dụng', null, 'thong-tin-tuyen-dung', null, '1', '1', '2019-08-16 01:04:37', '2019-12-03 20:45:14');
-INSERT INTO `categories` VALUES ('6', '0', 'Tuyển dụng', null, 'tuyen-dung', null, '1', '4', '2019-08-22 16:43:02', '2019-12-03 20:44:50');
-INSERT INTO `categories` VALUES ('7', '12', 'Đầu tư tài chính', null, 'dau-tu-tai-chinh', '/backend/uploads/images/1459332897investment.jpg', '1', '3', '2019-08-22 16:43:17', '2019-12-04 14:27:44');
-INSERT INTO `categories` VALUES ('8', '12', 'DV phi hàng không, khách sạn', null, 'dv-phi-hang-khong-khach-san', '/backend/uploads/images/152466833814592223880814-AJS-A-La-Carte-Danang-4549.jpg', '1', '2', '2019-08-22 16:43:30', '2019-12-04 14:27:29');
-INSERT INTO `categories` VALUES ('9', '11', 'Quản lý sau đầu tư', 'Bên cạnh lĩnh vực kinh doanh, đầu tư phát triển các dự án bất động sản, các đơn vị thành viên của Taseco còn là đơn vị chuyên nghiệp trong lĩnh vực quản lý các dự án sau đầu tư. Chúng tôi cung cấp một danh mục đa dạng các dịch vụ quản lý bất động sản thương mại như: quản lý chung cư, văn phòng, trung tâm thương mại, khách sạn, quản lý các dự án; kinh doanh dịch vụ nhà hàng, phòng tập Gym và bể...', 'quan-ly-sau-dau-tu', '/backend/uploads/images/1525764177images.jpg', '1', '2', '2019-08-22 16:43:42', '2019-12-04 15:14:29');
-INSERT INTO `categories` VALUES ('10', '11', 'Các dự án đầu tư', 'Hoạt động sâu rộng trên mọi lĩnh vực của thị trường bất động sản giúp chúng tôi có được lợi thế đặc biệt trong lĩnh vực đầu tư, xây dựng các dự án bất động sản. Taseco tập hợp đội ngũ các chuyên gia có kinh nghiệm nhiều năm cùng tiềm lực mạnh về tài chính, đã và đang liên tục đầu tư và hoàn thiện các dự án bất động sản có quy mô lớn, trải dài trên khắp các tỉnh thành trên cả...', 'cac-du-an-dau-tu', '/backend/uploads/images/15256661282.jpg', '1', '1', '2019-08-23 03:16:45', '2019-12-04 15:14:14');
-INSERT INTO `categories` VALUES ('11', '12', 'Kinh doanh Bất động sản', null, 'kinh-doanh-bat-dong-san', 'https://taseco.vn/upload/grouptintuc/14661522334.jpg', '1', '1', '2019-08-23 03:17:05', '2019-12-07 00:25:45');
-INSERT INTO `categories` VALUES ('12', '0', 'Lĩnh vực đầu tư', null, 'linh-vuc-kinh-doanh', 'https://taseco.vn/upload/grouptintuc/14661522334.jpg', '1', '3', '2019-08-23 03:17:22', '2019-12-07 00:28:00');
-INSERT INTO `categories` VALUES ('13', '16', 'Tin liên quan', null, 'tin-lien-quan', null, '1', '3', '2019-08-23 03:19:15', '2019-12-03 20:38:11');
-INSERT INTO `categories` VALUES ('14', '16', 'Báo chí và Taseco', null, 'bao-chi-va-taseco', null, '1', '2', '2019-08-23 03:19:42', '2019-12-03 20:37:41');
-INSERT INTO `categories` VALUES ('15', '16', 'Tin Taseco', null, 'tin-taseco', 'https://taseco.vn/upload/grouptintuc/15197165931.jpg', '1', '1', '2019-08-23 03:20:04', '2019-12-07 00:06:33');
-INSERT INTO `categories` VALUES ('16', '0', 'Tin tức - Sự kiện', null, 'tin-tuc-su-kien', null, '1', '2', '2019-08-23 03:20:41', '2019-12-03 20:34:08');
-INSERT INTO `categories` VALUES ('17', '3', 'Cơ cấu tổ chức', null, 'co-cau-to-chuc', null, '1', '3', '2019-12-03 21:00:32', '2019-12-03 21:00:32');
-INSERT INTO `categories` VALUES ('18', '3', 'Thành tích và giải thưởng', null, 'thanh-tich-va-giai-thuong', null, '1', '4', '2019-12-03 21:00:50', '2019-12-03 21:00:50');
-INSERT INTO `categories` VALUES ('19', '3', 'Thư viện hình ảnh', null, 'thu-vien-hinh-anh', null, '1', '5', '2019-12-03 21:01:11', '2019-12-03 21:01:11');
-INSERT INTO `categories` VALUES ('20', '3', 'Video', null, 'video', null, '1', '6', '2019-12-03 21:01:28', '2019-12-03 21:01:28');
-INSERT INTO `categories` VALUES ('21', '8', 'Dịch vụ phi hàng không tại các sân bay', 'Dịch vụ tại các sân bay quốc tế là lĩnh vực kinh doanh truyền thống của Taseco. Quan điểm kinh doanh xuyên suốt của chúng tôi là mang tới cho khách hàng các sản phẩm, dịch vụ phong phú, đặc sắc, chất lượng tốt, thực sự làm hài lòng khách hàng. Nhờ đó, chúng tôi đã nhanh chóng được ghi nhận là đơn vị kinh doanh có uy tín, được khách hàng tin tưởng, yêu mến. Đến nay thương hiệu Lucky của chúng tôi đã...', 'dich-vu-phi-hang-khong-tai-cac-san-bay', '/backend/uploads/images/1525763883bach%20hoa%20luu%20niem.jpg', '1', '1', '2019-12-03 21:13:23', '2019-12-04 15:15:18');
-INSERT INTO `categories` VALUES ('22', '8', 'Kinh doanh suất ăn hàng không', 'Taseco đã mở rộng ngành nghề kinh doanh, tham gia vào lĩnh vực cung cấp suất ăn hàng không đầy triển vọng và quyết định đầu tư vào công ty liên kết có tên gọi Công ty CP Dịch vụ suất ăn hàng không Việt Nam (Vinacs) từ năm 2015.', 'kinh-doanh-suat-an-hang-khong', '/backend/uploads/images/1534132364VinaCS_1422489.jpg', '1', '2', '2019-12-03 21:13:43', '2019-12-04 15:15:49');
-INSERT INTO `categories` VALUES ('23', '8', 'Kinh doanh dịch vụ khách sạn', 'Sau khi tích lũy bề dày kinh nghiệm và gặt hái được thành công từ các công trình, dự án bất động sản tiêu biểu, Taseco đã mở rộng lĩnh vực hoạt động, không chỉ dừng lại ở việc đầu tư, xây dựng các công trình khách sạn cao cấp, đạt tiêu chuẩn quốc tế, mà đã quyết định đầu tư nghiêm túc và chuyên nghiệp trong lĩnh vực kinh doanh, quản lý và vận hành các khách sạn do chính Taseco làm chủ đầu tư.', 'kinh-doanh-dich-vu-khach-san', '/backend/uploads/images/152466833814592223880814-AJS-A-La-Carte-Danang-4549.jpg', '1', '3', '2019-12-03 21:14:05', '2019-12-04 15:16:16');
-INSERT INTO `categories` VALUES ('24', '7', 'Đầu tư hạ tầng sân bay', 'Hoạt động đầu tư hạ tầng nhà ga hàng không của chúng tôi cũng đã có dấu ấn đáng kể. Công trình tiêu biểu là Nhà ga quốc tế tại Sân bay quốc tế Đà Nẵng hiện đại, với chất lượng bậc nhất so với các nhà ga hàng không khác tính đến thời điểm này, được khánh thành, đưa vào hoạt động từ tháng 5/2017 sau 18 tháng thi công. Nhà ga là một trong những công trình trọng điểm phục vụ tuần lễ cấp...', 'dau-tu-ha-tang-san-bay', '/backend/uploads/images/1525763723avart.jpg', '1', '1', '2019-12-03 21:14:44', '2019-12-04 15:16:54');
-INSERT INTO `categories` VALUES ('25', '7', 'Các dịch vụ phụ trợ cho kinh doanh bất động sản', 'Taseco quy tụ một đội ngũ quản lý có nhiều năm kinh nghiệm trong lĩnh vực đầu tư tài chính, quản lý các hoạt động kinh doanh có quy mô lớn, nhằm phát triển và khai thác các tiềm năng dài hạn trong lĩnh vực kinh doanh bất động sản. Hoạt động đầu tư tài chính nói chung và đầu tư vào các công ty bất động sản nói riêng trong thời gian qua đã giúp Taseco tận dụng được nhiều cơ hội và tạo ra sự phát...', 'cac-dich-vu-phu-tro-cho-kinh-doanh-bat-dong-san', '/backend/uploads/images/1525763803Commitment_employees.jpg', '1', '2', '2019-12-03 21:15:03', '2019-12-04 15:17:14');
+INSERT INTO `categories` VALUES ('1', '3', 'Triết lý kinh doanh', null, 'triet-ly-kinh-doanh', null, '1', '2', '0', '1', '2019-04-01 09:21:04', '2019-12-03 21:00:09');
+INSERT INTO `categories` VALUES ('2', '3', 'Tổng quan', null, 'tong-quan', null, '1', '1', '0', '1', '2019-04-02 05:02:08', '2019-12-03 20:59:43');
+INSERT INTO `categories` VALUES ('3', '0', 'Giới thiệu', null, 'gioi-thieu', null, '1', '1', '0', '1', '2019-04-18 16:02:05', '2019-12-03 20:53:05');
+INSERT INTO `categories` VALUES ('4', '6', 'Nộp hồ sơ trực tuyến', null, 'nop-ho-so-truc-tuyen', null, '1', '2', '0', '1', '2019-04-23 10:32:59', '2019-12-03 20:45:42');
+INSERT INTO `categories` VALUES ('5', '6', 'Thông tin tuyển dụng', null, 'thong-tin-tuyen-dung', null, '1', '1', '0', '1', '2019-08-16 01:04:37', '2019-12-03 20:45:14');
+INSERT INTO `categories` VALUES ('6', '0', 'Tuyển dụng', null, 'tuyen-dung', null, '1', '4', '0', '1', '2019-08-22 16:43:02', '2019-12-03 20:44:50');
+INSERT INTO `categories` VALUES ('7', '12', 'Đầu tư tài chính', null, 'dau-tu-tai-chinh', '/backend/uploads/images/1459332897investment.jpg', '1', '3', '1', '1', '2019-08-22 16:43:17', '2019-12-04 14:27:44');
+INSERT INTO `categories` VALUES ('8', '12', 'DV phi hàng không, khách sạn', null, 'dv-phi-hang-khong-khach-san', '/backend/uploads/images/152466833814592223880814-AJS-A-La-Carte-Danang-4549.jpg', '1', '2', '1', '1', '2019-08-22 16:43:30', '2019-12-04 14:27:29');
+INSERT INTO `categories` VALUES ('9', '11', 'Quản lý sau đầu tư', 'Bên cạnh lĩnh vực kinh doanh, đầu tư phát triển các dự án bất động sản, các đơn vị thành viên của Taseco còn là đơn vị chuyên nghiệp trong lĩnh vực quản lý các dự án sau đầu tư. Chúng tôi cung cấp một danh mục đa dạng các dịch vụ quản lý bất động sản thương mại như: quản lý chung cư, văn phòng, trung tâm thương mại, khách sạn, quản lý các dự án; kinh doanh dịch vụ nhà hàng, phòng tập Gym và bể...', 'quan-ly-sau-dau-tu', '/backend/uploads/images/1525764177images.jpg', '1', '2', '0', '1', '2019-08-22 16:43:42', '2019-12-04 15:14:29');
+INSERT INTO `categories` VALUES ('10', '11', 'Các dự án đầu tư', 'Hoạt động sâu rộng trên mọi lĩnh vực của thị trường bất động sản giúp chúng tôi có được lợi thế đặc biệt trong lĩnh vực đầu tư, xây dựng các dự án bất động sản. Taseco tập hợp đội ngũ các chuyên gia có kinh nghiệm nhiều năm cùng tiềm lực mạnh về tài chính, đã và đang liên tục đầu tư và hoàn thiện các dự án bất động sản có quy mô lớn, trải dài trên khắp các tỉnh thành trên cả...', 'cac-du-an-dau-tu', '/backend/uploads/images/15256661282.jpg', '1', '1', '0', '1', '2019-08-23 03:16:45', '2019-12-04 15:14:14');
+INSERT INTO `categories` VALUES ('11', '12', 'Kinh doanh Bất động sản', null, 'kinh-doanh-bat-dong-san', 'https://taseco.vn/upload/grouptintuc/14661522334.jpg', '1', '1', '1', '1', '2019-08-23 03:17:05', '2019-12-07 00:25:45');
+INSERT INTO `categories` VALUES ('12', '0', 'Lĩnh vực kinh doanh', null, 'linh-vuc-kinh-doanh', 'https://taseco.vn/upload/grouptintuc/14661522334.jpg', '1', '3', '1', '1', '2019-08-23 03:17:22', '2019-12-08 20:47:06');
+INSERT INTO `categories` VALUES ('13', '16', 'Tin liên quan', null, 'tin-lien-quan', null, '1', '3', '1', '1', '2019-08-23 03:19:15', '2019-12-03 20:38:11');
+INSERT INTO `categories` VALUES ('14', '16', 'Báo chí và Taseco', null, 'bao-chi-va-taseco', null, '1', '2', '1', '1', '2019-08-23 03:19:42', '2019-12-03 20:37:41');
+INSERT INTO `categories` VALUES ('15', '16', 'Tin Taseco', null, 'tin-taseco', 'https://taseco.vn/upload/grouptintuc/15197165931.jpg', '1', '1', '1', '1', '2019-08-23 03:20:04', '2019-12-07 00:06:33');
+INSERT INTO `categories` VALUES ('16', '0', 'Tin tức - Sự kiện', null, 'tin-tuc-su-kien', null, '1', '2', '1', '2', '2019-08-23 03:20:41', '2019-12-08 20:47:26');
+INSERT INTO `categories` VALUES ('17', '3', 'Cơ cấu tổ chức', null, 'co-cau-to-chuc', null, '1', '3', '0', '1', '2019-12-03 21:00:32', '2019-12-03 21:00:32');
+INSERT INTO `categories` VALUES ('18', '3', 'Thành tích và giải thưởng', null, 'thanh-tich-va-giai-thuong', null, '1', '4', '0', '1', '2019-12-03 21:00:50', '2019-12-03 21:00:50');
+INSERT INTO `categories` VALUES ('19', '3', 'Thư viện hình ảnh', null, 'thu-vien-hinh-anh', null, '1', '5', '1', '1', '2019-12-03 21:01:11', '2019-12-08 20:12:53');
+INSERT INTO `categories` VALUES ('20', '3', 'Video', null, 'video', null, '1', '6', '1', '1', '2019-12-03 21:01:28', '2019-12-08 20:07:41');
+INSERT INTO `categories` VALUES ('21', '8', 'Dịch vụ phi hàng không tại các sân bay', 'Dịch vụ tại các sân bay quốc tế là lĩnh vực kinh doanh truyền thống của Taseco. Quan điểm kinh doanh xuyên suốt của chúng tôi là mang tới cho khách hàng các sản phẩm, dịch vụ phong phú, đặc sắc, chất lượng tốt, thực sự làm hài lòng khách hàng. Nhờ đó, chúng tôi đã nhanh chóng được ghi nhận là đơn vị kinh doanh có uy tín, được khách hàng tin tưởng, yêu mến. Đến nay thương hiệu Lucky của chúng tôi đã...', 'dich-vu-phi-hang-khong-tai-cac-san-bay', '/backend/uploads/images/1525763883bach%20hoa%20luu%20niem.jpg', '1', '1', '0', '1', '2019-12-03 21:13:23', '2019-12-04 15:15:18');
+INSERT INTO `categories` VALUES ('22', '8', 'Kinh doanh suất ăn hàng không', 'Taseco đã mở rộng ngành nghề kinh doanh, tham gia vào lĩnh vực cung cấp suất ăn hàng không đầy triển vọng và quyết định đầu tư vào công ty liên kết có tên gọi Công ty CP Dịch vụ suất ăn hàng không Việt Nam (Vinacs) từ năm 2015.', 'kinh-doanh-suat-an-hang-khong', '/backend/uploads/images/1534132364VinaCS_1422489.jpg', '1', '2', '0', '1', '2019-12-03 21:13:43', '2019-12-04 15:15:49');
+INSERT INTO `categories` VALUES ('23', '8', 'Kinh doanh dịch vụ khách sạn', 'Sau khi tích lũy bề dày kinh nghiệm và gặt hái được thành công từ các công trình, dự án bất động sản tiêu biểu, Taseco đã mở rộng lĩnh vực hoạt động, không chỉ dừng lại ở việc đầu tư, xây dựng các công trình khách sạn cao cấp, đạt tiêu chuẩn quốc tế, mà đã quyết định đầu tư nghiêm túc và chuyên nghiệp trong lĩnh vực kinh doanh, quản lý và vận hành các khách sạn do chính Taseco làm chủ đầu tư.', 'kinh-doanh-dich-vu-khach-san', '/backend/uploads/images/152466833814592223880814-AJS-A-La-Carte-Danang-4549.jpg', '1', '3', '0', '1', '2019-12-03 21:14:05', '2019-12-04 15:16:16');
+INSERT INTO `categories` VALUES ('24', '12', 'Đầu tư hạ tầng sân bay', 'Hoạt động đầu tư hạ tầng nhà ga hàng không của chúng tôi cũng đã có dấu ấn đáng kể. Công trình tiêu biểu là Nhà ga quốc tế tại Sân bay quốc tế Đà Nẵng hiện đại, với chất lượng bậc nhất so với các nhà ga hàng không khác tính đến thời điểm này, được khánh thành, đưa vào hoạt động từ tháng 5/2017 sau 18 tháng thi công. Nhà ga là một trong những công trình trọng điểm phục vụ tuần lễ cấp...', 'dau-tu-he-thong-mang', '/backend/uploads/images/1525763723avart.jpg', '1', '4', '1', '1', '2019-12-03 21:14:44', '2019-12-08 14:42:57');
+INSERT INTO `categories` VALUES ('25', '7', 'Các dịch vụ phụ trợ cho kinh doanh bất động sản', 'Taseco quy tụ một đội ngũ quản lý có nhiều năm kinh nghiệm trong lĩnh vực đầu tư tài chính, quản lý các hoạt động kinh doanh có quy mô lớn, nhằm phát triển và khai thác các tiềm năng dài hạn trong lĩnh vực kinh doanh bất động sản. Hoạt động đầu tư tài chính nói chung và đầu tư vào các công ty bất động sản nói riêng trong thời gian qua đã giúp Taseco tận dụng được nhiều cơ hội và tạo ra sự phát...', 'cac-dich-vu-phu-tro-cho-kinh-doanh-bat-dong-san', '/backend/uploads/images/1525763803Commitment_employees.jpg', '1', '2', '0', '1', '2019-12-03 21:15:03', '2019-12-04 15:17:14');
 
 -- ----------------------------
 -- Table structure for category_translations
@@ -176,7 +178,7 @@ CREATE TABLE `category_translations` (
 -- Records of category_translations
 -- ----------------------------
 INSERT INTO `category_translations` VALUES ('1', '16', 'Tin tức - Sự kiện', '', 'vi');
-INSERT INTO `category_translations` VALUES ('2', '16', '\r\n뉴스-이벤트', '', 'ko');
+INSERT INTO `category_translations` VALUES ('2', '16', '뉴스-이벤트', '', 'ko');
 INSERT INTO `category_translations` VALUES ('3', '7', 'Đầu tư tài chính', '', 'vi');
 INSERT INTO `category_translations` VALUES ('4', '7', '금융 투자', '', 'ko');
 INSERT INTO `category_translations` VALUES ('5', '8', 'DV phi hàng không, khách sạn', '', 'vi');
@@ -202,7 +204,7 @@ INSERT INTO `category_translations` VALUES ('24', '18', '업적과 수상', '', 
 INSERT INTO `category_translations` VALUES ('25', '19', 'Thư viện hình ảnh', '', 'vi');
 INSERT INTO `category_translations` VALUES ('26', '19', '포토 갤러리', '', 'ko');
 INSERT INTO `category_translations` VALUES ('27', '20', 'Video', '', 'vi');
-INSERT INTO `category_translations` VALUES ('28', '20', '\r\n비디오', '', 'ko');
+INSERT INTO `category_translations` VALUES ('28', '20', '비디오', '', 'ko');
 INSERT INTO `category_translations` VALUES ('29', '3', 'Giới thiệu', '', 'vi');
 INSERT INTO `category_translations` VALUES ('30', '3', '\r\n소개', '', 'ko');
 INSERT INTO `category_translations` VALUES ('31', '5', 'Thông tin tuyển dụng', '', 'vi');
@@ -221,7 +223,7 @@ INSERT INTO `category_translations` VALUES ('43', '22', 'Kinh doanh suất ăn h
 INSERT INTO `category_translations` VALUES ('44', '22', '\r\n비즈니스 항공사 케이터링', 'Taseco는 사업을 확장하고 유망한 항공사 케이터링 사업을 시작했으며 Vietnam Catering Services Joint Stock Company (Vinacs)라는 제휴 회사에 투자하기로 결정했습니다. 2015 년부터.', 'ko');
 INSERT INTO `category_translations` VALUES ('45', '23', 'Kinh doanh dịch vụ khách sạn', 'Sau khi tích lũy bề dày kinh nghiệm và gặt hái được thành công từ các công trình, dự án bất động sản tiêu biểu, Taseco đã mở rộng lĩnh vực hoạt động, không chỉ dừng lại ở việc đầu tư, xây dựng các công trình khách sạn cao cấp, đạt tiêu chuẩn quốc tế, mà đã quyết định đầu tư nghiêm túc và chuyên nghiệp trong lĩnh vực kinh doanh, quản lý và vận hành các khách sạn do chính Taseco làm chủ đầu tư.', 'vi');
 INSERT INTO `category_translations` VALUES ('46', '23', '비즈니스 호텔 서비스', 'Taseco는 전형적인 부동산 프로젝트 및 프로젝트에서 얻은 경험과 성공을 바탕으로 사업을 투자 및 건설하는 것 이상으로 확장했습니다. Taseco 자체가 투자 한 호텔의 비즈니스, 관리 및 운영 분야에 진지하고 전문적으로 투자하기로 결정한 국제 표준에 부합하는 고급 호텔.', 'ko');
-INSERT INTO `category_translations` VALUES ('47', '24', 'Đầu tư hạ tầng sân bay', 'Hoạt động đầu tư hạ tầng nhà ga hàng không của chúng tôi cũng đã có dấu ấn đáng kể. Công trình tiêu biểu là Nhà ga quốc tế tại Sân bay quốc tế Đà Nẵng hiện đại, với chất lượng bậc nhất so với các nhà ga hàng không khác tính đến thời điểm này, được khánh thành, đưa vào hoạt động từ tháng 5/2017 sau 18 tháng thi công. Nhà ga là một trong những công trình trọng điểm phục vụ tuần lễ cấp...', 'vi');
+INSERT INTO `category_translations` VALUES ('47', '24', 'Đầu tư hệ thống mạng', 'Hoạt động đầu tư hạ tầng nhà ga hàng không của chúng tôi cũng đã có dấu ấn đáng kể. Công trình tiêu biểu là Nhà ga quốc tế tại Sân bay quốc tế Đà Nẵng hiện đại, với chất lượng bậc nhất so với các nhà ga hàng không khác tính đến thời điểm này, được khánh thành, đưa vào hoạt động từ tháng 5/2017 sau 18 tháng thi công. Nhà ga là một trong những công trình trọng điểm phục vụ tuần lễ cấp...', 'vi');
 INSERT INTO `category_translations` VALUES ('48', '24', '공항 인프라에 대한 투자', '우리 공항의 인프라에 투자하는 것도 큰 성과를 거두었습니다. 전형적인 프로젝트는 현대 다낭 국제 공항의 국제 터미널이며, 현재까지 다른 항공 터미널과 비교하여 최고 품질을 자랑하며 5 월에 취임하여 운영됩니다. 건축 18 개월 후 2017. 역은 일주일 동안 봉사하는 주요 프로젝트 중 하나입니다 ...', 'ko');
 INSERT INTO `category_translations` VALUES ('49', '25', 'Các dịch vụ phụ trợ cho kinh doanh bất động sản', 'Taseco quy tụ một đội ngũ quản lý có nhiều năm kinh nghiệm trong lĩnh vực đầu tư tài chính, quản lý các hoạt động kinh doanh có quy mô lớn, nhằm phát triển và khai thác các tiềm năng dài hạn trong lĩnh vực kinh doanh bất động sản. Hoạt động đầu tư tài chính nói chung và đầu tư vào các công ty bất động sản nói riêng trong thời gian qua đã giúp Taseco tận dụng được nhiều cơ hội và tạo ra sự phát...', 'vi');
 INSERT INTO `category_translations` VALUES ('50', '25', '부동산 사업을위한 보조 서비스', 'Taseco는 부동산 사업의 장기적인 잠재력을 개발하고 활용하기 위해 대규모 사업 운영을 관리하고 금융 투자 분야에서 다년간의 경험을 가진 관리 팀을 구성합니다. 부동산. 일반적으로 금융 투자 및 부동산 회사에 대한 투자는 Taseco가 많은 기회를 활용하고 개발을 창출하는 데 도움이되었습니다 ...', 'ko');
@@ -289,7 +291,7 @@ CREATE TABLE `setting` (
 -- ----------------------------
 -- Records of setting
 -- ----------------------------
-INSERT INTO `setting` VALUES ('1', 'CÔNG TY CỔ PHẦN UTICO', 'CÔNG TY CỔ PHẦN UTICO', 'www.utico.vn', 'info@utico.vn', '0246.666.6966', '+84. 24 3767 5169', 'Số 31, Ngách 27, Ngõ 16 Huỳnh Thúc Kháng, Láng Hạ, Đống Đa, Hà Nội', null, '/backend/uploads/images/logo.png', '[{\"image\":\"https:\\/\\/taseco.vn\\/upload\\/partner\\/1508921287logo cty lien ket.jpg\",\"link\":\"#\"},{\"image\":\"https:\\/\\/taseco.vn\\/upload\\/partner\\/1461397070Untitled-2.png\",\"link\":\"http:\\/\\/pml.vn\\/\"},{\"image\":\"https:\\/\\/taseco.vn\\/upload\\/partner\\/1459824703iudt.png\",\"link\":\"http:\\/\\/greenparkmongcai.vn\\/\"},{\"image\":\"https:\\/\\/taseco.vn\\/upload\\/partner\\/1479875820Untitled-1.png\",\"link\":\"https:\\/\\/imcs.vn\\/\"},{\"image\":\"https:\\/\\/taseco.vn\\/upload\\/partner\\/1520398069logo alacarte nho.jpg\",\"link\":\"http:\\/\\/www.alacartedanangbeach.com\\/vi\\/\"},{\"image\":\"https:\\/\\/taseco.vn\\/upload\\/partner\\/1520397525logo cty nho.jpg\",\"link\":\"https:\\/\\/tasecoland.vn\\/\"}]', 'CÔNG TY CỔ PHẦN UTICO', 'UTICO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Utico với hơn 10 năm thành lập', 'utico,công ty utico,hàng không thăng long', '2019-12-06 20:23:13', '2019-12-06 20:23:13');
+INSERT INTO `setting` VALUES ('1', 'CÔNG TY CỔ PHẦN UTICO', 'CÔNG TY CỔ PHẦN UTICO', 'www.utico.vn', 'info@utico.vn', '0246.666.6966', '+84. 24 3767 5169', 'Số 31, Ngách 27, Ngõ 16 Huỳnh Thúc Kháng, Láng Hạ, Đống Đa, Hà Nội', null, '/backend/uploads/images/logo.png', '[{\"image\":\"\\/backend\\/uploads\\/images\\/Logo%20CDT\\/handico.jpg\",\"link\":\"#\"},{\"image\":\"\\/backend\\/uploads\\/images\\/Logo%20CDT\\/Hacinco.png\",\"link\":null},{\"image\":\"\\/backend\\/uploads\\/images\\/Logo%20CDT\\/Hoabinh.jpg\",\"link\":null},{\"image\":\"\\/backend\\/uploads\\/images\\/Logo%20CDT\\/Geleximco.png\",\"link\":null},{\"image\":\"\\/backend\\/uploads\\/images\\/Logo%20CDT\\/HBI.jpg\",\"link\":null},{\"image\":\"\\/backend\\/uploads\\/images\\/Logo%20CDT\\/Hoaphat.jpg\",\"link\":null}]', 'CÔNG TY CỔ PHẦN UTICO', 'UTICO Hoạt động trong lĩnh vực Bất động sản, hàng không, khách sạn, công ty Utico với hơn 10 năm thành lập', 'utico,công ty utico,hàng không thăng long', '2019-12-08 14:26:11', '2019-12-08 14:26:11');
 
 -- ----------------------------
 -- Table structure for setting_translations
@@ -352,9 +354,27 @@ CREATE TABLE `user_onlines` (
   `uo_time` int(11) DEFAULT NULL,
   `uo_active` int(11) DEFAULT NULL,
   PRIMARY KEY (`uo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_onlines
 -- ----------------------------
-INSERT INTO `user_onlines` VALUES ('1', 'sp9jt8hpt06bpht9hr5pceo2j6', '1575656092', '0');
+INSERT INTO `user_onlines` VALUES ('1', 'sp9jt8hpt06bpht9hr5pceo2j6', '1575656092', '1');
+INSERT INTO `user_onlines` VALUES ('2', 'uj7qr81okkkhr0ji6n6qh6r4rg', '1575804962', '1');
+INSERT INTO `user_onlines` VALUES ('3', 'eq2f8rus5ristb4jtnqbkik735', '1575782409', '1');
+INSERT INTO `user_onlines` VALUES ('4', 'gg1mne4ll000psr362g57do8du', '1575781496', '1');
+INSERT INTO `user_onlines` VALUES ('5', 'ideui2t48dhomsrtalupdqt0ih', '1575781496', '1');
+INSERT INTO `user_onlines` VALUES ('6', 'bb4fehur0u4id7fkdeb5dat7m3', '1575781498', '1');
+INSERT INTO `user_onlines` VALUES ('7', '9nc9n5tq8knsdtjccnsv157lm0', '1575781500', '1');
+INSERT INTO `user_onlines` VALUES ('8', '1tnc9oi0s88mvh4ebablvvm2nl', '1575781500', '1');
+INSERT INTO `user_onlines` VALUES ('9', 'futdn30jjaq51jtbg15pcce8vv', '1575781501', '1');
+INSERT INTO `user_onlines` VALUES ('10', 'ad2tshfnk027i2fmmndim407ph', '1575800887', '1');
+INSERT INTO `user_onlines` VALUES ('11', 'nlffac2nhdscqggit3k6pcujgn', '1575784727', '1');
+INSERT INTO `user_onlines` VALUES ('12', '5rtt1e0du6i1fe2ptvsa708t7b', '1575787961', '1');
+INSERT INTO `user_onlines` VALUES ('13', 'g22na198orbao0b7ichp3atvmh', '1575791139', '1');
+INSERT INTO `user_onlines` VALUES ('14', '5re9p7pb2kt5kln5p8hu1p7bkk', '1575789821', '1');
+INSERT INTO `user_onlines` VALUES ('15', '7g59m0pbjtcf9jrkr8rn221j1p', '1575791043', '1');
+INSERT INTO `user_onlines` VALUES ('16', '6m0hi5s3vmddj3tgjs7bq7v522', '1575804977', '1');
+INSERT INTO `user_onlines` VALUES ('17', 'pp73jefc3gj2id965j9b236b9n', '1575805503', '1');
+INSERT INTO `user_onlines` VALUES ('18', 'oeekfhsgfdelhf15bofc1851un', '1575805631', '1');
+INSERT INTO `user_onlines` VALUES ('19', '43deraldnma6i1sc40eqd4tsv1', '1575824250', '0');

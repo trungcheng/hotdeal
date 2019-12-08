@@ -43,6 +43,7 @@ return [
         'invalide_email' => 'Email ko hợp lệ!',
         'security_incorrect' => 'Mã bảo mật chưa đúng!'
     ],
-    'album_photo' => 'Album ảnh'
+    'album_photo' => 'Album ảnh',
+    'designed_by' => 'Thiết kế bởi'
 
 ];

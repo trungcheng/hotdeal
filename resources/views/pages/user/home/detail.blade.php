@@ -38,7 +38,7 @@
         .pagination li a {
             height: 30px !important;
         }
-        .item img {
+        .carousel-inner .item img {
             height: 257px !important;
             width: 100%;
             object-fit: cover;

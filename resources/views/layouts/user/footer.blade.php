@@ -41,7 +41,7 @@
                     </ul>
                 </div>
                 <p><span class="tkct_txt">{{ trans('general.user_access_count') }}</span><span style="color:#fff;display:inline-block;margin:0 5px;font-weight:bold;">{{ $user_online_data[2] }}</span></p>
-                <p>Designed by <a href="https://utico.vn">Utico Team.</a></p>
+                <p>{{ trans('general.designed_by') }} <a href="https://utico.vn">Utico</a></p>
             </div>
         </div>
         

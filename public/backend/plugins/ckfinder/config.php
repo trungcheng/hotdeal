@@ -45,7 +45,7 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'vincom.com';
+$config['licenseName'] = 'utico.vn';
 $config['licenseKey']  = '*6?8-*1**-L**9-*M**-*4**-J*9*-5**C';
 
 /*============================ CKFinder Internal Directory ============================*/
@@ -78,9 +78,9 @@ $config['images'] = array(
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => '/backend/uploads/',
-    // 'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
-    'chmodFiles'   => 0777,
+    // 'baseUrl'      => '/backend/uploads/',
+    'root'         => __DIR__ . '/../../../../public' . '/backend/uploads/',
+    'chmodFiles'   => 0777, 
     'chmodFolders' => 0755,
     'filesystemEncoding' => 'UTF-8',
 );
@@ -159,7 +159,7 @@ $config['forceAscii'] = false;
 $config['xSendfile'] = false;
 
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_debug
-$config['debug'] = false;
+$config['debug'] = true;
 
 /*==================================== Plugins ========================================*/
 // https://docs.ckeditor.com/ckfinder/ckfinder3-php/configuration.html#configuration_options_plugins

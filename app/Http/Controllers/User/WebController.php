@@ -16,37 +16,55 @@ class WebController extends Controller
 
     public function index()
     {
-        $lvDautu = Category::find(12);
-        $childs = Category::where('parent_id', $lvDautu->id)
+        $cateTypes = Category::where('is_home', 1)
+            ->where('parent_id', 0)
+            ->whereNotIn('id', [19,20])
             ->where('status', 1)
-            ->orderBy('order', 'asc')
+            ->orderBy('order', 'desc')
             ->get();
-        $ttSukien = Category::find(16);
-        $firstCate = Category::where('parent_id', $ttSukien->id)
-            ->where('status', 1)
-            ->where('order', 1)
-            ->first();
-        $hotNew = Article::where('cat_id', $firstCate->id)->where('status', 1)
-            ->where('is_feature', 1)
-            ->orderBy('id', 'desc')
-            ->first();
-        $listNews = Article::where('status', 1)->whereIn('cat_id', [13,14,15])
-            ->where('id', '<>', $hotNew->id)
-            ->with('category')
-            ->get();
-        $tvHinhanh = Category::find(19);
-        $video = Category::find(20);
+
+        foreach ($cateTypes as $cate) {
+            $cate['childCates'] = Category::where('parent_id', $cate->id)
+                ->where('is_home', 1)
+                ->where('status', 1)
+                ->orderBy('order', 'asc')
+                ->get();
+
+            if ($cate->layout == 2) {
+                $ids = [];
+                foreach ($cate['childCates'] as $child) {
+                    $ids[] = $child->id;
+                }
+
+                $cate['hotNew'] = Article::whereIn('cat_id', $ids)
+                    ->where('status', 1)
+                    ->where('is_feature', 1)
+                    ->orderBy('id', 'desc')
+                    ->first();
+                if ($cate['hotNew']) {
+                    $cate['firstCate'] = Category::where('id', $cate['hotNew']->cat_id)
+                        ->where('status', 1)
+                        ->where('is_home', 1)
+                        ->first();
+                    $cate['listNews'] = Article::where('status', 1)
+                        ->whereIn('cat_id', $ids)
+                        ->where('id', '<>', $cate['hotNew']->id)
+                        ->orderBy('id', 'desc')
+                        ->with('category')
+                        ->get();
+                }
+            }
+        }
+
+        $tvHinhanh = Category::where('id', 19)->where('status', 1)->where('is_home', 1)->first();
+        $video = Category::where('id', 20)->where('status', 1)->where('is_home', 1)->first();
+
         $slides = Article::where('type', 'slide')
             ->where('status', 1)
             ->get();
 
         return view('pages.user.home.index', [
-            'lvDautu' => $lvDautu,
-            'childs' => $childs,
-            'ttSukien' => $ttSukien,
-            'firstCate' => $firstCate,
-            'hotNew' => $hotNew,
-            'listNews' => $listNews,
+            'cateTypes' => $cateTypes,
             'tvHinhanh' => $tvHinhanh,
             'video' => $video,
             'slides' => $slides

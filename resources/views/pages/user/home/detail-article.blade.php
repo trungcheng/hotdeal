@@ -42,7 +42,7 @@
             margin-top: -10px;
             margin-bottom: 15px;
         }
-        .item img {
+        .carousel-inner .item img {
             height: 257px !important;
             width: 100%;
             object-fit: cover;

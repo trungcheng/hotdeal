@@ -1310,6 +1310,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 	margin: auto;
 	height: 100%;
 	width: 100%;
+	object-fit: cover;
 }
 
 #owl_fie .caption h3 {
