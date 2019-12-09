@@ -21,6 +21,16 @@
             selectedOption: {value: 10, name: '10'}
         };
 
+        $scope.setPage = function (pageSize, currentPage) {
+            if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
+            $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
+            $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
+            $scope.from = $scope.pager.startIndex + 1;
+            $scope.to = $scope.pager.endIndex + 1;
+            $scope.total = $scope.pager.totalItems;
+            $scope.pullDownLists.selectedOption = { value: pageSize, name: pageSize };
+        }
+
         // ******************************** PHOTO ********************************* //
 
         $scope.getPhotoResults = function (name, perPage, pageNumber) {
@@ -41,16 +51,6 @@
                     $scope.setPage(perPage, pageNumber);
 
                 });
-        }
-
-        $scope.setPage = function (pageSize, currentPage) {
-            if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
-            $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
-            $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
-            $scope.from = $scope.pager.startIndex + 1;
-            $scope.to = $scope.pager.endIndex + 1;
-            $scope.total = $scope.pager.totalItems;
-            $scope.pullDownLists.selectedOption = { value: pageSize, name: pageSize };
         }
 
         $scope.loadPhotoInit = function () {
@@ -107,7 +107,7 @@
             });
         }
 
-        $scope.delete = function (article, index) {
+        $scope.deletePhoto = function (album, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa album này ?",
                 type: "warning",
@@ -122,7 +122,7 @@
                     url: app.vars.baseUrl + '/media/photos/delete',
                     method: 'POST',
                     data: {
-                        articleId: article.id
+                        articleId: album.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
@@ -162,16 +162,6 @@
                     $scope.setPage(perPage, pageNumber);
 
                 });
-        }
-
-        $scope.setPage = function (pageSize, currentPage) {
-            if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
-            $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
-            $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
-            $scope.from = $scope.pager.startIndex + 1;
-            $scope.to = $scope.pager.endIndex + 1;
-            $scope.total = $scope.pager.totalItems;
-            $scope.pullDownLists.selectedOption = { value: pageSize, name: pageSize };
         }
 
         $scope.loadVideoInit = function () {
@@ -228,7 +218,7 @@
             });
         }
 
-        $scope.delete = function (article, index) {
+        $scope.deleteVideo = function (video, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa video này ?",
                 type: "warning",
@@ -243,7 +233,7 @@
                     url: app.vars.baseUrl + '/media/videos/delete',
                     method: 'POST',
                     data: {
-                        articleId: article.id
+                        articleId: video.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
@@ -329,16 +319,6 @@
                 });
         }
 
-        $scope.setPage = function (pageSize, currentPage) {
-            if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
-            $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
-            $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
-            $scope.from = $scope.pager.startIndex + 1;
-            $scope.to = $scope.pager.endIndex + 1;
-            $scope.total = $scope.pager.totalItems;
-            $scope.pullDownLists.selectedOption = { value: pageSize, name: pageSize };
-        }
-
         $scope.loadSlideInit = function () {
             $scope.getSlideResults('all-slide', 10, 1);
         }
@@ -387,7 +367,7 @@
             });
         }
 
-        $scope.delete = function (article, index) {
+        $scope.deleteSlide = function (slide, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa slide này ?",
                 type: "warning",
@@ -402,7 +382,7 @@
                     url: app.vars.baseUrl + '/media/slides/delete',
                     method: 'POST',
                     data: {
-                        articleId: article.id
+                        articleId: slide.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {

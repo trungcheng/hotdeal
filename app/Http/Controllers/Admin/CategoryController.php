@@ -156,8 +156,6 @@ class CategoryController extends Controller
             $cate = Category::find($cateId);
             if ($cate) {
                 if (!in_array($cate->id, [19,20])) {
-                    // remove all relate section
-                    User::where('cat_id', $cateId)->update(['cat_id' => 0]);
                     // remove itself
                     $cate->delete();
 

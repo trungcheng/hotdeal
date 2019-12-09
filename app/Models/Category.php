@@ -30,10 +30,6 @@ class Category extends Model
         'layout'
     ];
 
-    public function user() {
-    	return $this->hasMany('App\Models\User', 'user_id' , 'id');
-    }
-
     public function article() {
     	return $this->hasMany('App\Models\Article', 'cat_id' , 'id');
     }

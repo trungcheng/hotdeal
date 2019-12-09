@@ -74,7 +74,7 @@
                                                     <td>@{{ article.created_at }}</td>
                                                     <td>
                                                         <a href="/admin/access/media/slides/edit/@{{ article.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                                        <a ng-click="delete(article, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                                        <a ng-click="deleteSlide(article, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
