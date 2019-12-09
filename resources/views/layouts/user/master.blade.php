@@ -279,7 +279,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var owl = $("#owl_fie");
+            var owl = $(".owl_fie");
             owl.owlCarousel({
                 autoPlay: 4000,
                 itemsCustom: [
