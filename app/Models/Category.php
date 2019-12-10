@@ -81,6 +81,9 @@ class Category extends Model
             $category->translateOrNew($locale)->description = ($locale == 'vi') ? $data['description'] : $data[$locale.'_description'];
         }
 
+        unset($data['en_name']);
+        unset($data['en_description']);
+        
         unset($data['ko_name']);
         unset($data['ko_description']);
 
@@ -99,6 +102,9 @@ class Category extends Model
             $cate->translateOrNew($locale)->name = ($locale == 'vi') ? $data['name'] : $data[$locale.'_name'];
             $cate->translateOrNew($locale)->description = ($locale == 'vi') ? $data['description'] : $data[$locale.'_description'];
         }
+
+        unset($data['en_name']);
+        unset($data['en_description']);
 
         unset($data['ko_name']);
         unset($data['ko_description']);

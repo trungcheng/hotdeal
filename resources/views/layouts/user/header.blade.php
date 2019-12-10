@@ -23,6 +23,7 @@
             </div>
             <div class="header_language">
                 <a title="Vietnamese" href="{{ route('locale', ['locale' => 'vi']) }}"><img style="box-shadow: 2px 2px #dcdcdc;margin-right:3px" src="{{ asset('frontend/themes/default/images/vietnam.png') }}" alt="vi"></a>
+                <a title="English" href="{{ route('locale', ['locale' => 'en']) }}"><img style="box-shadow: 2px 2px #dcdcdc;margin-right:3px" src="{{ asset('frontend/themes/default/images/english.png') }}" alt="en"></a>
                 <a title="Koreanese" href="{{ route('locale', ['locale' => 'ko']) }}"><img style="box-shadow: 2px 2px #dcdcdc;" src="{{ asset('frontend/themes/default/images/korean.png') }}" alt="ko"></a>
             </div>
         </div>

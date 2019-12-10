@@ -34,6 +34,10 @@
                                     <input name="title" type="text" class="form-control slug" placeholder="Tiêu đề slide...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Tiêu đề (English)</label>
+                                    <input name="en_title" type="text" class="form-control slug" placeholder="Slide title...">
+                                </div>
+                                <div class="form-group">
                                     <label>Tiêu đề (Koreanese)</label>
                                     <input name="ko_title" type="text" class="form-control slug" placeholder="슬라이드 제목...">
                                 </div>

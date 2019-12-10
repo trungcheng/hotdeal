@@ -34,6 +34,10 @@
                                     <input name="title" type="text" class="form-control slug" placeholder="Tiêu đề video...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Tiêu đề (English)</label>
+                                    <input name="en_title" type="text" class="form-control slug" placeholder="Video title...">
+                                </div>
+                                <div class="form-group">
                                     <label>Tiêu đề (Koreanese)</label>
                                     <input name="ko_title" type="text" class="form-control slug" placeholder="비디오 타이틀...">
                                 </div>

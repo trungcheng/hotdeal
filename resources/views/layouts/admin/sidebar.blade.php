@@ -41,10 +41,11 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/access/media/photos" href="{{ url('/admin/access/media/photos') }}"><i class="fa fa-list-ol"></i> Album ảnh</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/access/media/videos" href="{{ url('/admin/access/media/videos') }}"><i class="fa fa-list-ol"></i> Video</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/access/media/partner-logos" href="{{ url('/admin/access/media/partner-logos') }}"><i class="fa fa-list-ol"></i> Logo đối tác</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/access/media/slides" href="{{ url('/admin/access/media/slides') }}"><i class="fa fa-list-ol"></i> Slide trang chủ</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/photos" href="{{ url('/admin/access/media/photos') }}"><i class="fa fa-camera"></i> Album ảnh</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/videos" href="{{ url('/admin/access/media/videos') }}"><i class="fa fa-play"></i> Video</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/partner-logos" href="{{ url('/admin/access/media/partner-logos') }}"><i class="fa fa-user-circle-o"></i> Logo đối tác</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/slides" href="{{ url('/admin/access/media/slides') }}"><i class="fa fa-sliders"></i> Slide chính</a></li>
+                <li><a style="margin-left:35px;" data-route="/admin/access/media/slogan-slides" href="{{ url('/admin/access/media/slogan-slides') }}"><i class="fa fa-sliders"></i> Slide khẩu hiệu</a></li>
             </ul>
         </li>
 

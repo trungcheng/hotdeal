@@ -1222,7 +1222,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .navbar_ed .navbar-nav>.open>a, .navbar_ed .navbar-nav>.open>a:hover, .navbar_ed .navbar-nav>.open>a:focus {
-	color: #fff;
+	color: #333;
 }
 
 .navbar_ed .navbar-nav .dropdown-menu>li>a {
@@ -1685,7 +1685,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .slg_taseco {
-	background: url(../images/bg.jpg) no-repeat;
+	/* background: url(../images/bg.jpg) no-repeat; */
 	background-size: cover;
 	padding: 20px 0;
 	margin-top: 1px;

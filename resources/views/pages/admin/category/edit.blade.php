@@ -34,6 +34,10 @@
                                     <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Tên danh mục (English)</label>
+                                    <input value="{{ $category->getTranslation('en')->name }}" name="en_name" type="text" class="form-control title" placeholder="Category name...">
+                                </div>
+                                <div class="form-group">
                                     <label>Tên danh mục (Koreanese)</label>
                                     <input value="{{ $category->getTranslation('ko')->name }}" name="ko_name" type="text" class="form-control title" placeholder="카테고리 이름...">
                                 </div>
@@ -49,6 +53,10 @@
                                 <div class="form-group">
                                     <label>Mô tả (Vietnamese)</label>
                                     <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả...">{{ $category['description'] }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mô tả (English)</label>
+                                    <textarea style="height: 100px;" name="en_description" class="form-control description" placeholder="Description...">{{ $category->getTranslation('en')->description }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả (Koreanese)</label>

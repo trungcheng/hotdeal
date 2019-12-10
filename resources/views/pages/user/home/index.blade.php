@@ -66,54 +66,27 @@
     </div>
     @endif
 
-    <div class="slg_taseco">
+    @if (count($sloganSlides) > 0)
+    <div class="slg_taseco" style="background: url({{ $setting->bg_slogan_slide }})">
         <div class="w_gr slg_tasecow">
             <div id="owl_slgtaseco" class="owl-carousel owl-theme">
+                @foreach ($sloganSlides as $slide)
                 <div class="item">
                     <div class="item-slgtaseco">
                         <div class="item_tasecotlt">
-                            <h3>{!! trans('general.vision.title') !!}</h3>
+                            <h3>{!! $slide->getTranslation(app()->getLocale())->title !!}</h3>
                         </div>
                         <div class="box_trading">
                             <div class="box_trading1">
-                                <a class="img_trading" href="#"><img src="https://taseco.vn/upload/about/thumb/14591347111457542094tamnhin.jpg"></a>
+                                <a class="img_trading" href="#"><img src="{{ $slide->image }}" alt="{{ $slide->getTranslation('vi')->title }}"></a>
                                 <div class="txt_trading">
-                                    {!! trans('general.vision.content') !!}
+                                    {!! $slide->getTranslation(app()->getLocale())->intro !!}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="item-slgtaseco">
-                        <div class="item_tasecotlt">
-                            <h3>{!! trans('general.mission.title') !!}</h3>
-                        </div>
-                        <div class="box_trading">
-                            <div class="box_trading1">
-                                <a class="img_trading" href="#"><img src="https://taseco.vn/upload/about/thumb/1466664537Untitled-4.jpg"></a>
-                                <div class="txt_trading">
-                                    {!! trans('general.mission.content') !!}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="item-slgtaseco">
-                        <div class="item_tasecotlt">
-                            <h3>{!! trans('general.core_value.title') !!}</h3></h3>
-                        </div>
-                        <div class="box_trading">
-                            <div class="box_trading1">
-                                <a class="img_trading" href="#"><img src="https://taseco.vn/upload/about/thumb/146580014114591347911457541564gia-tri-cot-loi.jpg"></a>
-                                <div class="txt_trading">
-                                    {!! trans('general.core_value.content') !!}</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!--<div class="customNavigation">
               <a class="btn prev">Previous</a>
@@ -123,6 +96,7 @@
             </div>-->
         </div>
     </div>
+    @endif
 
     @if (count($cateTypes) > 0)
         @foreach ($cateTypes as $cate)

@@ -45,8 +45,19 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label">Background nền slide khẩu hiệu</label>
+                        <input name="bg_slogan_slide" type="text" value="{{ ($setting != '') ? $setting->bg_slogan_slide : '' }}" size="48" class="form-control" id="bg_slogan_slide" />
+                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('bg_slogan_slide')">Tải background lên</button>
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label">Tên công ty (Vietnamese)</label>
                         <input type="text" name="name" value="{{ ($setting != '') ? $setting->name : '' }}" class="form-control" placeholder="Tên công ty...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Tên công ty (English)</label>
+                        <input type="text" name="en_name" value="{{ ($setting != '') ? $setting->getTranslation('en')->name : '' }}" class="form-control" placeholder="Company name...">
                     </div>
 
                     <div class="form-group">
@@ -57,6 +68,11 @@
                     <div class="form-group">
                         <label class="control-label">Slogan (Vietnamese)</label>
                         <input type="text" name="slogan" value="{{ ($setting != '') ? $setting->slogan : '' }}" class="form-control" placeholder="Slogan...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Slogan (English)</label>
+                        <input type="text" name="en_slogan" value="{{ ($setting != '') ? $setting->getTranslation('en')->slogan : '' }}" class="form-control" placeholder="Slogan...">
                     </div>
 
                     <div class="form-group">
@@ -87,6 +103,11 @@
                     <div class="form-group">
                         <label class="control-label">Địa chỉ (Vietnamese)</label>
                         <input type="text" name="address" value="{{ ($setting != '') ? $setting->address : '' }}" class="form-control" placeholder="Địa chỉ...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Địa chỉ (English)</label>
+                        <input type="text" name="en_address" value="{{ ($setting != '') ? $setting->getTranslation('en')->address : '' }}" class="form-control" placeholder="Address...">
                     </div>
 
                     <div class="form-group">
@@ -158,16 +179,16 @@
     </script>
 
     <script type="text/javascript">
-        function openPopup() {
+        function openPopup(id) {
             CKFinder.popup( {
                 chooseFiles: true,
                 onInit: function( finder ) {
                     finder.on( 'files:choose', function( evt ) {
                         var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                        document.getElementById(id).value = file.getUrl();
                     } );
                     finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                        document.getElementById(id).value = evt.data.resizedUrl;
                     } );
                 }
             } );

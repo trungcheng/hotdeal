@@ -34,6 +34,10 @@
                                     <input name="title" type="text" class="form-control slug" placeholder="Tiêu đề bài viết...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Tiêu đề (English)</label>
+                                    <input name="en_title" type="text" class="form-control slug" placeholder="Article title...">
+                                </div>
+                                <div class="form-group">
                                     <label>Tiêu đề (Koreanese)</label>
                                     <input name="ko_title" type="text" class="form-control slug" placeholder="기사 제목...">
                                 </div>
@@ -56,12 +60,20 @@
                                     <textarea class="form-control" id="short_content"></textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label>Mô tả ngắn (English)</label>
+                                    <textarea class="form-control" id="en_short_content"></textarea>
+                                </div>
+                                <div class="form-group">
                                     <label>Mô tả ngắn (Koreanese)</label>
                                     <textarea class="form-control" id="ko_short_content"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Nội dung (Vietnamese)</label>
                                     <textarea class="form-control" id="full_content"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung (English)</label>
+                                    <textarea class="form-control" id="en_full_content"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Nội dung (Koreanese)</label>
@@ -159,8 +171,10 @@
     <script type="text/javascript">
         $(function () {
             CKEDITOR.replace('short_content', { height: 300 }); 
+            CKEDITOR.replace('en_short_content', { height: 300 }); 
             CKEDITOR.replace('ko_short_content', { height: 300 }); 
             CKEDITOR.replace('full_content'); 
+            CKEDITOR.replace('en_full_content'); 
             CKEDITOR.replace('ko_full_content'); 
         });
     </script>

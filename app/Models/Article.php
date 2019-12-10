@@ -95,10 +95,13 @@ class Article extends Model
             }
         }
 
+        if (isset($data['en_title'])) unset($data['en_title']);
+        if (isset($data['en_intro'])) unset($data['en_intro']);
+        if (isset($data['en_fulltext'])) unset($data['en_fulltext']);
+
         if (isset($data['ko_title'])) unset($data['ko_title']);
         if (isset($data['ko_intro'])) unset($data['ko_intro']);
         if (isset($data['ko_fulltext'])) unset($data['ko_fulltext']);
-
         
         $data['type'] = $type;
 
@@ -129,6 +132,10 @@ class Article extends Model
                 $article->translateOrNew($locale)->fulltext = ($locale == 'vi') ? $data['fulltext'] : $data[$locale.'_fulltext'];
             }
         }
+
+        if (isset($data['en_title'])) unset($data['en_title']);
+        if (isset($data['en_intro'])) unset($data['en_intro']);
+        if (isset($data['en_fulltext'])) unset($data['en_fulltext']);
 
         if (isset($data['ko_title'])) unset($data['ko_title']);
         if (isset($data['ko_intro'])) unset($data['ko_intro']);

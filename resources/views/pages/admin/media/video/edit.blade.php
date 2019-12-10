@@ -32,7 +32,11 @@
                                 <input type="hidden" id="id" name="id" value="{{ $article->id }}">
                                 <div class="form-group">
                                     <label>Tiêu đề (Vietnamese)</label>
-                                    <input value="{{ $article->title }}" name="title" type="text" class="form-control slug" placeholder="Tiêu đề album...">
+                                    <input value="{{ $article->title }}" name="title" type="text" class="form-control slug" placeholder="Tiêu đề video...">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tiêu đề (English)</label>
+                                    <input value="{{ $article->getTranslation('en')->title }}" name="en_title" type="text" class="form-control slug" placeholder="Video title...">
                                 </div>
                                 <div class="form-group">
                                     <label>Tiêu đề (Koreanese)</label>

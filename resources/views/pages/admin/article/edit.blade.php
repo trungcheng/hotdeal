@@ -35,6 +35,10 @@
                                     <input value="{{ $article->title }}" name="title" type="text" class="form-control title" placeholder="Tiêu đề bài viết...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Tiêu đề bài viết (English)</label>
+                                    <input value="{{ $article->getTranslation('en')->title }}" name="en_title" type="text" class="form-control title" placeholder="Article title...">
+                                </div>
+                                <div class="form-group">
                                     <label>Tiêu đề bài viết (Koreanese)</label>
                                     <input value="{{ $article->getTranslation('ko')->title }}" name="ko_title" type="text" class="form-control title" placeholder="기사 제목...">
                                 </div>
@@ -57,12 +61,20 @@
                                     <textarea class="form-control" id="short_content">{!! $article->intro !!}</textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label>Mô tả ngắn (English)</label>
+                                    <textarea class="form-control" id="en_short_content">{!! $article->getTranslation('en')->intro !!}</textarea>
+                                </div>
+                                <div class="form-group">
                                     <label>Mô tả ngắn (Koreanese)</label>
                                     <textarea class="form-control" id="ko_short_content">{!! $article->getTranslation('ko')->intro !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả chi tiết (Vietnamese)</label>
                                     <textarea class="form-control" id="full_content">{!! $article->fulltext !!}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mô tả chi tiết (English)</label>
+                                    <textarea class="form-control" id="en_full_content">{!! $article->getTranslation('en')->fulltext !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả chi tiết (Koreanese)</label>
@@ -160,8 +172,10 @@
     <script type="text/javascript">
         $(function () {
             CKEDITOR.replace('short_content', { height: 300 }); 
+            CKEDITOR.replace('en_short_content', { height: 300 }); 
             CKEDITOR.replace('ko_short_content', { height: 300 }); 
             CKEDITOR.replace('full_content'); 
+            CKEDITOR.replace('en_full_content'); 
             CKEDITOR.replace('ko_full_content'); 
         });
     </script>

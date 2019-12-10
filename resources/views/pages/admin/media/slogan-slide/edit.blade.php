@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Cập nhật slide
+@section('page')Cập nhật slide khẩu hiệu
 @stop
 
 @section('pageCss')
@@ -13,8 +13,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Cập nhật slide
-            <a href="{{ route('media-slides') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
+            Cập nhật slide khẩu hiệu
+            <a href="{{ route('media-slogan-slides') }}" class="pull-right btn btn-success btn-sm">Quay lại</a>
         </h1>
     </section>
 
@@ -48,6 +48,18 @@
                                     <button class="btn btn-primary btn-upload" onclick="openPopup('xFilePath')">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
+                                    <label>Nội dung (Vietnamese)</label>
+                                    <textarea class="form-control" id="content">{!! $article->intro !!}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung (English)</label>
+                                    <textarea class="form-control" id="en_content">{!! $article->getTranslation('en')->intro !!}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung (Koreanese)</label>
+                                    <textarea class="form-control" id="ko_content">{!! $article->getTranslation('ko')->intro !!}</textarea>
+                                </div>
+                                <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select name="status" class="form-control status">
                                         <option {{ ($article->status == 1) ? 'selected' : '' }} value="1">Hiển thị</option>
@@ -56,8 +68,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button ng-click="processSlide('update')" type="button" class="btn btn-primary">Cập nhật</button>
-                                <a href="{{ route('media-slides') }}" class="btn btn-default">Quay lại</a>
+                                <button ng-click="processSloganSlide('update')" type="button" class="btn btn-primary">Cập nhật</button>
+                                <a href="{{ route('media-slogan-slides') }}" class="btn btn-default">Quay lại</a>
                             </div>
                         </form>
                     </div>
@@ -90,4 +102,11 @@
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/media.controller.js') !!}
+    <script type="text/javascript">
+        $(function () {
+            CKEDITOR.replace('content', { height: 300 }); 
+            CKEDITOR.replace('en_content', { height: 300 }); 
+            CKEDITOR.replace('ko_content', { height: 300 }); 
+        });
+    </script>
 @stop

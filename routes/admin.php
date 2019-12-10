@@ -69,6 +69,15 @@
                 $this->post('media/slides/update', 'Admin\MediaController@updateSlide');
                 $this->post('media/slides/delete', 'Admin\MediaController@deleteSlide');
 
+                // media slogan slides
+                $this->get('media/slogan-slides', 'Admin\MediaController@sloganSlides')->name('media-slogan-slides');
+                $this->get('media/slogan-slides/getAllSloganSlides', 'Admin\MediaController@getAllSloganSlides');
+                $this->get('media/slogan-slides/create', 'Admin\MediaController@createSloganSlide')->name('media-slogan-slide-create');
+                $this->get('media/slogan-slides/edit/{id}', 'Admin\MediaController@editSloganSlide')->name('media-slogan-slide-edit');
+                $this->post('media/slogan-slides/add', 'Admin\MediaController@addSloganSlide');
+                $this->post('media/slogan-slides/update', 'Admin\MediaController@updateSloganSlide');
+                $this->post('media/slogan-slides/delete', 'Admin\MediaController@deleteSloganSlide');
+
                 // media partner logos
                 $this->get('media/partner-logos', 'Admin\SettingController@partnerLogos')->name('media-partner-logos');
                 $this->post('media/partner-logos/update', 'Admin\SettingController@updatePartnerLogos');

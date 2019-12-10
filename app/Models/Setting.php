@@ -23,6 +23,7 @@ class Setting extends Model
         'work_time',
         'logo',
         'partner_logos',
+        'bg_slogan_slide',
         'seo_title',
         'seo_desc',
         'seo_keyword'

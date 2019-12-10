@@ -35,6 +35,10 @@
                                     <input value="{{ $article->title }}" name="title" type="text" class="form-control slug" placeholder="Tiêu đề album...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Tiêu đề (English)</label>
+                                    <input value="{{ $article->getTranslation('en')->title }}" name="en_title" type="text" class="form-control slug" placeholder="Album name...">
+                                </div>
+                                <div class="form-group">
                                     <label>Tiêu đề (Koreanese)</label>
                                     <input value="{{ $article->getTranslation('ko')->title }}" name="ko_title" type="text" class="form-control slug" placeholder="앨범 제목...">
                                 </div>

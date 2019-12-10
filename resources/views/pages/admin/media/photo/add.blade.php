@@ -34,6 +34,10 @@
                                     <input name="title" type="text" class="form-control slug" placeholder="Tiêu đề album...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Tiêu đề (English)</label>
+                                    <input name="en_title" type="text" class="form-control slug" placeholder="Album name...">
+                                </div>
+                                <div class="form-group">
                                     <label>Tiêu đề (Koreanese)</label>
                                     <input name="ko_title" type="text" class="form-control slug" placeholder="앨범 제목...">
                                 </div>

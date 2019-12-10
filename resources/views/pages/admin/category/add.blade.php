@@ -33,6 +33,10 @@
                                     <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Tên danh mục (English)</label>
+                                    <input name="en_name" type="text" class="form-control slug" placeholder="Category name...">
+                                </div>
+                                <div class="form-group">
                                     <label>Tên danh mục (Koreanese)</label>
                                     <input name="ko_name" type="text" class="form-control slug" placeholder="카테고리 이름...">
                                 </div>
@@ -48,6 +52,10 @@
                                 <div class="form-group">
                                     <label>Mô tả (Vietnamese)</label>
                                     <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Mô tả (English)</label>
+                                    <textarea style="height: 100px;" name="en_description" class="form-control description" placeholder="Description..."></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả (Koreanese)</label>

@@ -80,11 +80,16 @@ class WebController extends Controller
             ->where('status', 1)
             ->get();
 
+        $sloganSlides = Article::where('type', 'slogan-slide')
+            ->where('status', 1)
+            ->get();
+
         return view('pages.user.home.index', [
             'cateTypes' => $cateTypes,
             'tvHinhanh' => $tvHinhanh,
             'video' => $video,
-            'slides' => $slides
+            'slides' => $slides,
+            'sloganSlides' => $sloganSlides
         ]);
     }
 
