@@ -36,22 +36,39 @@ class WebController extends Controller
                     $ids[] = $child->id;
                 }
 
-                $cate['hotNew'] = Article::whereIn('cat_id', $ids)
-                    ->where('status', 1)
-                    ->where('is_feature', 1)
-                    ->orderBy('id', 'desc')
-                    ->first();
-                if ($cate['hotNew']) {
-                    $cate['firstCate'] = Category::where('id', $cate['hotNew']->cat_id)
+                if (!empty($ids)) {
+                    $cate['hotNew'] = Article::whereIn('cat_id', $ids)
                         ->where('status', 1)
-                        ->where('is_home', 1)
-                        ->first();
-                    $cate['listNews'] = Article::where('status', 1)
-                        ->whereIn('cat_id', $ids)
-                        ->where('id', '<>', $cate['hotNew']->id)
+                        ->where('is_feature', 1)
                         ->orderBy('id', 'desc')
-                        ->with('category')
-                        ->get();
+                        ->first();
+                    if ($cate['hotNew']) {
+                        $cate['firstCate'] = Category::where('id', $cate['hotNew']->cat_id)
+                            ->where('status', 1)
+                            ->where('is_home', 1)
+                            ->first();
+                        $cate['listNews'] = Article::where('status', 1)
+                            ->whereIn('cat_id', $ids)
+                            ->where('id', '<>', $cate['hotNew']->id)
+                            ->orderBy('id', 'desc')
+                            ->with('category')
+                            ->get();
+                    }
+                } else {
+                    $cate['hotNew'] = Article::where('cat_id', $cate->id)
+                        ->where('status', 1)
+                        ->where('is_feature', 1)
+                        ->orderBy('id', 'desc')
+                        ->first();
+                    if ($cate['hotNew']) {
+                        $cate['firstCate'] = $cate;
+                        $cate['listNews'] = Article::where('status', 1)
+                            ->where('cat_id', $cate->id)
+                            ->where('id', '<>', $cate['hotNew']->id)
+                            ->orderBy('id', 'desc')
+                            ->with('category')
+                            ->get();
+                    }
                 }
             }
         }

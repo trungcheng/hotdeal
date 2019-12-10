@@ -1637,6 +1637,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 	position: relative;
 	overflow: hidden;
 	padding: 4px 1%;
+	height: 185px;
 }
 
 .box_news2303_qc a:last-child {
@@ -1661,6 +1662,8 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 	-ms-border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
+	height: 100%;
+	object-fit: cover;
 }
 
 #owl_slgtaseco .item {
@@ -2032,8 +2035,8 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 .box_news2303_tlt {
 	position: absolute;
 	bottom: 2%;
-	left: 2%;
-	width: 97%;
+	left: 1%;
+	width: 98%;
 	line-height: 30px;
 	display: block;
 	text-align: center;
