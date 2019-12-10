@@ -140,17 +140,25 @@
                     </div>
                     <div class="panel-body">
                         <div class="sidebar_ul">
-                            <ul>
-                                @foreach ($childCates as $child)
+                            @if ($childCates)
+                                <ul>
+                                    @foreach ($childCates as $child)
+                                        <li>
+                                            @if ($child->id == $parent->id)
+                                                <a style="font-weight:bold" href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a>
+                                            @else
+                                                <a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @else
+                                <ul>
                                     <li>
-                                        @if ($child->id == $parent->id)
-                                            <a style="font-weight:bold" href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a>
-                                        @else
-                                            <a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a>
-                                        @endif
+                                    <a style="font-weight:bold" href="{{ route('detail', ['slug' => $parent->slug]) }}">{{ $parent->getTranslation(app()->getLocale())->name }}</a>
                                     </li>
-                                @endforeach
-                            </ul>
+                                </ul>
+                            @endif
                         </div>
                     </div>
                 </div>

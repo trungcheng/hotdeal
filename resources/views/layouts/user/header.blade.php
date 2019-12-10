@@ -38,11 +38,22 @@
                     </button>
                 </div>
                 <div class="navbar-collapse collapse" id="menu_rps">
+                    @if (count($categories) > 0)
                     <ul class="navbar-nav nav">
                         <li class="menu_ichome"><a href="{{ url('') }}" style="border:none"><i class="fa fa-home fa-2x"></i></a></li>
                         @foreach ($categories as $cate)
                         <li>
-                            <a href="#">{{ $cate->getTranslation(app()->getLocale())->name }} <span class="caret"></span></a>
+                            @if ($cate->childrens)
+                                <a href="#">
+                                    {{ $cate->getTranslation(app()->getLocale())->name }} 
+                                    <span class="caret"></span>
+                                </a>
+                            @else
+                                <a href="{{ route('detail', ['slug' => $cate->slug]) }}">
+                                    {{ $cate->getTranslation(app()->getLocale())->name }} 
+                                </a>
+                            @endif
+                            @if ($cate->childrens)
                             <ul class="dropdown-menu dropdown-menu_ed">
                                 @foreach ($cate->childrens as $child)
                                 <li>
@@ -50,10 +61,12 @@
                                 </li>
                                 @endforeach
                             </ul>
+                            @endif
                         </li>
                         @endforeach
                         <li><a href="{{ route('contact') }}">{{ trans('general.contact') }}</a></li>
                     </ul>
+                    @endif
                 </div>
             </div>
         </div>

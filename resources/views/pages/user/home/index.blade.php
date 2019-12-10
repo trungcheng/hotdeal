@@ -198,11 +198,11 @@
                         @if ($cate['hotNew'] && $cate['firstCate'] && !empty($cate['listNews']))
                             <div class="box_news2303_qc">
                                 <a href="{{ route('detail', ['slug' => $tvHinhanh->slug]) }}" class="thumbnail">
-                                    <img src="https://taseco.vn/upload/grouptintuc/1543474581video-1.gif" alt="Thư viện hình ảnh" class="img-responsive">
+                                    <img src="{{ $tvHinhanh->image }}" alt="{{ $tvHinhanh->getTranslation('vi')->name }}" class="img-responsive">
                                     <span class="box_news2303_tlt">{{ $tvHinhanh->getTranslation(app()->getLocale())->name }}</span>
                                 </a>
                                 <a href="{{ route('detail', ['slug' => $video->slug]) }}" class="thumbnail">
-                                    <img src="https://taseco.vn/upload/grouptintuc/1543474825avarta video.jpg" alt="Video" class="img-responsive">
+                                    <img src="{{ $video->image }}" alt="{{ $video->getTranslation('vi')->name }}" class="img-responsive">
                                     <span class="box_news2303_tlt">{{ $video->getTranslation(app()->getLocale())->name }}</span>
                                 </a>
                             </div>

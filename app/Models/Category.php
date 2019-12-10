@@ -30,6 +30,10 @@ class Category extends Model
         'layout'
     ];
 
+    public function children(){
+        return $this->hasMany('App\Models\Category', 'parent_id', 'id');
+    }
+
     public function article() {
     	return $this->hasMany('App\Models\Article', 'cat_id' , 'id');
     }
@@ -42,6 +46,17 @@ class Category extends Model
         'name.required' => 'Tên không được để trống',
         'name.min' => 'Tên ít nhất từ 2 ký tự'
     ];
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($category) {
+            $category->children()->update([
+                'parent_id' => 0,
+                'order' => 1
+            ]);
+        });
+    }
 
     public static function init($request)
     {

@@ -92,15 +92,18 @@ class WebController extends Controller
     {
         $category = Category::where('slug', $slug)->first();
         if ($category) {
-            $parentCate = Category::where('id', $category->parent_id)->where('status', 1)->first();
-            $childCates = Category::where('parent_id', $parentCate->id)
-                ->where('status', 1)
-                ->orderBy('order', 'asc')
-                ->get();
-            if ($childCates) {
-                $buildCates = Category::where('status', 1)->orderBy('order', 'asc')->get();
-                $childCates = Util::buildTree($buildCates, $parentCate->id);
+            if ($category->parent_id != 0) {
+                $parentCate = Category::where('id', $category->parent_id)->where('status', 1)->first();
+                $childCates = Category::where('parent_id', $parentCate->id)
+                    ->where('status', 1)
+                    ->orderBy('order', 'asc')
+                    ->get();
+                if ($childCates) {
+                    $buildCates = Category::where('status', 1)->orderBy('order', 'asc')->get();
+                    $childCates = Util::buildTree($buildCates, $parentCate->id);
+                }
             }
+
             $childs = Category::where('parent_id', $category->id)->where('status', 1)->orderBy('order', 'asc');
             if ($childs->count() > 0) {
                 $type = 'category';
@@ -112,8 +115,8 @@ class WebController extends Controller
 
             return view('pages.user.home.detail', [
                 'category' => $category,
-                'parentCate' => $parentCate,
-                'childCates' => $childCates,
+                'parentCate' => isset($parentCate) ? $parentCate : null,
+                'childCates' => isset($childCates) ? $childCates : null,
                 'articles' => $articles,
                 'type' => $type
             ]);
@@ -132,17 +135,19 @@ class WebController extends Controller
                 ->where('status', 1)
                 ->get();
             $parentOfParent = Category::where('id', $parent->parent_id)->where('status', 1)->first();
-            $childCates = Category::where('parent_id', $parentOfParent->id)
-                ->where('status', 1)
-                ->orderBy('order', 'asc')
-                ->get();
+            if ($parentOfParent) {
+                $childCates = Category::where('parent_id', $parentOfParent->id)
+                    ->where('status', 1)
+                    ->orderBy('order', 'asc')
+                    ->get();
+            }
 
             return view('pages.user.home.detail-article', [
                 'article' => $article,
                 'parent' => $parent,
                 'relatedArticles' => $relatedArticles,
                 'parentOfParent' => $parentOfParent,
-                'childCates' => $childCates
+                'childCates' => isset($childCates) ? $childCates : null
             ]);
         }
 

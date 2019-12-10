@@ -48,25 +48,48 @@
 
 @section('content')
 <div class="main_w w_gr clearfix">
-    @if ($parentCate->image != '' && $parentCate->image != null)
-    <div class="carousel slide" id="carousel_main">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img alt="slide3" src="{{ $parentCate->image }}">
+    @if ($parentCate)
+        @if ($parentCate->image != '' && $parentCate->image != null)
+        <div class="carousel slide" id="carousel_main">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img alt="slide3" src="{{ $parentCate->image }}">
+                </div>
             </div>
-        </div>
 
-        <!-- Controls -->
-        {{--<a data-slide="prev" href="#carousel_main" class="left carousel-control">
-            <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a data-slide="next" href="#carousel_main" class="right carousel-control">
-            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>--}}
-    </div>
+            <!-- Controls -->
+            {{--<a data-slide="prev" href="#carousel_main" class="left carousel-control">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a data-slide="next" href="#carousel_main" class="right carousel-control">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>--}}
+        </div>
+        @endif
+    @else
+        @if ($category->image != '' && $category->image != null)
+        <div class="carousel slide" id="carousel_main">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img alt="slide3" src="{{ $category->image }}">
+                </div>
+            </div>
+
+            <!-- Controls -->
+            {{--<a data-slide="prev" href="#carousel_main" class="left carousel-control">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a data-slide="next" href="#carousel_main" class="right carousel-control">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>--}}
+        </div>
+        @endif
     @endif
     <div class="bread">
         <ol class="breadcrumb">
@@ -188,6 +211,14 @@
                                             @endif
                                         </li>
                                     @endforeach
+                                </ul>
+                            @else
+                                <ul>
+                                    <li>
+                                        <a style="font-weight:bold" href="{{ route('detail', ['slug' => $category->slug]) }}">
+                                            {{ $category->getTranslation(app()->getLocale())->name }}
+                                        </a>
+                                    </li>
                                 </ul>
                             @endif
                         </div>
