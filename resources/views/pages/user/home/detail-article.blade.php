@@ -74,7 +74,9 @@
     <div class="bread">
         <ol class="breadcrumb">
             <li><a href="{{ url('') }}">{{ trans('general.home_page') }}</a></li>
-            <li><a href="">{{ $parentOfParent->getTranslation(app()->getLocale())->name }}</a></li>
+            @if ($parentOfParent)
+                <li><a href="">{{ $parentOfParent->getTranslation(app()->getLocale())->name }}</a></li>
+            @endif
             <li class="active">{{ $parent->getTranslation(app()->getLocale())->name }}</li>
         </ol>
     </div>
