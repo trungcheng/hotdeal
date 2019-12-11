@@ -23,12 +23,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="{{ asset('frontend/upload/advert/favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/bootstrap.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-buttons.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-thumbs.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/vinastar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/viewport.css') }}" />    
+    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/bootstrap.css?') . time() }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox.css?') . time() }}">
+    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-buttons.css?') . time() }}">
+    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-thumbs.css?') . time() }}">
+    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/vinastar.css?') . time() }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/viewport.css?') . time() }}" />    
     @section('pageCss')
     @show
 </head>

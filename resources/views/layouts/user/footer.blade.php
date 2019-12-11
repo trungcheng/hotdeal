@@ -1,5 +1,5 @@
 <div class="box_dttaseco clearfix w_gr" style="margin-top:40px;">
-    <h3>{{ trans('general.partners') }}:</h3>
+    <h3>{{ trans('general.partners') }}</h3>
     <div id="owl_carousel" class="owl-carousel owl-theme">
         @foreach (json_decode($setting['partner_logos']) as $logo)
         <div class="item">

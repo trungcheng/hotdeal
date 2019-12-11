@@ -64,8 +64,28 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>
-                                    <input value="{{ ($category != '') ? $category['image'] : '' }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />
-                                    <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('xFilePath')">Tải ảnh lên</button>
+                                    <input value="{{ ($category != '') ? $category['image'] : '' }}" name="image" type="text" size="48" class="form-control" id="image" />
+                                    <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('image')">Tải ảnh lên</button>
+                                </div>
+                                <div class="form-group">
+                                    <label>List ảnh slide</label>      
+                                    <button type="button" onclick="add_img();" class="btn btn-success btn-sm btn_img" style="margin-top: 8px;"><i class="fa fa-plus"></i> Thêm Ảnh</button>
+
+                                    <div class="box-img">
+                                        <?php $i = 0; ?>
+                                        @if ($category['sliders'] != "")
+                                            @foreach(explode(',', $category['sliders']) as $slide) 
+                                                <?php $i++; ?>
+                                                <p class="item-img add_<?php echo $i; ?>" style="margin:3px 0; height: 40px; padding:0;">
+                                                    <span style="display:block;">
+                                                        <input type="text" value="{{ $slide }}" size="48" name="sliders[]" class="form-control list-img" id="xFilePath<?php echo $i; ?>" />
+                                                        <button class="btn btn-primary btn-upload" onclick="openPopupMulti(<?php echo $i; ?>)">Tải ảnh lên</button>
+                                                        <button onclick="del_accads(<?php echo $i; ?>);" type="button" class="btn btn-danger">Xóa</button>
+                                                    </span>
+                                                </p>
+                                            @endforeach
+                                        @endif                                      
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Thứ tự</label>
@@ -124,16 +144,16 @@
     {!! Html::script('backend/js/angular/controllers/category.controller.js') !!}
 
     <script type="text/javascript">
-        function openPopup() {
+        function openPopup(id) {
             CKFinder.popup( {
                 chooseFiles: true,
                 onInit: function( finder ) {
                     finder.on( 'files:choose', function( evt ) {
                         var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                        document.getElementById(id).value = file.getUrl();
                     } );
                     finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                        document.getElementById(id).value = evt.data.resizedUrl;
                     } );
                 }
             } );
@@ -152,6 +172,19 @@
                     });
                 }
             });
+        }
+    </script>
+
+    <script>
+        var i = 50;
+        function add_img(){
+            i++;
+            var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="sliders[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-danger">Xóa</button></span></p>';
+            $(insert).appendTo('.box-img');
+        }
+        
+        function del_accads(id) {
+            $('.add_'+id).remove(); 
         }
     </script>
 @stop

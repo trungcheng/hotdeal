@@ -52,25 +52,30 @@
 
 @section('content')
 <div class="main_w w_gr clearfix">
-    @if ($parent->image != '' && $parent->image != null)
-    <div class="carousel slide" id="carousel_main">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img alt="slide3" src="{{ $parent->image }}">
+
+    @if ($parent->sliders != '' && $parent->sliders != null)
+        <div class="carousel slide" id="carousel_main">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                @foreach (explode(',', $parent->sliders) as $slide)
+                    <div class="item {{ $loop->first ? 'active' : '' }}">
+                        <img alt="slide" src="{{ $slide }}">
+                    </div>
+                @endforeach
             </div>
+
+            <!-- Controls -->
+            <a data-slide="prev" href="#carousel_main" class="left carousel-control">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a data-slide="next" href="#carousel_main" class="right carousel-control">
+                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <!-- Controls -->
-        {{--<a data-slide="prev" href="#carousel_main" class="left carousel-control">
-            <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a data-slide="next" href="#carousel_main" class="right carousel-control">
-            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a>--}}
-    </div>
     @endif
+
     <div class="bread">
         <ol class="breadcrumb">
             <li><a href="{{ url('') }}">{{ trans('general.home_page') }}</a></li>
@@ -80,6 +85,7 @@
             <li class="active">{{ $parent->getTranslation(app()->getLocale())->name }}</li>
         </ol>
     </div>
+
     <div class="main">
         @if ($article->cat_id != 19 && $article->cat_id != 20)
             <div class="main_col4">
@@ -166,6 +172,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 @stop
