@@ -5,7 +5,7 @@ return [
     'category' => 'Danh mục',
     'contact' => 'Liên hệ',
     'search' => 'Tìm kiếm',
-    'partners' => 'Các đơn vị thành viên, liên kết',
+    'partners' => 'Các đơn vị đối tác',
     'mobile' => 'Điện thoại',
     'fax' => 'Fax',
     'website' => 'Website',

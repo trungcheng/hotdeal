@@ -48,49 +48,30 @@
 
 @section('content')
 <div class="main_w w_gr clearfix">
-    @if ($parentCate)
-        @if ($parentCate->image != '' && $parentCate->image != null)
+
+    @if ($category->sliders != '' && $category->sliders != null)
         <div class="carousel slide" id="carousel_main">
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                <div class="item active">
-                    <img alt="slide3" src="{{ $parentCate->image }}">
-                </div>
+                @foreach (explode(',', $category->sliders) as $slide)
+                    <div class="item {{ $loop->first ? 'active' : '' }}">
+                        <img alt="slide" src="{{ $slide }}">
+                    </div>
+                @endforeach
             </div>
 
             <!-- Controls -->
-            {{--<a data-slide="prev" href="#carousel_main" class="left carousel-control">
+            <a data-slide="prev" href="#carousel_main" class="left carousel-control">
                 <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
                 <span class="sr-only">Previous</span>
             </a>
             <a data-slide="next" href="#carousel_main" class="right carousel-control">
                 <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
                 <span class="sr-only">Next</span>
-            </a>--}}
-        </div>
-        @endif
-    @else
-        @if ($category->image != '' && $category->image != null)
-        <div class="carousel slide" id="carousel_main">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <img alt="slide3" src="{{ $category->image }}">
-                </div>
-            </div>
-
-            <!-- Controls -->
-            {{--<a data-slide="prev" href="#carousel_main" class="left carousel-control">
-                <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
             </a>
-            <a data-slide="next" href="#carousel_main" class="right carousel-control">
-                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>--}}
         </div>
-        @endif
     @endif
+
     <div class="bread">
         <ol class="breadcrumb">
             <li><a href="{{ url('') }}">{{ trans('general.home_page') }}</a></li>

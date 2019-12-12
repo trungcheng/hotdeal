@@ -24,13 +24,14 @@ class Category extends Model
         'description',
         'slug',
         'image',
+        'sliders',
         'status',
         'order',
         'is_home',
         'layout'
     ];
 
-    public function children(){
+    public function children() {
         return $this->hasMany('App\Models\Category', 'parent_id', 'id');
     }
 
@@ -88,6 +89,11 @@ class Category extends Model
         unset($data['ko_description']);
 
         foreach ($data as $key => $value) {
+            if ($key == 'sliders' && count($value) > 0) {
+                $value = implode(',', array_filter($value, function ($val) { 
+                    return !is_null($val) && $val != '';
+                }));
+            }
             $category[$key] = $value;
         }
 
@@ -110,6 +116,11 @@ class Category extends Model
         unset($data['ko_description']);
 
         foreach ($data as $key => $value) {
+            if ($key == 'sliders' && count($value) > 0) {
+                $value = implode(',', array_filter($value, function ($val) { 
+                    return !is_null($val) && $val != '';
+                }));
+            }
             $cate[$key] = $value;
         }
 
