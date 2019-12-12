@@ -149,7 +149,7 @@ class WebController extends Controller
 
     public function processPageLevelTwo(Request $request, $parent, $slug)
     {
-        $article = Article::where('slug', $slug)->where('status', 1)->first();
+        $article = Article::where('slug', $slug)->where('status', 1)->where('type', 'article')->first();
         $parent = Category::where('slug', $parent)->where('status', 1)->first();
         if ($article && $parent) {
             $relatedArticles = Article::where('cat_id', $parent->id)
