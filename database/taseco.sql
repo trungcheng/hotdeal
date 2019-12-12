@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-12-10 22:42:10
+Date: 2019-12-10 23:23:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,7 +59,6 @@ INSERT INTO `articles` VALUES ('12', '1', null, 'ha-long-2019', null, null, 'htt
 INSERT INTO `articles` VALUES ('13', '1', null, 'ngay-phu-nu-viet-nam-20-10-2019', null, null, 'https://taseco.vn/upload/album/thumb/154287232012.jpg', 'https://taseco.vn/upload/album/15428723271.jpg,https://taseco.vn/upload/album/15428723312.jpg,https://taseco.vn/upload/album/15428723363.jpg,https://taseco.vn/upload/album/15428723455.jpg,https://taseco.vn/upload/album/154287237611.jpg,https://taseco.vn/upload/album/154287238713.jpg', null, '0', '0', '1', '19', null, null, null, null, '2019-12-06 22:57:12', '2019-12-06 22:57:12');
 INSERT INTO `articles` VALUES ('14', '1', null, 'khu-do-thi-ket-hop-cong-vien-cay-xanh-video-2', null, null, 'https://taseco.vn/upload/video/1466413720video.jpg', null, 'https://www.youtube.com/watch?v=XWoVinHdwq0', '0', '0', '1', '20', null, null, null, null, '2019-12-06 23:46:21', '2019-12-06 23:46:21');
 INSERT INTO `articles` VALUES ('15', '1', null, 'hanh-khuc-utico', null, null, 'https://taseco.vn/upload/video/1465199129Untitled-2.jpg', null, 'https://www.youtube.com/watch?v=XERTD8bo4IM', '0', '0', '1', '20', null, null, null, null, '2019-12-06 23:47:33', '2019-12-06 23:47:33');
-INSERT INTO `articles` VALUES ('16', '1', null, 'tam-nhin', null, null, 'https://taseco.vn/upload/about/thumb/14591347111457542094tamnhin.jpg', null, null, '0', '0', '1', '0', 'slogan-slide', null, null, null, '2019-12-10 21:09:45', '2019-12-10 21:24:22');
 INSERT INTO `articles` VALUES ('17', '1', null, 'su-menh', null, null, 'https://taseco.vn/upload/about/thumb/1466664537Untitled-4.jpg', null, null, '0', '0', '1', '0', 'slogan-slide', null, null, null, '2019-12-10 21:23:58', '2019-12-10 21:23:58');
 INSERT INTO `articles` VALUES ('18', '1', null, 'gia-tri-cot-loi', null, null, 'https://taseco.vn/upload/about/thumb/146580014114591347911457541564gia-tri-cot-loi.jpg', null, null, '0', '0', '1', '0', 'slogan-slide', null, null, null, '2019-12-10 21:26:06', '2019-12-10 21:26:06');
 
@@ -111,8 +110,6 @@ INSERT INTO `article_translations` VALUES ('27', '14', 'KHU ĐÔ THỊ KẾT H�
 INSERT INTO `article_translations` VALUES ('28', '14', '도시 지역 복합 녹색 식물-비디오 2', '', '', 'ko');
 INSERT INTO `article_translations` VALUES ('29', '15', 'Hành khúc Utico', '', '', 'vi');
 INSERT INTO `article_translations` VALUES ('30', '15', '유 티코 행진', '', '', 'ko');
-INSERT INTO `article_translations` VALUES ('31', '16', 'TẦM NHÌN', '<p style=\"text-align: justify;\">Trở thành tập đoàn đầu tư, kinh doanh chuyên nghiệp hàng đầu Việt Nam hoạt động đa ngành, trong đó lấy kinh doanh dịch vụ phi hàng không &nbsp;tại các sân bay quốc tế, dịch vụ khách sạn; Đầu tư kinh doanh bất...</p>', '', 'vi');
-INSERT INTO `article_translations` VALUES ('32', '16', 'TẦM NHÌN', '<p style=\"text-align: justify;\">Trở thành tập đoàn đầu tư, kinh doanh chuyên nghiệp hàng đầu Việt Nam hoạt động đa ngành, trong đó lấy kinh doanh dịch vụ phi hàng không &nbsp;tại các sân bay quốc tế, dịch vụ khách sạn; Đầu tư kinh doanh bất...</p>', '', 'ko');
 INSERT INTO `article_translations` VALUES ('33', '17', 'SỨ MỆNH', '<p style=\"text-align: justify;\">Không&nbsp;ngừng&nbsp;sáng&nbsp;tạo,&nbsp;đổi mới, phấn&nbsp;đấu&nbsp;tạo&nbsp;ra&nbsp;những sản phẩm và dịch vụ phong phú, chất lượng cao làm hài lòng khách hàng;&nbsp;chia sẻ lợi ích, đồng...</p>', '', 'vi');
 INSERT INTO `article_translations` VALUES ('34', '17', 'SỨ MỆNH', '<p style=\"text-align: justify;\">Không&nbsp;ngừng&nbsp;sáng&nbsp;tạo,&nbsp;đổi mới, phấn&nbsp;đấu&nbsp;tạo&nbsp;ra&nbsp;những sản phẩm và dịch vụ phong phú, chất lượng cao làm hài lòng khách hàng;&nbsp;chia sẻ lợi ích, đồng...</p>', '', 'ko');
 INSERT INTO `article_translations` VALUES ('35', '18', 'GIÁ TRỊ CỐT LÕI', '<p style=\"text-align: justify;\">- Coi trọng chất lượng sản phẩm, dịch vụ và sự hài lòng của khách hàng, đặt lợi ích khách hàng lên hàng đầu.<br>- Giữ uy tín, bảo đảm niềm tin của khách...</p>', '', 'vi');
@@ -131,7 +128,6 @@ INSERT INTO `article_translations` VALUES ('49', '12', 'Hạ Long 2019', '', '',
 INSERT INTO `article_translations` VALUES ('50', '13', 'Ngày Phụ Nữ Việt Nam 20/10/2019', '', '', 'en');
 INSERT INTO `article_translations` VALUES ('51', '14', 'KHU ĐÔ THỊ KẾT HỢP CÔNG VIÊN CÂY XANH - Video 2', '', '', 'en');
 INSERT INTO `article_translations` VALUES ('52', '15', 'Hành khúc Utico', '', '', 'en');
-INSERT INTO `article_translations` VALUES ('53', '16', 'TẦM NHÌN', '', '', 'en');
 INSERT INTO `article_translations` VALUES ('54', '17', 'SỨ MỆNH', '', '', 'en');
 INSERT INTO `article_translations` VALUES ('55', '18', 'GIÁ TRỊ CỐT LÕI', '', '', 'en');
 
@@ -431,4 +427,4 @@ INSERT INTO `user_onlines` VALUES ('16', '6m0hi5s3vmddj3tgjs7bq7v522', '15758049
 INSERT INTO `user_onlines` VALUES ('17', 'pp73jefc3gj2id965j9b236b9n', '1575805503', '1');
 INSERT INTO `user_onlines` VALUES ('18', 'oeekfhsgfdelhf15bofc1851un', '1575805631', '1');
 INSERT INTO `user_onlines` VALUES ('19', '43deraldnma6i1sc40eqd4tsv1', '1575824250', '1');
-INSERT INTO `user_onlines` VALUES ('20', 'b8tijoiafhacht8gglvra0k5tl', '1575992477', '0');
+INSERT INTO `user_onlines` VALUES ('20', 'b8tijoiafhacht8gglvra0k5tl', '1575994311', '0');

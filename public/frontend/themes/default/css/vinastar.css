@@ -31,6 +31,7 @@ a:hover {
 /*Main stylesheet for Backtop jQuery Plugin */
 
 .news_social {
+	margin-top: 20px;
 	margin-bottom: 20px;
 	float: right;
 	/*width:100%;*/
@@ -896,7 +897,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 }
 
 .main_col4 .news_dtlq ul li {
-	list-style: disc;
+	list-style: inside;
 }
 
 .news_dtlq h4 {
@@ -920,7 +921,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 	-ms-transition: all 350ms;
 	-moz-transition: all 350ms;
 	-webkit-transition: all 350ms;
-	display: block;
+	display: inline;
 }
 
 .news_dtlq ul li a span {
@@ -1668,7 +1669,7 @@ html, body, .carousel, .carousel-inner, .carousel-inner .item {}
 
 #owl_slgtaseco .item {
 	margin: 10px;
-	color: #FFF;
+	color: #000;
 }
 
 .customNavigation {

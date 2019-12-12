@@ -83,7 +83,32 @@ class SettingController extends Controller
         try {
             $data = $request->all();
             $setting = Setting::first();
-            $setting->update($data);
+
+            foreach (\Config::get('translatable.locales') as $locale) {
+                if (isset($data['name'])) {
+                    $setting->translateOrNew($locale)->name = ($locale == 'vi') ? $data['name'] : $data[$locale.'_name'];
+                }
+                if (isset($data['slogan'])) {
+                    $setting->translateOrNew($locale)->slogan = ($locale == 'vi') ? $data['slogan'] : $data[$locale.'_slogan'];
+                }
+                if (isset($data['address'])) {
+                    $setting->translateOrNew($locale)->address = ($locale == 'vi') ? $data['address'] : $data[$locale.'_address'];
+                }
+            }
+    
+            if (isset($data['en_name'])) unset($data['en_name']);
+            if (isset($data['en_slogan'])) unset($data['en_slogan']);
+            if (isset($data['en_address'])) unset($data['en_address']);
+    
+            if (isset($data['ko_name'])) unset($data['ko_name']);
+            if (isset($data['ko_slogan'])) unset($data['ko_slogan']);
+            if (isset($data['ko_address'])) unset($data['ko_address']);
+
+            foreach ($data as $key => $value) {
+                $setting[$key] = $value;
+            }
+
+            $setting->save();
             
             return Response::json([
                 'status' => true,

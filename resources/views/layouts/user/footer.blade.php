@@ -1,5 +1,5 @@
 <div class="box_dttaseco clearfix w_gr" style="margin-top:40px;">
-    <h3>{{ trans('general.partners') }}:</h3>
+    <h3>{{ trans('general.partners') }}</h3>
     <div id="owl_carousel" class="owl-carousel owl-theme">
         @foreach (json_decode($setting['partner_logos']) as $logo)
         <div class="item">
@@ -25,7 +25,11 @@
                     <h3>
                         {!! $setting->getTranslation(app()->getLocale())->address !!}</h3>
                     <p>
-                        <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;">{{ trans('general.mobile') }}:&nbsp;<a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>&nbsp;-&nbsp;{{ trans('general.fax') }}:&nbsp;{!! $setting->fax !!}</span></span>
+                        <span style="font-family:arial,helvetica,sans-serif;">
+                            <span style="font-size:12px;">{{ trans('general.mobile') }}: 
+                                <a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>@if ($setting->fax != '')&nbsp;-&nbsp;{{ trans('general.fax') }}:&nbsp;{!! $setting->fax !!}@endif
+                            </span>
+                        </span>
                     </p>
                     <p>
                         <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;">{{ trans('general.website') }}:&nbsp;<a href="{{ url('') }}">{!! $setting->website !!}</a>&nbsp;-&nbsp;{{ trans('general.email') }}:&nbsp;<a href="mailto:{!! $setting->email !!}">{!! $setting->email !!}</a></span></span></p>
