@@ -4,7 +4,7 @@ html {
     width: 100%;
 }
 body.login-page {
-    background-color: #0080ff;
+    background-color: #eee;
         /* background: -webkit-linear-gradient(150.76deg,#7b94ff 0,#b288ff 47.43%,#ffb0d0 99.5%);
         background: linear-gradient(-60.76deg,#7b94ff 0,#b288ff 47.43%,#ffb0d0 99.5%); */
         display: table-cell;
@@ -15,10 +15,14 @@ body.login-page {
         margin: 0 auto;
         padding: 30px 0;
     }
+    .login-box h3{
+        text-align: center;
+    }
     .login-box-body {
         box-shadow: 0 14px 24px 0 rgba(50,49,58,.25);
         border-radius: 6px; 
         padding: 30px;
+        padding-top: 5px;
     }
     .form-control-feedback {
         left: 0;
@@ -55,6 +59,6 @@ body.login-page {
     }
     .login-logo h3 {
         text-shadow: 0 14px 24px rgba(50,48,57,.25);
-        color: #fff;
+        color: #000;
         font-size: 34px;
     }
