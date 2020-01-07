@@ -4,6 +4,8 @@
 
     \Route::group(['middleware' => 'user.language'], function () {
         \Route::get('/', 'User\WebController@index')->name('home');
+
+        \Route::get('/search', 'User\WebController@search')->name('search');
         
         \Route::get('/admin', 'User\WebController@navigate');
 

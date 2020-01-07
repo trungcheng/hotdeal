@@ -29,6 +29,8 @@ return [
         'security_incorrect' => 'Security code incorrect!'
     ],
     'album_photo' => 'Photo album',
-    'designed_by' => 'Designed by'
+    'designed_by' => 'Designed by',
+    'search' => 'Search',
+    'title_search' => 'Search with keyword'
 
 ];

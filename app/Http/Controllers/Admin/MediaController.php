@@ -25,7 +25,7 @@ class MediaController extends Controller
 
     public function getAllPhotos(Request $request)
     {
-        $results = Article::where('id', '>', 0)->where('cat_id', 19)->where('status', 1);
+        $results = Article::where('id', '>', 0)->where('cat_id', 19);
         if ($request->name !== 'all-photo' && $request->name !== 'undefined') {
             $results->where("title", "LIKE", "%" . $request->name . "%");
         }
@@ -63,7 +63,7 @@ class MediaController extends Controller
 
             $data = $request->all();
             if ($data) {
-                Article::addAction($data);
+                Article::addAction($data, 'article');
 
                 return Response::json([
                     'status' => true,
@@ -104,7 +104,7 @@ class MediaController extends Controller
                     // if ($data['is_about'] == 1) {
                     //     Article::where('id', '>', 0)->update(['is_about' => 0]);
                     // }
-                    Article::updateAction($data, $article);
+                    Article::updateAction($data, $article, 'article');
                     
                     return Response::json([
                         'status' => true, 
@@ -175,7 +175,7 @@ class MediaController extends Controller
 
     public function getAllVideos(Request $request)
     {
-        $results = Article::where('id', '>', 0)->where('cat_id', 20)->where('status', 1);
+        $results = Article::where('id', '>', 0)->where('cat_id', 20);
         if ($request->name !== 'all-video' && $request->name !== 'undefined') {
             $results->where("title", "LIKE", "%" . $request->name . "%");
         }
@@ -213,7 +213,7 @@ class MediaController extends Controller
 
             $data = $request->all();
             if ($data) {
-                Article::addAction($data);
+                Article::addAction($data, 'article');
 
                 return Response::json([
                     'status' => true,
@@ -254,7 +254,7 @@ class MediaController extends Controller
                     // if ($data['is_about'] == 1) {
                     //     Article::where('id', '>', 0)->update(['is_about' => 0]);
                     // }
-                    Article::updateAction($data, $article);
+                    Article::updateAction($data, $article, 'article');
                     
                     return Response::json([
                         'status' => true, 
@@ -326,7 +326,7 @@ class MediaController extends Controller
 
     public function getAllSlides(Request $request)
     {
-        $results = Article::where('id', '>', 0)->where('type', 'slide')->where('status', 1);
+        $results = Article::where('id', '>', 0)->where('type', 'slide');
         if ($request->name !== 'all-slide' && $request->name !== 'undefined') {
             $results->where("title", "LIKE", "%" . $request->name . "%");
         }
@@ -473,7 +473,7 @@ class MediaController extends Controller
 
     public function getAllSloganSlides(Request $request)
     {
-        $results = Article::where('id', '>', 0)->where('type', 'slogan-slide')->where('status', 1);
+        $results = Article::where('id', '>', 0)->where('type', 'slogan-slide');
         if ($request->name !== 'all-slogan-slide' && $request->name !== 'undefined') {
             $results->where("title", "LIKE", "%" . $request->name . "%");
         }

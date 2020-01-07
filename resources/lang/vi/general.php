@@ -29,6 +29,8 @@ return [
         'security_incorrect' => 'Mã bảo mật chưa đúng!'
     ],
     'album_photo' => 'Album ảnh',
-    'designed_by' => 'Thiết kế bởi'
+    'designed_by' => 'Thiết kế bởi',
+    'search' => 'Tìm kiếm',
+    'title_search' => 'Tìm kiếm với từ khóa'
 
 ];

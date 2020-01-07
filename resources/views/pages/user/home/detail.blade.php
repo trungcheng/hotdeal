@@ -43,6 +43,24 @@
             width: 100%;
             object-fit: cover;
         }
+        .panel_txt h2 {
+            font-size: 13px !important;
+        }
+        .panel_txt .date {
+            margin-top: -10px;
+            font-size: 11px;
+            color: #666;
+        }
+        .panel_img {
+            width: 120px !important;
+            height: 120px !important;
+        }
+        .panel_img img {
+            width: 100%;
+            height: 100px !important;
+            position: relative !important;
+            object-fit: cover;
+        }
     </style>
 @stop
 
@@ -103,7 +121,10 @@
                                         @endif
                                     </a>
                                 </h2>
-                                {!! ($type == 'article') ? $article->getTranslation(app()->getLocale())->intro : $article->getTranslation(app()->getLocale())->description !!}
+                                <p class="date">{{ $article->created_at }}</p>
+                                <p class="intro">
+                                    {!! ($type == 'article') ? $article->getTranslation(app()->getLocale())->intro : $article->getTranslation(app()->getLocale())->description !!}
+                                </p>
                             </div>
                         </li>
                         @endforeach
@@ -214,6 +235,21 @@
 
 @section('pageJs')
     <script type="text/javascript">
+        $.each($('.intro'), function (k, v) {
+            var intro = $(v).text();
+            intro = trimText(intro, 70);
+            $(v).text(intro);
+        });
 
+        function trimText(str, wordCount) {
+            var strArray = str.split(' ');
+            var subArray = strArray.slice(0, wordCount);
+            var result = subArray.join(" ");
+            if (strArray.length < wordCount) {
+                return result;
+            } else {
+                return result + '...';
+            }
+        }
     </script>
 @stop

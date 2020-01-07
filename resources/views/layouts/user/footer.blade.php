@@ -46,6 +46,7 @@
                 </div>
                 <p><span class="tkct_txt">{{ trans('general.user_access_count') }}</span><span style="color:#fff;display:inline-block;margin:0 5px;font-weight:bold;">{{ $user_online_data[2] }}</span></p>
                 <p>{{ trans('general.designed_by') }} <a href="https://utico.vn">Utico</a></p>
+                <a href="//www.dmca.com/Protection/Status.aspx?ID=c6d1e29f-f244-40c8-abdf-49c11e5f1653" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_1_120.png?ID=c6d1e29f-f244-40c8-abdf-49c11e5f1653"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
             </div>
         </div>
         

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Util\Util;
+use Carbon\Carbon;
 
 class Category extends Model
 {
@@ -30,6 +31,42 @@ class Category extends Model
         'is_home',
         'layout'
     ];
+
+    public function getCreatedAtAttribute($date) {
+        Carbon::setLocale('vi');
+        $day = $this->convert(Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('Asia/Ho_Chi_Minh')->format('l'));
+
+        return $day. ', ' .Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('Asia/Ho_Chi_Minh')->format('d/m/Y, H:i');
+    }
+
+    public function convert($weekday) {
+        $weekday = strtolower($weekday);
+        switch($weekday) {
+            case 'monday':
+                $weekday = 'Thứ hai';
+                break;
+            case 'tuesday':
+                $weekday = 'Thứ ba';
+                break;
+            case 'wednesday':
+                $weekday = 'Thứ tư';
+                break;
+            case 'thursday':
+                $weekday = 'Thứ năm';
+                break;
+            case 'friday':
+                $weekday = 'Thứ sáu';
+                break;
+            case 'saturday':
+                $weekday = 'Thứ bảy';
+                break;
+            default:
+                $weekday = 'Chủ nhật';
+                break;
+        }
+
+        return $weekday;
+    }
 
     public function children() {
         return $this->hasMany('App\Models\Category', 'parent_id', 'id');

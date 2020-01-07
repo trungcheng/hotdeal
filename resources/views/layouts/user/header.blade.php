@@ -12,7 +12,7 @@
         </div>
         <div class="header_searchw">
             <div class="header_search">
-                <form method="get" action="{{ url('') }}">
+                <form method="get" action="{{ route('search') }}">
                     <div class="form-group">
                         <input type="text" name="keyword" class="form-control" placeholder="{{ trans('general.search') }}">
                         <button type="submit" class="btn btn-primary">

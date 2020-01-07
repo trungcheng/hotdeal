@@ -29,6 +29,8 @@ return [
         'security_incorrect' => '보안 코드가 올바르지 않습니다!'
     ],
     'album_photo' => '사진첩',
-    'designed_by' => '에 의해 설계된'
+    'designed_by' => '에 의해 설계된',
+    'search' => '검색',
+    'title_search' => '키워드로 검색'
 
 ];

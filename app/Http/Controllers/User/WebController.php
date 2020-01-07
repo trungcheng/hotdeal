@@ -175,4 +175,28 @@ class WebController extends Controller
 
         abort(404);
     }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->keyword;
+
+        $cates = Category::where('parent_id', 0)->where('status', 1)->get();
+
+        $articles = Article::whereHas('translations', function ($query) use ($keyword) {
+            $query->where('locale', \App::getLocale())
+                  ->where(function ($q) use ($keyword) {
+                        $q->where('title', 'LIKE', '%'.$keyword.'%')
+                          ->orWhere('intro', 'LIKE', '%'.$keyword.'%');
+                  });
+        })->where('type', 'article')
+          ->where('status', 1)
+          ->orderBy('id', 'desc')
+          ->paginate(10);
+
+        return view('pages.user.home.search', [
+            'keyword' => $keyword,
+            'articles' => $articles,
+            'cates' => $cates
+        ]);
+    }
 }
