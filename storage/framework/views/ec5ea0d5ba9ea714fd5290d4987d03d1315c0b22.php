@@ -1,43 +1,41 @@
-@extends('layouts.user.master')
+<?php $__env->startSection('page'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('page')
-@stop
+<?php $__env->startSection('description'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('description')
-@stop
+<?php $__env->startSection('keywords'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('keywords')
-@stop
+<?php $__env->startSection('canonical'); ?><?php echo e(route('home')); ?>/
+<?php $__env->stopSection(); ?>
 
-@section('canonical'){{ route('home') }}/
-@stop
+<?php $__env->startSection('alternate'); ?><?php echo e(route('home')); ?>/
+<?php $__env->stopSection(); ?>
 
-@section('alternate'){{ route('home') }}/
-@stop
+<?php $__env->startSection('propName'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('propName')
-@stop
+<?php $__env->startSection('propDesc'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('propDesc')
-@stop
+<?php $__env->startSection('ogTitle'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('ogTitle')
-@stop
+<?php $__env->startSection('ogDesc'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('ogDesc')
-@stop
+<?php $__env->startSection('ogUrl'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('ogUrl')
-@stop
+<?php $__env->startSection('ogImage'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('ogImage')
-@stop
-
-@section('pageCss')
+<?php $__env->startSection('pageCss'); ?>
     
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <section class="awe-section-1">
         <div class="container">
             <div class="col-md-3 no-padding"></div>
@@ -153,219 +151,7 @@
         </div>
     </section>
 
-    {{--<section class="awe-section-3">
-        <div class="section_group_product section_group_product_1 search-group-new">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="box-shock">
-                            <div class="barbox">
-                                <div class="header_search search_form">
-                                    <div class="input-group search-bar search_form">
-                                        <fieldset class="form-group">
-                                            <div class="col-lg-10 col-md-10 no-padding">
-                                                <div class="clearfix">
-                                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                                        <div class="input_group group_a">
-                                                            <input type="text" autocomplete="off" placeholder="Nhập tên sản phẩm" id="name" class="form-control form-hai form-control-lg" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                                        <div class="ab">
-                                                            <select name="garden" class="tag-select" required>
-                                                                <option value="">Tất cả</option>
-
-                                                                <option value="product_type:(Ấm nước)">Ấm nước</option>
-
-                                                                <option value="product_type:(Ấm siêu tốc)">Ấm siêu tốc</option>
-
-                                                                <option value="product_type:(Bát)">Bát</option>
-
-                                                                <option value="product_type:(Bát Inox)">Bát Inox</option>
-
-                                                                <option value="product_type:(Bình pha cafe)">Bình pha cafe</option>
-
-                                                                <option value="product_type:(Cặp lồng cơm)">Cặp lồng cơm</option>
-
-                                                                <option value="product_type:(Chảo chống dính)">Chảo chống dính</option>
-
-                                                                <option value="product_type:(Điện thoại)">Điện thoại</option>
-
-                                                                <option value="product_type:(Hộp bảo quản)">Hộp bảo quản</option>
-
-                                                                <option value="product_type:(Hộp thủy tinh)">Hộp thủy tinh</option>
-
-                                                                <option value="product_type:(Máy đánh trứng)">Máy đánh trứng</option>
-
-                                                                <option value="product_type:(Máy làm bánh)">Máy làm bánh</option>
-
-                                                                <option value="product_type:(Máy làm bắp rang bơ)">Máy làm bắp rang bơ</option>
-
-                                                                <option value="product_type:(Máy làm kem)">Máy làm kem</option>
-
-                                                                <option value="product_type:(Máy nướng)">Máy nướng</option>
-
-                                                                <option value="product_type:(Máy pha cà phê)">Máy pha cà phê</option>
-
-                                                                <option value="product_type:(Máy tính)">Máy tính</option>
-
-                                                                <option value="product_type:(Máy tính bảng)">Máy tính bảng</option>
-
-                                                                <option value="product_type:(Máy xay, ép, trộn)">Máy xay, ép, trộn</option>
-
-                                                                <option value="product_type:(Nồi áp suất)">Nồi áp suất</option>
-
-                                                                <option value="product_type:(Nồi chiên)">Nồi chiên</option>
-
-                                                                <option value="product_type:(Nồi cơm điện)">Nồi cơm điện</option>
-
-                                                                <option value="product_type:(Nồi nhôm)">Nồi nhôm</option>
-
-                                                                <option value="product_type:(Rổ)">Rổ</option>
-
-                                                                <option value="product_type:(Tivi)">Tivi</option>
-
-                                                                <option value="product_type:(Tô)">Tô</option>
-
-                                                                <option value="product_type:(Tủ lạnh)">Tủ lạnh</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                                        <div class="abs">
-                                                            <select name="gender" class="tag-select option_vendor ui dropdown" id="select" required>
-                                                                <option value="">Tất cả</option>
-
-                                                                <option class="item" value="vendor:(Acer)">Acer</option>
-
-                                                                <option class="item" value="vendor:(App a)">App a</option>
-
-                                                                <option class="item" value="vendor:(Apple)">Apple</option>
-
-                                                                <option class="item" value="vendor:(BlackBerry)">BlackBerry</option>
-
-                                                                <option class="item" value="vendor:(Blacker)">Blacker</option>
-
-                                                                <option class="item" value="vendor:(Cuckoo)">Cuckoo</option>
-
-                                                                <option class="item" value="vendor:(Elmich)">Elmich</option>
-
-                                                                <option class="item" value="vendor:(Eurohome)">Eurohome</option>
-
-                                                                <option class="item" value="vendor:(Fujishi)">Fujishi</option>
-
-                                                                <option class="item" value="vendor:(Goldsun)">Goldsun</option>
-
-                                                                <option class="item" value="vendor:(Hitachi)">Hitachi</option>
-
-                                                                <option class="item" value="vendor:(Hot air popper)">Hot air popper</option>
-
-                                                                <option class="item" value="vendor:(HTC)">HTC</option>
-
-                                                                <option class="item" value="vendor:(Hurom)">Hurom</option>
-
-                                                                <option class="item" value="vendor:(Interlock)">Interlock</option>
-
-                                                                <option class="item" value="vendor:(Iruka)">Iruka</option>
-
-                                                                <option class="item" value="vendor:(Kenwood)">Kenwood</option>
-
-                                                                <option class="item" value="vendor:(Lenovo)">Lenovo</option>
-
-                                                                <option class="item" value="vendor:(LG)">LG</option>
-
-                                                                <option class="item" value="vendor:(Lock&Lock)">Lock&Lock</option>
-
-                                                                <option class="item" value="vendor:(Magic)">Magic</option>
-
-                                                                <option class="item" value="vendor:(Midea)">Midea</option>
-
-                                                                <option class="item" value="vendor:(Nikai)">Nikai</option>
-
-                                                                <option class="item" value="vendor:(Omi)">Omi</option>
-
-                                                                <option class="item" value="vendor:(Samsung)">Samsung</option>
-
-                                                                <option class="item" value="vendor:(Sanaky)">Sanaky</option>
-
-                                                                <option class="item" value="vendor:(Scanpan)">Scanpan</option>
-
-                                                                <option class="item" value="vendor:(Sharp)">Sharp</option>
-
-                                                                <option class="item" value="vendor:(Sinbo)">Sinbo</option>
-
-                                                                <option class="item" value="vendor:(Sony)">Sony</option>
-
-                                                                <option class="item" value="vendor:(Tanaka Shuzo)">Tanaka Shuzo</option>
-
-                                                                <option class="item" value="vendor:(Tiross)">Tiross</option>
-
-                                                                <option class="item" value="vendor:(Welhome Pro)">Welhome Pro</option>
-
-                                                                <option class="item" value="vendor:(Xpress)">Xpress</option>
-
-                                                                <option class="item" value="vendor:(Yonauas)">Yonauas</option>
-
-                                                                <option class="item" value="vendor:(Zebra)">Zebra</option>
-
-                                                                <option class="item" value="vendor:(Zwilling)">Zwilling</option>
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                                        <div class="abss">
-                                                            <select class="tag-select option_vendor ui dropdown" required>
-                                                                <option value="">Tất cả</option>
-
-                                                                <option class="item" value="price_min:(<100000)">Giá dưới 100.000đ</option>
-
-                                                                <option class="item" value="price_min:(>100000 AND <200000)">100.000đ - 200.000đ</option>
-
-                                                                <option class="item" value="price_min:(>200000 AND <300000)">200.000đ - 300.000đ</option>
-
-                                                                <option class="item" value="price_min:(>300000 AND <500000)">300.000đ - 500.000đ</option>
-
-                                                                <option class="item" value="price_min:(>500000 AND <1000000)">500.000đ - 1.000.000đ</option>
-                                                                
-                                                                <option class="item" value="price_min:(>1000000)">Giá trên 1.000.000đ</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-md-2 no-padding">
-                                                <button class="hs-submit btn-style btn btn-default btn-blues">TÌM KIẾM</button>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            jQuery(".hs-submit").click(function() {
-                var selectTag = jQuery(".tag-select");
-                var tagArray = [];
-                for (var i = 0; i < selectTag.length; i++) {
-                    if (jQuery(selectTag[i]).val() != "") {
-                        tagArray.push(jQuery(selectTag[i]).val());
-                    }
-                }
-                var tag = tagArray.toString();
-                var a = $('.group_a input').val();
-                tag = tag.replace(/,/g, ')AND(');
-                if (tag != '') {
-                    location.href = "/search?query=" + a + "(" + tag + ")";
-                } else {
-                    location.href = "/search?query=" + a;
-                }
-            });
-        </script>
-    </section>--}}
+    
 
     <section class="awe-section-4">
 
@@ -412,19 +198,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891917" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154614" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/android-tivi-sony-4k-49-inch-kd-49x7500e" data-handle="android-tivi-sony-4k-49-inch-kd-49x7500e" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/android-tivi-sony-4k-49-inch-kd-49x7500e" title="Android Tivi Sony 4K 49 inch KD-49X7500E">Android Tivi Sony 4K 49 inch KD-49X7500E</a></h3>
@@ -460,19 +234,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891890" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154582" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/internet-tivi-samsung-49-inch-ua49j5200" data-handle="internet-tivi-samsung-49-inch-ua49j5200" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/internet-tivi-samsung-49-inch-ua49j5200" title="Internet Tivi Samsung 49 inch UA49J5200">Internet Tivi Samsung 49 inch UA49J5200</a></h3>
@@ -499,15 +261,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-lg-32lj571d-1-1-org.jpg?v=1509777885673" alt="Smart Tivi LG 32 inch 32LJ571D" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891883" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14154575" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/smart-tivi-lg-32-inch-32lj571d" data-handle="smart-tivi-lg-32-inch-32lj571d" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/smart-tivi-lg-32-inch-32lj571d" title="Smart Tivi LG 32 inch 32LJ571D">Smart Tivi LG 32 inch 32LJ571D</a></h3>
@@ -532,19 +286,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891852" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154538" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/smart-tivi-samsung-43-inch-ua43m5500" data-handle="smart-tivi-samsung-43-inch-ua43m5500" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/smart-tivi-samsung-43-inch-ua43m5500" title="Smart Tivi Samsung 43 inch UA43M5500">Smart Tivi Samsung 43 inch UA43M5500</a></h3>
@@ -573,19 +315,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891837" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154506" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/smart-tivi-samsung-43-inch-ua43k5310" data-handle="smart-tivi-samsung-43-inch-ua43k5310" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/smart-tivi-samsung-43-inch-ua43k5310" title="Smart Tivi Samsung 43 inch UA43K5310">Smart Tivi Samsung 43 inch UA43K5310</a></h3>
@@ -614,19 +344,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891812" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154468" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/android-tivi-sony-4k-43-inch-kd-43x7500e" data-handle="android-tivi-sony-4k-43-inch-kd-43x7500e" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/android-tivi-sony-4k-43-inch-kd-43x7500e" title="Android Tivi Sony 4K 43 inch KD-43X7500E">Android Tivi Sony 4K 43 inch KD-43X7500E</a></h3>
@@ -655,18 +373,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891805" enctype="multipart/form-data">
-
-
-                                                            <a href="/internet-tivi-sony-43-inch-kdl-43w750e" data-toggle="tooltip" data-placement="top" class="fa fa-link" title="Chọn sản phẩm"></a>
-
-
-
-                                                            <a href="/internet-tivi-sony-43-inch-kdl-43w750e" data-handle="internet-tivi-sony-43-inch-kdl-43w750e" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/internet-tivi-sony-43-inch-kdl-43w750e" title="Internet Tivi Sony 43 inch KDL-43W750E">Internet Tivi Sony 43 inch KDL-43W750E</a></h3>
@@ -734,19 +441,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891990" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154696" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/may-danh-trung-de-ban-sinbo-smx-2725" data-handle="may-danh-trung-de-ban-sinbo-smx-2725" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/may-danh-trung-de-ban-sinbo-smx-2725" title="Máy đánh trứng Sinbo">Máy đánh trứng Sinbo</a></h3>
@@ -784,19 +479,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891987" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154693" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/may-pha-ca-phe-omi" data-handle="may-pha-ca-phe-omi" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/may-pha-ca-phe-omi" title="Máy pha cà phê Omi">Máy pha cà phê Omi</a></h3>
@@ -834,19 +517,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891986" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154692" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/may-xay-thuc-pham-iruka" data-handle="may-xay-thuc-pham-iruka" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/may-xay-thuc-pham-iruka" title="Máy xay thực phẩm Iruka">Máy xay thực phẩm Iruka</a></h3>
@@ -884,19 +555,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891984" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154690" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/noi-chien-nuong-chan-khong-iruka" data-handle="noi-chien-nuong-chan-khong-iruka" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/noi-chien-nuong-chan-khong-iruka" title="Nồi chiên nướng chân không">Nồi chiên nướng chân không</a></h3>
@@ -934,19 +593,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891983" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154689" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/noi-chien-chan-khong-magic" data-handle="noi-chien-chan-khong-magic" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/noi-chien-chan-khong-magic" title="Nồi chiên chân không Magic">Nồi chiên chân không Magic</a></h3>
@@ -984,19 +631,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891982" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154688" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/am-sieu-toc-fujishi" data-handle="am-sieu-toc-fujishi" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/am-sieu-toc-fujishi" title="Ấm siêu tốc Fujishi">Ấm siêu tốc Fujishi</a></h3>
@@ -1032,19 +667,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891956" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14154659" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/tu-lanh-hitachi-540-lit-r-w660fpgv3x-gbk" data-handle="tu-lanh-hitachi-540-lit-r-w660fpgv3x-gbk" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/tu-lanh-hitachi-540-lit-r-w660fpgv3x-gbk" title="Tủ lạnh Hitachi 540 lít R-W660FPGV3X GBK">Tủ lạnh Hitachi 540 lít R-W660FPGV3X GBK</a></h3>
@@ -1110,18 +733,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8994391" enctype="multipart/form-data">
-
-
-                                                            <a href="/chao-nhom-chong-dinh-zwilling-madura-plus-66290-286-28-cm" data-toggle="tooltip" data-placement="top" class="fa fa-link" title="Chọn sản phẩm"></a>
-
-
-
-                                                            <a href="/chao-nhom-chong-dinh-zwilling-madura-plus-66290-286-28-cm" data-handle="chao-nhom-chong-dinh-zwilling-madura-plus-66290-286-28-cm" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/chao-nhom-chong-dinh-zwilling-madura-plus-66290-286-28-cm" title="Chảo nhôm chống dính Zwilling Madura Plus 66290-286 28 cm">Chảo nhôm chống dính Zwilling Madura Plus 66290-286 28 cm</a></h3>
@@ -1156,19 +768,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8994383" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14330732" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/chao-sau-long-chong-dinh-e-cook-deco-lock-lock-led2285y-28cm" data-handle="chao-sau-long-chong-dinh-e-cook-deco-lock-lock-led2285y-28cm" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/chao-sau-long-chong-dinh-e-cook-deco-lock-lock-led2285y-28cm" title="Chảo sâu lòng chống dính E-Cook Deco Lock&Lock LED2285Y 28cm">Chảo sâu lòng chống dính E-Cook Deco Lock&Lock LED2285Y 28cm</a></h3>
@@ -1196,19 +796,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8994379" enctype="multipart/form-data">
-
-
-                                                            <input type="hidden" name="variantId" value="14330728" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-
-
-
-                                                            <a href="/chao-chong-dinh-scanpan-iq-64002800-28cm" data-handle="chao-chong-dinh-scanpan-iq-64002800-28cm" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/chao-chong-dinh-scanpan-iq-64002800-28cm" title="Chảo chống dính Scanpan IQ 64002800 28cm">Chảo chống dính Scanpan IQ 64002800 28cm</a></h3>
@@ -1236,15 +824,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8994369" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14330718" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/chao-chong-dinh-elmich-day-tu-co-vung-kinh-eda-43128-28cm" data-handle="chao-chong-dinh-elmich-day-tu-co-vung-kinh-eda-43128-28cm" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/chao-chong-dinh-elmich-day-tu-co-vung-kinh-eda-43128-28cm" title="Chảo chống dính Elmich đáy từ có vung kính EDA-43128 - 28cm">Chảo chống dính Elmich đáy từ có vung kính EDA-43128 - 28cm</a></h3>
@@ -1280,15 +860,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8900861" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14171371" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/cap-long-com-inox-3-tang-lock-lock-620ml" data-handle="cap-long-com-inox-3-tang-lock-lock-620ml" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/cap-long-com-inox-3-tang-lock-lock-620ml" title="Cặp lồng cơm inox 3 tầng Lock&Lock 620ml">Cặp lồng cơm inox 3 tầng Lock&Lock 620ml</a></h3>
@@ -1322,15 +894,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/bat-3a8aa53e-5af4-4c62-bf72-e93fbfd8b065.jpg?v=1509875934507" alt="Bộ hộp bảo quản thực phẩm Interlock INL301S4 (Nắp xanh)" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8900852" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14171332" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/bo-hop-bao-quan-thuc-pham-interlock-inl301s4-nap-xanh" data-handle="bo-hop-bao-quan-thuc-pham-interlock-inl301s4-nap-xanh" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/bo-hop-bao-quan-thuc-pham-interlock-inl301s4-nap-xanh" title="Bộ hộp bảo quản thực phẩm Interlock INL301S4 (Nắp xanh)">Bộ hộp bảo quản thực phẩm Interlock INL301S4 (Nắp xanh)</a></h3>
@@ -1366,15 +930,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8900826" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14171302" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/bat-nhua-mau-den-hoa-tiet-hoa-anh-dao-tanaka-shuzo-11-5-x-6-2cm" data-handle="bat-nhua-mau-den-hoa-tiet-hoa-anh-dao-tanaka-shuzo-11-5-x-6-2cm" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/bat-nhua-mau-den-hoa-tiet-hoa-anh-dao-tanaka-shuzo-11-5-x-6-2cm" title="Bát nhựa màu đen họa tiết hoa anh đào Tanaka Shuzo 11,5 x 6,2cm">Bát nhựa màu đen họa tiết hoa anh đào Tanaka Shuzo 11,5 x 6,2cm</a></h3>
@@ -1408,15 +964,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/bat-1bc1236e-8fd9-42ef-be0c-136aa8e740ca.jpg?v=1509875659003" alt="Bộ bát màu Lock&Lock HPP511S5 Rainbow 138 x 131 x 106 mm" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8900822" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14171298" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/bo-bat-mau-lock-lock-hpp511s5-rainbow-138-x-131-x-106-mm" data-handle="bo-bat-mau-lock-lock-hpp511s5-rainbow-138-x-131-x-106-mm" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/bo-bat-mau-lock-lock-hpp511s5-rainbow-138-x-131-x-106-mm" title="Bộ bát màu Lock&Lock HPP511S5 Rainbow 138 x 131 x 106 mm">Bộ bát màu Lock&Lock HPP511S5 Rainbow 138 x 131 x 106 mm</a></h3>
@@ -1450,15 +998,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/bat.jpg?v=1509875540417" alt="Bát inox hai lớp Zebra 124002 11cm" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8900814" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14171290" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/bat-inox-hai-lop-zebra-124002-11cm" data-handle="bat-inox-hai-lop-zebra-124002-11cm" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/bat-inox-hai-lop-zebra-124002-11cm" title="Bát inox hai lớp Zebra 124002 11cm">Bát inox hai lớp Zebra 124002 11cm</a></h3>
@@ -1490,14 +1030,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/49528xg7cjx01oz1ac5d0e4f94943f.jpg?v=1509779413703" alt="Máy chế biến thức ăn đa năng Kenwood" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892097" enctype="multipart/form-data">
-
-                                                            <a href="/may-che-bien-thuc-an-da-nang-kenwood" data-toggle="tooltip" data-placement="top" class="fa fa-link" title="Chọn sản phẩm"></a>
-                                                            <a href="/may-che-bien-thuc-an-da-nang-kenwood" data-handle="may-che-bien-thuc-an-da-nang-kenwood" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/may-che-bien-thuc-an-da-nang-kenwood" title="Máy chế biến thức ăn đa năng Kenwood">Máy chế biến thức ăn đa năng Kenwood</a></h3>
@@ -1521,14 +1054,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/kenwood1248276251zoom500db1bc9.jpg?v=1509779411883" alt="Máy làm bánh Tiross TS820" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892096" enctype="multipart/form-data">
-
-                                                            <a href="/may-lam-banh-tiross-ts820" data-toggle="tooltip" data-placement="top" class="fa fa-link" title="Chọn sản phẩm"></a>
-                                                            <a href="/may-lam-banh-tiross-ts820" data-handle="may-lam-banh-tiross-ts820" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/may-lam-banh-tiross-ts820" title="Máy làm bánh Tiross TS820">Máy làm bánh Tiross TS820</a></h3>
@@ -1554,15 +1080,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/7.png?v=1509779404470" alt="Bát sứ đa năng xanh ngọc" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892086" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14154840" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/bat-su-da-nang-xanh-ngoc" data-handle="bat-su-da-nang-xanh-ngoc" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/bat-su-da-nang-xanh-ngoc" title="Bát sứ đa năng xanh ngọc">Bát sứ đa năng xanh ngọc</a></h3>
@@ -1637,15 +1155,7 @@
 
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8898349" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14166625" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/noi-com-dien-tu-da-nang-philips-hd3060" data-handle="noi-com-dien-tu-da-nang-philips-hd3060" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/noi-com-dien-tu-da-nang-philips-hd3060" title="Nồi cơm điện tử đa năng Philips HD3060">Nồi cơm điện tử đa năng Philips HD3060</a></h3>
@@ -1670,15 +1180,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/noi-com-1-72a4ebf4-48ab-4f3c-a9ca-3da97abd0d9f.jpg?v=1509851989550" alt="Nồi cơm điện Cuckoo 040101CR-0331 0.5L" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8898347" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14166623" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/noi-com-dien-cuckoo-040101cr-0331-0-5l" data-handle="noi-com-dien-cuckoo-040101cr-0331-0-5l" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/noi-com-dien-cuckoo-040101cr-0331-0-5l" title="Nồi cơm điện Cuckoo 040101CR-0331 0.5L">Nồi cơm điện Cuckoo 040101CR-0331 0.5L</a></h3>
@@ -1703,15 +1205,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/noi-com-1.jpg?v=1509851872427" alt="Nồi cơm điện tử Sharp KS-COM10V 625W 1L" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8898343" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14166619" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/noi-com-dien-tu-sharp-ks-com10v-625w-1l" data-handle="noi-com-dien-tu-sharp-ks-com10v-625w-1l" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/noi-com-dien-tu-sharp-ks-com10v-625w-1l" title="Nồi cơm điện tử Sharp KS-COM10V 625W 1L">Nồi cơm điện tử Sharp KS-COM10V 625W 1L</a></h3>
@@ -1736,15 +1230,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/noi-com.jpg?v=1509851512440" alt="Nồi cơm điện Cuckoo CR-0661 1L 500W" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8898257" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14166450" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/noi-com-dien-cuckoo-cr-0661-1l-500w" data-handle="noi-com-dien-cuckoo-cr-0661-1l-500w" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/noi-com-dien-cuckoo-cr-0661-1l-500w" title="Nồi cơm điện Cuckoo CR-0661 1L 500W">Nồi cơm điện Cuckoo CR-0661 1L 500W</a></h3>
@@ -1768,15 +1254,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/gd-df6d60bc-2d5a-40b7-9d0c-303da86faa29.jpg?v=1509780752823" alt="Bộ nồi nhôm Goldsun AE11-5109AG" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892264" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14155218" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/bo-noi-nhom-goldsun-ae11-5109ag" data-handle="bo-noi-nhom-goldsun-ae11-5109ag" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/bo-noi-nhom-goldsun-ae11-5109ag" title="Bộ nồi nhôm Goldsun AE11-5109AG">Bộ nồi nhôm Goldsun AE11-5109AG</a></h3>
@@ -1800,15 +1278,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/gd-5ee56de5-eb09-499e-8c69-77b2ad324e5f.jpg?v=1509780605737" alt="Ấm nước inox Image II Zebra 113485 3.5L" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892242" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14155193" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/am-nuoc-inox-image-ii-zebra-113485-3-5l" data-handle="am-nuoc-inox-image-ii-zebra-113485-3-5l" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/am-nuoc-inox-image-ii-zebra-113485-3-5l" title="Ấm nước inox Image II Zebra 113485 3.5L">Ấm nước inox Image II Zebra 113485 3.5L</a></h3>
@@ -1832,15 +1302,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/gd-bef45d37-4429-49aa-8a82-24a212817d03.jpg?v=1509780468680" alt="Nồi áp suất Supor Safety YH18N1IH 18cm" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892212" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14155099" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/noi-ap-suat-supor-safety-yh18n1ih-18cm" data-handle="noi-ap-suat-supor-safety-yh18n1ih-18cm" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/noi-ap-suat-supor-safety-yh18n1ih-18cm" title="Nồi áp suất Supor Safety YH18N1IH 18cm">Nồi áp suất Supor Safety YH18N1IH 18cm</a></h3>
@@ -1864,15 +1326,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/gd-8ce89a89-b827-464e-96af-6090d0c423c9.jpg?v=1509780318737" alt="Bộ túi hộp cơm thủy tinh chịu nhiệt Lock&Lock" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892203" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14155087" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/bo-tui-hop-com-thuy-tinh-chiu-nhiet-lock-lock" data-handle="bo-tui-hop-com-thuy-tinh-chiu-nhiet-lock-lock" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/bo-tui-hop-com-thuy-tinh-chiu-nhiet-lock-lock" title="Bộ túi hộp cơm thủy tinh chịu nhiệt Lock&Lock">Bộ túi hộp cơm thủy tinh chịu nhiệt Lock&Lock</a></h3>
@@ -1896,15 +1350,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/gd-de3a91c7-ecc5-4837-9281-9405615530e6.jpg?v=1509780163717" alt="Combo 3 hộp cơm thủy tinh cường lực hình chữ nhật Luminarc" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892197" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14155073" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/combo-3-hop-com-thuy-tinh-cuong-luc-hinh-chu-nhat-luminarc" data-handle="combo-3-hop-com-thuy-tinh-cuong-luc-hinh-chu-nhat-luminarc" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/combo-3-hop-com-thuy-tinh-cuong-luc-hinh-chu-nhat-luminarc" title="Combo 3 hộp cơm thủy tinh cường lực hình chữ nhật Luminarc">Combo 3 hộp cơm thủy tinh cường lực hình chữ nhật Luminarc</a></h3>
@@ -1930,15 +1376,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/gd-431da5f2-9063-4115-8359-468eaa68fd77.jpg?v=1509779936607" alt="Bộ 3 hộp thủy tinh tròn và túi giữ nhiệt Lock&Lock" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8892166" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14155022" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/bo-3-hop-thuy-tinh-tron-va-tui-giu-nhiet-lock-lock" data-handle="bo-3-hop-thuy-tinh-tron-va-tui-giu-nhiet-lock-lock" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/bo-3-hop-thuy-tinh-tron-va-tui-giu-nhiet-lock-lock" title="Bộ 3 hộp thủy tinh tròn và túi giữ nhiệt Lock&Lock">Bộ 3 hộp thủy tinh tròn và túi giữ nhiệt Lock&Lock</a></h3>
@@ -2005,15 +1443,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" alt="Android Tivi Sony 4K 49 inch KD-49X7500E" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891917" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14154614" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/android-tivi-sony-4k-49-inch-kd-49x7500e" data-handle="android-tivi-sony-4k-49-inch-kd-49x7500e" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/android-tivi-sony-4k-49-inch-kd-49x7500e" title="Android Tivi Sony 4K 49 inch KD-49X7500E">Android Tivi Sony 4K 49 inch KD-49X7500E</a></h3>
@@ -2043,15 +1473,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-samsung-49-inch-ua49j5200-1-4-org-1-org.jpg?v=1509778045413" alt="Internet Tivi Samsung 49 inch UA49J5200" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891890" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14154582" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/internet-tivi-samsung-49-inch-ua49j5200" data-handle="internet-tivi-samsung-49-inch-ua49j5200" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/internet-tivi-samsung-49-inch-ua49j5200" title="Internet Tivi Samsung 49 inch UA49J5200">Internet Tivi Samsung 49 inch UA49J5200</a></h3>
@@ -2075,15 +1497,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-lg-32lj571d-1-1-org.jpg?v=1509777885673" alt="Smart Tivi LG 32 inch 32LJ571D" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891883" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14154575" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/smart-tivi-lg-32-inch-32lj571d" data-handle="smart-tivi-lg-32-inch-32lj571d" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/smart-tivi-lg-32-inch-32lj571d" title="Smart Tivi LG 32 inch 32LJ571D">Smart Tivi LG 32 inch 32LJ571D</a></h3>
@@ -2107,15 +1521,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-samsung-ua43m5500-1-org.jpg?v=1509777756160" alt="Smart Tivi Samsung 43 inch UA43M5500" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891852" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14154538" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/smart-tivi-samsung-43-inch-ua43m5500" data-handle="smart-tivi-samsung-43-inch-ua43m5500" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/smart-tivi-samsung-43-inch-ua43m5500" title="Smart Tivi Samsung 43 inch UA43M5500">Smart Tivi Samsung 43 inch UA43M5500</a></h3>
@@ -2139,15 +1545,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-samsung-ua43k5310-1-14-org.jpg?v=1509777542733" alt="Smart Tivi Samsung 43 inch UA43K5310" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891837" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14154506" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/smart-tivi-samsung-43-inch-ua43k5310" data-handle="smart-tivi-samsung-43-inch-ua43k5310" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/smart-tivi-samsung-43-inch-ua43k5310" title="Smart Tivi Samsung 43 inch UA43K5310">Smart Tivi Samsung 43 inch UA43K5310</a></h3>
@@ -2171,15 +1569,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-sony-kd-43x7500e-1-org.jpg?v=1509777350580" alt="Android Tivi Sony 4K 43 inch KD-43X7500E" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891812" enctype="multipart/form-data">
-
-                                                            <input type="hidden" name="variantId" value="14154468" />
-                                                            <a class="fa fa-shopping-basket add_to_cart" data-toggle="tooltip" data-placement="top" title="Mua ngay"></a>
-                                                            <a href="/android-tivi-sony-4k-43-inch-kd-43x7500e" data-handle="android-tivi-sony-4k-43-inch-kd-43x7500e" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/android-tivi-sony-4k-43-inch-kd-43x7500e" title="Android Tivi Sony 4K 43 inch KD-43X7500E">Android Tivi Sony 4K 43 inch KD-43X7500E</a></h3>
@@ -2203,14 +1593,7 @@
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-sony-kdl-43w750e-1-2-org.jpg?v=1509776984933" alt="Internet Tivi Sony 43 inch KDL-43W750E" class="img-responsive center-block" />
                                                         </a>
                                                     </div>
-                                                    {{--<div class="prod-icons">
-                                                        <form action="/cart/add" method="post" class="variants form-nut-grid" data-id="product-actions-8891805" enctype="multipart/form-data">
-
-                                                            <a href="/internet-tivi-sony-43-inch-kdl-43w750e" data-toggle="tooltip" data-placement="top" class="fa fa-link" title="Chọn sản phẩm"></a>
-                                                            <a href="/internet-tivi-sony-43-inch-kdl-43w750e" data-handle="internet-tivi-sony-43-inch-kdl-43w750e" data-toggle="tooltip" data-placement="bottom" title="Xem nhanh" class="fa fa-search quick-view"></a>
-
-                                                        </form>
-                                                    </div>--}}
+                                                    
                                                 </div>
                                                 <div class="product-info a-center">
                                                     <h3 class="product-name"><a href="/internet-tivi-sony-43-inch-kdl-43w750e" title="Internet Tivi Sony 43 inch KDL-43W750E">Internet Tivi Sony 43 inch KDL-43W750E</a></h3>
@@ -2342,9 +1725,9 @@
             </div>
         </section>
     </section>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('pageJs')
+<?php $__env->startSection('pageJs'); ?>
     <script type="text/javascript">
         var title = $('.title').text();
         title = trimText(title, 20);
@@ -2364,4 +1747,5 @@
             }
         }
     </script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.user.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\thachvu\resources\views/pages/user/home/index.blade.php ENDPATH**/ ?>

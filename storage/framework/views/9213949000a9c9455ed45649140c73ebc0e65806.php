@@ -9,21 +9,21 @@
     <meta name="robots" content="noodp,index,follow" />
     <meta property="og:type" content="website">
     <meta property="og:title" content="Ant Kitchen">
-    <meta property="og:image" content="{{ asset('frontend/images/logos/logo.png') }}">
-    <meta property="og:image:secure_url" content="{{ asset('frontend/images/logos/logo.png') }}">
+    <meta property="og:image" content="<?php echo e(asset('frontend/images/logos/logo.png')); ?>">
+    <meta property="og:image:secure_url" content="<?php echo e(asset('frontend/images/logos/logo.png')); ?>">
     <meta property="og:description" content="">
     <meta property="og:url" content="https://ant-kitchen.mysapo.net">
     <meta property="og:site_name" content="Ant Kitchen">
-    <link rel="icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon" />
+    <link rel="icon" href="<?php echo e(asset('frontend/images/icons/favicon.png')); ?>" type="image/x-icon" />
     <link rel="canonical" href="https://ant-kitchen.mysapo.net" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Build Main CSS -->
-    <link href="{{ asset('frontend/css/base.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('frontend/css/base.css')); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('frontend/css/app.css')); ?>" rel="stylesheet" type="text/css" />
     <!-- Header JS -->
-    <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/jquery-2.2.3.min.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/owl.carousel.min.js')); ?>" type="text/javascript"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109602908-1"></script>
     <script>
@@ -39,11 +39,11 @@
 <body class="bg-index">
     <div id="box-wrapper">
         
-        @include('layouts.user.header')
+        <?php echo $__env->make('layouts.user.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         
         <h1 class="hidden">Ant Kitchen</h1>
 
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
 
         <div class="search-more">
             <div class="container">
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        @include('layouts.user.footer')
+        <?php echo $__env->make('layouts.user.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
         
     </div>
     
@@ -119,29 +119,7 @@
     <div id="myModal" class="modal fade" role="dialog">
     </div>
 
-    {{--<div class="cart_sidebar" id="cart-sidebars">
-        <div class="clearfix cart_heading">
-            <h4 class="cart_title">Giỏ hàng<span class="abcb">(<span class="cart-popup-count"></span> Sản phẩm)</span></h4>
-            <div class="cart_btn-close" title="Tiếp tục mua sắm!"><i class="fa fa-close"></i></div>
-        </div>
-        <div class="cart_body">
-
-        </div>
-        <div class="cart-footer">
-            <hr>
-            <div class="clearfix">
-                <div class="cart__subtotal">
-                    <div class="cart__col-6">
-                        Thành tiền:
-                    </div>
-                    <div class="text-right cart__totle"><span class="total-price"></span></div>
-                </div>
-            </div>
-            <div class="cart__btn-proceed-checkout-dt">
-                <button onclick="location.href='/checkout'" type="button" class="button btn btn-default cart__btn-proceed-checkout" id="btn-proceed-checkout">Tiến Hành Đặt Hàng</button>
-            </div>
-        </div>
-    </div>--}}
+    
 
     <div id="menu-mobile">
         <div class="clearfix">
@@ -898,13 +876,13 @@
         </a>
     </div>
 
-    {{--<div class="backdrop__body-backdrop___1rvky"></div>--}}
+    
 
-    <script src="{{ asset('frontend/js/rx.all.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/option-selectors.js') }}" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/rx.all.min.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/option-selectors.js')); ?>" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/appear.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/main.js') }}" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/appear.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/main.js')); ?>" type="text/javascript"></script>
 </body>
-</html>
+</html><?php /**PATH E:\xampp\htdocs\thachvu\resources\views/layouts/user/master.blade.php ENDPATH**/ ?>
