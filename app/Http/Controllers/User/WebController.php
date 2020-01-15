@@ -112,6 +112,7 @@ class WebController extends Controller
 
     public function processPageLevelOne(Request $request, $slug)
     {
+        return view('pages.user.home.detail', []);
         $category = Category::where('slug', $slug)->first();
         if ($category) {
             if ($category->parent_id != 0) {

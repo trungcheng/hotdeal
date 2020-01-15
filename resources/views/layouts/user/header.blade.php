@@ -334,7 +334,7 @@
         <div class="container">
             <nav class="hidden-sm hidden-xs">
                 <div class="col-md-3 no-padding">
-                    <div class="mainmenu ">
+                    <div class="mainmenu {{ \Route::currentRouteName() != 'home' ? 'mainmenu-other' : '' }}">
                         <div class="line"><i></i><i></i><i></i></div>
                         <span>Danh mục sản phẩm</span>
                         <div class="nav-cate">

@@ -1,4 +1,24 @@
-<footer class="footer ">
+<div class="search-more">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <label>Tìm kiếm nhiều: </label>
+
+                <a href="/">• Bếp ga</a>
+
+                <a href="/">• Lò nướng</a>
+
+                <a href="/">• Nồi áp suất</a>
+
+                <a href="/">• Bình thủy điện</a>
+
+                <a href="/">• Bếp từ</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
     <div class="site-footer">
         <div class="container">
             <div class="footer-inner padding-top-10 padding-bottom-10">
@@ -115,7 +135,6 @@
                 <div class="row">
                     <div class="col-md-12 col-copyright">
                         <span>© Bản quyền thuộc về <b>Kiến Vàng</b> <span class="hidden-f">|</span> Cung cấp bởi <a href="https://themes.sapo.vn/" title="Sapo" target="_blank" rel="nofollow">Sapo</a></span>
-
                     </div>
                 </div>
             </div>

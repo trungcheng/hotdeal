@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page')
+@section('page')Trang chủ
 @stop
 
 @section('description')
 @stop
 
-@section('keywords')
+@section('keywords')Ant Kitchen, ant-kitchen.mysapo.net
 @stop
 
 @section('canonical'){{ route('home') }}/
@@ -27,10 +27,10 @@
 @section('ogDesc')
 @stop
 
-@section('ogUrl')
+@section('ogUrl'){{ route('home') }}/
 @stop
 
-@section('ogImage')
+@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
 @stop
 
 @section('pageCss')
@@ -38,6 +38,8 @@
 @stop
 
 @section('content')
+    <h1 class="hidden">Ant Kitchen</h1>
+
     <section class="awe-section-1">
         <div class="container">
             <div class="col-md-3 no-padding"></div>
@@ -153,220 +155,6 @@
         </div>
     </section>
 
-    {{--<section class="awe-section-3">
-        <div class="section_group_product section_group_product_1 search-group-new">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="box-shock">
-                            <div class="barbox">
-                                <div class="header_search search_form">
-                                    <div class="input-group search-bar search_form">
-                                        <fieldset class="form-group">
-                                            <div class="col-lg-10 col-md-10 no-padding">
-                                                <div class="clearfix">
-                                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                                        <div class="input_group group_a">
-                                                            <input type="text" autocomplete="off" placeholder="Nhập tên sản phẩm" id="name" class="form-control form-hai form-control-lg" required="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                                        <div class="ab">
-                                                            <select name="garden" class="tag-select" required>
-                                                                <option value="">Tất cả</option>
-
-                                                                <option value="product_type:(Ấm nước)">Ấm nước</option>
-
-                                                                <option value="product_type:(Ấm siêu tốc)">Ấm siêu tốc</option>
-
-                                                                <option value="product_type:(Bát)">Bát</option>
-
-                                                                <option value="product_type:(Bát Inox)">Bát Inox</option>
-
-                                                                <option value="product_type:(Bình pha cafe)">Bình pha cafe</option>
-
-                                                                <option value="product_type:(Cặp lồng cơm)">Cặp lồng cơm</option>
-
-                                                                <option value="product_type:(Chảo chống dính)">Chảo chống dính</option>
-
-                                                                <option value="product_type:(Điện thoại)">Điện thoại</option>
-
-                                                                <option value="product_type:(Hộp bảo quản)">Hộp bảo quản</option>
-
-                                                                <option value="product_type:(Hộp thủy tinh)">Hộp thủy tinh</option>
-
-                                                                <option value="product_type:(Máy đánh trứng)">Máy đánh trứng</option>
-
-                                                                <option value="product_type:(Máy làm bánh)">Máy làm bánh</option>
-
-                                                                <option value="product_type:(Máy làm bắp rang bơ)">Máy làm bắp rang bơ</option>
-
-                                                                <option value="product_type:(Máy làm kem)">Máy làm kem</option>
-
-                                                                <option value="product_type:(Máy nướng)">Máy nướng</option>
-
-                                                                <option value="product_type:(Máy pha cà phê)">Máy pha cà phê</option>
-
-                                                                <option value="product_type:(Máy tính)">Máy tính</option>
-
-                                                                <option value="product_type:(Máy tính bảng)">Máy tính bảng</option>
-
-                                                                <option value="product_type:(Máy xay, ép, trộn)">Máy xay, ép, trộn</option>
-
-                                                                <option value="product_type:(Nồi áp suất)">Nồi áp suất</option>
-
-                                                                <option value="product_type:(Nồi chiên)">Nồi chiên</option>
-
-                                                                <option value="product_type:(Nồi cơm điện)">Nồi cơm điện</option>
-
-                                                                <option value="product_type:(Nồi nhôm)">Nồi nhôm</option>
-
-                                                                <option value="product_type:(Rổ)">Rổ</option>
-
-                                                                <option value="product_type:(Tivi)">Tivi</option>
-
-                                                                <option value="product_type:(Tô)">Tô</option>
-
-                                                                <option value="product_type:(Tủ lạnh)">Tủ lạnh</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                                        <div class="abs">
-                                                            <select name="gender" class="tag-select option_vendor ui dropdown" id="select" required>
-                                                                <option value="">Tất cả</option>
-
-                                                                <option class="item" value="vendor:(Acer)">Acer</option>
-
-                                                                <option class="item" value="vendor:(App a)">App a</option>
-
-                                                                <option class="item" value="vendor:(Apple)">Apple</option>
-
-                                                                <option class="item" value="vendor:(BlackBerry)">BlackBerry</option>
-
-                                                                <option class="item" value="vendor:(Blacker)">Blacker</option>
-
-                                                                <option class="item" value="vendor:(Cuckoo)">Cuckoo</option>
-
-                                                                <option class="item" value="vendor:(Elmich)">Elmich</option>
-
-                                                                <option class="item" value="vendor:(Eurohome)">Eurohome</option>
-
-                                                                <option class="item" value="vendor:(Fujishi)">Fujishi</option>
-
-                                                                <option class="item" value="vendor:(Goldsun)">Goldsun</option>
-
-                                                                <option class="item" value="vendor:(Hitachi)">Hitachi</option>
-
-                                                                <option class="item" value="vendor:(Hot air popper)">Hot air popper</option>
-
-                                                                <option class="item" value="vendor:(HTC)">HTC</option>
-
-                                                                <option class="item" value="vendor:(Hurom)">Hurom</option>
-
-                                                                <option class="item" value="vendor:(Interlock)">Interlock</option>
-
-                                                                <option class="item" value="vendor:(Iruka)">Iruka</option>
-
-                                                                <option class="item" value="vendor:(Kenwood)">Kenwood</option>
-
-                                                                <option class="item" value="vendor:(Lenovo)">Lenovo</option>
-
-                                                                <option class="item" value="vendor:(LG)">LG</option>
-
-                                                                <option class="item" value="vendor:(Lock&Lock)">Lock&Lock</option>
-
-                                                                <option class="item" value="vendor:(Magic)">Magic</option>
-
-                                                                <option class="item" value="vendor:(Midea)">Midea</option>
-
-                                                                <option class="item" value="vendor:(Nikai)">Nikai</option>
-
-                                                                <option class="item" value="vendor:(Omi)">Omi</option>
-
-                                                                <option class="item" value="vendor:(Samsung)">Samsung</option>
-
-                                                                <option class="item" value="vendor:(Sanaky)">Sanaky</option>
-
-                                                                <option class="item" value="vendor:(Scanpan)">Scanpan</option>
-
-                                                                <option class="item" value="vendor:(Sharp)">Sharp</option>
-
-                                                                <option class="item" value="vendor:(Sinbo)">Sinbo</option>
-
-                                                                <option class="item" value="vendor:(Sony)">Sony</option>
-
-                                                                <option class="item" value="vendor:(Tanaka Shuzo)">Tanaka Shuzo</option>
-
-                                                                <option class="item" value="vendor:(Tiross)">Tiross</option>
-
-                                                                <option class="item" value="vendor:(Welhome Pro)">Welhome Pro</option>
-
-                                                                <option class="item" value="vendor:(Xpress)">Xpress</option>
-
-                                                                <option class="item" value="vendor:(Yonauas)">Yonauas</option>
-
-                                                                <option class="item" value="vendor:(Zebra)">Zebra</option>
-
-                                                                <option class="item" value="vendor:(Zwilling)">Zwilling</option>
-
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                                        <div class="abss">
-                                                            <select class="tag-select option_vendor ui dropdown" required>
-                                                                <option value="">Tất cả</option>
-
-                                                                <option class="item" value="price_min:(<100000)">Giá dưới 100.000đ</option>
-
-                                                                <option class="item" value="price_min:(>100000 AND <200000)">100.000đ - 200.000đ</option>
-
-                                                                <option class="item" value="price_min:(>200000 AND <300000)">200.000đ - 300.000đ</option>
-
-                                                                <option class="item" value="price_min:(>300000 AND <500000)">300.000đ - 500.000đ</option>
-
-                                                                <option class="item" value="price_min:(>500000 AND <1000000)">500.000đ - 1.000.000đ</option>
-                                                                
-                                                                <option class="item" value="price_min:(>1000000)">Giá trên 1.000.000đ</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-md-2 no-padding">
-                                                <button class="hs-submit btn-style btn btn-default btn-blues">TÌM KIẾM</button>
-                                            </div>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script>
-            jQuery(".hs-submit").click(function() {
-                var selectTag = jQuery(".tag-select");
-                var tagArray = [];
-                for (var i = 0; i < selectTag.length; i++) {
-                    if (jQuery(selectTag[i]).val() != "") {
-                        tagArray.push(jQuery(selectTag[i]).val());
-                    }
-                }
-                var tag = tagArray.toString();
-                var a = $('.group_a input').val();
-                tag = tag.replace(/,/g, ')AND(');
-                if (tag != '') {
-                    location.href = "/search?query=" + a + "(" + tag + ")";
-                } else {
-                    location.href = "/search?query=" + a;
-                }
-            });
-        </script>
-    </section>--}}
-
     <section class="awe-section-4">
 
         <div class="section_group_product section_group_product_1">
@@ -406,7 +194,8 @@
                                                     <div class="sale-flash">SALE</div>
 
                                                     <div class="product-image-flip">
-                                                        <a href="/android-tivi-sony-4k-49-inch-kd-49x7500e" title="Android Tivi Sony 4K 49 inch KD-49X7500E">
+                                                    
+                                                        <a href="{{ route('detail', ['slug' => 'android-tivi-sony-4k-49-inch-kd-49x7500e']) }}" title="Android Tivi Sony 4K 49 inch KD-49X7500E">
 
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" alt="Android Tivi Sony 4K 49 inch KD-49X7500E" class="img-responsive center-block" />
 
@@ -2345,23 +2134,5 @@
 @stop
 
 @section('pageJs')
-    <script type="text/javascript">
-        var title = $('.title').text();
-        title = trimText(title, 20);
-        var intro = $('.intro').text();
-        intro = trimText(intro, 40);
-        $('.title').text(title);
-        $('.intro').text(intro);
-
-        function trimText(str ,wordCount) {
-            var strArray = str.split(' ');
-            var subArray = strArray.slice(0, wordCount);
-            var result = subArray.join(" ");
-            if (strArray.length < wordCount) {
-                return result;
-            } else {
-                return result + '...';
-            }
-        }
-    </script>
+    
 @stop
