@@ -663,7 +663,7 @@
                     <ul id="nav" class="nav">
 
                         <li class="nav-item ">
-                            <a href="/collections/all" class="nav-link">Tính năng nổi bật <i class="fa fa-angle-right" data-toggle="dropdown"></i></a>
+                            {{--<a href="/collections/all" class="nav-link">Tính năng nổi bật <i class="fa fa-angle-right" data-toggle="dropdown"></i></a>--}}
 
                             <ul class="dropdown-menu">
 
@@ -695,12 +695,12 @@
 
                         </li>
 
-                        <li class="nav-item active"><a class="nav-link" href="/">Trang chủ</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="{{ route('home') }}">Trang chủ</a></li>
 
-                        <li class="nav-item "><a class="nav-link" href="/gioi-thieu">Giới thiệu</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('about') }}">Giới thiệu</a></li>
 
                         <li class="nav-item  has-mega">
-                            <a href="/collections/all" class="nav-link">Sản phẩm <i class="fa fa-angle-right" data-toggle="dropdown"></i></a>
+                            <a href="{{ route('store') }}" class="nav-link">Sản phẩm <i class="fa fa-angle-right" data-toggle="dropdown"></i></a>
 
                             <div class="mega-content">
                                 <div class="level0-wrapper2">
@@ -812,9 +812,9 @@
 
                         </li>
 
-                        <li class="nav-item "><a class="nav-link" href="/tin-tuc">Tin tức</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('post') }}">Tin tức</a></li>
 
-                        <li class="nav-item "><a class="nav-link" href="/lien-he">Liên hệ</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('contact') }}">Liên hệ</a></li>
 
                     </ul>
                 </div>

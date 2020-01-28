@@ -7,7 +7,6 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="robots" content="noodp,index,follow" />
-
     <meta itemprop="name" content="@yield('propName')">
     <meta itemprop="description" content="@yield('propDesc')">
     <meta property="og:type" content="website">
@@ -17,25 +16,17 @@
     <meta property="og:description" content="@yield('ogDesc')">
     <meta property="og:url" content="@yield('ogUrl')">
     <meta property="og:site_name" content="Ant Kitchen">
-
     <link rel="icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon" />
     <link rel="canonical" href="@yield('canonical')" />
     <link rel="alternate" href="@yield('alternate')">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Build Main CSS -->
     <link href="{{ asset('frontend/css/base.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css" />
-
     @section('pageCss')
     @show
-
-    <!-- Header JS -->
     <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}" type="text/javascript"></script>
-    
-    <!-- Bizweb javascript customer -->
-	<!-- Bizweb conter for header -->
 	<script> var Bizweb = Bizweb || {}; Bizweb.store = 'ant-kitchen.mysapo.net'; Bizweb.id='270860'; Bizweb.theme = {"id":606449,"role":"main","name":"Ant Kitchen"}; Bizweb.template = 'product';</script>
 	<script>
 		(function() {
@@ -54,7 +45,6 @@
 			window.attachEvent ? window.attachEvent('onload', asyncLoad) : window.addEventListener('load', asyncLoad, false);
 		})();
 	</script>
-
 	<script type='text/javascript'>
 		(function() {
 		var log = document.createElement('script'); log.type = 'text/javascript'; log.async = true;

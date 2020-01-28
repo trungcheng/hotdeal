@@ -5,17 +5,21 @@
     \Route::group(['middleware' => 'user.language'], function () {
         \Route::get('/', 'User\WebController@index')->name('home');
 
-        \Route::get('/search', 'User\WebController@search')->name('search');
+        \Route::get('/tim-kiem', 'User\WebController@search')->name('search');
         
         \Route::get('/admin', 'User\WebController@navigate');
 
-        \Route::get('/lien-he.html', 'User\WebController@contact')->name('contact');
+        \Route::get('/gioi-thieu', 'User\WebController@about')->name('about');
 
-        \Route::get('/{slug}.html', 'User\WebController@processPageLevelOne')->name('detail');
+        \Route::get('/lien-he', 'User\WebController@contact')->name('contact');
 
-        \Route::get('/{parent}/{slug}.html', 'User\WebController@processPageLevelTwo')->name('detail-article');
+        \Route::get('/tin-tuc', 'User\WebController@post')->name('post');
 
-        \Route::get('/lang/{locale}', 'User\WebController@changeLocale')->name('locale');
+        \Route::get('/tin-tuc/{slug}', 'User\WebController@postDetail')->name('post-detail');
+
+        \Route::get('/cua-hang', 'User\WebController@store')->name('store');
+        
+        \Route::get('/{slug}', 'User\WebController@detail')->name('detail');
     });
 
 });
