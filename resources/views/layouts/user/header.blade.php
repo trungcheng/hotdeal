@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-5 col-100-h">
                     <a href="/" class="logo-wrapper">
-                        <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/logo.png?1576740881097" alt="logo Ant Kitchen" />
+                        <img src="{{ asset('frontend/images/logos/logo.png') }}" alt="logo Ant Kitchen" />
                     </a>
                 </div>
                 <div class="col-100-h col-sm-6 col-xs-7 hidden-lg hidden-md">
@@ -297,7 +297,7 @@
                     </div>
                     <div class="mobile-cart visible-sm visible-xs">
                         <a href="{{ route('cart') }}" title="Giỏ hàng">
-                            <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/shopping-cart.svg?1576740881097" alt="Giỏ hàng" />
+                            <img src="{{ asset('frontend/images/icons/shopping-cart.svg') }}" alt="Giỏ hàng" />
                             <div class="cart-right">
                                 <span class="count_item_pr">2</span>
                             </div>

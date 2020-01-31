@@ -132,7 +132,7 @@
                                                                     <p class="text-right"><small>(Đã bao gồm VAT)</small></p>
                                                                 </div>
                                                             </div>
-                                                        </div><button class="button btn-proceed-checkout btn btn-large btn-block btn-danger btn-checkout" title="Thanh toán ngay" type="button" onclick="window.location.href='/checkout'">Thanh toán ngay</button><button class="button btn-proceed-checkout btn btn-large btn-block btn-danger btn-checkouts" title="Tiếp tục mua hàng" type="button" onclick="window.location.href='/collections/all'">Tiếp tục mua hàng</button>
+                                                        </div><button class="button btn-proceed-checkout btn btn-large btn-block btn-danger btn-checkout" title="Thanh toán ngay" type="button" onclick="window.location.href='/checkout'">Thanh toán ngay</button><button class="button btn-proceed-checkout btn btn-large btn-block btn-danger btn-checkouts" title="Tiếp tục mua hàng" type="button" onclick="window.location.href='/cua-hang'">Tiếp tục mua hàng</button>
                                                     </div>
                                                 </div>
                                             </div>

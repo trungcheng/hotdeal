@@ -6,18 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Ant Kitchen - Thanh toán đơn hàng" />
-
     <title>Thanh toán đơn hàng | Ant Kitchen</title>
-
-    <link rel="shortcut icon" href="//bizweb.dktcdn.net/assets/favicon.ico" type="image/x-icon" />
-
-    <script src="//bizweb.dktcdn.net/assets/themes_support/jquery-2.1.3.min.js?4" type="text/javascript"></script>
-    <link href="//bizweb.dktcdn.net/assets/themes_support/bootstrap.min.css?20171025" rel="stylesheet" type="text/css" />
-    <link href="//bizweb.dktcdn.net/assets/themes_support/nprogress.css?20171025" rel="stylesheet" type="text/css" />
-    <link href="//bizweb.dktcdn.net/assets/themes_support/font-awesome.min.css?20171025" rel="stylesheet" type="text/css" />
-    <link href="//bizweb.dktcdn.net/assets/themes_support/select2-min.css?20171025" rel="stylesheet" type="text/css" />
-    <link href="//bizweb.dktcdn.net/assets/themes_support/checkout.css?20190819" rel="stylesheet" type="text/css" />
-
+    <link rel="icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon" />
+    <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
+    <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/css/nprogress.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/css/checkout.css') }}" rel="stylesheet" type="text/css" />
     <script>
         var Bizweb = Bizweb || {};
         Bizweb.store = 'ant-kitchen.mysapo.net';
@@ -28,7 +24,6 @@
         };
         Bizweb.template = '';
     </script>
-
     <script type="text/javascript">
         if (typeof Bizweb == 'undefined') {
             Bizweb = {};
@@ -37,7 +32,6 @@
         Bizweb.Checkout.token = "0f15394c112542c79b8eb0caee02058a";
         Bizweb.Checkout.apiHost = "ant-kitchen.mysapo.net";
     </script>
-
 </head>
 
 <body class="body--custom-background-color ">
@@ -218,7 +212,7 @@
                     </div>
                     <div class="form-group clearfix hidden-sm hidden-xs">
                         <div class="field__input-btn-wrapper mt10">
-                            <a class="previous-link" href="/cart">
+                            <a class="previous-link" href="{{ route('cart') }}">
                                 <i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
                                 <span>Quay về giỏ hàng</span>
                             </a>
@@ -921,16 +915,17 @@
                 </svg></symbol>
         </svg>
     </div>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/jquery-2.1.3.min.js?20171025" type="text/javascript"></script>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/bootstrap.min.js?20171025" type="text/javascript"></script>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/twine.min.js?20171025" type="text/javascript"></script>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/validator.min.js?20171025" type="text/javascript"></script>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/nprogress.js?20171025" type="text/javascript"></script>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/money-helper.js?20171025" type="text/javascript"></script>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/select2-full-min.js?20171025" type="text/javascript"></script>
 
-    <script src="//bizweb.dktcdn.net/assets/scripts/ua-parser.pack.js?20180611" type='text/javascript'></script>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/checkout.js?20200114" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/twine.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/validator.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/nprogress.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/money-helper.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/select2-full.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('frontend/js/ua-parser.pack.js') }}" type='text/javascript'></script>
+    <script src="{{ asset('frontend/js/checkout.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(document).ajaxStart(function() {
