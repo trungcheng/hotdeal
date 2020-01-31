@@ -296,10 +296,10 @@
 
                     </div>
                     <div class="mobile-cart visible-sm visible-xs">
-                        <a href="javascript:void(0)" title="Giỏ hàng">
+                        <a href="{{ route('cart') }}" title="Giỏ hàng">
                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/shopping-cart.svg?1576740881097" alt="Giỏ hàng" />
                             <div class="cart-right">
-                                <span class="count_item_pr">0</span>
+                                <span class="count_item_pr">2</span>
                             </div>
                         </a>
                     </div>
@@ -316,14 +316,14 @@
                         <span>Xin chào, Khách</span>
                         <ul>
 
-                            <li><a href="/account/login">Đăng nhập</a></li>
-                            <li><a href="/account/register">Đăng ký</a></li>
+                            <li><a href="{{ route('signin') }}">Đăng nhập</a></li>
+                            <li><a href="{{ route('signup') }}">Đăng ký</a></li>
 
                         </ul>
                     </div>
                     <div class="index-cart">
-                        <a href="javascript:void(0)"><i class="fa fa-shopping-bag"></i></a>
-                        <span class="cnt crl-bg count_item_pr">0</span>
+                        <a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i></a>
+                        <span class="cnt crl-bg count_item_pr">2</span>
                     </div>
                 </div>
             </div>

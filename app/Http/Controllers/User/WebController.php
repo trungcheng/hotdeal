@@ -24,6 +24,16 @@ class WebController extends Controller
     	return redirect('/admin/access/login');
     }
 
+    public function signin()
+    {
+        return view('pages.user.auth.signin', []);
+    }
+
+    public function signup()
+    {
+        return view('pages.user.auth.signup', []);
+    }
+
     public function about()
     {
         return view('pages.user.home.about', []);
@@ -32,6 +42,16 @@ class WebController extends Controller
     public function contact()
     {
         return view('pages.user.home.contact', []);
+    }
+
+    public function cart()
+    {
+        return view('pages.user.home.cart', []);
+    }
+
+    public function checkout()
+    {
+        return view('pages.user.home.checkout', []);
     }
 
     public function post()
