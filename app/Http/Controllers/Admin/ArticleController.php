@@ -10,6 +10,7 @@ use Validator;
 
 class ArticleController extends Controller
 {
+
     public function __construct() {
         // $this->middleware('admin.auth');
     }
@@ -55,8 +56,7 @@ class ArticleController extends Controller
 
             $data = $request->all();
             if ($data) {
-                Article::addAction($data, 'article');
-
+                Article::addAction($data);
                 return Response::json([
                     'status' => true,
                     'message' => 'Thêm bài viết thành công', 
@@ -93,7 +93,10 @@ class ArticleController extends Controller
             if ($data) {
                 $article = Article::find($data['id']);
                 if ($article) {
-                    Article::updateAction($data, $article, 'article');
+                    if ($data['is_about'] == 1) {
+                        Article::where('id', '>', 0)->update(['is_about' => 0]);
+                    }
+                    Article::updateAction($data, $article);
                     
                     return Response::json([
                         'status' => true, 
@@ -108,6 +111,7 @@ class ArticleController extends Controller
                     ]);
                 }
             }
+
             return Response::json([
                 'status' => false,
                 'message' => 'Đã xảy ra lỗi', 
@@ -120,7 +124,7 @@ class ArticleController extends Controller
             ], 200);
         }
     }
-    
+
     public function delete(Request $request)
     {
         $articleId = $request->articleId;
@@ -128,7 +132,6 @@ class ArticleController extends Controller
             $article = Article::find($articleId);
             if ($article) {
                 $article->delete();
-
                 return Response::json([
                     'status' => true, 
                     'message' => 'Xóa bài viết thành công', 
@@ -142,7 +145,7 @@ class ArticleController extends Controller
                 'type' => 'error'
             ]);
         }
-        
+
         return Response::json([
             'status' => false, 
             'message' => 'Đã xảy ra lỗi', 

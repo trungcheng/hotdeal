@@ -10,6 +10,15 @@
             $this->post('login', 'Admin\Auth\LoginController@login');
             $this->post('logout', 'Admin\Auth\LoginController@logout')->name('logout');
 
+            // // Register Routes...
+            // $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+            // $this->post('register', 'Auth\RegisterController@register');
+
+            // // Password Reset Routes...
+            // $this->get('password/email', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+            // $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+            // $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+            // $this->post('password/reset', 'Auth\ResetPasswordController@reset');
         // });
 
         // \Route::group(['middleware' => ['admin.auth']], function () {
@@ -31,7 +40,25 @@
                 $this->get('categories/edit/{id}', 'Admin\CategoryController@edit')->name('category-edit');
                 $this->post('categories/add', 'Admin\CategoryController@add');
                 $this->post('categories/update', 'Admin\CategoryController@update');
-                $this->post('categories/delete', 'Admin\CategoryController@delete')->middleware('admin.role:Superadmin');
+                $this->post('categories/delete', 'Admin\CategoryController@delete');
+
+                // product
+                $this->get('products', 'Admin\ProductController@index')->name('products');
+                $this->get('products/getAllProducts', 'Admin\ProductController@getAllProducts');
+                $this->get('products/create', 'Admin\ProductController@create')->name('product-create');
+                $this->get('products/edit/{id}', 'Admin\ProductController@edit')->name('product-edit');
+                $this->post('products/add', 'Admin\ProductController@add');
+                $this->post('products/update', 'Admin\ProductController@update');
+                $this->post('products/delete', 'Admin\ProductController@delete');
+
+                // order
+                $this->get('orders', 'Admin\OrderController@index')->name('orders');
+                $this->get('orders/getAllOrders', 'Admin\OrderController@getAllOrders');
+                $this->get('orders/create', 'Admin\OrderController@create')->name('order-create');
+                $this->get('orders/edit/{id}', 'Admin\OrderController@edit')->name('order-edit');
+                $this->post('orders/add', 'Admin\OrderController@add');
+                $this->post('orders/update', 'Admin\OrderController@update');
+                $this->post('orders/delete', 'Admin\OrderController@delete');
 
                 // article
                 $this->get('articles', 'Admin\ArticleController@index')->name('articles');
@@ -42,56 +69,24 @@
                 $this->post('articles/update', 'Admin\ArticleController@update');
                 $this->post('articles/delete', 'Admin\ArticleController@delete');
 
-                // media photos
-                $this->get('media/photos', 'Admin\MediaController@photos')->name('media-photos');
-                $this->get('media/photos/getAllPhotos', 'Admin\MediaController@getAllPhotos');
-                $this->get('media/photos/create', 'Admin\MediaController@createPhoto')->name('media-photo-create');
-                $this->get('media/photos/edit/{id}', 'Admin\MediaController@editPhoto')->name('media-photo-edit');
-                $this->post('media/photos/add', 'Admin\MediaController@addPhoto');
-                $this->post('media/photos/update', 'Admin\MediaController@updatePhoto');
-                $this->post('media/photos/delete', 'Admin\MediaController@deletePhoto');
+                // slide
+                $this->get('slides', 'Admin\SlideController@index')->name('slides');
+                $this->get('slides/getAllSlides', 'Admin\SlideController@getAllSlides');
+                $this->get('slides/create', 'Admin\SlideController@create')->name('slide-create');
+                $this->get('slides/edit/{id}', 'Admin\SlideController@edit')->name('slide-edit');
+                $this->post('slides/add', 'Admin\SlideController@add');
+                $this->post('slides/update', 'Admin\SlideController@update');
+                $this->post('slides/delete', 'Admin\SlideController@delete');
+                $this->get('slides/loadObject/{target}', 'Admin\SlideController@loadObject')->name('slide-load-object');
 
-                // media videos
-                $this->get('media/videos', 'Admin\MediaController@videos')->name('media-videos');
-                $this->get('media/videos/getAllVideos', 'Admin\MediaController@getAllVideos');
-                $this->get('media/videos/create', 'Admin\MediaController@createVideo')->name('media-video-create');
-                $this->get('media/videos/edit/{id}', 'Admin\MediaController@editVideo')->name('media-video-edit');
-                $this->post('media/videos/add', 'Admin\MediaController@addVideo');
-                $this->post('media/videos/update', 'Admin\MediaController@updateVideo');
-                $this->post('media/videos/delete', 'Admin\MediaController@deleteVideo');
-
-                // media slides
-                $this->get('media/slides', 'Admin\MediaController@slides')->name('media-slides');
-                $this->get('media/slides/getAllSlides', 'Admin\MediaController@getAllSlides');
-                $this->get('media/slides/create', 'Admin\MediaController@createSlide')->name('media-slide-create');
-                $this->get('media/slides/edit/{id}', 'Admin\MediaController@editSlide')->name('media-slide-edit');
-                $this->post('media/slides/add', 'Admin\MediaController@addSlide');
-                $this->post('media/slides/update', 'Admin\MediaController@updateSlide');
-                $this->post('media/slides/delete', 'Admin\MediaController@deleteSlide');
-
-                // media slogan slides
-                $this->get('media/slogan-slides', 'Admin\MediaController@sloganSlides')->name('media-slogan-slides');
-                $this->get('media/slogan-slides/getAllSloganSlides', 'Admin\MediaController@getAllSloganSlides');
-                $this->get('media/slogan-slides/create', 'Admin\MediaController@createSloganSlide')->name('media-slogan-slide-create');
-                $this->get('media/slogan-slides/edit/{id}', 'Admin\MediaController@editSloganSlide')->name('media-slogan-slide-edit');
-                $this->post('media/slogan-slides/add', 'Admin\MediaController@addSloganSlide');
-                $this->post('media/slogan-slides/update', 'Admin\MediaController@updateSloganSlide');
-                $this->post('media/slogan-slides/delete', 'Admin\MediaController@deleteSloganSlide');
-
-                // media partner logos
-                $this->get('media/partner-logos', 'Admin\SettingController@partnerLogos')->name('media-partner-logos');
-                $this->post('media/partner-logos/update', 'Admin\SettingController@updatePartnerLogos');
-
-                // user
-                Route::group(['middleware' => 'admin.role:Superadmin'], function () {
-                    $this->get('users', 'Admin\UserController@index')->name('users');
-                    $this->get('users/getAllUsers', 'Admin\UserController@getAllUsers');
-                    $this->get('users/create', 'Admin\UserController@create')->name('user-create');
-                    $this->get('users/edit/{id}', 'Admin\UserController@edit')->name('user-edit');
-                    $this->post('users/add', 'Admin\UserController@add');
-                    $this->post('users/update', 'Admin\UserController@update');
-                    $this->post('users/delete', 'Admin\UserController@delete');
-                });
+                // member
+                $this->get('members', 'Admin\MemberController@index')->name('members');
+                $this->get('members/getAllMembers', 'Admin\MemberController@getAllMembers');
+                $this->get('members/create', 'Admin\MemberController@create')->name('member-create');
+                $this->get('members/edit/{id}', 'Admin\MemberController@edit')->name('member-edit');
+                $this->post('members/add', 'Admin\MemberController@add');
+                $this->post('members/update', 'Admin\MemberController@update');
+                $this->post('members/delete', 'Admin\MemberController@delete');
 
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');

@@ -15,7 +15,7 @@
 <div class="login-box">
     <div class="login-logo">
         <a href="{!! url('admin') !!}">
-            <h3>UTICO</h3>
+            <h3>ThachvuCMS</h3>
         </a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">
@@ -23,14 +23,14 @@
             {{ csrf_field() }}
             <div class="form-group has-feedback">
                 <!-- {!!Form::email('email', null, ['placeholder' => 'Username'])!!} -->
-                {!! Form::text('email', '', ['placeholder' => 'Username hoặc email', 'autocomplete' => 'off', 'required', 'class' => 'form-control']) !!}
+                {!! Form::email('email', '', ['placeholder' => 'Enter email', 'autocomplete' => 'off', 'required', 'class' => 'form-control']) !!}
                 <span class="fa fa-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                {!!Form::password('password', ['placeholder' => 'Mật khẩu', 'autocomplete' => 'off', 'required', 'class'=>'form-control'])!!}
+                {!!Form::password('password', ['placeholder' => 'Password', 'autocomplete' => 'off', 'required', 'class'=>'form-control'])!!}
                 <span class="fa fa-lock form-control-feedback"></span>
             </div>
-            <button type="submit" class="btn btn-primary btn-block mt20">Đăng nhập</button>
+            <button type="submit" class="btn btn-primary btn-block mt20">Sign In</button>
         </form>
     </div><!-- /.login-box-body -->
 </div>

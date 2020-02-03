@@ -30,25 +30,8 @@
                             <div class="modal-body">
                                 <input type="hidden" id="user_id" name="user_id" value="{{ $authAdminUser->id }}">
                                 <div class="form-group">
-                                    <label>Tiêu đề (Vietnamese)</label>
+                                    <label>Tiêu đề</label>
                                     <input name="title" type="text" class="form-control slug" placeholder="Tiêu đề bài viết...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tiêu đề (English)</label>
-                                    <input name="en_title" type="text" class="form-control slug" placeholder="Article title...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tiêu đề (Koreanese)</label>
-                                    <input name="ko_title" type="text" class="form-control slug" placeholder="기사 제목...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Thuộc danh mục</label>
-                                    <select class="form-control cate" name="cat_id">
-                                        <option value="0">Không thuộc danh mục nào</option>
-                                        <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                                        </option>
-                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh</label>
@@ -56,32 +39,16 @@
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả ngắn (Vietnamese)</label>
+                                    <label>Mô tả ngắn</label>
                                     <textarea class="form-control" id="short_content"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả ngắn (English)</label>
-                                    <textarea class="form-control" id="en_short_content"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả ngắn (Koreanese)</label>
-                                    <textarea class="form-control" id="ko_short_content"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Nội dung (Vietnamese)</label>
+                                    <label>Nội dung</label>
                                     <textarea class="form-control" id="full_content"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nội dung (English)</label>
-                                    <textarea class="form-control" id="en_full_content"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Nội dung (Koreanese)</label>
-                                    <textarea class="form-control" id="ko_full_content"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Tin mới</label>
-                                    <select name="is_feature" class="form-control">
+                                    <label>Trang giới thiệu</label>
+                                    <select name="is_about" class="form-control">
                                         <option value="0">Không</option>
                                         <option value="1">Có</option>
                                     </select>
@@ -171,11 +138,7 @@
     <script type="text/javascript">
         $(function () {
             CKEDITOR.replace('short_content', { height: 300 }); 
-            CKEDITOR.replace('en_short_content', { height: 300 }); 
-            CKEDITOR.replace('ko_short_content', { height: 300 }); 
             CKEDITOR.replace('full_content'); 
-            CKEDITOR.replace('en_full_content'); 
-            CKEDITOR.replace('ko_full_content'); 
         });
     </script>
 @stop

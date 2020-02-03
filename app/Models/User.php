@@ -12,21 +12,23 @@ class User extends Model implements Authenticatable
     use UserTrait, AuthenticableTrait;
 
     protected $table = 'users';
-
-    protected $cats = [
-        'role_id' => 'integer',
-        'type' => 'boolean',
-        'status' => 'boolean'
-    ];
    
     protected $fillable = [
         'role_id',
         'username',
-        'full_name', 
+        'fullname', 
         'email',
+        'avatar',
         'password',
-        'type',
-        'status'
+        'mobile',
+        'address',
+        'birthday',
+        'sex',
+        'bio',
+        'status', 
+        'confirmation_code', 
+        'is_confirmed',
+        'jwt_token'
     ];
 
     /**
@@ -42,101 +44,58 @@ class User extends Model implements Authenticatable
     }
 
     public function role() {
-        return $this->belongsTo('App\Models\Role', 'role_id', 'id');
+        return $this->belongsTo('App\Models\Role');
     }
 
-    public static $rulesUserAdd = [
-        'username' => 'required|unique:users|min:2',
-        'password' => 'required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/',
-    ];
+    public function article() {
+        return $this->hasMany('App\Models\Article', 'user_id', 'id');
+    }
 
-    public static $messagesUserAdd = [
-        'username.required' => 'Username không được để trống',
-        'username.unique' => 'Username đã tồn tại',
-        'username.min' => 'Username ít nhất từ 2 ký tự',
-        'password.required' => 'Mật khẩu không được để trống',
-        'password.min' => 'Mật khẩu ít nhất 8 ký tự',
-        'password.regex' => 'Mật khẩu chứa ít nhất 1 chữ hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt'
-    ];
+    public function order() {
+        return $this->hasMany('App\Models\Order', 'user_id', 'id');
+    }
+
+    public function product() {
+        return $this->hasMany('App\Models\Product', 'user_id', 'id');
+    }
 
     public static $rules = [
-        'full_name' => 'required|min:2',
-        'avatar' => 'required'
+        'fullname' => 'required|min:2',
+        'email' => 'required|email',
+        'mobile' => 'required|numeric'
     ];
 
     public static $messages = [
-        'full_name.required' => 'Họ tên không được để trống',
-        'full_name.min' => 'Họ tên ít nhất từ 2 ký tự',
-        'avatar.required' => 'Ảnh đại diện không được để trống'
+        'fullname.required' => 'Họ tên không được để trống',
+        'fullname.min' => 'Họ tên ít nhất từ 2 ký tự',
+        'email.required' => 'Email không được để trống',
+        'email.email' => 'Email không đúng định dạng',
+        'mobile.required' => 'Điện thoại không được để trống',
+        'mobile.numeric' => 'Điện thoại phải là định dạng số',
     ];
 
     public static function init($request)
     {
-        $data = self::where('role_id', 3)->where('type', 1);
+        $data = self::where('id', '>', 0)->where('role_id', 3);
 
-        if ($request->name !== 'all-member' && $request->name !== 'undefined') {
-            $data->where("full_name", "LIKE", "%" . $request->name . "%")
-                 ->orWhere("intro", "LIKE", "%" . $request->name . "%");
+        if ($request->fullname !== 'all-member' && $request->fullname !== 'undefined') {
+            $data->where("fullname", "LIKE", "%" . $request->fullname . "%");
         }
 
-        if ($request->cate !== 'all-cate' && $request->cate !== 'undefined') {
-            $category = Category::find((int)$request->cate);
-            if ($category->parent_id == 0) {
-                $arrCateIds = [$category->id];
-                $childCates = Category::where('parent_id', $category->id)->select('id')->get();
-                foreach ($childCates as $child) {
-                    $arrCateIds[] = $child->id;
-                }
-                $data->whereIn("cat_id", $arrCateIds);
-            } else {
-                $data->where("cat_id", (int) $request->cate);
-            }
-        }
-
-        if ($request->order !== 'default' && $request->order !== 'undefined') {
-            $condition = explode('-', $request->order);
-            if (isset($condition[1])) {
-                $data = $data->orderBy($condition[0], $condition[1]);    
-            } else {
-                $data = $data->orderBy($condition[0]);
-            }
-        } else {
-            $data->orderBy('cat_id');
-        }
-
-        return $data->with('category')->get();
-    }
-
-    public static function initUser($request)
-    {
-        $data = self::where('role_id', '<>', 1);
-
-        if ($request->name !== 'all-user' && $request->name !== 'undefined') {
-            $data->where("username", "LIKE", "%" . $request->name . "%")
-                 ->orWhere("full_name", "LIKE", "%" . $request->name . "%")
-                 ->orWhere("email", "LIKE", "%" . $request->name . "%");
-        }
-
-        $data = $data->with('role')->orderBy('id', 'desc')->get();
+        $data = $data->orderBy('id', 'desc')->get();
 
         return $data;
     }
 
-    public static function addUser($data)
+    public static function addAction($data)
     {
-        $data['role_id'] = 2;
-        $data['type'] = 0;
-
+        $data['password'] = bcrypt('123456');
         return self::firstOrCreate($data);
     }
 
-    public static function updateUser($data, $user)
+    public static function updateAction($data, $member)
     {
-        if ($data['password'] == '') {
-            unset($data['password']);
-        }
-
-        return $user->update($data);
+        return $member->update($data);
     }
 
 }

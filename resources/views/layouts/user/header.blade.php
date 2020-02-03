@@ -812,7 +812,7 @@
 
                         </li>
 
-                        <li class="nav-item "><a class="nav-link" href="{{ route('post') }}">Tin tức</a></li>
+                        <li class="nav-item "><a class="nav-link" href="{{ route('article') }}">Tin tức</a></li>
 
                         <li class="nav-item "><a class="nav-link" href="{{ route('contact') }}">Liên hệ</a></li>
 

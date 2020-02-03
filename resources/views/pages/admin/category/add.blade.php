@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<div ng-controller="CategoryController" ng-init="loadInitCreate()">
+<div ng-controller="CategoryController">
 
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
@@ -29,88 +29,30 @@
                         <form id="formProcess" onsubmit="return false;" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Tên danh mục (Vietnamese)</label>
+                                    <label>Tên danh mục</label>
                                     <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Tên danh mục (English)</label>
-                                    <input name="en_name" type="text" class="form-control slug" placeholder="Category name...">
+                                    <label>SEO Content</label>
+                                    <textarea class="form-control" id="seo_content"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Tên danh mục (Koreanese)</label>
-                                    <input name="ko_name" type="text" class="form-control slug" placeholder="카테고리 이름...">
+                                    <label>SEO Title</label>
+                                    <input name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Thuộc danh mục</label>
-                                    <select class="form-control cate" name="parent_id">
-                                        <option value="0">Không thuộc danh mục nào</option>
-                                        <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                                        </option>
-                                    </select>
+                                    <label>SEO Description</label>
+                                    <input name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả (Vietnamese)</label>
-                                    <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả..."></textarea>
+                                    <label>SEO Keyword</label>
+                                    <input name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                                 </div>
-                                <div class="form-group">
-                                    <label>Mô tả (English)</label>
-                                    <textarea style="height: 100px;" name="en_description" class="form-control description" placeholder="Description..."></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả (Koreanese)</label>
-                                    <textarea style="height: 100px;" name="ko_description" class="form-control description" placeholder="설명..."></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Ảnh đại diện</label>
-                                    <input name="image" type="text" size="48" class="form-control" id="image" />
-                                    <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('image')">Tải ảnh lên</button>
-                                </div>
-                                <div class="form-group">
-                                    <label>List ảnh slide</label>      
-                                    <button type="button" onclick="add_img();" class="btn btn-success btn-sm btn_img" style="margin-top: 8px;"><i class="fa fa-plus"></i> Thêm Ảnh</button>
-
-                                    <div class="box-img">
-                                        <input type="text" size="48" name="sliders[]" class="form-control list-img" id="xFilePath1" />
-                                        <button class="btn btn-primary btn-upload" onclick="openPopupMulti(1)">Tải ảnh lên</button>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Thứ tự</label>
-                                    <select class="form-control status" name="order">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Hiển thị lên trang chủ</label>
-                                    <select class="form-control status" name="is_home">
-                                        <option value="0">Không</option>
-                                        <option value="1">Có</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Dạng hiển thị</label>
-                                    <select class="form-control status" name="layout">
-                                        <option value="1">Slide ngang</option>
-                                        <option value="2">Tin tức</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Trạng thái</label>
-                                    <select class="form-control status" name="status">
-                                        <option value="1">Hoạt động</option>
-                                        <option value="0">Khóa</option>
-                                    </select>
-                                </div>
+                                <!-- <div class="form-group">
+                                    <label>Ảnh</label>
+                                    <input name="icon" type="text" size="48" class="form-control" id="xFilePath" />
+                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                                </div> -->
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('add')" type="button" class="btn btn-primary">Thêm</button>
@@ -127,53 +69,42 @@
 
 </div>
 
+<script>
+    function openPopup() {
+        CKFinder.popup( {
+            chooseFiles: true,
+            onInit: function( finder ) {
+                finder.on( 'files:choose', function( evt ) {
+                    var file = evt.data.files.first();
+                    document.getElementById( 'xFilePath' ).value = file.getUrl();
+                } );
+                finder.on( 'file:choose:resizedImage', function( evt ) {
+                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                } );
+            }
+        } );
+    }
+    
+    function openPopupMulti(id) {
+        CKFinder.popup( {
+            chooseFiles: true,
+            onInit: function( finder ) {
+                finder.on( 'files:choose', function( evt ) {
+                    var file = evt.data.files.first();
+                    document.getElementById( 'xFilePath'+id ).value = file.getUrl();
+                });
+                finder.on( 'file:choose:resizedImage', function( evt ) {
+                    document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
+                });
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    CKEDITOR.replace('seo_content', {height: 300}); 
+</script>
 @stop
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/category.controller.js') !!}
-
-    <script type="text/javascript">
-        function openPopup(id) {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
-                        var file = evt.data.files.first();
-                        document.getElementById(id).value = file.getUrl();
-                    } );
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById(id).value = evt.data.resizedUrl;
-                    } );
-                }
-            } );
-        }
-        
-        function openPopupMulti(id) {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
-                        var file = evt.data.files.first();
-                        document.getElementById('xFilePath'+id).value = file.getUrl();
-                    });
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById('xFilePath'+id).value = evt.data.resizedUrl;
-                    });
-                }
-            });
-        }
-    </script>
-
-    <script>
-        var i = 50;
-        function add_img(){
-            i++;
-            var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="sliders[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-danger">Xóa</button></span></p>';
-            $(insert).appendTo('.box-img');
-        }
-        
-        function del_accads(id) {
-            $('.add_'+id).remove(); 
-        }
-    </script>
 @stop

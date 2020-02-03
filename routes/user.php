@@ -1,34 +1,61 @@
 <?php
 
-\Route::group(['middleware' => ['user.values', 'cors']], function () {
+// \Route::group(['namespace' => 'user'], function() {
 
-    \Route::get('/tai-khoan/dang-nhap', 'User\WebController@signin')->name('signin');
+    \Route::group(['middleware' => ['user.values', 'cors']], function () {
 
-    \Route::get('/tai-khoan/dang-ky', 'User\WebController@signup')->name('signup');
+        \Route::get('/', 'User\HomeController@index')->name('home');
 
-    \Route::group(['middleware' => 'user.language'], function () {
-        \Route::get('/', 'User\WebController@index')->name('home');
+        // \Route::group(['middleware' => ['user.guest']], function () {
+        \Route::get('tai-khoan/dang-nhap', 'User\Auth\LoginController@showLoginForm')->name('signin');
+        \Route::post('tai-khoan/dang-nhap', 'User\Auth\LoginController@login');
+        \Route::get('tai-khoan/dang-xuat', 'User\Auth\LoginController@logout')->name('getLogout');
+        // \Route::get('signin/facebook', 'User\FacebookServiceAuthController@redirect');
+        // \Route::get('signin/facebook/callback', 'User\FacebookServiceAuthController@callback');
+        // \Route::get('forgot-password', 'User\PasswordController@getForgotPassword');
+        // \Route::post('forgot-password', 'User\PasswordController@postForgotPassword');
+        // \Route::get('reset-password/{token}', 'User\PasswordController@getResetPassword');
+        // \Route::post('reset-password', 'User\PasswordController@postResetPassword');
+        \Route::get('tai-khoan/dang-ky', 'User\Auth\RegisterController@showRegistrationForm')->name('signup');
+        \Route::post('tai-khoan/dang-ky', 'User\Auth\RegisterController@register');
 
-        \Route::get('/tim-kiem', 'User\WebController@search')->name('search');
-        
-        \Route::get('/admin', 'User\WebController@navigate');
+        \Route::post('account/ajax_signin', 'User\AuthController@ajaxSignIn')->name('ajax-signin');
+        \Route::post('account/ajax_signup', 'User\AuthController@ajaxSignUp')->name('ajax-signup');
 
-        \Route::get('/gioi-thieu', 'User\WebController@about')->name('about');
+        // });
 
-        \Route::get('/lien-he', 'User\WebController@contact')->name('contact');
+        \Route::group(['middleware' => ['user.auth']], function () {
 
-        \Route::get('/gio-hang', 'User\WebController@cart')->name('cart');
+        });
 
-        \Route::get('/checkout', 'User\WebController@checkout')->name('checkout');
+        // \Route::get('/product-detail', 'User\ProductController@detail')->name('product-detail');
+        \Route::get('/cua-hang', 'User\ProductController@store')->name('store');
+        \Route::get('/tim-kiem', 'User\ProductController@search')->name('search');
 
-        \Route::get('/tin-tuc', 'User\WebController@post')->name('post');
+        \Route::get('/gio-hang', 'User\CartController@index')->name('cart');
+        \Route::post('/cart/add', 'User\CartController@add')->name('cartAdd');
+        \Route::post('/cart/update', 'User\CartController@update')->name('cartUpdate');
+        \Route::post('/cart/delete', 'User\CartController@delete')->name('cartDelete');
 
-        \Route::get('/tin-tuc/{slug}', 'User\WebController@postDetail')->name('post-detail');
+        \Route::get('/tin-tuc', 'User\ArticleController@index')->name('article');
+        \Route::get('/tin-tuc/{slug}', 'User\ArticleController@detail')->name('article-detail');
 
-        \Route::get('/cua-hang', 'User\WebController@store')->name('store');
-        
-        \Route::get('/{slug}', 'User\WebController@detail')->name('detail');
+        \Route::get('/checkout/first', 'User\CartController@checkoutFirst')->name('step1');
+        \Route::get('/checkout/payment', 'User\CartController@checkoutPayment')->name('step2');
+        \Route::post('/checkout/payment', 'User\CartController@postCheckoutPayment')->name('postStep2');
+        \Route::get('/checkout/success', 'User\CartController@checkoutSuccess')->name('checkout-success');
+
+        \Route::get('/gioi-thieu', 'User\PageController@about')->name('about');
+        \Route::get('/lien-he', 'User\PageController@contact')->name('contact');
+
+        // \Route::get('/product/getAllSaleProd', 'User\ProductController@getAllSaleProd');
+        // \Route::get('/product/getAllChauDaProd', 'User\ProductController@getAllChauDaProd');
+        // \Route::get('/product/getAllChauInoxProd', 'User\ProductController@getAllChauInoxProd');
+        // \Route::get('/product/getAllVoiRuaBatProd', 'User\ProductController@getAllVoiRuaBatProd');
+
+        \Route::get('/{slug}', 'User\ProductController@detail')->name('product-detail');
+
     });
 
-});
+// });
 

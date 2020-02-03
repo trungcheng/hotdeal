@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Article;
 use App\Util\Util;
 use Response;
 use Validator;
@@ -25,33 +27,16 @@ class CategoryController extends Controller
     public function getAllCategories(Request $request)
     {
         $results = Category::init($request);
-        if ($results) {
-            foreach ($results as $result) {
-                if ($result->parent_id !== 0) {
-                    if (Category::find($result->parent_id)) {
-                        $result['parent'] = Category::find($result->parent_id)->name;
-                    }
-                }
-            }
-        }
-        
+            
         return Response::json(['status' => true, 'data' => $results]);
     }
 
     public function getAllParentCates(Request $request)
     {
-        $ids = [];
-        if (isset($request->ids)) {
-            $ids = explode(',', $request->ids);
-            $categoriesPaged = Category::whereIn('id', $ids)->get();
-        } else {
-            $categories = Category::orderBy('order', 'asc')->get();
-            $categoriesPaged = Util::buildArray($categories);
+        $categories = Category::all();
+        if ($categories) {
+            return Response::json(['status' => true, 'data' => $categories]);
         }
-        if ($categoriesPaged) {
-            return Response::json(['status' => true, 'data' => $categoriesPaged]);
-        }
-
         return Response::json(['status' => false, 'data' => []]);
     }
 
@@ -67,7 +52,7 @@ class CategoryController extends Controller
             return view('pages.admin.category.edit', ['category' => $category]);
         }
 
-        return response()->view('errors.404-Backend');
+        abort(404);
     }
 
     public function add(Request $request)
@@ -155,22 +140,16 @@ class CategoryController extends Controller
         if ($cateId && !is_null($cateId)) {
             $cate = Category::find($cateId);
             if ($cate) {
-                if (!in_array($cate->id, [19,20])) {
-                    // remove itself
-                    $cate->delete();
+                // remove all relate section
+                Product::where('cat_id', $cateId)->delete();
+                // remove itself
+                $cate->delete();
 
-                    return Response::json([
-                        'status' => true, 
-                        'message' => 'Xóa danh mục thành công', 
-                        'type' => 'success'
-                    ]);
-                } else {
-                    return Response::json([
-                        'status' => false, 
-                        'message' => 'Không thể xóa danh mục này', 
-                        'type' => 'error'
-                    ]);
-                }
+                return Response::json([
+                    'status' => true, 
+                    'message' => 'Xóa danh mục thành công', 
+                    'type' => 'success'
+                ]);
             }
 
             return Response::json([

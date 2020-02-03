@@ -20,7 +20,7 @@
     <section class="content">
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-6 col-md-offset-3">
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -36,103 +36,62 @@
                     <p class="alert alert-success">{{ Session::get('message') }}</p>
                 @endif
 
-                <form id="form_setting" onsubmit="return false;" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
+                <form id="form_setting" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
+
+                    {{ csrf_field() }}
                     
-                    <div class="form-group">
-                        <label class="control-label">Logo</label>
-                        <input name="logo" type="text" value="{{ ($setting != '') ? $setting->logo : '' }}" size="48" class="form-control" id="xFilePath" />
-                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('xFilePath')">Tải logo lên</button>
-                    </div>
+                    <!-- <div class="form-group">
+                        <label>Logo</label>
+                        <input name="image" type="text" size="48" class="form-control" id="xFilePath" />
+                        <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                    </div> -->
 
                     <div class="form-group">
-                        <label class="control-label">Background nền slide khẩu hiệu</label>
-                        <input name="bg_slogan_slide" type="text" value="{{ ($setting != '') ? $setting->bg_slogan_slide : '' }}" size="48" class="form-control" id="bg_slogan_slide" />
-                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('bg_slogan_slide')">Tải background lên</button>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Tên công ty (Vietnamese)</label>
+                        <label class="control-label">Tên công ty</label>
                         <input type="text" name="name" value="{{ ($setting != '') ? $setting->name : '' }}" class="form-control" placeholder="Tên công ty...">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Tên công ty (English)</label>
-                        <input type="text" name="en_name" value="{{ ($setting != '') ? $setting->getTranslation('en')->name : '' }}" class="form-control" placeholder="Company name...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Tên công ty (Koreanese)</label>
-                        <input type="text" name="ko_name" value="{{ ($setting != '') ? $setting->getTranslation('ko')->name : '' }}" class="form-control" placeholder="회사 명...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Slogan (Vietnamese)</label>
+                        <label class="control-label">Slogan</label>
                         <input type="text" name="slogan" value="{{ ($setting != '') ? $setting->slogan : '' }}" class="form-control" placeholder="Slogan...">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Slogan (English)</label>
-                        <input type="text" name="en_slogan" value="{{ ($setting != '') ? $setting->getTranslation('en')->slogan : '' }}" class="form-control" placeholder="Slogan...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Slogan (Koreanese)</label>
-                        <input type="text" name="ko_slogan" value="{{ ($setting != '') ? $setting->getTranslation('ko')->slogan : '' }}" class="form-control" placeholder="슬로건...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Website</label>
-                        <input type="text" name="website" value="{{ ($setting != '') ? $setting->website : '' }}" class="form-control" placeholder="Website...">
-                    </div>
-
-                    <div class="form-group">
                         <label class="control-label">Email</label>
-                        <input type="email" name="email" value="{{ ($setting != '') ? $setting->email : '' }}" class="form-control" placeholder="Địa chỉ email...">
+                        <input type="text" name="email" value="{{ ($setting != '') ? $setting->email : '' }}" class="form-control" placeholder="Địa chỉ email...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Điện thoại</label>
-                        <input type="text" name="mobile" value="{{ ($setting != '') ? $setting->mobile : '' }}" class="form-control" placeholder="Điện thoại...">
+                        <input type="text" name="phone" value="{{ ($setting != '') ? $setting->phone : '' }}" class="form-control" placeholder="Điện thoại...">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Fax</label>
-                        <input type="text" name="fax" value="{{ ($setting != '') ? $setting->fax : '' }}" class="form-control" placeholder="Fax...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Địa chỉ (Vietnamese)</label>
+                        <label class="control-label">Địa chỉ</label>
                         <input type="text" name="address" value="{{ ($setting != '') ? $setting->address : '' }}" class="form-control" placeholder="Địa chỉ...">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">Địa chỉ (English)</label>
-                        <input type="text" name="en_address" value="{{ ($setting != '') ? $setting->getTranslation('en')->address : '' }}" class="form-control" placeholder="Address...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Địa chỉ (Koreanese)</label>
-                        <input type="text" name="ko_address" value="{{ ($setting != '') ? $setting->getTranslation('ko')->address : '' }}" class="form-control" placeholder="주소...">
-                    </div>
-
-                    <div class="form-group">
                         <label class="control-label">Giờ làm việc</label>
-                        <input type="text" name="work_time" value="{{ ($setting != '') ? $setting->work_time : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                        <input type="text" name="time_work" value="{{ ($setting != '') ? $setting->time_work : '' }}" class="form-control" placeholder="Giờ làm việc...">
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">SEO Title</label>
-                        <input type="text" name="seo_title" value="{{ ($setting != '') ? $setting->seo_title : '' }}" class="form-control" placeholder="SEO Title...">
+                        <label>Facebook Pixel Code</label>
+                        <textarea style="height: 100px;" name="fb_pixel_code" class="form-control" placeholder="Facebook Pixel Code...">{{ ($setting != '') ? $setting->fb_pixel_code : '' }}</textarea>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label">SEO Description</label>
-                        <input type="text" name="seo_desc" value="{{ ($setting != '') ? $setting->seo_desc : '' }}" class="form-control" placeholder="SEO Description...">
+                        <label>SEO Title</label>
+                        <input value="{{ ($setting != '') ? $setting->seo_title : '' }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
                     </div>
-
                     <div class="form-group">
-                        <label class="control-label">SEO Keyword</label>
-                        <input type="text" name="seo_keyword" value="{{ ($setting != '') ? $setting->seo_keyword : '' }}" class="form-control" placeholder="SEO Keyword...">
+                        <label>SEO Description</label>
+                        <input value="{{ ($setting != '') ? $setting->seo_desc : '' }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
+                    </div>
+                    <div class="form-group">
+                        <label>SEO Keyword</label>
+                        <input value="{{ ($setting != '') ? $setting->seo_keyword : '' }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                     </div>
 
                     <div class="form-group">
@@ -149,64 +108,5 @@
 @stop
 
 @section('pageJs')
-    <script type="text/javascript">
-        $('#form_setting').on('submit', function () {
-            var formData = new FormData($(this)[0]);
-            $.ajax({
-                url: $(this).attr('action'),
-                method: 'POST',
-                processData: false,
-                contentType: false,
-                cache: false,
-                dataType: "JSON",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: formData,
-                success: function (response) {
-                    if (response.status) {
-                        swal('Updated!', response.message, "success");
-                    } else {
-                        swal('Error!', response.message, "error");
-                    }
-                },
-                error: function (response) {
-                    swal('Error!', response.message, "error");
-                }
-            });
 
-        });
-    </script>
-
-    <script type="text/javascript">
-        function openPopup(id) {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
-                        var file = evt.data.files.first();
-                        document.getElementById(id).value = file.getUrl();
-                    } );
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById(id).value = evt.data.resizedUrl;
-                    } );
-                }
-            } );
-        }
-        
-        function openPopupMulti(id) {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
-                        var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath'+id ).value = file.getUrl();
-                    });
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
-                    });
-                }
-            });
-        }
-    </script>
 @stop

@@ -46,7 +46,7 @@
 
                                 <li><a href="{{ route('store') }}">Sản phẩm</a></li>
 
-                                <li><a href="{{ route('post') }}">Tin tức</a></li>
+                                <li><a href="{{ route('article') }}">Tin tức</a></li>
 
                                 <li><a href="{{ route('contact') }}">Liên hệ</a></li>
 
@@ -66,7 +66,7 @@
 
                                 <li><a href="{{ route('store') }}">Sản phẩm</a></li>
 
-                                <li><a href="{{ route('post') }}">Tin tức</a></li>
+                                <li><a href="{{ route('article') }}">Tin tức</a></li>
 
                                 <li><a href="{{ route('contact') }}">Liên hệ</a></li>
 
@@ -86,7 +86,7 @@
 
                                 <li><a href="{{ route('store') }}">Sản phẩm</a></li>
 
-                                <li><a href="{{ route('post') }}">Tin tức</a></li>
+                                <li><a href="{{ route('article') }}">Tin tức</a></li>
 
                                 <li><a href="{{ route('contact') }}">Liên hệ</a></li>
 

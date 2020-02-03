@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('UticoCMS')
+        .module('ThachvuCMS')
         .controller('ArticleController', ArticleController);
 
     function ArticleController($rootScope, $scope, $http, $window, $timeout, PagerService) {
@@ -73,16 +73,29 @@
             }
         }
 
+        $scope.previousPage = function () {
+            $scope.pageNumber -= 1;
+            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+        }
+
+        $scope.nextPage = function () {
+            $scope.pageNumber += 1;
+            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+        }
+
+        $scope.range = function(min, max, step) {
+            step = step || 1;
+            var input = [];
+            for (var i = min; i <= max; i += step) input.push(i);
+            return input;
+        };
+
         $scope.process = function (type) {
             
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
             formData.append('intro', CKEDITOR.instances.short_content.document.getBody().getHtml());
-            formData.append('en_intro', CKEDITOR.instances.en_short_content.document.getBody().getHtml());
-            formData.append('ko_intro', CKEDITOR.instances.ko_short_content.document.getBody().getHtml());
             formData.append('fulltext', CKEDITOR.instances.full_content.document.getBody().getHtml());
-            formData.append('en_fulltext', CKEDITOR.instances.en_full_content.document.getBody().getHtml());
-            formData.append('ko_fulltext', CKEDITOR.instances.ko_full_content.document.getBody().getHtml());
             // CKEDITOR.instances.noidung.getData();
             
             swal({

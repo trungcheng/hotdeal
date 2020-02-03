@@ -169,7 +169,7 @@
                                 </div>
                                 <ul>
 
-                                    <li><a href="/tivi-tra-gop-0-1">Tivi trả góp 0-1%</a></li>
+                                    {{--<li><a href="/tivi-tra-gop-0-1">Tivi trả góp 0-1%</a></li>
 
                                     <li><a href="/doi-moi-2017">Đời mới 2017</a></li>
 
@@ -177,7 +177,7 @@
 
                                     <li><a href="/samsung">Samsung</a></li>
 
-                                    <li><a href="/lg">LG</a></li>
+                                    <li><a href="/lg">LG</a></li>--}}
 
                                     <li><a href="giam-gia" class="viewmoretext">Xem tất cả</a></li>
                                 </ul>
@@ -195,7 +195,7 @@
 
                                                     <div class="product-image-flip">
                                                     
-                                                        <a href="{{ route('detail', ['slug' => 'android-tivi-sony-4k-49-inch-kd-49x7500e']) }}" title="Android Tivi Sony 4K 49 inch KD-49X7500E">
+                                                        <a href="{{ route('product-detail', ['slug' => 'android-tivi-sony-4k-49-inch-kd-49x7500e']) }}" title="Android Tivi Sony 4K 49 inch KD-49X7500E">
 
                                                             <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" alt="Android Tivi Sony 4K 49 inch KD-49X7500E" class="img-responsive center-block" />
 
@@ -496,11 +496,11 @@
                                 </div>
                                 <ul>
 
-                                    <li><a href="/gia-dung-nha-bep">Gia dụng nhà bếp</a></li>
+                                    {{--<li><a href="/gia-dung-nha-bep">Gia dụng nhà bếp</a></li>
 
                                     <li><a href="/thiet-bi-gia-dinh">Thiết bị gia đình</a></li>
 
-                                    <li><a href="/dien-nha-bep">Điện nhà bếp</a></li>
+                                    <li><a href="/dien-nha-bep">Điện nhà bếp</a></li>--}}
 
                                     <li><a href="gia-dung-giam-soc" class="viewmoretext">Xem tất cả</a></li>
                                 </ul>
@@ -874,9 +874,9 @@
                                 </div>
                                 <ul>
 
-                                    <li><a href="/dung-cu-ban-an">Dụng cụ bàn ăn</a></li>
+                                    {{--<li><a href="/dung-cu-ban-an">Dụng cụ bàn ăn</a></li>
 
-                                    <li><a href="/do-dung-nha-bep">Đồ dùng nhà bếp</a></li>
+                                    <li><a href="/do-dung-nha-bep">Đồ dùng nhà bếp</a></li>--}}
 
                                     <li><a href="do-dung-gia-dinh" class="viewmoretext">Xem tất cả</a></li>
                                 </ul>
@@ -1397,7 +1397,7 @@
                                 </div>
                                 <ul>
 
-                                    <li><a href="/bep-gas">Bếp gas</a></li>
+                                    {{--<li><a href="/bep-gas">Bếp gas</a></li>
 
                                     <li><a href="/bep-tu">Bếp từ</a></li>
 
@@ -1405,7 +1405,7 @@
 
                                     <li><a href="/lo-nuong">Lò nướng</a></li>
 
-                                    <li><a href="/lo-vi-song">Lò vi sóng</a></li>
+                                    <li><a href="/lo-vi-song">Lò vi sóng</a></li>--}}
 
                                     <li><a href="gia-dung-nha-bep" class="viewmoretext">Xem tất cả</a></li>
                                 </ul>
@@ -1771,9 +1771,9 @@
                                     <i class="fa fa-navicon" aria-hidden="true"></i>
                                 </div>
                                 <ul>
-                                    <li><a href="/dung-cu-ban-an">Dụng cụ bàn ăn</a></li>
+                                    {{--<li><a href="/dung-cu-ban-an">Dụng cụ bàn ăn</a></li>
 
-                                    <li><a href="/do-dung-nha-bep">Đồ dùng nhà bếp</a></li>
+                                    <li><a href="/do-dung-nha-bep">Đồ dùng nhà bếp</a></li>--}}
 
                                     <li><a href="giam-gia" class="viewmoretext">Xem tất cả</a></li>
                                 </ul>

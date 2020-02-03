@@ -31,25 +31,8 @@
                                 <input type="hidden" id="user_id" name="user_id" value="{{ $authAdminUser->id }}">
                                 <input type="hidden" id="id" name="id" value="{{ $article->id }}">
                                 <div class="form-group">
-                                    <label>Tiêu đề bài viết (Vietnamese)</label>
+                                    <label>Tiêu đề bài viết</label>
                                     <input value="{{ $article->title }}" name="title" type="text" class="form-control title" placeholder="Tiêu đề bài viết...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tiêu đề bài viết (English)</label>
-                                    <input value="{{ $article->getTranslation('en')->title }}" name="en_title" type="text" class="form-control title" placeholder="Article title...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tiêu đề bài viết (Koreanese)</label>
-                                    <input value="{{ $article->getTranslation('ko')->title }}" name="ko_title" type="text" class="form-control title" placeholder="기사 제목...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Thuộc danh mục</label>
-                                    <select class="form-control cate" name="cat_id">
-                                        <option ng-selected="{{ $article['cat_id'] }} == 0" value="0">Không thuộc danh mục nào</option>
-                                        <option ng-selected="item.id == {{ $article['cat_id'] }}" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                                        </option>
-                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh</label>
@@ -57,34 +40,18 @@
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả ngắn (Vietnamese)</label>
+                                    <label>Mô tả ngắn</label>
                                     <textarea class="form-control" id="short_content">{!! $article->intro !!}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả ngắn (English)</label>
-                                    <textarea class="form-control" id="en_short_content">{!! $article->getTranslation('en')->intro !!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả ngắn (Koreanese)</label>
-                                    <textarea class="form-control" id="ko_short_content">{!! $article->getTranslation('ko')->intro !!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả chi tiết (Vietnamese)</label>
+                                    <label>Mô tả chi tiết</label>
                                     <textarea class="form-control" id="full_content">{!! $article->fulltext !!}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả chi tiết (English)</label>
-                                    <textarea class="form-control" id="en_full_content">{!! $article->getTranslation('en')->fulltext !!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả chi tiết (Koreanese)</label>
-                                    <textarea class="form-control" id="ko_full_content">{!! $article->getTranslation('ko')->fulltext !!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Tin mới</label>
-                                    <select name="is_feature" class="form-control">
-                                        <option {{ ($article->is_feature == 0) ? 'selected' : '' }} value="0">Không</option>
-                                        <option {{ ($article->is_feature == 1) ? 'selected' : '' }} value="1">Có</option>
+                                    <label>Trang giới thiệu</label>
+                                    <select name="is_about" class="form-control">
+                                        <option {{ ($article->is_about == 0) ? 'selected' : '' }} value="0">Không</option>
+                                        <option {{ ($article->is_about == 1) ? 'selected' : '' }} value="1">Có</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -172,11 +139,7 @@
     <script type="text/javascript">
         $(function () {
             CKEDITOR.replace('short_content', { height: 300 }); 
-            CKEDITOR.replace('en_short_content', { height: 300 }); 
-            CKEDITOR.replace('ko_short_content', { height: 300 }); 
             CKEDITOR.replace('full_content'); 
-            CKEDITOR.replace('en_full_content'); 
-            CKEDITOR.replace('ko_full_content'); 
         });
     </script>
 @stop

@@ -1,7 +1,7 @@
-var app = angular.module('UticoCMS', [
+var app = angular.module('ThachvuCMS', [
 	'ui.bootstrap',
     'ngSanitize',
     'ngMessages',
-    'angucomplete-alt'
-    // 'highcharts-ng',
+    'angucomplete-alt',
+    'ImageCropper'
 ]);

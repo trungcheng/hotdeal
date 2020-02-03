@@ -172,7 +172,7 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Dimsav\Translatable\TranslatableServiceProvider::class,
-        App\Providers\UserOnlineProvider::class,
+        Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -237,6 +237,7 @@ return [
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
     ],

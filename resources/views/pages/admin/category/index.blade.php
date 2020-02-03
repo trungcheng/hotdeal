@@ -15,10 +15,7 @@
             <h1>
                 Quản lý danh mục
                 <!-- <small>Optional description</small> -->
-                <a href="{{ route('category-create') }}" class="pull-right btn btn-success btn-sm">
-                    <i class="fa fa-plus"></i> 
-                    Thêm danh mục
-                </a>
+                <a href="{{ route('category-create') }}" class="pull-right btn btn-success btn-sm">Thêm danh mục</a>
             </h1>
         </section>
 
@@ -48,7 +45,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div id="example1_filter" class="dataTables_filter" style="float:right;">
-                                            <label>Search
+                                            <label>Search:
                                                 <input my-enter="searchCategoryName()" ng-model="searchText" type="search" class="form-control input-sm" placeholder="Tìm kiếm...">
                                             </label>
                                         </div>
@@ -62,9 +59,8 @@
                                                 <tr role="row">
                                                     <th>STT</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
-                                                    <th>Thuộc danh mục</th>
-                                                    <th>Thứ tự</th>
-                                                    <th>Trạng thái</th>
+                                                    <th style="text-align:center !important;width:20%">Slug</th>
+                                                    <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
                                             </thead>
@@ -72,14 +68,11 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in items track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
-                                                    <td style="text-align:center !important">@{{ (cate.parent) ? cate.parent : 'Không thuộc danh mục nào' }}</td>
-                                                    <td>@{{ cate.order }}</td>
-                                                    <td>@{{ (cate.status) ? 'Hoạt động' : 'Khóa' }}</td>
+                                                    <td style="text-align:center !important">@{{ cate.slug }}</td>
+                                                    <td>@{{ cate.created_at }}</td>
                                                     <td>
-                                                        <a title="Sửa" href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                                        @role('SuperAdmin')
-                                                        <a title="Xóa" ng-click="delete(cate, $index)" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
-                                                        @end
+                                                        <a href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('UticoCMS')
+        .module('ThachvuCMS')
         .controller('CategoryController', CategoryController);
 
     function CategoryController($rootScope, $scope, $http, $window, $timeout, PagerService) {
@@ -13,12 +13,12 @@
 
         $scope.pullDownLists = {
             availableOption: [
-              { value: 30, name: '30' },
+              { value: 10, name: '10' },
+              { value: 25, name: '25' },
               { value: 50, name: '50' },
-              { value: 100, name: '100' },
-              { value: 150, name: '150' }
+              { value: 100, name: '100' }
             ],
-            selectedOption: {value: 30, name: '30'}
+            selectedOption: {value: 10, name: '10'}
         };
 
         $scope.getResultsPage = function (name, perPage, pageNumber) {
@@ -42,7 +42,7 @@
         }
 
         $scope.setPage = function (pageSize, currentPage) {
-            // if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
+            if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
             $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
             $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
             $scope.from = $scope.pager.startIndex + 1;
@@ -52,13 +52,7 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-category', 30, 1);
-        }
-
-        $scope.loadInitCreate = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
-                $scope.parentCates = res.data;
-            });
+            $scope.getResultsPage('all-category', 10, 1);
         }
 
         $scope.searchCategoryName = function() {
@@ -69,10 +63,28 @@
             }
         }
 
+        $scope.previousPage = function () {
+            $scope.pageNumber -= 1;
+            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+        }
+
+        $scope.nextPage = function () {
+            $scope.pageNumber += 1;
+            $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
+        }
+
+        $scope.range = function(min, max, step) {
+            step = step || 1;
+            var input = [];
+            for (var i = min; i <= max; i += step) input.push(i);
+            return input;
+        };
+
         $scope.process = function (type) {
             
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
+            formData.append('seo_content', CKEDITOR.instances.seo_content.document.getBody().getHtml());
             
             swal({
                 title: "Bạn chắc chắn muốn "+ title +" danh mục này ?",
@@ -107,7 +119,7 @@
 
         $scope.delete = function (cate, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa danh mục này?",
+                title: "Bạn chắc chắn muốn xóa danh mục này ? Tất cả các sản phẩm thuộc danh mục này sẽ bị xóa theo !",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",

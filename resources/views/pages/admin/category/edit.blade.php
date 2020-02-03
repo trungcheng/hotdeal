@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<div ng-controller="CategoryController" ng-init="loadInitCreate()">
+<div ng-controller="CategoryController">
 
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
@@ -30,99 +30,30 @@
                             <div class="modal-body">
                                 <input type="hidden" id="id" name="id" value="{{ $category->id }}">
                                 <div class="form-group">
-                                    <label>Tên danh mục (Vietnamese)</label>
+                                    <label>Tên danh mục</label>
                                     <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Tên danh mục (English)</label>
-                                    <input value="{{ $category->getTranslation('en')->name }}" name="en_name" type="text" class="form-control title" placeholder="Category name...">
+                                    <label>SEO Content</label>
+                                    <textarea class="form-control" id="seo_content">{!! $category->seo_content !!}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Tên danh mục (Koreanese)</label>
-                                    <input value="{{ $category->getTranslation('ko')->name }}" name="ko_name" type="text" class="form-control title" placeholder="카테고리 이름...">
+                                    <label>SEO Title</label>
+                                    <input value="{{ $category->seo_title }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Thuộc danh mục</label>
-                                    <select class="form-control cate" name="parent_id">
-                                        <option ng-selected="{{ $category['parent_id'] }} == 0" value="0">Không thuộc danh mục nào</option>
-                                        <option ng-selected="item.id == {{ $category['parent_id'] }}" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
-                                        </option>
-                                    </select>
+                                    <label>SEO Description</label>
+                                    <input value="{{ $category->seo_desc }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả (Vietnamese)</label>
-                                    <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả...">{{ $category['description'] }}</textarea>
+                                    <label>SEO Keyword</label>
+                                    <input value="{{ $category->seo_keyword }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                                 </div>
-                                <div class="form-group">
-                                    <label>Mô tả (English)</label>
-                                    <textarea style="height: 100px;" name="en_description" class="form-control description" placeholder="Description...">{{ $category->getTranslation('en')->description }}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả (Koreanese)</label>
-                                    <textarea style="height: 100px;" name="ko_description" class="form-control description" placeholder="설명...">{{ $category->getTranslation('ko')->description }}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Ảnh đại diện</label>
-                                    <input value="{{ ($category != '') ? $category['image'] : '' }}" name="image" type="text" size="48" class="form-control" id="image" />
-                                    <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('image')">Tải ảnh lên</button>
-                                </div>
-                                <div class="form-group">
-                                    <label>List ảnh slide</label>      
-                                    <button type="button" onclick="add_img();" class="btn btn-success btn-sm btn_img" style="margin-top: 8px;"><i class="fa fa-plus"></i> Thêm Ảnh</button>
-
-                                    <div class="box-img">
-                                        <?php $i = 0; ?>
-                                        @if ($category['sliders'] != "")
-                                            @foreach(explode(',', $category['sliders']) as $slide) 
-                                                <?php $i++; ?>
-                                                <p class="item-img add_<?php echo $i; ?>" style="margin:3px 0; height: 40px; padding:0;">
-                                                    <span style="display:block;">
-                                                        <input type="text" value="{{ $slide }}" size="48" name="sliders[]" class="form-control list-img" id="xFilePath<?php echo $i; ?>" />
-                                                        <button class="btn btn-primary btn-upload" onclick="openPopupMulti(<?php echo $i; ?>)">Tải ảnh lên</button>
-                                                        <button onclick="del_accads(<?php echo $i; ?>);" type="button" class="btn btn-danger">Xóa</button>
-                                                    </span>
-                                                </p>
-                                            @endforeach
-                                        @endif                                      
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Thứ tự</label>
-                                    <select class="form-control status" name="order">
-                                        <option {{ ($category['order'] == 1) ? 'selected' : '' }} value="1">1</option>
-                                        <option {{ ($category['order'] == 2) ? 'selected' : '' }} value="2">2</option>
-                                        <option {{ ($category['order'] == 3) ? 'selected' : '' }} value="3">3</option>
-                                        <option {{ ($category['order'] == 4) ? 'selected' : '' }} value="4">4</option>
-                                        <option {{ ($category['order'] == 5) ? 'selected' : '' }} value="5">5</option>
-                                        <option {{ ($category['order'] == 6) ? 'selected' : '' }} value="6">6</option>
-                                        <option {{ ($category['order'] == 7) ? 'selected' : '' }} value="7">7</option>
-                                        <option {{ ($category['order'] == 8) ? 'selected' : '' }} value="8">8</option>
-                                        <option {{ ($category['order'] == 9) ? 'selected' : '' }} value="9">9</option>
-                                        <option {{ ($category['order'] == 10) ? 'selected' : '' }} value="10">10</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Hiển thị lên trang chủ</label>
-                                    <select class="form-control status" name="is_home">
-                                        <option {{ ($category['is_home'] == 0) ? 'selected' : '' }} value="0">Không</option>
-                                        <option {{ ($category['is_home'] == 1) ? 'selected' : '' }} value="1">Có</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Dạng hiển thị</label>
-                                    <select class="form-control status" name="layout">
-                                        <option {{ ($category['layout'] == 1) ? 'selected' : '' }} value="1">Slide ngang</option>
-                                        <option {{ ($category['layout'] == 2) ? 'selected' : '' }} value="2">Tin tức</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Trạng thái</label>
-                                    <select class="form-control status" name="status">
-                                        <option {{ ($category['status'] == 1) ? 'selected' : '' }} value="1">Hoạt động</option>
-                                        <option {{ ($category['status'] == 0) ? 'selected' : '' }} value="0">Khóa</option>
-                                    </select>
-                                </div>
+                                <!-- <div class="form-group">
+                                    <label>Ảnh</label>
+                                    <input value="{{ $category->icon }}" name="icon" type="text" size="48" class="form-control" id="xFilePath" />
+                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                                </div> -->
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>
@@ -138,53 +69,43 @@
     </section>
 
 </div>
+
+<script>
+    function openPopup() {
+        CKFinder.popup( {
+            chooseFiles: true,
+            onInit: function( finder ) {
+                finder.on( 'files:choose', function( evt ) {
+                    var file = evt.data.files.first();
+                    document.getElementById( 'xFilePath' ).value = file.getUrl();
+                } );
+                finder.on( 'file:choose:resizedImage', function( evt ) {
+                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                } );
+            }
+        } );
+    }
+    
+    function openPopupMulti(id) {
+        CKFinder.popup( {
+            chooseFiles: true,
+            onInit: function( finder ) {
+                finder.on( 'files:choose', function( evt ) {
+                    var file = evt.data.files.first();
+                    document.getElementById( 'xFilePath'+id ).value = file.getUrl();
+                });
+                finder.on( 'file:choose:resizedImage', function( evt ) {
+                    document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
+                });
+            }
+        });
+    }
+</script>
+<script type="text/javascript">
+    CKEDITOR.replace('seo_content', {height: 300}); 
+</script>
 @stop
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/category.controller.js') !!}
-
-    <script type="text/javascript">
-        function openPopup(id) {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
-                        var file = evt.data.files.first();
-                        document.getElementById(id).value = file.getUrl();
-                    } );
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById(id).value = evt.data.resizedUrl;
-                    } );
-                }
-            } );
-        }
-        
-        function openPopupMulti(id) {
-            CKFinder.popup( {
-                chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
-                        var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath'+id ).value = file.getUrl();
-                    });
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
-                        document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
-                    });
-                }
-            });
-        }
-    </script>
-
-    <script>
-        var i = 50;
-        function add_img(){
-            i++;
-            var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="sliders[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-danger">Xóa</button></span></p>';
-            $(insert).appendTo('.box-img');
-        }
-        
-        function del_accads(id) {
-            $('.add_'+id).remove(); 
-        }
-    </script>
 @stop
