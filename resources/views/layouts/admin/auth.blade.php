@@ -3,10 +3,10 @@
 <head>
   	<meta charset="UTF-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  	<title>UTICO CMS | Login</title>
+  	<title>Đăng nhập | Thạch Vũ CMS</title>
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}">
-  	<link href="{{ asset('frontend/upload/advert/favicon.ico') }}" rel="shortcut icon" />
+  	<link rel="shortcut icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon">
   	<!-- Bootstrap 3.3.2 -->
   	<link href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
   	<!-- Font Awesome Icons -->

@@ -3,13 +3,13 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html data-ng-app="UticoCMS">
+<html data-ng-app="ThachvuCMS">
 <head>
   	<meta charset="UTF-8">
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-  	<title>UTICO CMS | @yield('page')</title>
+  	<title>@yield('page') | Thạch Vũ CMS</title>
   	
   	<link rel="stylesheet" href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" />
   	<!-- Font Awesome -->
@@ -21,11 +21,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   	<!-- Theme style -->
   	<link rel="stylesheet" href="{{ asset('components/admin-lte/dist/css/AdminLTE.min.css') }}" />
   	<link rel="stylesheet" href="{{ asset('components/admin-lte/dist/css/skins/skin-blue.min.css') }}" />
-
   	<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}" />
-
-  	<link rel="shortcut icon" href="{{ asset('frontend/upload/advert/favicon.ico') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{ asset('frontend/images/apple-touch-icon.png') }}">
+  	<link rel="shortcut icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon">
   	<!-- Google Font -->
   	<link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
@@ -58,23 +55,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	</div>
 	<!-- ./wrapper -->
 
-	  <!-- REQUIRED JS SCRIPTS -->
+	<!-- REQUIRED JS SCRIPTS -->
 
-	  <!-- jQuery 3 -->
-	  <script src="{{ asset('components/jquery/dist/jquery.min.js?').time() }}"></script>
-	  <!-- Bootstrap 3.3.7 -->
-	  <script src="{{ asset('components/bootstrap/dist/js/bootstrap.min.js?').time() }}"></script>
-	  <!-- AdminLTE App -->
-	  <script src="{{ asset('components/admin-lte/dist/js/adminlte.min.js?').time() }}"></script>
+	<!-- jQuery 3 -->
+	<script src="{{ asset('components/jquery/dist/jquery.min.js?').time() }}"></script>
+	<!-- Bootstrap 3.3.7 -->
+	<script src="{{ asset('components/bootstrap/dist/js/bootstrap.min.js?').time() }}"></script>
+	<!-- AdminLTE App -->
+	<script src="{{ asset('components/admin-lte/dist/js/adminlte.min.js?').time() }}"></script>
 
-	  <script src="{{ asset('backend/js/app/base.app.js?').time() }}"></script>
+	<script src="{{ asset('backend/js/app/base.app.js?').time() }}"></script>
 
   	<script src="{{ asset('backend/js/toastr.min.js?').time() }}"></script>
   	<script src="https://code.highcharts.com/highcharts.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
   	<script src="{{ asset('backend/js/angular/angular.min.js?').time() }}"></script>
 
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
 
@@ -85,6 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   	<script src="{{ asset('backend/js/angular/directives.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/filters.js?').time() }}"></script>
   	<script src="{{ asset('backend/js/angular/helpers.js?').time() }}"></script>
+  	<script src="{{ asset('backend/js/angular/image-crop.js?').time() }}"></script>
 
   	<script type="text/javascript">
 	    $.app.init({
@@ -105,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	      	};
 	    });
   	</script>
-	  <script src="{{ asset('backend/js/app/app.js?').time() }}"></script>
+	<script src="{{ asset('backend/js/app/app.js?').time() }}"></script>
 
 	@section('pageJs')
 	@show
