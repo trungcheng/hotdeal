@@ -36,7 +36,7 @@
                     <p class="alert alert-success">{{ Session::get('message') }}</p>
                 @endif
 
-                <form id="form_setting" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
+                <form id="form_setting" action="{{ url('/access/setting/update') }}" enctype="multipart/form-data" method="post">
 
                     {{ csrf_field() }}
                     

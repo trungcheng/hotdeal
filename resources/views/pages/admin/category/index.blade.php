@@ -71,7 +71,7 @@
                                                     <td style="text-align:center !important">@{{ cate.slug }}</td>
                                                     <td>@{{ cate.created_at }}</td>
                                                     <td>
-                                                        <a href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a href="/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>

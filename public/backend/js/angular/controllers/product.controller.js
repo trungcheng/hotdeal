@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ThachvuCMS')
+        .module('LindoCMS')
         .controller('ProductController', ProductController);
 
     function ProductController($rootScope, $scope, $http, $window, $timeout, PagerService) {

@@ -1,5 +1,5 @@
 <!-- Main Footer -->
-<input type="hidden" class="base_url" value="{{ url('/') }}" />
+<input type="hidden" class="base_url" value="<?php echo e(url('/')); ?>" />
 <footer class="main-footer">
 	<!-- To the right -->
 <!--     <div class="pull-right hidden-xs">

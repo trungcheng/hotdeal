@@ -8,7 +8,7 @@
   <ul class="sidebar-menu" data-widget="tree">
     <li class="header">HEADER</li>
 
-    <li><a data-route="/access/dashboard" href="{{ url('/access/dashboard') }}"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
+    <li><a data-route="/access/dashboard" href="<?php echo e(url('/access/dashboard')); ?>"><i class="fa fa-dashboard"></i> <span>Tổng quan</span></a></li>
 
     <li class="treeview">
         <a href="javascript:void(0)"><i class="fa fa-plus"></i> <span>Đăng ký dịch vụ</span>
@@ -17,12 +17,12 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/access/categories" href="{{ url('/access/categories') }}">Danh sách</a></li>
-            <li><a style="margin-left:35px;" data-route="/access/categories/create" href="{{ url('/access/categories/create') }}">Thêm mới</a></li>
+            <li><a style="margin-left:35px;" data-route="/access/categories" href="<?php echo e(url('/access/categories')); ?>">Danh sách</a></li>
+            <li><a style="margin-left:35px;" data-route="/access/categories/create" href="<?php echo e(url('/access/categories/create')); ?>">Thêm mới</a></li>
         </ul>
     </li>
     
-    <!-- <li><a data-route="/access/orders" href="{{ url('/access/orders') }}"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
+    <!-- <li><a data-route="/access/orders" href="<?php echo e(url('/access/orders')); ?>"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
     
     <li class="treeview">
         <a href="javascript:void(0)"><i class="fa fa-suitcase"></i> <span>Quản lý dịch vụ</span>
@@ -31,8 +31,8 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/access/products" href="{{ url('/access/products') }}">Danh sách</a></li>
-            <li><a style="margin-left:35px;" data-route="/access/products/create" href="{{ url('/access/products/create') }}">Thêm mới</a></li>
+            <li><a style="margin-left:35px;" data-route="/access/products" href="<?php echo e(url('/access/products')); ?>">Danh sách</a></li>
+            <li><a style="margin-left:35px;" data-route="/access/products/create" href="<?php echo e(url('/access/products/create')); ?>">Thêm mới</a></li>
         </ul>
     </li>
 
@@ -43,8 +43,8 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/access/orders" href="{{ url('/access/orders') }}">Danh sách</a></li>
-            <!-- <li><a style="margin-left:35px;" data-route="/access/orders/create" href="{{ url('/access/orders/create') }}">Thêm mới</a></li> -->
+            <li><a style="margin-left:35px;" data-route="/access/orders" href="<?php echo e(url('/access/orders')); ?>">Danh sách</a></li>
+            <!-- <li><a style="margin-left:35px;" data-route="/access/orders/create" href="<?php echo e(url('/access/orders/create')); ?>">Thêm mới</a></li> -->
         </ul>
     </li>
     
@@ -55,12 +55,12 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/access/articles" href="{{ url('/access/articles') }}">Danh sách</a></li>
-            <li><a style="margin-left:35px;" data-route="/access/articles/create" href="{{ url('/access/articles/create') }}">Thêm mới</a></li>
+            <li><a style="margin-left:35px;" data-route="/access/articles" href="<?php echo e(url('/access/articles')); ?>">Danh sách</a></li>
+            <li><a style="margin-left:35px;" data-route="/access/articles/create" href="<?php echo e(url('/access/articles/create')); ?>">Thêm mới</a></li>
         </ul>
     </li>
 
-    <li><a data-route="/access/setting" href="{{ url('/access/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
+    <li><a data-route="/access/setting" href="<?php echo e(url('/access/setting')); ?>"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
     
     <!-- <li class="treeview">
         <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>

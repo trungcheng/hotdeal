@@ -83,7 +83,7 @@
                                                     <td>@{{ (pro.status == 1) ? 'Còn hàng' : 'Hết hàng' }}</td>
                                                     <td>@{{ pro.created_at }}</td>
                                                     <td>
-                                                        <a href="/admin/access/products/edit/@{{ pro.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a href="/access/products/edit/@{{ pro.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                                         <a ng-click="delete(pro, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>

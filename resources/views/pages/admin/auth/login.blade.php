@@ -14,8 +14,8 @@
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="{!! url('admin') !!}">
-            <h3>ThachvuCMS</h3>
+        <a href="{!! route('login') !!}">
+            <h3>LindoCMS</h3>
         </a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">

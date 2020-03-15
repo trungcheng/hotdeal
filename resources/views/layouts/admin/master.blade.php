@@ -3,13 +3,13 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html data-ng-app="ThachvuCMS">
+<html data-ng-app="LindoCMS">
 <head>
   	<meta charset="UTF-8">
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-  	<title>@yield('page') | Thạch Vũ CMS</title>
+  	<title>@yield('page') | Lindo CMS</title>
   	
   	<link rel="stylesheet" href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" />
   	<!-- Font Awesome -->
@@ -22,7 +22,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   	<link rel="stylesheet" href="{{ asset('components/admin-lte/dist/css/AdminLTE.min.css') }}" />
   	<link rel="stylesheet" href="{{ asset('components/admin-lte/dist/css/skins/skin-blue.min.css') }}" />
   	<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}" />
-  	<link rel="shortcut icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon">
+  	<link rel="shortcut icon" href="{{ asset('backend/uploads/images/logo.png') }}" type="image/x-icon">
   	<!-- Google Font -->
   	<link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
@@ -86,7 +86,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   	<script type="text/javascript">
 	    $.app.init({
-	      	baseUrl		 : '{!! url("/admin/access") !!}',
+	      	baseUrl		 : '{!! url("/access") !!}',
 	      	csrf   		 : '{!! csrf_token() !!}',
 	      	user   		 : '{!! $authAdminUser !!}',
       		currentRoute : '{!! $current_route_name !!}'

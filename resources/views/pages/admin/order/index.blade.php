@@ -77,7 +77,7 @@
                                                     <td>@{{ order.created_at }}</td>
                                                     <td>@{{ order.status }}</td>
                                                     <td>
-                                                        <a href="/admin/access/orders/edit/@{{ order.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
+                                                        <a href="/access/orders/edit/@{{ order.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></a>
                                                         <a ng-click="delete(order, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
