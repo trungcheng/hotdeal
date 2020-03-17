@@ -10,10 +10,76 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-03-16 23:44:29
+Date: 2020-03-17 22:28:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for data_services
+-- ----------------------------
+DROP TABLE IF EXISTS `data_services`;
+CREATE TABLE `data_services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `package_service_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `ip` varchar(50) DEFAULT NULL,
+  `domain` varchar(50) DEFAULT NULL,
+  `domain_type` varchar(50) DEFAULT NULL,
+  `duration` varchar(50) DEFAULT NULL,
+  `price` decimal(15,4) DEFAULT NULL,
+  `vat_price` decimal(15,4) DEFAULT NULL,
+  `total_price` decimal(15,4) DEFAULT NULL,
+  `paid_price` decimal(15,4) DEFAULT NULL,
+  `date_actived` datetime DEFAULT NULL,
+  `date_expired` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT NULL,
+  `note` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of data_services
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for package_services
+-- ----------------------------
+DROP TABLE IF EXISTS `package_services`;
+CREATE TABLE `package_services` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `service_id` int(11) DEFAULT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of package_services
+-- ----------------------------
+INSERT INTO `package_services` VALUES ('1', '1', 'Thiết kế web', '2020-03-17 22:11:35', '2020-03-17 22:11:35');
+INSERT INTO `package_services` VALUES ('2', '1', 'Nâng cấp web', '2020-03-17 22:11:57', '2020-03-17 22:11:57');
+INSERT INTO `package_services` VALUES ('3', '1', 'Mua giao diện có sẵn', '2020-03-17 22:12:05', '2020-03-17 22:12:05');
+INSERT INTO `package_services` VALUES ('4', '2', 'Chỉ mua tên miền', '2020-03-17 22:12:20', '2020-03-17 22:12:20');
+INSERT INTO `package_services` VALUES ('5', '2', 'Thiết kế web', '2020-03-17 22:12:30', '2020-03-17 22:12:30');
+INSERT INTO `package_services` VALUES ('6', '2', 'Mua giao diện có sẵn', '2020-03-17 22:12:42', '2020-03-17 22:12:42');
+INSERT INTO `package_services` VALUES ('7', '2', 'Nâng cấp website', '2020-03-17 22:12:50', '2020-03-17 22:12:50');
+INSERT INTO `package_services` VALUES ('8', '2', 'Mua kèm hosting', '2020-03-17 22:13:00', '2020-03-17 22:13:00');
+INSERT INTO `package_services` VALUES ('9', '3', '500MB', '2020-03-17 22:13:22', '2020-03-17 22:13:22');
+INSERT INTO `package_services` VALUES ('10', '3', '1G', '2020-03-17 22:13:27', '2020-03-17 22:13:27');
+INSERT INTO `package_services` VALUES ('11', '3', '2G', '2020-03-17 22:13:33', '2020-03-17 22:13:33');
+INSERT INTO `package_services` VALUES ('12', '3', '3G', '2020-03-17 22:13:38', '2020-03-17 22:13:38');
+INSERT INTO `package_services` VALUES ('13', '3', '4G', '2020-03-17 22:13:42', '2020-03-17 22:13:42');
+INSERT INTO `package_services` VALUES ('14', '3', '5G', '2020-03-17 22:13:50', '2020-03-17 22:13:50');
+INSERT INTO `package_services` VALUES ('15', '3', 'Không giới hạn', '2020-03-17 22:14:01', '2020-03-17 22:14:01');
+INSERT INTO `package_services` VALUES ('16', '4', 'LINDO-VPS 01', '2020-03-17 22:14:20', '2020-03-17 22:14:20');
+INSERT INTO `package_services` VALUES ('17', '4', 'LINDO-VPS 02', '2020-03-17 22:14:27', '2020-03-17 22:14:27');
+INSERT INTO `package_services` VALUES ('18', '4', 'LINDO-VPS 03', '2020-03-17 22:14:35', '2020-03-17 22:14:35');
+INSERT INTO `package_services` VALUES ('19', '4', 'LINDO-VPS 04', '2020-03-17 22:14:54', '2020-03-17 22:14:54');
 
 -- ----------------------------
 -- Table structure for roles
@@ -81,7 +147,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
