@@ -27,6 +27,15 @@
                 // dashboard
                 $this->get('/dashboard', 'Admin\DashboardController@index')->name('dashboard');
 
+                // service - web design
+                $this->get('services/web-design', 'Admin\WebDesignController@index')->name('web-design');
+                $this->get('services/web-design/getAllServices', 'Admin\WebDesignController@getAllServices');
+                $this->get('services/web-design/create', 'Admin\WebDesignController@create')->name('service-web-design-create');
+                $this->get('services/web-design/edit/{id}', 'Admin\WebDesignController@edit')->name('service-web-design-edit');
+                $this->post('services/web-design/add', 'Admin\WebDesignController@add');
+                $this->post('services/web-design/update', 'Admin\WebDesignController@update');
+                $this->post('services/web-design/delete', 'Admin\WebDesignController@delete');
+
                 // profile
                 $this->get('/profile', 'Admin\ProfileController@index')->name('profile');
                 $this->post('/profile', 'Admin\ProfileController@updateProfile')->name('profile');

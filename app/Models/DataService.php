@@ -11,6 +11,7 @@ class DataService extends Model
 
     protected $fillable = [
         'user_id',
+        'service_id',
         'package_service_id',
         'name',
         'ip',
@@ -29,6 +30,10 @@ class DataService extends Model
 
     public function user() {
     	return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function service() {
+        return $this->belongsTo('App\Models\Service', 'service_id');
     }
 
     public function history() {
@@ -51,11 +56,11 @@ class DataService extends Model
         'price.required' => 'Giá dịch vụ không được để trống'
     ];
 
-    public static function init($request)
+    public static function init($serviceId, $request)
     {
-        $data = self::where('id', '>', 0);
+        $data = self::where('id', '>', 0)->where('service_id', $serviceId);
 
-        if ($request->name !== 'all-data' && $request->name !== 'undefined') {
+        if ($request->name !== 'all-service' && $request->name !== 'undefined') {
             $data->where("name", "LIKE", "%" . $request->name . "%");
         }
 
@@ -69,9 +74,9 @@ class DataService extends Model
         return self::firstOrCreate($data);
     }
 
-    public static function updateAction($data, $pro)
+    public static function updateAction($data, $service)
     {
-        return $pro->update($data);
+        return $service->update($data);
     }
 
 }

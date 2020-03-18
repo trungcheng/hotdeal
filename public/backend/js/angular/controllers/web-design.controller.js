@@ -3,29 +3,29 @@
 
     angular
         .module('LindoCMS')
-        .controller('OrderController', OrderController);
+        .controller('WebDesignController', WebDesignController);
 
-    function OrderController($rootScope, $scope, $http, $window, $timeout, PagerService) {
+    function WebDesignController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
-    	$scope.totalItems = [];
+        $scope.totalItems = [];
         $scope.pager = {};
         $scope.enableSubmit = false;
 
         $scope.pullDownLists = {
             availableOption: [
               { value: 10, name: '10' },
-              { value: 25, name: '25' },
               { value: 50, name: '50' },
-              { value: 100, name: '100' }
+              { value: 100, name: '100' },
+              { value: 200, name: '200' }
             ],
-            selectedOption: {value: 10, name: '10'}
+            selectedOption: {value: 50, name: '50'}
         };
 
         $scope.getResultsPage = function (name, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/orders/getAllOrders?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/services/web-design/getAllServices?name=' + name, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -48,18 +48,17 @@
             $scope.from = $scope.pager.startIndex + 1;
             $scope.to = $scope.pager.endIndex + 1;
             $scope.total = $scope.pager.totalItems;
-            $scope.pullDownLists.selectedOption = { value: pageSize, name: pageSize };
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-order', 10, 1);
+            $scope.getResultsPage('all-service', 50, 1);
         }
 
-        $scope.searchOrderName = function() {
+        $scope.searchServiceName = function() {
             if ($scope.searchText.length >= 1) {
                 $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
             } else {
-                $scope.getResultsPage('all-order', $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage('all-service', $scope.perPage, $scope.pageNumber);
             }
         }
 
@@ -73,20 +72,13 @@
             $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
         }
 
-        $scope.range = function(min, max, step) {
-            step = step || 1;
-            var input = [];
-            for (var i = min; i <= max; i += step) input.push(i);
-            return input;
-        };
-
         $scope.process = function (type) {
             
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
             
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" đơn đặt hàng này ?",
+                title: "Bạn chắc chắn muốn "+ title +" dịch vụ này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -97,7 +89,7 @@
             }, function () {
                 $http({
                     method: 'POST',
-                    url: app.vars.baseUrl + '/orders/' + type,
+                    url: app.vars.baseUrl + '/services/web-design/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
@@ -106,7 +98,7 @@
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
-                                window.location.href = app.vars.baseUrl + '/orders';
+                                window.location.href = app.vars.baseUrl + '/services/web-design';
                             } else {
                                 // toastr.error(response.message, 'ERROR');
                             }
@@ -116,9 +108,9 @@
             });
         }
 
-        $scope.delete = function (order, index) {
+        $scope.delete = function (service, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa đơn đặt hàng này ?",
+                title: "Bạn chắc chắn muốn xóa dịch vụ này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
@@ -128,10 +120,10 @@
                 showLoaderOnConfirm: true
             }, function () {
                 $http({
-                    url: app.vars.baseUrl + '/orders/delete',
+                    url: app.vars.baseUrl + '/services/web-design/delete',
                     method: 'POST',
                     data: {
-                        orderId: order.id
+                        serviceId: service.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
