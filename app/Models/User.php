@@ -44,19 +44,11 @@ class User extends Model implements Authenticatable
     }
 
     public function role() {
-        return $this->belongsTo('App\Models\Role');
+        return $this->belongsTo('App\Models\Role', 'role_id');
     }
 
-    public function article() {
-        return $this->hasMany('App\Models\Article', 'user_id', 'id');
-    }
-
-    public function order() {
-        return $this->hasMany('App\Models\Order', 'user_id', 'id');
-    }
-
-    public function product() {
-        return $this->hasMany('App\Models\Product', 'user_id', 'id');
+    public function data_service() {
+        return $this->hasMany('App\Models\DataService', 'user_id', 'id');
     }
 
     public static $rules = [
@@ -90,6 +82,7 @@ class User extends Model implements Authenticatable
     public static function addAction($data)
     {
         $data['password'] = bcrypt('123456');
+        
         return self::firstOrCreate($data);
     }
 

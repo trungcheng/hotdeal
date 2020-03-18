@@ -10,7 +10,7 @@ use App\Models\User;
 use Response;
 use Validator;
 
-class ProductController extends Controller
+class ServiceController extends Controller
 {
 
 	public function __construct() {

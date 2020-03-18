@@ -4,65 +4,40 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Product;
-use App\Models\Article;
-use App\Models\Slide;
+use App\Models\User;
+use App\Util\Util;
 use Response;
 use Validator;
 
-class SlideController extends Controller
+class CustomerController extends Controller
 {
 
-    public function __construct() {
+	public function __construct() {
         // $this->middleware('admin.auth');
     }
 
     public function index()
     {
-        return view('pages.admin.slide.index');
+        return view('pages.admin.customer.index');
     }
 
-    public function getAllSlides(Request $request)
+    public function getAllCustomers(Request $request)
     {
-        $results = Slide::init($request);
+        $results = User::init($request);
             
         return Response::json(['status' => true, 'data' => $results]);
     }
 
-    public function loadObject(Request $request, $target)
-    {
-        if ($target == 'product') {
-            $results = Product::select('id', 'name')->get();
-        } else {
-            $results = Article::select('id', 'title as name')->get();
-        }
-
-        return Response::json($results);
-    }
-
     public function create(Request $request)
     {
-        $products = Product::all();
-
-        return view('pages.admin.slide.add', [
-            'products' => $products
-        ]);
+        return view('pages.admin.customer.add');
     }
 
     public function edit(Request $request, $id)
     {
-        $slide = Slide::find($id);
-        if ($slide) {
-            if ($slide->target_type == 'product') {
-                $results = Product::select('id', 'name')->get();
-            } else {
-                $results = Article::select('id', 'title as name')->get();
-            }
-
-            return view('pages.admin.slide.edit', [
-                'slide' => $slide,
-                'results' => $results
-            ]);
+        $customer = User::find($id);
+        if ($customer) {
+            return view('pages.admin.customer.edit', ['customer' => $customer]);
         }
 
         abort(404);
@@ -71,7 +46,7 @@ class SlideController extends Controller
     public function add(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), Slide::$rules, Slide::$messages);
+            $validator = Validator::make($request->all(), User::$rules, User::$messages);
             if ($validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -82,10 +57,10 @@ class SlideController extends Controller
 
             $data = $request->all();
             if ($data) {
-                Slide::addAction($data);
+                User::addAction($data);
                 return Response::json([
                     'status' => true,
-                    'message' => 'Thêm slide thành công', 
+                    'message' => 'Thêm khách hàng thành công', 
                     'type' => 'success'
                 ]);
             }
@@ -106,7 +81,7 @@ class SlideController extends Controller
     public function update(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), Slide::$rules, Slide::$messages);
+            $validator = Validator::make($request->all(), User::$rules, User::$messages);
             if ($validator->fails()) {
                 return Response::json([
                     'status' => false,
@@ -117,18 +92,18 @@ class SlideController extends Controller
 
             $data = $request->all();
             if ($data) {
-                $slide = Slide::find($data['id']);
-                if ($slide) {
-                    Slide::updateAction($data, $slide);
+                $customer = User::find($data['id']);
+                if ($customer) {
+                    User::updateAction($data, $customer);
                     return Response::json([
                         'status' => true, 
-                        'message' => 'Cập nhật slide thành công', 
+                        'message' => 'Cập nhật khách hàng thành công', 
                         'type' => 'success'
                     ]);
                 } else {
                     return Response::json([
                         'status' => false,
-                        'message' => 'Không tìm thấy slide', 
+                        'message' => 'Không tìm thấy khách hàng', 
                         'type' => 'error'
                     ]);
                 }
@@ -149,21 +124,24 @@ class SlideController extends Controller
 
     public function delete(Request $request)
     {
-        $slideId = $request->slideId;
-        if ($slideId && !is_null($slideId)) {
-            $slide = Slide::find($slideId);
-            if ($slide) {
-                $slide->delete();
+        $customerId = $request->customerId;
+        if ($customerId && !is_null($customerId)) {
+            $customer = User::find($customerId);
+            if ($customer) {
+                // remove all relate section
+                $customer->data_service()->delete();
+                $customer->delete();
+
                 return Response::json([
                     'status' => true, 
-                    'message' => 'Xóa slide thành công', 
+                    'message' => 'Xóa khách hàng thành công', 
                     'type' => 'success'
                 ]);
             }
 
             return Response::json([
                 'status' => false, 
-                'message' => 'Không tìm thấy slide', 
+                'message' => 'Không tìm thấy khách hàng', 
                 'type' => 'error'
             ]);
         }

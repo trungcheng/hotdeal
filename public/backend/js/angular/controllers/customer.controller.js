@@ -3,9 +3,9 @@
 
     angular
         .module('LindoCMS')
-        .controller('MemberController', MemberController);
+        .controller('CustomerController', CustomerController);
 
-    function MemberController($rootScope, $scope, $http, $window, $timeout, PagerService) {
+    function CustomerController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
         $scope.totalItems = [];
         $scope.pager = {};
@@ -25,7 +25,7 @@
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/members/getAllMembers?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/members/getAllCustomers?name=' + name, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -52,14 +52,14 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-member', 10, 1);
+            $scope.getResultsPage('all-customer', 10, 1);
         }
 
-        $scope.searchMemberName = function() {
+        $scope.searchCustomerName = function() {
             if ($scope.searchText.length >= 1) {
                 $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
             } else {
-                $scope.getResultsPage('all-member', $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage('all-customer', $scope.perPage, $scope.pageNumber);
             }
         }
 
@@ -86,7 +86,7 @@
             var formData = new FormData($('#formProcess')[0]);
             
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" thành viên này ?",
+                title: "Bạn chắc chắn muốn "+ title +" khách hàng này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -97,7 +97,7 @@
             }, function () {
                 $http({
                     method: 'POST',
-                    url: app.vars.baseUrl + '/members/' + type,
+                    url: app.vars.baseUrl + '/customers/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
@@ -106,7 +106,7 @@
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
-                                window.location.href = app.vars.baseUrl + '/members';
+                                window.location.href = app.vars.baseUrl + '/customers';
                             } else {
                                 // toastr.error(response.message, 'ERROR');
                             }
@@ -116,9 +116,9 @@
             });
         }
 
-        $scope.delete = function (mem, index) {
+        $scope.delete = function (cus, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa thành viên này ? Tất cả các sản phẩm, bài viết và đơn hàng của thành viên này sẽ bị xóa theo !",
+                title: "Bạn chắc chắn muốn xóa khách hàng này ? Tất cả các dịch vụ của khách hàng này sẽ bị xóa theo !",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
@@ -128,10 +128,10 @@
                 showLoaderOnConfirm: true
             }, function () {
                 $http({
-                    url: app.vars.baseUrl + '/members/delete',
+                    url: app.vars.baseUrl + '/customers/delete',
                     method: 'POST',
                     data: {
-                        memId: mem.id
+                        customerId: cus.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {

@@ -17,49 +17,10 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/access/categories" href="{{ url('/access/categories') }}">Danh sách</a></li>
-            <li><a style="margin-left:35px;" data-route="/access/categories/create" href="{{ url('/access/categories/create') }}">Thêm mới</a></li>
+            <li><a style="margin-left:35px;" data-route="/access/categories" href="{{ url('') }}">Thiết kế website</a></li>
         </ul>
     </li>
     
-    <!-- <li><a data-route="/access/orders" href="{{ url('/access/orders') }}"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
-    
-    <li class="treeview">
-        <a href="javascript:void(0)"><i class="fa fa-suitcase"></i> <span>Quản lý dịch vụ</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/access/products" href="{{ url('/access/products') }}">Danh sách</a></li>
-            <li><a style="margin-left:35px;" data-route="/access/products/create" href="{{ url('/access/products/create') }}">Thêm mới</a></li>
-        </ul>
-    </li>
-
-    <li class="treeview">
-        <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý khách hàng</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/access/orders" href="{{ url('/access/orders') }}">Danh sách</a></li>
-            <!-- <li><a style="margin-left:35px;" data-route="/access/orders/create" href="{{ url('/access/orders/create') }}">Thêm mới</a></li> -->
-        </ul>
-    </li>
-    
-    <li class="treeview">
-        <a href="javascript:void(0)"><i class="fa fa-history"></i> <span>Lịch sử giao dịch</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/access/articles" href="{{ url('/access/articles') }}">Danh sách</a></li>
-            <li><a style="margin-left:35px;" data-route="/access/articles/create" href="{{ url('/access/articles/create') }}">Thêm mới</a></li>
-        </ul>
-    </li>
-
     <li><a data-route="/access/setting" href="{{ url('/access/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
     
     <!-- <li class="treeview">
