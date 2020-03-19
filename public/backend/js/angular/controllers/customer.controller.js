@@ -25,7 +25,7 @@
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/members/getAllCustomers?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/customers/getAllCustomers?name=' + name, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
