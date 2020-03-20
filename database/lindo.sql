@@ -11,7 +11,7 @@
  Target Server Version : 100122
  File Encoding         : 65001
 
- Date: 18/03/2020 16:27:03
+ Date: 20/03/2020 10:02:25
 */
 
 SET NAMES utf8mb4;
@@ -174,15 +174,18 @@ CREATE TABLE `users`  (
   `role_id` int(11) NULL DEFAULT NULL,
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `fullname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `organize_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `avatar` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `mobile` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `birthday` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `sex` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `bio` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `sex` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `bio` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT 1,
+  `identity_card` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `tax_code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `confirmation_code` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `is_confirmed` tinyint(1) NOT NULL DEFAULT 1,
   `jwt_token` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
@@ -195,9 +198,9 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 1, 'superadmin', 'Super Admin', 'superadmin@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0987654321', 'Ha Noi', NULL, NULL, NULL, 1, NULL, 1, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9ob3RkZWFsLnh5ei9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTUzMDUwNDA5NSwiZXhwIjoxNzE3MTI4MDk1LCJuYmYiOjE1MzA1MDQwOTUsImp0aSI6InVoY08zVlBEV1hBSkpNMGkifQ.AftccxTKMGrTAOxgcx1bWQfUYKHlRyFqMYQXHUdMs44', 'mbQKWE1Vk4tZtLrMbYB3GoeKuPNTnlrRRlTiiU193aAAmZzsYM9LbGecJyeZ', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
-INSERT INTO `users` VALUES (2, 2, 'admin', 'Admin', 'admin@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$VMxBri/qLDxAEq6rGo12Yef2.md..3AqfjSuHnk0q2tbzTQLu5Lp6', '0975123644', 'Ha Noi', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2019-04-23 09:28:28', '2019-04-23 09:31:06');
-INSERT INTO `users` VALUES (3, 3, 'user', 'User', 'user@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$YBm9bIA.RaFUyDiXYFazNeJ72dwtF072Pieyth2BOFE43KDOdZhsy', '0975123645', 'Ha Noi', NULL, NULL, NULL, 1, '', 1, NULL, 'Afv5L7EZILNQbdVSdZwct6DPbNkUIx4OCYyA8FR2w8DNkQp9bLEK8PxF9fEB', '2019-04-24 04:21:40', '2019-04-24 04:26:28');
-INSERT INTO `users` VALUES (4, 4, 'subuser', 'Sub User', 'subuser@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$YBm9bIA.RaFUyDiXYFazNeJ72dwtF072Pieyth2BOFE43KDOdZhsy', '0975123646', 'Ha Noi', NULL, NULL, NULL, 1, NULL, 1, NULL, NULL, '2020-03-16 20:36:16', '2020-03-16 20:36:16');
+INSERT INTO `users` VALUES (1, 1, 'superadmin', 'Super Admin', NULL, 'superadmin@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0987654321', 'Ha Noi', NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9ob3RkZWFsLnh5ei9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTUzMDUwNDA5NSwiZXhwIjoxNzE3MTI4MDk1LCJuYmYiOjE1MzA1MDQwOTUsImp0aSI6InVoY08zVlBEV1hBSkpNMGkifQ.AftccxTKMGrTAOxgcx1bWQfUYKHlRyFqMYQXHUdMs44', 'mbQKWE1Vk4tZtLrMbYB3GoeKuPNTnlrRRlTiiU193aAAmZzsYM9LbGecJyeZ', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
+INSERT INTO `users` VALUES (2, 2, 'admin', 'Admin', NULL, 'admin@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$VMxBri/qLDxAEq6rGo12Yef2.md..3AqfjSuHnk0q2tbzTQLu5Lp6', '0975123644', 'Ha Noi', NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, NULL, NULL, '2019-04-23 09:28:28', '2019-04-23 09:31:06');
+INSERT INTO `users` VALUES (3, 3, 'user', 'User', NULL, 'user@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$YBm9bIA.RaFUyDiXYFazNeJ72dwtF072Pieyth2BOFE43KDOdZhsy', '0975123645', 'Ha Noi', NULL, NULL, NULL, 1, NULL, NULL, '', 1, NULL, 'Afv5L7EZILNQbdVSdZwct6DPbNkUIx4OCYyA8FR2w8DNkQp9bLEK8PxF9fEB', '2019-04-24 04:21:40', '2019-04-24 04:26:28');
+INSERT INTO `users` VALUES (4, 4, 'subuser', 'Sub User', NULL, 'subuser@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$YBm9bIA.RaFUyDiXYFazNeJ72dwtF072Pieyth2BOFE43KDOdZhsy', '0975123646', 'Ha Noi', NULL, NULL, NULL, 1, NULL, NULL, NULL, 1, NULL, NULL, '2020-03-16 20:36:16', '2020-03-16 20:36:16');
 
 SET FOREIGN_KEY_CHECKS = 1;

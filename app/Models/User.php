@@ -17,6 +17,7 @@ class User extends Model implements Authenticatable
         'role_id',
         'username',
         'fullname', 
+        'organize_name', 
         'email',
         'avatar',
         'password',
@@ -26,6 +27,8 @@ class User extends Model implements Authenticatable
         'sex',
         'bio',
         'status', 
+        'identity_card',
+        'tax_code',
         'confirmation_code', 
         'is_confirmed',
         'jwt_token'
@@ -63,18 +66,35 @@ class User extends Model implements Authenticatable
         'email.required' => 'Email không được để trống',
         'email.email' => 'Email không đúng định dạng',
         'mobile.required' => 'Điện thoại không được để trống',
-        'mobile.numeric' => 'Điện thoại phải là định dạng số',
+        'mobile.numeric' => 'Điện thoại phải là định dạng số'
     ];
 
     public static function init($request)
     {
-        $data = self::where('id', '>', 0)->where('role_id', 3);
+        $data = self::where('id', '>', 0)->where('role_id', 2);
 
-        if ($request->fullname !== 'all-member' && $request->fullname !== 'undefined') {
-            $data->where("fullname", "LIKE", "%" . $request->fullname . "%");
+        if ($request->name !== 'all-user' && $request->name !== 'undefined') {
+            $data->where("fullname", "LIKE", "%" . $request->name . "%")
+                 ->orWhere("mobile", "LIKE", "%" . $request->name . "%")
+                 ->orWhere("email", "LIKE", "%" . $request->name . "%");
         }
 
-        $data = $data->orderBy('id', 'desc')->get();
+        $data = $data->with('role')->orderBy('id', 'desc')->get();
+
+        return $data;
+    }
+
+    public static function initCustomer($request)
+    {
+        $data = self::where('id', '>', 0)->whereIn('role_id', [3,4]);
+
+        if ($request->name !== 'all-customer' && $request->name !== 'undefined') {
+            $data->where("fullname", "LIKE", "%" . $request->name . "%")
+                 ->orWhere("mobile", "LIKE", "%" . $request->name . "%")
+                 ->orWhere("email", "LIKE", "%" . $request->name . "%");
+        }
+
+        $data = $data->with('role')->orderBy('id', 'desc')->get();
 
         return $data;
     }

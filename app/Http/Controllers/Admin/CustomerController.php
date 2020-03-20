@@ -23,7 +23,7 @@ class CustomerController extends Controller
 
     public function getAllCustomers(Request $request)
     {
-        $results = User::init($request);
+        $results = User::initCustomer($request);
             
         return Response::json(['status' => true, 'data' => $results]);
     }

@@ -42,17 +42,20 @@ class DataService extends Model
 
     public static $rules_add = [
         'name' => 'required|min:2',
+        'user_id' => 'required',
         'price' => 'required'
     ];
 
     public static $rules_update = [
         'name' => 'required|min:2',
+        'user_id' => 'required',
         'price' => 'required'
     ];
 
     public static $messages = [
         'name.required' => 'Tên dịch vụ không được để trống',
         'name.min' => 'Tên dịch vụ ít nhất từ 2 ký tự',
+        'user_id.required' => 'Khách hàng không được để trống',
         'price.required' => 'Giá dịch vụ không được để trống'
     ];
 

@@ -60,6 +60,7 @@
                                                     <th>STT</th>
                                                     <th>Họ tên</th>
                                                     <th>Email</th>
+                                                    <th>Quyền</th>
                                                     <th>Điện thoại</th>
                                                     <th>Điạ chỉ</th>
                                                     <th>Trạng thái</th>
@@ -72,6 +73,7 @@
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cus.fullname }}</td>
                                                     <td style="text-align:center !important">@{{ cus.email }}</td>
+                                                    <td style="text-align:center !important">@{{ cus.role.description }}</td>
                                                     <td style="text-align:center !important">@{{ cus.mobile }}</td>
                                                     <td style="text-align:center !important">@{{ cus.address }}</td>
                                                     <td style="text-align:center !important">@{{ (cus.status) ? 'Hoạt động' : 'Khóa' }}</td>
