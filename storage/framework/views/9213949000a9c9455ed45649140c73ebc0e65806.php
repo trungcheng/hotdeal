@@ -3,40 +3,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>@yield('page') | King Bếp</title>
-    <meta name="description" content="@yield('description')">
-    <meta name="keywords" content="@yield('keywords')" />
+    <title><?php echo $__env->yieldContent('page'); ?> | King Bếp</title>
+    <meta name="description" content="<?php echo $__env->yieldContent('description'); ?>">
+    <meta name="keywords" content="<?php echo $__env->yieldContent('keywords'); ?>" />
     <meta name="robots" content="noodp,index,follow" />
-    <meta itemprop="name" content="@yield('propName')">
-    <meta itemprop="description" content="@yield('propDesc')">
+    <meta itemprop="name" content="<?php echo $__env->yieldContent('propName'); ?>">
+    <meta itemprop="description" content="<?php echo $__env->yieldContent('propDesc'); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="@yield('ogTitle')">
-    <meta property="og:image" content="@yield('ogImage')">
-    <meta property="og:image:secure_url" content="@yield('ogImage')">
-    <meta property="og:description" content="@yield('ogDesc')">
-    <meta property="og:url" content="@yield('ogUrl')">
+    <meta property="og:title" content="<?php echo $__env->yieldContent('ogTitle'); ?>">
+    <meta property="og:image" content="<?php echo $__env->yieldContent('ogImage'); ?>">
+    <meta property="og:image:secure_url" content="<?php echo $__env->yieldContent('ogImage'); ?>">
+    <meta property="og:description" content="<?php echo $__env->yieldContent('ogDesc'); ?>">
+    <meta property="og:url" content="<?php echo $__env->yieldContent('ogUrl'); ?>">
     <meta property="og:site_name" content="KingBep">
-    <link rel="icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon" />
-    <link rel="canonical" href="@yield('canonical')" />
-    <link rel="alternate" href="@yield('alternate')">
+    <link rel="icon" href="<?php echo e(asset('frontend/images/icons/favicon.png')); ?>" type="image/x-icon" />
+    <link rel="canonical" href="<?php echo $__env->yieldContent('canonical'); ?>" />
+    <link rel="alternate" href="<?php echo $__env->yieldContent('alternate'); ?>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="{{ asset('frontend/css/base.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css" />
-    @section('pageCss')
-    @show
-    <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}" type="text/javascript"></script>
+    <link href="<?php echo e(asset('frontend/css/base.css')); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(asset('frontend/css/app.css')); ?>" rel="stylesheet" type="text/css" />
+    <?php $__env->startSection('pageCss'); ?>
+    <?php echo $__env->yieldSection(); ?>
+    <script src="<?php echo e(asset('frontend/js/jquery-2.2.3.min.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/owl.carousel.min.js')); ?>" type="text/javascript"></script>
 </head>
 
-<body class="{{ \Route::currentRouteName() == 'home' ? 'bg-index' : '' }}">
+<body class="<?php echo e(\Route::currentRouteName() == 'home' ? 'bg-index' : ''); ?>">
     <div id="box-wrapper">
         
-        @include('layouts.user.header')
+        <?php echo $__env->make('layouts.user.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
 
-        @include('layouts.user.footer')
+        <?php echo $__env->make('layouts.user.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         
     </div>
     
@@ -844,15 +844,15 @@
         </a>
     </div>
 
-    <script src="{{ asset('frontend/js/rx.all.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/option-selectors.js') }}" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/rx.all.min.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/option-selectors.js')); ?>" type="text/javascript"></script>
     <script src="//bizweb.dktcdn.net/assets/themes_support/api.jquery.js?4" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/appear.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/main.js') }}" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/appear.js')); ?>" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/main.js')); ?>" type="text/javascript"></script>
 
-    @section('pageJs')
-    @show
+    <?php $__env->startSection('pageJs'); ?>
+    <?php echo $__env->yieldSection(); ?>
 </body>
 </html>

@@ -84,6 +84,18 @@
         </ul>
     </li>
 
+    <li class="treeview">
+        <a href="javascript:void(0)"><i class="fa fa-star"></i> <span>Quản lý đánh giá</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a style="margin-left:35px;" data-route="/admin/access/reviews" href="{{ url('/admin/access/reviews') }}">Danh sách</a></li>
+            <li><a style="margin-left:35px;" data-route="/admin/access/reviews/create" href="{{ url('/admin/access/reviews/create') }}">Thêm mới</a></li>
+        </ul>
+    </li>
+
     <!-- <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-cog"></i> <span>Thông tin công ty</span></a></li> -->
 
     <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>

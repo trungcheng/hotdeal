@@ -38,17 +38,17 @@
                             <h4><span>Hướng dẫn</span></h4>
                             <ul class="list-menu">
 
-                                {{--<li><a href="/collections/all">Tính năng nổi bật</a></li>--}}
+                                
 
                                 <li><a href="/">Trang chủ</a></li>
 
-                                <li><a href="{{ route('about') }}">Giới thiệu</a></li>
+                                <li><a href="<?php echo e(route('about')); ?>">Giới thiệu</a></li>
 
-                                <li><a href="{{ route('store') }}">Sản phẩm</a></li>
+                                <li><a href="<?php echo e(route('store')); ?>">Sản phẩm</a></li>
 
-                                <li><a href="{{ route('article') }}">Tin tức</a></li>
+                                <li><a href="<?php echo e(route('article')); ?>">Tin tức</a></li>
 
-                                <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                                <li><a href="<?php echo e(route('contact')); ?>">Liên hệ</a></li>
 
                             </ul>
                         </div>
@@ -58,17 +58,17 @@
                             <h4><span>Chính sách</span></h4>
                             <ul class="list-menu">
 
-                                {{--<li><a href="/collections/all">Tính năng nổi bật</a></li>--}}
+                                
 
                                 <li><a href="/">Trang chủ</a></li>
 
-                                <li><a href="{{ route('about') }}">Giới thiệu</a></li>
+                                <li><a href="<?php echo e(route('about')); ?>">Giới thiệu</a></li>
 
-                                <li><a href="{{ route('store') }}">Sản phẩm</a></li>
+                                <li><a href="<?php echo e(route('store')); ?>">Sản phẩm</a></li>
 
-                                <li><a href="{{ route('article') }}">Tin tức</a></li>
+                                <li><a href="<?php echo e(route('article')); ?>">Tin tức</a></li>
 
-                                <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                                <li><a href="<?php echo e(route('contact')); ?>">Liên hệ</a></li>
 
                             </ul>
                         </div>
@@ -78,17 +78,17 @@
                             <h4><span>Hỗ trợ</span></h4>
                             <ul class="list-menu">
 
-                                {{--<li><a href="/collections/all">Tính năng nổi bật</a></li>--}}
+                                
 
                                 <li><a href="/">Trang chủ</a></li>
 
-                                <li><a href="{{ route('about') }}">Giới thiệu</a></li>
+                                <li><a href="<?php echo e(route('about')); ?>">Giới thiệu</a></li>
 
-                                <li><a href="{{ route('store') }}">Sản phẩm</a></li>
+                                <li><a href="<?php echo e(route('store')); ?>">Sản phẩm</a></li>
 
-                                <li><a href="{{ route('article') }}">Tin tức</a></li>
+                                <li><a href="<?php echo e(route('article')); ?>">Tin tức</a></li>
 
-                                <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                                <li><a href="<?php echo e(route('contact')); ?>">Liên hệ</a></li>
 
                             </ul>
                         </div>

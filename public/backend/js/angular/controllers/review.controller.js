@@ -3,9 +3,9 @@
 
     angular
         .module('KingbepCMS')
-        .controller('MemberController', MemberController);
+        .controller('ReviewController', ReviewController);
 
-    function MemberController($rootScope, $scope, $http, $window, $timeout, PagerService) {
+    function ReviewController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
         $scope.totalItems = [];
         $scope.pager = {};
@@ -25,7 +25,7 @@
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/members/getAllMembers?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/reviews/getAllReviews?name=' + name, {cache: false})
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -52,14 +52,14 @@
         }
 
         $scope.loadInit = function () {
-            $scope.getResultsPage('all-member', 10, 1);
+            $scope.getResultsPage('all-review', 10, 1);
         }
 
-        $scope.searchMemberName = function() {
+        $scope.searchReviewName = function() {
             if ($scope.searchText.length >= 1) {
                 $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
             } else {
-                $scope.getResultsPage('all-member', $scope.perPage, $scope.pageNumber);
+                $scope.getResultsPage('all-review', $scope.perPage, $scope.pageNumber);
             }
         }
 
@@ -86,7 +86,7 @@
             var formData = new FormData($('#formProcess')[0]);
             
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" thành viên này ?",
+                title: "Bạn chắc chắn muốn "+ title +" đánh giá này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -97,7 +97,7 @@
             }, function () {
                 $http({
                     method: 'POST',
-                    url: app.vars.baseUrl + '/members/' + type,
+                    url: app.vars.baseUrl + '/reviews/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
@@ -106,7 +106,7 @@
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
-                                window.location.href = app.vars.baseUrl + '/members';
+                                window.location.href = app.vars.baseUrl + '/reviews';
                             } else {
                                 // toastr.error(response.message, 'ERROR');
                             }
@@ -116,9 +116,9 @@
             });
         }
 
-        $scope.delete = function (mem, index) {
+        $scope.delete = function (review, index) {
             swal({
-                title: "Bạn chắc chắn muốn xóa thành viên này ? Tất cả các sản phẩm, bài viết và đơn hàng của thành viên này sẽ bị xóa theo !",
+                title: "Bạn chắc chắn muốn xóa đánh giá này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-danger",
@@ -128,10 +128,10 @@
                 showLoaderOnConfirm: true
             }, function () {
                 $http({
-                    url: app.vars.baseUrl + '/members/delete',
+                    url: app.vars.baseUrl + '/reviews/delete',
                     method: 'POST',
                     data: {
-                        memId: mem.id
+                        reviewId: review.id
                     }
                 }).success(function (response) {
                     swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {

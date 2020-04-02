@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('ThachvuCMS')
+    .module('KingbepCMS')
     .controller('DashboardController', DashboardController);
 
     function DashboardController($rootScope, $scope, $http, $window, $timeout) {

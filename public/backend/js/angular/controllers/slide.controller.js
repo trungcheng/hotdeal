@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ThachvuCMS')
+        .module('KingbepCMS')
         .controller('SlideController', SlideController);
 
     function SlideController($rootScope, $scope, $http, $window, $timeout, PagerService) {

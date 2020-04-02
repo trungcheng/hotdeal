@@ -88,6 +88,15 @@
                 $this->post('members/update', 'Admin\MemberController@update');
                 $this->post('members/delete', 'Admin\MemberController@delete');
 
+                // review
+                $this->get('reviews', 'Admin\ReviewController@index')->name('reviews');
+                $this->get('reviews/getAllReviews', 'Admin\ReviewController@getAllReviews');
+                $this->get('reviews/create', 'Admin\ReviewController@create')->name('review-create');
+                $this->get('reviews/edit/{id}', 'Admin\ReviewController@edit')->name('review-edit');
+                $this->post('reviews/add', 'Admin\ReviewController@add');
+                $this->post('reviews/update', 'Admin\ReviewController@update');
+                $this->post('reviews/delete', 'Admin\ReviewController@delete');
+
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');
                 $this->post('setting/update', 'Admin\SettingController@update');

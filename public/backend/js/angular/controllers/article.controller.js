@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ThachvuCMS')
+        .module('KingbepCMS')
         .controller('ArticleController', ArticleController);
 
     function ArticleController($rootScope, $scope, $http, $window, $timeout, PagerService) {
