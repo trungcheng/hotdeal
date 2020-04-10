@@ -35,307 +35,7 @@
 
 @section('pageCss')
 	<link href="{{ asset('frontend/css/lightbox.css') }}" rel="stylesheet" type="text/css" />
-
-	<style type="text/css">
-		.boxRatingCmt {
-		    /*border-bottom: 1px solid #e4e4e4;*/
-		    /*margin-bottom: 20px;*/
-		}
-		.boxRatingCmt .hrt {
-		    overflow: hidden;
-		    padding-bottom: 5px;
-		}
-		.boxRatingCmt .toprt {
-		    border: solid 1px #ddd;
-		    border-radius: 5px;
-		    padding: 5px 15px;
-		    margin-bottom: 20px;
-		}
-		.boxRatingCmt .crt {
-		    height: 120px;
-		    box-sizing: border-box;
-		}
-		.boxRatingCmt .crt .lcrt {
-		    width: 17%;
-		    float: left;
-		    border-right: solid 1px #eee;
-		    padding-top: 31px;
-		    height: 90%;
-		    text-align: center;
-		    box-sizing: border-box;
-		    margin: 5px 10px 5px 5px;
-		}
-		.boxRatingCmt .crt .lcrt b {
-		    font-size: 40px;
-		    color: #fd9727;
-		    line-height: 40px;
-		}
-		.boxRatingCmt .crt .lcrt b i {
-		    vertical-align: initial;
-		    width: 32px;
-		    height: 32px;
-		    background: url(data:image/png;base64,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);
-		    background-size: 32px 32px;
-		    display: inline-block;
-		}
-		.boxRatingCmt .crt .rcrt {
-		    font-size: 12px;
-		    overflow: hidden;
-		    box-sizing: border-box;
-		    width: 45%;
-		    float: left;
-		    border-right: solid 1px #eee;
-		    margin-top:7px;
-		}
-		.boxRatingCmt .crt .rcrt .r {
-		    padding: 1px 20px;
-		}
-		.boxRatingCmt .crt .rcrt span.t {
-		    display: inline-block;
-		    color: #333;
-		}
-		.boxRatingCmt .crt .rcrt span.t i {
-		    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAj1JREFUSA21ljuLE1EUxzOTDRMYtpg0phdsAoIirlss4naCIllIgmDARbPNEj+AVTo7EWJjsIiEsHl0sh9g++CrSLWWrpAUu4UPlGwSf0dmwp0XM8h44HDPPed//ufcx+RGS8WUer1uTCaToyWSz+dvNZvN33FS9TggwUyn0yLcNzA3KbQTNy92gcViUVNIVVtx+03N7/J7KpXKRQocE3HwS+xLw+Hwsx/t9sRaAeSPFXJhkEKPxIiSyAKNRmMNkodeIk3Tdu2YN+SaRxYYj8d3yci7sphw4BfsmDfkmjt7mqpWq+ZsNsvRmUVybj6fWyBz6B563ZVlT8COwL5ieqqqZVlnrVbrp8C0crn8hvE+wIw4EhT5Tg7WIL6JkTS59Gmg23o6nS5inIgnSWH7vuq6XtR7vd4HiDdQGZOSj5lMZqPf77//e4v4YE6y2ewW7G8TqHAIx1a32/0iXKtr2ul0fhQKBdmu5xL4F2FbXsBxj4a/O/mra+o4ZORm7XP4L1VflM1+P2FLml7cagVqgE7eqfOY9igIF1jAvrpB+FBfWM5/L+A7g1KplKbNM3Q9tN3gwDfcFgc8V8O+FXBYVwEEkS85m9eixOU98Mo6H+0Vr9NXIGQvj0neHgwGNVGxIZIHyCW8G/Kz45KoAud0/Mw0zct88UdOptjikxi+c8fP6Csgj4lLSMqyihTjCK1xtz+5APak3W7/wnzKc9qnc9m2a+SZXmzQCqqAbgPeDCNXSWyM/Nu4YxjGAzUm9h+0KskbKVc12wAAAABJRU5ErkJggg==);
-		    width: 12px;
-		    height: 12px;
-		    background-size: 12px 12px;
-		    display: inline-block;
-		}
-		.boxRatingCmt .crt .rcrt .bgb {
-		    width: 58%;
-		    background-color: #e9e9e9;
-		    height: 5px;
-		    display: inline-block;
-		    margin: 0 10px;
-		    border-radius: 5px;
-		}
-		.boxRatingCmt .crt .rcrt .bgb .bgb-in {
-		    background-color: #f25800;
-		    background-image: linear-gradient(90deg,#ff7d26 0%,#f25800 97%);
-		    height: 5px;
-		    border-radius: 5px 0 0 5px;
-		    max-width: 100%;
-		}
-		.boxRatingCmt .crt .rcrt span.c {
-		    display: inline-block;
-		    color: #288ad6;
-		    cursor: pointer;
-		}
-		.boxRatingCmt .crt .bcrt {
-		    overflow: hidden;
-		}
-		.boxRatingCmt .crt .bcrt a {
-		    display: block;
-		    width: 200px;
-		    margin: 41px auto 0;
-		    padding: 10px;
-		    color: #fff;
-		    background-color: #288ad6;
-		    border-radius: 5px;
-		    text-align: center;
-		    box-sizing: border-box;
-		}
-		.boxRatingCmt .ratingLst li {
-		    position: relative;
-		    margin: 5px 25px 15px 0;
-		}
-		.boxRatingCmt .ratingLst li .rh span {
-		    font-weight: bold;
-		    margin-bottom: 5px;
-		    display: inline-block;
-		    text-transform: capitalize;
-		}
-		.boxRatingCmt .ratingLst li .rh .cmdt {
-			color: #999;
-		    font-size: 12px;
-		    margin-left: 5px;
-		    cursor: auto;
-		}
-		.boxRatingCmt .ratingLst li .rh label {
-		    cursor: pointer;
-		    color: #2ba832;
-		    font-size: 13px;
-		}
-		.boxRatingCmt .ratingLst li .rc {
-		    margin: 0 0 5px 0;
-		}
-		.boxRatingCmt .ratingLst li .rc p span {
-		    margin-right: 10px;
-		}
-		.boxRatingCmt .ratingLst li .rc i {
-		    margin-top: -3px;
-		    font-style: normal;
-		    line-height: 1.5;
-		}
-		.iconcom-txtstar {
-		    width: 13px !important;
-		    height: 12px !important;
-		    background-position: -241px -83px;
-		}
-		.iconcom-txtunstar {
-		    width: 13px !important;
-		    height: 12px !important;
-		    background-position: -257px -83px;
-		}
-		[class^="iconcom-"], [class*="iconcom-"] {
-		    background-image: url(/frontend/images/icons/commentmobile@2x.png);
-		    background-size: 270px 128px;
-		    background-repeat: no-repeat;
-		    display: inline-block;
-		    height: 30px;
-		    width: 30px;
-		    line-height: 30px;
-		    vertical-align: middle;
-		}
-		.boxRatingCmt .ratingLst li .ra {
-		    color: #999;
-		}
-		.boxRatingCmt .ratingLst li .ra a {
-		    color: #288ad6;
-		}
-		.boxRatingCmt form {
-		    overflow: hidden;
-		    padding: 10px 0;
-		    margin: 0 !important;
-		}
-		.boxRatingCmt form .ips {
-		    margin: 0 0 10px;
-		    height: 25px;
-		}
-		.boxRatingCmt form .ips span:first-child {
-		    display: inline-block;
-		    margin-top: 2px;
-		    float: left;
-		    margin-right: 5px;
-		}
-		.boxRatingCmt form .lStar {
-		    cursor: pointer;
-		    margin-left: 5px;
-		    display: block;
-		    float: left;
-		}
-		.boxRatingCmt form .lStar i {
-		    display: inline-block;
-		}
-		.ips .lStar .iconcom-star {
-		    width: 22px !important;
-		    height: 20px !important;
-		    background-position: -152px -80px;
-		}
-		.ips .lStar .iconcom-unstar {
-		    width: 22px;
-		    height: 20px;
-		    background-position: -121px -80px;
-		}
-		.boxRatingCmt form .ips span.rsStar {
-		    display: inline-block;
-		    margin-left: 10px;
-		    position: relative;
-		    background: #52b858;
-		    color: #fff;
-		    padding: 2px 8px;
-		    box-sizing: border-box;
-		    font-size: 12px;
-		    border-radius: 2px;
-		}
-		.boxRatingCmt form .ips span.rsStar:after {
-		    right: 100%;
-		    top: 50%;
-		    border: solid transparent;
-		    content: " ";
-		    height: 0;
-		    width: 0;
-		    position: absolute;
-		    pointer-events: none;
-		    border-color: rgba(82,184,88,0);
-		    border-right-color: #52b858;
-		    border-width: 6px;
-		    margin-top: -6px;
-		}
-		.clr {
-		    clear: both;
-		}
-		.boxRatingCmt form .ct {
-		    box-sizing: border-box;
-		    width: 50%;
-		    float: left;
-		    border: 1px solid #ddd;
-		    border-radius: 4px;
-		    -webkit-border-radius: 4px;
-		    -moz-border-radius: 4px;
-		    margin-top: 5px;
-		}
-		.boxRatingCmt form .ct .extCt {
-			height: 43px;
-		    padding: 5px;
-		    box-sizing: border-box;
-		    background: #f7f7f7;
-		    border-top: 1px solid #ddd;
-		}
-		.boxRatingCmt form .ct .extCt .ckt {
-		    float: right;
-		    margin: 7px;
-		    font-size: 12px;
-		}
-		.boxRatingCmt form textarea {
-		    font-size: 14px;
-		    color: #333;
-		    padding: 5px;
-		    margin: 5px 0;
-		    width: 100%;
-		    height: 78px;
-		    min-height: 78px;
-		    resize: none;
-		    border: none;
-		    box-sizing: border-box;
-		}
-		.boxRatingCmt form .if {
-		    box-sizing: border-box;
-		    width: 49%;
-		    float: right;
-		}
-		.boxRatingCmt form input {
-		    border: 1px solid #ddd;
-		    -webkit-border-radius: 4px;
-		    -moz-border-radius: 4px;
-		    font-size: 14px;
-		    padding: 5px;
-		    margin: 5px 0;
-		    height: 28px;
-		    width: 43%;
-		    display: inline-block;
-		    float: left;
-		    margin-right: 10px;
-		    color: #333;
-		}
-		.boxRatingCmt form a {
-		    background: #288ad6;
-		    border: 1px solid #288ad6;
-		    -webkit-border-radius: 4px;
-		    -moz-border-radius: 4px;
-		    font-size: 14px;
-		    color: #fff;
-		    padding: 7.5px 0;
-		    margin: 5px 0;
-		    width: 43%;
-		    box-sizing: border-box;
-		    display: inline-block;
-		    text-align: center;
-		}
-		.boxRatingCmt .crt .bcrt a.close-btt {
-		    background: #fff;
-		    color: #288ad6;
-		    border: 1px solid #ddd;
-		}
-		.borderWn {
-		    border-color: #d0021b !important;
-		}
-		.boxRatingCmt .lbMsgRt {
-		    display: block;
-		    margin: 10px 0;
-		    color: #d0021b;
-		}
-	</style>
+	<link href="{{ asset('frontend/css/product.review.css') }}" rel="stylesheet" type="text/css" />
 @stop
 
 @section('content')
@@ -440,6 +140,7 @@
 								<div class="item-brand">
 									<div class="bizweb-product-reviews-badge" data-id="8891917"></div>
 								</div>
+
 								<div class="stock-brand">
 									<ul>
 										<li class="inventory_quantity" itemscope itemtype="http://schema.org/ItemAvailability">
@@ -452,6 +153,7 @@
 										</li>
 									</ul>
 								</div>
+
 								<div class="price-box" itemscope itemtype="http://schema.org/Offer">
 
 									<span class="special-price">
@@ -461,8 +163,8 @@
 									<span class="old-price">Giá thị trường: <del class="price product-price-old" itemprop="priceSpecification">22.000.000₫</del>
 										<meta itemprop="priceCurrency" content="VND"></span> <!-- Giás gốc -->
 									<span class="save-price">Tiết kiệm: <span class="price product-price-save">2.100.000₫</span> </span> <!-- Tiết kiệm -->
-
 								</div>
+
 								<div class="form-product">
 									<form enctype="multipart/form-data" id="add-to-cart-form" action="/cart/add" method="post" class="form-inline">
 
@@ -488,16 +190,13 @@
 										</div>
 									</form>
 									<div class="clearfix"></div>
-
 								</div>
-
 
 								<div class="product-summary product_description ahahah margin-bottom-15">
 									<div class="rte description">
 										<p>Smart Tivi Sony 4K 49 inch KD-49X7500E&nbsp;sở hữu kiểu dáng tinh tế, thời trang cùng với kích thước màn hình rộng 49 inch, kết hợp khung viền chắc chắn, sắc sảo và tông màu đen quý phái.</p>
 									</div>
 								</div>
-
 
 								<div class="product-sidebar-ant-fashion hidden-lg hidden-md">
 
