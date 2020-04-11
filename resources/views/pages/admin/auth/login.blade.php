@@ -15,7 +15,7 @@
 <div class="login-box">
     <div class="login-logo">
         <a href="{!! url('admin') !!}">
-            <h3>KingbepCMS</h3>
+            <h3>ThuymoctraCMS</h3>
         </a>
     </div><!-- /.login-logo -->
     <div class="login-box-body">

@@ -14,7 +14,8 @@ class PageController extends Controller
 
     public function about()
     {
-        $article = Article::where('is_about', 1)->first();
+        // $article = Article::where('is_about', 1)->first();
+        $article = Article::first();
         if ($article) {
             return view('pages.user.page.about', [
                 'article' => $article

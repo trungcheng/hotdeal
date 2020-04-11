@@ -72,7 +72,7 @@
         </ul>
     </li>
 
-    <li class="treeview">
+    <!-- <li class="treeview">
         <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý thành viên</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -82,7 +82,7 @@
             <li><a style="margin-left:35px;" data-route="/admin/access/members" href="<?php echo e(url('/admin/access/members')); ?>">Danh sách</a></li>
             <li><a style="margin-left:35px;" data-route="/admin/access/members/create" href="<?php echo e(url('/admin/access/members/create')); ?>">Thêm mới</a></li>
         </ul>
-    </li>
+    </li> -->
 
     <li class="treeview">
         <a href="javascript:void(0)"><i class="fa fa-star"></i> <span>Quản lý đánh giá</span>

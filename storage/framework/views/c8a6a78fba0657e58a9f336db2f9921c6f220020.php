@@ -5,12 +5,12 @@
     <a href="<?php echo e(route('dashboard')); ?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">
-        <span><b>KB</b></span>
+        <span><b>TT</b></span>
       </span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg" style="text-transform: uppercase;">
         <!-- <img style="float:left;" src="/backend/uploads/images/logo.png" />  -->
-        <span style="float:left;margin-top:3px;"><b>Kingbep</b>CMS</span></span>
+        <span style="float:left;margin-top:3px;"><b>Thuymoctra</b>CMS</span></span>
     </a>
 
     <!-- Header Navbar -->

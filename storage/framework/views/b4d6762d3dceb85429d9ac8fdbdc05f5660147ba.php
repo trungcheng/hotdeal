@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="<?php echo e(csrf_token()); ?>"/>
 
-  	<title><?php echo $__env->yieldContent('page'); ?> | King Bếp CMS</title>
+  	<title><?php echo $__env->yieldContent('page'); ?> | Thủy Mộc Trà CMS</title>
   	
   	<link rel="stylesheet" href="<?php echo e(asset('components/bootstrap/dist/css/bootstrap.min.css')); ?>" />
   	<!-- Font Awesome -->

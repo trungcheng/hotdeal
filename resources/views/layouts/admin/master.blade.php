@@ -9,7 +9,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-  	<title>@yield('page') | King Bếp CMS</title>
+  	<title>@yield('page') | Thủy Mộc Trà CMS</title>
   	
   	<link rel="stylesheet" href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" />
   	<!-- Font Awesome -->

@@ -77,6 +77,31 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label">Facebook fanpage link</label>
+                        <input type="text" name="facebook_url" value="{{ ($setting != '') ? $setting->facebook_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Twitter profile link</label>
+                        <input type="text" name="twitter_url" value="{{ ($setting != '') ? $setting->twitter_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Youtube channel link</label>
+                        <input type="text" name="youtube_url" value="{{ ($setting != '') ? $setting->youtube_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Google plus link</label>
+                        <input type="text" name="google_url" value="{{ ($setting != '') ? $setting->google_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Instagram profile link</label>
+                        <input type="text" name="instagram_url" value="{{ ($setting != '') ? $setting->instagram_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
                         <label>Facebook Pixel Code</label>
                         <textarea style="height: 100px;" name="fb_pixel_code" class="form-control" placeholder="Facebook Pixel Code...">{{ ($setting != '') ? $setting->fb_pixel_code : '' }}</textarea>
                     </div>

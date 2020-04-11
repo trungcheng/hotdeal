@@ -11,11 +11,17 @@ class Company extends Model
     protected $fillable = [
         'logo',
         'name',
+        'slogan',
         'address',
         'phone',
         'email',
         'time_work',
         'fb_pixel_code',
+        'facebook_url',
+        'twitter_url',
+        'youtube_url',
+        'google_url',
+        'instagram_url',
         'seo_title',
         'seo_desc',
         'seo_keyword'

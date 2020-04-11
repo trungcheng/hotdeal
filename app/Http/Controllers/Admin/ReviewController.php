@@ -66,6 +66,8 @@ class ReviewController extends Controller
             }
 
             $data = $request->all();
+            unset($data['_token']);
+
             if ($data) {
                 Review::addAction($data);
                 return Response::json([

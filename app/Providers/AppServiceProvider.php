@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Company;
+use App\Models\Article;
 use App\Util\Util;
 use App\Models\Setting;
 use Illuminate\Support\ServiceProvider;
@@ -22,21 +23,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        view()->composer('*', function($view) {
+        view()->composer(['pages.user.*', 'layouts.user.*'], function($view) {
             $view->with('countItemCart', Cart::count());
             $view->with('categories', Category::all());
             $view->with('setting', Company::first());
+            $view->with('sidebarArticles', Article::where('status', 1)->orderBy('created_at', 'desc')->limit(8)->get());
         });
-
-        // $categories = Category::where('status', 1)->orderBy('order', 'asc')->get();
-        // $this->categories = Util::buildTree($categories);
-        // $this->setting = Setting::find(1);
-
-        // view()->composer(['pages.user.*', 'layouts.user.*'], function($view) {
-        //     $view->with('countItemCart', Cart::count());
-        //     $view->with('categories', $this->categories);
-        //     $view->with('setting', $this->setting);
-        // });
     }
 
     /**

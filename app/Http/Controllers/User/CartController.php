@@ -164,14 +164,18 @@ class CartController extends Controller
                 }
             }
 
+            $emails = [
+                $data['customer_email'],
+                \Config::get('mail.from.address')
+            ];
+
             Mail::send('pages/user/mail/order_temp', [
                 'order' => $order,
                 'name' => $obj_info['customer_name'], 
                 'cartInfo' => $cartInfo,
                 'total' => Cart::subtotal(0, '.', '.')
-            ], function($message) use ($data, $order) {
-                $message->to($data['customer_email'])
-                        ->cc(\Auth::user()->email)
+            ], function($message) use ($emails, $order) {
+                $message->to($emails)
                         ->subject('Xác nhận đơn hàng #'.$order->id);
             });
 

@@ -126,5 +126,21 @@ function submitRatingComment() {
         }
 	}
 
-	alert('Đánh giá của bạn đã được gửi đi và chờ phê duyệt!');
+	var formData = new FormData($('#fRatingComment')[0]); 
+	$.ajax({
+		type: "POST",
+		url: "/rating/post",
+		data: formData,
+		processData: false,
+		contentType: false,
+		error: function (jqXHR, textStatus, errorMessage) {
+			console.log(errorMessage);
+		},
+		success: function (data) {
+			if (data.status) {
+				alert('Đánh giá của bạn đã được gửi đi và chờ phê duyệt!');
+				$('#fRatingComment')[0].reset();
+			}
+		} 
+	});
 }

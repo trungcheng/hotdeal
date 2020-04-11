@@ -28,8 +28,7 @@
 
         });
 
-        // \Route::get('/product-detail', 'User\ProductController@detail')->name('product-detail');
-        \Route::get('/cua-hang', 'User\ProductController@store')->name('store');
+        \Route::get('/san-pham', 'User\ProductController@store')->name('store');
         \Route::get('/tim-kiem', 'User\ProductController@search')->name('search');
 
         \Route::get('/gio-hang', 'User\CartController@index')->name('cart');
@@ -48,12 +47,9 @@
         \Route::get('/gioi-thieu', 'User\PageController@about')->name('about');
         \Route::get('/lien-he', 'User\PageController@contact')->name('contact');
 
-        // \Route::get('/product/getAllSaleProd', 'User\ProductController@getAllSaleProd');
-        // \Route::get('/product/getAllChauDaProd', 'User\ProductController@getAllChauDaProd');
-        // \Route::get('/product/getAllChauInoxProd', 'User\ProductController@getAllChauInoxProd');
-        // \Route::get('/product/getAllVoiRuaBatProd', 'User\ProductController@getAllVoiRuaBatProd');
-
         \Route::get('/{slug}', 'User\ProductController@detail')->name('product-detail');
+
+        \Route::post('/rating/post', 'Admin\ReviewController@add')->name('postRating');
 
     });
 

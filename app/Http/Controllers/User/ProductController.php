@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Review;
 use App\Models\Article;
 
 class ProductController extends Controller
@@ -19,29 +20,51 @@ class ProductController extends Controller
     {
         if ($slug == 'admin') return redirect('/admin/access/login');
 
-        return view('pages.user.product.detail', []); 
+        $data = $request->all();
 
         $category = Category::where('slug', $slug)->first();
         if (!$category) {
             $product = Product::where('slug', $slug)->first();
             if ($product) {
                 $image_list = json_decode($product->image_list);
-                $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(12)->get()->except($product->id);
-                $featureArticles = Article::where('status', 1)->where('is_feature', 1)->limit(5)->get();
+                // $relatedProducts = Product::where('cat_id', $product->cat_id)
+                //     ->where('status', 1)
+                //     ->limit(12)
+                //     ->get()
+                //     ->except($product->id);
+                
+                $reviews = Review::where('pro_id', $product->id)
+                    ->where('status', 1)
+                    ->get();
+                $averageReview = Review::where('pro_id', $product->id)
+                    ->where('status', 1)
+                    ->sum('star') / count($reviews);
 
                 return view('pages.user.product.detail', [
                     'product' => $product,
                     'image_list' => $image_list,
-                    'relatedProducts' => $relatedProducts,
-                    'featureArticles' => $featureArticles
+                    'reviews' => $reviews,
+                    'averageReview' => round($averageReview, 1)
+                    // 'relatedProducts' => $relatedProducts
                 ]);
             }
         } else {
-            $products = Product::where('cat_id', $category->id)->get();
+            $products = Product::where('cat_id', $category->id)
+                ->where('status', 1);
 
-            return view('pages.user.product.detail-cate', [
-                'results' => $products,
-                'cate' => $category
+            if ($request->has('order')) {
+                $filters = explode('-', $data['order']);
+                $products->orderBy($filters[0], $filters[1]);
+            } else {
+                $products->orderBy('created_at', 'desc');
+            }
+    
+            $results = $products->paginate(isset($request->num) ? $request->num : 12);
+
+            return view('pages.user.product.store', [
+                'results' => $results,
+                'cate' => $category->name,
+                'type' => 'product'
             ]);
         }
 
@@ -50,43 +73,23 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $conditions = [];
         $data = $request->all();
 
-        $products = Product::where('id', '>', 0);
-        $brands = Category::all();
+        $products = Product::where('id', '>', 0)->where('status', 1);
 
-        if ($request->has('br')) {
-            $products->whereIn('cat_id', $data['br']);
-            foreach ($brands as $brand) {
-                if (in_array($brand->id, $data['br'])) {
-                    $conditions[] = $brand->name;
-                }
-            }
-        }
-        if ($request->has('pr')) {
-            $arr = [];
-            $final = [];
-            foreach ($data['pr'] as $pr) {
-                $prs = explode('-', $pr);
-                $final = array_merge($arr, $prs);
-                $conditions[] = $pr;
-            }
-            $products->whereBetween('price_sale', [min($final), max($final)]);
-        }
         if ($request->has('order')) {
-            $filter = $data['order'];
             $filters = explode('-', $data['order']);
             $products->orderBy($filters[0], $filters[1]);
         } else {
             $products->orderBy('created_at', 'desc');
         }
 
-        $results = $products->paginate($request->num);
+        $results = $products->paginate(isset($request->num) ? $request->num : 12);
 
         return view('pages.user.product.store', [
-            'conditions' => $conditions,
-            'results' => $results
+            'results' => $results,
+            'cate' => 'all',
+            'type' => 'product'
         ]);
 
     }

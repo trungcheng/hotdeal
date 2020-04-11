@@ -3,7 +3,7 @@
 <head>
   	<meta charset="UTF-8">
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  	<title>Đăng nhập | King Bếp CMS</title>
+  	<title>Đăng nhập | Thủy Mộc Trà CMS</title>
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}">
   	<link rel="shortcut icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon">
