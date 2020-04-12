@@ -90,7 +90,7 @@
                                 {!! $article->fulltext !!}
                                 @if ($article->category->slug == 'khuyen-mai')
                                 <div class="register">
-                                    <a href="#" target="_blank" class="btn-round">Đăng ký nhận khuyến mãi tại đây</a>
+                                    <a href="https://forms.gle/KvyMoyYmBFiFTLju6" target="_blank" class="btn-round">Đăng ký nhận khuyến mãi tại đây</a>
                                 </div>
                                 @endif
                                 <div class="fb-like" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="850" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
