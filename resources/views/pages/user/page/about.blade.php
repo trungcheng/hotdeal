@@ -90,7 +90,7 @@
                         @endif
                         <div class="register">
                             @if ($route == 'health-advice')
-                                <a href="https://forms.gle/Sumjk5BotvM2dNS16" target="_blank" class="btn-round">Đăng ký nhận tư vấn tại đây</a>
+                                <a href="https://forms.gle/kDgts2mo4xdX6JgE6" target="_blank" class="btn-round">Đăng ký nhận tư vấn tại đây</a>
                             @elseif ($route == 'policy')
                                 <a href="https://forms.gle/QtfB1zJGuM6U1vX2A" target="_blank" class="btn-round">Đăng ký nhận chính sách giá tại đây</a>
                             @endif
