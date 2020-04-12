@@ -107,7 +107,7 @@
                                 @endforeach
                             </div>
                             @else
-                            <p style="padding-left:15px;">Không có sản phẩm nào !</p>
+                            <p>Chưa có sản phẩm nào !</p>
                             @endif
                             <!-- pagination -->
                             {{ $results->appends(request()->query())->links() }}

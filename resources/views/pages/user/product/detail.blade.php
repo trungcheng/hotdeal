@@ -47,8 +47,8 @@
 				<div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
 					<ul class="breadcum">
 						<li><a href="/">Trang chủ</a><span>»</span></li>
-						<li><a href="{{ route('product-detail', ['slug' => $product->category->slug]) }}">{{ $product->category->name }}</a><span>»</span></li>
-						<li><a class="active">{{ $product->name }}</a></li>
+						<li class="hidden-sm hidden-xs"><a href="{{ route('product-detail', ['slug' => $product->category->slug]) }}">{{ $product->category->name }}</a><span>»</span></li>
+						<li><a id="breadcum-title" class="active">{{ $product->name }}</a></li>
 					</ul>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 				<div class="product">
 					<div class="row">
 						<!-- Slider Thumb -->
-						<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+						<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 image-slide">
 							<article class="slider-item on-nav">
 								<div id="slider" class="flexslider">
 									<ul class="slides">
@@ -145,7 +145,6 @@
 					</div>
 				</div>
 
-				@if (count($reviews) > 0)
 				<div class="box-news-sub">
 					<div class="cate-header sub-top">
 						<div class="txt-name-sub" style="border-bottom:1px solid #e5e5e5">
@@ -170,7 +169,7 @@
 											for ($i = 5; $i >= 1; $i--) {
 												$numReview = \App\Models\Review::where('pro_id', $product->id)
 													->where('status', 1)->where('star', $i)->count();
-												$w = $numReview / count($reviews) * 100 . '%';
+												$w = (count($reviews) > 0) ? $numReview / count($reviews) * 100 . '%' : '0%';
 												?>
 												<div class="r">
 													<span class="t">{{ $i }} <i></i></span>
@@ -224,8 +223,9 @@
 									</div>
 								</form>
 							</div>
-
+							
 							<div class="list">
+								@if (count($reviews) > 0)
 								<ul class="ratingLst">
 									<?php \Carbon\Carbon::setLocale('vi'); ?>
 									@foreach ($reviews as $review)
@@ -240,12 +240,12 @@
 													<?php
 														for ($k = 1; $k <= $review->star; $k++) {
 															?>
-															<i class="iconcom-txtstar"></i>
+																<i class="iconcom-txtstar"></i>
 															<?php
 														}
 														for ($h = 1; $h <= 5 - $review->star; $h++) {
 															?>
-															<i class="iconcom-txtunstar"></i>
+																<i class="iconcom-txtunstar"></i>
 															<?php
 														}
 													?>
@@ -256,12 +256,13 @@
 									</li>
 									@endforeach
 								</ul>
+								@else
+									<p>Chưa có đánh giá nào!</p>
+								@endif
 							</div>
-
 						</div>
 					</div>
 				</div>
-				@endif
 
 				<div class="box-news-sub">
 					<div class="cate-header sub-top">
@@ -285,4 +286,30 @@
 @section('pageJs')
 	<script type="text/javascript" src="{{ asset('frontend/js/own-menu.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/product.review.js') }}"></script>
+	<script type="text/javascript">
+		$(window).load(function () {
+			setTimeout(function () {
+				$('#carousel').flexslider({
+					animation: "slide",
+					controlNav: false,
+					animationLoop: false,
+					slideshow: false,
+					itemWidth: 90,
+					itemMargin: 5,
+					asNavFor: '#slider'
+				});
+
+				$('#slider').flexslider({
+					animation: "slide",
+					controlNav: false,
+					animationLoop: false,
+					slideshow: false,
+					sync: "#carousel"
+				});
+			}, 500);
+		});
+		
+		var trim = trimText($("#breadcum-title").text(), 7);
+        $("#breadcum-title").text(trim);
+	</script>
 @stop

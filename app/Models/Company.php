@@ -16,6 +16,7 @@ class Company extends Model
         'phone',
         'email',
         'time_work',
+        'google_map_url',
         'fb_pixel_code',
         'facebook_url',
         'twitter_url',

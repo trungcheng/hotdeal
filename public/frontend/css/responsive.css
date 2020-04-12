@@ -1398,6 +1398,9 @@
     .menu-top-cart .itm-cont {
         top: 8px;
     }
+    .product-detail .image-slide {
+        margin-bottom: 10px !important;
+    }
 }
 
 @media (max-width: 850px) {

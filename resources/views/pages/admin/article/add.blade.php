@@ -39,19 +39,22 @@
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
+                                    <label>Thuộc danh mục</label>
+                                    <select class="form-control cate" name="cat_id">
+                                        <option value="0">Tất cả danh mục</option>
+                                        <option ng-if="parentCates.length > 0" class="cateLevel" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                            @{{ item.name }}
+                                        </option>
+                                        <!-- <option value="0" ng-if="parentCates.length == 0">Không có danh mục nào</option> -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Mô tả ngắn</label>
                                     <textarea class="form-control" id="short_content"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Nội dung</label>
                                     <textarea class="form-control" id="full_content"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Trang giới thiệu</label>
-                                    <select name="is_about" class="form-control">
-                                        <option value="0">Không</option>
-                                        <option value="1">Có</option>
-                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>

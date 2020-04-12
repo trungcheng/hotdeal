@@ -45,6 +45,9 @@
         \Route::get('/checkout/success', 'User\CartController@checkoutSuccess')->name('checkout-success');
 
         \Route::get('/gioi-thieu', 'User\PageController@about')->name('about');
+        \Route::get('/chung-nhan-chat-luong', 'User\PageController@certificate')->name('certificate');
+        \Route::get('/tu-van-suc-khoe', 'User\PageController@healthAdvice')->name('health-advice');
+        \Route::get('/chinh-sach-gia', 'User\PageController@policy')->name('policy');
         \Route::get('/lien-he', 'User\PageController@contact')->name('contact');
 
         \Route::get('/{slug}', 'User\ProductController@detail')->name('product-detail');

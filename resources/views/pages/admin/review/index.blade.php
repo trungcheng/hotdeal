@@ -60,7 +60,6 @@
                                                     <th>STT</th>
                                                     <th>Sản phẩm</th>
                                                     <th>Họ tên</th>
-                                                    <th>Email</th>
                                                     <th>Điện thoại</th>
                                                     <th>Nội dung</th>
                                                     <th>Sao đánh giá</th>
@@ -74,7 +73,6 @@
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ review.product.name }}</td>
                                                     <td style="text-align:center !important">@{{ review.name }}</td>
-                                                    <td style="text-align:center !important">@{{ review.email }}</td>
                                                     <td style="text-align:center !important">@{{ review.phone }}</td>
                                                     <td style="text-align:center !important">@{{ review.content }}</td>
                                                     <td style="text-align:center !important">@{{ review.star }}</td>
@@ -121,4 +119,17 @@
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/review.controller.js') !!}
+
+    <script type="text/javascript">
+        function trimText(str ,wordCount) {
+            var strArray = str.split(' ');
+            var subArray = strArray.slice(0, wordCount);
+            var result = subArray.join(" ");
+            if (strArray.length < wordCount) {
+                return result;
+            } else {
+                return result + '...';
+            }
+        }
+    </script>
 @stop

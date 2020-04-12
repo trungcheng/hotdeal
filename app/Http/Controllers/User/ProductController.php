@@ -33,12 +33,17 @@ class ProductController extends Controller
                 //     ->get()
                 //     ->except($product->id);
                 
+                $averageReview = 0.0;
                 $reviews = Review::where('pro_id', $product->id)
                     ->where('status', 1)
                     ->get();
-                $averageReview = Review::where('pro_id', $product->id)
+                $sumStar = Review::where('pro_id', $product->id)
                     ->where('status', 1)
-                    ->sum('star') / count($reviews);
+                    ->sum('star');
+                
+                if (count($reviews) > 0) {
+                    $averageReview = $sumStar / count($reviews);
+                }
 
                 return view('pages.user.product.detail', [
                     'product' => $product,

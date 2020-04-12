@@ -40,9 +40,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/layout.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/component.css') }}" />
-
     @section('pageCss')
     @show
+    {!! ($setting != '') ? $setting->fb_pixel_code : '' !!}
 </head>
 
 <body>

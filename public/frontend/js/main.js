@@ -57,28 +57,6 @@ $(document).ready(function () {
     });
 });
 
-$(window).load(function () {
-    setTimeout(function () {
-        $('#carousel').flexslider({
-            animation: "slide",
-            controlNav: false,
-            animationLoop: false,
-            slideshow: false,
-            itemWidth: 90,
-            itemMargin: 5,
-            asNavFor: '#slider'
-        });
-
-        $('#slider').flexslider({
-            animation: "slide",
-            controlNav: false,
-            animationLoop: false,
-            slideshow: false,
-            sync: "#carousel"
-        });
-    }, 500);
-});
-
 function ShowAdDiv() {
     var objAdDivRight = document.getElementById("divAdvRight");
     var objAdDivLeft = document.getElementById("divAdvLeft");

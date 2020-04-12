@@ -43,7 +43,7 @@
                                         <option ng-if="parentCates.length > 0" class="cateLevel" value="@{{ item.id }}" ng-repeat="item in parentCates">
                                             @{{ item.name }}
                                         </option>
-                                        <option value="" ng-if="parentCates.length == 0">Không có danh mục nào</option>
+                                        <option value="0" ng-if="parentCates.length == 0">Không có danh mục nào</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

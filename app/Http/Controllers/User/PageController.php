@@ -14,11 +14,54 @@ class PageController extends Controller
 
     public function about()
     {
-        // $article = Article::where('is_about', 1)->first();
-        $article = Article::first();
+        $article = \DB::table('pages')->first();
         if ($article) {
             return view('pages.user.page.about', [
-                'article' => $article
+                'article' => $article,
+                'route' => 'about',
+                'title' => 'Giới thiệu'
+            ]);
+        }
+
+        abort(404);
+    }
+
+    public function certificate()
+    {
+        $article = \DB::table('pages')->first();
+        if ($article) {
+            return view('pages.user.page.about', [
+                'article' => $article,
+                'route' => 'certificate',
+                'title' => 'Chứng nhận chất lượng'
+            ]);
+        }
+
+        abort(404);
+    }
+
+    public function policy()
+    {
+        $article = \DB::table('pages')->first();
+        if ($article) {
+            return view('pages.user.page.about', [
+                'article' => $article,
+                'route' => 'policy',
+                'title' => 'Chính sách giá'
+            ]);
+        }
+
+        abort(404);
+    }
+
+    public function healthAdvice()
+    {
+        $article = \DB::table('pages')->first();
+        if ($article) {
+            return view('pages.user.page.about', [
+                'article' => $article,
+                'route' => 'health-advice',
+                'title' => 'Tư vấn sức khỏe'
             ]);
         }
 
@@ -27,9 +70,7 @@ class PageController extends Controller
 
     public function contact()
     {
-        return view('pages.user.page.contact', [
-            
-        ]);
+        return view('pages.user.page.contact', []);
     }
 
 }

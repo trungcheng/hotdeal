@@ -60,6 +60,7 @@
                                                     <th>STT</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
                                                     <th style="text-align:center !important;width:20%">Slug</th>
+                                                    <th style="text-align:center !important;width:20%">Loại</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -69,10 +70,11 @@
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
                                                     <td style="text-align:center !important">@{{ cate.slug }}</td>
+                                                    <td style="text-align:center !important">@{{ (cate.type == 'product') ? 'Sản phẩm' : 'Bài viết' }}</td>
                                                     <td>@{{ cate.created_at }}</td>
                                                     <td>
-                                                        <a href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                                        <a ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
+                                                        <a ng-if="cate.type == 'product'" href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
+                                                        <a ng-if="cate.type == 'product'" ng-click="delete(cate, $index)" style="margin-left:5px;" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>

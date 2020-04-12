@@ -97,7 +97,14 @@
                 $this->post('reviews/update', 'Admin\ReviewController@update');
                 $this->post('reviews/delete', 'Admin\ReviewController@delete');
 
-                //setting
+                // about page
+                $this->get('page/about', 'Admin\PageController@about');
+                $this->get('page/policy', 'Admin\PageController@policy');
+                $this->get('page/certificate', 'Admin\PageController@certificate');
+                $this->get('page/health-advice', 'Admin\PageController@healthAdvice');
+                $this->post('page/update', 'Admin\PageController@update');
+
+                // setting
                 $this->get('setting', 'Admin\SettingController@index');
                 $this->post('setting/update', 'Admin\SettingController@update');
 

@@ -33,8 +33,11 @@
                                     <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
-                                    <label>SEO Content</label>
-                                    <textarea class="form-control" id="seo_content"></textarea>
+                                    <label>Loại danh mục</label>
+                                    <select name="type" class="form-control">
+                                        <option value="product">Sản phẩm</option>
+                                        <option value="article">Bài viết</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>SEO Title</label>
@@ -47,6 +50,10 @@
                                 <div class="form-group">
                                     <label>SEO Keyword</label>
                                     <input name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Content</label>
+                                    <textarea class="form-control" id="seo_content"></textarea>
                                 </div>
                                 <!-- <div class="form-group">
                                     <label>Ảnh</label>
@@ -101,7 +108,7 @@
     }
 </script>
 <script type="text/javascript">
-    CKEDITOR.replace('seo_content', {height: 300}); 
+    CKEDITOR.replace('seo_content', {height: 200}); 
 </script>
 @stop
 

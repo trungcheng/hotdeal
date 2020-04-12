@@ -1,18 +1,18 @@
 @extends('layouts.user.master')
 
-@section('page')Giới thiệu
+@section('page'){{ $title }}
 @stop
 
-@section('description')Giới thiệu
+@section('description'){{ $title }}
 @stop
 
-@section('keywords')Giới thiệu
+@section('keywords'){{ $title }}
 @stop
 
-@section('canonical'){{ route('about') }}/
+@section('canonical'){{ route($route) }}/
 @stop
 
-@section('alternate'){{ route('about') }}/
+@section('alternate'){{ route($route) }}/
 @stop
 
 @section('propName')
@@ -27,14 +27,30 @@
 @section('ogDesc')
 @stop
 
-@section('ogUrl'){{ route('about') }}/
+@section('ogUrl'){{ route($route) }}/
 @stop
 
 @section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
 @stop
 
 @section('pageCss')
-
+    <style>
+        .register {
+            margin-top: 20px;
+        }
+        .register .btn-round {
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: #0088cc;
+            color: #fff;
+        }
+        .register .btn-round:hover {
+            text-decoration: none;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -46,7 +62,7 @@
                 <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="breadcum">
                         <li><a href="/">Trang chủ</a><span>»</span></li>
-                        <li><a class="active">Giới thiệu</a></li>
+                        <li><a class="active">{{ $title }}</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,13 +75,25 @@
                 <div class="box-news-sub">
                     <div class="cate-header sub-top">
                         <div class="txt-name-sub">
-                            <h2>Giới thiệu</h2>
+                            <h2>{{ $title }}</h2>
                         </div>
                     </div>
                     <div class="box-body homepage clearfix">
-                        <p>Đang cập nhật...</p>
-                        <div class="shares">
-                            <div class="fb-comments" data-href="http://thuymoctra.com.vn/chi-tiet-bai-viet/270/gioi-thieu-cong-ty-tnhh-phat-trien-thuy-moc-tra.html" data-colorscheme="" data-width="770" data-numposts="5"></div>
+                        @if ($route == 'about')
+                            {!! $article->introduce !!}
+                        @elseif ($route == 'certificate')
+                            {!! $article->certificate !!}
+                        @elseif ($route == 'health-advice')
+                            {!! $article->health_advice !!}
+                        @elseif ($route == 'policy')
+                            {!! $article->policy !!}
+                        @endif
+                        <div class="register">
+                            @if ($route == 'health-advice')
+                                <a href="https://forms.gle/Sumjk5BotvM2dNS16" target="_blank" class="btn-round">Đăng ký nhận tư vấn tại đây</a>
+                            @elseif ($route == 'policy')
+                                <a href="#" target="_blank" class="btn-round">Đăng ký nhận chính sách giá tại đây</a>
+                            @endif
                         </div>
                     </div>
                 </div>

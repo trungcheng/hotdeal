@@ -5,10 +5,10 @@
             <li><a class="icon" href="/" target="_self">Trang chủ</a></li>
             <li><a class="icon" href="{{ route('store') }}">Sản phẩm</a></li>
             <li><a class="icon" href="{{ route('article') }}">Tin tức</a></li>
-            <li><a class="icon" href="#">Chứng nhận chất lượng</a></li>
-            <li><a class="icon" href="#">Tư vấn sức khỏe</a></li>
-            <li><a class="icon" href="#">Khuyến mãi</a></li>
-            <li><a class="icon" href="#">Chính sách giá</a></li>
+            <li><a class="icon" href="{{ route('certificate') }}">Chứng nhận chất lượng</a></li>
+            <li><a class="icon" href="{{ route('health-advice') }}">Tư vấn sức khỏe</a></li>
+            <li><a class="icon" href="{{ route('article-detail', ['slug' => 'khuyen-mai']) }}">Khuyến mãi</a></li>
+            <li><a class="icon" href="{{ route('policy') }}">Chính sách giá</a></li>
             <li><a class="icon" href="{{ route('contact') }}">Liên hệ</a></li>
         </ul>
     </div>
@@ -68,10 +68,10 @@
                         <li class="active"><a href="/" data-route="/" target="_self"><span class="span-menu"></span>Trang chủ</a></li>
                         <li><a href="{{ route('store') }}" data-route="/san-pham"><span class="span-menu"></span>Sản phẩm</a></li>
                         <li><a href="{{ route('article') }}" data-route="/tin-tuc"><span class="span-menu"></span>Tin tức</a></li>
-                        <li><a href="#"><span class="span-menu"></span>Chứng nhận chất lượng</a></li>
-                        <li><a href="#"><span class="span-menu"></span>Tư vấn sức khỏe</a></li>
-                        <li><a href="#"><span class="span-menu"></span>Khuyến mãi</a></li>
-                        <li><a href="#"><span class="span-menu"></span>Chính sách giá</a></li>
+                        <li><a href="{{ route('certificate') }}" data-route="/chung-nhan-chat-luong"><span class="span-menu"></span>Chứng nhận chất lượng</a></li>
+                        <li><a href="{{ route('health-advice') }}" data-route="/tu-van-suc-khoe"><span class="span-menu"></span>Tư vấn sức khỏe</a></li>
+                        <li><a href="{{ route('article-detail', ['slug' => 'khuyen-mai']) }}" data-route="/tin-tuc/khuyen-mai"><span class="span-menu"></span>Khuyến mãi</a></li>
+                        <li><a href="{{ route('policy') }}" data-route="/chinh-sach-gia"><span class="span-menu"></span>Chính sách giá</a></li>
                         <li><a href="{{ route('contact') }}" data-route="/lien-he"><span class="span-menu"></span>Liên hệ</a></li>
                     </ul>
                 </div>

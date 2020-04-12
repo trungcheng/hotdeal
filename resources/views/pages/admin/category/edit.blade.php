@@ -34,8 +34,11 @@
                                     <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
-                                    <label>SEO Content</label>
-                                    <textarea class="form-control" id="seo_content">{!! $category->seo_content !!}</textarea>
+                                    <label>Loại danh mục</label>
+                                    <select name="type" class="form-control">
+                                        <option {{ ($category->type == 'product') ? 'selected' : '' }} value="product">Sản phẩm</option>
+                                        <option {{ ($category->type == 'article') ? 'selected' : '' }} value="article">Bài viết</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>SEO Title</label>
@@ -48,6 +51,10 @@
                                 <div class="form-group">
                                     <label>SEO Keyword</label>
                                     <input value="{{ $category->seo_keyword }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Content</label>
+                                    <textarea class="form-control" id="seo_content">{!! $category->seo_content !!}</textarea>
                                 </div>
                                 <!-- <div class="form-group">
                                     <label>Ảnh</label>

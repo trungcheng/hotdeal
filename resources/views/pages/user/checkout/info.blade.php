@@ -34,9 +34,113 @@
 @stop
 
 @section('pageCss')
-<style>
-    
-</style>
+    <style>
+        .pay-method {
+            border: 1px solid #e8e8e8;
+            padding: 30px;
+        }
+
+        .pay-method .heading {
+            margin-bottom: 40px;
+        }
+
+        .pay-method .heading h2 {
+            color: #222222;
+            font-size: 18px;
+            margin: 0px;
+            margin-bottom: 20px;
+        }
+
+        .pay-method .heading hr {
+            border: none;
+            position: relative;
+            margin: 0px;
+            height: 1px;
+            width: 100%;
+            background: #e5e5e5;
+        }
+
+        .pay-method label {
+            font-weight: normal;
+            width: 100%;
+            color: #555555;
+            font-size: 14px;
+        }
+
+        .pay-method input, .pay-method textarea {
+            border: 1px solid #e2e2e2;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .transportation .charges {
+            border: 2px solid #e2e2e2;
+            padding: 15px 20px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .transportation .charges.select, .transportation .charges:hover {
+            border: 2px solid #0088cc;
+        }
+
+        .transportation .charges h6 {
+            margin: 0px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            display: inline-block;
+            font-size: 16px;
+            color: #555555;
+        }
+
+        .transportation .charges span {
+            color: #888888;
+        }
+
+        .transportation span.deli-charges {
+            color: #f00;
+            font-size: 14px;
+            font-weight: 600;
+            border-left: 1px solid #e5e5e5;
+            padding-left: 10px;
+            margin-left: 10px;
+        }
+
+        .pro-btn {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .pro-btn .btn-light {
+            background: #bbbbbb;
+        }
+
+        .pro-btn a {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .pro-btn a:hover {
+            text-decoration: none;
+        }
+
+        .btn-round {
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: #0088cc;
+            color: #fff;
+        }
+
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+            padding: 15px;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -120,7 +224,7 @@
                                                 </label>
                                             </div>
 
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-12" style="margin-bottom:30px;">
                                                 <label> Ghi chú thêm
                                                     <textarea name="note" class="form-control" placeholder="Ghi chú về đơn hàng..."></textarea>
                                                 </label>
@@ -137,7 +241,7 @@
                                         </div>
                                         <div class="transportation">
                                             <div class="row">
-                                                <p style="font-size:15px;padding-left:15px;">Phương thức vận chuyển</p>
+                                                <p style="font-size:15px;padding-left:15px;margin-bottom:5px;">Phương thức vận chuyển</p>
                                                 <!-- Free Delivery -->
                                                 <select id="delivery" class="hide" name="delivery_method">
                                                     <option value="Vận chuyển miễn phí">Vận chuyển miễn phí</option>
@@ -160,7 +264,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <p style="font-size:15px;padding-left:15px;">Hình thức thanh toán</p>
+                                                <p style="font-size:15px;padding-left:15px;margin-bottom:5px;">Hình thức thanh toán</p>
                                                 <select id="payment" class="hide" name="payment_method">
                                                     <option selected value="Thanh toán tiền mặt khi nhận hàng">Thanh toán tiền mặt khi nhận hàng</option>
                                                 </select>
@@ -192,5 +296,11 @@
 @stop
 
 @section('pageJs')
-
+    <script type="text/javascript">
+        $('.deli-method').on('click', function () {
+            $('.deli-method').removeClass('select');
+            $(this).addClass('select');
+            $('#delivery').val($(this).find('h6').text());
+        });
+  </script>
 @stop

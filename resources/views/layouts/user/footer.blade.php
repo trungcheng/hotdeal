@@ -13,14 +13,13 @@
                 <div class="tieude">DANH MỤC</div>
                 <div class="text-ft">
                     <ul>
-                        <li><a href="#">Trang chủ</a></li>
-                        <li><a href="#">Giới thiệu</a></li>
-                        <li><a href="#">Sản phẩm</a></li>
-                        <li><a href="#">Chứng nhận chất lượng</a></li>
-                        <li><a href="#">Tư vấn sức khỏe</a></li>
-                        <li><a href="#">Khuyến mãi</a></li>
-                        <li><a href="#">Chính sách giá</a></li>
-                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="/">Trang chủ</a></li>
+                        <li><a href="{{ route('store') }}">Sản phẩm</a></li>
+                        <li><a href="{{ route('certificate') }}">Chứng nhận chất lượng</a></li>
+                        <li><a href="{{ route('health-advice') }}">Tư vấn sức khỏe</a></li>
+                        <li><a href="{{ route('article-detail', ['slug' => 'khuyen-mai']) }}">Khuyến mãi</a></li>
+                        <li><a href="{{ route('policy') }}">Chính sách giá</a></li>
+                        <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                     </ul>
                 </div>
             </div>

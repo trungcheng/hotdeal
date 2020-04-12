@@ -1,33 +1,33 @@
 @extends('layouts.user.master')
 
-@section('page')Liên hệ
+@section('page')Liên hệ với Thủy Mộc Trà
 @stop
 
-@section('description')
+@section('description')Liên hệ với Thủy Mộc Trà
 @stop
 
-@section('keywords')Liên hệ, Ant Kitchen, ant-kitchen.mysapo.net
+@section('keywords')Liên hệ, Thủy Mộc Trà
 @stop
 
-@section('canonical'){{ route('contact') }}/
+@section('canonical'){{ route('contact') }}
 @stop
 
-@section('alternate'){{ route('contact') }}/
+@section('alternate'){{ route('contact') }}
 @stop
 
-@section('propName')
+@section('propName')Liên hệ với Thủy Mộc Trà
 @stop
 
-@section('propDesc')
+@section('propDesc')Liên hệ với Thủy Mộc Trà
 @stop
 
-@section('ogTitle')
+@section('ogTitle')Liên hệ với Thủy Mộc Trà
 @stop
 
-@section('ogDesc')
+@section('ogDesc')Liên hệ với Thủy Mộc Trà
 @stop
 
-@section('ogUrl'){{ route('contact') }}/
+@section('ogUrl'){{ route('contact') }}
 @stop
 
 @section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
@@ -35,122 +35,198 @@
 
 @section('pageCss')
     <style>
-        footer.footer-other {
-            margin-top: 0;
+        .heading {
+            margin-bottom: 40px;
         }
-
-        .search-more {
-            margin-top: 0;
+        .heading h2 {
+            color: #222222;
+            font-size: 20px;
+            margin: 0px;
+            margin-bottom: 20px;
+        }
+        #contact_form li label {
+            color: #555555;
+        }
+        .contact-form label {
+            color: #fff;
+            font-size: 14px;
+            width: 100%;
+            margin: 0px;
+            line-height: 26px;
+            position: relative;
+            background: none;
+            font-weight: normal;
+            text-align: left;
+        }
+        #contact_form li {
+            margin-bottom: 20px;
+            list-style: none;
+        }
+        #contact_form li .form-control {
+            border: 1px solid #e4e4e4 !important;
+            border-radius: 4px;
+            color: #000;
+            background: none;
+            box-shadow: none;
+            transition: all 0.4s ease-in-out;
+        }
+        #contact_form li textarea {
+            height: 160px !important;
+            text-transform: none;
+            background: #f5f5f5;
+            padding: 15px 20px !important;
+            color: #fff;
+            font-size: 12px;
+        }
+        #contact_form li input {
+            display: inline-block;
+            width: 100%;
+            line-height: 40px;
+            height: 40px;
+            padding: 0px 20px;
+        }
+        .contact-form button {
+            transition: all 0.4s ease-in-out;
+        }
+        .contact-form button {
+            border: none;
+            float: left;
+        }
+        .btn-round {
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: #0088cc;
+            color: #fff;
+        }
+        .contact-info {
+            padding: 40px 30px;
+            border: 2px solid #eeeeee;
+        }
+        .contact-info h5 {
+            font-weight: 600;
+            margin: 0px;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        .contact-info p {
+            margin: 0px;
+            color: #323131;
+            font-size: 14px;
+        }
+        .contact-info h6 {
+            font-weight: 600;
+            margin: 0px;
+            margin-bottom: 5px;
+            font-size: 16px;
+            margin-top: 20px;
         }
     </style>
 @stop
 
 @section('content')
-    <section class="bread-crumb">
-        <div class="container">
+<div class="full-width" style="margin-bottom:50px">
+
+    <div class="box-breadcumb">
+        <div class="container-site">
             <div class="row">
-                <div class="col-xs-12">
-                    <ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-                        <li class="home">
-                            <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
-                            <span><i class="fa fa-angle-right"></i></span>
-                        </li>
-
-                        <li><strong itemprop="title">Liên hệ</strong></li>
-
+                <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
+                    <ul class="breadcum">
+                        <li><a href="/">Trang chủ</a><span>»</span></li>
+                        <li><a class="active">Liên hệ</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <div class="container contact">
+    <div class="container-site">
         <div class="row">
-            <div class="col-md-3 col-md-push-9">
-                <div class="widget-item info-contact in-fo-page-content">
-                    <div class="logos text-xs-left">
-
-                        <a href="/" class="logo-wrapper ">
-                            <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/logo-contact.png?1576740881097" alt="logo Ant Kitchen" class="img-responsive" />
-                        </a>
-
-                    </div>
-                    <p></p>
-                    <!-- End .widget-title -->
-                    <ul class="widget-menu contact-info-page">
-
-                        <li><i class="fa fa-map-marker color-x" aria-hidden="true"></i> 175 Lý Thường Kiệt, Phường 6, Quận Tân Bình, TP. Hồ Chí Minh.</li>
-                        <li><i class="fa fa-phone color-x" aria-hidden="true"></i> <a href="tel:0982362509">0982 362 509</a></li>
-                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:baotrung304@gmail.com">baotrung304@gmail.com</a></li>
-
-                    </ul>
-                    <!-- End .widget-menu -->
-                </div>
-            </div>
-            <div class="col-md-9 col-md-pull-3">
-                <div class="page-login">
-                    <div id="login">
-                        <h1 class="title-head">Liên hệ</h1>
-                        <span>Bạn hãy điền nội dung tin nhắn vào form dưới đây và gửi cho chúng tôi. Chúng tôi sẽ trả lời bạn sau khi nhận được.</span>
-                        <form accept-charset="UTF-8" action="/contact" id="contact" method="post">
-                            <input name="FormType" type="hidden" value="contact" />
-                            <input name="utf8" type="hidden" value="true" /><input type="hidden" id="Token-233e305034e94956ab72a9813d0d3026" name="Token" />
-                            <script src="https://www.google.com/recaptcha/api.js?render=6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK"></script>
-                            <script>
-                                grecaptcha.ready(function() {
-                                    grecaptcha.execute("6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK", {
-                                            action: "/contact"
-                                        })
-                                        .then(function(token) {
-                                            document.getElementById("Token-233e305034e94956ab72a9813d0d3026").value = token
-                                        });
-                                });
-                            </script>
-
-
-                            <div class="form-signup clearfix">
-                                <div class="row">
-                                    <div class="col-sm-4 col-xs-12">
-                                        <fieldset class="form-group">
-                                            <label>Họ tên<span class="required">*</span></label>
-                                            <input type="text" name="contact[name]" id="name" class="form-control  form-control-lg" data-validation-error-msg="Không được để trống" data-validation="required" required />
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-sm-4 col-xs-12">
-                                        <fieldset class="form-group">
-                                            <label>Email<span class="required">*</span></label>
-                                            <input type="email" name="contact[email]" data-validation="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" data-validation-error-msg="Email sai định dạng" id="email" class="form-control form-control-lg" required />
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-sm-4 col-xs-12">
-                                        <fieldset class="form-group">
-                                            <label>Điện thoại<span class="required">*</span></label>
-                                            <input type="tel" name="contact[tel]" data-validation="tel" data-validation-error-msg="Không được để trống" id="tel" class="number-sidebar form-control form-control-lg" required />
-                                        </fieldset>
-                                    </div>
-                                    <div class="col-sm-12 col-xs-12">
-                                        <fieldset class="form-group">
-                                            <label>Nội dung<span class="required">*</span></label>
-                                            <textarea name="contact[body]" id="comment" class="form-control form-control-lg" rows="5" data-validation-error-msg="Không được để trống" data-validation="required" required></textarea>
-                                        </fieldset>
-                                        <div class="pull-xs-left" style="margin-top:20px;">
-                                            <button type="submit" class="btn btn-blues btn-style btn-style-active">Gửi tin nhắn</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:30px;margin-top:20px">
+                <div class="map-container" style="height:300px">
+                    <iframe frameborder="0" style="border:0;width:100%;height:100%;" src="{{ $setting->google_map_url }}" allowfullscreen=""></iframe>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="box-maps">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3660844155734!2d106.65262831405934!3d10.78324826201816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ec84dbc2ab5%3A0xe952d650e50b188f!2zMTc1IEzDvSBUaMaw4budbmcgS2nhu4d0LCBwaMaw4budbmcgNiwgVMOibiBCw6xuaCwgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1500909626466" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+    <div class="container-site">
+        <div class="row">
+            <form role="form" id="contact_form" class="contact-form" method="post" onsubmit="return false">
+                <div class="body-right col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding-news">
+                    <div class="box-news-sub">
+                        <div class="box-body homepage clearfix">
+                            <!-- Payment information -->
+                            <div class="heading">
+                                <h2>Liên hệ với chúng tôi</h2>
+                            </div>
+                            <ul class="row">
+                                <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>Họ tên
+                                        <input type="fullname" class="form-control" name="name" id="name" placeholder="">
+                                    </label>
+                                </li>
+                                <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <label>Email
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="">
+                                    </label>
+                                </li>
+                                <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <label>Nội dung
+                                        <textarea class="form-control" name="message" id="message" rows="5" placeholder=""></textarea>
+                                    </label>
+                                </li>
+                                <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-margin">
+                                    <button type="submit" value="submit" class="btn-round" id="btn_submit" onClick="process();">Gửi liên hệ</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="contact-info">
+                        <h5>{{ $setting->name }}</h5>
+                        <p>{{ $setting->slogan }}</p>
+                        <hr>
+                        <h6> Địa chỉ:</h6>
+                        <p>{!! $setting->address !!}</p>
+                        <h6>Điện thoại:</h6>
+                        <p>{!! $setting->phone !!}</p>
+                        <h6>Email:</h6>
+                        <p>{{ $setting->email }}</p>
+                    </div>
+                </div>
+            </form>
+
+        </div>
     </div>
+</div>
 @stop
 
 @section('pageJs')
+    <script>
+        function process() {
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var message = $('#message').val();
 
+            if (name == '') {
+                alert('Bạn chưa nhập tên');
+                return false;
+            }
+            if (email == '') {
+                alert('Bạn chưa nhập email');
+                return false;
+            }
+            if (message == '') {
+                alert('Bạn chưa nhập nội dung');
+                return false;
+            }
+
+            alert('Liên hệ của bạn đã được gửi đi, chúng tôi sẽ phản hồi lại bạn trong thời gian sớm nhất!');
+        }
+    </script>
 @stop

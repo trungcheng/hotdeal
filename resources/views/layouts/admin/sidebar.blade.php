@@ -22,8 +22,6 @@
         </ul>
     </li>
     
-    <!-- <li><a data-route="/admin/access/orders" href="{{ url('/admin/access/orders') }}"><i class="fa fa-shopping-cart"></i> <span>Quản lý đơn hàng</span></a></li> -->
-    
     <li class="treeview">
         <a href="javascript:void(0)"><i class="fa fa-suitcase"></i> <span>Quản lý sản phẩm</span>
             <span class="pull-right-container">
@@ -44,7 +42,6 @@
         </a>
         <ul class="treeview-menu">
             <li><a style="margin-left:35px;" data-route="/admin/access/orders" href="{{ url('/admin/access/orders') }}">Danh sách</a></li>
-            <!-- <li><a style="margin-left:35px;" data-route="/admin/access/orders/create" href="{{ url('/admin/access/orders/create') }}">Thêm mới</a></li> -->
         </ul>
     </li>
     
@@ -72,17 +69,19 @@
         </ul>
     </li>
 
-    <!-- <li class="treeview">
-        <a href="javascript:void(0)"><i class="fa fa-users"></i> <span>Quản lý thành viên</span>
+    <li class="treeview">
+        <a href="javascript:void(0)"><i class="fa fa-file-text-o"></i> <span>Quản lý page</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a style="margin-left:35px;" data-route="/admin/access/members" href="{{ url('/admin/access/members') }}">Danh sách</a></li>
-            <li><a style="margin-left:35px;" data-route="/admin/access/members/create" href="{{ url('/admin/access/members/create') }}">Thêm mới</a></li>
+            <li><a style="margin-left:35px;" data-route="/admin/access/page/about" href="{{ url('/admin/access/page/about') }}">Giới thiệu</a></li>
+            <li><a style="margin-left:35px;" data-route="/admin/access/page/policy" href="{{ url('/admin/access/page/policy') }}">Chính sách giá</a></li>
+            <li><a style="margin-left:35px;" data-route="/admin/access/page/certificate" href="{{ url('/admin/access/page/certificate') }}">Chứng nhận chất lượng</a></li>
+            <li><a style="margin-left:35px;" data-route="/admin/access/page/health-advice" href="{{ url('/admin/access/page/health-advice') }}">Tư vấn sức khỏe</a></li>
         </ul>
-    </li> -->
+    </li>
 
     <li class="treeview">
         <a href="javascript:void(0)"><i class="fa fa-star"></i> <span>Quản lý đánh giá</span>
@@ -96,35 +95,7 @@
         </ul>
     </li>
 
-    <!-- <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-cog"></i> <span>Thông tin công ty</span></a></li> -->
-
     <li><a data-route="/admin/access/setting" href="{{ url('/admin/access/setting') }}"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li>
-    
-    <!-- <li><a data-route="/admin/access/advertises" href="{{ url('/admin/access/advertises') }}"><i class="fa fa-square-o"></i> <span>Quản lý quảng cáo</span></a></li>
-    
-    <li><a data-route="/admin/access/menu" href="{{ url('/admin/access/menu') }}"><i class="fa fa-server"></i> <span>Quản lý menu</span></a></li>
-    
-    <li><a data-route="/admin/access/location" href="{{ url('/admin/access/location') }}"><i class="fa fa-share-alt"></i> <span>Quản lý khu vực</span></a></li> -->
-    
-    <!-- <li><a data-route="/admin/access/users" href="{{ url('/admin/access/users') }}"><i class="fa fa-users"></i> <span>Quản lý user</span></a></li> -->
-    
-    <!-- <li><a data-route="/admin/access/company" href="{{ url('/admin/access/company') }}"><i class="fa fa-flag"></i> <span>Thông tin công ty</span></a></li>
-    
-    <li><a data-route="/admin/access/general-info" href="{{ url('/admin/access/general-info') }}"><i class="fa fa-info-circle"></i> <span>Thông tin chung</span></a></li> -->
-
-    <!-- <li><a data-route="setting" href="#"><i class="fa fa-cog"></i> <span>Cấu hình chung</span></a></li> -->
-    
-    <!-- <li class="treeview">
-        <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-        </ul>
-    </li> -->
   
   </ul>
   <!-- /.sidebar-menu -->

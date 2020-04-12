@@ -33,10 +33,18 @@ class CategoryController extends Controller
 
     public function getAllParentCates(Request $request)
     {
-        $categories = Category::all();
+        $data = $request->all();
+        
+        if ($data['type']) {
+            $categories = Category::where('type', $data['type'])->get();
+        } else {
+            $categories = Category::all();
+        }
+
         if ($categories) {
             return Response::json(['status' => true, 'data' => $categories]);
         }
+
         return Response::json(['status' => false, 'data' => []]);
     }
 
@@ -48,7 +56,7 @@ class CategoryController extends Controller
     public function edit(Request $request, $id)
     {
         $category = Category::find($id);
-        if ($category) {
+        if ($category && $category->type == 'product') {
             return view('pages.admin.category.edit', ['category' => $category]);
         }
 

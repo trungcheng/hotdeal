@@ -40,19 +40,22 @@
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
+                                    <label>Thuộc danh mục</label>
+                                    <select class="form-control cate" name="cat_id">
+                                        <option ng-selected="item.id == {{ $article->cat_id }}" value="0">Tất cả danh mục</option>
+                                        <option ng-if="parentCates.length > 0" ng-selected="item.id == {{ $article->cat_id }}" class="cateLevel" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                            @{{ item.name }}
+                                        </option>
+                                        <!-- <option value="0" ng-if="parentCates.length == 0">Không có danh mục nào</option> -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Mô tả ngắn</label>
                                     <textarea class="form-control" id="short_content">{!! $article->intro !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả chi tiết</label>
                                     <textarea class="form-control" id="full_content">{!! $article->fulltext !!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Trang giới thiệu</label>
-                                    <select name="is_about" class="form-control">
-                                        <option {{ ($article->is_about == 0) ? 'selected' : '' }} value="0">Không</option>
-                                        <option {{ ($article->is_about == 1) ? 'selected' : '' }} value="1">Có</option>
-                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>

@@ -73,7 +73,7 @@
                         </div>
                         <div class="body-news">
                             <div class="view-short">
-                                Ch&uacute;ng t&ocirc;i tin tưởng tr&agrave; c&oacute; một sức mạnh, sức mạnh x&acirc;y dựng một lối sống hướng thượng v&agrave; vị tha hơn, giao h&ograve;a v&agrave; tr&acirc;n trọng hiện tại, hạnh ph&uacute;c hơn qua nghệ thuật ẩm tr&agrave; v&agrave; l&ograve;ng tự h&agrave;o Việt nam. Mong muốn mang gi&aacute; trị tr&agrave; đến với nhiều người, ch&uacute;ng t&ocirc;i đ&atilde; chọn tr&agrave; l&agrave; niềm h&atilde;nh diện, l&agrave; &ldquo;c&aacute;i t&ocirc;i&rdquo; v&agrave; l&agrave; sự nghiệp của m&igrave;nh.
+                                 {!! $page->introduce !!}
                             </div>
                         </div>
                     </div>
@@ -83,11 +83,6 @@
                         <div id="myElement">
                             <iframe width="100%" height="280" src="{{ $setting->youtube_url }}" frameborder="0" allowfullscreen></iframe>
                         </div>
-                        <ul id="list_player">
-                            <li>
-                                <a href="javascript:void(0)" class="videoItems" title="Sự diệu kỳ của tạo hóa Wildferns New Zealand" name="{{ $setting->youtube_url }}">Sự diệu kỳ của tạo hóa Wildferns New Zealand</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -108,8 +103,9 @@
                     <img alt="" src="{{ asset('backend/uploads/images/sp1.jpg') }}" style="width: 1600px; height: 1113px;" />
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="text-tit">
-                        Thực phẩm bảo vệ sức khỏe l&agrave; sản phẩm được chế biến dưới dạng vi&ecirc;n nang, vi&ecirc;n ho&agrave;n, vi&ecirc;n n&eacute;n, cao, cốm, bột, lỏng v&agrave; c&aacute;c dạng chế biến kh&aacute;c c&oacute; chứa một hoặc hỗn hợp của c&aacute;c chất: Vitamin, kho&aacute;ng chất, axit amin, axit b&eacute;o, enzym, probiotic v&agrave; chất c&oacute; hoạt t&iacute;nh sinh học kh&aacute;c; Hoạt chất sinh học c&oacute; nguồn gốc tự nhi&ecirc;n từ động vật, chất kho&aacute;ng v&agrave; nguồn gốc thực vật ở c&aacute;c dạng như chiết xuất, ph&acirc;n lập, c&ocirc; đặc v&agrave; chuyển h&oacute;a. Sức khỏe l&agrave; t&agrave;i sản v&ocirc; gi&aacute; của con người v&agrave; rất cần thiết để n&acirc;ng cao sức khỏe, ch&iacute;nh v&igrave; vậy hiện nay thực phẩm bảo vệ sức khỏe đang được nhiều người quan t&acirc;m, t&igrave;m hiểu để sử dụng cho bản th&acirc;n v&agrave; những người th&acirc;n trong gia đ&igrave;nh nhằm mục đ&iacute;ch bảo vệ v&agrave; n&acirc;ng cao sức khỏe.</div>
+                    <div class="text-tit" style="text-align:justify;">
+                        Thực phẩm bảo vệ sức khỏe l&agrave; sản phẩm được chế biến dưới dạng vi&ecirc;n nang, vi&ecirc;n ho&agrave;n, vi&ecirc;n n&eacute;n, cao, cốm, bột, lỏng v&agrave; c&aacute;c dạng chế biến kh&aacute;c c&oacute; chứa một hoặc hỗn hợp của c&aacute;c chất: Vitamin, kho&aacute;ng chất, axit amin, axit b&eacute;o, enzym, probiotic v&agrave; chất c&oacute; hoạt t&iacute;nh sinh học kh&aacute;c; Hoạt chất sinh học c&oacute; nguồn gốc tự nhi&ecirc;n từ động vật, chất kho&aacute;ng v&agrave; nguồn gốc thực vật ở c&aacute;c dạng như chiết xuất, ph&acirc;n lập, c&ocirc; đặc v&agrave; chuyển h&oacute;a. Sức khỏe l&agrave; t&agrave;i sản v&ocirc; gi&aacute; của con người v&agrave; rất cần thiết để n&acirc;ng cao sức khỏe, ch&iacute;nh v&igrave; vậy hiện nay thực phẩm bảo vệ sức khỏe đang được nhiều người quan t&acirc;m, t&igrave;m hiểu để sử dụng cho bản th&acirc;n v&agrave; những người th&acirc;n trong gia đ&igrave;nh nhằm mục đ&iacute;ch bảo vệ v&agrave; n&acirc;ng cao sức khỏe.
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,7 +123,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-6 col-xs-12">
-                    <div class="text-tit">
+                    <div class="text-tit" style="text-align:justify;">
                         CÔNG TY TNHH PHÁT TRIỂN THỦY MỘC TRÀ cam kết sẽ đem đến những sản phẩm tự nhiên, chất lượng cao, thân thiện với môi trường, an toàn cho người tiêu dùng. Qua đó, khơi gợi đam mê làm đẹp của người phụ nữ Việt, giúp các bạn tỏa sáng và trở nên khác biệt. Chúng tôi mong rằng sẽ đưa những giá trị tốt đẹp và chất lượng nhất của sản phẩm đến tận tay người tiêu dùng trên cả nước và vươn xa hơn nữa.
                     </div>
                 </div>
