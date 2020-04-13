@@ -66,13 +66,13 @@
 
     <div class="social-button">
         <div class="social-button-content" style="display:none">
-            <a href="tel:{{ $setting->phone }}" class="call-icon" rel="nofollow">
+            <a href="tel:{{ str_replace(' ', '', $setting->phone) }}" class="call-icon" rel="nofollow">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <div class="animated alo-circle"></div>
                 <div class="animated alo-circle-fill"></div>
                 <span>Hotline: {{ $setting->phone }}</span>
             </a>
-            <a href="sms:{{ $setting->phone }}" class="sms">
+            <a href="sms:{{ str_replace(' ', '', $setting->phone) }}" class="sms">
                 <i class="fa fa-comment" aria-hidden="true"></i>
                 <span>SMS: {{ $setting->phone }}</span>
             </a>
@@ -80,7 +80,7 @@
                 <i class="fa fa-facebook" aria-hidden="true"></i>
                 <span>Nhắn tin Facebook</span>
             </a>
-            <a href="http://zalo.me/{{ $setting->phone }}" class="zalo" rel="nofollow">
+            <a href="http://zalo.me/{{ str_replace(' ', '', $setting->phone) }}" class="zalo" rel="nofollow">
                 <img style="width:40px;height:40px;border-radius:50%;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);" src="{{ asset('frontend/images/zalo.png') }}">
                 <span>Zalo: {{ $setting->phone }}</span>
             </a>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Xác nhận đơn hàng #{{ $order->id }} | Thachvu.com</title>
+	<title>Xác nhận đơn hàng #{{ $order->id }} | Thuymoctra.com.vn</title>
 	<meta charset="utf-8" />
 </head>
 <body>
-	<h1 style="font-size:17px;font-weight:bold;">Cảm ơn quý khách {{ $name }} đã đặt hàng tại Thạch Vũ!</h1>
-	<p>Thạch Vũ rất vui thông báo đơn hàng #{{ $order->id }} của quý khách đã được tiếp nhận và đang trong quá trình xử lý. Thạch Vũ sẽ thông báo đến quý khách ngay khi hàng chuẩn bị được giao.</p>
+	<h1 style="font-size:17px;font-weight:bold;">Cảm ơn quý khách <b>{{ $name }}</b> đã đặt hàng tại Thủy Mộc Trà!</h1>
+	<p>Thủy Mộc Trà rất vui thông báo đơn hàng #{{ $order->id }} của quý khách đã được tiếp nhận và đang trong quá trình xử lý. Thủy Mộc Trà sẽ thông báo đến quý khách ngay khi hàng chuẩn bị được giao.</p>
 	<table>
 	<tr>
 		<td>
@@ -44,6 +44,6 @@
 	</table>
 
 	<p>Cảm ơn vì sự hợp tác của bạn!<br>
-	<strong>Thạch Vũ</strong></p>
+	<strong>Thủy Mộc Trà</strong></p>
 </body>
 </html>

@@ -6,7 +6,7 @@
 @section('pageCss')
   <style>
     .order-success {
-        max-width: 570px;
+        max-width: 600px;
         margin: 50px auto;
         text-align: center;
     }
@@ -55,7 +55,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
   <div class="box-breadcumb">
-    <div class="container-site">
+    <div class="container">
         <div class="row">
             <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                 <ul class="breadcum">
@@ -67,12 +67,12 @@
     </div>
   </div>
 
-  <div class="container-site">
+  <div class="container">
     <!-- Payout Method -->
     <div class="order-success"> <i class="fa fa-check"></i>
       <h6>Đặt hàng thành công! Đơn hàng {{ $order_id }} của quý khách đã được xử lý</h6>
-      <p>Chúng tôi đã gửi thông báo đơn hàng về email của quý khách, cảm ơn quý khách đã mua hàng tại Thủy Mộc Trà!</p>
-      <p>Nếu có bất kỳ thắc mắc gì, hãy gọi cho chúng tôi theo hotline <b>{!! $setting->phone !!}</b></p>
+      <p>Chúng tôi đã gửi thông báo đơn hàng về email của quý khách, cảm ơn quý khách đã mua hàng tại <b>Thủy Mộc Trà!</b></p>
+      <p style="margin-top:10px">Nếu có bất kỳ thắc mắc gì, hãy gọi cho chúng tôi theo hotline <b>{!! $setting->phone !!}</b></p>
       <a href="{{ route('home') }}" class="btn-round">Quay lại cửa hàng</a>
     </div>
   </div>

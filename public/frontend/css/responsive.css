@@ -10,7 +10,7 @@
     font-size: 24px;
     color: #d22521;
     top: 30px;
-    left: 0px;
+    left: 10px;
 }
 
 .menu-top-mobile a {
@@ -18,7 +18,7 @@
     height: 40px;
     width: 40px;
     padding-top: 10px;
-    padding-right: 10px;
+    /* padding-right: 10px; */
     float: right;
 }
 
@@ -35,12 +35,12 @@
     font-weight: 600;
     color: #d22521;
     top: 42px;
-    right: 0px;
+    right: 25px;
 }
 
 .menu-top-cart a {
     padding-top: 10px;
-    padding-right: 10px;
+    /* padding-right: 10px; */
     float: right;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .menu-top-cart a i {
-    margin-left: 5px;
+    /* margin-left: 5px; */
 }
 
 .menu-top-cart .itm-cont {
@@ -71,7 +71,7 @@
     border-radius: 50%;
     color: #fff !important;
     font-size: 11px;
-    right: 2px;
+    right: -6px;
     top: 17px;
 }
 
@@ -85,6 +85,9 @@
 }
 
 @media (max-width: 360px) {
+    .sub-top {
+        margin-top: 5px !important;
+    }
     .container-site {
         max-width: 100%;
     }
@@ -92,13 +95,13 @@
         display: none;
     }
     .menu-top-mobile {
-        padding-left: 20px;
+        /* padding-left: 20px; */
     }
     .menu-top-cart {
-        padding-right: 20px;
+        /* padding-right: 20px; */
     }
     .menu-top-cart .itm-cont {
-        right: 22px;
+        /* right: 22px; */
     }
     .footer img {
         width: 60%;
@@ -121,16 +124,20 @@
         float: left;
     }
     .about-us {
-        padding: 20px 5px;
+        padding: 0px 0px 15px;
     }
     .about-us .box-about-us {
         float: right;
         height: auto;
         margin-top: 15px;
+        margin-bottom: 15px;
         width: 100%;
     }
+    .gtsanpham img {
+        margin-bottom: 15px;
+    }
     .news-home-footer {
-        padding: 0px 10px;
+        padding: 0px 0px;
     }
     .design {
         margin-bottom: 40px;
@@ -139,8 +146,13 @@
         padding: 5px !important;
         line-height: normal !important;
     }
-    .body-right {
-        padding: 25px !important;
+    .body-right .box-news-sub .store {
+        margin-top: 60px !important;
+        /* padding: 25px !important; */
+    }
+    .body-right .txt-name-sub ul {
+        float: left !important;
+        margin-top: 15px !important;
     }
     header .header-box-cart .icon-cart {
         background: #1cc253 none repeat scroll 0 0;
@@ -442,7 +454,7 @@
     ul.breadcum li {
         float: left;
         height: auto;
-        line-height: 30px;
+        line-height: 40px;
         width: auto;
     }
     .box-news-detailt .cate-header {
@@ -543,6 +555,9 @@
     .footer .footer-section {
         margin-bottom: 20px;
     }
+    .box-body .promo h6 {
+        margin-top: 25px;
+    }
 }
 
 @media screen and (min-width: 361px) and (max-width: 640px) {
@@ -570,16 +585,20 @@
         float: left;
     }
     .about-us {
-        padding: 20px 5px;
+        padding: 0px 0px 15px;
     }
     .about-us .box-about-us {
         float: right;
         height: auto;
         margin-top: 15px;
+        margin-bottom: 15px;
         width: 100%;
     }
+    .gtsanpham img {
+        margin-bottom: 15px;
+    }
     .news-home-footer {
-        padding: 0px 10px;
+        padding: 0px 0px;
     }
     .design {
         margin-bottom: 40px;
@@ -589,23 +608,21 @@
         line-height: normal !important;
     }
     .body-right {
-        padding: 0 20px !important;
+        /* padding: 0 20px !important; */
     }
     .body-right .sub-top {
         margin-top: 0px !important;
     }
     .body-right .sub-top .txt-name-sub ul {
+        clear: both;
         float: left !important;
         margin-top: 20px !important;
     }
     .body-right .box-news-sub .store {
         margin-top: 70px !important;
     }
-    .body-right .box-body .item-col-3 .product {
-        width: 100%;
-    }
     .body-right .box-body .item-col-3 .product article .thumb {
-        padding-top: 58%;
+        /* padding-top: 58%; */
     }
     .body-right .box-body .item-col-3 .product article .thumb .img-responsive {
         height: 190px;
@@ -910,7 +927,7 @@
         float: left;
         height: 40px;
         width: 100%;
-        padding-left: 5px;
+        /* padding-left: 5px; */
     }
     ul.breadcum li {
         float: left;
@@ -1387,6 +1404,12 @@
     .body-right {
         margin-top: 15px;
         padding: 15px;
+    }
+}
+
+@media (max-width: 640px) {
+    .body-right .box-body .item-col-3 .product {
+        width: 100%;
     }
 }
 

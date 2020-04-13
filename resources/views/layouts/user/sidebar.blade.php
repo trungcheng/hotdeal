@@ -1,4 +1,4 @@
-<div class="body-left col-lg-3 col-md-3 col-sm-12 col-xs-12">
+<div class="body-left col-lg-4 col-md-4 col-sm-12 col-xs-12">
     @if (isset($type) && $type == 'product' && count($categories) > 0)
     <div class="box-support" style="padding:0">
         <div class="header">Danh mục sản phẩm</div>

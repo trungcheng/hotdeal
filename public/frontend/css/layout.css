@@ -231,7 +231,7 @@ header {
     height: 35px;
     padding: 0px;
     margin-right: 0px;
-    margin-top: 2px;
+    margin-top: 15px;
     width: auto;
 }
 
@@ -242,7 +242,7 @@ ul.nav-menu {
 }
 
 ul.nav-menu li {
-    margin-right: 15px;
+    margin-right: 20px;
     width: auto;
     height: auto;
     position: relative;
@@ -262,6 +262,10 @@ ul.nav-menu li a {
     transform: translateZ(0px);
     text-transform: uppercase;
     width: auto;
+}
+
+ul.nav-menu li:first-child a {
+    margin-left: -5px;
 }
 
 ul.nav-menu li:active a::before, ul.nav-menu li:focus a::before, ul.nav-menu li:hover a::before {
@@ -506,7 +510,7 @@ ul.pro-buy li .info {
 
 .about-us .box-about-us {
     height: auto;
-    margin-top: 15px;
+    /* margin-top: 15px; */
     float: right;
 }
 
@@ -781,11 +785,11 @@ ul.pro-buy li .info {
     color: #fff;
     height: 40px;
     line-height: 40px;
-    padding: 0 10px;
+    padding: 0 15px;
 }
 
 .box-support .box-body {
-    padding: 15px 10px;
+    padding: 15px 15px;
 }
 
 .box-support .box-body strong {
@@ -835,7 +839,7 @@ ul.pro-buy li .info {
     float: left;
     height: auto;
     background: #f6f6f6;
-    padding: 0 10px;
+    padding: 0 15px;
     width: 100%;
 }
 
@@ -884,14 +888,14 @@ ul.breadcum li a.active {
 }
 
 .body-right .box-body .item-col-3 {
-    margin: 0 -10px;
+    margin: 0 -15px;
 }
 
 .body-right .box-body .item-col-3 .product {
     float: left;
     width: 33.3333333%;
     margin-bottom: 20px;
-    padding: 0 10px;
+    padding: 0 15px;
     position: relative;
     min-height: 245px;
     display: flex;
@@ -913,8 +917,8 @@ ul.breadcum li a.active {
 }
 
 .body-right .box-body .item-col-3 .product article .thumb {
-    padding-top: 67%;
-    position: relative;
+    /* padding-top: 74%; */
+    /* position: relative; */
     display: block;
     z-index: 0;
 }
@@ -931,6 +935,10 @@ ul.breadcum li a.active {
     margin-top: 10px;
 }
 
+.body-right .box-body .item-col-3 .product article .tittle:hover {
+    text-decoration: none;
+}
+
 .body-right .box-body .item-col-3 .product article .price {
     font-weight: bold;
     color: #d22521;
@@ -945,7 +953,7 @@ ul.breadcum li a.active {
 }
 
 .body-right .box-body .item-col-3 .product article .thumb .img-responsive {
-    position: absolute;
+    /* position: absolute; */
     top: 0;
     right: 0;
     height: 155px;

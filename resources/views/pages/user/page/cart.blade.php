@@ -155,7 +155,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
     <div class="box-breadcumb">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="breadcum">
@@ -167,7 +167,7 @@
         </div>
     </div>
 
-    <div class="container-site">
+    <div class="container">
         <div class="row">
 
             <div class="body-right col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding-news">

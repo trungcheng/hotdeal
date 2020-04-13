@@ -41,7 +41,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
     <div class="box-breadcumb">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="breadcum">
@@ -53,10 +53,10 @@
         </div>
     </div>
 
-    <div class="container-site">
+    <div class="container">
         <div class="row">
             <form role="form" id="storeForm" action="" method="get">
-                <div class="body-right col-lg-9 col-md-9 col-sm-12 col-xs-12 no-padding-news">
+                <div class="body-right col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding-news">
                     <div class="box-news-sub">
                         <div class="cate-header sub-top">
                             <div class="txt-name-sub">
@@ -85,32 +85,32 @@
                         <div class="box-body homepage clearfix store" style="margin-top:20px">
                             <!-- Items -->
                             @if (count($results) > 0)
-                            <div class="item-col-3">
-                                <!-- Product -->
-                                @foreach ($results as $result)
-                                <div class="product">
-                                    <article>
-                                        <div class="thumb">
-                                            <a href="{{ route('product-detail', ['slug' => $result->slug]) }}">
-                                                <img class="img-responsive" src="{{ asset($result->image) }}" alt="{{ asset($result->image) }}">
-                                            </a>
-                                        </div>
-                                        <h3><a href="{{ route('product-detail', ['slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a></h3>
-                                        <div class="price">
-                                            {{ number_format($result->price_sale, 0, 0, '.') }} VNĐ
-                                            @if ($result->discount > 0)
-                                                <span>{{ number_format($result->price, 0, 0, '.') }} VNĐ</span>
-                                            @endif
-                                        </div>
-                                    </article>
+                                <div class="item-col-3">
+                                    <!-- Product -->
+                                    @foreach ($results as $result)
+                                    <div class="product">
+                                        <article>
+                                            <div class="thumb">
+                                                <a href="{{ route('product-detail', ['slug' => $result->slug]) }}">
+                                                    <img class="img-responsive" src="{{ asset($result->image) }}" alt="{{ asset($result->image) }}">
+                                                </a>
+                                            </div>
+                                            <h3><a href="{{ route('product-detail', ['slug' => $result->slug]) }}" class="tittle">{{ $result->name }}</a></h3>
+                                            <div class="price">
+                                                {{ number_format($result->price_sale, 0, 0, '.') }} VNĐ
+                                                @if ($result->discount > 0)
+                                                    <span>{{ number_format($result->price, 0, 0, '.') }} VNĐ</span>
+                                                @endif
+                                            </div>
+                                        </article>
+                                    </div>
+                                    @endforeach
                                 </div>
-                                @endforeach
-                            </div>
+                                <!-- pagination -->
+                                {{ $results->appends(request()->query())->links() }}
                             @else
-                            <p>Chưa có sản phẩm nào !</p>
+                                <p>Chưa có sản phẩm nào!</p>
                             @endif
-                            <!-- pagination -->
-                            {{ $results->appends(request()->query())->links() }}
                         </div>
                     </div>
                 </div>

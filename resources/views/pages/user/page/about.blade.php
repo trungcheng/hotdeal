@@ -57,7 +57,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
     <div class="box-breadcumb">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="breadcum">
@@ -69,16 +69,16 @@
         </div>
     </div>
 
-    <div class="container-site">
+    <div class="container">
         <div class="row">
-            <div class="body-right col-lg-9 col-md-9 col-sm-12 col-xs-12 no-padding-news">
+            <div class="body-right col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding-news">
                 <div class="box-news-sub">
                     <div class="cate-header sub-top">
                         <div class="txt-name-sub">
                             <h2>{{ $title }}</h2>
                         </div>
                     </div>
-                    <div class="box-body homepage clearfix">
+                    <div class="box-body homepage clearfix" style="text-align:justify">
                         @if ($route == 'about')
                             {!! $article->introduce !!}
                         @elseif ($route == 'certificate')

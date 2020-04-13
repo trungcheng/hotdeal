@@ -3,6 +3,7 @@
         <h2 class="icon icon-world">Danh mục</h2>
         <ul>
             <li><a class="icon" href="/" target="_self">Trang chủ</a></li>
+            <li><a class="icon" href="{{ route('about') }}">Giới thiệu</a></li>
             <li><a class="icon" href="{{ route('store') }}">Sản phẩm</a></li>
             <li><a class="icon" href="{{ route('article') }}">Tin tức</a></li>
             <li><a class="icon" href="{{ route('certificate') }}">Chứng nhận chất lượng</a></li>
@@ -17,7 +18,7 @@
 <div class="full-width">
     <header id="view_top_banner">
         <div class="row">
-            <div class="container-site">
+            <div class="container">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 hidden-sm hidden-xs" style="padding:0">
                     <div class="box-social-network">
                         <div class="body-network">
@@ -39,7 +40,7 @@
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 hidden-sm hidden-xs" style="padding:0">
                     <div class="hotline">
-                        <a class="call-view-top" href="tel:{{ $setting->phone }}" title="Gọi ngay">
+                        <a class="call-view-top" href="tel:{{ str_replace(' ', '', $setting->phone) }}" title="Gọi ngay">
                             <div class="hot-line-view">
                                 <span class="icon">Hotline:</span>
                                 <span class="phone number">{!! $setting->phone !!}</span>
@@ -62,10 +63,11 @@
             </div>
         </div>
         <div class="row menutop hidden-sm hidden-xs">
-            <div class="container-site">
+            <div class="container">
                 <div class="nav-main">
                     <ul id="nav-main-menu" class="nav-menu">
                         <li class="active"><a href="/" data-route="/" target="_self"><span class="span-menu"></span>Trang chủ</a></li>
+                        <li><a href="{{ route('about') }}" data-route="/gioi-thieu"><span class="span-menu"></span>Giới thiệu</a></li>
                         <li><a href="{{ route('store') }}" data-route="/san-pham"><span class="span-menu"></span>Sản phẩm</a></li>
                         <li><a href="{{ route('article') }}" data-route="/tin-tuc"><span class="span-menu"></span>Tin tức</a></li>
                         <li><a href="{{ route('certificate') }}" data-route="/chung-nhan-chat-luong"><span class="span-menu"></span>Chứng nhận chất lượng</a></li>

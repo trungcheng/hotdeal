@@ -64,7 +64,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
     <div class="box-breadcumb">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="breadcum">
@@ -76,7 +76,7 @@
         </div>
     </div>
 
-    <div class="container-site">
+    <div class="container">
         <div class="order-success error-page"> 
             <img src="{{ asset('frontend/images/error-img.jpg') }}" alt="">
             <h3>Lỗi <span>404</span> Không tìm thấy trang</h3>

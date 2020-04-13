@@ -42,7 +42,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
 	<div class="box-breadcumb">
-		<div class="container-site">
+		<div class="container">
 			<div class="row">
 				<div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
 					<ul class="breadcum">
@@ -55,7 +55,7 @@
 		</div>
 	</div>
 
-	<div class="container-site" style="margin-bottom:30px;margin-top:30px;">
+	<div class="container" style="margin-bottom:30px;margin-top:30px;">
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 product-detail">
 				<div class="product">
@@ -131,16 +131,16 @@
 		</div>
 	</div>
 
-	<div class="container-site">
+	<div class="container">
 		<div class="row">
-			<div class="body-right col-lg-9 col-md-9 col-sm-12 col-xs-12 no-padding-news">
+			<div class="body-right col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding-news">
 				<div class="box-news-sub">
 					<div class="cate-header sub-top">
 						<div class="txt-name-sub" style="border-bottom:1px solid #e5e5e5">
 							<h2>Mô tả sản phẩm</h2>
 						</div>
 					</div>
-					<div class="box-body homepage clearfix" style="padding: 10px 0px 10px 0px;">
+					<div class="box-body homepage clearfix" style="padding: 10px 0px 10px 0px;text-align:justify">
 						{!! $product->full_desc !!}
 					</div>
 				</div>

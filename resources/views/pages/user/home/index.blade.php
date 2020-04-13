@@ -64,7 +64,7 @@
     @endif
 
     <div class="full-width box-hone about-us">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="box-about-us">
@@ -90,7 +90,7 @@
     </div>
 
     <div class="full-width box-hone gtsanpham">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="tt-home">
@@ -112,7 +112,7 @@
     </div>
 
     <div class="full-width box-hone dathang">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="tt-home">
@@ -137,32 +137,30 @@
 
     @if (count($featureArticles) > 0)
     <div class="full-width box-hone news-home-footer">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="box-news-event">
                     <div class="tt-home">
                         <div class="tt-home-text"> Tin tức - sự kiện</div>
                     </div>
                     <ul class="body-news">
-                        <div class="row">
-                            @foreach ($featureArticles as $article)
-                            <div class="col-md-4 col-sm-4 col-xs-12">
-                                <li class="item-list">
-                                    <div class="img-view">
-                                        <a title="{{ $article->title }}" href="{{ route('article-detail', ['slug' => $article->slug]) }}">
-                                            <img style="width:100% !important;height:100% !important;object-fit:cover;" src="{{ $article->image }}" alt="{{ $article->title }}" />
-                                        </a>
-                                    </div>
-                                    <h5 style="margin-top:15px">
-                                        <a class="link-view" title="{{ $article->title }}" href="{{ route('article-detail', ['slug' => $article->slug]) }}">
-                                            {{ $article->title }}
-                                        </a>
-                                    </h5>
-                                    <div class="div-news-container" style="display:none;"></div>
-                                </li>
-                            </div>
-                            @endforeach
+                        @foreach ($featureArticles as $article)
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <li class="item-list">
+                                <div class="img-view">
+                                    <a title="{{ $article->title }}" href="{{ route('article-detail', ['slug' => $article->slug]) }}">
+                                        <img style="width:100% !important;height:100% !important;object-fit:cover;" src="{{ $article->image }}" alt="{{ $article->title }}" />
+                                    </a>
+                                </div>
+                                <h5 style="margin-top:15px">
+                                    <a class="link-view" title="{{ $article->title }}" href="{{ route('article-detail', ['slug' => $article->slug]) }}">
+                                        {{ $article->title }}
+                                    </a>
+                                </h5>
+                                <div class="div-news-container" style="display:none;"></div>
+                            </li>
                         </div>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -171,7 +169,7 @@
     @endif
 
     <div class="full-width box-hone taisao">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="tt-home">

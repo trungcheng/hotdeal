@@ -81,7 +81,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
     <div class="box-breadcumb">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="breadcum">
@@ -93,9 +93,9 @@
         </div>
     </div>
 
-    <div class="container-site" style="margin-bottom:50px;">
+    <div class="container" style="margin-bottom:50px;">
         <div class="row">
-            <div class="body-right col-lg-9 col-md-9 col-sm-12 col-xs-12 no-padding-news">
+            <div class="body-right col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding-news">
                 <div class="box-news-sub">
                     <div class="cate-header sub-top">
                         <div class="txt-name-sub">
@@ -106,25 +106,29 @@
                         <p style="margin-bottom:20px">Cập nhật {{ strtolower($title) }} về <strong>trà hoa</strong>, <strong>trà thảo mộc</strong>. Mời các bạn đón đọc các bài viết về trà thảo dược thiên nhiên. Các kinh nghiệm, phương pháp được ứng dụng hàng ngày để bảo vệ sức khỏe của bạn.
                             Chia sẻ {{ strtolower($title) }} về các loại trà hoa, trà thảo mộc, thảo dược được triết xuất 100% từ tự nhiên, cách bảo quản, cách sử dụng <strong><a href="/tra-huyet-dang">trà huyết đằng</a></strong>, trà nụ hoa tam thất, saffon... tại <strong>Thủy Mộc Trà</strong>.</p>
                         <!-- Blog Post -->
-                        @foreach ($articles as $article)
-                        <div class="blog-post">
-                            <article class="row">
-                                <div class="image-block col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                    <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">
-                                        <img class="img-responsive" src="{{ asset($article->image) }}" alt="{{ asset($article->image) }}">
-                                    </a>
-                                </div>
-                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                                    <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="tittle">{{ $article->title }}</a>
-                                    <p class="date">{{ $article->created_at }}</p>
-                                    {!! $article->intro !!}
-                                    <a style="margin-top:10px;display:block;" href="{{ route('article-detail', ['slug' => $article->slug]) }}">Chi tiết</a>
-                                </div>
-                            </article>
-                        </div>
-                        @endforeach
-                        <!-- pagination -->
-                        {{ $articles->appends(request()->query())->links() }}
+                        @if (count($articles) > 0)
+                            @foreach ($articles as $article)
+                            <div class="blog-post">
+                                <article class="row">
+                                    <div class="image-block col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                        <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">
+                                            <img class="img-responsive" src="{{ asset($article->image) }}" alt="{{ asset($article->image) }}">
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                        <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="tittle">{{ $article->title }}</a>
+                                        <p class="date">{{ $article->created_at }}</p>
+                                        {!! $article->intro !!}
+                                        <a style="margin-top:10px;display:block;" href="{{ route('article-detail', ['slug' => $article->slug]) }}">Chi tiết</a>
+                                    </div>
+                                </article>
+                            </div>
+                            @endforeach
+                            <!-- pagination -->
+                            {{ $articles->appends(request()->query())->links() }}
+                        @else
+                            <p>Chưa có bài viết nào!</p>
+                        @endif
                     </div>
                 </div>
             </div>

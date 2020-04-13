@@ -71,7 +71,7 @@
             transition: all 0.4s ease-in-out;
         }
         #contact_form li textarea {
-            height: 160px !important;
+            height: 183px !important;
             text-transform: none;
             background: #f5f5f5;
             padding: 15px 20px !important;
@@ -130,7 +130,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
     <div class="box-breadcumb">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="breadcum">
@@ -142,7 +142,7 @@
         </div>
     </div>
 
-    <div class="container-site">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom:30px;margin-top:20px">
                 <div class="map-container" style="height:300px">
@@ -152,7 +152,7 @@
         </div>
     </div>
 
-    <div class="container-site">
+    <div class="container">
         <div class="row">
             <form role="form" id="contact_form" class="contact-form" method="post" onsubmit="return false">
                 <div class="body-right col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding-news">

@@ -62,7 +62,7 @@
 <div class="full-width" style="margin-bottom:50px">
 
     <div class="box-breadcumb">
-        <div class="container-site">
+        <div class="container">
             <div class="row">
                 <div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
                     <ul class="breadcum">
@@ -75,9 +75,9 @@
         </div>
     </div>
 
-    <div class="container-site">
+    <div class="container">
         <div class="row">
-            <div class="body-right col-lg-9 col-md-9 col-sm-12 col-xs-12 no-padding-news">
+            <div class="body-right col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding-news">
                 <div class="box-news-sub">
                     <div class="box-body homepage clearfix">
                         <!-- Blog Post -->
@@ -86,9 +86,11 @@
                                 <h1 style="font-size:25px;margin-top:0px;margin-bottom:5px;">{{ $article->title }}</h1>
                                 <p class="date">{{ $article->created_at }}</p>
                                 <hr style="margin-top:-10px;">
-                                {!! $article->intro !!}
-                                {!! $article->fulltext !!}
-                                @if ($article->category->slug == 'khuyen-mai')
+                                <div style="text-align:justify">
+                                    {!! $article->intro !!}
+                                    {!! $article->fulltext !!}
+                                </div>
+                                @if ($article->category && $article->category->slug == 'khuyen-mai')
                                 <div class="register">
                                     <a href="https://forms.gle/KvyMoyYmBFiFTLju6" target="_blank" class="btn-round">Đăng ký nhận khuyến mãi tại đây</a>
                                 </div>

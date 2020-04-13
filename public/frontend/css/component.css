@@ -8,9 +8,10 @@
 }
 
 .container {
+	/* width: 1060px !important; */
 	position: relative;
 	overflow: hidden;
-	background: #34495e;
+	/* background: #34495e; */
 }
 
 .menu-trigger {
