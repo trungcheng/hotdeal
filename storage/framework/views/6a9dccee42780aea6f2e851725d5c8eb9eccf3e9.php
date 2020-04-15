@@ -122,7 +122,7 @@
 
 							</div>
 
-							<div style="margin-top:20px" class="fb-like" data-href="<?php echo e(route('product-detail', ['slug' => $product->slug])); ?>" data-width="850" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+							<div style="margin-top:20px" class="fb-like" data-href="<?php echo e(route('product-detail', ['slug' => $product->slug])); ?>" data-width="750" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 
 							<!-- Quinty -->
 							<form method="POST" action="<?php echo e(route('cartAdd')); ?>" style="margin-top: 30px">

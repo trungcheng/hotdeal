@@ -167,20 +167,20 @@ class CartController extends Controller
                 }
             }
 
-            // $emails = [
-            //     $data['customer_email'],
-            //     \Config::get('mail.from.address')
-            // ];
+            $emails = [
+                $data['customer_email'],
+                \Config::get('mail.from.address')
+            ];
 
-            // Mail::send('pages/user/mail/order_temp', [
-            //     'order' => $order,
-            //     'name' => $obj_info['customer_name'], 
-            //     'cartInfo' => $cartInfo,
-            //     'total' => Cart::subtotal(0, '.', '.')
-            // ], function($message) use ($emails, $order) {
-            //     $message->to($emails)
-            //             ->subject('Xác nhận đơn hàng #TMT'.$order->id);
-            // });
+            Mail::send('pages/user/mail/order_temp', [
+                'order' => $order,
+                'name' => $obj_info['customer_name'], 
+                'cartInfo' => $cartInfo,
+                'total' => Cart::subtotal(0, '.', '.')
+            ], function($message) use ($emails, $order) {
+                $message->to($emails)
+                        ->subject('Xác nhận đơn hàng #TMT'.$order->id);
+            });
 
             Cart::destroy();
 
