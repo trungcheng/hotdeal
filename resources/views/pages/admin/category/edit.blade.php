@@ -38,6 +38,10 @@
                                     <input value="{{ $category->icon }}" name="icon" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
+                                <div class="form-group">
+                                    <label>Thứ tự</label>
+                                    <input type="number" class="form-control" value="{{ $category->order }}" name="order" min="1" max="99" />
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>

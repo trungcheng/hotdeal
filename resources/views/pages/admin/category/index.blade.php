@@ -60,6 +60,7 @@
                                                     <th>STT</th>
                                                     <th>Ảnh</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
+                                                    <th>Thứ tự</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -71,6 +72,7 @@
                                                         <img ng-src="@{{ cate.icon }}" style="width:70px;">
                                                     </td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
+                                                    <td>@{{ cate.order }}</td>
                                                     <td>@{{ cate.created_at }}</td>
                                                     <td>
                                                         <a href="/admin/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
