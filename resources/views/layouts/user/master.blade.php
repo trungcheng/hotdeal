@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>@yield('page') | CÔNG TY TNHH PHÁT TRIỂN THỦY MỘC TRÀ</title>
+    <title>@yield('page') - Công ty TNHH Phát triển Thủy Mộc Trà</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="robots" content="noodp,index,follow" />
@@ -27,7 +27,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="@yield('propDesc')" />
     <meta name="twitter:title" content="@yield('ogTitle')" />
-    <meta name="twitter:image" content="{{ asset('frontend/images/icons/favicon.png') }}" />
+    <meta name="twitter:image" content="{{ asset('frontend/images/logos/logo.png') }}" />
     <link rel="icon" href="{{ asset('frontend/images/icons/favicon-logo.png') }}" type="image/x-icon" />
     <link rel="canonical" href="@yield('canonical')" />
     <link rel="alternate" href="@yield('alternate')">

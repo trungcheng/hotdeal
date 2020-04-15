@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Trang chủ
+@section('page'){{ $setting->seo_title }}
 @stop
 
 @section('description'){{ $setting->seo_desc }}
