@@ -95,12 +95,12 @@
                                     <a href="https://forms.gle/KvyMoyYmBFiFTLju6" target="_blank" class="btn-round">Đăng ký nhận khuyến mãi tại đây</a>
                                 </div>
                                 @endif
-                                <div class="fb-like" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="850" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                                <div style="margin-top:20px" class="fb-like" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="750" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
                             </article>
 
                             <!-- Comments -->
                             <div class="comments">
-                                <div class="fb-comments" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="850" data-numposts="10"></div>
+                                <div class="fb-comments" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="750" data-numposts="10"></div>
                             </div>
                         </div>
                     </div>

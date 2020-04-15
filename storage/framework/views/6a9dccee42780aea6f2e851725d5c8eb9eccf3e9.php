@@ -1,44 +1,53 @@
-@extends('layouts.user.master')
+<?php $__env->startSection('page'); ?><?php echo e($product->seo_title); ?>
 
-@section('page'){{ $product->seo_title }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('description'){{ $product->seo_desc }}
-@stop
+<?php $__env->startSection('description'); ?><?php echo e($product->seo_desc); ?>
 
-@section('keywords'){{ $product->seo_keyword }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('canonical'){{ route('product-detail', ['slug' => $product->slug]) }}
-@stop
+<?php $__env->startSection('keywords'); ?><?php echo e($product->seo_keyword); ?>
 
-@section('alternate'){{ route('product-detail', ['slug' => $product->slug]) }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('propName'){{ $product->seo_title }}
-@stop
+<?php $__env->startSection('canonical'); ?><?php echo e(route('product-detail', ['slug' => $product->slug])); ?>
 
-@section('propDesc'){{ $product->seo_desc }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('ogTitle'){{ $product->seo_title }}
-@stop
+<?php $__env->startSection('alternate'); ?><?php echo e(route('product-detail', ['slug' => $product->slug])); ?>
 
-@section('ogDesc'){{ $product->desc }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('ogUrl'){{ route('product-detail', ['slug' => $product->slug]) }}
-@stop
+<?php $__env->startSection('propName'); ?><?php echo e($product->seo_title); ?>
 
-@section('ogImage'){{ $product->image }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('pageCss')
-	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/product.review.css') }}" />
-	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/product.detail.css') }}" />
-@stop
+<?php $__env->startSection('propDesc'); ?><?php echo e($product->seo_desc); ?>
 
-@section('content')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ogTitle'); ?><?php echo e($product->seo_title); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ogDesc'); ?><?php echo e($product->desc); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ogUrl'); ?><?php echo e(route('product-detail', ['slug' => $product->slug])); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ogImage'); ?><?php echo e($product->image); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('pageCss'); ?>
+	<link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/product.review.css')); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/product.detail.css')); ?>" />
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="full-width" style="margin-bottom:50px">
 
 	<div class="box-breadcumb">
@@ -47,8 +56,8 @@
 				<div class="col-ld-12 col-md-12 col-sm-12 col-xs-12">
 					<ul class="breadcum">
 						<li><a href="/">Trang chủ</a><span>»</span></li>
-						<li class="hidden-sm hidden-xs"><a href="{{ route('product-detail', ['slug' => $product->category->slug]) }}">{{ $product->category->name }}</a><span>»</span></li>
-						<li><a id="breadcum-title" class="active">{{ $product->name }}</a></li>
+						<li class="hidden-sm hidden-xs"><a href="<?php echo e(route('product-detail', ['slug' => $product->category->slug])); ?>"><?php echo e($product->category->name); ?></a><span>»</span></li>
+						<li><a id="breadcum-title" class="active"><?php echo e($product->name); ?></a></li>
 					</ul>
 				</div>
 			</div>
@@ -66,26 +75,26 @@
 								<div id="slider" class="flexslider">
 									<ul class="slides">
 										<li>
-											<img src="{{ asset($product->image) }}" alt="">
+											<img src="<?php echo e(asset($product->image)); ?>" alt="">
 										</li>
-										@foreach ($image_list as $image)
+										<?php $__currentLoopData = $image_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 										<li>
-											<img src="{{ asset($image) }}" alt="">
+											<img src="<?php echo e(asset($image)); ?>" alt="">
 										</li>
-										@endforeach
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 										<!-- items mirrored twice, total of 12 -->
 									</ul>
 								</div>
 								<div id="carousel" class="flexslider" style="margin-top:20px;">
 									<ul class="slides">
 										<li>
-											<img src="{{ asset($product->image) }}" alt="">
+											<img src="<?php echo e(asset($product->image)); ?>" alt="">
 										</li>
-										@foreach ($image_list as $image)
+										<?php $__currentLoopData = $image_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 										<li>
-											<img src="{{ asset($image) }}" alt="">
+											<img src="<?php echo e(asset($image)); ?>" alt="">
 										</li>
-										@endforeach
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 										<!-- items mirrored twice, total of 12 -->
 									</ul>
 								</div>
@@ -94,30 +103,31 @@
 						<!-- Item Content -->
 						<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
 
-							<h1 style="font-size:25px;margin-top:10px;color:#000">{{ $product->name }}</h1>
-							<span class="tags">Mã sản phẩm: {!! $product->sku_id !!}</span>
+							<h1 style="font-size:25px;margin-top:10px;color:#000"><?php echo e($product->name); ?></h1>
+							<span class="tags">Mã sản phẩm: <?php echo $product->sku_id; ?></span>
 							<div class="row" style="margin-top:10px;">
 								<div class="col-sm-6">
-									<span class="price">Giá: {{ number_format($product->price_sale, 0, 0, '.') }} VNĐ</span>
+									<span class="price">Giá: <?php echo e(number_format($product->price_sale, 0, 0, '.')); ?> VNĐ</span>
 									<div>
-										<del class="product-price-old">Giá retail: {{ number_format($product->price, 0, 0, '.') }} VNĐ</del>
+										<del class="product-price-old">Giá retail: <?php echo e(number_format($product->price, 0, 0, '.')); ?> VNĐ</del>
 									</div>
 								</div>
 								<div class="col-sm-6">
-									<p style="line-height:30px;">Tình trạng: <span class="in-stock">{{ ($product->status == 1) ? 'Còn hàng' : 'Hết hàng' }}</span></p>
+									<p style="line-height:30px;">Tình trạng: <span class="in-stock"><?php echo e(($product->status == 1) ? 'Còn hàng' : 'Hết hàng'); ?></span></p>
 								</div>
 							</div>
 							<!-- List Details -->
 							<div style="margin-top:20px;">
-								{!! ($product->short_desc != '') ? $product->short_desc : '' !!}
+								<?php echo ($product->short_desc != '') ? $product->short_desc : ''; ?>
+
 							</div>
 
-							<div style="margin-top:20px" class="fb-like" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="750" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+							<div style="margin-top:20px" class="fb-like" data-href="<?php echo e(route('product-detail', ['slug' => $product->slug])); ?>" data-width="850" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 
 							<!-- Quinty -->
-							<form method="POST" action="{{ route('cartAdd') }}" style="margin-top: 30px">
-								<input type="hidden" name="product_id" value="{{ $product->id }}">
-								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<form method="POST" action="<?php echo e(route('cartAdd')); ?>" style="margin-top: 30px">
+								<input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
+								<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 								<div class="quinty">
 									<input name="quantity" type="number" value="1">
 								</div>
@@ -143,7 +153,8 @@
 						</div>
 					</div>
 					<div class="box-body homepage clearfix" style="padding: 10px 0px 10px 0px;text-align:justify">
-						{!! $product->full_desc !!}
+						<?php echo $product->full_desc; ?>
+
 					</div>
 				</div>
 
@@ -157,14 +168,14 @@
 						<div class="boxRatingCmt" id="boxRatingCmt">
 							<div class="hrt hidden-sm hidden-xs" id="danhgia">
 								<div class="tltRt ">
-									<h3 data-s="392" data-gpa="4.0" data-c="99">Có {{ count($reviews) }} đánh giá về {{ $product->name }}</h3>
+									<h3 data-s="392" data-gpa="4.0" data-c="99">Có <?php echo e(count($reviews)); ?> đánh giá về <?php echo e($product->name); ?></h3>
 								</div>
 							</div>
 
 							<div class="toprt hidden-sm hidden-xs">
 								<div class="crt">
 									<div class="lcrt " data-gpa="4.0">
-										<b>{{ $averageReview }} <i class="iconcom-star"></i></b>  
+										<b><?php echo e($averageReview); ?> <i class="iconcom-star"></i></b>  
 									</div>
 									<div class="rcrt">
 										<?php
@@ -174,11 +185,11 @@
 												$w = (count($reviews) > 0) ? $numReview / count($reviews) * 100 . '%' : '0%';
 												?>
 												<div class="r">
-													<span class="t">{{ $i }} <i></i></span>
+													<span class="t"><?php echo e($i); ?> <i></i></span>
 													<div class="bgb">
-														<div class="bgb-in" style="width:{{ $w }}"></div>
+														<div class="bgb-in" style="width:<?php echo e($w); ?>"></div>
 													</div>
-													<span class="c"><strong>{{ $numReview }}</strong> đánh giá</span>
+													<span class="c"><strong><?php echo e($numReview); ?></strong> đánh giá</span>
 												</div>
 												<?php
 											}
@@ -193,8 +204,8 @@
 
 								<form class="input hide" id="fRatingComment" onsubmit="return false;">
 									<input type="hidden" name="star" id="hdfStar" value="1">
-									<input type="hidden" name="pro_id" id="hdfProductID" value="{{ $product->id }}">
-									<input type="hidden" name="_token" value="{{ csrf_token() }}">
+									<input type="hidden" name="pro_id" id="hdfProductID" value="<?php echo e($product->id); ?>">
+									<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 									<div class="ips">
 										<span>Chọn đánh giá của bạn</span>
 										<span class="lStar">
@@ -227,14 +238,14 @@
 							</div>
 							
 							<div class="list">
-								@if (count($reviews) > 0)
+								<?php if(count($reviews) > 0): ?>
 								<ul class="ratingLst">
 									<?php \Carbon\Carbon::setLocale('vi'); ?>
-									@foreach ($reviews as $review)
+									<?php $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 									<li class="par">
 										<div class="rh">
-											<span>{{ $review->name }}</span>
-											<a href="javascript:;" class="cmdt">{{ $review->created_at->diffForHumans(\Carbon\Carbon::now()) }}</a>
+											<span><?php echo e($review->name); ?></span>
+											<a href="javascript:;" class="cmdt"><?php echo e($review->created_at->diffForHumans(\Carbon\Carbon::now())); ?></a>
 										</div>
 										<div class="rc">
 											<p>
@@ -252,15 +263,15 @@
 														}
 													?>
 												</span>
-												<i>{!! $review->content !!}</i>
+												<i><?php echo $review->content; ?></i>
 											</p>
 										</div>
 									</li>
-									@endforeach
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</ul>
-								@else
+								<?php else: ?>
 									<p>Chưa có đánh giá nào!</p>
-								@endif
+								<?php endif; ?>
 							</div>
 						</div>
 					</div>
@@ -274,22 +285,22 @@
 					</div>
 					<div class="box-body homepage clearfix" style="padding: 10px 0px 10px 0px;">
 						<div class="comments">
-                            <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="750" data-numposts="10"></div>
+                            <div class="fb-comments" data-href="<?php echo e(route('product-detail', ['slug' => $product->slug])); ?>" data-width="750" data-numposts="10"></div>
                         </div>
 					</div>
 				</div>
 			</div>
 
-			@include('layouts.user.sidebar')
+			<?php echo $__env->make('layouts.user.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 		</div>
 	</div>
 </div>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('pageJs')
-	<script type="text/javascript" src="{{ asset('frontend/js/own-menu.js') }}"></script>
-	<script type="text/javascript" src="{{ asset('frontend/js/product.review.js') }}"></script>
+<?php $__env->startSection('pageJs'); ?>
+	<script type="text/javascript" src="<?php echo e(asset('frontend/js/own-menu.js')); ?>"></script>
+	<script type="text/javascript" src="<?php echo e(asset('frontend/js/product.review.js')); ?>"></script>
 	<script type="text/javascript">
 		$(window).load(function () {
 			setTimeout(function () {
@@ -316,4 +327,5 @@
 		var trim = trimText($("#breadcum-title").text(), 7);
         $("#breadcum-title").text(trim);
 	</script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.user.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -4,12 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>@yield('page') | CÔNG TY TNHH PHÁT TRIỂN THỦY MỘC TRÀ</title>
-    <meta name="description" content="@yield('description')">
-    <meta name="keywords" content="@yield('keywords')" />
+    <title><?php echo $__env->yieldContent('page'); ?> | CÔNG TY TNHH PHÁT TRIỂN THỦY MỘC TRÀ</title>
+    <meta name="description" content="<?php echo $__env->yieldContent('description'); ?>">
+    <meta name="keywords" content="<?php echo $__env->yieldContent('keywords'); ?>" />
     <meta name="robots" content="noodp,index,follow" />
-    <meta itemprop="name" content="@yield('propName')">
-    <meta itemprop="description" content="@yield('propDesc')">
+    <meta itemprop="name" content="<?php echo $__env->yieldContent('propName'); ?>">
+    <meta itemprop="description" content="<?php echo $__env->yieldContent('propDesc'); ?>">
     <meta name="copyright" content="Thủy Mộc Trà" />
     <meta name="author" content="Thủy Mộc Trà" />
     <meta http-equiv="audience" content="General" />
@@ -17,32 +17,33 @@
     <meta name="distribution" content="Global" />
     <meta name="revisit-after" content="1 days" />
     <meta property="og:type" content="website">
-    <meta property="og:title" content="@yield('ogTitle')">
-    <meta property="og:image" content="@yield('ogImage')">
-    <meta property="og:image:secure_url" content="@yield('ogImage')">
-    <meta property="og:description" content="@yield('ogDesc')">
-    <meta property="og:url" content="@yield('ogUrl')">
+    <meta property="og:title" content="<?php echo $__env->yieldContent('ogTitle'); ?>">
+    <meta property="og:image" content="<?php echo $__env->yieldContent('ogImage'); ?>">
+    <meta property="og:image:secure_url" content="<?php echo $__env->yieldContent('ogImage'); ?>">
+    <meta property="og:description" content="<?php echo $__env->yieldContent('ogDesc'); ?>">
+    <meta property="og:url" content="<?php echo $__env->yieldContent('ogUrl'); ?>">
     <meta property="og:site_name" content="thuymoctra.com.vn">
     <meta property="og:locale" content="vi_VN" />
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:description" content="@yield('propDesc')" />
-    <meta name="twitter:title" content="@yield('ogTitle')" />
-    <meta name="twitter:image" content="{{ asset('frontend/images/icons/favicon.png') }}" />
-    <link rel="icon" href="{{ asset('frontend/images/icons/favicon-logo.png') }}" type="image/x-icon" />
-    <link rel="canonical" href="@yield('canonical')" />
-    <link rel="alternate" href="@yield('alternate')">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.carousel.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.theme.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.transitions.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/layout.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/component.css') }}" />
-    @section('pageCss')
-    @show
-    {!! ($setting != '') ? $setting->fb_pixel_code : '' !!}
+    <meta name="twitter:description" content="<?php echo $__env->yieldContent('propDesc'); ?>" />
+    <meta name="twitter:title" content="<?php echo $__env->yieldContent('ogTitle'); ?>" />
+    <meta name="twitter:image" content="<?php echo e(asset('frontend/images/icons/favicon.png')); ?>" />
+    <link rel="icon" href="<?php echo e(asset('frontend/images/icons/favicon-logo.png')); ?>" type="image/x-icon" />
+    <link rel="canonical" href="<?php echo $__env->yieldContent('canonical'); ?>" />
+    <link rel="alternate" href="<?php echo $__env->yieldContent('alternate'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/bootstrap.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/font-awesome.min.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/owl.carousel.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/owl.theme.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/owl.transitions.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/style.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/layout.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/responsive.css')); ?>" />
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/component.css')); ?>" />
+    <?php $__env->startSection('pageCss'); ?>
+    <?php echo $__env->yieldSection(); ?>
+    <?php echo ($setting != '') ? $setting->fb_pixel_code : ''; ?>
+
 </head>
 
 <body>
@@ -75,40 +76,40 @@
     <div class="main-container-full">
         <div class="wrapper mp-pusher" id="mp-pusher">
 
-            @include('layouts.user.header')
+            <?php echo $__env->make('layouts.user.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
 
-            @include('layouts.user.footer')
+            <?php echo $__env->make('layouts.user.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
         </div>
     </div>
 
     <span id="top-link-block" class="hidden">
         <a href="#top" class="well-sm" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
-            <img src="{{ asset('frontend/images/icon_gototop.png') }}" />
+            <img src="<?php echo e(asset('frontend/images/icon_gototop.png')); ?>" />
         </a>
     </span>
 
     <div class="social-button">
         <div class="social-button-content" style="display:none">
-            <a href="tel:{{ str_replace(' ', '', $setting->phone) }}" class="call-icon" rel="nofollow">
+            <a href="tel:<?php echo e(str_replace(' ', '', $setting->phone)); ?>" class="call-icon" rel="nofollow">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <div class="animated alo-circle"></div>
                 <div class="animated alo-circle-fill"></div>
-                <span>Hotline: {{ $setting->phone }}</span>
+                <span>Hotline: <?php echo e($setting->phone); ?></span>
             </a>
-            <a href="sms:{{ str_replace(' ', '', $setting->phone) }}" class="sms">
+            <a href="sms:<?php echo e(str_replace(' ', '', $setting->phone)); ?>" class="sms">
                 <i class="fa fa-comment" aria-hidden="true"></i>
-                <span>SMS: {{ $setting->phone }}</span>
+                <span>SMS: <?php echo e($setting->phone); ?></span>
             </a>
-            <a href="{{ $setting->facebook_url }}" class="mes" rel="nofollow">
+            <a href="<?php echo e($setting->facebook_url); ?>" class="mes" rel="nofollow">
                 <i class="fa fa-facebook" aria-hidden="true"></i>
                 <span>Nhắn tin Facebook</span>
             </a>
-            <a href="http://zalo.me/{{ str_replace(' ', '', $setting->phone) }}" class="zalo" rel="nofollow">
-                <img style="width:40px;height:40px;border-radius:50%;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);" src="{{ asset('frontend/images/zalo.png') }}">
-                <span>Zalo: {{ $setting->phone }}</span>
+            <a href="http://zalo.me/<?php echo e(str_replace(' ', '', $setting->phone)); ?>" class="zalo" rel="nofollow">
+                <img style="width:40px;height:40px;border-radius:50%;box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);" src="<?php echo e(asset('frontend/images/zalo.png')); ?>">
+                <span>Zalo: <?php echo e($setting->phone); ?></span>
             </a>
         </div>
 
@@ -119,13 +120,13 @@
         </a>
     </div>
 
-    <script type="text/javascript" src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/owl.carousel.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/modernizr.custom.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/classie.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('frontend/js/mlpushmenu.js') }}"></script>
+    <script type="text/javascript" src="<?php echo e(asset('frontend/js/jquery-2.2.3.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('frontend/js/bootstrap.min.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('frontend/js/owl.carousel.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('frontend/js/main.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('frontend/js/modernizr.custom.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('frontend/js/classie.js')); ?>"></script>
+    <script type="text/javascript" src="<?php echo e(asset('frontend/js/mlpushmenu.js')); ?>"></script>
 
     <script type="text/javascript">
         $(function() {
@@ -213,8 +214,8 @@
         })
     </script>
 
-    @section('pageJs')
-    @show
+    <?php $__env->startSection('pageJs'); ?>
+    <?php echo $__env->yieldSection(); ?>
 </body>
 
 </html>

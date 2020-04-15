@@ -1793,8 +1793,8 @@ ul.product-list li:hover .link-order {
 
 #top-link-block.affix {
     position: fixed;
-    bottom: 50px;
-    right: 10px
+    bottom: 335px;
+    right: 15px
 }
 
 .dropdown-menu>li>a {
@@ -1979,7 +1979,7 @@ ul.info-att li.active {
 .footer {
     background: #008854;
     color: #ffffff;
-    padding: 30px 0px;
+    padding: 30px 0px 0px 0px;
     font-size: 13px;
     letter-spacing: 0.1px;
 }
@@ -2043,7 +2043,7 @@ SOCIAL CSS
     display: inline-grid;
     position: fixed;
     bottom: 25px;
-    left: 20px;
+    left: 25px;
     min-width: 45px;
     text-align: center;
     z-index: 99999;

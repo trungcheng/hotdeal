@@ -3,11 +3,11 @@
         <div class="row">
             <div class="footer-site">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 footer-section">
-                    <div class="tieude">{!! $setting->name !!}</div>
+                    <div class="tieude"><?php echo $setting->name; ?></div>
                     <div class="text-ft">
-                        <p><i class="fa fa-map-marker"></i> {!! $setting->address !!}</p>
-                        <p><i class="fa fa-phone"></i> {!! $setting->phone !!}</p>
-                        <p><i class="fa fa-envelope"></i> {!! $setting->email !!}</p>
+                        <p><i class="fa fa-map-marker"></i> <?php echo $setting->address; ?></p>
+                        <p><i class="fa fa-phone"></i> <?php echo $setting->phone; ?></p>
+                        <p><i class="fa fa-envelope"></i> <?php echo $setting->email; ?></p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 footer-section footer-cate">
@@ -15,12 +15,12 @@
                     <div class="text-ft">
                         <ul>
                             <li><a href="/">Trang chủ</a></li>
-                            <li><a href="{{ route('store') }}">Sản phẩm</a></li>
-                            <li><a href="{{ route('certificate') }}">Chứng nhận chất lượng</a></li>
-                            <li><a href="{{ route('health-advice') }}">Tư vấn sức khỏe</a></li>
-                            <li><a href="{{ route('article-detail', ['slug' => 'khuyen-mai']) }}">Khuyến mãi</a></li>
-                            <li><a href="{{ route('policy') }}">Chính sách giá</a></li>
-                            <li><a href="{{ route('contact') }}">Liên hệ</a></li>
+                            <li><a href="<?php echo e(route('store')); ?>">Sản phẩm</a></li>
+                            <li><a href="<?php echo e(route('certificate')); ?>">Chứng nhận chất lượng</a></li>
+                            <li><a href="<?php echo e(route('health-advice')); ?>">Tư vấn sức khỏe</a></li>
+                            <li><a href="<?php echo e(route('article-detail', ['slug' => 'khuyen-mai'])); ?>">Khuyến mãi</a></li>
+                            <li><a href="<?php echo e(route('policy')); ?>">Chính sách giá</a></li>
+                            <li><a href="<?php echo e(route('contact')); ?>">Liên hệ</a></li>
                         </ul>
                     </div>
                 </div>

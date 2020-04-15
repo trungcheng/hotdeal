@@ -22,7 +22,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   	<link rel="stylesheet" href="{{ asset('components/admin-lte/dist/css/AdminLTE.min.css') }}" />
   	<link rel="stylesheet" href="{{ asset('components/admin-lte/dist/css/skins/skin-blue.min.css') }}" />
   	<link rel="stylesheet" href="{{ asset('backend/css/style.css') }}" />
-  	<link rel="shortcut icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon">
+  	<link rel="shortcut icon" href="{{ asset('frontend/images/icons/favicon-logo.png') }}" type="image/x-icon">
   	<!-- Google Font -->
   	<link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic" />
