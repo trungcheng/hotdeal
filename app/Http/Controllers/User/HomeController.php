@@ -21,7 +21,7 @@ class HomeController extends Controller
         $slides = Slide::where('status', 1)->orderBy('created_at', 'desc')->get();
 
     	$topSales = Product::where('is_hot', 1)->limit(24)->get();
-    	$brands = Category::orderBy('created_at', 'asc')->get();
+    	$brands = Category::orderBy('order', 'asc')->get();
 
         return view('pages.user.home.index', [
             'slides' => $slides,
