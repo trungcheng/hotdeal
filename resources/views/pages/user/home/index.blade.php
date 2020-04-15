@@ -36,7 +36,7 @@
 
 @section('content')
     <h1 class="hide">Mua đồng hồ chính hãng uy tín và chất lượng tại Donghoxachtay</h1>
-    <section class="banner section">
+    {{--<section class="banner section">
         <div class="swiper swiper-pagination-inside">
             <div class="swiper-container" data-plugin="swiper">
                 <div class="swiper-wrapper">
@@ -58,9 +58,9 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-    </section>
+    </section>--}}
     @if (count($topSales) > 0)
-    <section class="swiper swiper-fullwidth mb-5">
+    <section class="swiper swiper-fullwidth mb-5" style="margin-top: 1.5rem !important;">
         <div class="container">
             <h2 class="section-heading text-center text-md-left">
                 <span class="line-bottom">Top Sales</span>
@@ -103,7 +103,7 @@
     </section>
     <hr class="divider my-5">
     @endif
-    <section class="section py-0">
+    <section class="section py-0" style="margin-top: 1.5rem !important;">
         <div class="container">
             <header class="section-header d-flex flex-column flex-md-row align-items-center">
                 <h2 class="section-heading mb-4 mb-md-0">
