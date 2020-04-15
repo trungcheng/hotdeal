@@ -17,23 +17,30 @@ class ProductController extends Controller
 
     public function index(Request $request, $slug)
     {
-    	$product = Product::where('slug', $slug)->first();
+        $product = Product::where('slug', $slug)->first();
         if ($product) {
+            
             $imageOriginal = str_replace('/thumbs', '', $product->image);
             $data = getimagesize(url($imageOriginal));
             $product->image_width = $data[0];
             $product->image_height = $data[1];
 
+            
+
             $imageLists = [];
             $image_list = json_decode($product->image_list);
+
             if (count($image_list) > 0 && !is_null($image_list[0])) {
                 foreach ($image_list as $key => $item) {
+
                     $data = getimagesize(url($item));
                     $imageLists[$key]['link'] = $item;
                     $imageLists[$key]['width'] = $data[0];
                     $imageLists[$key]['height'] = $data[1];
+
                 }
             }
+            
 
             $relatedProducts = Product::where('cat_id', $product->cat_id)->limit(12)->get()->except($product->id);
 
