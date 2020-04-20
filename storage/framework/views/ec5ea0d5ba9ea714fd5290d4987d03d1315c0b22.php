@@ -1,4 +1,5 @@
-<?php $__env->startSection('page'); ?>Trang chủ
+<?php $__env->startSection('page'); ?><?php echo e($setting->seo_title); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('description'); ?><?php echo e($setting->seo_desc); ?>
@@ -77,7 +78,7 @@
                             <a class="view-name" href="<?php echo e(route('about')); ?>" title="Giới thiệu công ty TNHH phát triển Thủy mộc trà">Giới thiệu công ty TNHH phát triển Thủy mộc trà</a>
                         </div>
                         <div class="body-news">
-                            <div class="view-short">
+                            <div id="about" class="view-short">
                                  <?php echo $page->introduce; ?>
 
                             </div>
@@ -255,6 +256,10 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('pageJs'); ?>
-    
+    <script type="text/javascript">
+        var trim = trimText($("#about div").text(), 150);
+        $("#about div").text(trim);
+        $("#about").html('<div style="text-align:justify">'+ trim +'</div>');
+    </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.user.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

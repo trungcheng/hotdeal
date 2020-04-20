@@ -72,7 +72,7 @@
                             <a class="view-name" href="{{ route('about') }}" title="Giới thiệu công ty TNHH phát triển Thủy mộc trà">Giới thiệu công ty TNHH phát triển Thủy mộc trà</a>
                         </div>
                         <div class="body-news">
-                            <div class="view-short">
+                            <div id="about" class="view-short">
                                  {!! $page->introduce !!}
                             </div>
                         </div>
@@ -248,5 +248,9 @@
 @stop
 
 @section('pageJs')
-    
+    <script type="text/javascript">
+        var trim = trimText($("#about div").text(), 150);
+        $("#about div").text(trim);
+        $("#about").html('<div style="text-align:justify">'+ trim +'</div>');
+    </script>
 @stop

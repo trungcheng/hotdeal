@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title><?php echo $__env->yieldContent('page'); ?> | CÔNG TY TNHH PHÁT TRIỂN THỦY MỘC TRÀ</title>
+    <title><?php echo $__env->yieldContent('page'); ?> - Công ty TNHH Phát triển Thủy Mộc Trà</title>
     <meta name="description" content="<?php echo $__env->yieldContent('description'); ?>">
     <meta name="keywords" content="<?php echo $__env->yieldContent('keywords'); ?>" />
     <meta name="robots" content="noodp,index,follow" />
@@ -27,7 +27,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:description" content="<?php echo $__env->yieldContent('propDesc'); ?>" />
     <meta name="twitter:title" content="<?php echo $__env->yieldContent('ogTitle'); ?>" />
-    <meta name="twitter:image" content="<?php echo e(asset('frontend/images/icons/favicon.png')); ?>" />
+    <meta name="twitter:image" content="<?php echo e(asset('frontend/images/logos/logo.png')); ?>" />
     <link rel="icon" href="<?php echo e(asset('frontend/images/icons/favicon-logo.png')); ?>" type="image/x-icon" />
     <link rel="canonical" href="<?php echo $__env->yieldContent('canonical'); ?>" />
     <link rel="alternate" href="<?php echo $__env->yieldContent('alternate'); ?>">
@@ -44,6 +44,15 @@
     <?php echo $__env->yieldSection(); ?>
     <?php echo ($setting != '') ? $setting->fb_pixel_code : ''; ?>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163726178-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163726178-1');
+    </script>
 </head>
 
 <body>
