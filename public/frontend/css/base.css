@@ -4944,7 +4944,7 @@ footer .footer-info-widget p.hotline a {
     background-color: #222;
 }
 .home-slider.owl-carousel .owl-dots .owl-dot.active, .section-blog-sliders.owl-carousel .owl-dots .owl-dot.active {
-    width: 30px;
+    width: 10px;
     height: 10px;
     background-color: #189eff;
     border-radius: 6px;

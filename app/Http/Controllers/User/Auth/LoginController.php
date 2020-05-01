@@ -66,7 +66,7 @@ class LoginController extends Controller
         if ($user) {
             if ($user->is_confirmed == 0) {
                 Session::flash('danger', 'Bạn chưa xác nhận đăng ký');
-                return redirect('account/signin');
+                return redirect()->route('signin');
             }
         }
 

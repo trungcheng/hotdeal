@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/account/signin';
+    protected $redirectTo = '/tai-khoan/dang-nhap';
 
     /**
      * Create a new controller instance.
@@ -84,7 +84,7 @@ class RegisterController extends Controller
     {
         $confirmationCode = md5($data['email']).uniqid();
         $hash = utf8_encode(base64_encode($confirmationCode));
-        $confirmationLink = url('dang-nhap') . '?m='.$data['email'].'&token='.$hash;
+        $confirmationLink = url('tai-khoan/dang-nhap') . '?m='.$data['email'].'&token='.$hash;
 
         // send mail
         Mail::send('pages/user/mail/register_confirm_temp', [

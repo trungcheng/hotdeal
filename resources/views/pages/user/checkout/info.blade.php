@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Ant Kitchen - Thanh toán đơn hàng" />
-    <title>Thanh toán đơn hàng | Ant Kitchen</title>
+    <meta name="description" content="King Bep - Thanh toán đơn hàng" />
+    <title>Thanh toán đơn hàng | King Bếp</title>
     <link rel="icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon" />
     <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -14,49 +14,31 @@
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/css/checkout.css') }}" rel="stylesheet" type="text/css" />
-    <script>
-        var Bizweb = Bizweb || {};
-        Bizweb.store = 'ant-kitchen.mysapo.net';
-        Bizweb.theme = {
-            "id": 606449,
-            "role": "main",
-            "name": "Ant Kitchen"
-        };
-        Bizweb.template = '';
-    </script>
-    <script type="text/javascript">
-        if (typeof Bizweb == 'undefined') {
-            Bizweb = {};
-        }
-        Bizweb.Checkout = {};
-        Bizweb.Checkout.token = "0f15394c112542c79b8eb0caee02058a";
-        Bizweb.Checkout.apiHost = "ant-kitchen.mysapo.net";
-    </script>
 </head>
 
 <body class="body--custom-background-color ">
+
     <div class="banner" data-header="">
         <div class="wrap">
             <div class="shop logo logo--left ">
-
                 <h1 class="shop__name">
                     <a href="/">
-                        Ant Kitchen
+                        King Bếp
                     </a>
                 </h1>
-
             </div>
         </div>
     </div>
-    <button class="order-summary-toggle" bind-event-click="Bizweb.StoreCheckout.toggleOrderSummary(this)">
+
+    <button class="order-summary-toggle">
         <div class="wrap">
             <h2>
                 <label class="control-label">Đơn hàng</label>
                 <label class="control-label hidden-small-device">
-                    (2 sản phẩm)
+                    ({{ $countItemCart }} sản phẩm)
                 </label>
                 <label class="control-label visible-small-device inline">
-                    (2)
+                    ({{ $countItemCart }})
                 </label>
             </h2>
             <a class="underline-none expandable pull-right" href="javascript:void(0)">
@@ -65,15 +47,15 @@
         </div>
     </button>
 
-    <div context="paymentStatus" define='{ paymentStatus: new Bizweb.PaymentStatus(this,{payment_processing:"",payment_provider_id:"",payment_info:{} }) }'>
+    <form id="formCheckout" method="post" action="{{ route('postStep2') }}" data-toggle="validator" class="content stateful-form formCheckout">
+        {{ csrf_field() }}
+        <input type="hidden" name="user_id" value="{{ \Auth::id() }}">
 
-    </div>
-    <form method="post" action="" data-toggle="validator" class="content stateful-form formCheckout">
-        <div class="wrap" context="checkout" define='{checkout: new Bizweb.StoreCheckout(this,{ token: "0f15394c112542c79b8eb0caee02058a", email: "", totalOrderItemPrice: 20900000.0000, shippingFee: 0, freeShipping: false, requiresShipping: true, existCode: false, code: "", discount: 0, settingLanguage: "vi", moneyFormat: "{{0}}₫", discountLabel: "Miễn phí", districtPolicy: "optional", wardPolicy: "hidden", district: "", ward: "", province:"", otherAddress: false, shippingId: 0, shippingMethods: [], customerAddressId: 0, reductionCode: "" })}'>
-            <div class='sidebar '>
+        <div class="wrap" context="checkout">
+            <div class='sidebar'>
                 <div class="sidebar_header">
                     <h2>
-                        <label class="control-label">Đơn hàng (2 sản phẩm)</label>
+                        <label class="control-label">Đơn hàng ({{ $countItemCart }} sản phẩm)</label>
                     </h2>
                     <hr class="full_width" />
                 </div>
@@ -83,59 +65,26 @@
                             <div class="summary-product-list">
                                 <table class="product-table">
                                     <tbody>
-
+                                        @foreach ($cart as $item)
                                         <tr class="product product-has-image clearfix">
                                             <td>
                                                 <div class="product-thumbnail">
                                                     <div class="product-thumbnail__wrapper">
-
-                                                        <img src="//bizweb.dktcdn.net/thumb/thumb/100/270/860/products/chao-2-88c038bb-2888-471f-9812-cc19974ccea8.jpg?v=1510583505400" class="product-thumbnail__image" />
-
+                                                        <img src="{{ $item->options->image }}" class="product-thumbnail__image" />
                                                     </div>
-                                                    <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
+                                                    <span class="product-thumbnail__quantity" aria-hidden="true">{{ $item->qty }}</span>
                                                 </div>
                                             </td>
                                             <td class="product-info">
                                                 <span class="product-info-name">
-
-                                                    Chảo nhôm chống dính Zwilling Madura Plus 66290-286 28 cm
+                                                    {{ $item->name }}
                                                 </span>
-
-                                                <span class="product-info-description">
-                                                    Z / Đen
-                                                </span>
-
-
                                             </td>
                                             <td class="product-price text-right">
-                                                1.000.000₫
+                                                {{ number_format($item->price, 0, 0, '.') }}đ
                                             </td>
                                         </tr>
-
-                                        <tr class="product product-has-image clearfix">
-                                            <td>
-                                                <div class="product-thumbnail">
-                                                    <div class="product-thumbnail__wrapper">
-
-                                                        <img src="//bizweb.dktcdn.net/thumb/thumb/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" class="product-thumbnail__image" />
-
-                                                    </div>
-                                                    <span class="product-thumbnail__quantity" aria-hidden="true">1</span>
-                                                </div>
-                                            </td>
-                                            <td class="product-info">
-                                                <span class="product-info-name">
-
-                                                    Android Tivi Sony 4K 49 inch KD-49X7500E
-                                                </span>
-
-
-                                            </td>
-                                            <td class="product-price text-right">
-                                                19.900.000₫
-                                            </td>
-                                        </tr>
-
+                                        @endforeach
                                     </tbody>
                                 </table>
                                 <div class="order-summary__scroll-indicator">
@@ -146,9 +95,9 @@
                         </div>
                         <hr class="m0" />
                     </div>
-                    <div class="order-summary order-summary--discount">
+                    {{--<div class="order-summary order-summary--discount">
                         <div class="summary-section">
-                            <div class="form-group m0" bind-show="!existCode || !applyWithPromotion || code == null || !code.length">
+                            {{--<div class="form-group m0" bind-show="!existCode || !applyWithPromotion || code == null || !code.length">
                                 <div class="field__input-btn-wrapper">
                                     <div class="field__input-wrapper">
                                         <input bind="code" name="code" type="text" class="form-control discount_code" placeholder="Nhập mã giảm giá" value="  " id="checkout_reduction_code" />
@@ -179,33 +128,40 @@
                             </div>
                         </div>
                         <hr class="m0" />
-                    </div>
+                    </div>--}}
                     <div class="order-summary order-summary--total-lines">
                         <div class="summary-section border-top-none--mobile">
                             <div class="total-line total-line-subtotal clearfix">
                                 <span class="total-line-name pull-left">
                                     Tạm tính
                                 </span>
-                                <span bind="money(totalOrderItemPrice - discount,'{{0}}₫')" class="total-line-subprice pull-right">
-                                    20.900.000₫
+                                <span class="total-line-subprice pull-right">
+                                    {{ $total }}đ
                                 </span>
                             </div>
-                            <div class="total-line total-line-shipping clearfix" bind-show="requiresShipping">
+                            <div class="total-line total-line-shipping clearfix">
                                 <span class="total-line-name pull-left">
                                     Phí vận chuyển
                                 </span>
-                                <span bind="shippingFee >  0 ? money(shippingFee,'{{0}}₫') : ((requiresShipping && shippingMethods.length == 0) ? 'Khu vực này không hỗ trợ vận chuyển': 'Miễn phí')" class="total-line-shipping pull-right" bind-show="ShippingProvinceId || BillingProvinceId && !otherAddress || (requiresShipping && shippingMethods.length > 0)">
-
+                                <span id="delivery-fee" class="pull-right">
                                     Miễn phí
-
                                 </span>
                             </div>
                             <div class="total-line total-line-total clearfix">
                                 <span class="total-line-name pull-left">
                                     Tổng cộng
                                 </span>
-                                <span bind="money(totalOrderItemPrice + (isNaN(shippingFee) ? 0 : shippingFee) - discount,'{{0}}₫')" class="total-line-price pull-right">
-                                    20.900.000₫
+                                <span id="total" class="total-line-price pull-right">
+                                    {{ $total }}đ
+                                </span>
+                                <span id="new-total" class="hide total-line-price pull-right">
+                                    <?php
+                                        $newtotal = 25000;
+                                        foreach ($cart as $item) {
+                                            $newtotal += ($item->price * $item->qty);
+                                        }
+                                    ?>
+                                    {{ number_format($newtotal, 0, 0,'.') }}đ
                                 </span>
                             </div>
                         </div>
@@ -216,7 +172,7 @@
                                 <i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
                                 <span>Quay về giỏ hàng</span>
                             </a>
-                            <input class="btn btn-primary btn-checkout" data-loading-text="Đang xử lý" type="button" bind-event-click="paymentCheckout('AIzaSyAjQYbV19v7UMDVk0cDZ54yKh3OP1hQhbk;AIzaSyCLd-YkfOzBXlNGfS_FNLnpolyME1tRAJI;AIzaSyDdvilzaJlb50t2IRC3PrfSb1lNzf6n3pQ')" value="ĐẶT HÀNG" />
+                            <input class="btn btn-primary btn-checkout" type="submit" value="ĐẶT HÀNG" />
                         </div>
                     </div>
                     <div class="form-group has-error">
@@ -231,43 +187,46 @@
             <div class="main" role="main">
                 <div class="main_header">
                     <div class="shop logo logo--left ">
-
                         <h1 class="shop__name">
                             <a href="/">
-                                Ant Kitchen
+                                King Bếp
                             </a>
                         </h1>
-
                     </div>
                 </div>
                 <div class="main_content">
                     <div class="row">
+
+                        @foreach (['danger', 'warning', 'success', 'info'] as $key)
+                            @if(Session::has($key))
+                                <p class="alert alert-{{ $key }}">{{ Session::get($key) }}</p>
+                            @endif
+                        @endforeach
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li style="list-style:none">{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="col-md-6 col-lg-6">
-                            <div class="section" define="{billing_address: {&quot;address1&quot;:null,&quot;address2&quot;:null,&quot;city&quot;:&quot;&quot;,&quot;company&quot;:null,&quot;country&quot;:&quot;Việt Nam&quot;,&quot;first_name&quot;:null,&quot;last_name&quot;:null,&quot;name&quot;:&quot;&quot;,&quot;full_name&quot;:&quot;&quot;,&quot;phone&quot;:null,&quot;phone_number&quot;:null,&quot;province&quot;:&quot;&quot;,&quot;province_code&quot;:&quot;&quot;,&quot;district&quot;:&quot;&quot;,&quot;district_code&quot;:&quot;&quot;,&quot;ward&quot;:&quot;&quot;,&quot;ward_code&quot;:&quot;&quot;,&quot;zip&quot;:null,&quot;country_code&quot;:&quot;VN&quot;}}">
+                            <div class="section">
                                 <div class="section__header">
                                     <div class="layout-flex layout-flex--wrap">
                                         <h2 class="section__title layout-flex__item layout-flex__item--stretch">
                                             <i class="fa fa-id-card-o fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
                                             <label class="control-label">Thông tin mua hàng</label>
                                         </h2>
-
-                                        {{--<a class="layout-flex__item section__title--link" href="/account/login?returnUrl=/checkout">
-                                            <i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>
-                                            Đăng nhập
-                                        </a>--}}
-
                                     </div>
                                 </div>
                                 <div class="section__content">
-
-
-                                    <div class="form-group" bind-class="{'has-error' : invalidEmail}">
+                                    <div class="form-group" bind-class="{'has-error': invalidEmail}">
                                         <div>
-                                            <label class="field__input-wrapper" bind-class="{ 'js-is-filled': email }">
-                                                <span class="field__label" bind-event-click="handleClick(this)">
-                                                    Email
-                                                </span>
-                                                <input name="Email" type="email" bind-event-change="changeEmail()" bind-event-focus="handleFocus(this)" bind-event-blur="handleFieldBlur(this)" class="field__input form-control" id="_email" data-error="Vui lòng nhập email đúng định dạng" required name="Email" value="" pattern="^([a-zA-Z0-9_\-\.\+]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" bind="email" />
+                                            <label class="field__input-wrapper" bind-class="{'js-is-filled': email }">
+                                                <input placeholder="Email" name="customer_email" type="email" class="field__input form-control" id="_email" data-error="Vui lòng nhập email đúng định dạng" required value="" pattern="^([a-zA-Z0-9_\-\.\+]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" bind="email" />
                                             </label>
                                         </div>
                                         <div class="help-block with-errors">
@@ -277,468 +236,40 @@
                                     <div class="billing">
                                         <div>
                                             <div class="form-group">
-                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': billing_address.full_name }">
-                                                    <span class="field__label" bind-event-click="handleClick(this)">
-                                                        Họ và tên
-                                                    </span>
-                                                    <input name="BillingAddress.LastName" type="text" bind-event-change="saveAbandoned()" bind-event-focus="handleFocus(this)" bind-event-blur="handleFieldBlur(this)" class="field__input form-control" id="_billing_address_last_name" data-error="Vui lòng nhập họ tên" required bind="billing_address.full_name" />
+                                                <div class="field__input-wrapper" bind-class="{'js-is-filled': billing_address.customer_name }">
+                                                    <input placeholder="Họ và tên" name="customer_name" type="text" class="field__input form-control" id="_billing_address_last_name" data-error="Vui lòng nhập họ tên" required bind="billing_address.customer_name" />
                                                 </div>
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
                                             <div class="form-group">
-                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': billing_address.phone }">
-                                                    <span class="field__label" bind-event-click="handleClick(this)">
-                                                        Số điện thoại
-                                                    </span>
-                                                    <input name="BillingAddress.Phone" bind-event-change="saveAbandoned()" type="tel" bind-event-focus="handleFocus(this)" bind-event-blur="handleFieldBlur(this)" class="field__input form-control" id="_billing_address_phone" data-error="Vui lòng nhập số điện thoại" pattern="^([0-9,\+,\-,\(,\),\.]{8,20})$" bind="billing_address.phone" />
-                                                </div>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': billing_address.address1 }">
-                                                    <span class="field__label" bind-event-click="handleClick(this)">
-                                                        Địa chỉ
-                                                    </span>
-                                                    <input name="BillingAddress.Address1" bind-event-change="saveAbandoned()" type="text" bind-event-focus="handleFocus(this)" bind-event-blur="handleFieldBlur(this)" class="field__input form-control" id="_billing_address_address1" bind="billing_address.address1" />
-                                                </div>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-
-
-                                            <div class="form-group">
-                                                <div class="field__input-wrapper field__input-wrapper--select">
-                                                    <label class="field__label" for="BillingProvinceId">
-                                                        Tỉnh thành
-                                                    </label>
-                                                    <select class="field__input field__input--select form-control filter-dropdown" name="BillingProvinceId" id="billingProvince" required data-error="Bạn chưa chọn tỉnh thành" bind-event-change="billingProvinceChange('')" bind="BillingProvinceId">
-                                                        <option value=''>--- Chọn tỉnh thành ---</option>
-
-
-                                                        <option value="1">Hà Nội</option>
-
-                                                        <option value="2">TP Hồ Chí Minh</option>
-
-                                                        <option value="3">An Giang</option>
-
-                                                        <option value="4">Bà Rịa-Vũng Tàu</option>
-
-                                                        <option value="5">Bắc Giang</option>
-
-                                                        <option value="6">Bắc Kạn</option>
-
-                                                        <option value="7">Bạc Liêu</option>
-
-                                                        <option value="8">Bắc Ninh</option>
-
-                                                        <option value="9">Bến Tre</option>
-
-                                                        <option value="10">Bình Định</option>
-
-                                                        <option value="11">Bình Dương</option>
-
-                                                        <option value="12">Bình Phước</option>
-
-                                                        <option value="13">Bình Thuận</option>
-
-                                                        <option value="14">Cà Mau</option>
-
-                                                        <option value="15">Cần Thơ</option>
-
-                                                        <option value="16">Cao Bằng</option>
-
-                                                        <option value="17">Đà Nẵng</option>
-
-                                                        <option value="18">Đắk Lắk</option>
-
-                                                        <option value="19">Đắk Nông</option>
-
-                                                        <option value="20">Điện Biên</option>
-
-                                                        <option value="21">Đồng Nai</option>
-
-                                                        <option value="22">Đồng Tháp</option>
-
-                                                        <option value="23">Gia Lai</option>
-
-                                                        <option value="24">Hà Giang</option>
-
-                                                        <option value="25">Hà Nam</option>
-
-                                                        <option value="26">Hà Tĩnh</option>
-
-                                                        <option value="27">Hải Dương</option>
-
-                                                        <option value="28">Hải Phòng</option>
-
-                                                        <option value="29">Hậu Giang</option>
-
-                                                        <option value="30">Hòa Bình</option>
-
-                                                        <option value="31">Hưng Yên</option>
-
-                                                        <option value="32">Khánh Hòa</option>
-
-                                                        <option value="33">Kiên Giang</option>
-
-                                                        <option value="34">Kon Tum</option>
-
-                                                        <option value="35">Lai Châu</option>
-
-                                                        <option value="36">Lâm Đồng</option>
-
-                                                        <option value="37">Lạng Sơn</option>
-
-                                                        <option value="38">Lào Cai</option>
-
-                                                        <option value="39">Long An</option>
-
-                                                        <option value="40">Nam Định</option>
-
-                                                        <option value="41">Nghệ An</option>
-
-                                                        <option value="42">Ninh Bình</option>
-
-                                                        <option value="43">Ninh Thuận</option>
-
-                                                        <option value="44">Phú Thọ</option>
-
-                                                        <option value="45">Phú Yên</option>
-
-                                                        <option value="46">Quảng Bình</option>
-
-                                                        <option value="47">Quảng Nam</option>
-
-                                                        <option value="48">Quảng Ngãi</option>
-
-                                                        <option value="49">Quảng Ninh</option>
-
-                                                        <option value="50">Quảng Trị</option>
-
-                                                        <option value="51">Sóc Trăng</option>
-
-                                                        <option value="52">Sơn La</option>
-
-                                                        <option value="53">Tây Ninh</option>
-
-                                                        <option value="54">Thái Bình</option>
-
-                                                        <option value="55">Thái Nguyên</option>
-
-                                                        <option value="56">Thanh Hóa</option>
-
-                                                        <option value="57">Thừa Thiên Huế</option>
-
-                                                        <option value="58">Tiền Giang</option>
-
-                                                        <option value="59">Trà Vinh</option>
-
-                                                        <option value="60">Tuyên Quang</option>
-
-                                                        <option value="61">Vĩnh Long</option>
-
-                                                        <option value="62">Vĩnh Phúc</option>
-
-                                                        <option value="63">Yên Bái</option>
-
-
-                                                    </select>
-                                                </div>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-                                            <div bind-show="!otherAddress" class="form-group">
-                                                <div class="field__input-wrapper field__input-wrapper--select">
-                                                    <label class="field__label" for="BillingDistrictId">
-                                                        Quận huyện
-                                                    </label>
-                                                    <select class="field__input field__input--select form-control filter-dropdown" name="BillingDistrictId" id="billingDistrict" bind-event-change="billingDistrictChange('')" bind="BillingDistrictId">
-                                                        <option value="">--- Chọn quận huyện ---</option>
-
-
-
-                                                    </select>
-                                                </div>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-
-
-                                            <div bind-show="!otherAddress" class="form-group">
-                                                <div class="error hide" bind-show="requiresShipping && loadedShippingMethods && shippingMethods.length == 0  && BillingProvinceId  ">
-                                                    <label>Khu vực này không hỗ trợ vận chuyển</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section pt10">
-                                <div class="section__content">
-                                    <div class="form-group" bind-show="requiresShipping">
-                                        <div class="checkbox-wrapper">
-                                            <div class="checkbox__input">
-                                                <input class="input-checkbox" type="checkbox" value="false" name="otherAddress" id="other_address" bind="otherAddress" bind-event-change="changeOtherAddress(this)">
-                                            </div>
-                                            <label class="checkbox__label" for="other_address">
-                                                Giao hàng đến địa chỉ khác
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section pt10" bind-show="otherAddress">
-                                <div class="section__header">
-                                    <h2 class="section__title">
-                                        <i class="fa fa-id-card-o fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
-                                        <label class="control-label">
-                                            Thông tin nhận hàng
-                                        </label>
-                                    </h2>
-                                </div>
-                                <div class="section__content">
-                                    <div bind-show="otherAddress" define="{shipping_address: {&quot;address1&quot;:null,&quot;address2&quot;:null,&quot;city&quot;:&quot;&quot;,&quot;company&quot;:null,&quot;country&quot;:&quot;Việt Nam&quot;,&quot;first_name&quot;:null,&quot;last_name&quot;:null,&quot;name&quot;:&quot;&quot;,&quot;full_name&quot;:&quot;&quot;,&quot;phone&quot;:null,&quot;phone_number&quot;:null,&quot;province&quot;:&quot;&quot;,&quot;province_code&quot;:&quot;&quot;,&quot;district&quot;:&quot;&quot;,&quot;district_code&quot;:&quot;&quot;,&quot;ward&quot;:&quot;&quot;,&quot;ward_code&quot;:&quot;&quot;,&quot;zip&quot;:null,&quot;country_code&quot;:&quot;VN&quot;}, shipping_expand:true,show_district:  true ,show_ward:  false ,show_country:  true }" class="shipping  hide ">
-                                        <div bind-show="shipping_expand || !otherAddress">
-                                            <div class="form-group">
-                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': shipping_address.full_name }">
-                                                    <span class="field__label" bind-event-click="handleClick(this)">
-                                                        Họ và tên
-                                                    </span>
-                                                    <input name="ShippingAddress.LastName" bind-event-change="saveAbandoned()" type="text" bind-event-focus="handleFocus(this)" bind-event-blur="handleFieldBlur(this)" class="field__input form-control" id="_shipping_address_last_name" data-error="Vui lòng nhập họ tên" bind="shipping_address.full_name" />
+                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': billing_address.customer_phone }">
+                                                    <input placeholder="Số điện thoại" name="customer_phone" class="field__input form-control" id="_billing_address_phone" data-error="Vui lòng nhập số điện thoại" pattern="^([0-9,\+,\-,\(,\),\.]{8,20})$" required bind="billing_address.customer_phone" />
                                                 </div>
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
                                             <div class="form-group">
-                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': shipping_address.phone }">
-                                                    <span class="field__label" bind-event-click="handleClick(this)">
-                                                        Số điện thoại
-                                                    </span>
-                                                    <input name="ShippingAddress.Phone" bind-event-change="saveAbandoned()" type="tel" bind-event-focus="handleFocus(this)" bind-event-blur="handleFieldBlur(this)" class="field__input form-control" id="_shipping_address_phone" data-error="Vui lòng nhập số điện thoại" pattern="^([0-9,\+,\-,\(,\),\.]{8,20})$" bind="shipping_address.phone" />
-                                                </div>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': shipping_address.address1 }">
-                                                    <span class="field__label" bind-event-click="handleClick(this)">
-                                                        Địa chỉ
-                                                    </span>
-                                                    <input name="ShippingAddress.Address1" bind-event-change="saveAbandoned()" type="text" bind-event-focus="handleFocus(this)" bind-event-blur="handleFieldBlur(this)" class="field__input form-control" id="_shipping_address_address1" bind="shipping_address.address1" />
-                                                </div>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-
-
-
-                                            <div class="form-group">
-                                                <div class="field__input-wrapper field__input-wrapper--select">
-                                                    <label class="field__label" for="BillingProvinceId">
-                                                        Tỉnh thành
-                                                    </label>
-                                                    <select class="field__input field__input--select form-control filter-dropdown" name="ShippingProvinceId" id="shippingProvince" data-error="Bạn chưa chọn tỉnh thành" bind-event-change="shippingProvinceChange('')" bind="ShippingProvinceId">
-                                                        <option value=''>--- Chọn tỉnh thành ---</option>
-
-
-                                                        <option value="1">Hà Nội</option>
-
-                                                        <option value="2">TP Hồ Chí Minh</option>
-
-                                                        <option value="3">An Giang</option>
-
-                                                        <option value="4">Bà Rịa-Vũng Tàu</option>
-
-                                                        <option value="5">Bắc Giang</option>
-
-                                                        <option value="6">Bắc Kạn</option>
-
-                                                        <option value="7">Bạc Liêu</option>
-
-                                                        <option value="8">Bắc Ninh</option>
-
-                                                        <option value="9">Bến Tre</option>
-
-                                                        <option value="10">Bình Định</option>
-
-                                                        <option value="11">Bình Dương</option>
-
-                                                        <option value="12">Bình Phước</option>
-
-                                                        <option value="13">Bình Thuận</option>
-
-                                                        <option value="14">Cà Mau</option>
-
-                                                        <option value="15">Cần Thơ</option>
-
-                                                        <option value="16">Cao Bằng</option>
-
-                                                        <option value="17">Đà Nẵng</option>
-
-                                                        <option value="18">Đắk Lắk</option>
-
-                                                        <option value="19">Đắk Nông</option>
-
-                                                        <option value="20">Điện Biên</option>
-
-                                                        <option value="21">Đồng Nai</option>
-
-                                                        <option value="22">Đồng Tháp</option>
-
-                                                        <option value="23">Gia Lai</option>
-
-                                                        <option value="24">Hà Giang</option>
-
-                                                        <option value="25">Hà Nam</option>
-
-                                                        <option value="26">Hà Tĩnh</option>
-
-                                                        <option value="27">Hải Dương</option>
-
-                                                        <option value="28">Hải Phòng</option>
-
-                                                        <option value="29">Hậu Giang</option>
-
-                                                        <option value="30">Hòa Bình</option>
-
-                                                        <option value="31">Hưng Yên</option>
-
-                                                        <option value="32">Khánh Hòa</option>
-
-                                                        <option value="33">Kiên Giang</option>
-
-                                                        <option value="34">Kon Tum</option>
-
-                                                        <option value="35">Lai Châu</option>
-
-                                                        <option value="36">Lâm Đồng</option>
-
-                                                        <option value="37">Lạng Sơn</option>
-
-                                                        <option value="38">Lào Cai</option>
-
-                                                        <option value="39">Long An</option>
-
-                                                        <option value="40">Nam Định</option>
-
-                                                        <option value="41">Nghệ An</option>
-
-                                                        <option value="42">Ninh Bình</option>
-
-                                                        <option value="43">Ninh Thuận</option>
-
-                                                        <option value="44">Phú Thọ</option>
-
-                                                        <option value="45">Phú Yên</option>
-
-                                                        <option value="46">Quảng Bình</option>
-
-                                                        <option value="47">Quảng Nam</option>
-
-                                                        <option value="48">Quảng Ngãi</option>
-
-                                                        <option value="49">Quảng Ninh</option>
-
-                                                        <option value="50">Quảng Trị</option>
-
-                                                        <option value="51">Sóc Trăng</option>
-
-                                                        <option value="52">Sơn La</option>
-
-                                                        <option value="53">Tây Ninh</option>
-
-                                                        <option value="54">Thái Bình</option>
-
-                                                        <option value="55">Thái Nguyên</option>
-
-                                                        <option value="56">Thanh Hóa</option>
-
-                                                        <option value="57">Thừa Thiên Huế</option>
-
-                                                        <option value="58">Tiền Giang</option>
-
-                                                        <option value="59">Trà Vinh</option>
-
-                                                        <option value="60">Tuyên Quang</option>
-
-                                                        <option value="61">Vĩnh Long</option>
-
-                                                        <option value="62">Vĩnh Phúc</option>
-
-                                                        <option value="63">Yên Bái</option>
-
-
-                                                    </select>
+                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': billing_address.customer_address }">
+                                                    <input placeholder="Địa chỉ giao hàng" name="customer_address" class="field__input form-control" id="_billing_address_address1" data-error="Vui lòng nhập địa chỉ giao hàng" required bind="billing_address.customer_address" />
                                                 </div>
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
                                             <div class="form-group">
-                                                <div class="field__input-wrapper field__input-wrapper--select">
-                                                    <label class="field__label" for="ShippingDistrictId">
-                                                        Quận huyện
-                                                    </label>
-                                                    <select class="field__input field__input--select form-control filter-dropdown" name="ShippingDistrictId" id="shippingDistrict" bind-event-change="shippingDistrictChange('')" bind="ShippingDistrictId">
-                                                        <option value="">--- Chọn quận huyện ---</option>
-
-
-
-                                                    </select>
+                                                <div class="field__input-wrapper" bind-class="{ 'js-is-filled': note }">
+                                                    <textarea placeholder="Ghi chú thêm" name="note" bind="note" class="field__input form-control m0"></textarea>
                                                 </div>
                                                 <div class="help-block with-errors"></div>
                                             </div>
 
-
-
-                                            <div class="form-group">
-                                                <div class="error hide" bind-show="requiresShipping && shippingMethods.length == 0 && ShippingProvinceId ">
-                                                    <label>Khu vực này không hỗ trợ vận chuyển</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="section" bind-class="{ 'pt0': otherAddress, 'pt10': !otherAddress}">
-                                <div class="section__content">
-                                    <div class="form-group m0">
-                                        <div>
-                                            <label class="field__input-wrapper" bind-class="{'js-is-filled': note}" style="border: none">
-                                                <span class="field__label" bind-event-click="handleClick(this)">
-                                                    Ghi chú
-                                                </span>
-                                                <textarea name="note" bind-event-change="saveAbandoned()" bind-event-focus="handleFocus(this)" bind-event-blur="handleFieldBlur(this)" bind="note" class="field__input form-control m0"></textarea>
-                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-6">
-                            {{--<div class="section shipping-method hide" bind-show="shippingMethodsLoading || shippingMethods.length > 0">
-                                <div class="section__header">
-                                    <h2 class="section__title">
-                                        <i class="fa fa-truck fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
-                                        <label class="control-label">Vận chuyển</label>
-                                    </h2>
-                                </div>
-                                <div class="section__content">
-                                    <div class="wait-loading-shipping-methods hide" bind-show="shippingMethodsLoading" style="margin-bottom:10px">
-                                        <div class="next-spinner">
-                                            <svg class="icon-svg icon-svg--color-accent icon-svg--size-32 icon-svg--spinner">
-                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div class="content-box" bind-show="!shippingMethodsLoading && shippingMethods.length > 0">
-
-                                    </div>
-                                </div>
-                            </div>--}}
-                            <div class="section payment-methods" bind-class="{'p0--desktop': shippingMethods.length == 0}">
+                            <div class="section payment-methods">
                                 <div class="section__header">
                                     <h2 class="section__title">
                                         <i class="fa fa-credit-card fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
@@ -751,95 +282,63 @@
                                         <div class="content-box__row">
                                             <div class="radio-wrapper">
                                                 <div class="radio__input">
-                                                    <input class="input-radio" type="radio" value="276514" name="PaymentMethodId" id="payment_method_276514" data-check-id="4" bind="payment_method_id" checked>
+                                                    <input class="input-radio" type="radio" value="Thanh toán tiền mặt khi nhận hàng" name="payment_method" checked>
                                                 </div>
-                                                <label class="radio__label" for="payment_method_276514">
+                                                <label class="radio__label">
                                                     <span class="radio__label__primary">Thanh toán khi giao hàng (COD)</span>
                                                     <span class="radio__label__accessory">
                                                         <ul>
                                                             <li class="payment-icon-v2 payment-icon--4">
-
                                                                 <i class="fa fa-money payment-icon-fa" aria-hidden="true"></i>
-
                                                             </li>
                                                         </ul>
                                                     </span>
                                                 </label>
                                             </div> <!-- /radio-wrapper-->
                                         </div>
-
-                                        <div class="radio-wrapper content-box__row content-box__row--secondary hide" id="payment-gateway-subfields-276514" bind-show="payment_method_id == 276514">
-                                            <div class="blank-slate">
-                                                <p>cod</p>
-
-
-                                            </div>
-                                        </div>
-
-
-                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#moca-modal" data-backdrop="static" data-keyboard="false" class="trigger-moca-modal" style="display: none;" title="Thanh toán qua Moca">
-                                        </a>
-                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#qr-error-modal" class="trigger-qr-error-modal" style="display: none;" title="Lỗi thanh toán">
-                                        </a>
-                                        <a data-toggle="modal" data-target="#zalopay_modal" data-backdrop="static" data-keyboard="false" class="trigger-zalopay-modal" style="display: none;" title="Thanh toán qua ZaloPay">
-                                        </a>
-                                        <div class="modal fade moca-modal" id="moca-modal" tabindex="-1" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div>
-                                                        <iframe style="border: 0px; width: 100%; height: 100%;" src=""></iframe>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal fade" id="qr-error-modal" data-width="" tabindex="-1" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                                        <div class="invalid_order">
-                                                            <p>Giao dịch của bạn chưa đủ hạn mức thanh toán</p>
-                                                            <p>Hạn mức tối thiểu để thanh toán được là <span>1đ</span></p>
-                                                            <p>Vui lòng chọn hình thức thanh toán khác</p>
-                                                        </div>
-                                                        <div class="custom_error_message"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal fade zalopay_modal" id="zalopay_modal" tabindex="-1" role="dialog">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-body">
-                                                        <div style="display:flex; justify-content: space-around;">
-                                                            <div class="qr-wrapper">
-                                                                <img />
-                                                                <div class="qr-timer-container">
-                                                                    Thời gian quét mã QR để thanh toán còn <span class="qr-timer" style="color:#4286f6;">300</span> giây
-                                                                </div>
-                                                            </div>
-                                                            <div class="qr-guide-content">
-                                                                <p><b>Thực hiện theo hướng dẫn sau để thanh toán:</b></p>
-                                                                <p>Bước 1: Mở ứng dụng ZaloPay</p>
-                                                                <p>Bước 2: Chọn "Thanh Toán" <img src="//bizweb.dktcdn.net/assets/images/barcode-zalo.png" class="zalopay-qr-payment-icon"></img> và quét mã QR code bên cạnh</p>
-                                                                <p>Bước 3: Hoàn thành các bước thanh toán theo hướng dẫn trên ứng dụng</p>
-                                                            </div>
-                                                        </div>
-                                                        <div style="justify-content: flex-end;display: flex;"><button type="button" class="btn btn-default" data-dismiss="modal">Hủy thanh toán</button></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="section delivery-methods">
+                                <div class="section__header">
+                                    <h2 class="section__title">
+                                        <i class="fa fa-credit-card fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true"></i>
+                                        <label class="control-label">Vận chuyển</label>
+                                    </h2>
+                                </div>
+                                <div class="section__content">
+                                    <div class="content-box">
+                                        <div class="content-box__row">
+                                            <div class="radio-wrapper">
+                                                <div class="radio__input">
+                                                    <input class="input-radio delivery-method" type="radio" value="Vận chuyển miễn phí" data-fee="Miễn phí" name="delivery_method" checked>
+                                                </div>
+                                                <label class="radio__label">
+                                                    <span class="radio__label__primary">Vận chuyển miễn phí (7 - 12 ngày)</span>
+                                                </label>
+                                            </div> <!-- /radio-wrapper-->
+                                        </div>
+                                        <div class="content-box__row">
+                                            <div class="radio-wrapper">
+                                                <div class="radio__input">
+                                                    <input class="input-radio delivery-method" type="radio" value="Vận chuyển nhanh" data-fee="25.000đ" name="delivery_method">
+                                                </div>
+                                                <label class="radio__label">
+                                                    <span class="radio__label__primary">Vận chuyển nhanh (4 - 7 ngày | +25k)</span>
+                                                </label>
+                                            </div> <!-- /radio-wrapper-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="section hidden-md hidden-lg">
                                 <div class="form-group clearfix m0">
-                                    <input class="btn btn-primary btn-checkout" data-loading-text="Đang xử lý" type="button" bind-event-click="paymentCheckout('AIzaSyAjQYbV19v7UMDVk0cDZ54yKh3OP1hQhbk;AIzaSyCLd-YkfOzBXlNGfS_FNLnpolyME1tRAJI;AIzaSyDdvilzaJlb50t2IRC3PrfSb1lNzf6n3pQ')" value="ĐẶT HÀNG" />
+                                    <input class="btn btn-primary btn-checkout" type="submit" value="ĐẶT HÀNG" />
                                 </div>
                                 <div class="text-center mt20">
-                                    <a class="previous-link" href="/cart">
+                                    <a class="previous-link" href="{{ route('cart') }}">
                                         <i class="fa fa-angle-left fa-lg" aria-hidden="true"></i>
                                         <span>Quay về giỏ hàng</span>
                                     </a>
@@ -848,56 +347,10 @@
                         </div>
                     </div>
                 </div>
-
-
-                <div class="main_footer footer unprint">
-
-
-
-                    <div class="mt10"></div>
-                </div>
-                <div class="modal fade" id="refund-policy" data-width="" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                <h4 class="modal-title">Chính sách hoàn trả</h4>
-                            </div>
-                            <div class="modal-body">
-                                <pre></pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="privacy-policy" data-width="" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                <h4 class="modal-title">Chính sách bảo mật</h4>
-                            </div>
-                            <div class="modal-body">
-                                <pre></pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal fade" id="terms-of-service" data-width="" tabindex="-1" role="dialog">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                <h4 class="modal-title">Điều khoản sử dụng</h4>
-                            </div>
-                            <div class="modal-body">
-                                <pre></pre>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </form>
+
     <div id="icon-symbols" style="display: none;">
         <svg xmlns="http://www.w3.org/2000/svg">
             <symbol id="spinner-large"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-270 364 66 66">
@@ -934,52 +387,16 @@
         $(document).ajaxComplete(function() {
             NProgress.done();
         });
-
-        context = {}
-
-        $(function() {
-            Twine.reset(context).bind().refresh();
+        $('.delivery-method').on('change', function () {
+            $('#delivery-fee').text($(this).data('fee'));
+            if ($(this).data('fee') == '25.000đ') {
+                $('#total').addClass('hide');
+                $('#new-total').removeClass('hide');
+            } else {
+                $('#total').removeClass('hide');
+                $('#new-total').addClass('hide');
+            }
         });
-
-        $(document).ready(function() {
-            var $select2 = $('.filter-dropdown').select2({
-                containerCssClass: 'field__input',
-                dropdownCssClass: 'field__input',
-                dropdownParent: $('.main_content'),
-                language: {
-                    noResults: function() {
-                        return "Không tìm thấy kết quả"
-                    },
-                    searching: function() {
-                        return "Đang tìm…"
-                    }
-                }
-            });
-
-            setTimeout(function() {
-
-
-
-
-                Twine.context(document.body).checkout.calculateFeeAndSave('');
-
-
-
-            }, 50);
-
-        });
-    </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109602908-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-109602908-1');
     </script>
 </body>
 

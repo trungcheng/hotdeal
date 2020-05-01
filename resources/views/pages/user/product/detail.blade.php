@@ -1,36 +1,36 @@
 @extends('layouts.user.master')
 
-@section('page')Android Tivi Sony 4K 49 inch KD-49X7500E
+@section('page'){{ $product->seo_title }}
 @stop
 
-@section('description')Thiết kế mỏng ấn tượng Smart Tivi Sony 4K 49 inch KD-49X7500E&#160;sở hữu kiểu d&#225;ng tinh tế, thời trang c&#249;ng với k&#237;ch thước m&#224;n h&#236;nh rộng 49 inch, kết hợp khung viền
+@section('description'){{ $product->seo_desc }}
 @stop
 
-@section('keywords')Ant Kitchen, ant-kitchen.mysapo.net
+@section('keywords'){{ $product->seo_keyword }}
 @stop
 
-@section('canonical'){{ route('product-detail', ['slug' => 'android-tivi-sony-4k-49-inch-kd-49x7500e']) }}/
+@section('canonical'){{ route('product-detail', ['slug' => $product->slug]) }}
 @stop
 
-@section('alternate'){{ route('product-detail', ['slug' => 'android-tivi-sony-4k-49-inch-kd-49x7500e']) }}/
+@section('alternate'){{ route('product-detail', ['slug' => $product->slug]) }}
 @stop
 
-@section('propName')
+@section('propName'){{ $product->seo_title }}
 @stop
 
-@section('propDesc')
+@section('propDesc'){{ $product->seo_desc }}
 @stop
 
-@section('ogTitle')
+@section('ogTitle'){{ $product->seo_title }}
 @stop
 
-@section('ogDesc')
+@section('ogDesc'){{ $product->desc }}
 @stop
 
-@section('ogUrl'){{ route('product-detail', ['slug' => 'android-tivi-sony-4k-49-inch-kd-49x7500e']) }}/
+@section('ogUrl'){{ route('product-detail', ['slug' => $product->slug]) }}
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ $product->image }}
 @stop
 
 @section('pageCss')
@@ -49,11 +49,11 @@
 							<span><i class="fa fa-angle-right"></i></span>
 						</li>
 						<li>
-							<a itemprop="url" href="/giam-gia" title="Giảm giá"><span itemprop="title">Giảm giá</span></a>
+							<a itemprop="url" href="{{ route('product-detail', ['slug' => $product->category->slug]) }}" title="{{ $product->category->name }}"><span itemprop="title">{{ $product->category->name }}</span></a>
 							<span><i class="fa fa-angle-right"></i></span>
 						</li>
 						<li>
-							<strong><span itemprop="title">Android Tivi Sony 4K 49 inch KD-49X7500E</span></strong>
+							<strong><span itemprop="title">{{ $product->name }}</span></strong>
 						</li>
 					</ul>
 				</div>
@@ -64,10 +64,10 @@
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js' type='text/javascript'></script>
 
 	<section class="product" itemscope itemtype="http://schema.org/Product">
-		<meta itemprop="url" content="//ant-kitchen.mysapo.net/android-tivi-sony-4k-49-inch-kd-49x7500e">
-		<meta itemprop="image" content="//bizweb.dktcdn.net/thumb/grande/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357">
-		<meta itemprop="description" content=" Smart Tivi Sony 4K 49 inch KD-49X7500E sở hữu kiểu dáng tinh tế, thời trang cùng với kích thước màn hình rộng 49 inch, kết hợp khung viền chắc chắn, sắc sảo và tông màu đen quý phái. ">
-		<meta itemprop="name" content="Android Tivi Sony 4K 49 inch KD-49X7500E">
+		<meta itemprop="url" content="{{ route('product-detail', ['slug' => $product->slug]) }}">
+		<meta itemprop="image" content="{{ $product->image }}">
+		<meta itemprop="description" content="{{ $product->name }}">
+		<meta itemprop="name" content="{{ $product->name }}">
 		<div class="container">
 			<div class="row">
 				<div class="details-product clearfix">
@@ -76,105 +76,86 @@
 							<div class="col-xs-12 col-sm-12 col-md-6">
 								<div id="product" class="relative product-image-block ">
 									<div class="large-image">
-
-										<a href="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" data-rel="prettyPhoto[product-gallery]" class="large_image_url">
-											<img id="zoom_01" src="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" alt="Android Tivi Sony 4K 49 inch KD-49X7500E" class="img-responsive center-block">
+										<a href="{{ $product->image }}" data-rel="prettyPhoto[product-gallery]" class="large_image_url">
+											<img id="zoom_01" src="{{ $product->image }}" alt="{{ $product->name }}" class="img-responsive center-block">
 										</a>
 										<div class="hidden">
-
 											<div class="item">
-												<a href="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-2-org.jpg?v=1509778199387" data-image="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-2-org.jpg?v=1509778199387" data-zoom-image="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-2-org.jpg?v=1509778199387" data-rel="prettyPhoto[product-gallery]">
+												<a href="{{ $product->image }}" data-image="{{ $product->image }}" data-zoom-image="{{ $product->image }}" data-rel="prettyPhoto[product-gallery]">
 												</a>
 											</div>
-
+											@foreach ($image_list as $img)
 											<div class="item">
-												<a href="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-3-org.jpg?v=1509778192987" data-image="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-3-org.jpg?v=1509778192987" data-zoom-image="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-3-org.jpg?v=1509778192987" data-rel="prettyPhoto[product-gallery]">
+												<a href="{{ $img }}" data-image="{{ $img }}" data-zoom-image="{{ $img }}" data-rel="prettyPhoto[product-gallery]">
 												</a>
 											</div>
-
-											<div class="item">
-												<a href="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-4-org.jpg?v=1509778192987" data-image="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-4-org.jpg?v=1509778192987" data-zoom-image="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-4-org.jpg?v=1509778192987" data-rel="prettyPhoto[product-gallery]">
-												</a>
-											</div>
-
-											<div class="item">
-												<a href="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-7-org.jpg?v=1509778192987" data-image="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-7-org.jpg?v=1509778192987" data-zoom-image="//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-7-org.jpg?v=1509778192987" data-rel="prettyPhoto[product-gallery]">
-												</a>
-											</div>
-
+											@endforeach
 										</div>
 									</div>
 
 									<div id="gallery_01" class="owl-carousel owl-theme thumbnail-product abc a2">
-
 										<div class="item">
-											<a href="javascript:void(0);" data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" data-zoom-image="//bizweb.dktcdn.net/thumb/grande/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357"><img data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" src="//bizweb.dktcdn.net/thumb/small/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357" alt="Android Tivi Sony 4K 49 inch KD-49X7500E"></a>
+											<a href="javascript:void(0);" data-image="{{ $product->image }}" data-zoom-image="{{ $product->image }}"><img data-image="{{ $product->image }}" src="{{ $product->image }}" alt="{{ $product->name }}"></a>
 										</div>
-
+										@foreach ($image_list as $img)
 										<div class="item">
-											<a href="javascript:void(0);" data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-2-org.jpg?v=1509778199387" data-zoom-image="//bizweb.dktcdn.net/thumb/grande/100/270/860/products/tivi-sony-kd-49x7500e-2-org.jpg?v=1509778199387"><img data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-2-org.jpg?v=1509778199387" src="//bizweb.dktcdn.net/thumb/small/100/270/860/products/tivi-sony-kd-49x7500e-2-org.jpg?v=1509778199387" alt="Android Tivi Sony 4K 49 inch KD-49X7500E"></a>
+											<a href="javascript:void(0);" data-image="{{ $img }}" data-zoom-image="{{ $img }}"><img data-image="{{ $img }}" src="{{ $img }}" alt="{{ $product->name }}"></a>
 										</div>
-
-										<div class="item">
-											<a href="javascript:void(0);" data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-3-org.jpg?v=1509778192987" data-zoom-image="//bizweb.dktcdn.net/thumb/grande/100/270/860/products/tivi-sony-kd-49x7500e-3-org.jpg?v=1509778192987"><img data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-3-org.jpg?v=1509778192987" src="//bizweb.dktcdn.net/thumb/small/100/270/860/products/tivi-sony-kd-49x7500e-3-org.jpg?v=1509778192987" alt="Android Tivi Sony 4K 49 inch KD-49X7500E"></a>
-										</div>
-
-										<div class="item">
-											<a href="javascript:void(0);" data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-4-org.jpg?v=1509778192987" data-zoom-image="//bizweb.dktcdn.net/thumb/grande/100/270/860/products/tivi-sony-kd-49x7500e-4-org.jpg?v=1509778192987"><img data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-4-org.jpg?v=1509778192987" src="//bizweb.dktcdn.net/thumb/small/100/270/860/products/tivi-sony-kd-49x7500e-4-org.jpg?v=1509778192987" alt="Android Tivi Sony 4K 49 inch KD-49X7500E"></a>
-										</div>
-
-										<div class="item">
-											<a href="javascript:void(0);" data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-7-org.jpg?v=1509778192987" data-zoom-image="//bizweb.dktcdn.net/thumb/grande/100/270/860/products/tivi-sony-kd-49x7500e-7-org.jpg?v=1509778192987"><img data-image="//bizweb.dktcdn.net/thumb/1024x1024/100/270/860/products/tivi-sony-kd-49x7500e-7-org.jpg?v=1509778192987" src="//bizweb.dktcdn.net/thumb/small/100/270/860/products/tivi-sony-kd-49x7500e-7-org.jpg?v=1509778192987" alt="Android Tivi Sony 4K 49 inch KD-49X7500E"></a>
-										</div>
-
+										@endforeach
 									</div>
 								</div>
 
 								<div class="social-sharing">
-									<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a099baca270babc"></script>
-									<div class="addthis_inline_share_toolbox_7dnb"></div>
+									
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 details-pro">
-								<h1 class="title-head">Android Tivi Sony 4K 49 inch KD-49X7500E</h1>
-								<div class="item-brand">
+								<h1 class="title-head">{{ $product->name }}</h1>
+								{{--<div class="item-brand">
 									<div class="bizweb-product-reviews-badge" data-id="8891917"></div>
-								</div>
+								</div>--}}
 
 								<div class="stock-brand">
 									<ul>
 										<li class="inventory_quantity" itemscope itemtype="http://schema.org/ItemAvailability">
 											<span class="stock-brand-title">Tình trạng:</span>
-											<span class="a-stock" itemprop="supersededBy">Còn hàng</span>
+											<span class="a-stock" itemprop="supersededBy">{{ $product->status == 1 ? 'Còn hàng' : 'Hết hàng' }}</span>
 										</li>
-										<li>
+										{{--<li>
 											<span class="stock-brand-title">Thương hiệu:</span>
-											<span class="a-brand">Sony</span>
-										</li>
+											<span class="a-brand">Kingbep</span>
+										</li>--}}
 									</ul>
 								</div>
 
 								<div class="price-box" itemscope itemtype="http://schema.org/Offer">
-
 									<span class="special-price">
-										<span class="price product-price" itemprop="price">19.900.000₫</span>
+										<span class="price product-price" itemprop="price">
+											{{ number_format($product->price_sale, 0, 0, '.') }}đ
+										</span>
 										<meta itemprop="priceCurrency" content="VND">
-									</span> <!-- Giá Khuyến mại -->
-									<span class="old-price">Giá thị trường: <del class="price product-price-old" itemprop="priceSpecification">22.000.000₫</del>
-										<meta itemprop="priceCurrency" content="VND"></span> <!-- Giás gốc -->
-									<span class="save-price">Tiết kiệm: <span class="price product-price-save">2.100.000₫</span> </span> <!-- Tiết kiệm -->
+									</span>
+									@if ($product->discount > 0)
+									<span class="old-price">Giá cũ: 
+										<del class="price product-price-old" itemprop="priceSpecification">
+											{{ number_format($product->price, 0, 0, '.') }}đ		
+										</del>
+										<meta itemprop="priceCurrency" content="VND">
+									</span>
+									<span class="save-price">Tiết kiệm: 
+										<span class="price product-price-save">
+											{{ number_format($product->price - $product->price_sale, 0, 0, '.') }}đ
+										</span> 
+									</span>
+									@endif
 								</div>
 
 								<div class="form-product">
-									<form enctype="multipart/form-data" id="add-to-cart-form" action="/cart/add" method="post" class="form-inline">
+									<form enctype="multipart/form-data" id="add-to-cart-form" action="{{ route('cartAdd') }}" method="post" class="form-inline">
+										<input type="hidden" name="product_id" value="{{ $product->id }}">
+                						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-										<div class="box-variant clearfix  hidden ">
-
-											<input type="hidden" name="variantId" value="14154614" />
-
-										</div>
-
-										<div class="form-group  clearfix">
+										<div class="form-group clearfix">
 											<div class="custom custom-btn-number form-control">
 												<input type="input" class="input-text qty number-sidebar" data-field='quantity' title="Số lượng" value="1" id="qty" name="quantity" max="1" />
 												<div class="gp-btn">
@@ -186,7 +167,6 @@
 											<button type="submit" class="btn btn-lg btn-gray btn-cart add_to_cart btn_buy add_to_cart" title="Mua ngay">
 												<span>Mua ngay</span>
 											</button>
-
 										</div>
 									</form>
 									<div class="clearfix"></div>
@@ -194,7 +174,7 @@
 
 								<div class="product-summary product_description ahahah margin-bottom-15">
 									<div class="rte description">
-										<p>Smart Tivi Sony 4K 49 inch KD-49X7500E&nbsp;sở hữu kiểu dáng tinh tế, thời trang cùng với kích thước màn hình rộng 49 inch, kết hợp khung viền chắc chắn, sắc sảo và tông màu đen quý phái.</p>
+										{!! $product->short_desc !!}
 									</div>
 								</div>
 
@@ -205,21 +185,18 @@
 											<h3>Bạn cần hỗ trợ?</h3>
 											<p>Mua sản phẩm</p>
 
-											<h2><a href="tel:0982362509">0982 362 509</a></h2>
+											<h2><a href="tel:{{ str_replace(' ', '', $setting->phone) }}">{{ $setting->phone }}</a></h2>
 
 											<div class="link-contact">
-												<a href="href:/lien-he">Liên hệ</a>
+												<a href="{{ route('contact') }}">Liên hệ</a>
 											</div>
 										</div>
 										<div class="box-hotlines-right">
-
-											<a href="tel:0982362509">
+											<a href="tel:{{ str_replace(' ', '', $setting->phone) }}">
 												<i class="fa fa-phone" aria-hidden="true"></i>
 											</a>
-
 										</div>
 									</div>
-
 								</div>
 							</div>
 
@@ -234,28 +211,10 @@
 									</ul>
 									<div id="myTabContent" class="tab-content">
 										<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-
 											<div class="well product-well">
 												<div class="row ababa">
 													<div class="col-md-12">
-
-														<h3>Thiết kế mỏng ấn tượng</h3>
-														<p>Smart Tivi Sony 4K 49 inch KD-49X7500E&nbsp;sở hữu kiểu dáng tinh tế, thời trang cùng với kích thước màn hình rộng 49 inch, kết hợp khung viền chắc chắn, sắc sảo và tông màu đen quý phái.</p>
-														<p><img alt="Thiết kế siêu mỏng" data-src="https://cdn.tgdd.vn/Products/Images/1942/105258/sony-kd-49x7500e4.png" height="354" src="https://cdn.tgdd.vn/Products/Images/1942/105258/sony-kd-49x7500e4.png" title="Thiết kế siêu mỏng" width="800" /></p>
-														<h3>Trải nghiệm hình ảnh rõ ràng, chân thật</h3>
-														<p>Không chỉ được đầu tư về thiết kế hiện đại mà&nbsp;Sony&nbsp;cũng đã bày tỏ sự quan tâm đặc biệt đến chất lượng của sản phẩm thông qua các công nghệ tiêu biểu:</p>
-														<p>- Độ phân giải&nbsp;Ultra HD 4K&nbsp;cùng công nghệ&nbsp;HDR:&nbsp;Cho phép hình ảnh ở các vùng sáng hoặc tối được hiển thị một cách rõ nét nhất, mang tới chiều sâu và độ tự nhiên nhất cho hình ảnh.</p>
-														<p>- Công nghệ 4K X-Reality Pro:&nbsp;Xử lý tín hiệu hình ảnh thông minh, giúp nâng cấp hình ảnh đầu vào trở nên rõ ràng, trung thực gần chuẩn 4K.</p>
-														<h3>Âm thanh vang dội, cuốn hút</h3>
-														<p>Với công suất loa 20 W cùng chuỗi công nghệ âm thanh hiện đại (Clear Phase,&nbsp;S-Force Front Surround,&nbsp;ClearAudio+),&nbsp;tivi Sony KD-49X7500E&nbsp;sẽ tạo nên điểm nhấn lôi cuốn, hấp dẫn cho người nghe trải nghiệm âm thanh tự nhiên, sinh động hơn bao giờ hết.</p>
-														<h3>Chiếu màn hình điện thoại lên tivi dễ dàng, nhanh chóng</h3>
-														<h3>Hệ điều hành Android dễ sử dụng, kho ứng dụng phong phú</h3>
-														<p>Hệ điều hành&nbsp;Android&nbsp;cùng khả năng kết nối internet, đáp ứng được các nhu cầu giải trí khác cho gia đình bạn từ kho ứng dụng lớn Google Play khổng lồ với Trình duyệt Web, Youtube, Zing TV, Netflix, Nhạc của tui…Thậm chí là bạn còn có thể chơi game thật mượt mà.</p>
-														<p><img alt="Android Tivi Sony" src="//bizweb.dktcdn.net/100/270/860/files/tivisony-kd-49x7500e-550x3407.jpg?v=1510728985483" /></p>
-														<h3>Kết nối dễ dàng với thiết bị ngoài</h3>
-														<p>- Cổng&nbsp;Optical: mang lại trải nghiệm âm thanh mạnh mẽ, chất lượng và sống động hơn.</p>
-														<p>- Cổng&nbsp;HDMI:&nbsp;Với dây cáp HDMI, bạn có chia sẻ hình ảnh/dữ liệu từ thiết bị điện từ bên ngoài lên màn hình tivi.</p>
-														<p>- Cổng&nbsp;USB: Sử dụng USB để chia sẻ nội dung trực tiếp lên tivi.</p>
+														{!! $product->full_desc !!}	
 													</div>
 												</div>
 												<a class="btn btn-default btn--view-more">
@@ -276,115 +235,27 @@
 														<h3 style="color:#323c3f;letter-spacing:.01em;">So sánh với các sản phẩm cùng loại</h3>
 													</div>
 													<div class="products owl-carousel owl-theme products-view-grid" data-md-items="4" data-sm-items="4" data-xs-items="2" data-margin="0">
-
+														@foreach ($relatedProducts as $pro)
 														<div class="product-box">
 															<div class="product-thumbnail">
 																<div class="product-image-flip">
-																	<a href="/internet-tivi-samsung-49-inch-ua49j5200" title="Internet Tivi Samsung 49 inch UA49J5200">
-																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-samsung-49-inch-ua49j5200-1-4-org-1-org.jpg?v=1509778045413" alt="Internet Tivi Samsung 49 inch UA49J5200" class="img-responsive center-block" />
+																	<a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
+																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
 																	</a>
 																</div>
 															</div>
 															<div class="product-info a-center">
-																<h3 class="product-name"><a href="/internet-tivi-samsung-49-inch-ua49j5200" title="Internet Tivi Samsung 49 inch UA49J5200">Internet Tivi Samsung 49 inch UA49J5200</a></h3>
+																<h3 class="product-name"><a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">{{ $pro->name }}</a></h3>
 																<div class="price-box clearfix">
 																	<div class="special-price">
-																		<span class="price product-price">13.400.000₫</span>
+																		<span class="price product-price">
+																			{{ number_format($pro->price_sale, 0, 0, '.') }}đ
+																		</span>
 																	</div>
 																</div>
 															</div>
 														</div>
-
-														<div class="product-box">
-															<div class="product-thumbnail">
-																<div class="product-image-flip">
-																	<a href="/smart-tivi-lg-32-inch-32lj571d" title="Smart Tivi LG 32 inch 32LJ571D">
-																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-lg-32lj571d-1-1-org.jpg?v=1509777885673" alt="Smart Tivi LG 32 inch 32LJ571D" class="img-responsive center-block" />
-																	</a>
-																</div>
-															</div>
-															<div class="product-info a-center">
-																<h3 class="product-name"><a href="/smart-tivi-lg-32-inch-32lj571d" title="Smart Tivi LG 32 inch 32LJ571D">Smart Tivi LG 32 inch 32LJ571D</a></h3>
-																<div class="price-box clearfix">
-																	<div class="special-price">
-																		<span class="price product-price">6.990.000₫</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="product-box">
-															<div class="product-thumbnail">
-																<div class="product-image-flip">
-																	<a href="/smart-tivi-samsung-43-inch-ua43m5500" title="Smart Tivi Samsung 43 inch UA43M5500">
-																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-samsung-ua43m5500-1-org.jpg?v=1509777756160" alt="Smart Tivi Samsung 43 inch UA43M5500" class="img-responsive center-block" />
-																	</a>
-																</div>
-															</div>
-															<div class="product-info a-center">
-																<h3 class="product-name"><a href="/smart-tivi-samsung-43-inch-ua43m5500" title="Smart Tivi Samsung 43 inch UA43M5500">Smart Tivi Samsung 43 inch UA43M5500</a></h3>
-																<div class="price-box clearfix">
-																	<div class="special-price">
-																		<span class="price product-price">12.390.000₫</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="product-box">
-															<div class="product-thumbnail">
-																<div class="product-image-flip">
-																	<a href="/smart-tivi-samsung-43-inch-ua43k5310" title="Smart Tivi Samsung 43 inch UA43K5310">
-																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-samsung-ua43k5310-1-14-org.jpg?v=1509777542733" alt="Smart Tivi Samsung 43 inch UA43K5310" class="img-responsive center-block" />
-																	</a>
-																</div>
-															</div>
-															<div class="product-info a-center">
-																<h3 class="product-name"><a href="/smart-tivi-samsung-43-inch-ua43k5310" title="Smart Tivi Samsung 43 inch UA43K5310">Smart Tivi Samsung 43 inch UA43K5310</a></h3>
-																<div class="price-box clearfix">
-																	<div class="special-price">
-																		<span class="price product-price">10.390.000₫</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="product-box">
-															<div class="product-thumbnail">
-																<div class="product-image-flip">
-																	<a href="/android-tivi-sony-4k-43-inch-kd-43x7500e" title="Android Tivi Sony 4K 43 inch KD-43X7500E">
-																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-sony-kd-43x7500e-1-org.jpg?v=1509777350580" alt="Android Tivi Sony 4K 43 inch KD-43X7500E" class="img-responsive center-block" />
-																	</a>
-																</div>
-															</div>
-															<div class="product-info a-center">
-																<h3 class="product-name"><a href="/android-tivi-sony-4k-43-inch-kd-43x7500e" title="Android Tivi Sony 4K 43 inch KD-43X7500E">Android Tivi Sony 4K 43 inch KD-43X7500E</a></h3>
-																<div class="price-box clearfix">
-																	<div class="special-price">
-																		<span class="price product-price">14.900.000₫</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
-														<div class="product-box">
-															<div class="product-thumbnail">
-																<div class="product-image-flip">
-																	<a href="/internet-tivi-sony-43-inch-kdl-43w750e" title="Internet Tivi Sony 43 inch KDL-43W750E">
-																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="//bizweb.dktcdn.net/thumb/large/100/270/860/products/tivi-sony-kdl-43w750e-1-2-org.jpg?v=1509776984933" alt="Internet Tivi Sony 43 inch KDL-43W750E" class="img-responsive center-block" />
-																	</a>
-																</div>
-															</div>
-															<div class="product-info a-center">
-																<h3 class="product-name"><a href="/internet-tivi-sony-43-inch-kdl-43w750e" title="Internet Tivi Sony 43 inch KDL-43W750E">Internet Tivi Sony 43 inch KDL-43W750E</a></h3>
-																<div class="price-box clearfix">
-																	<div class="special-price">
-																		<span class="price product-price">12.400.000₫</span>
-																	</div>
-																</div>
-															</div>
-														</div>
-
+														@endforeach
 													</div>
 												</div>
 											</div>
@@ -403,142 +274,129 @@
 										<div role="tabpanel" class="tab-pane fade in active" id="review" aria-labelledby="review-tab">
 
 											<div class="boxRatingCmt" id="boxRatingCmt">
-											    <div class="hrt" id="danhgia">
-											        <div class="tltRt ">
-											            <h3 data-s="392" data-gpa="4.0" data-c="99">154 đánh giá Android Tivi Sony 4K 49 inch KD-49X7500E</h3>
-											        </div>
-											    </div>
+												<div class="hrt hidden-sm hidden-xs" id="danhgia">
+													<div class="tltRt ">
+														<h3 style="font-size:18px">Có {{ count($reviews) }} đánh giá về {{ $product->name }}</h3>
+													</div>
+												</div>
 
-											    <div class="toprt">
-										            <div class="crt">
-									                    <div class="lcrt " data-gpa="4.0">
-									                        <b>4.0 <i class="iconcom-star"></i></b>  
-									                    </div>
-									                    <div class="rcrt">
-									                        <div class="r">
-									                            <span class="t">5 <i></i></span>
-									                            <div class="bgb">
-									                                <div class="bgb-in" style="width: 47%"></div>
-									                            </div>
-									                            <span class="c" onclick="ratingCmtList(1,5)" data-buy="45"><strong>73</strong> đánh giá</span>
-									                        </div>
+												<div class="toprt hidden-sm hidden-xs">
+													<div class="crt">
+														<div class="lcrt " data-gpa="4.0">
+															<b>{{ $averageReview }} <i class="iconcom-star"></i></b>  
+														</div>
+														<div class="rcrt">
+															<?php
+																for ($i = 5; $i >= 1; $i--) {
+																	$numReview = \App\Models\Review::where('pro_id', $product->id)
+																		->where('status', 1)->where('star', $i)->count();
+																	$w = (count($reviews) > 0) ? $numReview / count($reviews) * 100 . '%' : '0%';
+																	?>
+																	<div class="r">
+																		<span class="t">{{ $i }} <i></i></span>
+																		<div class="bgb">
+																			<div class="bgb-in" style="width:{{ $w }}"></div>
+																		</div>
+																		<span class="c"><strong>{{ $numReview }}</strong> đánh giá</span>
+																	</div>
+																	<?php
+																}
+															?>
+														</div>
+														<div class="bcrt">
+															<a href="javascript:showInputRating()">Gửi đánh giá của bạn</a>
+														</div>
+													</div>
 
-									                        <div class="r">
-									                            <span class="t">4 <i></i></span>
-									                            <div class="bgb">
-									                                <div class="bgb-in" style="width: 25%"></div>
-									                            </div>
-									                            <span class="c" onclick="ratingCmtList(1,4)" data-buy="24"><strong>38</strong> đánh giá</span>
-									                        </div>
+													<div class="clr"></div>
 
-									                        <div class="r">
-									                            <span class="t">3 <i></i></span>
-									                            <div class="bgb">
-									                                <div class="bgb-in" style="width: 15%"></div>
-									                            </div>
-									                            <span class="c" onclick="ratingCmtList(1,3)" data-buy="17"><strong>23</strong> đánh giá</span>
-									                        </div>
-
-									                        <div class="r">
-									                            <span class="t">2 <i></i></span>
-									                            <div class="bgb">
-									                                <div class="bgb-in" style="width: 6%"></div>
-									                            </div>
-									                            <span class="c" onclick="ratingCmtList(1,2)" data-buy="7"><strong>9</strong> đánh giá</span>
-									                        </div>
-
-									                        <div class="r">
-									                            <span class="t">1 <i></i></span>
-									                            <div class="bgb">
-									                                <div class="bgb-in" style="width: 7%"></div>
-									                            </div>
-									                            <span class="c" onclick="ratingCmtList(1,1)" data-buy="6"><strong>11</strong> đánh giá</span>
-									                        </div>
-									                    </div>
-										                <div class="bcrt">
-										                    <a href="javascript:showInputRating()">Gửi đánh giá của bạn</a>
-										                </div>
-										            </div>
-
-										            <div class="clr"></div>
-
-											        <form class="input hide" id="fRatingComment">
-											            <input type="hidden" name="star" id="hdfStar" value="1">
-											            <input type="hidden" name="pro_id" id="hdfProductID" value="">
-											            <div class="ips">
-											                <span>Chọn đánh giá của bạn</span>
-											                <span class="lStar">
-											                    <i class="iconstar iconcom-unstar" id="s1" data-txt="Không thích" data-star="1"></i>
-											                    <i class="iconstar iconcom-unstar" id="s2" data-txt="Tạm được" data-star="2"></i>
-											                    <i class="iconstar iconcom-unstar" id="s3" data-txt="Bình thường" data-star="3"></i>
-											                    <i class="iconstar iconcom-unstar" id="s4" data-txt="Rất tốt" data-star="4"></i>
-											                    <i class="iconstar iconcom-unstar" id="s5" data-txt="Tuyệt vời quá" data-star="5"></i>
-											                </span>
-											                <span class="rsStar hide">Không thích</span>
-											            </div>
-											            <div class="clr"></div>
-											            <div class="ipt">
-											                <div class="ct">
-											                    <textarea id="fRContent" name="content" placeholder="Nhập đánh giá về sản phẩm (tối thiểu 80 ký tự)" onkeyup="countTxtRating(this)"></textarea>
-											                    <div class="extCt hide">
-											                        <span class="ckt"></span>
-											                    </div>
-											                </div>
-											                <div class="if">
-											                    <input type="text" id="fRName" name="name" placeholder="Họ tên">
-											                    <input type="text" id="fRPhone" name="phone" placeholder="Số điện thoại">
-											                    <input type="text" id="fREmail" name="email" placeholder="Email">
-											                    <a href="javascript:submitRatingComment();">GỬI ĐÁNH GIÁ</a>
-											                </div>
-											                <div class="clr"></div>
-											                <span class="lbMsgRt"></span>
-											            </div>
-											        </form>
-											    </div>
-
-											    <div class="list">
-										            <ul class="ratingLst">
-													    <li class="par">
-													        <div class="rh">
-													            <span>Thái Hùng</span>
-													            <a href="javascript:;" class="cmdt">2 ngày trước</a>
-													        </div>
-													        <div class="rc">
-													            <p>
-												                    <span>
-										                                <i class="iconcom-txtstar"></i>
-										                                <i class="iconcom-txtstar"></i>
-										                                <i class="iconcom-txtunstar"></i>
-										                                <i class="iconcom-txtunstar"></i>
-										                                <i class="iconcom-txtunstar"></i>
-												                    </span>
-													                <i>Hối hận lắm luôn. Không bt tgdd có cho đổi lại hãng khác không, dùng ứng dụng bị lỗi miết. Gặp tính mình khó chịu, giờ kg bt làm sao luôn.</i>
-													            </p>
-													        </div>
-													    </li>
-													    <li class="par">
-													        <div class="rh">
-													            <span>Thái Hùng</span>
-													            <a href="javascript:;" class="cmdt">2 ngày trước</a>
-													        </div>
-													        <div class="rc">
-													            <p>
-												                    <span>
-										                                <i class="iconcom-txtstar"></i>
-										                                <i class="iconcom-txtstar"></i>
-										                                <i class="iconcom-txtunstar"></i>
-										                                <i class="iconcom-txtunstar"></i>
-										                                <i class="iconcom-txtunstar"></i>
-												                    </span>
-													                <i>Hối hận lắm luôn. Không bt tgdd có cho đổi lại hãng khác không, dùng ứng dụng bị lỗi miết. Gặp tính mình khó chịu, giờ kg bt làm sao luôn.</i>
-													            </p>
-													        </div>
-													    </li>
-										            </ul>
-											    </div>
-
+													<form class="input hide" id="fRatingComment" onsubmit="return false;">
+														<input type="hidden" name="star" id="hdfStar" value="1">
+														<input type="hidden" name="pro_id" id="hdfProductID" value="{{ $product->id }}">
+														<input type="hidden" name="_token" value="{{ csrf_token() }}">
+														<div class="ips">
+															<span>Chọn đánh giá của bạn</span>
+															<span class="lStar">
+																<i class="iconstar iconcom-unstar" id="s1" data-txt="Không thích" data-star="1"></i>
+																<i class="iconstar iconcom-unstar" id="s2" data-txt="Tạm được" data-star="2"></i>
+																<i class="iconstar iconcom-unstar" id="s3" data-txt="Bình thường" data-star="3"></i>
+																<i class="iconstar iconcom-unstar" id="s4" data-txt="Rất tốt" data-star="4"></i>
+																<i class="iconstar iconcom-unstar" id="s5" data-txt="Tuyệt vời quá" data-star="5"></i>
+															</span>
+															<span class="rsStar hide">Không thích</span>
+														</div>
+														<div class="clr"></div>
+														<div class="ipt">
+															<div class="ct">
+																<textarea id="fRContent" name="content" placeholder="Nhập đánh giá về sản phẩm (tối thiểu 80 ký tự)" onkeyup="countTxtRating(this)"></textarea>
+																<div class="extCt hide">
+																	<span class="ckt"></span>
+																</div>
+															</div>
+															<div class="if">
+																<input type="text" id="fRName" name="name" placeholder="Họ tên">
+																<input type="text" id="fRPhone" name="phone" placeholder="Số điện thoại">
+																<input type="text" id="fREmail" name="email" placeholder="Email">
+																<a href="javascript:submitRatingComment();">GỬI ĐÁNH GIÁ</a>
+															</div>
+															<div class="clr"></div>
+															<span class="lbMsgRt"></span>
+														</div>
+													</form>
+												</div>
+												
+												<div class="list">
+													@if (count($reviews) > 0)
+													<ul class="ratingLst">
+														<?php \Carbon\Carbon::setLocale('vi'); ?>
+														@foreach ($reviews as $review)
+														<li class="par">
+															<div class="rh">
+																<span>{{ $review->name }}</span>
+																<a href="javascript:;" class="cmdt">{{ $review->created_at->diffForHumans(\Carbon\Carbon::now()) }}</a>
+															</div>
+															<div class="rc">
+																<p>
+																	<span>
+																		<?php
+																			for ($k = 1; $k <= $review->star; $k++) {
+																				?>
+																					<i class="iconcom-txtstar"></i>
+																				<?php
+																			}
+																			for ($h = 1; $h <= 5 - $review->star; $h++) {
+																				?>
+																					<i class="iconcom-txtunstar"></i>
+																				<?php
+																			}
+																		?>
+																	</span>
+																	<i>{!! $review->content !!}</i>
+																</p>
+															</div>
+														</li>
+														@endforeach
+													</ul>
+													@else
+														<p>Chưa có đánh giá nào!</p>
+													@endif
+												</div>
 											</div>
 
+										</div>
+									</div>
+
+									<ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
+										<li role="presentation" class="active">
+											<a href="#comment" id="comment-tab" role="tab" data-toggle="tab" aria-controls="comment" aria-expanded="true">
+												<span class="text">Bình luận trên Facebook</span>
+											</a>
+										</li>
+									</ul>
+
+									<div id="myTabContent" class="tab-content">
+										<div role="tabpanel" class="tab-pane fade in active" id="comment" aria-labelledby="comment-tab">
+						                    <div class="fb-comments" data-href="{{ route('product-detail', ['slug' => $product->slug]) }}" data-width="100%" data-numposts="10"></div>
 										</div>
 									</div>
 
@@ -547,6 +405,7 @@
 
 						</div>
 					</div>
+
 					<div class="col-lg-3 col-md-3 col-xs-12">
 						<div class="product-sidebar-ant-fashion">
 
@@ -555,22 +414,20 @@
 									<h3>Bạn cần hỗ trợ?</h3>
 									<p>Mua sản phẩm</p>
 
-									<h2><a href="tel:0982362509">0982 362 509</a></h2>
+									<h2><a href="tel:{{ str_replace(' ', '', $setting->phone) }}">{{ $setting->phone }}</a></h2>
 
 									<div class="link-contact">
-										<a href="/lien-he">Liên hệ</a>
+										<a href="{{ route('contact') }}">Liên hệ</a>
 									</div>
 								</div>
 								<div class="box-hotlines-right">
-
-									<a href="tel:0982362509">
+									<a href="tel:{{ str_replace(' ', '', $setting->phone) }}">
 										<i class="fa fa-phone" aria-hidden="true"></i>
 									</a>
-
 								</div>
 							</div>
 
-							<div class="product_preview">
+							{{--<div class="product_preview">
 								<div class="recently-viewed-products">
 									<div class="title_section_center">
 										<h2 class="title">Sản phẩm vừa xem</h2>
@@ -639,7 +496,7 @@
 										}
 									}
 								});
-							</script>
+							</script>--}}
 
 						</div>
 					</div>

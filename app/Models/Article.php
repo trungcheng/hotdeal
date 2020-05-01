@@ -17,7 +17,6 @@ class Article extends Model
         'intro',
         'fulltext',
         'image',
-        'is_about',
         'is_feature',
         'status',
         'seo_title',

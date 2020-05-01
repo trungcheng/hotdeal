@@ -47,6 +47,6 @@ class VerifyRole
         Auth::guard('admin')->logout();
         $request->session()->flush();
 
-        return redirect('admin/login');
+        return redirect('admin/access/login');
     }
 }

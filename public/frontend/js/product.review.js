@@ -88,7 +88,7 @@ function submitRatingComment() {
 		if (countTextRate == 0) {
 			$('.lbMsgRt').text('Vui lòng nhập nội dung đánh giá về sản phẩm');
 		} else {
-			$('.lbMsgRt').text('Nội dung đánh giá quá ít. Vui lòng nhập thêm nội dung đánh giá về sản phẩm.');
+			$('.lbMsgRt').text('Nội dung đánh giá quá ít. Vui lòng nhập thêm nội dung đánh giá về sản phẩm. (không copy)');
 		}
 		return false;
 	} else {
@@ -126,5 +126,22 @@ function submitRatingComment() {
         }
 	}
 
-	alert('Đánh giá của bạn đã được gửi đi và chờ phê duyệt!');
+	var formData = new FormData($('#fRatingComment')[0]); 
+	$.ajax({
+		type: "POST",
+		url: "/rating/post",
+		data: formData,
+		processData: false,
+		contentType: false,
+		error: function (jqXHR, textStatus, errorMessage) {
+			console.log(errorMessage);
+		},
+		success: function (data) {
+			if (data.status) {
+				alert('Đánh giá của bạn đã được gửi đi và chờ phê duyệt!');
+				$('#fRatingComment')[0].reset();
+				$('.lbMsgRt').text('');
+			}
+		}
+	});
 }

@@ -31,6 +31,7 @@
 @stop
 
 @section('pageCss')
+    <link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}" />
 	<style type="text/css">
 		* {box-sizing: border-box}
 		.tab {
@@ -121,7 +122,7 @@
 				<div class="tab">
 					<button id="defaultOpen" class="tablinks" onclick="openCity(event, 'Login')">
 						<span>Đăng nhập</span>
-						<i>Đã là thành viên thachvu</i>
+						<i>Đã là thành viên kingbep</i>
 					</button>
 					<button class="tablinks" onclick="openCity(event, 'Register')">
 						<span>Tạo tài khoản</span>
@@ -186,7 +187,7 @@
 	                        </div>
 	                        <div class="form-group policy-group">
 	                            <div class="input-wrap">
-	                                <p style="max-width:100%" class="policy">Khi bạn nhấn Đăng ký, bạn  đã đồng ý thực hiện mọi giao dịch mua bán theo <a target="_blank" href="#">điều kiện sử dụng và chính sách của Thachvu</a>.</p>
+	                                <p style="max-width:100%" class="policy">Khi bạn nhấn Đăng ký, bạn  đã đồng ý thực hiện mọi giao dịch mua bán theo <a target="_blank" href="/chinh-sach">điều kiện sử dụng và chính sách của Kingbep</a>.</p>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">
@@ -201,6 +202,20 @@
 @stop
 
 @section('pageJs')
+	<script src="{{ asset('backend/js/toastr.min.js?').time() }}"></script>
+	<script type="text/javascript">
+        $(function () {
+            toastr.options = {
+                "debug": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "fadeIn": 300,
+                "fadeOut": 1000,
+                "timeOut": 5000,
+                "extendedTimeOut": 1000
+            };
+        });
+    </script>
 	<script type="text/javascript">
 		function openCity(evt, cityName) {
 		  	var i, tabcontent, tablinks;

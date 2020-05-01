@@ -15,21 +15,33 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::orderBy('created_at', 'desc')->where('is_about', 0)->paginate(6);
+        $articles = Article::orderBy('created_at', 'desc')
+            ->where('status', 1)
+            ->paginate(6);
+
+        $otherArticles = Article::orderBy('created_at', 'desc')
+            ->where('status', 1)
+            ->limit(6)
+            ->get();
 
         return view('pages.user.article.index', [
-            'articles' => $articles
+            'articles' => $articles,
+            'otherArticles' => $otherArticles
         ]);
     }
 
     public function detail(Request $request, $slug)
     {
-        return view('pages.user.article.detail', []);
-        
         $article = Article::where('slug', $slug)->first();
         if ($article) {
+            $otherArticles = Article::orderBy('created_at', 'desc')
+                ->where('status', 1)
+                ->limit(6)
+                ->get();
+
             return view('pages.user.article.detail', [
-                'article' => $article
+                'article' => $article,
+                'otherArticles' => $otherArticles
             ]);
         }
 

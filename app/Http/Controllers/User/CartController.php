@@ -82,14 +82,9 @@ class CartController extends Controller
 
     public function checkoutFirst()
     {
-        return view('pages.user.checkout.index', [
-                
-            ]);
         if (Cart::count() > 0) {
             if (!\Auth::check()) {
-                return view('pages.user.checkout.index', [
-                
-                ]);
+                return view('pages.user.checkout.index', []);
             }
 
             return redirect()->route('step2');
@@ -100,16 +95,17 @@ class CartController extends Controller
 
     public function checkoutPayment()
     {
-        return view('pages.user.checkout.info', [
-            
-            ]);
         if (Cart::count() > 0) {
             if (!\Auth::check()) {
                 return redirect()->route('step1');
             }
 
+            $cart = Cart::content();
+            $total = Cart::subtotal(0, '.', '.');
+
             return view('pages.user.checkout.info', [
-            
+                'cart' => $cart,
+                'total' => $total
             ]);
         }
         
@@ -120,25 +116,24 @@ class CartController extends Controller
     {
         $validator = \Validator::make($request->all(), [
             'customer_name' => 'required',
+            'customer_email' => 'required|email',
             'customer_phone' => 'required|numeric|digits_between:10,11',
-            'customer_address' => 'required',
-            'delivery_method' => 'required',
-            'payment_method' => 'required'
+            'customer_address' => 'required'
         ], [
             'customer_name.required' => 'Họ tên khách hàng không được để trống',
+            'customer_email.required' => 'Email khách hàng không được để trống',
+            'customer_email.email' => 'Email khách hàng không đúng định dạng',
             'customer_phone.required' => 'Số điện thoại không được để trống',
             'customer_phone.digits_between' => 'Số điện thoại phải 10 hoặc 11 số ',
             'customer_phone.numeric' => 'Số điện thoại chỉ được nhập số',
-            'customer_address.required' => 'Địa chỉ giao hàng không được để trống',
-            'delivery_method.required' => 'Phương thức vận chuyển không được để trống',
-            'payment_method.required' => 'Phương thức thanh toán không được để trống'
+            'customer_address.required' => 'Địa chỉ giao hàng không được để trống'
         ]);
         if ($validator->fails()) {
             return redirect('/checkout/payment')->withErrors($validator)->withInput();
         }
 
         $data = $request->all();
-        $obj_info = $request->only(['customer_name', 'customer_phone', 'customer_email', 'customer_address']);
+        $obj_info = $request->only(['customer_name', 'customer_phone', 'customer_email', 'customer_address', 'note']);
         unset($data['_token']);
 
         $cartInfo = Cart::content();
@@ -164,14 +159,24 @@ class CartController extends Controller
                 }
             }
 
+            $emails = [
+                \Auth::user()->email,
+                $data['customer_email'],
+                // \Config::get('mail.from.address')
+            ];
+
+            if ($data['customer_email'] == \Auth::user()->email) {
+                array_shift($emails);
+            }
+
             Mail::send('pages/user/mail/order_temp', [
                 'order' => $order,
-                'name' => $obj_info['customer_name'], 
+                'objectInfo' => $obj_info,
                 'cartInfo' => $cartInfo,
-                'total' => Cart::subtotal(0, '.', '.')
-            ], function($message) use ($data, $order) {
-                $message->to($data['customer_email'])
-                        ->cc(\Auth::user()->email)
+                'total' => Cart::subtotal(0, '.', '.'),
+                'shipFee' => $order->delivery_method
+            ], function($message) use ($emails, $order) {
+                $message->to($emails)
                         ->subject('Xác nhận đơn hàng #'.$order->id);
             });
 

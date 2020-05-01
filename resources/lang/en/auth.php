@@ -14,6 +14,5 @@ return [
     */
 
     'failed' => 'Tài khoản hoặc mật khẩu không đúng.',
-    'throttle' => 'Đăng nhập quá nhiều lần. Vui lòng thử lại sau :seconds giây.',
-
+    'throttle' => 'Đăng nhập quá nhiều lần. Vui lòng thử lại sau :seconds giây.'
 ];

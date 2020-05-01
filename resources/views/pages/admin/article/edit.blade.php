@@ -48,13 +48,6 @@
                                     <textarea class="form-control" id="full_content">{!! $article->fulltext !!}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Trang giới thiệu</label>
-                                    <select name="is_about" class="form-control">
-                                        <option {{ ($article->is_about == 0) ? 'selected' : '' }} value="0">Không</option>
-                                        <option {{ ($article->is_about == 1) ? 'selected' : '' }} value="1">Có</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label>Trạng thái</label>
                                     <select name="status" class="form-control status">
                                         <option {{ ($article->status == 1) ? 'selected' : '' }} value="1">Hiển thị</option>

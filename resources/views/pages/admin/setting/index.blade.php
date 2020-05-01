@@ -17,10 +17,10 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" style="margin-top: 20px">
 
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-8 col-md-offset-2">
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -36,15 +36,15 @@
                     <p class="alert alert-success">{{ Session::get('message') }}</p>
                 @endif
 
-                <form id="form_setting" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
+                <form id="form_setting" onsubmit="return false;" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
 
                     {{ csrf_field() }}
-                    
-                    <!-- <div class="form-group">
-                        <label>Logo</label>
-                        <input name="image" type="text" size="48" class="form-control" id="xFilePath" />
-                        <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
-                    </div> -->
+
+                    <div class="form-group">
+                        <label class="control-label">Logo</label>
+                        <input value="{{ $setting->logo }}" name="logo" type="text" size="48" class="form-control" id="xFilePath" placeholder="Logo công ty..." />
+                        <button type="button" class="btn btn-primary btn-upload" onclick="openPopup()">Tải logo lên</button>
+                    </div>
 
                     <div class="form-group">
                         <label class="control-label">Tên công ty</label>
@@ -77,6 +77,36 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label">Google map link</label>
+                        <input type="text" name="google_map_url" value="{{ ($setting != '') ? $setting->google_map_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Facebook fanpage link</label>
+                        <input type="text" name="facebook_url" value="{{ ($setting != '') ? $setting->facebook_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Twitter profile link</label>
+                        <input type="text" name="twitter_url" value="{{ ($setting != '') ? $setting->twitter_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Youtube channel link</label>
+                        <input type="text" name="youtube_url" value="{{ ($setting != '') ? $setting->youtube_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Google plus link</label>
+                        <input type="text" name="google_url" value="{{ ($setting != '') ? $setting->google_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Instagram profile link</label>
+                        <input type="text" name="instagram_url" value="{{ ($setting != '') ? $setting->instagram_url : '' }}" class="form-control" placeholder="Giờ làm việc...">
+                    </div>
+
+                    <div class="form-group">
                         <label>Facebook Pixel Code</label>
                         <textarea style="height: 100px;" name="fb_pixel_code" class="form-control" placeholder="Facebook Pixel Code...">{{ ($setting != '') ? $setting->fb_pixel_code : '' }}</textarea>
                     </div>
@@ -85,18 +115,20 @@
                         <label>SEO Title</label>
                         <input value="{{ ($setting != '') ? $setting->seo_title : '' }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
                     </div>
+
                     <div class="form-group">
                         <label>SEO Description</label>
                         <input value="{{ ($setting != '') ? $setting->seo_desc : '' }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
                     </div>
+
                     <div class="form-group">
                         <label>SEO Keyword</label>
                         <input value="{{ ($setting != '') ? $setting->seo_keyword : '' }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                     </div>
 
-                    <div class="form-group">
-                        <button style="float:right;margin-left:5px;" type="reset" class="btn btn-default">Đóng</button>
-                        <button style="float:right" type="submit" class="btn btn-primary">Cập nhật</button>
+                    <div class="form-group" style="margin-top:50px;margin-bottom:50px;text-align:center">
+                        <button type="reset" class="btn btn-default">Đóng</button>
+                        <button style="margin-left:10px" type="submit" class="btn btn-primary">Cập nhật</button>
                     </div>
 
                 </form>
@@ -108,5 +140,46 @@
 @stop
 
 @section('pageJs')
+    <script type="text/javascript">
+        function openPopup() {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                    } );
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                    } );
+                }
+            } );
+        }
 
+        $('#form_setting').on('submit', function () {
+            var formData = new FormData($(this)[0]);
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'POST',
+                processData: false,
+                contentType: false,
+                cache: false,
+                dataType: "JSON",
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: formData,
+                success: function (response) {
+                    if (response.status) {
+                        swal('Updated!', response.message, "success");
+                    } else {
+                        swal('Error!', response.message, "error");
+                    }
+                },
+                error: function (response) {
+                    swal('Error!', response.message, "error");
+                }
+            });
+        });
+    </script>
 @stop

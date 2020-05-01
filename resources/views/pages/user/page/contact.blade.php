@@ -6,7 +6,7 @@
 @section('description')
 @stop
 
-@section('keywords')Liên hệ, Ant Kitchen, ant-kitchen.mysapo.net
+@section('keywords')Liên hệ
 @stop
 
 @section('canonical'){{ route('contact') }}/
@@ -55,9 +55,7 @@
                             <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                             <span><i class="fa fa-angle-right"></i></span>
                         </li>
-
                         <li><strong itemprop="title">Liên hệ</strong></li>
-
                     </ul>
                 </div>
             </div>
@@ -69,20 +67,25 @@
             <div class="col-md-3 col-md-push-9">
                 <div class="widget-item info-contact in-fo-page-content">
                     <div class="logos text-xs-left">
-
-                        <a href="/" class="logo-wrapper ">
-                            <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/logo-contact.png?1576740881097" alt="logo Ant Kitchen" class="img-responsive" />
+                        <a href="/" class="logo-wrapper">
+                            <img src="{{ $setting->logo }}" alt="Logo KingBep" class="img-responsive" />
                         </a>
-
                     </div>
                     <p></p>
                     <!-- End .widget-title -->
                     <ul class="widget-menu contact-info-page">
-
-                        <li><i class="fa fa-map-marker color-x" aria-hidden="true"></i> 175 Lý Thường Kiệt, Phường 6, Quận Tân Bình, TP. Hồ Chí Minh.</li>
-                        <li><i class="fa fa-phone color-x" aria-hidden="true"></i> <a href="tel:0982362509">0982 362 509</a></li>
-                        <li><i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:baotrung304@gmail.com">baotrung304@gmail.com</a></li>
-
+                        <li>
+                            <i class="fa fa-map-marker color-x" aria-hidden="true"></i> 
+                            {!! $setting->address !!}
+                        </li>
+                        <li>
+                            <i class="fa fa-phone color-x" aria-hidden="true"></i> 
+                            <a href="tel:{{ str_replace(' ', '', $setting->phone) }}">{{ $setting->phone }}</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i> 
+                            <a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a>
+                        </li>
                     </ul>
                     <!-- End .widget-menu -->
                 </div>
@@ -92,21 +95,22 @@
                     <div id="login">
                         <h1 class="title-head">Liên hệ</h1>
                         <span>Bạn hãy điền nội dung tin nhắn vào form dưới đây và gửi cho chúng tôi. Chúng tôi sẽ trả lời bạn sau khi nhận được.</span>
-                        <form accept-charset="UTF-8" action="/contact" id="contact" method="post">
+                        <form accept-charset="UTF-8" action="/lien-he" id="contact" method="post">
                             <input name="FormType" type="hidden" value="contact" />
-                            <input name="utf8" type="hidden" value="true" /><input type="hidden" id="Token-233e305034e94956ab72a9813d0d3026" name="Token" />
+                            <input name="utf8" type="hidden" value="true" />
+                            <input type="hidden" id="Token-233e305034e94956ab72a9813d0d3026" name="Token" />
+                            
                             <script src="https://www.google.com/recaptcha/api.js?render=6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK"></script>
                             <script>
                                 grecaptcha.ready(function() {
                                     grecaptcha.execute("6Ldtu4IUAAAAAMQzG1gCw3wFlx_GytlZyLrXcsuK", {
-                                            action: "/contact"
+                                            action: "/lien-he"
                                         })
                                         .then(function(token) {
                                             document.getElementById("Token-233e305034e94956ab72a9813d0d3026").value = token
                                         });
                                 });
                             </script>
-
 
                             <div class="form-signup clearfix">
                                 <div class="row">
@@ -147,7 +151,7 @@
     </div>
 
     <div class="box-maps">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3660844155734!2d106.65262831405934!3d10.78324826201816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ec84dbc2ab5%3A0xe952d650e50b188f!2zMTc1IEzDvSBUaMaw4budbmcgS2nhu4d0LCBwaMaw4budbmcgNiwgVMOibiBCw6xuaCwgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1500909626466" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe src="{{ $setting->google_map_url }}" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 @stop
 

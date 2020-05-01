@@ -30,6 +30,10 @@
     -webkit-backface-visibility: hidden;
     -webkit-touch-callout: none;
 }
+.home-slider .owl-item img {
+    height: 345px !important;
+    object-fit: cover;
+}
 .owl-carousel .owl-item img {
     display: block;
     width: 100%;
@@ -366,7 +370,7 @@ header .main-navigation nav .mainmenu .nav-cate {
 }
 header .main-navigation nav .mainmenu .nav-cate ul {
     width: 100%;
-    min-height: 364px;
+    min-height: 345px;
     background: #fff;
     overflow: visible;
     box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.2);
@@ -1439,6 +1443,7 @@ to {
     color: #666;
 }
 footer {
+    margin-top: 50px;
     background-color: #fff;
     color: #666;
     border-top: 2px solid #ef8a32;
@@ -2723,7 +2728,7 @@ header nav .nav-item.active>a, header nav .nav-item:hover>a {
 .section_group_product .product-thumbnail {
     position: relative;
     height: 180px;
-    background-color: #f7f8f9;
+    /*background-color: #f7f8f9;*/
 }
 @media (max-width: 1024px) {
     .section_group_product .product-thumbnail {
@@ -4802,4 +4807,20 @@ to {
 }
 .social-login a:hover, .social-login a:focus {
     opacity: 0.8;
+}
+section.bread-crumb {
+    background: #f1f1f1;
+    margin-bottom: 25px;
+}
+ul.breadcrumb {
+    background: none !important;
+}
+.contact .title-head {
+    margin-top: 0;
+}
+.cke_reset .cke_widget_drag_handler_container {
+    display: none !important;
+}
+.cke_widget_wrapper .cke_reset {
+    display: none !important;
 }

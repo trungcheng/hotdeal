@@ -97,6 +97,15 @@
                 $this->post('reviews/update', 'Admin\ReviewController@update');
                 $this->post('reviews/delete', 'Admin\ReviewController@delete');
 
+                // page
+                $this->get('page/about', 'Admin\PageController@about');
+                $this->get('page/payment-method', 'Admin\PageController@paymentMethod');
+                $this->get('page/delivery-method', 'Admin\PageController@deliveryMethod');
+                $this->get('page/policy', 'Admin\PageController@policy');
+                $this->get('page/recruitment', 'Admin\PageController@recruitment');
+                $this->get('page/saleoff', 'Admin\PageController@saleOff');
+                $this->post('page/update', 'Admin\PageController@update');
+
                 //setting
                 $this->get('setting', 'Admin\SettingController@index');
                 $this->post('setting/update', 'Admin\SettingController@update');

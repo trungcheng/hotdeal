@@ -3,10 +3,10 @@
 @section('page')Đăng nhập
 @stop
 
-@section('description')
+@section('description')Đăng nhập
 @stop
 
-@section('keywords')Đăng nhập, Ant Kitchen, ant-kitchen.mysapo.net
+@section('keywords')Đăng nhập
 @stop
 
 @section('canonical'){{ route('signin') }}
@@ -15,16 +15,16 @@
 @section('alternate'){{ route('signin') }}
 @stop
 
-@section('propName')
+@section('propName')Đăng nhập
 @stop
 
-@section('propDesc')
+@section('propDesc')Đăng nhập
 @stop
 
-@section('ogTitle')
+@section('ogTitle')Đăng nhập
 @stop
 
-@section('ogDesc')
+@section('ogDesc')Đăng nhập
 @stop
 
 @section('ogUrl'){{ route('signin') }}
@@ -47,9 +47,7 @@
                 <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                 <span><i class="fa fa-angle-right"></i></span>
               </li>
-
               <li><strong itemprop="title">Đăng nhập tài khoản</strong></li>
-
             </ul>
           </div>
         </div>
@@ -57,12 +55,26 @@
     </section>
 
     <div class="container mr-bottom-20">
-      <h1 class="title-head"><span>Đăng nhập tài khoản</span></h1>
+      <h1 class="title-head text-center"><span>Đăng nhập tài khoản</span></h1>
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-lg-offset-3">
+          @foreach (['danger', 'warning', 'success', 'info'] as $key)
+              @if(Session::has($key))
+                <p class="alert alert-{{ $key }}">{{ Session::get($key) }}</p>
+              @endif
+            @endforeach
+            @if ($errors->any())
+            <div class="alert alert-danger">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li style="list-style:none">{{ $error }}</li>
+                @endforeach
+              </ul>
+            </div>
+            @endif
           <div class="page-login margin-bottom-30">
             <div id="login">
-              <span>
+              {{--<span>
                 Nếu bạn đã có tài khoản, đăng nhập tại đây.
               </span>
               <div class="social-login margin-top-15 margin-bottom-10">
@@ -107,32 +119,28 @@
                 </script>
                 <a href="javascript:void(0)" class="social-login--facebook" onclick="loginFacebook()"><img width="129px" height="37px" alt="facebook-login-button" src="//bizweb.dktcdn.net/assets/admin/images/login/fb-btn.svg"></a>
                 <a href="javascript:void(0)" class="social-login--google" onclick="loginGoogle()"><img width="129px" height="37px" alt="google-login-button" src="//bizweb.dktcdn.net/assets/admin/images/login/gp-btn.svg"></a>
-              </div>
-              <form accept-charset="UTF-8" action="/account/login" id="customer_login" method="post">
-                <input name="FormType" type="hidden" value="customer_login" />
-                <input name="utf8" type="hidden" value="true" />
-                <div class="form-signup">
-
-                </div>
+              </div>--}}
+              <form accept-charset="UTF-8" action="" id="customer_login" method="post">
+                {{ csrf_field() }}
                 <div class="form-signup clearfix">
                   <fieldset class="form-group">
-                    <label>Email: </label>
-                    <input type="email" class="form-control form-control-lg" value="" name="email" id="customer_email" placeholder="Email" required data-validation="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" data-validation-error-msg="Email sai định dạng" />
+                    <label>Email / Số điện thoại</label>
+                    <input type="text" class="form-control form-control-lg" name="email" id="customer_email" placeholder="Email hoặc số điện thoại" required />
                   </fieldset>
                   <fieldset class="form-group">
-                    <label>Mật khẩu: </label>
-                    <input type="password" class="form-control form-control-lg" value="" name="password" id="customer_password" data-validation-error-msg="Không được để trống" data-validation="required" placeholder="Mật khẩu" />
+                    <label>Mật khẩu</label>
+                    <input type="password" class="form-control form-control-lg" name="password" id="customer_password" placeholder="Mật khẩu" required />
                   </fieldset>
                   <div class="pull-xs-left" style="margin-top: 15px;">
                     <input class="btn btn-style btn-blues" type="submit" value="Đăng nhập" />
-                    <a href="{{ route('signup') }}" class="btn-link-style btn-register" style="margin-left: 20px;color:#e85997;text-decoration: underline; ">Đăng ký</a>
+                    <a href="{{ route('signup') }}" class="btn-link-style btn-register" style="margin-left: 20px;color:#e85997;text-decoration:underline;">Đăng ký</a>
                   </div>
                 </div>
               </form>
             </div>
           </div>
         </div>
-        <div class="col-lg-6">
+        {{--<div class="col-lg-6">
           <div id="recover-password" class="form-signup">
             <span>
               Bạn quên mật khẩu? Nhập địa chỉ email để lấy lại mật khẩu qua email.
@@ -155,7 +163,7 @@
               </div>
             </form>
           </div>
-        </div>
+        </div>--}}
       </div>
     </div>
 @stop

@@ -28,7 +28,6 @@
 
         });
 
-        // \Route::get('/product-detail', 'User\ProductController@detail')->name('product-detail');
         \Route::get('/cua-hang', 'User\ProductController@store')->name('store');
         \Route::get('/tim-kiem', 'User\ProductController@search')->name('search');
 
@@ -46,14 +45,16 @@
         \Route::get('/checkout/success', 'User\CartController@checkoutSuccess')->name('checkout-success');
 
         \Route::get('/gioi-thieu', 'User\PageController@about')->name('about');
+        \Route::get('/phuong-thuc-thanh-toan', 'User\PageController@paymentMethod')->name('payment-method');
+        \Route::get('/phuong-thuc-van-chuyen', 'User\PageController@deliveryMethod')->name('delivery-method');
+        \Route::get('/chinh-sach', 'User\PageController@policy')->name('policy');
+        \Route::get('/thong-tin-tuyen-dung', 'User\PageController@recruitment')->name('recruitment');
+        \Route::get('/chuong-trinh-khuyen-mai', 'User\PageController@saleOff')->name('saleoff');
         \Route::get('/lien-he', 'User\PageController@contact')->name('contact');
 
-        // \Route::get('/product/getAllSaleProd', 'User\ProductController@getAllSaleProd');
-        // \Route::get('/product/getAllChauDaProd', 'User\ProductController@getAllChauDaProd');
-        // \Route::get('/product/getAllChauInoxProd', 'User\ProductController@getAllChauInoxProd');
-        // \Route::get('/product/getAllVoiRuaBatProd', 'User\ProductController@getAllVoiRuaBatProd');
-
         \Route::get('/{slug}', 'User\ProductController@detail')->name('product-detail');
+
+        \Route::post('/rating/post', 'Admin\ReviewController@add')->name('postRating');
 
     });
 

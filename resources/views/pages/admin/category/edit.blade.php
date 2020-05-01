@@ -34,6 +34,11 @@
                                     <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Ảnh icon</label>
+                                    <input value="{{ $category->icon }}" name="icon" type="text" size="48" class="form-control" id="xFilePath" />
+                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
+                                </div>
+                                <div class="form-group">
                                     <label>SEO Content</label>
                                     <textarea class="form-control" id="seo_content">{!! $category->seo_content !!}</textarea>
                                 </div>
@@ -49,11 +54,6 @@
                                     <label>SEO Keyword</label>
                                     <input value="{{ $category->seo_keyword }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                                 </div>
-                                <!-- <div class="form-group">
-                                    <label>Ảnh</label>
-                                    <input value="{{ $category->icon }}" name="icon" type="text" size="48" class="form-control" id="xFilePath" />
-                                    <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
-                                </div> -->
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('update')" type="button" class="btn btn-primary">Cập nhật</button>

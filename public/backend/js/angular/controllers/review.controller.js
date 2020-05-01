@@ -49,6 +49,9 @@
             $scope.to = $scope.pager.endIndex + 1;
             $scope.total = $scope.pager.totalItems;
             $scope.pullDownLists.selectedOption = { value: pageSize, name: pageSize };
+            angular.forEach($scope.items, function (v, k) {
+                v.content = trimText(v.content, 20);
+            });
         }
 
         $scope.loadInit = function () {
