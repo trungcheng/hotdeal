@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-04-30 23:37:33
+Date: 2020-05-01 17:56:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -205,17 +205,11 @@ CREATE TABLE `orders` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES ('1', '5', '1000000.0000', 'Thanh toán tiền mặt khi nhận hàng', 'Vận chuyển miễn phí', '{\"customer_name\":\"\\u0110inh Ki\\u1ec1u Trang\",\"customer_phone\":\"0975123644\",\"customer_email\":\"trungdn.dev@gmail.com\",\"customer_address\":\"21 T\\u1ef1u Li\\u1ec7t - Thanh Tr\\u00ec - H\\u00e0 N\\u1ed9i\"}', 'hihi', '0', '2019-04-24 11:10:56', '2019-04-24 11:10:56');
-INSERT INTO `orders` VALUES ('2', '5', '2650000.0000', 'Thanh toán tiền mặt khi nhận hàng', 'Vận chuyển miễn phí', '{\"customer_name\":\"\\u0110inh Ki\\u1ec1u Trang\",\"customer_phone\":\"0975123644\",\"customer_email\":\"trungdn.dev@gmail.com\",\"customer_address\":\"21 T\\u1ef1u Li\\u1ec7t - Thanh Tr\\u00ec - H\\u00e0 N\\u1ed9i\"}', 'cẩn thận hàng dễ vỡ', '0', '2019-04-24 16:18:58', '2019-04-24 16:18:58');
-INSERT INTO `orders` VALUES ('3', '5', '1060000.0000', 'Thanh toán tiền mặt khi nhận hàng', 'Vận chuyển miễn phí', '{\"customer_name\":\"dinh ngoc trung\",\"customer_phone\":\"0975123644\",\"customer_email\":\"trungdn.dev@gmail.com\",\"customer_address\":\"Thanh Tri - Ha Noi\"}', '123', '0', '2019-05-01 03:44:57', '2019-05-01 03:44:57');
-INSERT INTO `orders` VALUES ('4', '5', '1060000.0000', 'Thanh toán tiền mặt khi nhận hàng', 'Vận chuyển miễn phí', '{\"customer_name\":\"\\u0110inh Ki\\u1ec1u Trang\",\"customer_phone\":\"0975123644\",\"customer_email\":\"trungdn.dev@gmail.com\",\"customer_address\":\"21 T\\u1ef1u Li\\u1ec7t - Thanh Tr\\u00ec - H\\u00e0 N\\u1ed9i\"}', '123', '0', '2019-05-01 03:46:02', '2019-05-01 03:46:02');
-INSERT INTO `orders` VALUES ('5', '5', '1060000.0000', 'Thanh toán tiền mặt khi nhận hàng', 'Vận chuyển miễn phí', '{\"customer_name\":\"\\u0110inh Ki\\u1ec1u Trang\",\"customer_phone\":\"0975123644\",\"customer_email\":\"trungdn.dev@gmail.com\",\"customer_address\":\"21 T\\u1ef1u Li\\u1ec7t - Thanh Tr\\u00ec - H\\u00e0 N\\u1ed9i\"}', '123', '0', '2019-05-01 04:06:19', '2019-05-01 04:06:19');
-INSERT INTO `orders` VALUES ('6', '5', '1060000.0000', 'Thanh toán tiền mặt khi nhận hàng', 'Vận chuyển miễn phí', '{\"customer_name\":\"\\u0110inh Ki\\u1ec1u Trang\",\"customer_phone\":\"0975123644\",\"customer_email\":\"trungdn.dev@gmail.com\",\"customer_address\":\"21 T\\u1ef1u Li\\u1ec7t - Thanh Tr\\u00ec - H\\u00e0 N\\u1ed9i\"}', '123', '0', '2019-05-01 04:06:28', '2019-05-01 04:06:28');
 
 -- ----------------------------
 -- Table structure for order_detail
@@ -230,18 +224,11 @@ CREATE TABLE `order_detail` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of order_detail
 -- ----------------------------
-INSERT INTO `order_detail` VALUES ('1', '1', '32', '1', '250000.0000', '2019-04-24 11:10:56', '2019-04-24 11:10:56');
-INSERT INTO `order_detail` VALUES ('2', '1', '34', '1', '750000.0000', '2019-04-24 11:10:56', '2019-04-24 11:10:56');
-INSERT INTO `order_detail` VALUES ('3', '2', '30', '1', '2650000.0000', '2019-04-24 16:18:58', '2019-04-24 16:18:58');
-INSERT INTO `order_detail` VALUES ('4', '3', '29', '2', '530000.0000', '2019-05-01 03:44:57', '2019-05-01 03:44:57');
-INSERT INTO `order_detail` VALUES ('5', '4', '29', '2', '530000.0000', '2019-05-01 03:46:02', '2019-05-01 03:46:02');
-INSERT INTO `order_detail` VALUES ('6', '5', '29', '2', '530000.0000', '2019-05-01 04:06:19', '2019-05-01 04:06:19');
-INSERT INTO `order_detail` VALUES ('7', '6', '29', '2', '530000.0000', '2019-05-01 04:06:28', '2019-05-01 04:06:28');
 
 -- ----------------------------
 -- Table structure for pages
@@ -419,11 +406,9 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '1', 'admin', 'Admin', 'admin@admin.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0987654321', 'Hà Nội', null, null, null, '1', null, '1', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9ob3RkZWFsLnh5ei9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTUzMDUwNDA5NSwiZXhwIjoxNzE3MTI4MDk1LCJuYmYiOjE1MzA1MDQwOTUsImp0aSI6InVoY08zVlBEV1hBSkpNMGkifQ.AftccxTKMGrTAOxgcx1bWQfUYKHlRyFqMYQXHUdMs44', 'eaBPYue91j1vM7gAI2MF01IOMw3gwesQOku7el5stwd1kXEbTwOapa5ewujm', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
-INSERT INTO `users` VALUES ('3', '3', 'userone', 'User One', 'user.one@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$VMxBri/qLDxAEq6rGo12Yef2.md..3AqfjSuHnk0q2tbzTQLu5Lp6', '0978999888', 'Hà Nội', null, null, null, '1', null, '1', null, null, '2019-04-23 09:28:28', '2019-04-23 09:31:06');
-INSERT INTO `users` VALUES ('5', '3', 'usertwo', 'User Two', 'user.two@gmail.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$YBm9bIA.RaFUyDiXYFazNeJ72dwtF072Pieyth2BOFE43KDOdZhsy', '0967888999', 'Hà Nội', null, null, null, '1', '', '1', null, 'Afv5L7EZILNQbdVSdZwct6DPbNkUIx4OCYyA8FR2w8DNkQp9bLEK8PxF9fEB', '2019-04-24 04:21:40', '2019-04-24 04:26:28');
+INSERT INTO `users` VALUES ('1', '1', 'admin', 'Admin', 'admin@admin.com', '/components/admin-lte/dist/img/user2-160x160.jpg', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0987654321', 'Hà Nội', null, null, null, '1', null, '1', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6Ly9ob3RkZWFsLnh5ei9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTUzMDUwNDA5NSwiZXhwIjoxNzE3MTI4MDk1LCJuYmYiOjE1MzA1MDQwOTUsImp0aSI6InVoY08zVlBEV1hBSkpNMGkifQ.AftccxTKMGrTAOxgcx1bWQfUYKHlRyFqMYQXHUdMs44', '8uPURXSUgBaYgSpdm4rm9mVZ74USi6y1K9uJR5gYtf1KXOWfheALbQb6wFmx', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
