@@ -33,6 +33,9 @@
 @section('ogImage'){{ $product->image }}
 @stop
 
+@section('schema'){{ $product->seo_schema }}
+@stop
+
 @section('pageCss')
 	<link href="{{ asset('frontend/css/lightbox.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('frontend/css/product.review.css') }}" rel="stylesheet" type="text/css" />
@@ -240,7 +243,7 @@
 															<div class="product-thumbnail">
 																<div class="product-image-flip">
 																	<a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
+																		<img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
 																	</a>
 																</div>
 															</div>

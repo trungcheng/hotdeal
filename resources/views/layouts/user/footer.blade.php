@@ -30,7 +30,7 @@
                             <ul class="widget-menu contact-info-page">
                                 <li>
                                     <i class="fa fa-map-marker color-x" aria-hidden="true"></i> 
-                                    {!! $setting->address !!}
+                                    <span>{!! $setting->address !!}<span>
                                 </li>
                                 <li>
                                     <i class="fa fa-phone color-x" aria-hidden="true"></i> 
@@ -39,6 +39,10 @@
                                 <li>
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i> 
                                     <a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> 
+                                    <span>{{ $setting->time_work }}</a></span>
                                 </li>
                             </ul>
                         </div>
@@ -66,11 +70,11 @@
 
                                 <li><a href="{{ route('delivery-method') }}">Phương thức vận chuyển</a></li>
 
-                                <li><a href="{{ route('policy') }}">Chính sách đổi trả</a></li>
+                                <li><a href="{{ route('policy-exchange') }}">Chính sách đổi trả</a></li>
 
-                                <li><a href="{{ route('recruitment') }}">Thông tin tuyển dụng</a></li>
+                                <li><a href="{{ route('policy-security') }}">Chính sách bảo mật</a></li>
 
-                                <li><a href="{{ route('saleoff') }}">Chương trình khuyến mãi</a></li>
+                                <li><a href="{{ route('term-of-service') }}">Điều khoản dịch vụ</a></li>
 
                             </ul>
                         </div>

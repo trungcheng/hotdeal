@@ -35,7 +35,11 @@
 <?php $__env->startSection('ogUrl'); ?><?php echo e($cate ? route('product-detail', ['slug' => $cate->slug]) : route('store')); ?>/
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('ogImage'); ?><?php echo e(asset('frontend/images/logos/logo.png')); ?>
+<?php $__env->startSection('ogImage'); ?><?php echo e($cate ? $cate->image : $setting->logo); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('schema'); ?><?php echo e($cate ? $cate->seo_schema : $setting->seo_schema); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -76,9 +80,20 @@
                     <div class="aside-content">
                         <nav class="nav-category navbar-toggleable-md">
                             <ul class="nav navbar-pills">
-                                
-                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li class="nav-item "><a class="nav-link" href="<?php echo e(route('product-detail', ['slug' => $cate->slug])); ?>"><?php echo e($cate->name); ?></a></li>
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="<?php echo e(route('product-detail', ['slug' => $cat->slug])); ?>"><?php echo e($cat->name); ?></a>
+                                        <?php if(isset($cat->childrens)): ?>
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="dropdown-menu">
+                                                <?php $__currentLoopData = $cat->childrens; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <li class="dropdown-submenu nav-item">
+                                                    <a class="nav-link" href="<?php echo e(route('product-detail', ['slug' => $child->slug])); ?>"><?php echo e($child->name); ?></a>
+                                                </li>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                    </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </nav>
@@ -131,7 +146,7 @@
                                             <?php endif; ?>
                                             <div class="product-image-flip">
                                                 <a href="<?php echo e(route('product-detail', ['slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>">
-                                                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="<?php echo e($pro->image); ?>" alt="<?php echo e($pro->name); ?>" class="img-responsive center-block" />
+                                                    <img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($pro->image); ?>" alt="<?php echo e($pro->name); ?>" class="img-responsive center-block" />
                                                 </a>
                                             </div>
                                         </div>
@@ -171,7 +186,12 @@
                         <p style="position:absolute;top:43px">Không có sản phẩm nào!</p>
                     <?php endif; ?>
                 </div>
-                
+                <div class="collections_des_and_menu margin-top-20">
+                    <div class="collections_des_and_menu-content">
+                        <?php echo $cate ? $cate->seo_content : ''; ?>
+
+                    </div>
+                </div>
             </section>
         </div>
     </div>

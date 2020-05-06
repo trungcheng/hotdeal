@@ -1,12 +1,12 @@
 @extends('layouts.user.master')
 
-@section('page')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp - King Bep
+@section('page'){{ $page->seo_title }}
 @stop
 
-@section('description')Tin tức về nhà bếp, phong thủy nhà bếp, nội trợ. Mẹo lắp đặt thiết bị vệ sinh, chậu rửa.
+@section('description'){{ $page->seo_desc }}
 @stop
 
-@section('keywords')tin tức, thiết bị vệ sinh, phong thủy nhà bếp, nhà bếp, nội trợ
+@section('keywords'){{ $page->seo_keyword }}
 @stop
 
 @section('canonical'){{ route('article') }}
@@ -15,22 +15,25 @@
 @section('alternate'){{ route('article') }}
 @stop
 
-@section('propName')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp - King Bep
+@section('propName'){{ $page->seo_title }}
 @stop
 
-@section('propDesc')Tin tức về nhà bếp, phong thủy nhà bếp, nội trợ. Mẹo lắp đặt thiết bị vệ sinh, chậu rửa.
+@section('propDesc'){{ $page->seo_desc }}
 @stop
 
-@section('ogTitle')Tin tức về thiết bị vệ sinh, nhà bếp, phong thủy nhà bếp - King Bep
+@section('ogTitle'){{ $page->seo_title }}
 @stop
 
-@section('ogDesc')Tin tức về nhà bếp, phong thủy nhà bếp, nội trợ. Mẹo lắp đặt thiết bị vệ sinh, chậu rửa.
+@section('ogDesc'){{ $page->seo_desc }}
 @stop
 
 @section('ogUrl'){{ route('article') }}/
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ !empty($articles) ? $articles[0]->image : $setting->logo }}
+@stop
+
+@section('schema'){{ $page->seo_schema }}
 @stop
 
 @section('pageCss')
@@ -63,6 +66,10 @@
                     <h1 class="title-head">Tin tức</h1>
                 </div>
 
+                <div class="margin-bottom-20">
+                    {!! $page->seo_content !!}
+                </div>
+
                 @if (count($articles) > 0)
                 <section class="list-blogs blog-main">
                     <div class="row">
@@ -71,12 +78,12 @@
                             <article class="blog-item">
                                 <div class="blog-item-thumbnail">
                                     <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">
-                                        <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $article->image }}" alt="{{ $article->title }}" class="img-responsive center-block" />
+                                        <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $article->image }}" alt="{{ $article->title }}" class="img-responsive center-block" />
                                     </a>
                                 </div>
                                 <h3 class="blog-item-name"><a href="{{ route('article-detail', ['slug' => $article->slug]) }}" title="{{ $article->title }}">{{ $article->title }}</a></h3>
                                 <div class="post-time">
-                                    {{ $article->created_at }} - {{ $article->user->fullname }}
+                                    {{ $article->created_at }}
                                 </div>
                                 <p class="blog-item-summary margin-bottom-5">{!! $article->intro !!}</p>
                             </article>
@@ -182,8 +189,20 @@
                                         </li>
                                     </ul>
                                 </li>--}}
-                                @foreach ($categories as $cate)
-                                    <li class="nav-item "><a class="nav-link" href="{{ route('product-detail', ['slug' => $cate->slug]) }}">{{ $cate->name }}</a></li>
+                                @foreach ($categories as $cat)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('product-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
+                                        @if (isset($cat->childrens))
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="dropdown-menu">
+                                                @foreach ($cat->childrens as $child)
+                                                <li class="dropdown-submenu nav-item">
+                                                    <a class="nav-link" href="{{ route('product-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
                                 @endforeach
                             </ul>
                         </nav>
@@ -199,11 +218,11 @@
                             @foreach ($otherArticles as $article)
                             <article class="blog-item blog-item-list col-md-12">
                                 <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="panel-box-media">
-                                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $article->image }}" width="70" height="70" alt="{{ $article->title }}" />
+                                    <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $article->image }}" width="70" height="70" alt="{{ $article->title }}" />
                                 </a>
                                 <div class="blogs-rights">
                                     <h3 class="blog-item-name"><a href="{{ route('article-detail', ['slug' => $article->slug]) }}" title="{{ $article->title }}">{{ $article->title }}</a></h3>
-                                    <div class="post-time">{{ $article->created_at }}</div>
+                                    {{--<div class="post-time">{{ $article->created_at }}</div>--}}
                                 </div>
                             </article>
                             @endforeach

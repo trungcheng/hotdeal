@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 
 class PageController extends Controller
 {
@@ -13,12 +14,10 @@ class PageController extends Controller
 
     public function about()
     {
-        $article = \DB::table('pages')->first();
+        $article = Page::where('route', 'about')->first();
         if ($article) {
             return view('pages.user.page.about', [
-                'article' => $article,
-                'route' => 'about',
-                'title' => 'Giới thiệu'
+                'article' => $article
             ]);
         }
 
@@ -27,12 +26,10 @@ class PageController extends Controller
 
     public function paymentMethod()
     {
-        $article = \DB::table('pages')->first();
+        $article = Page::where('route', 'payment-method')->first();
         if ($article) {
             return view('pages.user.page.about', [
-                'article' => $article,
-                'route' => 'payment-method',
-                'title' => 'Phương thức thanh toán'
+                'article' => $article
             ]);
         }
 
@@ -41,54 +38,46 @@ class PageController extends Controller
 
     public function deliveryMethod()
     {
-        $article = \DB::table('pages')->first();
+        $article = Page::where('route', 'delivery-method')->first();
         if ($article) {
             return view('pages.user.page.about', [
-                'article' => $article,
-                'route' => 'delivery-method',
-                'title' => 'Phương thức vận chuyển'
+                'article' => $article
             ]);
         }
 
         abort(404);
     }
 
-    public function policy()
+    public function policyExchange()
     {
-        $article = \DB::table('pages')->first();
+        $article = Page::where('route', 'policy-exchange')->first();
         if ($article) {
             return view('pages.user.page.about', [
-                'article' => $article,
-                'route' => 'policy',
-                'title' => 'Chính sách đổi trả'
+                'article' => $article
             ]);
         }
 
         abort(404);
     }
 
-    public function recruitment()
+    public function policySecurity()
     {
-        $article = \DB::table('pages')->first();
+        $article = Page::where('route', 'policy-security')->first();
         if ($article) {
             return view('pages.user.page.about', [
-                'article' => $article,
-                'route' => 'recruitment',
-                'title' => 'Thông tin tuyển dụng'
+                'article' => $article
             ]);
         }
 
         abort(404);
     }
 
-    public function saleOff()
+    public function termOfService()
     {
-        $article = \DB::table('pages')->first();
+        $article = Page::where('route', 'term-of-service')->first();
         if ($article) {
             return view('pages.user.page.about', [
-                'article' => $article,
-                'route' => 'saleoff',
-                'title' => 'Chương trình khuyến mãi'
+                'article' => $article
             ]);
         }
 
@@ -97,9 +86,14 @@ class PageController extends Controller
 
     public function contact()
     {
-        return view('pages.user.page.contact', [
-            
-        ]);
+        $article = Page::where('route', 'contact')->first();
+        if ($article) {
+            return view('pages.user.page.contact', [
+                'article' => $article
+            ]);
+        }
+
+        abort(404);
     }
 
 }

@@ -126,6 +126,16 @@
                         <input value="{{ ($setting != '') ? $setting->seo_keyword : '' }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                     </div>
 
+                    <div class="form-group">
+                        <label>SEO Content</label>
+                        <textarea class="form-control" id="seo_content">{!! $setting->seo_content !!}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SEO Schema</label>
+                        <textarea class="form-control" id="seo_schema">{!! $setting->seo_schema !!}</textarea>
+                    </div>
+
                     <div class="form-group" style="margin-top:50px;margin-bottom:50px;text-align:center">
                         <button type="reset" class="btn btn-default">Đóng</button>
                         <button style="margin-left:10px" type="submit" class="btn btn-primary">Cập nhật</button>
@@ -141,23 +151,29 @@
 
 @section('pageJs')
     <script type="text/javascript">
+        CKEDITOR.replace('seo_content', { height: 300 });
+        CKEDITOR.replace('seo_schema', { height: 300 });
+
         function openPopup() {
-            CKFinder.popup( {
+            CKFinder.popup({
                 chooseFiles: true,
-                onInit: function( finder ) {
-                    finder.on( 'files:choose', function( evt ) {
+                onInit: function(finder) {
+                    finder.on('files:choose', function(evt) {
                         var file = evt.data.files.first();
-                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                        document.getElementById('xFilePath').value = file.getUrl();
                     } );
-                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                    finder.on('file:choose:resizedImage', function(evt) {
                         document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                    } );
+                    });
                 }
-            } );
+            });
         }
 
         $('#form_setting').on('submit', function () {
             var formData = new FormData($(this)[0]);
+            formData.append('seo_content', CKEDITOR.instances.seo_content.document.getBody().getHtml());
+            formData.append('seo_schema', CKEDITOR.instances.seo_schema.document.getBody().getHtml());
+
             $.ajax({
                 url: $(this).attr('action'),
                 method: 'POST',

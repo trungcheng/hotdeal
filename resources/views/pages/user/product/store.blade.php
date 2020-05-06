@@ -30,7 +30,10 @@
 @section('ogUrl'){{ $cate ? route('product-detail', ['slug' => $cate->slug]) : route('store') }}/
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ $cate ? $cate->image : $setting->logo }}
+@stop
+
+@section('schema'){{ $cate ? $cate->seo_schema : $setting->seo_schema }}
 @stop
 
 @section('pageCss')
@@ -984,135 +987,20 @@
                     <div class="aside-content">
                         <nav class="nav-category navbar-toggleable-md">
                             <ul class="nav navbar-pills">
-                                {{--<li class="nav-item ">
-                                    <a href="/tivi-loa-am-thanh" class="nav-link">Tivi, Loa, Âm thanh</a>
-                                    <i class="fa fa-angle-down"></i>
-                                    <ul class="dropdown-menu">
-
-
-
-                                        <li class="dropdown-submenu nav-item">
-                                            <a class="nav-link" href="/tivi">Tivi</a>
+                                @foreach ($categories as $cat)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('product-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
+                                        @if (isset($cat->childrens))
                                             <i class="fa fa-angle-down"></i>
                                             <ul class="dropdown-menu">
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/tivi-tra-gop-0-1">Tivi trả góp 0-1%</a>
+                                                @foreach ($cat->childrens as $child)
+                                                <li class="dropdown-submenu nav-item">
+                                                    <a class="nav-link" href="{{ route('product-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                                 </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/doi-moi-2017">Đời mới 2017</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/sony">Sony</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/samsung">Samsung</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/lg">LG</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/tu-32-43-inch">Từ 32-43 inch</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/tu-44-55-inch">Từ 44-55 inch</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/duoi-5-trieu">Dưới 5 triệu</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/tivi-cao-cap">Tivi cao cấp</a>
-                                                </li>
-
-
+                                                @endforeach
                                             </ul>
-                                        </li>
-
-
-
-
-                                        <li class="dropdown-submenu nav-item">
-                                            <a class="nav-link" href="/loa-am-thanh">Loa, Âm thanh</a>
-                                            <i class="fa fa-angle-down"></i>
-                                            <ul class="dropdown-menu">
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/loa-thanh-soundbar">Loa thanh (Soundbar)</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/dan-am-thanh">Dàn âm thanh</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/dau-dvd">Đầu DVD</a>
-                                                </li>
-
-
-
-
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="/cap-hdmi-cap-tivi">Cáp HDMI, cáp Tivi</a>
-                                                </li>
-
-
-                                            </ul>
-                                        </li>
-
-
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/">Thương hiệu</a>
-                                        </li>
-
-
-
-                                    </ul>
-                                </li>--}}
-                                @foreach ($categories as $cate)
-                                    <li class="nav-item "><a class="nav-link" href="{{ route('product-detail', ['slug' => $cate->slug]) }}">{{ $cate->name }}</a></li>
+                                        @endif
+                                    </li>
                                 @endforeach
                             </ul>
                         </nav>
@@ -1164,7 +1052,7 @@
                                             @endif
                                             <div class="product-image-flip">
                                                 <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-                                                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
+                                                    <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
                                                 </a>
                                             </div>
                                         </div>
@@ -1203,11 +1091,11 @@
                         <p style="position:absolute;top:43px">Không có sản phẩm nào!</p>
                     @endif
                 </div>
-                {{--<div class="collections_des_and_menu margin-top-10">
+                <div class="collections_des_and_menu margin-top-20">
                     <div class="collections_des_and_menu-content">
-                        Hàng hoá tại <strong>Ant Kitchen</strong> vô cùng đa dạng, từ các nhóm hàng lớn như Tivi, Tủ Lạnh, Máy Giặt, Máy Lạnh… đến các nhóm hàng Gia dụng như: Nồi Cơm Điện, Bếp Ga, Bếp Điện Từ… <strong>Ant Kitchen</strong> cũng kinh doanh các mặt hàng như: Điện Thoại, Máy Tính Bảng, Laptop, Phụ Kiện…
+                        {!! $cate ? $cate->seo_content : '' !!}
                     </div>
-                </div>--}}
+                </div>
             </section>
         </div>
     </div>

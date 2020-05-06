@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Page;
 
 class ArticleController extends Controller
 {
@@ -24,9 +25,12 @@ class ArticleController extends Controller
             ->limit(6)
             ->get();
 
+        $page = Page::where('route', 'article')->first();
+
         return view('pages.user.article.index', [
             'articles' => $articles,
-            'otherArticles' => $otherArticles
+            'otherArticles' => $otherArticles,
+            'page' => $page
         ]);
     }
 

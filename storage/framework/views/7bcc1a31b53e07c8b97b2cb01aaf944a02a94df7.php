@@ -11,8 +11,7 @@
                             <ul class="widget-menu contact-info-page">
                                 <li>
                                     <i class="fa fa-map-marker color-x" aria-hidden="true"></i> 
-                                    <?php echo $setting->address; ?>
-
+                                    <span><?php echo $setting->address; ?><span>
                                 </li>
                                 <li>
                                     <i class="fa fa-phone color-x" aria-hidden="true"></i> 
@@ -21,6 +20,10 @@
                                 <li>
                                     <i class="fa fa-envelope-o" aria-hidden="true"></i> 
                                     <a href="mailto:<?php echo e($setting->email); ?>"><?php echo e($setting->email); ?></a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> 
+                                    <span><?php echo e($setting->time_work); ?></a></span>
                                 </li>
                             </ul>
                         </div>
@@ -48,11 +51,11 @@
 
                                 <li><a href="<?php echo e(route('delivery-method')); ?>">Phương thức vận chuyển</a></li>
 
-                                <li><a href="<?php echo e(route('policy')); ?>">Chính sách đổi trả</a></li>
+                                <li><a href="<?php echo e(route('policy-exchange')); ?>">Chính sách đổi trả</a></li>
 
-                                <li><a href="<?php echo e(route('recruitment')); ?>">Thông tin tuyển dụng</a></li>
+                                <li><a href="<?php echo e(route('policy-security')); ?>">Chính sách bảo mật</a></li>
 
-                                <li><a href="<?php echo e(route('saleoff')); ?>">Chương trình khuyến mãi</a></li>
+                                <li><a href="<?php echo e(route('term-of-service')); ?>">Điều khoản dịch vụ</a></li>
 
                             </ul>
                         </div>

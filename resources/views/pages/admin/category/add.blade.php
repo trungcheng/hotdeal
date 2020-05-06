@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<div ng-controller="CategoryController">
+<div ng-controller="CategoryController" ng-init="loadInitCreate()">
 
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
@@ -33,13 +33,29 @@
                                     <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Thuộc danh mục</label>
+                                    <select class="form-control cate" name="parent_id">
+                                        <option value="0">Không thuộc danh mục nào</option>
+                                        <option class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Ảnh icon</label>
                                     <input name="icon" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
-                                    <label>SEO Content</label>
-                                    <textarea class="form-control" id="seo_content"></textarea>
+                                    <label>Thứ tự</label>
+                                    <input class="form-control status" type="number" name="order" max="99" min="1" value="1" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Trạng thái</label>
+                                    <select class="form-control status" name="status">
+                                        <option value="1">Hoạt động</option>
+                                        <option value="0">Khóa</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>SEO Title</label>
@@ -52,6 +68,14 @@
                                 <div class="form-group">
                                     <label>SEO Keyword</label>
                                     <input name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Content</label>
+                                    <textarea class="form-control" id="seo_content"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>SEO Schema</label>
+                                    <textarea class="form-control" id="seo_schema"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -68,43 +92,43 @@
     </section>
 
 </div>
-
-<script>
-    function openPopup() {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath' ).value = file.getUrl();
-                } );
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                } );
-            }
-        } );
-    }
-    
-    function openPopupMulti(id) {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath'+id ).value = file.getUrl();
-                });
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
-                });
-            }
-        });
-    }
-</script>
-<script type="text/javascript">
-    CKEDITOR.replace('seo_content', {height: 300}); 
-</script>
 @stop
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/category.controller.js') !!}
+
+    <script type="text/javascript">
+        CKEDITOR.replace('seo_content', {height: 300}); 
+        CKEDITOR.replace('seo_schema', {height: 300}); 
+
+        function openPopup() {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                    } );
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                    } );
+                }
+            } );
+        }
+        
+        function openPopupMulti(id) {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath'+id ).value = file.getUrl();
+                    });
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        }
+    </script>
 @stop

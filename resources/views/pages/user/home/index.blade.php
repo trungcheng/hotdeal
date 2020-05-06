@@ -30,11 +30,21 @@
 @section('ogUrl'){{ route('home') }}/
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ $setting->logo }}
+@stop
+
+@section('schema'){{ $setting->seo_schema }}
 @stop
 
 @section('pageCss')
-    
+    <style type="text/css">
+        .seo-content {
+            padding: 5px;
+        }
+        .seo-content img {
+            width: 100%;
+        }
+    </style>
 @stop
 
 @section('content')
@@ -61,44 +71,6 @@
                 </div>
             </div>
         </div>
-        <script>
-            $(".home-slider").owlCarousel({
-                nav: false,
-                slideSpeed: 600,
-                paginationSpeed: 400,
-                singleItem: true,
-                pagination: false,
-                dots: true,
-                autoplay: true,
-                autoplayTimeout: 4500,
-                autoplayHoverPause: false,
-                autoHeight: false,
-                loop: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    543: {
-                        items: 1
-                    },
-                    768: {
-                        items: 1
-                    },
-                    991: {
-                        items: 1
-                    },
-                    992: {
-                        items: 1
-                    },
-                    1300: {
-                        items: 1,
-                    },
-                    1590: {
-                        items: 1,
-                    }
-                }
-            });
-        </script>
     </section>
 
     <section class="awe-section-2">
@@ -183,7 +155,7 @@
                                                         @endif
                                                         <div class="product-image-flip">
                                                             <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-                                                                <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
+                                                                <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
                                                             </a>
                                                         </div>
                                                     </div>
@@ -246,7 +218,7 @@
                                                         @endif
                                                         <div class="product-image-flip">
                                                             <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-                                                                <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
+                                                                <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
                                                             </a>
                                                         </div>
                                                     </div>
@@ -309,7 +281,7 @@
                                                         @endif
                                                         <div class="product-image-flip">
                                                             <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-                                                                <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
+                                                                <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
                                                             </a>
                                                         </div>
                                                     </div>
@@ -363,13 +335,13 @@
                                             <article class="blog-item">
                                                 <div class="blog-item-thumbnail">
                                                     <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">
-                                                        <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $article->image }}" alt="{{ $article->title }}" class="img-responsive center-block" />
+                                                        <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $article->image }}" alt="{{ $article->title }}" class="img-responsive center-block" />
                                                     </a>
                                                 </div>
                                                 <div class="blog-item-contens">
                                                     <h3 class="blog-item-name margin-top-10"><a href="{{ route('article-detail', ['slug' => $article->slug]) }}" title="{{ $article->title }}">{{ $article->title }}</a></h3>
                                                     <div class="post-time">
-                                                        <span>Đăng bởi <b>{{ $article->user->fullname }}</b> - {{ $article->created_at }}</span>
+                                                        <span>{{ $article->created_at }}</span>
                                                     </div>
                                                     <p class="blog-item-summary margin-bottom-5">{!! $article->intro !!}</p>
                                                 </div>
@@ -377,6 +349,26 @@
                                         </div>
                                         @endforeach
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    @endif
+
+    @if ($setting->seo_content != '' && $setting->seo_content != null)
+    <section class="awe-section-10">
+        <section class="section_group_product section-news">
+            <div class="container">
+                <div class="blogs-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box-shock">
+                                <div class="list-blogs-link seo-content">
+                                    {!! $setting->seo_content !!}
                                 </div>
                             </div>
                         </div>
@@ -395,6 +387,43 @@
                 var trim = trimText($(k).text(), 20);
                 $(k).text(trim);
             });
+        });
+
+        $(".home-slider").owlCarousel({
+            nav: false,
+            slideSpeed: 600,
+            paginationSpeed: 400,
+            singleItem: true,
+            pagination: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 4500,
+            autoplayHoverPause: false,
+            autoHeight: false,
+            loop: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                543: {
+                    items: 1
+                },
+                768: {
+                    items: 1
+                },
+                991: {
+                    items: 1
+                },
+                992: {
+                    items: 1
+                },
+                1300: {
+                    items: 1,
+                },
+                1590: {
+                    items: 1,
+                }
+            }
         });
     </script>
 @stop

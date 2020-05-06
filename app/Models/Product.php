@@ -33,7 +33,8 @@ class Product extends Model
         'status',
         'seo_title',
         'seo_desc',
-        'seo_keyword'
+        'seo_keyword',
+        'seo_schema'
     ];
 
     public function category() {

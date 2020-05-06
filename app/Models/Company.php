@@ -25,7 +25,9 @@ class Company extends Model
         'instagram_url',
         'seo_title',
         'seo_desc',
-        'seo_keyword'
+        'seo_keyword',
+        'seo_content',
+        'seo_schema'
     ];
 
 }

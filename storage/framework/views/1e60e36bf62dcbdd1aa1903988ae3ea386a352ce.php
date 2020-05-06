@@ -76,15 +76,23 @@
                         <div class="nav-cate">
                             <ul id="menu2017">
                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <li class="menu-item-count">
+                                    <li class="menu-item-count <?php echo e(isset($cate->childrens) ? 'dropdown' : ''); ?>">
                                         <h3>
                                             <img src="<?php echo e($cate->icon); ?>" alt="<?php echo e($cate->name); ?>" />
                                             <a href="<?php echo e(route('product-detail', ['slug' => $cate->slug])); ?>"><?php echo e($cate->name); ?></a>
                                         </h3>
+                                        <?php if(isset($cate->childrens)): ?>
+                                            <div class="subcate gd-menu">
+                                                <aside>
+                                                    
+                                                    <?php $__currentLoopData = $cate->childrens; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>    
+                                                        <a href="<?php echo e(route('product-detail', ['slug' => $child->slug])); ?>" class=""><?php echo e($child->name); ?></a>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </aside>
+                                            </div>
+                                        <?php endif; ?>
                                     </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                                
                             </ul>
                         </div>
                     </div>
@@ -125,13 +133,7 @@
 
                         <li class="nav-item "><a class="nav-link" href="<?php echo e(route('about')); ?>">Giới thiệu</a></li>
 
-                        <li class="nav-item has-mega">
-                            <a href="<?php echo e(route('store')); ?>" class="nav-link">Cửa hàng
-                                <!-- <i class="fa fa-angle-right" data-toggle="dropdown"></i> -->
-                            </a>
-
-                            
-                        </li>
+                        
 
                         <li class="nav-item "><a class="nav-link" href="<?php echo e(route('article')); ?>">Tin tức</a></li>
 

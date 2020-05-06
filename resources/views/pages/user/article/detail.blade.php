@@ -30,7 +30,10 @@
 @section('ogUrl'){{ route('article-detail', ['slug' => $article->slug]) }}
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ $article->image }}
+@stop
+
+@section('schema'){{ $article->seo_schema }}
 @stop
 
 @section('pageCss')
@@ -82,7 +85,7 @@
                         <div class="col-md-12">
                             <h1 class="title-head">{{ $article->title }}</h1>
                             <div class="postby">
-                                <span>Đăng bởi <b>{{ $article->user->fullname }}</b> vào lúc {{ $article->created_at }}</span>
+                                <span>{{ $article->created_at }}</span>
                             </div>
                             <div class="article-details">
                                 <div class="article-content">
@@ -269,8 +272,20 @@
 
                                     </ul>
                                 </li>--}}
-                                @foreach ($categories as $cate)
-                                    <li class="nav-item "><a class="nav-link" href="{{ route('product-detail', ['slug' => $cate->slug]) }}">{{ $cate->name }}</a></li>
+                                @foreach ($categories as $cat)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('product-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
+                                        @if (isset($cat->childrens))
+                                            <i class="fa fa-angle-down"></i>
+                                            <ul class="dropdown-menu">
+                                                @foreach ($cat->childrens as $child)
+                                                <li class="dropdown-submenu nav-item">
+                                                    <a class="nav-link" href="{{ route('product-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
                                 @endforeach
                             </ul>
                         </nav>
@@ -286,11 +301,11 @@
                             @foreach ($otherArticles as $article)
                             <article class="blog-item blog-item-list col-md-12">
                                 <a href="{{ route('article-detail', ['slug' => $article->slug]) }}" class="panel-box-media">
-                                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="{{ $article->image }}" width="70" height="70" alt="{{ $article->title }}" />
+                                    <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $article->image }}" width="70" height="70" alt="{{ $article->title }}" />
                                 </a>
                                 <div class="blogs-rights">
                                     <h3 class="blog-item-name"><a href="{{ route('article-detail', ['slug' => $article->slug]) }}" title="{{ $article->title }}">{{ $article->title }}</a></h3>
-                                    <div class="post-time">{{ $article->created_at }}</div>
+                                    {{--<div class="post-time">{{ $article->created_at }}</div>--}}
                                 </div>
                             </article>
                             @endforeach

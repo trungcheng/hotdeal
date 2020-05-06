@@ -89,11 +89,13 @@
         </a>
         <ul class="treeview-menu">
             <li><a style="margin-left:20px;" data-route="/admin/access/page/about" href="{{ url('/admin/access/page/about') }}">Giới thiệu</a></li>
+            <li><a style="margin-left:20px;" data-route="/admin/access/page/contact" href="{{ url('/admin/access/page/contact') }}">Liên hệ</a></li>
+            <li><a style="margin-left:20px;" data-route="/admin/access/page/article" href="{{ url('/admin/access/page/article') }}">Tin tức</a></li>
             <li><a style="margin-left:20px;" data-route="/admin/access/page/payment-method" href="{{ url('/admin/access/page/payment-method') }}">PT Thanh toán</a></li>
             <li><a style="margin-left:20px;" data-route="/admin/access/page/delivery-method" href="{{ url('/admin/access/page/delivery-method') }}">PT vận chuyển</a></li>
-            <li><a style="margin-left:20px;" data-route="/admin/access/page/policy" href="{{ url('/admin/access/page/policy') }}">Chính sách chung</a></li>
-            <li><a style="margin-left:20px;" data-route="/admin/access/page/recruitment" href="{{ url('/admin/access/page/recruitment') }}">TT tuyển dụng</a></li>
-            <li><a style="margin-left:20px;" data-route="/admin/access/page/saleoff" href="{{ url('/admin/access/page/saleoff') }}">CT khuyến mãi</a></li>
+            <li><a style="margin-left:20px;" data-route="/admin/access/page/policy-exchange" href="{{ url('/admin/access/page/policy-exchange') }}">CS đổi trả</a></li>
+            <li><a style="margin-left:20px;" data-route="/admin/access/page/policy-security" href="{{ url('/admin/access/page/policy-security') }}">CS bảo mật</a></li>
+            <li><a style="margin-left:20px;" data-route="/admin/access/page/term-of-service" href="{{ url('/admin/access/page/term-of-service') }}">ĐK dịch vụ</a></li>
         </ul>
     </li>
 

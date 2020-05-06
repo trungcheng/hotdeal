@@ -6,7 +6,7 @@
   	<title>Đăng nhập | King Bếp CMS</title>
   	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
   	<meta name="csrf-token" content="{{ csrf_token() }}">
-  	<link rel="shortcut icon" href="{{ asset('frontend/images/icons/favicon.png') }}" type="image/x-icon">
+  	<link rel="shortcut icon" href="{{ asset('frontend/images/icons/favicon.ico') }}" type="image/x-icon">
   	<!-- Bootstrap 3.3.2 -->
   	<link href="{{ asset('components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
   	<!-- Font Awesome Icons -->

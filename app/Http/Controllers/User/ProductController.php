@@ -61,7 +61,8 @@ class ProductController extends Controller
             }
         } else {
             $data = $request->all();
-            $products = Product::where('cat_id', $category->id)->where('status', 1);
+
+            $products = Product::where('status', 1);
 
             if ($request->has('order')) {
                 $filter = $data['order'];
@@ -69,6 +70,19 @@ class ProductController extends Controller
                 $products->orderBy($filters[0], $filters[1]);
             } else {
                 $products->orderBy('created_at', 'desc');
+            }
+
+            if ($category->parent_id == 0) {
+                $childCates = Category::where('parent_id', $category->id)->get();
+                if (!empty($childCates)) {
+                    $arr = [];
+                    foreach ($childCates as $child) {
+                        $arr[] = $child->id;
+                    }
+                    $products->whereIn('cat_id', $arr);
+                }
+            } else {
+                $products->where('cat_id', $category->id);
             }
 
             $results = $products->paginate(12);
@@ -83,53 +97,53 @@ class ProductController extends Controller
         abort(404);
     }
 
-    public function store(Request $request)
-    {
-        // $conditions = [];
-        $data = $request->all();
+    // public function store(Request $request)
+    // {
+    //     // $conditions = [];
+    //     $data = $request->all();
 
-        $products = Product::where('id', '>', 0)->where('status', 1);
-        // $brands = Category::all();
+    //     $products = Product::where('id', '>', 0)->where('status', 1);
+    //     // $brands = Category::all();
 
-        // if ($request->has('br')) {
-        //     $products->whereIn('cat_id', $data['br']);
-        //     foreach ($brands as $brand) {
-        //         if (in_array($brand->id, $data['br'])) {
-        //             $conditions[] = $brand->name;
-        //         }
-        //     }
-        // }
+    //     // if ($request->has('br')) {
+    //     //     $products->whereIn('cat_id', $data['br']);
+    //     //     foreach ($brands as $brand) {
+    //     //         if (in_array($brand->id, $data['br'])) {
+    //     //             $conditions[] = $brand->name;
+    //     //         }
+    //     //     }
+    //     // }
 
-        // if ($request->has('pr')) {
-        //     $arr = [];
-        //     $final = [];
-        //     foreach ($data['pr'] as $pr) {
-        //         $prs = explode('-', $pr);
-        //         $final = array_merge($arr, $prs);
-        //         $conditions[] = $pr;
-        //     }
-        //     $products->whereBetween('price_sale', [min($final), max($final)]);
-        // }
+    //     // if ($request->has('pr')) {
+    //     //     $arr = [];
+    //     //     $final = [];
+    //     //     foreach ($data['pr'] as $pr) {
+    //     //         $prs = explode('-', $pr);
+    //     //         $final = array_merge($arr, $prs);
+    //     //         $conditions[] = $pr;
+    //     //     }
+    //     //     $products->whereBetween('price_sale', [min($final), max($final)]);
+    //     // }
 
-        if ($request->has('order')) {
-            $filter = $data['order'];
-            $filters = explode('-', $data['order']);
-            $products->orderBy($filters[0], $filters[1]);
-        } else {
-            $products->orderBy('created_at', 'desc');
-        }
+    //     if ($request->has('order')) {
+    //         $filter = $data['order'];
+    //         $filters = explode('-', $data['order']);
+    //         $products->orderBy($filters[0], $filters[1]);
+    //     } else {
+    //         $products->orderBy('created_at', 'desc');
+    //     }
 
-        $results = $products->paginate(12);
+    //     $results = $products->paginate(12);
 
-        return view('pages.user.product.store', [
-            // 'conditions' => $conditions,
-            // 'brands' => $brands,
-            'results' => $results,
-            'cateName' => 'Tất cả sản phẩm',
-            'cate' => null
-        ]);
+    //     return view('pages.user.product.store', [
+    //         // 'conditions' => $conditions,
+    //         // 'brands' => $brands,
+    //         'results' => $results,
+    //         'cateName' => 'Tất cả sản phẩm',
+    //         'cate' => null
+    //     ]);
 
-    }
+    // }
 
     public function search(Request $request)
     {

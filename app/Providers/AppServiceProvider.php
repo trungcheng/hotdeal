@@ -16,25 +16,23 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    protected $countItemCart;
+    protected $categories;
+    protected $setting;
 
     public function boot()
     {
         Schema::defaultStringLength(191);
 
-        // view()->composer('*', function($view) {
-        //     $view->with('countItemCart', Cart::count());
-        //     $view->with('categories', Category::all());
-        //     $view->with('setting', Company::first());
-        // });
-
-        // $categories = Category::where('status', 1)->orderBy('order', 'asc')->get();
-        // $this->categories = Util::buildTree($categories);
-        // $this->setting = Setting::find(1);
+        $categories = Category::where('status', 1)->orderBy('order', 'asc')->get();
+        $this->categories = Util::buildTree($categories);
+        $this->countItemCart = Cart::count();
+        $this->setting = Company::first();
 
         view()->composer(['pages.user.*', 'layouts.user.*'], function($view) {
-            $view->with('countItemCart', Cart::count());
-            $view->with('categories', Category::all());
-            $view->with('setting', Company::first());
+            $view->with('countItemCart', $this->countItemCart);
+            $view->with('categories', $this->categories);
+            $view->with('setting', $this->setting);
         });
     }
 

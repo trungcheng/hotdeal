@@ -28,7 +28,7 @@
 
         });
 
-        \Route::get('/cua-hang', 'User\ProductController@store')->name('store');
+        // \Route::get('/cua-hang', 'User\ProductController@store')->name('store');
         \Route::get('/tim-kiem', 'User\ProductController@search')->name('search');
 
         \Route::get('/gio-hang', 'User\CartController@index')->name('cart');
@@ -47,9 +47,9 @@
         \Route::get('/gioi-thieu', 'User\PageController@about')->name('about');
         \Route::get('/phuong-thuc-thanh-toan', 'User\PageController@paymentMethod')->name('payment-method');
         \Route::get('/phuong-thuc-van-chuyen', 'User\PageController@deliveryMethod')->name('delivery-method');
-        \Route::get('/chinh-sach', 'User\PageController@policy')->name('policy');
-        \Route::get('/thong-tin-tuyen-dung', 'User\PageController@recruitment')->name('recruitment');
-        \Route::get('/chuong-trinh-khuyen-mai', 'User\PageController@saleOff')->name('saleoff');
+        \Route::get('/chinh-sach-doi-tra', 'User\PageController@policyExchange')->name('policy-exchange');
+        \Route::get('/chinh-sach-bao-mat', 'User\PageController@policySecurity')->name('policy-security');
+        \Route::get('/dieu-khoan-dich-vu', 'User\PageController@termOfService')->name('term-of-service');
         \Route::get('/lien-he', 'User\PageController@contact')->name('contact');
 
         \Route::get('/{slug}', 'User\ProductController@detail')->name('product-detail');

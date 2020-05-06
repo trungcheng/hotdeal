@@ -28,6 +28,13 @@ class SettingController extends Controller
         try {
             $data = $request->all();
             unset($data['_token']);
+
+            if (isset($data['seo_content']) && in_array($data['seo_content'], ['<p><br></p>','<br>','<p></p>',''])) {
+                $data['seo_content'] = '';
+            }
+            if (isset($data['seo_schema']) && in_array($data['seo_schema'], ['<p><br></p>','<br>','<p></p>',''])) {
+                $data['seo_schema'] = '';
+            }
             
             $setting = Company::first();
             $setting->update($data);

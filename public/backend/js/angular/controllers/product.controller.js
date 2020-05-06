@@ -92,6 +92,7 @@
             var formData = new FormData($('#formProcess')[0]);
             formData.append('short_desc', CKEDITOR.instances.short_content.document.getBody().getHtml());
             formData.append('full_desc', CKEDITOR.instances.full_content.document.getBody().getHtml());
+            formData.append('seo_schema', CKEDITOR.instances.seo_schema.document.getBody().getHtml());
             // CKEDITOR.instances.noidung.getData();
             
             swal({

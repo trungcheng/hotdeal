@@ -1,36 +1,39 @@
 @extends('layouts.user.master')
 
-@section('page'){{ $title }}
+@section('page'){{ $article->seo_title }}
 @stop
 
-@section('description'){{ $title }}
+@section('description'){{ $article->seo_desc }}
 @stop
 
-@section('keywords'){{ $title }}
+@section('keywords'){{ $article->seo_keyword }}
 @stop
 
-@section('canonical'){{ route($route) }}/
+@section('canonical'){{ route($article->route) }}/
 @stop
 
-@section('alternate'){{ route($route) }}/
+@section('alternate'){{ route($article->route) }}/
 @stop
 
-@section('propName'){{ $title }}
+@section('propName'){{ $article->seo_title }}
 @stop
 
-@section('propDesc'){{ $title }}
+@section('propDesc'){{ $article->seo_desc }}
 @stop
 
-@section('ogTitle'){{ $title }}
+@section('ogTitle'){{ $article->seo_title }}
 @stop
 
-@section('ogDesc'){{ $title }}
+@section('ogDesc'){{ $article->seo_desc }}
 @stop
 
-@section('ogUrl'){{ route($route) }}/
+@section('ogUrl'){{ route($article->route) }}/
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ $setting->logo }}
+@stop
+
+@section('schema'){{ $article->seo_schema }}
 @stop
 
 @section('pageCss')
@@ -47,7 +50,7 @@
                             <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                             <span><i class="fa fa-angle-right"></i></span>
                         </li>
-                        <li><strong itemprop="title">{{ $title }}</strong></li>
+                        <li><strong itemprop="title">{{ $article->title }}</strong></li>
                     </ul>
                 </div>
             </div>
@@ -59,22 +62,10 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="page-title category-title">
-                        <h1 class="title-head"><a href="#">{{ $title }}</a></h1>
+                        <h1 class="title-head"><a href="#">{{ $article->title }}</a></h1>
                     </div>
                     <div class="content-page rte">
-                        @if ($route == 'about')
-                            {!! $article->about !!}
-                        @elseif ($route == 'payment-method')
-                            {!! $article->payment_method !!}
-                        @elseif ($route == 'delivery-method')
-                            {!! $article->delivery_method !!}
-                        @elseif ($route == 'policy')
-                            {!! $article->policy !!}
-                        @elseif ($route == 'recruitment')
-                            {!! $article->recruitment !!}
-                        @elseif ($route == 'saleoff')
-                            {!! $article->saleoff !!}
-                        @endif
+                        {!! $article->content !!}
                     </div>
                 </div>
             </div>

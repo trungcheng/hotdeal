@@ -42,6 +42,10 @@
 
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('schema'); ?><?php echo e($product->seo_schema); ?>
+
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('pageCss'); ?>
 	<link href="<?php echo e(asset('frontend/css/lightbox.css')); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo e(asset('frontend/css/product.review.css')); ?>" rel="stylesheet" type="text/css" />
@@ -245,7 +249,7 @@
 															<div class="product-thumbnail">
 																<div class="product-image-flip">
 																	<a href="<?php echo e(route('product-detail', ['slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>">
-																		<img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/loaders.svg?1576740881097" data-lazyload="<?php echo e($pro->image); ?>" alt="<?php echo e($pro->name); ?>" class="img-responsive center-block" />
+																		<img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($pro->image); ?>" alt="<?php echo e($pro->name); ?>" class="img-responsive center-block" />
 																	</a>
 																</div>
 															</div>

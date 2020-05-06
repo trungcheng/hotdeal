@@ -1,36 +1,39 @@
 @extends('layouts.user.master')
 
-@section('page')Liên hệ
+@section('page'){{ $article->seo_title }}
 @stop
 
-@section('description')
+@section('description'){{ $article->seo_desc }}
 @stop
 
-@section('keywords')Liên hệ
+@section('keywords'){{ $article->seo_keyword }}
 @stop
 
-@section('canonical'){{ route('contact') }}/
+@section('canonical'){{ route($article->route) }}/
 @stop
 
-@section('alternate'){{ route('contact') }}/
+@section('alternate'){{ route($article->route) }}/
 @stop
 
-@section('propName')
+@section('propName'){{ $article->seo_title }}
 @stop
 
-@section('propDesc')
+@section('propDesc'){{ $article->seo_desc }}
 @stop
 
-@section('ogTitle')
+@section('ogTitle'){{ $article->seo_title }}
 @stop
 
-@section('ogDesc')
+@section('ogDesc'){{ $article->seo_desc }}
 @stop
 
-@section('ogUrl'){{ route('contact') }}/
+@section('ogUrl'){{ route($article->route) }}/
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ $setting->logo }}
+@stop
+
+@section('schema'){{ $article->seo_schema }}
 @stop
 
 @section('pageCss')
@@ -66,14 +69,18 @@
         <div class="row">
             <div class="col-md-3 col-md-push-9">
                 <div class="widget-item info-contact in-fo-page-content">
-                    <div class="logos text-xs-left">
+                    {{--<div class="logos text-xs-left">
                         <a href="/" class="logo-wrapper">
                             <img src="{{ $setting->logo }}" alt="Logo KingBep" class="img-responsive" />
                         </a>
                     </div>
-                    <p></p>
+                    <p></p>--}}
                     <!-- End .widget-title -->
                     <ul class="widget-menu contact-info-page">
+                        <li>
+                            <h3 style="font-size:1.42857em;font-weight:700;">{!! $setting->name !!}</h3>
+                            <p style="margin-top:-5px;display:block;">{!! $setting->slogan !!}</p> 
+                        </li>
                         <li>
                             <i class="fa fa-map-marker color-x" aria-hidden="true"></i> 
                             {!! $setting->address !!}

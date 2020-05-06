@@ -3711,14 +3711,14 @@ header nav .nav-item:hover>.dropdown-menu li.open>.dropdown-menu {
 }
 .product-box .product-name {
     font-size: 1em;
-    line-height: 24px;
+    /*line-height: 24px;*/
     color: #333;
     font-weight: 500;
     margin-top: 10px;
     margin-bottom: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
 }
 .product-box .product-name a {
     color: #222;

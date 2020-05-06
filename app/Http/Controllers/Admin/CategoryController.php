@@ -27,6 +27,13 @@ class CategoryController extends Controller
     public function getAllCategories(Request $request)
     {
         $results = Category::init($request);
+        foreach ($results as $result) {
+            if ($result->parent_id !== 0) {
+                if (Category::find($result->parent_id)) {
+                    $result['parent'] = Category::find($result->parent_id)->name;
+                }
+            }
+        }
             
         return Response::json(['status' => true, 'data' => $results]);
     }
@@ -34,9 +41,11 @@ class CategoryController extends Controller
     public function getAllParentCates(Request $request)
     {
         $categories = Category::all();
-        if ($categories) {
-            return Response::json(['status' => true, 'data' => $categories]);
+        $categoriesPaged = Util::buildArray($categories);
+        if ($categoriesPaged) {
+            return Response::json(['status' => true, 'data' => $categoriesPaged]);
         }
+
         return Response::json(['status' => false, 'data' => []]);
     }
 

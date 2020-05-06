@@ -30,7 +30,10 @@
 @section('ogUrl'){{ route('cart') }}
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ $setting->logo }}
+@stop
+
+@section('schema'){{ $setting->seo_schema }}
 @stop
 
 @section('pageCss')

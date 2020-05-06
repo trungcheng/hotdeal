@@ -41,10 +41,9 @@
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="cat_id">
-                                        <option ng-if="parentCates.length > 0" ng-selected="item.id == {{ $pro->cat_id }}" class="cateLevel" value="@{{ item.id }}" ng-repeat="item in parentCates">
-                                            @{{ item.name }}
+                                        <option ng-selected="item.id == {{ $pro['cat_id'] }}" class="cateLevel cate-level-@{{ item.depth }}" value="@{{ item.id }}" ng-repeat="item in parentCates">
+                                            @{{ item.depth == 1 ? '----- ' : item.depth == 2 ? '---------- ' : item.depth == 3 ? '--------------- ' : '' }}@{{ item.name }}
                                         </option>
-                                        <option value="" ng-if="parentCates.length == 0">Không có danh mục nào</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -150,6 +149,10 @@
                                     <label>SEO Keyword</label>
                                     <input value="{{ $pro->seo_keyword }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                                 </div>
+                                <div class="form-group">
+                                    <label>SEO Schema</label>
+                                    <textarea class="form-control" id="seo_schema">{!! $pro->seo_schema !!}</textarea>
+                                </div>
 
                             </div>
                             <div class="modal-footer">
@@ -174,8 +177,10 @@
 
     <script type="text/javascript">
         $(function() {
+            CKEDITOR.replace('seo_schema', { height: 300 }); 
             CKEDITOR.replace('short_content', { height: 100 }); 
             CKEDITOR.replace('full_content'); 
+
             $('#price, #price_sale').on("keyup", function(event) {
                 var selection = window.getSelection().toString();
                 if (selection !== '') {

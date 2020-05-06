@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('page')Trang thông tin tuyển dụng
+@section('page')Trang {{ strtolower($info->title) }}
 @stop
 
 @section('pageCss')
@@ -11,7 +11,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
         <h1>
-            Trang thông tin tuyển dụng
+            Trang {{ strtolower($info->title) }}
             <!-- <small>Optional description</small> -->
         </h1>
     </section>
@@ -26,9 +26,36 @@
 
                     {{ csrf_field() }}
 
+                    <input type="hidden" name="id" value="{{ $info->id }}">
+
                     <div class="form-group">
                         <label>Nội dung</label>
-                        <textarea class="form-control" id="content">{!! $info->recruitment !!}</textarea>
+                        <textarea class="form-control" id="content">{!! $info->content !!}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SEO Title</label>
+                        <input value="{{ $info->seo_title }}" name="seo_title" type="text" class="form-control slug" placeholder="SEO Title...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>SEO Description</label>
+                        <input value="{{ $info->seo_desc }}" name="seo_desc" type="text" class="form-control slug" placeholder="SEO Description...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>SEO Keyword</label>
+                        <input value="{{ $info->seo_keyword }}" name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>SEO Content</label>
+                        <textarea class="form-control" id="seo_content">{!! $info->seo_content !!}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SEO Schema</label>
+                        <textarea class="form-control" id="seo_schema">{!! $info->schema !!}</textarea>
                     </div>
 
                     <div class="form-group" style="margin-top:50px;margin-bottom:50px;text-align:center">
@@ -46,10 +73,16 @@
 
 @section('pageJs')
     <script type="text/javascript">
-        CKEDITOR.replace('content', { height: 400 }); 
+        CKEDITOR.replace('content', { height: 400 });
+        CKEDITOR.replace('seo_content', { height: 300 });
+        CKEDITOR.replace('seo_schema', { height: 300 });
+
         $('#form_setting').on('submit', function () {
             var formData = new FormData($(this)[0]);
-            formData.append('recruitment', CKEDITOR.instances.content.document.getBody().getHtml());
+            formData.append('content', CKEDITOR.instances.content.document.getBody().getHtml());
+            formData.append('seo_content', CKEDITOR.instances.seo_content.document.getBody().getHtml());
+            formData.append('seo_schema', CKEDITOR.instances.seo_schema.document.getBody().getHtml());
+
             $.ajax({
                 url: $(this).attr('action'),
                 method: 'POST',

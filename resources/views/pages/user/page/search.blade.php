@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page'){{ trans('general.search') }}
+@section('page'){{ $setting->seo_title }}
 @stop
 
 @section('description'){{ $setting->seo_desc }}
@@ -30,7 +30,10 @@
 @section('ogUrl'){{ route('search') }}/
 @stop
 
-@section('ogImage'){{ url('') }}{{ $setting->logo }}
+@section('ogImage'){{ asset($setting->logo) }}
+@stop
+
+@section('schema'){{ $setting->seo_schema }}
 @stop
 
 @section('pageCss')

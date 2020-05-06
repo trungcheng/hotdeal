@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Page;
 use Response;
-use DB;
 
 class PageController extends Controller
 {
@@ -15,58 +15,16 @@ class PageController extends Controller
         // $this->middleware('admin.auth');
     }
 
-    public function about()
+    public function getPage(Request $request, $page)
     {
-        $info = DB::table('pages')->first();
+        $info = Page::where('route', $page)->first();
+        if ($info) {
+            return view('pages.admin.page.index', [
+                'info' => $info
+            ]);
+        }
 
-        return view('pages.admin.page.about', [
-            'info' => $info
-        ]);
-    }
-
-    public function paymentMethod()
-    {
-        $info = DB::table('pages')->first();
-
-        return view('pages.admin.page.payment-method', [
-            'info' => $info
-        ]);
-    }
-
-    public function deliveryMethod()
-    {
-        $info = DB::table('pages')->first();
-
-        return view('pages.admin.page.delivery-method', [
-            'info' => $info
-        ]);
-    }
-
-    public function policy()
-    {
-        $info = DB::table('pages')->first();
-
-        return view('pages.admin.page.policy', [
-            'info' => $info
-        ]);
-    }
-
-    public function recruitment()
-    {
-        $info = DB::table('pages')->first();
-
-        return view('pages.admin.page.recruitment', [
-            'info' => $info
-        ]);
-    }
-
-    public function saleOff()
-    {
-        $info = DB::table('pages')->first();
-
-        return view('pages.admin.page.saleoff', [
-            'info' => $info
-        ]);
+        abort(404);
     }
 
     public function update(Request $request)
@@ -75,26 +33,19 @@ class PageController extends Controller
             $data = $request->all();
             unset($data['_token']);
 
-            if (isset($data['about']) && in_array($data['about'], ['<p><br></p>','<br>','<p></p>',''])) {
-                $data['about'] = '';
+            if (isset($data['content']) && in_array($data['content'], ['<p><br></p>','<br>','<p></p>',''])) {
+                $data['content'] = '';
             }
-            if (isset($data['payment_method']) && in_array($data['payment_method'], ['<p><br></p>','<br>','<p></p>',''])) {
-                $data['payment_method'] = '';
+
+            if (isset($data['seo_content']) && in_array($data['seo_content'], ['<p><br></p>','<br>','<p></p>',''])) {
+                $data['seo_content'] = '';
             }
-            if (isset($data['delivery_method']) && in_array($data['delivery_method'], ['<p><br></p>','<br>','<p></p>',''])) {
-                $data['delivery_method'] = '';
-            }
-            if (isset($data['policy']) && in_array($data['policy'], ['<p><br></p>','<br>','<p></p>',''])) {
-                $data['policy'] = '';
-            }
-            if (isset($data['recruitment']) && in_array($data['recruitment'], ['<p><br></p>','<br>','<p></p>',''])) {
-                $data['recruitment'] = '';
-            }
-            if (isset($data['saleoff']) && in_array($data['saleoff'], ['<p><br></p>','<br>','<p></p>',''])) {
-                $data['saleoff'] = '';
+
+            if (isset($data['seo_schema']) && in_array($data['seo_schema'], ['<p><br></p>','<br>','<p></p>',''])) {
+                $data['seo_schema'] = '';
             }
             
-            DB::table('pages')->where('id', 1)->update($data);
+            Page::where('id', $data['id'])->update($data);
             
             return Response::json([
                 'status' => true,

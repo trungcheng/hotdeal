@@ -55,6 +55,12 @@
             $scope.getResultsPage('all-category', 10, 1);
         }
 
+        $scope.loadInitCreate = function () {
+            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
+                $scope.parentCates = res.data;
+            });
+        }
+
         $scope.searchCategoryName = function() {
             if ($scope.searchText.length >= 1) {
                 $scope.getResultsPage($scope.searchText, $scope.perPage, $scope.pageNumber);
@@ -85,6 +91,7 @@
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
             formData.append('seo_content', CKEDITOR.instances.seo_content.document.getBody().getHtml());
+            formData.append('seo_schema', CKEDITOR.instances.seo_schema.document.getBody().getHtml());
             
             swal({
                 title: "Bạn chắc chắn muốn "+ title +" danh mục này ?",

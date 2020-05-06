@@ -65,6 +65,10 @@
                                     <label>SEO Keyword</label>
                                     <input name="seo_keyword" type="text" class="form-control slug" placeholder="SEO Keyword (cách nhau bởi dấu phẩy)...">
                                 </div>
+                                <div class="form-group">
+                                    <label>SEO Schema</label>
+                                    <textarea class="form-control" id="seo_schema"></textarea>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button ng-click="process('add')" type="button" class="btn btn-primary">Thêm</button>
@@ -80,58 +84,55 @@
     </section>
 
 </div>
-
-<script>
-    function openPopup() {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath' ).value = file.getUrl();
-                } );
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
-                } );
-            }
-        } );
-    }
-    
-    function openPopupMulti(id) {
-        CKFinder.popup( {
-            chooseFiles: true,
-            onInit: function( finder ) {
-                finder.on( 'files:choose', function( evt ) {
-                    var file = evt.data.files.first();
-                    document.getElementById( 'xFilePath'+id ).value = file.getUrl();
-                });
-                finder.on( 'file:choose:resizedImage', function( evt ) {
-                    document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
-                });
-            }
-        });
-    }
-</script>
-
-<script>
-    var i = 50;
-    function add_img(){
-        i++;
-        var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="image_list[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-primary">Xóa</button></span></p>';
-        $(insert).appendTo('.box-img');
-    }
-    function del_accads(id){
-        $('.add_'+id).remove(); 
-    }
-</script>
 @stop
 
 @section('pageJs')
     {!! Html::script('backend/js/angular/controllers/article.controller.js') !!}
+
     <script type="text/javascript">
-        $(function () {
-            CKEDITOR.replace('short_content', { height: 300 }); 
-            CKEDITOR.replace('full_content'); 
-        });
+        CKEDITOR.replace('seo_schema', { height: 300 }); 
+        CKEDITOR.replace('short_content', { height: 200 }); 
+        CKEDITOR.replace('full_content'); 
+
+        function openPopup() {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath' ).value = file.getUrl();
+                    } );
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath' ).value = evt.data.resizedUrl;
+                    } );
+                }
+            } );
+        }
+        
+        function openPopupMulti(id) {
+            CKFinder.popup( {
+                chooseFiles: true,
+                onInit: function( finder ) {
+                    finder.on( 'files:choose', function( evt ) {
+                        var file = evt.data.files.first();
+                        document.getElementById( 'xFilePath'+id ).value = file.getUrl();
+                    });
+                    finder.on( 'file:choose:resizedImage', function( evt ) {
+                        document.getElementById( 'xFilePath'+id ).value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        }
+
+        var i = 50;
+        function add_img(){
+            i++;
+            var insert = '<p class="item-img add_'+i+'" style="margin:3px 0; height: 40px; padding:0;"><span style="display:block;"><input type="text" size="48" class="form-control list-img" name="image_list[]" id="xFilePath'+i+'" /><button class="btn btn-primary btn-upload-multi" onclick="openPopupMulti('+i+')">Tải ảnh lên</button><button onclick="del_accads('+i+');" type="button" class="btn btn-primary">Xóa</button></span></p>';
+            $(insert).appendTo('.box-img');
+        }
+
+        function del_accads(id){
+            $('.add_'+id).remove(); 
+        }
     </script>
 @stop

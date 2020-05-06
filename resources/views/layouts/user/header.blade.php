@@ -76,271 +76,25 @@
                         <div class="nav-cate">
                             <ul id="menu2017">
                                 @foreach ($categories as $cate)
-                                    <li class="menu-item-count">
+                                    <li class="menu-item-count {{ isset($cate->childrens) ? 'dropdown' : '' }}">
                                         <h3>
                                             <img src="{{ $cate->icon }}" alt="{{ $cate->name }}" />
                                             <a href="{{ route('product-detail', ['slug' => $cate->slug]) }}">{{ $cate->name }}</a>
                                         </h3>
+                                        @if (isset($cate->childrens))
+                                            <div class="subcate gd-menu">
+                                                <aside>
+                                                    {{--<strong>
+                                                        <a href="/dung-cu-ban-an" class="">Dụng cụ bàn ăn</a>
+                                                    </strong>--}}
+                                                    @foreach ($cate->childrens as $child)    
+                                                        <a href="{{ route('product-detail', ['slug' => $child->slug]) }}" class="">{{ $child->name }}</a>
+                                                    @endforeach
+                                                </aside>
+                                            </div>
+                                        @endif
                                     </li>
                                 @endforeach
-
-                                {{--
-                                <li class="dropdown menu-item-count">
-                                    <h3>
-                                        <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-3.png?1576740881097" alt="Máy giặt, Máy sấy quần áo" />
-                                        <a href="/may-giat-may-say-quan-ao">Máy giặt, Máy sấy quần áo</a>
-                                    </h3>
-                                    <div class="subcate gd-menu">
-                                        <aside>
-                                            <strong>
-                                                <a href="/may-giat" class="">Máy giặt</a>
-                                            </strong>
-
-                                            <a href="/doi-moi-2017-1" class="">Đời mới 2017</a>
-
-                                            <a href="/toshiba" class="">Toshiba</a>
-
-                                            <a href="/lg-1" class="">LG</a>
-
-                                            <a href="/panasonic" class="">Panasonic</a>
-
-                                            <a href="/samsung-1" class="">Samsung</a>
-
-                                            <a href="/electrolux" class="">Electrolux</a>
-
-                                            <a href="/may-giat-cao-cap" class="">Máy giặt cao cấp</a>
-
-                                            <a href="/may-giat" class="">Xem tất cả Máy giặt</a>
-                                        </aside>
-
-                                        <aside>
-                                            <strong>
-                                                <a href="/may-say-quan-ao" class="">Máy sấy quần áo</a>
-                                            </strong>
-
-                                            <a href="/gia-duoi-5-trieu" class="">Giá dưới 5 triệu</a>
-
-                                            <a href="/gia-tu-5-10-trieu" class="">Giá từ 5 - 10 triệu</a>
-
-                                            <a href="/electrolux-1" class="">Electrolux</a>
-
-                                            <a href="/beko" class="">Beko</a>
-
-                                            <a href="/kangaroo" class="">Kangaroo</a>
-
-                                            <a href="/may-say-quan-ao" class="">Xem tất cả Máy sấy quần áo</a>
-                                        </aside>
-
-                                    </div>
-                                </li>
-
-                                <li class="menu-item-count">
-                                    <h3><img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-4.png?1576740881097" alt="Máy lạnh" /><a href="/may-lanh">Máy lạnh</a></h3>
-                                </li>
-
-                                <li class="dropdown menu-item-count">
-                                    <h3>
-                                        <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-5.png?1576740881097" alt="Điện gia dụng" />
-                                        <a href="/dien-gia-dung">Điện gia dụng</a>
-                                    </h3>
-                                    <div class="subcate gd-menu">
-                                        <aside>
-                                            <strong>
-                                                <a href="/gia-dung-nha-bep" class="">Gia dụng nhà bếp</a>
-                                            </strong>
-
-                                            <a href="/bep-gas" class="">Bếp gas</a>
-
-                                            <a href="/bep-tu" class="">Bếp từ</a>
-
-                                            <a href="/bep-hong-ngoai" class="">Bếp hồng ngoại</a>
-
-                                            <a href="/lo-nuong" class="">Lò nướng</a>
-
-                                            <a href="/lo-vi-song" class="">Lò vi sóng</a>
-
-                                            <a href="/lau-dien" class="">Lẩu điện</a>
-
-                                            <a href="/noi-ap-suat" class="">Nồi áp suất</a>
-
-                                            <a href="/noi-com-dien" class="">Nồi cơm điện</a>
-
-                                            <a href="/gia-dung-nha-bep" class="">Xem tất cả Gia dụng nhà bếp</a>
-                                        </aside>
-
-                                        <aside>
-                                            <strong>
-                                                <a href="/thiet-bi-gia-dinh" class="">Thiết bị gia đình</a>
-                                            </strong>
-
-                                            <a href="/ban-ui" class="">Bàn ủi</a>
-
-                                            <a href="/may-hut-mui" class="">Máy hút mùi</a>
-
-                                            <a href="/may-hut-bui" class="">Máy hút bụi</a>
-
-                                            <a href="/may-say-toc" class="">Máy sấy tóc</a>
-
-                                            <a href="/may-tao-kieu-toc" class="">Máy tạo kiểu tóc</a>
-
-                                            <a href="/quat" class="">Quạt</a>
-
-                                            <a href="/thiet-bi-gia-dinh" class="">Xem tất cả Thiết bị gia đình</a>
-                                        </aside>
-
-                                        <aside>
-                                            <strong>
-                                                <a href="/dien-nha-bep" class="">Điện nhà bếp</a>
-                                            </strong>
-
-                                            <a href="/binh-dun-sieu-toc" class="">Bình đun siêu tốc</a>
-
-                                            <a href="/binh-thuy-dien" class="">Bình thủy điện</a>
-
-                                            <a href="/may-danh-trung" class="">Máy đánh trứng</a>
-
-                                            <a href="/may-ep-trai-cay" class="">Máy ép trái cây</a>
-
-                                            <a href="/may-lam-sua-dau-nanh" class="">Máy làm sữa đậu nành</a>
-
-                                            <a href="/may-xay-sinh-to" class="">Máy xay sinh tố</a>
-
-                                            <a href="/dien-nha-bep" class="">Xem tất cả Điện nhà bếp</a>
-                                        </aside>
-
-                                    </div>
-                                </li>
-
-                                <li class="dropdown menu-item-count">
-                                    <h3>
-                                        <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-6.png?1576740881097" alt="Đồ dùng gia đình" />
-                                        <a href="/do-dung-gia-dinh">Đồ dùng gia đình</a>
-                                    </h3>
-                                    <div class="subcate gd-menu">
-                                        <aside>
-                                            <strong>
-                                                <a href="/dung-cu-ban-an" class="">Dụng cụ bàn ăn</a>
-                                            </strong>
-
-                                            <a href="/dua-muong" class="">Đũa muỗng</a>
-
-                                            <a href="/ly-bo-ly" class="">Ly - Bộ ly</a>
-
-                                            <a href="/binh-giu-nhiet" class="">Bình giữ nhiệt</a>
-
-                                            <a href="/binh-dung-nuoc" class="">Bình đựng nước</a>
-
-                                            <a href="/dung-cu-ban-an" class="">Xem tất cả Dụng cụ bàn ăn</a>
-                                        </aside>
-
-                                        <aside>
-                                            <strong>
-                                                <a href="/do-dung-nha-bep" class="">Đồ dùng nhà bếp</a>
-                                            </strong>
-
-                                            <a href="/va-san-chien-xao" class="">Vá - Sạn chiên xào</a>
-
-                                            <a href="/thau-ro" class="">Thau - Rổ</a>
-
-                                            <a href="/hop-dung-thuc-pham" class="">Hộp đựng thực phẩm</a>
-
-                                            <a href="/bo-noi" class="">Bộ nồi</a>
-
-                                            <a href="/chao-chong-dinh" class="">Chảo chống dính</a>
-
-                                            <a href="/bo-lau-nha" class="">Bộ lau nhà</a>
-
-                                            <a href="/do-dung-nha-bep" class="">Xem tất cả Đồ dùng nhà bếp</a>
-                                        </aside>
-
-                                    </div>
-                                </li>
-
-                                <li class="dropdown menu-item-count">
-                                    <h3>
-                                        <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-7.png?1576740881097" alt="Điện thoại, Laptop, Tablet" />
-                                        <a href="/dien-thoai-laptop-may-tinh-bang">Điện thoại, Laptop, Tablet</a>
-                                    </h3>
-                                    <div class="subcate gd-menu">
-                                        <aside>
-                                            <strong>
-                                                <a href="/dien-thoai" class="">Điện thoại</a>
-                                            </strong>
-
-                                            <a href="/iphone" class="">iPhone</a>
-
-                                            <a href="/samsung-2" class="">Samsung</a>
-
-                                            <a href="/oppo" class="">Oppo</a>
-
-                                            <a href="/sony-1" class="">Sony</a>
-
-                                            <a href="/nokia" class="">Nokia</a>
-
-                                            <a href="/dien-thoai-tu-1-den-3-trieu" class="">Điện thoại từ 1 đến 3 triệu</a>
-
-                                            <a href="/dien-thoai" class="">Xem tất cả Điện thoại</a>
-                                        </aside>
-
-                                        <aside>
-                                            <strong>
-                                                <a href="/laptop" class="">Laptop</a>
-                                            </strong>
-
-                                            <a href="/dell" class="">Dell</a>
-
-                                            <a href="/asus" class="">Asus</a>
-
-                                            <a href="/macbook" class="">Macbook</a>
-
-                                            <a href="/hp" class="">HP</a>
-
-                                            <a href="/laptop-duoi-10-trieu" class="">Laptop dưới 10 triệu</a>
-
-                                            <a href="/laptop-tu-10-den-15-trieu" class="">Laptop từ 10 đến 15 triệu</a>
-
-                                            <a href="/laptop" class="">Xem tất cả Laptop</a>
-                                        </aside>
-
-                                        <aside>
-                                            <strong>
-                                                <a href="/tablet" class="">Tablet</a>
-                                            </strong>
-
-                                            <a href="/ipad" class="">iPad</a>
-
-                                            <a href="/samsung-2" class="">Samsung</a>
-
-                                            <a href="/asus-1" class="">Asus</a>
-
-                                            <a href="/lenovo" class="">Lenovo</a>
-
-                                            <a href="/may-tinh-bang-duoi-3-trieu" class="">Máy tính bảng dưới 3 triệu</a>
-
-                                            <a href="/may-tinh-bang-tu-3-den-8-trieu" class="">Máy tính bảng từ 3 đến 8 triệu</a>
-
-                                            <a href="/tablet" class="">Xem tất cả Tablet</a>
-                                        </aside>
-
-                                    </div>
-                                </li>
-
-                                <li class="menu-item-count">
-                                    <h3><img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-8.png?1576740881097" alt="Thể thao & Dã ngoại" /><a href="/phu-kien">Thể thao & Dã ngoại</a></h3>
-                                </li>
-
-                                <li class="menu-item-count">
-                                    <h3><img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-9.png?1576740881097" alt="Phụ kiện số" /><a href="/may-loc-nuoc-may-nuoc-nong">Phụ kiện số</a></h3>
-                                </li>
-
-                                <li class="menu-item-count">
-                                    <h3><img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-10.png?1576740881097" alt="Nạp thẻ cào, thẻ game" /><a href="/sim-so-the-cao">Nạp thẻ cào, thẻ game</a></h3>
-                                </li>
-
-                                <li class="menu-item-count">
-                                    <h3><img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/index-cate-icon-11.png?1576740881097" alt="Dụng cụ làm bánh" /><a href="/dung-cu-lam-banh">Dụng cụ làm bánh</a></h3>
-                                </li>
-                                --}}
                             </ul>
                         </div>
                     </div>
@@ -381,12 +135,12 @@
 
                         <li class="nav-item "><a class="nav-link" href="{{ route('about') }}">Giới thiệu</a></li>
 
-                        <li class="nav-item has-mega">
+                        {{--<li class="nav-item has-mega">
                             <a href="{{ route('store') }}" class="nav-link">Cửa hàng
                                 <!-- <i class="fa fa-angle-right" data-toggle="dropdown"></i> -->
                             </a>
 
-                            {{--<div class="mega-content">
+                            <div class="mega-content">
                                 <div class="level0-wrapper2">
                                     <div class="nav-block nav-block-center">
                                         <ul class="level0">
@@ -492,8 +246,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>--}}
-                        </li>
+                            </div>
+                        </li>--}}
 
                         <li class="nav-item "><a class="nav-link" href="{{ route('article') }}">Tin tức</a></li>
 
