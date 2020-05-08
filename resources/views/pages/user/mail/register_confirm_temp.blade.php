@@ -3,6 +3,7 @@
 <head>
 	<title>Xác nhận đăng ký | King Bếp</title>
 	<meta charset="utf-8" />
+	<meta name="robots" content="noodp,noindex,nofollow" />
 </head>
 <body>
 	<p>Chào <strong>{{ $email }}</strong>!</p>

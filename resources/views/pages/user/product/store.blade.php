@@ -9,6 +9,9 @@
 @section('keywords'){{ $cate ? $cate->seo_keyword : $setting->seo_keyword }}
 @stop
 
+@section('robots')noodp,index,follow
+@stop
+
 @section('canonical'){{ $cate ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $cate->slug]) : route('search') }}/
 @stop
 

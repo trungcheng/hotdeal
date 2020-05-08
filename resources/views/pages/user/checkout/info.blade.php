@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="King Bep - Thanh toán đơn hàng" />
+    <meta name="robots" content="noodp,noindex,nofollow" />
     <title>Thanh toán đơn hàng - King Bep</title>
     <link rel="icon" href="{{ asset('frontend/images/icons/favicon.ico') }}" type="image/x-icon" />
     <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>

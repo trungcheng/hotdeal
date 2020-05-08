@@ -6,8 +6,8 @@
     <title>@yield('page')</title>
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')" />
-    <meta name="robots" content="noodp,noindex,nofollow" />
-    <meta name="copyright" content="King Bep" />    
+    <meta name="robots" content="@yield('robots')" />
+    <meta name="copyright" content="King Bep" />
     <meta name="author" content="King Bep" />
     <meta http-equiv="audience" content="General" /> 
     <meta name="resource-type" content="Document" />  

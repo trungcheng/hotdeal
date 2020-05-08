@@ -9,6 +9,9 @@
 @section('keywords')Khách hàng mới, đăng nhập
 @stop
 
+@section('robots')noodp,noindex,nofollow
+@stop
+
 @section('canonical'){{ route('step1') }}
 @stop
 
@@ -28,6 +31,12 @@
 @stop
 
 @section('ogUrl'){{ route('step1') }}
+@stop
+
+@section('ogImage'){{ $setting->logo }}
+@stop
+
+@section('schema'){{ $setting->seo_schema }}
 @stop
 
 @section('pageCss')
@@ -145,9 +154,9 @@
 	                            <span class="help-block ajax-message"></span>
 	                        </div>
 	                        <div class="form-group">
-	                            <p style="max-width:100%" class="reset">Quên mật khẩu? Khôi phục mật khẩu 
+	                            {{--<p style="max-width:100%" class="reset">Quên mật khẩu? Khôi phục mật khẩu 
 	                            	<a style="color:#337ab7" data-toggle="modal" data-target="#reset-password-form" href="#">tại đây</a>
-	                        	</p>
+	                        	</p>--}}
 	                            <button style="width:100%;margin-top:10px;border:none" type="submit" id="login_popup_submit" class="button btn btn-blues btn-large btn-block btn-danger btn-checkout">Đăng nhập</button>
 	                        </div>
 	                    </form>
@@ -187,7 +196,7 @@
 	                        </div>
 	                        <div class="form-group policy-group">
 	                            <div class="input-wrap">
-	                                <p style="max-width:100%" class="policy">Khi bạn nhấn Đăng ký, bạn  đã đồng ý thực hiện mọi giao dịch mua bán theo <a target="_blank" href="/chinh-sach">điều kiện sử dụng và chính sách của Kingbep</a>.</p>
+	                                <p style="max-width:100%" class="policy">Khi bạn nhấn Đăng ký, bạn đã đồng ý thực hiện mọi giao dịch mua bán theo <a style="color:#337ab7" target="_blank" href="{{ route('term-of-service') }}">điều khoản dịch vụ</a> và <a style="color:#337ab7" target="_blank" href="{{ route('policy-security') }}">chính sách bảo mật</a> của King Bếp.</p>
 	                            </div>
 	                        </div>
 	                        <div class="form-group">

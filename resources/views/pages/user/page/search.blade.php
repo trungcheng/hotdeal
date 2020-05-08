@@ -9,6 +9,9 @@
 @section('keywords'){{ $setting->seo_keyword }}
 @stop
 
+@section('robots')noodp,noindex,nofollow
+@stop
+
 @section('canonical'){{ route('search') }}/
 @stop
 

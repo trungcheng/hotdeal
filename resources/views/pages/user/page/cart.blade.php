@@ -9,6 +9,9 @@
 @section('keywords')Giỏ hàng
 @stop
 
+@section('robots')noodp,noindex,nofollow
+@stop
+
 @section('canonical'){{ route('cart') }}
 @stop
 
@@ -93,7 +96,7 @@
                                                             <div class="col-right col-xs-9">
                                                                 <div class="box-info-product">
                                                                     <p class="name">
-                                                                        <a href="{{ route('product-detail', ['slug' => $item->options->slug]) }}" target="_blank">
+                                                                        <a href="{{ route('product-detail', ['cate' => $item->options->cateRoot->slug, 'slug' => $item->options->slug]) }}" target="_blank">
                                                                             {{ $item->name }}
                                                                         </a>
                                                                     </p>
@@ -186,12 +189,12 @@
                                         @foreach($cart as $item)
                                         <div class="item-product item productid-1">
                                             <div class="item-product-cart-mobile">
-                                                <a class="product-images1" href="{{ route('product-detail', ['slug' => $item->options->slug]) }}" title="{{ $item->name }}">
+                                                <a class="product-images1" href="{{ route('product-detail', ['cate' => $item->options->cateRoot->slug, 'slug' => $item->options->slug]) }}" title="{{ $item->name }}">
                                                     <img width="80" height="150" alt="{{ $item->name }}" src="{{ $item->options->image }}">
                                                 </a>
                                             </div>
                                             <div class="title-product-cart-mobile">
-                                                <h3><a href="{{ route('product-detail', ['slug' => $item->options->slug]) }}" title="{{ $item->name }}">{{ $item->name }}</a></h3>
+                                                <h3><a href="{{ route('product-detail', ['cate' => $item->options->cateRoot->slug, 'slug' => $item->options->slug]) }}" title="{{ $item->name }}">{{ $item->name }}</a></h3>
                                                 <p>Giá: <span>{{ number_format($item->price, 0, 0, '.') }}đ</span></p>
                                             </div>
                                             <div class="select-item-qty-mobile">

@@ -3,6 +3,9 @@
 @section('page')Đặt hàng thành công
 @stop
 
+@section('robots')noodp,noindex,nofollow
+@stop
+
 @section('pageCss')
   <style>
     .order-success {

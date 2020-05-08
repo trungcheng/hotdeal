@@ -3,6 +3,7 @@
 <head>
 	<title>Xác nhận đơn hàng #{{ $order->id }} | King Bếp</title>
 	<meta charset="utf-8" />
+	<meta name="robots" content="noodp,noindex,nofollow" />
 </head>
 <body>
 	<h1 style="font-size:17px;font-weight:bold;">Cảm ơn quý khách {{ $objectInfo['customer_name'] }} đã đặt hàng tại King Bếp!</h1>

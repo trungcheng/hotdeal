@@ -9,6 +9,9 @@
 @section('keywords'){{ $article->seo_keyword }}
 @stop
 
+@section('robots')noodp,index,follow
+@stop
+
 @section('canonical'){{ route($article->route) }}/
 @stop
 

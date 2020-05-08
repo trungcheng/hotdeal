@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -21,6 +22,20 @@ class CartController extends Controller
     {
         $cart = Cart::content();
         $total = Cart::subtotal(0, '.', '.');
+
+        if (count($cart) > 0) {
+            foreach ($cart as $item) {
+                $product = Product::find($item->id);
+                $category = Category::find($product->cat_id);
+                if ($category->parent_id == 0) {
+                    $cateRoot = $category;
+                } else {
+                    $cateRoot = Category::find($category->parent_id);
+                }
+
+                $item->options['cateRoot'] = $cateRoot;
+            }
+        }
 
         return view('pages.user.page.cart', [
             'cart' => $cart,

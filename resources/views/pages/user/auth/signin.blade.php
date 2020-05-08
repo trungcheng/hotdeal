@@ -9,6 +9,9 @@
 @section('keywords')Đăng nhập
 @stop
 
+@section('robots')noodp,noindex,nofollow
+@stop
+
 @section('canonical'){{ route('signin') }}
 @stop
 
@@ -30,7 +33,7 @@
 @section('ogUrl'){{ route('signin') }}
 @stop
 
-@section('ogImage'){{ asset('frontend/images/logos/logo.png') }}
+@section('ogImage'){{ $setting->logo }}
 @stop
 
 @section('pageCss')

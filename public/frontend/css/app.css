@@ -508,9 +508,9 @@ header .top-header {
     padding: 6px 0;
 }
 header .top-header .logo-wrapper img {
-    max-width: 145px;
+    max-width: 139px;
     /*max-width: 200px;*/
-    padding: 3px 0;
+    /*padding: 3px 0;*/
 }
 header .top-header .search-bar {
     margin: 0;

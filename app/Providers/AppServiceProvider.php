@@ -16,9 +16,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected $countItemCart;
     protected $categories;
-    protected $setting;
 
     public function boot()
     {
@@ -29,13 +27,11 @@ class AppServiceProvider extends ServiceProvider
             ->orderBy('order', 'asc')
             ->get();
         $this->categories = Util::buildTree($categories);
-        $this->countItemCart = Cart::count();
-        $this->setting = Company::first();
 
         view()->composer(['pages.user.*', 'layouts.user.*'], function($view) {
-            $view->with('countItemCart', $this->countItemCart);
+            $view->with('countItemCart', Cart::count());
             $view->with('categories', $this->categories);
-            $view->with('setting', $this->setting);
+            $view->with('setting', Company::first());
         });
     }
 
