@@ -121,8 +121,8 @@
 
 
 						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-							<a itemprop="item" href="/giam-gia" title="Giảm giá">
-								<span itemprop="name">Giảm giá</span>
+							<a itemprop="item" href="<?php echo e(route('cate-detail', ['slug' => $category->slug])); ?>" title="<?php echo e($category->name); ?>">
+								<span itemprop="name"><?php echo e($category->name); ?></span>
 								<meta itemprop="position" content="2" />
 							</a>
 							<span><i class="fa fa-angle-right"></i></span>
@@ -130,7 +130,7 @@
 
 						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
 							<strong>
-								<span itemprop="name">Internet Tivi Samsung 49 inch UA49J5200</span>
+								<span itemprop="name"><?php echo e($product->name); ?></span>
 								<meta itemprop="position" content="3" />
 							</strong>
 						</li>
@@ -542,11 +542,11 @@
 			                        <div class="row">
 			                            <?php $__currentLoopData = $otherProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 			                            <article class="blog-item blog-item-list col-md-12">
-			                                <a href="<?php echo e(route('product-detail', ['cate' => $pro1->cateRoot, 'slug' => $pro1->slug])); ?>" class="panel-box-media">
+			                                <a href="<?php echo e(route('product-detail', ['cate' => $pro1->cateRoot->slug, 'slug' => $pro1->slug])); ?>" class="panel-box-media">
 			                                    <img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($pro1->image); ?>" width="70" height="70" alt="<?php echo e($pro1->name); ?>" />
 			                                </a>
 			                                <div class="blogs-rights">
-			                                    <h3 class="blog-item-name"><a href="<?php echo e(route('product-detail', ['cate' => $pro1->cateRoot, 'slug' => $pro1->slug])); ?>" title="<?php echo e($pro1->name); ?>"><?php echo e($pro1->name); ?></a></h3>
+			                                    <h3 class="blog-item-name"><a href="<?php echo e(route('product-detail', ['cate' => $pro1->cateRoot->slug, 'slug' => $pro1->slug])); ?>" title="<?php echo e($pro1->name); ?>"><?php echo e($pro1->name); ?></a></h3>
 			                                    <div class="price-box clearfix">
 													<div class="special-price">
 														<span class="price product-price">

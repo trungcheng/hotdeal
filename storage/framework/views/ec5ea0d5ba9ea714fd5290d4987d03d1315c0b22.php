@@ -103,7 +103,7 @@
 
                             <div class="item">
                                 <div class="section_policy_content">
-                                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/policy_image_1.svg?1576740881097" alt="Bảo đảm chất lượng" />
+                                    <img src="<?php echo e(asset('frontend/images/icons/policy-icon-1.svg')); ?>" alt="Bảo đảm chất lượng" />
                                     <div class="section-policy-padding">
                                         <h3>Bảo đảm chất lượng</h3>
                                         <div class="section_policy_title">Sản phẩm bảo đảm chất lượng.</div>
@@ -113,7 +113,7 @@
 
                             <div class="item">
                                 <div class="section_policy_content">
-                                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/policy_image_2.svg?1576740881097" alt="Miễn phí giao hàng" />
+                                    <img src="<?php echo e(asset('frontend/images/icons/policy-icon-2.svg')); ?>" alt="Miễn phí giao hàng" />
                                     <div class="section-policy-padding">
                                         <h3>Miễn phí giao hàng</h3>
                                         <div class="section_policy_title">Cho đơn hàng từ 2 triệu đồng.</div>
@@ -123,17 +123,17 @@
 
                             <div class="item">
                                 <div class="section_policy_content">
-                                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/policy_image_3.svg?1576740881097" alt="Hỗ trợ 24/7" />
+                                    <img src="<?php echo e(asset('frontend/images/icons/policy-icon-3.svg')); ?>" alt="Hỗ trợ 24/7" />
                                     <div class="section-policy-padding">
                                         <h3>Hỗ trợ 24/7</h3>
-                                        <div class="section_policy_title">Hotline: 0123 456 789</div>
+                                        <div class="section_policy_title">Hotline: <?php echo e($setting->phone); ?></div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="item">
                                 <div class="section_policy_content">
-                                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/policy_image_4.svg?1576740881097" alt="Đổi trả hàng" />
+                                    <img src="<?php echo e(asset('frontend/images/icons/policy-icon-4.svg')); ?>" alt="Đổi trả hàng" />
                                     <div class="section-policy-padding">
                                         <h3>Đổi trả hàng</h3>
                                         <div class="section_policy_title">Trong vòng 7 ngày.</div>

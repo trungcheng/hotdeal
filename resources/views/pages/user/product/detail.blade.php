@@ -111,8 +111,8 @@
 
 
 						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-							<a itemprop="item" href="/giam-gia" title="Giảm giá">
-								<span itemprop="name">Giảm giá</span>
+							<a itemprop="item" href="{{ route('cate-detail', ['slug' => $category->slug]) }}" title="{{ $category->name }}">
+								<span itemprop="name">{{ $category->name }}</span>
 								<meta itemprop="position" content="2" />
 							</a>
 							<span><i class="fa fa-angle-right"></i></span>
@@ -120,7 +120,7 @@
 
 						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
 							<strong>
-								<span itemprop="name">Internet Tivi Samsung 49 inch UA49J5200</span>
+								<span itemprop="name">{{ $product->name }}</span>
 								<meta itemprop="position" content="3" />
 							</strong>
 						</li>
@@ -536,11 +536,11 @@
 			                        <div class="row">
 			                            @foreach ($otherProducts as $pro1)
 			                            <article class="blog-item blog-item-list col-md-12">
-			                                <a href="{{ route('product-detail', ['cate' => $pro1->cateRoot, 'slug' => $pro1->slug]) }}" class="panel-box-media">
+			                                <a href="{{ route('product-detail', ['cate' => $pro1->cateRoot->slug, 'slug' => $pro1->slug]) }}" class="panel-box-media">
 			                                    <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro1->image }}" width="70" height="70" alt="{{ $pro1->name }}" />
 			                                </a>
 			                                <div class="blogs-rights">
-			                                    <h3 class="blog-item-name"><a href="{{ route('product-detail', ['cate' => $pro1->cateRoot, 'slug' => $pro1->slug]) }}" title="{{ $pro1->name }}">{{ $pro1->name }}</a></h3>
+			                                    <h3 class="blog-item-name"><a href="{{ route('product-detail', ['cate' => $pro1->cateRoot->slug, 'slug' => $pro1->slug]) }}" title="{{ $pro1->name }}">{{ $pro1->name }}</a></h3>
 			                                    <div class="price-box clearfix">
 													<div class="special-price">
 														<span class="price product-price">

@@ -114,11 +114,11 @@ class ProductController extends Controller
 
             if (count($otherProducts) > 0) {
                 foreach ($otherProducts as $pro) {
-                    $category = Category::find($pro->cat_id);
-                    if ($category->parent_id == 0) {
-                        $cateRoot = $category;
+                    $cate = Category::find($pro->cat_id);
+                    if ($cate->parent_id == 0) {
+                        $cateRoot = $cate;
                     } else {
-                        $cateRoot = Category::find($category->parent_id);
+                        $cateRoot = Category::find($cate->parent_id);
                     }
 
                     $pro['cateRoot'] = $cateRoot;
