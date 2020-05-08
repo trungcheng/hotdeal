@@ -60,7 +60,7 @@
         <!-- Payout Method -->
         <div class="order-success"> <i class="fa fa-check"></i>
           <h6>Đặt hàng thành công! Đơn hàng {{ $order_id }} của quý khách đã được xử lý</h6>
-          <p>Chúng tôi đã gửi thông báo đơn hàng về email của quý khách, cảm ơn quý khách đã mua hàng tại <b>King Bếp!</b></p>
+          <p>Chúng tôi đã gửi thông báo đơn hàng về email của quý khách, cảm ơn quý khách đã mua hàng tại <b>{{ config('mail.from.name') }}!</b></p>
           <p style="margin-top:10px">Nếu có bất kỳ thắc mắc gì, hãy gọi cho chúng tôi theo hotline <b>{!! $setting->phone !!}</b></p>
           <a href="{{ route('home') }}" class="btn-round">Quay lại cửa hàng</a>
         </div>

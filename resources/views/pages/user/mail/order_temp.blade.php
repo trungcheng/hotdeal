@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Xác nhận đơn hàng #{{ $order->id }} | King Bếp</title>
+	<title>Xác nhận đơn hàng #{{ $order->id }} | {{ config('mail.from.name') }}</title>
 	<meta charset="utf-8" />
 	<meta name="robots" content="noodp,noindex,nofollow" />
 </head>
 <body>
-	<h1 style="font-size:17px;font-weight:bold;">Cảm ơn quý khách {{ $objectInfo['customer_name'] }} đã đặt hàng tại King Bếp!</h1>
-	<p>King Bếp rất vui thông báo đơn hàng #{{ $order->id }} của quý khách đã được tiếp nhận và đang trong quá trình xử lý. King Bếp sẽ thông báo đến quý khách ngay khi hàng chuẩn bị được giao. Mọi thắc mắc xin quý khách vui lòng liên hệ hotline <strong>{{ $setting->phone }}</strong></p>
+	<h1 style="font-size:17px;font-weight:bold;">Cảm ơn quý khách {{ $objectInfo['customer_name'] }} đã đặt hàng tại {{ config('mail.from.name') }}!</h1>
+	<p>{{ config('mail.from.name') }} rất vui thông báo đơn hàng #{{ $order->id }} của quý khách đã được tiếp nhận và đang trong quá trình xử lý. {{ config('mail.from.name') }} sẽ thông báo đến quý khách ngay khi hàng chuẩn bị được giao. Mọi thắc mắc xin quý khách vui lòng liên hệ hotline <strong>{{ $setting->phone }}</strong></p>
 	<h2 style="width:60%;text-align:left;margin: 30px 0px 10px 0px;border-bottom:1px solid #ddd;padding-bottom:5px;font-size:13px;color:#0088cc">CHI TIẾT ĐƠN HÀNG</h2>
 	<table border="0" cellpadding="0" cellspacing="0" style="background:#f5f5f5" width="60%">
 		<thead style="background:#0088cc">
@@ -83,6 +83,6 @@
 	</table>
 
 	<p style="margin-top:50px">Cảm ơn vì sự hợp tác của bạn!<br>
-	<strong>King Bếp</strong></p>
+	<strong>{{ config('mail.from.name') }}</strong></p>
 </body>
 </html>
