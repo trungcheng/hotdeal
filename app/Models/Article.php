@@ -102,11 +102,19 @@ class Article extends Model
     {
         $data['slug'] = Util::generateSlug($data['title']);
 
+        if (in_array($data['seo_schema'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['seo_schema'] = '';
+        }
+
         return self::firstOrCreate($data);
     }
 
     public static function updateAction($data, $pro)
     {
+        if (in_array($data['seo_schema'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['seo_schema'] = '';
+        }
+        
         return $pro->update($data);
     }
 

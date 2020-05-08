@@ -22,8 +22,7 @@ class Product extends Model
         'price',
         'discount',
         'price_sale',
-        'promo1',
-        'promo2',
+        'sale_text',
         'view',
         'is_feature',
         'is_hot',
@@ -132,6 +131,9 @@ class Product extends Model
         if (in_array($data['full_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
             $data['full_desc'] = '';
         }
+        if (in_array($data['seo_schema'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['seo_schema'] = '';
+        }
 
         return self::firstOrCreate($data);
     }
@@ -164,6 +166,9 @@ class Product extends Model
         }
         if (in_array($data['full_desc'], ['<p><br></p>','<br>','<p></p>',''])) {
             $data['full_desc'] = '';
+        }
+        if (in_array($data['seo_schema'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['seo_schema'] = '';
         }
 
         return $pro->update($data);

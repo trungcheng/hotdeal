@@ -10,10 +10,10 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('canonical'); ?><?php echo e($cate ? route('product-detail', ['slug' => $cate->slug]) : route('store')); ?>/
+<?php $__env->startSection('canonical'); ?><?php echo e($cate ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $cate->slug]) : route('search')); ?>/
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('alternate'); ?><?php echo e($cate ? route('product-detail', ['slug' => $cate->slug]) : route('store')); ?>/
+<?php $__env->startSection('alternate'); ?><?php echo e($cate ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $cate->slug]) : route('search')); ?>/
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('propName'); ?><?php echo e($cate ? $cate->seo_title : $setting->seo_title); ?>
@@ -32,7 +32,7 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('ogUrl'); ?><?php echo e($cate ? route('product-detail', ['slug' => $cate->slug]) : route('store')); ?>/
+<?php $__env->startSection('ogUrl'); ?><?php echo e($cate ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $cate->slug]) : route('search')); ?>/
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('ogImage'); ?><?php echo e($cate ? $cate->image : $setting->logo); ?>
@@ -82,13 +82,13 @@
                             <ul class="nav navbar-pills">
                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo e(route('product-detail', ['slug' => $cat->slug])); ?>"><?php echo e($cat->name); ?></a>
+                                        <a class="nav-link" href="<?php echo e(route('cate-detail', ['slug' => $cat->slug])); ?>"><?php echo e($cat->name); ?></a>
                                         <?php if(isset($cat->childrens)): ?>
                                             <i class="fa fa-angle-down"></i>
                                             <ul class="dropdown-menu">
                                                 <?php $__currentLoopData = $cat->childrens; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <li class="dropdown-submenu nav-item">
-                                                    <a class="nav-link" href="<?php echo e(route('product-detail', ['slug' => $child->slug])); ?>"><?php echo e($child->name); ?></a>
+                                                    <a class="nav-link" href="<?php echo e(route('cate-detail', ['slug' => $child->slug])); ?>"><?php echo e($child->name); ?></a>
                                                 </li>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </ul>
@@ -138,6 +138,18 @@
 
                             <section class="products-view products-view-grid clearfix">
                                 <?php $__currentLoopData = $results; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php
+                                    if (!$cate) {
+                                        $category = \App\Models\Category::where('id', $pro->cat_id)->first();
+                                        if ($category) {
+                                            if ($category->parent_id == 0) {
+                                                $cateRoot = $category;
+                                            } else {
+                                                $cateRoot = \App\Models\Category::find($category->parent_id);
+                                            }
+                                        }
+                                    }
+                                ?>
                                 <div class="col-xs-6 col-sm-4 col-md-3 no-padding">
                                     <div class="product-box">
                                         <div class="product-thumbnail">
@@ -145,13 +157,13 @@
                                             <div class="sale-flash">SALE</div>
                                             <?php endif; ?>
                                             <div class="product-image-flip">
-                                                <a href="<?php echo e(route('product-detail', ['slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>">
+                                                <a href="<?php echo e(route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>">
                                                     <img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($pro->image); ?>" alt="<?php echo e($pro->name); ?>" class="img-responsive center-block" />
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="product-info a-center">
-                                            <h3 class="product-name"><a href="<?php echo e(route('product-detail', ['slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>"><?php echo e($pro->name); ?></a></h3>
+                                            <h3 class="product-name"><a href="<?php echo e(route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>"><?php echo e($pro->name); ?></a></h3>
                                             <div class="price-box clearfix">
                                                 <div class="special-price">
                                                     <span class="price product-price">

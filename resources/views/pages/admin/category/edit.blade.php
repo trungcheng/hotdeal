@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<div ng-controller="CategoryController" ng-init="loadInitCreate()">
+<div ng-controller="CategoryController" ng-init="loadInitCreate('{{ $category['type'] }}')">
 
     <!-- Content Header (Page header) -->
     <section class="content-header" style="padding-top:30px;">
@@ -34,6 +34,13 @@
                                     <input value="{{ $category->name }}" name="name" type="text" class="form-control title" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Loại danh mục</label>
+                                    <select ng-change="loadChangeCateType(type)" ng-model="type" class="form-control status" name="type">
+                                        <option {{ ($category['type'] == 'product') ? 'selected' : '' }} value="product">Sản phẩm</option>
+                                        <option {{ ($category['type'] == 'article') ? 'selected' : '' }} value="article">Bài viết</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="parent_id">
                                         <option ng-selected="{{ $category['parent_id'] }} == 0" value="0">Không thuộc danh mục nào</option>
@@ -50,6 +57,13 @@
                                 <div class="form-group">
                                     <label>Thứ tự</label>
                                     <input class="form-control status" type="number" name="order" max="99" min="1" value="{{ $category->order }}" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Hiển thị lên trang chủ</label>
+                                    <select class="form-control status" name="is_home">
+                                        <option {{ ($category['is_home'] == 1) ? 'selected' : '' }} value="1">Có</option>
+                                        <option {{ ($category['is_home'] == 0) ? 'selected' : '' }} value="0">Không</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>

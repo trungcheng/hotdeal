@@ -43,65 +43,16 @@
 
 <body class="<?php echo e(\Route::currentRouteName() == 'home' ? 'bg-index' : ''); ?>">
     <div id="box-wrapper">
-        
         <?php echo $__env->make('layouts.user.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        
         <?php echo $__env->yieldContent('content'); ?>
-
         <?php echo $__env->make('layouts.user.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
-        
-    </div>
-    
-    <div class="ajax-load">
-        <span class="loading-icon">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-                <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
-                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
-                </rect>
-                <rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
-                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
-                </rect>
-                <rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
-                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
-                </rect>
-            </svg>
-        </span>
-    </div>
-
-    <div class="loading awe-popup">
-        <div class="overlay"></div>
-        <div class="loader" title="2">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-                <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
-                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
-                </rect>
-                <rect x="8" y="10" width="4" height="10" fill="#333" opacity="0.2">
-                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
-                </rect>
-                <rect x="16" y="10" width="4" height="10" fill="#333" opacity="0.2">
-                    <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
-                    <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
-                </rect>
-            </svg>
-        </div>
     </div>
 
     <div id="menu-mobile">
         <div class="clearfix">
             <div class="account_mobile" style="">
                 <div class="text-center">
-                    <img src="//bizweb.dktcdn.net/100/270/860/themes/606449/assets/user.svg?1576740881097" alt="Tài khoản" />
+                    <img src="<?php echo e(asset('frontend/images/icons/user.svg')); ?>" alt="Tài khoản" />
                 </div>
                 <ul class="account_text text-center">
                     <li><a class="register_account" href="<?php echo e(route('signup')); ?>" title="Đăng ký">Đăng ký</a></li>
@@ -112,7 +63,7 @@
             <ul class="menu-mobile">
                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <li class="">
-                        <a class="<?php echo e(isset($cate->childrens) ? 'submenu-level1-children-a' : ''); ?>" title="<?php echo e($cate->name); ?>" href="<?php echo e(route('product-detail', ['slug' => $cate->slug])); ?>">
+                        <a class="<?php echo e(isset($cate->childrens) ? 'submenu-level1-children-a' : ''); ?>" title="<?php echo e($cate->name); ?>" href="<?php echo e(route('cate-detail', ['slug' => $cate->slug])); ?>">
                             <?php echo e($cate->name); ?>
 
                             <?php if(isset($cate->childrens)): ?>
@@ -123,7 +74,7 @@
                             <ul class="dropdown-menu submenu-level1-children" role="menu" style="display:none;">
                                 <?php $__currentLoopData = $cate->childrens; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <li>
-                                    <a class="submenu-level2-children-a" href="<?php echo e(route('product-detail', ['slug' => $child->slug])); ?>" title="<?php echo e($child->name); ?>"><?php echo e($child->name); ?></a>
+                                    <a class="submenu-level2-children-a" href="<?php echo e(route('cate-detail', ['slug' => $child->slug])); ?>" title="<?php echo e($child->name); ?>"><?php echo e($child->name); ?></a>
                                 </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
@@ -162,9 +113,9 @@
                 <span>Gọi ngay: <?php echo e($setting->phone); ?></span>
             </a>
 
-            <a class="mes" href="https://www.messenger.com/t/561797710650232" target="_blank">
+            <a class="mes" href="<?php echo e($setting->facebook_url); ?>" target="_blank">
                 <i class="fa fa-facebook" aria-hidden="true"></i>
-                <span>Chat qua Messenger</span>
+                <span>Facebook Fanpage</span>
             </a>
 
             <a class="zalo" href="mailto:<?php echo e($setting->email); ?>" target="_blank">
@@ -187,7 +138,7 @@
 
     <script src="<?php echo e(asset('frontend/js/rx.all.min.js')); ?>" type="text/javascript"></script>
     <script src="<?php echo e(asset('frontend/js/option-selectors.js')); ?>" type="text/javascript"></script>
-    <script src="//bizweb.dktcdn.net/assets/themes_support/api.jquery.js?4" type="text/javascript"></script>
+    <script src="<?php echo e(asset('frontend/js/api.jquery.js')); ?>" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js" type="text/javascript"></script>
     <script src="<?php echo e(asset('frontend/js/appear.js')); ?>" type="text/javascript"></script>

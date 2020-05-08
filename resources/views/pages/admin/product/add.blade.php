@@ -59,6 +59,11 @@
                                     <label>Giá sale</label>
                                     <input id="price_sale" name="price_sale" type="text" class="form-control title" placeholder="Giá khuyến mãi...">
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Nội dung khuyến mãi</label>
+                                    <input name="sale_text" type="text" class="form-control title" placeholder="Nội dung khuyến mãi... (Phân cách bởi dấu chấm phẩy)">
+                                </div>
                                 
                                 <div class="form-group">
                                     <label>Ảnh sản phẩm (*)</label>

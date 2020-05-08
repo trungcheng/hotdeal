@@ -24,7 +24,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $categories = Category::where('status', 1)->orderBy('order', 'asc')->get();
+        $categories = Category::where('status', 1)
+            ->where('type', 'product')
+            ->orderBy('order', 'asc')
+            ->get();
         $this->categories = Util::buildTree($categories);
         $this->countItemCart = Cart::count();
         $this->setting = Company::first();

@@ -52,9 +52,10 @@
         \Route::get('/dieu-khoan-dich-vu', 'User\PageController@termOfService')->name('term-of-service');
         \Route::get('/lien-he', 'User\PageController@contact')->name('contact');
 
-        \Route::get('/{slug}', 'User\ProductController@detail')->name('product-detail');
-
         \Route::post('/rating/post', 'Admin\ReviewController@add')->name('postRating');
+
+        \Route::get('/{slug}', 'User\ProductController@cateDetail')->name('cate-detail');
+        \Route::get('/{cate}/{slug}', 'User\ProductController@productDetail')->name('product-detail');
 
     });
 

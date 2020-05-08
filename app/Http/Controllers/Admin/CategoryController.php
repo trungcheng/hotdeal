@@ -40,7 +40,13 @@ class CategoryController extends Controller
 
     public function getAllParentCates(Request $request)
     {
-        $categories = Category::all();
+        $data = $request->all();
+        if (isset($data['type'])) {
+            $categories = Category::where('type', $data['type'])->where('status', 1)->get();
+        } else {
+            $categories = Category::where('status', 1)->get();
+        }
+
         $categoriesPaged = Util::buildArray($categories);
         if ($categoriesPaged) {
             return Response::json(['status' => true, 'data' => $categoriesPaged]);

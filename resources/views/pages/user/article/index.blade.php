@@ -1,39 +1,39 @@
 @extends('layouts.user.master')
 
-@section('page'){{ $page->seo_title }}
+@section('page'){{ $cate ? $cate->seo_title : $page->seo_title }}
 @stop
 
-@section('description'){{ $page->seo_desc }}
+@section('description'){{ $cate ? $cate->seo_desc : $page->seo_desc }}
 @stop
 
-@section('keywords'){{ $page->seo_keyword }}
+@section('keywords'){{ $cate ? $cate->seo_keyword : $page->seo_keyword }}
 @stop
 
-@section('canonical'){{ route('article') }}
+@section('canonical'){{ $cate ? route('article-detail', ['slug' => $cate->slug]) : route('article') }}/
 @stop
 
-@section('alternate'){{ route('article') }}
+@section('alternate'){{ $cate ? route('article-detail', ['slug' => $cate->slug]) : route('article') }}/
 @stop
 
-@section('propName'){{ $page->seo_title }}
+@section('propName'){{ $cate ? $cate->seo_title : $page->seo_title }}
 @stop
 
-@section('propDesc'){{ $page->seo_desc }}
+@section('propDesc'){{ $cate ? $cate->seo_desc : $page->seo_desc }}
 @stop
 
-@section('ogTitle'){{ $page->seo_title }}
+@section('ogTitle'){{ $cate ? $cate->seo_title : $page->seo_title }}
 @stop
 
-@section('ogDesc'){{ $page->seo_desc }}
+@section('ogDesc'){{ $cate ? $cate->seo_desc : $page->seo_desc }}
 @stop
 
-@section('ogUrl'){{ route('article') }}/
+@section('ogUrl'){{ $cate ? route('article-detail', ['slug' => $cate->slug]) : route('article') }}/
 @stop
 
-@section('ogImage'){{ !empty($articles) ? $articles[0]->image : $setting->logo }}
+@section('ogImage'){{ count($articles) > 0 ? $articles[0]->image : $setting->logo }}
 @stop
 
-@section('schema'){{ $page->seo_schema }}
+@section('schema'){{ $cate ? $cate->seo_schema : $page->seo_schema }}
 @stop
 
 @section('pageCss')
@@ -50,7 +50,17 @@
                             <a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
                             <span><i class="fa fa-angle-right"></i></span>
                         </li>
+                        @if ($cate)
+                        <li>
+                            <a itemprop="url" href="{{ route('article') }}" title="Tin tức"><span itemprop="title">Tin tức</span></a>
+                            <span><i class="fa fa-angle-right"></i></span>
+                        </li>
+                        <li>
+                            <strong><span itemprop="title">{{ $cate->name }}</span></strong>
+                        </li>
+                        @else
                         <li><strong itemprop="title">Tin tức</strong></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -58,17 +68,27 @@
     </section>
 
     <div class="container" itemscope itemtype="http://schema.org/Blog">
-        <meta itemprop="name" content="Tin tức">
-        <meta itemprop="description" content="Chủ đề không có mô tả">
+        <meta itemprop="name" content="{{ $cate ? $cate->name : 'Tin tức' }}">
+        <meta itemprop="description" content="{{ $cate ? $cate->seo_desc : $page->seo_desc }}">
         <div class="row">
             <section class="right-content col-md-9 col-md-push-3">
                 <div class="box-heading">
-                    <h1 class="title-head">Tin tức</h1>
+                    <h1 class="title-head">{{ $cate ? $cate->name : 'Tin tức' }}</h1>
                 </div>
 
-                <div class="margin-bottom-20">
-                    {!! $page->seo_content !!}
-                </div>
+                @if ($cate)
+                    @if ($cate->seo_content != '' && $cate->seo_content != null)
+                    <div class="margin-bottom-20">
+                        {!! $cate->seo_content !!}
+                    </div>
+                    @endif
+                @else
+                    @if ($page->seo_content != '' && $page->seo_content != null)
+                    <div class="margin-bottom-20">
+                        {!! $page->seo_content !!}
+                    </div>
+                    @endif
+                @endif
 
                 @if (count($articles) > 0)
                 <section class="list-blogs blog-main">
@@ -105,6 +125,7 @@
             </section>
             <aside class="left left-content col-md-3 col-md-pull-9">
 
+                @if (count($articleCates) > 0)
                 <aside class="aside-item collection-category blog-category">
                     <div class="heading">
                         <h2 class="title-head"><span>Danh mục</span></h2>
@@ -189,15 +210,18 @@
                                         </li>
                                     </ul>
                                 </li>--}}
-                                @foreach ($categories as $cat)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('article') }}">Mới nhất</a>
+                                </li>
+                                @foreach ($articleCates as $cat)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('product-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
+                                        <a class="nav-link" href="{{ route('article-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
                                         @if (isset($cat->childrens))
                                             <i class="fa fa-angle-down"></i>
                                             <ul class="dropdown-menu">
                                                 @foreach ($cat->childrens as $child)
                                                 <li class="dropdown-submenu nav-item">
-                                                    <a class="nav-link" href="{{ route('product-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                                    <a class="nav-link" href="{{ route('article-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                                 </li>
                                                 @endforeach
                                             </ul>
@@ -208,7 +232,9 @@
                         </nav>
                     </div>
                 </aside>
+                @endif
 
+                @if (count($otherArticles) > 0)
                 <div class="aside-item">
                     <div class="heading">
                         <h2 class="title-head">Bài viết khác</h2>
@@ -229,6 +255,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
             </aside>
         </div>

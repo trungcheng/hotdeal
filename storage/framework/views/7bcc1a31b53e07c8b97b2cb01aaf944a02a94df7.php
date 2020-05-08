@@ -7,7 +7,7 @@
 
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="footer-widget">
-                            <h4><span>Liên hệ</span></h4>
+                            <h4><span>Liên hệ với chúng tôi</span></h4>
                             <ul class="widget-menu contact-info-page">
                                 <li>
                                     <i class="fa fa-map-marker color-x" aria-hidden="true"></i> 
@@ -35,7 +35,7 @@
                             <ul class="list-menu">
                                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cate): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li>
-                                        <a href="<?php echo e(route('product-detail', ['slug' => $cate->slug])); ?>"><?php echo e($cate->name); ?></a>
+                                        <a href="<?php echo e(route('cate-detail', ['slug' => $cate->slug])); ?>"><?php echo e($cate->name); ?></a>
                                     </li>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
@@ -98,7 +98,7 @@
             <div class="inner clearfix">
                 <div class="row">
                     <div class="col-md-12 col-copyright">
-                        <span>©2020 Bản quyền thuộc về <b>King Bếp</b></span>
+                        <span>Copyright © 2020 <b>kingbep.com</b>. All rights reserved</span>
                     </div>
                 </div>
             </div>

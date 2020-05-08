@@ -58,9 +58,23 @@
                     @foreach ($slides as $slide)
                         <div class="item">
                             @if ($slide->target_type == 'product')
-                                <a href="{{ ($slide->product) ? route('product-detail', ['slug' => $slide->product->slug]) : 'javascript:void(0)' }}" class="clearfix">
-                                    <img src="{{ $slide->image }}" alt="{{ $slide->title }}" class="img-responsive center-block" />
-                                </a>
+                                <?php
+                                    $category = \App\Models\Category::where('id', $slide->product->cat_id)
+                                        ->where('status', 1)->first();
+                                    if ($category) {
+                                        if ($category->parent_id == 0) {
+                                            $cateRoot = $category;
+                                        } else {
+                                            $cateRoot = \App\Models\Category::find($category->parent_id);
+                                        }
+
+                                        ?>
+                                        <a href="{{ ($slide->product) ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $slide->product->slug]) : 'javascript:void(0)' }}" class="clearfix">
+                                            <img src="{{ $slide->image }}" alt="{{ $slide->title }}" class="img-responsive center-block" />
+                                        </a>
+                                        <?php
+                                    }
+                                ?>
                             @else
                                 <a href="{{ ($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)' }}" class="clearfix">
                                     <img src="{{ $slide->image }}" alt="{{ $slide->title }}" class="img-responsive center-block" />
@@ -127,7 +141,8 @@
         </div>
     </section>
 
-    @if (count($chauda) > 0)
+    @if (count($categoryChosen) > 0)
+    @foreach ($categoryChosen as $category)
     <section class="awe-section-4">
         <div class="section_group_product section_group_product_1">
             <div class="container">
@@ -135,176 +150,74 @@
                     <div class="col-md-12">
                         <div class="box-shock">
                             <div class="barbox clearfix">
-                                <h2 class="titlecate">Chậu rửa bát đá nhân tạo</h2>
+                                <h2 class="titlecate">{{ $category->name }}</h2>
                                 <div class="menu-button-edit">
                                     <i class="fa fa-navicon" aria-hidden="true"></i>
                                 </div>
                                 <ul>
-                                    <li><a href="{{ route('product-detail', ['slug' => $chauda[0]->category->slug]) }}" class="viewmoretext">Xem tất cả</a></li>
+                                    <li><a href="{{ route('cate-detail', ['slug' => $category->slug]) }}" class="viewmoretext">Xem tất cả</a></li>
                                 </ul>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="section_tab_product-owl owl-carousel owl-theme not-dqowl">
-                                        @foreach ($chauda as $pro)
-                                            <div class="item">
-                                                <div class="product-box">
-                                                    <div class="product-thumbnail">
-                                                        @if ($pro->discount > 0)
-                                                            <div class="sale-flash">SALE</div>
-                                                        @endif
-                                                        <div class="product-image-flip">
-                                                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-                                                                <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info a-center">
-                                                        <h3 class="product-name"><a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">{{ $pro->name }}</a></h3>
-                                                        <div class="price-box clearfix">
-                                                            <div class="special-price">
-                                                                <span class="price product-price">
-                                                                    {{ number_format($pro->price_sale, 0, 0, '.') }}đ
-                                                                </span>
-                                                            </div>
-                                                            @if ($pro->discount > 0)
-                                                            <div class="old-price">
-                                                                <span class="price product-price-old">
-                                                                    {{ number_format($pro->price, 0, 0, '.') }}đ
-                                                                </span>
-                                                            </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
+                                        <?php
+                                            $products = \App\Models\Product::where('status', 1);
 
-    @if (count($chauinox) > 0)
-    <section class="awe-section-4">
-        <div class="section_group_product section_group_product_1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="box-shock">
-                            <div class="barbox clearfix">
-                                <h2 class="titlecate">Chậu rửa inox</h2>
-                                <div class="menu-button-edit">
-                                    <i class="fa fa-navicon" aria-hidden="true"></i>
-                                </div>
-                                <ul>
-                                    <li><a href="{{ route('product-detail', ['slug' => $chauinox[0]->category->slug]) }}" class="viewmoretext">Xem tất cả</a></li>
-                                </ul>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="section_tab_product-owl owl-carousel owl-theme not-dqowl">
-                                        @foreach ($chauinox as $pro)
-                                            <div class="item">
-                                                <div class="product-box">
-                                                    <div class="product-thumbnail">
-                                                        @if ($pro->discount > 0)
-                                                            <div class="sale-flash">SALE</div>
-                                                        @endif
-                                                        <div class="product-image-flip">
-                                                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-                                                                <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info a-center">
-                                                        <h3 class="product-name"><a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">{{ $pro->name }}</a></h3>
-                                                        <div class="price-box clearfix">
-                                                            <div class="special-price">
-                                                                <span class="price product-price">
-                                                                    {{ number_format($pro->price_sale, 0, 0, '.') }}đ
-                                                                </span>
-                                                            </div>
-                                                            @if ($pro->discount > 0)
-                                                            <div class="old-price">
-                                                                <span class="price product-price-old">
-                                                                    {{ number_format($pro->price, 0, 0, '.') }}đ
-                                                                </span>
-                                                            </div>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    @endif
+                                            if ($category->parent_id == 0) {
+                                                $childCates = \App\Models\Category::where('parent_id', $category->id)->get();
+                                                if (count($childCates) > 0) {
+                                                    $arr = [];
+                                                    foreach ($childCates as $child) {
+                                                        $arr[] = $child->id;
+                                                    }
+                                                    $products->whereIn('cat_id', $arr);
+                                                } else {
+                                                    $products->where('cat_id', $category->id);    
+                                                }
+                                            } else {
+                                                $products->where('cat_id', $category->id);
+                                            }
 
-    @if (count($voiruabat) > 0)
-    <section class="awe-section-4">
-        <div class="section_group_product section_group_product_1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="box-shock">
-                            <div class="barbox clearfix">
-                                <h2 class="titlecate">Vòi rửa bát</h2>
-                                <div class="menu-button-edit">
-                                    <i class="fa fa-navicon" aria-hidden="true"></i>
-                                </div>
-                                <ul>
-                                    <li><a href="{{ route('product-detail', ['slug' => $voiruabat[0]->category->slug]) }}" class="viewmoretext">Xem tất cả</a></li>
-                                </ul>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="section_tab_product-owl owl-carousel owl-theme not-dqowl">
-                                        @foreach ($voiruabat as $pro)
-                                            <div class="item">
-                                                <div class="product-box">
-                                                    <div class="product-thumbnail">
-                                                        @if ($pro->discount > 0)
-                                                            <div class="sale-flash">SALE</div>
-                                                        @endif
-                                                        <div class="product-image-flip">
-                                                            <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-                                                                <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-info a-center">
-                                                        <h3 class="product-name"><a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">{{ $pro->name }}</a></h3>
-                                                        <div class="price-box clearfix">
-                                                            <div class="special-price">
-                                                                <span class="price product-price">
-                                                                    {{ number_format($pro->price_sale, 0, 0, '.') }}đ
-                                                                </span>
-                                                            </div>
+                                            $results = $products->orderBy('created_at', 'desc')
+                                                ->limit(7)
+                                                ->get();
+                                        ?>
+                                        @if (count($results) > 0)
+                                            @foreach ($results as $pro)
+                                                <div class="item">
+                                                    <div class="product-box">
+                                                        <div class="product-thumbnail">
                                                             @if ($pro->discount > 0)
-                                                            <div class="old-price">
-                                                                <span class="price product-price-old">
-                                                                    {{ number_format($pro->price, 0, 0, '.') }}đ
-                                                                </span>
-                                                            </div>
+                                                                <div class="sale-flash">SALE</div>
                                                             @endif
+                                                            <div class="product-image-flip">
+                                                                <a href="{{ route('product-detail', ['cate' => $category->cateRoot->slug, 'slug' => $pro->slug]) }}" title="{{ $pro->name }}">
+                                                                    <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-info a-center">
+                                                            <h3 class="product-name"><a href="{{ route('product-detail', ['cate' => $category->cateRoot->slug, 'slug' => $pro->slug]) }}" title="{{ $pro->name }}">{{ $pro->name }}</a></h3>
+                                                            <div class="price-box clearfix">
+                                                                <div class="special-price">
+                                                                    <span class="price product-price">
+                                                                        {{ number_format($pro->price_sale, 0, 0, '.') }}đ
+                                                                    </span>
+                                                                </div>
+                                                                @if ($pro->discount > 0)
+                                                                <div class="old-price">
+                                                                    <span class="price product-price-old">
+                                                                        {{ number_format($pro->price, 0, 0, '.') }}đ
+                                                                    </span>
+                                                                </div>
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -314,6 +227,7 @@
             </div>
         </div>
     </section>
+    @endforeach
     @endif
 
     @if (count($featureArticles) > 0)
@@ -343,7 +257,7 @@
                                                     <div class="post-time">
                                                         <span>{{ $article->created_at }}</span>
                                                     </div>
-                                                    <p class="blog-item-summary margin-bottom-5">{!! $article->intro !!}</p>
+                                                    <p class="blog-item-summary margin-bottom-10">{!! $article->intro !!}</p>
                                                 </div>
                                             </article>
                                         </div>

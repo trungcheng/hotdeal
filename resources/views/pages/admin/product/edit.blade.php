@@ -61,6 +61,10 @@
                                     <input id="price_sale" value="{{ number_format($pro->price_sale, 0, 0, ',') }}" name="price_sale" type="text" class="form-control title" placeholder="Giá khuyến mãi...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Nội dung khuyến mãi</label>
+                                    <input value="{{ $pro->sale_text }}" name="sale_text" type="text" class="form-control title" placeholder="Nội dung khuyến mãi... (Phân cách bởi dấu chấm phẩy)">
+                                </div>
+                                <div class="form-group">
                                     <label>Ảnh sản phẩm (*)</label><br>
                                     @if(isset($pro->image) && is_file(public_path($pro->image)))
                                         <img src="{{url($pro->image)}}" width="100" height="100" />

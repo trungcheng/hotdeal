@@ -55,8 +55,8 @@
             $scope.getResultsPage('all-product', 10, 1);
         }
 
-        $scope.loadInitCate = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
+        $scope.loadInitCate = function (type = 'product') {
+            $http.get(app.vars.baseUrl + `/categories/getAllParentCates?type=${type}`).success(function (res) {
                 $scope.parentCates = res.data;
             });
         }

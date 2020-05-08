@@ -79,14 +79,14 @@
                                     <li class="menu-item-count <?php echo e(isset($cate->childrens) ? 'dropdown' : ''); ?>">
                                         <h3>
                                             <img src="<?php echo e($cate->icon); ?>" alt="<?php echo e($cate->name); ?>" />
-                                            <a href="<?php echo e(route('product-detail', ['slug' => $cate->slug])); ?>"><?php echo e($cate->name); ?></a>
+                                            <a href="<?php echo e(route('cate-detail', ['slug' => $cate->slug])); ?>"><?php echo e($cate->name); ?></a>
                                         </h3>
                                         <?php if(isset($cate->childrens)): ?>
                                             <div class="subcate gd-menu">
                                                 <aside>
                                                     
                                                     <?php $__currentLoopData = $cate->childrens; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>    
-                                                        <a href="<?php echo e(route('product-detail', ['slug' => $child->slug])); ?>" class=""><?php echo e($child->name); ?></a>
+                                                        <a href="<?php echo e(route('cate-detail', ['slug' => $child->slug])); ?>" class=""><?php echo e($child->name); ?></a>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                 </aside>
                                             </div>
@@ -99,36 +99,6 @@
                 </div>
                 <div class="col-md-9 no-padding">
                     <ul id="nav" class="nav">
-                        <li class="nav-item ">
-                            
-                            <ul class="dropdown-menu">
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/cach-lam-banh-bong-lan-cuc-de-bang-noi-com-dien">Sản phẩm liên quan trong tin tức</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/">Tìm kiếm nâng cao</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/tivi-loa-am-thanh">Danh mục thông minh</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/collections/all">Tìm kiếm bộ lọc</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/android-tivi-sony-4k-43-inch-kd-43x7500e">Khuyến mãi cho từng sản phẩm</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/he-thong-cua-hang">Hệ thống cửa hàng</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="nav-item active"><a class="nav-link" href="<?php echo e(route('home')); ?>">Trang chủ</a></li>
 
                         <li class="nav-item "><a class="nav-link" href="<?php echo e(route('about')); ?>">Giới thiệu</a></li>

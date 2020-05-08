@@ -79,7 +79,7 @@
                                     <li class="menu-item-count {{ isset($cate->childrens) ? 'dropdown' : '' }}">
                                         <h3>
                                             <img src="{{ $cate->icon }}" alt="{{ $cate->name }}" />
-                                            <a href="{{ route('product-detail', ['slug' => $cate->slug]) }}">{{ $cate->name }}</a>
+                                            <a href="{{ route('cate-detail', ['slug' => $cate->slug]) }}">{{ $cate->name }}</a>
                                         </h3>
                                         @if (isset($cate->childrens))
                                             <div class="subcate gd-menu">
@@ -88,7 +88,7 @@
                                                         <a href="/dung-cu-ban-an" class="">Dụng cụ bàn ăn</a>
                                                     </strong>--}}
                                                     @foreach ($cate->childrens as $child)    
-                                                        <a href="{{ route('product-detail', ['slug' => $child->slug]) }}" class="">{{ $child->name }}</a>
+                                                        <a href="{{ route('cate-detail', ['slug' => $child->slug]) }}" class="">{{ $child->name }}</a>
                                                     @endforeach
                                                 </aside>
                                             </div>
@@ -101,36 +101,6 @@
                 </div>
                 <div class="col-md-9 no-padding">
                     <ul id="nav" class="nav">
-                        <li class="nav-item ">
-                            {{--<a href="/collections/all" class="nav-link">Tính năng nổi bật <i class="fa fa-angle-right" data-toggle="dropdown"></i></a>--}}
-                            <ul class="dropdown-menu">
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/cach-lam-banh-bong-lan-cuc-de-bang-noi-com-dien">Sản phẩm liên quan trong tin tức</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/">Tìm kiếm nâng cao</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/tivi-loa-am-thanh">Danh mục thông minh</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/collections/all">Tìm kiếm bộ lọc</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/android-tivi-sony-4k-43-inch-kd-43x7500e">Khuyến mãi cho từng sản phẩm</a>
-                                </li>
-
-                                <li class="nav-item-lv2">
-                                    <a class="nav-link" href="/he-thong-cua-hang">Hệ thống cửa hàng</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="nav-item active"><a class="nav-link" href="{{ route('home') }}">Trang chủ</a></li>
 
                         <li class="nav-item "><a class="nav-link" href="{{ route('about') }}">Giới thiệu</a></li>

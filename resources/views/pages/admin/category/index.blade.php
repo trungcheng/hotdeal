@@ -60,9 +60,10 @@
                                                     <th>STT</th>
                                                     <th style="text-align:center !important;">Ảnh icon</th>
                                                     <th style="text-align:center !important;width:20%">Tên danh mục</th>
-                                                    <th style="text-align:center !important;width:20%">Thuộc danh mục</th>
-                                                    <th style="text-align:center !important;width:20%">Slug</th>
+                                                    <th style="text-align:center !important;width:15%">Thuộc danh mục</th>
+                                                    <th style="text-align:center !important;width:15%">Slug</th>
                                                     <th>Thứ tự</th>
+                                                    <th>Loại</th>
                                                     <th>Trạng thái</th>
                                                     <th>Chức năng</th>
                                                 </tr>
@@ -77,6 +78,7 @@
                                                     <td style="text-align:center !important">@{{ cate.parent ? cate.parent : 'Không' }}</td>
                                                     <td style="text-align:center !important">@{{ cate.slug }}</td>
                                                     <td>@{{ cate.order }}</td>
+                                                    <td>@{{ cate.type == 'product' ? 'Sản phẩm' : 'Bài viết' }}</td>
                                                     <td>@{{ cate.status == 1 ? 'Hoạt động' : 'Khóa' }}</td>
                                                     <td>
                                                         <a href="/admin/access/categories/edit/@{{ cate.id }}" style="margin-right:5px;" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>

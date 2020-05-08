@@ -16,52 +16,17 @@ class ProductController extends Controller
         // $this->middleware('');
     }
 
-    public function detail(Request $request, $slug)
+    public function cateDetail(Request $request, $slug)
     {
         if ($slug == 'admin') return redirect('/admin/access/login');
 
-        $category = Category::where('slug', $slug)->first();
-        if (!$category) {
-            $product = Product::where('slug', $slug)->first();
-            if ($product) {
-                $image_list = json_decode($product->image_list);
+        $category = Category::where('slug', $slug)
+            ->where('type', 'product')
+            ->where('status', 1)
+            ->first();
 
-                $averageReview = 0.0;
-                $reviews = Review::where('pro_id', $product->id)
-                    ->where('status', 1)
-                    ->get();
-                $sumStar = Review::where('pro_id', $product->id)
-                    ->where('status', 1)
-                    ->sum('star');
-                
-                if (count($reviews) > 0) {
-                    $averageReview = $sumStar / count($reviews);
-                }
-                
-                $relatedProducts = Product::where('cat_id', $product->cat_id)
-                    ->where('status', 1)
-                    ->limit(8)
-                    ->get()
-                    ->except($product->id);
-
-                // $featureArticles = Article::where('status', 1)
-                //     ->where('is_feature', 1)
-                //     ->where('status', 1)
-                //     ->limit(5)
-                //     ->get();
-
-                return view('pages.user.product.detail', [
-                    'product' => $product,
-                    'image_list' => $image_list,
-                    'reviews' => $reviews,
-                    'averageReview' => round($averageReview, 1),
-                    'relatedProducts' => $relatedProducts
-                    // 'featureArticles' => $featureArticles
-                ]);
-            }
-        } else {
+        if ($category) {
             $data = $request->all();
-
             $products = Product::where('status', 1);
 
             if ($request->has('order')) {
@@ -73,15 +38,19 @@ class ProductController extends Controller
             }
 
             if ($category->parent_id == 0) {
+                $cateRoot = $category;
                 $childCates = Category::where('parent_id', $category->id)->get();
-                if (!empty($childCates)) {
+                if (count($childCates) > 0) {
                     $arr = [];
                     foreach ($childCates as $child) {
                         $arr[] = $child->id;
                     }
                     $products->whereIn('cat_id', $arr);
+                } else {
+                    $products->where('cat_id', $category->id);    
                 }
             } else {
+                $cateRoot = Category::find($category->parent_id);
                 $products->where('cat_id', $category->id);
             }
 
@@ -90,7 +59,87 @@ class ProductController extends Controller
             return view('pages.user.product.store', [
                 'results' => $results,
                 'cateName' => $category->name,
-                'cate' => $category
+                'cate' => $category,
+                'cateRoot' => $cateRoot
+            ]);
+        }
+
+        abort(404);
+    }
+
+    public function productDetail(Request $request, $cate, $slug)
+    {
+        $category = Category::where('slug', $cate)
+            ->where('status', 1)
+            ->where('type', 'product')
+            ->first();
+        $product = Product::where('slug', $slug)
+            ->where('status', 1)
+            ->first();
+
+        if ($category && $product) {
+            $image_list = json_decode($product->image_list);
+
+            $averageReview = 0.0;
+            $reviews = Review::where('pro_id', $product->id)
+                ->where('status', 1)
+                ->get();
+            $sumStar = Review::where('pro_id', $product->id)
+                ->where('status', 1)
+                ->sum('star');
+            
+            if (count($reviews) > 0) {
+                $averageReview = $sumStar / count($reviews);
+            }
+            
+            $relatedProducts = Product::where('cat_id', $product->cat_id)
+                ->where('status', 1)
+                ->limit(8)
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->except($product->id);
+
+            $featureArticles = Article::orderBy('created_at', 'desc')
+                ->where('status', 1)
+                ->where('is_feature', 1)
+                ->limit(5)
+                ->get();
+
+            $otherProducts = Product::where('cat_id', '<>' , $product->cat_id)
+                ->where('status', 1)
+                ->limit(5)
+                ->orderBy('created_at', 'desc')
+                ->get()
+                ->except($product->id);
+
+            if (count($otherProducts) > 0) {
+                foreach ($otherProducts as $pro) {
+                    $category = Category::find($pro->cat_id);
+                    if ($category->parent_id == 0) {
+                        $cateRoot = $category;
+                    } else {
+                        $cateRoot = Category::find($category->parent_id);
+                    }
+
+                    $pro['cateRoot'] = $cateRoot;
+                }
+            }
+
+            $saleContent = [];
+            if (!is_null($product->sale_text) && $product->sale_text != '') {
+                $saleContent = explode(';', $product->sale_text);
+            }
+
+            return view('pages.user.product.detail', [
+                'category' => $category,
+                'product' => $product,
+                'image_list' => $image_list,
+                'reviews' => $reviews,
+                'averageReview' => round($averageReview, 1),
+                'relatedProducts' => $relatedProducts,
+                'featureArticles' => $featureArticles,
+                'otherProducts' => $otherProducts,
+                'saleContent' => $saleContent
             ]);
         }
 

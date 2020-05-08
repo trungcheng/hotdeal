@@ -9,10 +9,10 @@
 @section('keywords'){{ $cate ? $cate->seo_keyword : $setting->seo_keyword }}
 @stop
 
-@section('canonical'){{ $cate ? route('product-detail', ['slug' => $cate->slug]) : route('store') }}/
+@section('canonical'){{ $cate ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $cate->slug]) : route('search') }}/
 @stop
 
-@section('alternate'){{ $cate ? route('product-detail', ['slug' => $cate->slug]) : route('store') }}/
+@section('alternate'){{ $cate ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $cate->slug]) : route('search') }}/
 @stop
 
 @section('propName'){{ $cate ? $cate->seo_title : $setting->seo_title }}
@@ -27,7 +27,7 @@
 @section('ogDesc'){{ $cate ? $cate->seo_desc : $setting->seo_desc }}
 @stop
 
-@section('ogUrl'){{ $cate ? route('product-detail', ['slug' => $cate->slug]) : route('store') }}/
+@section('ogUrl'){{ $cate ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $cate->slug]) : route('search') }}/
 @stop
 
 @section('ogImage'){{ $cate ? $cate->image : $setting->logo }}
@@ -989,13 +989,13 @@
                             <ul class="nav navbar-pills">
                                 @foreach ($categories as $cat)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('product-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
+                                        <a class="nav-link" href="{{ route('cate-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
                                         @if (isset($cat->childrens))
                                             <i class="fa fa-angle-down"></i>
                                             <ul class="dropdown-menu">
                                                 @foreach ($cat->childrens as $child)
                                                 <li class="dropdown-submenu nav-item">
-                                                    <a class="nav-link" href="{{ route('product-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                                    <a class="nav-link" href="{{ route('cate-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                                 </li>
                                                 @endforeach
                                             </ul>
@@ -1044,6 +1044,18 @@
 
                             <section class="products-view products-view-grid clearfix">
                                 @foreach ($results as $pro)
+                                <?php
+                                    if (!$cate) {
+                                        $category = \App\Models\Category::where('id', $pro->cat_id)->first();
+                                        if ($category) {
+                                            if ($category->parent_id == 0) {
+                                                $cateRoot = $category;
+                                            } else {
+                                                $cateRoot = \App\Models\Category::find($category->parent_id);
+                                            }
+                                        }
+                                    }
+                                ?>
                                 <div class="col-xs-6 col-sm-4 col-md-3 no-padding">
                                     <div class="product-box">
                                         <div class="product-thumbnail">
@@ -1051,13 +1063,13 @@
                                             <div class="sale-flash">SALE</div>
                                             @endif
                                             <div class="product-image-flip">
-                                                <a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">
+                                                <a href="{{ route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $pro->slug]) }}" title="{{ $pro->name }}">
                                                     <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="product-info a-center">
-                                            <h3 class="product-name"><a href="{{ route('product-detail', ['slug' => $pro->slug]) }}" title="{{ $pro->name }}">{{ $pro->name }}</a></h3>
+                                            <h3 class="product-name"><a href="{{ route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $pro->slug]) }}" title="{{ $pro->name }}">{{ $pro->name }}</a></h3>
                                             <div class="price-box clearfix">
                                                 <div class="special-price">
                                                     <span class="price product-price">

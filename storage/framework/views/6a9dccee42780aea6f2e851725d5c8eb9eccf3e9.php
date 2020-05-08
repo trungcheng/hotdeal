@@ -10,11 +10,11 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('canonical'); ?><?php echo e(route('product-detail', ['slug' => $product->slug])); ?>
+<?php $__env->startSection('canonical'); ?><?php echo e(route('product-detail', ['cate' => $category->slug, 'slug' => $product->slug])); ?>
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('alternate'); ?><?php echo e(route('product-detail', ['slug' => $product->slug])); ?>
+<?php $__env->startSection('alternate'); ?><?php echo e(route('product-detail', ['cate' => $category->slug, 'slug' => $product->slug])); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -34,7 +34,7 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('ogUrl'); ?><?php echo e(route('product-detail', ['slug' => $product->slug])); ?>
+<?php $__env->startSection('ogUrl'); ?><?php echo e(route('product-detail', ['cate' => $category->slug, 'slug' => $product->slug])); ?>
 
 <?php $__env->stopSection(); ?>
 
@@ -49,6 +49,60 @@
 <?php $__env->startSection('pageCss'); ?>
 	<link href="<?php echo e(asset('frontend/css/lightbox.css')); ?>" rel="stylesheet" type="text/css" />
 	<link href="<?php echo e(asset('frontend/css/product.review.css')); ?>" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+		.area_promotion {
+		    display: block;
+		    overflow: hidden;
+		    border: 1px solid #ddd;
+		    border-radius: 4px;
+		    position: relative;
+		    /*margin: 5px 10px 12px;*/
+		    background: #fff;
+		    padding-bottom: 10px;
+		}
+		.area_promotion strong {
+		    display: block;
+		    overflow: hidden;
+		    font-size: 15px;
+		    color: #333;
+		    padding: 15px 15px 10px 15px;
+		    text-transform: uppercase;
+		}
+		.area_promotion .infopr span {
+		    display: block;
+		    overflow: hidden;
+		    font-size: 14px;
+		    color: #333;
+		    padding: 0 15px 5px 40px;
+		}
+		.area_promotion .infopr span:before {
+		    content: '';
+		    margin-left: -20px;
+		    background: url('/frontend/images/icons/check@2x.png');
+		    width: 14px;
+		    height: 14px;
+		    background-size: 14px 14px;
+		    margin-right: 0;
+		    float: left;
+		    margin-top: 5px;
+		}
+		.list-blogs .product-price {
+			color: #d0021b;
+		    font-size: 1em;
+		    line-height: 1.71429em;
+		    display: inline-block;
+		    font-weight: 600;
+		}
+		#sidebar.sticky {
+		  	float: none;
+			position: fixed;
+			top: 20px;
+			z-index: 6;
+			right: auto;
+		}
+
+	</style>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -56,18 +110,31 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<ul class="breadcrumb" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-						<li class="home">
-							<a itemprop="url" href="/" title="Trang chủ"><span itemprop="title">Trang chủ</span></a>
+					<ul class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+						<li class="home" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+							<a itemprop="item" href="/" title="Trang chủ">
+								<span itemprop="name">Trang chủ</span>
+								<meta itemprop="position" content="1" />
+							</a>
 							<span><i class="fa fa-angle-right"></i></span>
 						</li>
-						<li>
-							<a itemprop="url" href="<?php echo e(route('product-detail', ['slug' => $product->category->slug])); ?>" title="<?php echo e($product->category->name); ?>"><span itemprop="title"><?php echo e($product->category->name); ?></span></a>
+
+
+						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+							<a itemprop="item" href="/giam-gia" title="Giảm giá">
+								<span itemprop="name">Giảm giá</span>
+								<meta itemprop="position" content="2" />
+							</a>
 							<span><i class="fa fa-angle-right"></i></span>
 						</li>
-						<li>
-							<strong><span itemprop="title"><?php echo e($product->name); ?></span></strong>
+
+						<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+							<strong>
+								<span itemprop="name">Internet Tivi Samsung 49 inch UA49J5200</span>
+								<meta itemprop="position" content="3" />
+							</strong>
 						</li>
+
 					</ul>
 				</div>
 			</div>
@@ -77,14 +144,14 @@
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js' type='text/javascript'></script>
 
 	<section class="product" itemscope itemtype="http://schema.org/Product">
-		<meta itemprop="url" content="<?php echo e(route('product-detail', ['slug' => $product->slug])); ?>">
+		<meta itemprop="url" content="<?php echo e(route('product-detail', ['cate' => $category->slug, 'slug' => $product->slug])); ?>">
 		<meta itemprop="image" content="<?php echo e($product->image); ?>">
 		<meta itemprop="description" content="<?php echo e($product->name); ?>">
 		<meta itemprop="name" content="<?php echo e($product->name); ?>">
 		<div class="container">
 			<div class="row">
 				<div class="details-product clearfix">
-					<div class="col-lg-9 col-md-9 col-xs-12">
+					<div class="col-lg-9 col-md-9 col-xs-12" id="content">
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-6">
 								<div id="product" class="relative product-image-block ">
@@ -116,10 +183,6 @@
 										</div>
 										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									</div>
-								</div>
-
-								<div class="social-sharing">
-									
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 details-pro">
@@ -187,6 +250,17 @@
 									</div>
 								</div>
 
+								<?php if(count($saleContent) > 0): ?>
+								<div class="area_promotion once">
+					                <strong>Khuyến mãi</strong>
+					    			<div class="infopr">
+					                    <?php $__currentLoopData = $saleContent; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+					                    	<span><?php echo $sale; ?></span>
+					                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+					    			</div>
+					        	</div>
+					        	<?php endif; ?>
+
 								<div class="product-sidebar-ant-fashion hidden-lg hidden-md">
 
 									<div class="box-hotlines clearfix">
@@ -241,20 +315,20 @@
 											<div class="col-md-12">
 												<div class="related-product collections-container">
 													<div style="margin-bottom:0px" class="feature_category_title">
-														<h3 style="color:#323c3f;letter-spacing:.01em;">So sánh với các sản phẩm cùng loại</h3>
+														<h3 style="color:#323c3f;letter-spacing:.01em;font-size: 18px;">So sánh với các sản phẩm cùng loại</h3>
 													</div>
 													<div class="products owl-carousel owl-theme products-view-grid" data-md-items="4" data-sm-items="4" data-xs-items="2" data-margin="0">
 														<?php $__currentLoopData = $relatedProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 														<div class="product-box">
 															<div class="product-thumbnail">
 																<div class="product-image-flip">
-																	<a href="<?php echo e(route('product-detail', ['slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>">
+																	<a href="<?php echo e(route('product-detail', ['cate' => $category->slug, 'slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>">
 																		<img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($pro->image); ?>" alt="<?php echo e($pro->name); ?>" class="img-responsive center-block" />
 																	</a>
 																</div>
 															</div>
 															<div class="product-info a-center">
-																<h3 class="product-name"><a href="<?php echo e(route('product-detail', ['slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>"><?php echo e($pro->name); ?></a></h3>
+																<h3 class="product-name"><a href="<?php echo e(route('product-detail', ['cate' => $category->slug, 'slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>"><?php echo e($pro->name); ?></a></h3>
 																<div class="price-box clearfix">
 																	<div class="special-price">
 																		<span class="price product-price">
@@ -405,7 +479,7 @@
 
 									<div id="myTabContent" class="tab-content">
 										<div role="tabpanel" class="tab-pane fade in active" id="comment" aria-labelledby="comment-tab">
-						                    <div class="fb-comments" data-href="<?php echo e(route('product-detail', ['slug' => $product->slug])); ?>" data-width="100%" data-numposts="10"></div>
+						                    <div class="fb-comments" data-href="<?php echo e(route('product-detail', ['cate' => $category->slug, 'slug' => $product->slug])); ?>" data-width="100%" data-numposts="10"></div>
 										</div>
 									</div>
 
@@ -415,8 +489,8 @@
 						</div>
 					</div>
 
-					<div class="col-lg-3 col-md-3 col-xs-12">
-						<div class="product-sidebar-ant-fashion">
+					<div class="col-lg-3 col-md-3 col-xs-12" id="sidebar">
+						<div class="product-sidebar-ant-fashion inner">
 
 							<div class="box-hotlines clearfix hidden-sm hidden-xs">
 								<div class="box-hotlines-left">
@@ -436,6 +510,59 @@
 								</div>
 							</div>
 
+							<?php if(count($featureArticles) > 0): ?>
+			                <div class="aside-item hidden-sm hidden-xs" style="margin-top:35px">
+			                    <div class="heading">
+			                        <h2 class="title-head">Tin tức nổi bật</h2>
+			                    </div>
+			                    <div class="list-blogs">
+			                        <div class="row">
+			                            <?php $__currentLoopData = $featureArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+			                            <article class="blog-item blog-item-list col-md-12">
+			                                <a href="<?php echo e(route('article-detail', ['slug' => $article->slug])); ?>" class="panel-box-media">
+			                                    <img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($article->image); ?>" width="70" height="70" alt="<?php echo e($article->title); ?>" />
+			                                </a>
+			                                <div class="blogs-rights">
+			                                    <h3 class="blog-item-name"><a href="<?php echo e(route('article-detail', ['slug' => $article->slug])); ?>" title="<?php echo e($article->title); ?>"><?php echo e($article->title); ?></a></h3>
+			                                    
+			                                </div>
+			                            </article>
+			                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+			                        </div>
+			                    </div>
+			                </div>
+			                <?php endif; ?>
+
+			                <?php if(count($otherProducts) > 0): ?>
+			                <div class="aside-item hidden-sm hidden-xs" style="margin-top:20px;">
+			                    <div class="heading">
+			                        <h2 class="title-head">Sản phẩm khác</h2>
+			                    </div>
+			                    <div class="list-blogs">
+			                        <div class="row">
+			                            <?php $__currentLoopData = $otherProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+			                            <article class="blog-item blog-item-list col-md-12">
+			                                <a href="<?php echo e(route('product-detail', ['cate' => $pro1->cateRoot, 'slug' => $pro1->slug])); ?>" class="panel-box-media">
+			                                    <img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($pro1->image); ?>" width="70" height="70" alt="<?php echo e($pro1->name); ?>" />
+			                                </a>
+			                                <div class="blogs-rights">
+			                                    <h3 class="blog-item-name"><a href="<?php echo e(route('product-detail', ['cate' => $pro1->cateRoot, 'slug' => $pro1->slug])); ?>" title="<?php echo e($pro1->name); ?>"><?php echo e($pro1->name); ?></a></h3>
+			                                    <div class="price-box clearfix">
+													<div class="special-price">
+														<span class="price product-price">
+															<?php echo e(number_format($pro1->price_sale, 0, 0, '.')); ?>đ
+														</span>
+													</div>
+												</div>
+			                                    
+			                                </div>
+			                            </article>
+			                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+			                        </div>
+			                    </div>
+			                </div>
+			                <?php endif; ?>
+
 							
 
 						</div>
@@ -445,127 +572,8 @@
 		</div>
 
 	</section>
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('pageJs'); ?>	
-	<script src="<?php echo e(asset('frontend/js/jquery-zoom.min.js')); ?>" type="text/javascript"></script>
-	<script src="<?php echo e(asset('frontend/js/jquery-prettyphoto.min.js')); ?>" type="text/javascript"></script>
-	<script src="<?php echo e(asset('frontend/js/jquery-prettyphotoboot.min.js')); ?>" type="text/javascript"></script>
-	<script src="<?php echo e(asset('frontend/js/product.review.js')); ?>" type="text/javascript"></script>
 
 	<script>
-		var product = {
-			"id": 8891917,
-			"name": "Android Tivi Sony 4K 49 inch KD-49X7500E",
-			"alias": "android-tivi-sony-4k-49-inch-kd-49x7500e",
-			"vendor": "Sony",
-			"type": "Tivi",
-			"price": 19900000.0000,
-			"price_max": 19900000.0000,
-			"price_min": 19900000.0000,
-			"price_varies": false,
-			"compare_at_price_max": 22000000.0000,
-			"compare_at_price_min": 22000000.0000,
-			"compare_at_price_varies": false,
-			"template_layout": "product",
-			"tags": null,
-			"meta_title": "Android Tivi Sony 4K 49 inch KD-49X7500E",
-			"meta_description": "Thiết kế mỏng ấn tượng Smart Tivi Sony 4K 49 inch KD-49X7500E sở hữu kiểu dáng tinh tế, thời trang cùng với kích thước màn hình rộng 49 inch, kết hợp khung viền",
-			"summary": "\u003cp\u003eSmart Tivi Sony 4K 49 inch KD-49X7500E\u0026nbsp;sở hữu kiểu dáng tinh tế, thời trang cùng với kích thước màn hình rộng 49 inch, kết hợp khung viền chắc chắn, sắc sảo và tông màu đen quý phái.\u003c/p\u003e",
-			"featured_image": {
-				"alt": "",
-				"id": 21245178,
-				"product_id": 8891917,
-				"position": "1",
-				"src": "//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357",
-				"attached_to_variant": false,
-				"variant_ids": [],
-				"width": 1020,
-				"height": 680
-			},
-			"images": [{
-				"alt": "",
-				"id": 21245178,
-				"product_id": 8891917,
-				"position": "1",
-				"src": "//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-1-org.jpg?v=1509778197357",
-				"attached_to_variant": false,
-				"variant_ids": [],
-				"width": 1020,
-				"height": 680
-			}, {
-				"alt": "",
-				"id": 21245179,
-				"product_id": 8891917,
-				"position": "2",
-				"src": "//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-2-org.jpg?v=1509778199387",
-				"attached_to_variant": false,
-				"variant_ids": [],
-				"width": 1020,
-				"height": 680
-			}, {
-				"alt": "",
-				"id": 21245180,
-				"product_id": 8891917,
-				"position": "3",
-				"src": "//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-3-org.jpg?v=1509778192987",
-				"attached_to_variant": false,
-				"variant_ids": [],
-				"width": 1020,
-				"height": 680
-			}, {
-				"alt": "",
-				"id": 21245181,
-				"product_id": 8891917,
-				"position": "4",
-				"src": "//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-4-org.jpg?v=1509778192987",
-				"attached_to_variant": false,
-				"variant_ids": [],
-				"width": 1020,
-				"height": 680
-			}, {
-				"alt": "",
-				"id": 21245184,
-				"product_id": 8891917,
-				"position": "5",
-				"src": "//bizweb.dktcdn.net/100/270/860/products/tivi-sony-kd-49x7500e-7-org.jpg?v=1509778192987",
-				"attached_to_variant": false,
-				"variant_ids": [],
-				"width": 1020,
-				"height": 680
-			}],
-			"options": ["Title"],
-			"variants": [{
-				"id": 14154614,
-				"barcode": null,
-				"sku": null,
-				"price": 19900000.0000,
-				"compare_at_price": 22000000.0000,
-				"options": ["Default Title"],
-				"option1": "Default Title",
-				"option2": null,
-				"option3": null,
-				"title": "Default Title",
-				"taxable": false,
-				"inventory_management": "",
-				"inventory_policy": "deny",
-				"inventory_quantity": 1,
-				"weight": 0.0,
-				"weight_unit": "kg",
-				"image": null,
-				"requires_shipping": true,
-				"selected": false,
-				"url": "/android-tivi-sony-4k-49-inch-kd-49x7500e?variantid=14154614",
-				"available": true
-			}],
-			"selected_variant": null,
-			"available": true,
-			"content": "\u003ch3\u003eThiết kế mỏng ấn tượng\u003c/h3\u003e\n\u003cp\u003eSmart Tivi Sony 4K 49 inch KD-49X7500E\u0026nbsp;sở hữu kiểu dáng tinh tế, thời trang cùng với kích thước màn hình rộng 49 inch, kết hợp khung viền chắc chắn, sắc sảo và tông màu đen quý phái.\u003c/p\u003e\n\u003cp\u003e\u003cimg alt=\u0022Thiết kế siêu mỏng\u0022 data-src=\u0022https://cdn.tgdd.vn/Products/Images/1942/105258/sony-kd-49x7500e4.png\u0022 height=\u0022354\u0022 src=\u0022https://cdn.tgdd.vn/Products/Images/1942/105258/sony-kd-49x7500e4.png\u0022 title=\u0022Thiết kế siêu mỏng\u0022 width=\u0022800\u0022 /\u003e\u003c/p\u003e\n\u003ch3\u003eTrải nghiệm hình ảnh rõ ràng, chân thật\u003c/h3\u003e\n\u003cp\u003eKhông chỉ được đầu tư về thiết kế hiện đại mà\u0026nbsp;Sony\u0026nbsp;cũng đã bày tỏ sự quan tâm đặc biệt đến chất lượng của sản phẩm thông qua các công nghệ tiêu biểu:\u003c/p\u003e\n\u003cp\u003e- Độ phân giải\u0026nbsp;Ultra HD 4K\u0026nbsp;cùng công nghệ\u0026nbsp;HDR:\u0026nbsp;Cho phép hình ảnh ở các vùng sáng hoặc tối được hiển thị một cách rõ nét nhất, mang tới chiều sâu và độ tự nhiên nhất cho hình ảnh.\u003c/p\u003e\n\u003cp\u003e- Công nghệ 4K X-Reality Pro:\u0026nbsp;Xử lý tín hiệu hình ảnh thông minh, giúp nâng cấp hình ảnh đầu vào trở nên rõ ràng, trung thực gần chuẩn 4K.\u003c/p\u003e\n\u003ch3\u003eÂm thanh vang dội, cuốn hút\u003c/h3\u003e\n\u003cp\u003eVới công suất loa 20 W cùng chuỗi công nghệ âm thanh hiện đại (Clear Phase,\u0026nbsp;S-Force Front Surround,\u0026nbsp;ClearAudio+),\u0026nbsp;tivi Sony KD-49X7500E\u0026nbsp;sẽ tạo nên điểm nhấn lôi cuốn, hấp dẫn cho người nghe trải nghiệm âm thanh tự nhiên, sinh động hơn bao giờ hết.\u003c/p\u003e\n\u003ch3\u003eChiếu màn hình điện thoại lên tivi dễ dàng, nhanh chóng\u003c/h3\u003e\n\u003ch3\u003eHệ điều hành Android dễ sử dụng, kho ứng dụng phong phú\u003c/h3\u003e\n\u003cp\u003eHệ điều hành\u0026nbsp;Android\u0026nbsp;cùng khả năng kết nối internet, đáp ứng được các nhu cầu giải trí khác cho gia đình bạn từ kho ứng dụng lớn Google Play khổng lồ với Trình duyệt Web, Youtube, Zing TV, Netflix, Nhạc của tui…Thậm chí là bạn còn có thể chơi game thật mượt mà.\u003c/p\u003e\n\u003cp\u003e\u003cimg alt=\u0022Android Tivi Sony\u0022 src=\u0022//bizweb.dktcdn.net/100/270/860/files/tivisony-kd-49x7500e-550x3407.jpg?v=1510728985483\u0022 /\u003e\u003c/p\u003e\n\u003ch3\u003eKết nối dễ dàng với thiết bị ngoài\u003c/h3\u003e\n\u003cp\u003e- Cổng\u0026nbsp;Optical: mang lại trải nghiệm âm thanh mạnh mẽ, chất lượng và sống động hơn.\u003c/p\u003e\n\u003cp\u003e- Cổng\u0026nbsp;HDMI:\u0026nbsp;Với dây cáp HDMI, bạn có chia sẻ hình ảnh/dữ liệu từ thiết bị điện từ bên ngoài lên màn hình tivi.\u003c/p\u003e\n\u003cp\u003e- Cổng\u0026nbsp;USB: Sử dụng USB để chia sẻ nội dung trực tiếp lên tivi.\u003c/p\u003e",
-			"summary_or_content": "\u003cp\u003eSmart Tivi Sony 4K 49 inch KD-49X7500E\u0026nbsp;sở hữu kiểu dáng tinh tế, thời trang cùng với kích thước màn hình rộng 49 inch, kết hợp khung viền chắc chắn, sắc sảo và tông màu đen quý phái.\u003c/p\u003e",
-			"created_on": "2017-11-04T13:49:52Z",
-			"published_on": "2017-11-04T13:49:00Z",
-			"object_type": null
-		};
 		var selectCallback = function(variant, selector) {
 			if (variant) {
 
@@ -589,8 +597,13 @@
 				savePrice = jQuery('.details-pro .save-price .product-price-save'),
 				savePriceText = jQuery('.details-pro .save-price'),
 				qtyBtn = jQuery('.form-product .form-group .custom-btn-number'),
-				max = jQuery('.form-product .form-group .qty');
-
+				max = jQuery('.form-product .form-group .qty'),
+				product_sku = jQuery('.details-pro .sku-product .variant-sku');
+			if (variant && variant.sku != "" && variant.sku != null) {
+				product_sku.html(variant.sku);
+			} else {
+				product_sku.html('(Đang cập nhật...)');
+			}
 			if (variant && variant.available) {
 				if (variant.inventory_management == "bizweb") {
 					if (variant.inventory_quantity != 0) {
@@ -700,13 +713,8 @@
 			/*end of variant image*/
 		};
 		jQuery(function($) {
-
-
 			// Add label if only one product option and it isn't 'Title'. Could be 'Size'.
-
-
 			// Hide selectors if we only have 1 variant and its title contains 'Default'.
-
 			$('.selector-wrapper').hide();
 
 			$('.selector-wrapper').css({
@@ -806,5 +814,13 @@
 			return false;
 		}
 	</script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('pageJs'); ?>
+	<script src="<?php echo e(asset('frontend/js/jquery-zoom.min.js')); ?>" type="text/javascript"></script>
+	<script src="<?php echo e(asset('frontend/js/jquery-prettyphoto.min.js')); ?>" type="text/javascript"></script>
+	<script src="<?php echo e(asset('frontend/js/jquery-prettyphotoboot.min.js')); ?>" type="text/javascript"></script>
+	<script src="<?php echo e(asset('frontend/js/product.review.js')); ?>" type="text/javascript"></script>
+	
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.user.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -15,6 +15,8 @@ class Category extends Model
         'slug',
         'icon',
         'order',
+        'type',
+        'is_home',
         'status',
         'seo_title',
         'seo_desc',
@@ -61,12 +63,26 @@ class Category extends Model
     {
         $data['slug'] = Util::generateSlug($data['name']);
 
+        if (in_array($data['seo_content'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['seo_content'] = '';
+        }
+        if (in_array($data['seo_schema'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['seo_schema'] = '';
+        }
+
         return self::firstOrCreate($data);
     }
 
     public static function updateAction($cate, $data)
     {
         $data['slug'] = Util::generateSlug($data['name']);
+
+        if (in_array($data['seo_content'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['seo_content'] = '';
+        }
+        if (in_array($data['seo_schema'], ['<p><br></p>','<br>','<p></p>',''])) {
+            $data['seo_schema'] = '';
+        }
 
         return $cate->update($data);
 

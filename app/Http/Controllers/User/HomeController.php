@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\Article;
 use App\Models\Slide;
@@ -21,23 +22,20 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $chauda = Product::where('cat_id', 1)
-            ->orderBy('created_at', 'desc')
-            ->where('status', 1)
-            ->limit(7)
+        $categoryChosen = Category::where('status', 1)
+            ->where('type', 'product')
+            ->where('is_home', 1)
             ->get();
 
-        $chauinox = Product::where('cat_id', 2)
-            ->orderBy('created_at', 'desc')
-            ->where('status', 1)
-            ->limit(7)
-            ->get();
-
-        $voiruabat = Product::where('cat_id', 3)
-            ->orderBy('created_at', 'desc')
-            ->where('status', 1)
-            ->limit(7)
-            ->get();
+        if (!empty($categoryChosen)) {
+            foreach ($categoryChosen as $category) {
+                if ($category->parent_id == 0) {
+                    $category['cateRoot'] = $category;
+                } else {
+                    $category['cateRoot'] = Category::find($category->parent_id);
+                }
+            }
+        }
 
         // $ads = Slide::where('status', 1)->where('type', 'ads')->orderBy('created_at', 'desc')->get();
     	// $featureProducts = Product::where('is_feature', 1)->limit(12)->get();
@@ -50,9 +48,7 @@ class HomeController extends Controller
         return view('pages.user.home.index', [
             // 'ads' => $ads,
             'slides' => $slides,
-            'chauda' => $chauda,
-            'chauinox' => $chauinox,
-            'voiruabat' => $voiruabat,
+            'categoryChosen' => $categoryChosen,
             // 'featureProducts' => $featureProducts,
             'featureArticles' => $featureArticles
         ]);

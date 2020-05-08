@@ -180,6 +180,7 @@
 
             <aside class="left left-content col-md-3 col-md-pull-9">
 
+                @if (count($articleCates) > 0)
                 <aside class="aside-item collection-category blog-category">
                     <div class="heading">
                         <h2 class="title-head"><span>Danh mục</span></h2>
@@ -272,15 +273,18 @@
 
                                     </ul>
                                 </li>--}}
-                                @foreach ($categories as $cat)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('article') }}">Mới nhất</a>
+                                </li>
+                                @foreach ($articleCates as $cat)
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('product-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
+                                        <a class="nav-link" href="{{ route('article-detail', ['slug' => $cat->slug]) }}">{{ $cat->name }}</a>
                                         @if (isset($cat->childrens))
                                             <i class="fa fa-angle-down"></i>
                                             <ul class="dropdown-menu">
                                                 @foreach ($cat->childrens as $child)
                                                 <li class="dropdown-submenu nav-item">
-                                                    <a class="nav-link" href="{{ route('product-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
+                                                    <a class="nav-link" href="{{ route('article-detail', ['slug' => $child->slug]) }}">{{ $child->name }}</a>
                                                 </li>
                                                 @endforeach
                                             </ul>
@@ -291,7 +295,9 @@
                         </nav>
                     </div>
                 </aside>
+                @endif
 
+                @if (count($otherArticles) > 0)
                 <div class="aside-item">
                     <div class="heading">
                         <h2 class="title-head">Bài viết khác</h2>
@@ -312,6 +318,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
 
             </aside>
 

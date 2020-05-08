@@ -55,10 +55,15 @@
             $scope.getResultsPage('all-category', 10, 1);
         }
 
-        $scope.loadInitCreate = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates').success(function (res) {
+        $scope.loadInitCreate = function (type = 'product') {
+            $http.get(app.vars.baseUrl + `/categories/getAllParentCates?type=${type}`).success(function (res) {
                 $scope.parentCates = res.data;
+                $scope.type = type;
             });
+        }
+
+        $scope.loadChangeCateType = function (type) {
+            $scope.loadInitCreate(type);
         }
 
         $scope.searchCategoryName = function() {

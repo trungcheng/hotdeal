@@ -33,6 +33,13 @@
                                     <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
+                                    <label>Loại danh mục</label>
+                                    <select ng-change="loadChangeCateType(type)" ng-model="type" class="form-control status" name="type">
+                                        <option value="product">Sản phẩm</option>
+                                        <option value="article">Bài viết</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Thuộc danh mục</label>
                                     <select class="form-control cate" name="parent_id">
                                         <option value="0">Không thuộc danh mục nào</option>
@@ -49,6 +56,13 @@
                                 <div class="form-group">
                                     <label>Thứ tự</label>
                                     <input class="form-control status" type="number" name="order" max="99" min="1" value="1" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Hiển thị lên trang chủ</label>
+                                    <select class="form-control status" name="is_home">
+                                        <option value="1">Có</option>
+                                        <option value="0">Không</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>
