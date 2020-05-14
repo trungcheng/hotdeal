@@ -1,45 +1,52 @@
-@extends('layouts.user.master')
+<?php $__env->startSection('page'); ?><?php echo e($setting->seo_title); ?>
 
-@section('page'){{ $setting->seo_title }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('description'){{ $setting->seo_desc }}
-@stop
+<?php $__env->startSection('description'); ?><?php echo e($setting->seo_desc); ?>
 
-@section('keywords'){{ $setting->seo_keyword }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('robots')noodp,index,follow
-@stop
+<?php $__env->startSection('keywords'); ?><?php echo e($setting->seo_keyword); ?>
 
-@section('canonical'){{ route('home') }}/
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('alternate'){{ route('home') }}/
-@stop
+<?php $__env->startSection('robots'); ?>noodp,index,follow
+<?php $__env->stopSection(); ?>
 
-@section('propName'){{ $setting->seo_title }}
-@stop
+<?php $__env->startSection('canonical'); ?><?php echo e(route('home')); ?>/
+<?php $__env->stopSection(); ?>
 
-@section('propDesc'){{ $setting->seo_desc }}
-@stop
+<?php $__env->startSection('alternate'); ?><?php echo e(route('home')); ?>/
+<?php $__env->stopSection(); ?>
 
-@section('ogTitle'){{ $setting->seo_title }}
-@stop
+<?php $__env->startSection('propName'); ?><?php echo e($setting->seo_title); ?>
 
-@section('ogDesc'){{ $setting->seo_desc }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('ogUrl'){{ route('home') }}/
-@stop
+<?php $__env->startSection('propDesc'); ?><?php echo e($setting->seo_desc); ?>
 
-@section('ogImage'){{ $setting->logo }}
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('schema'){{ $setting->seo_schema }}
-@stop
+<?php $__env->startSection('ogTitle'); ?><?php echo e($setting->seo_title); ?>
 
-@section('pageCss')
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ogDesc'); ?><?php echo e($setting->seo_desc); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ogUrl'); ?><?php echo e(route('home')); ?>/
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('ogImage'); ?><?php echo e($setting->logo); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('schema'); ?><?php echo e($setting->seo_schema); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('pageCss'); ?>
     <style type="text/css">
         .seo-content {
             padding: 5px;
@@ -48,20 +55,20 @@
             width: 100%;
         }
     </style>
-@stop
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <h1 class="hidden">King Bếp</h1>
 
     <section class="awe-section-1">
         <div class="container">
             <div class="col-md-3 no-padding"></div>
-            @if (count($slides) > 0)
+            <?php if(count($slides) > 0): ?>
             <div class="col-md-9 no-padding">
                 <div class="home-slider owl-carousel not-dqowl">
-                    @foreach ($slides as $slide)
+                    <?php $__currentLoopData = $slides; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slide): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="item">
-                            @if ($slide->target_type == 'product')
+                            <?php if($slide->target_type == 'product'): ?>
                                 <?php
                                     if ($slide->product) {
                                         $category = \App\Models\Category::where('id', $slide->product->cat_id)
@@ -74,8 +81,8 @@
                                             }
 
                                             ?>
-                                            <a href="{{ ($slide->product) ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $slide->product->slug]) : 'javascript:void(0)' }}" class="clearfix">
-                                                <img src="{{ $slide->image }}" alt="{{ $slide->title }}" class="img-responsive center-block" />
+                                            <a href="<?php echo e(($slide->product) ? route('product-detail', ['cate' => $cateRoot->slug, 'slug' => $slide->product->slug]) : 'javascript:void(0)'); ?>" class="clearfix">
+                                                <img src="<?php echo e($slide->image); ?>" alt="<?php echo e($slide->title); ?>" class="img-responsive center-block" />
                                             </a>
                                             <?php
                                         }
@@ -87,26 +94,26 @@
                                         <?php
                                     }
                                 ?>
-                            @elseif ($slide->target_type == 'article')
-                                @if ($slide->article)
-                                <a href="{{ ($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)' }}" class="clearfix">
-                                    <img src="{{ $slide->image }}" alt="{{ $slide->title }}" class="img-responsive center-block" />
+                            <?php elseif($slide->target_type == 'article'): ?>
+                                <?php if($slide->article): ?>
+                                <a href="<?php echo e(($slide->article) ? route('article-detail', ['slug' => $slide->article->slug]) : 'javascript:void(0)'); ?>" class="clearfix">
+                                    <img src="<?php echo e($slide->image); ?>" alt="<?php echo e($slide->title); ?>" class="img-responsive center-block" />
                                 </a>
-                                @else
+                                <?php else: ?>
                                 <a href="javascript:void(0)" class="clearfix">
                                     <img src="" alt="" class="img-responsive center-block" />
                                 </a>
-                                @endif
-                            @else
+                                <?php endif; ?>
+                            <?php else: ?>
                                 <a href="javascript:void(0)" class="clearfix">
                                     <img src="" alt="" class="img-responsive center-block" />
                                 </a>
-                            @endif
+                            <?php endif; ?>
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
-            @else
+            <?php else: ?>
             <div class="col-md-9 no-padding">
                 <div class="home-slider owl-carousel not-dqowl">
                     <div class="item">
@@ -116,7 +123,7 @@
                     </div>
                 </div>
             </div>
-            @endif
+            <?php endif; ?>
         </div>
     </section>
 
@@ -129,7 +136,7 @@
 
                             <div class="item">
                                 <div class="section_policy_content">
-                                    <img src="{{ asset('frontend/images/icons/policy-icon-1.svg') }}" alt="Bảo đảm chất lượng" />
+                                    <img src="<?php echo e(asset('frontend/images/icons/policy-icon-1.svg')); ?>" alt="Bảo đảm chất lượng" />
                                     <div class="section-policy-padding">
                                         <h3>Bảo đảm chất lượng</h3>
                                         <div class="section_policy_title">Sản phẩm bảo đảm chất lượng.</div>
@@ -139,7 +146,7 @@
 
                             <div class="item">
                                 <div class="section_policy_content">
-                                    <img src="{{ asset('frontend/images/icons/policy-icon-2.svg') }}" alt="Miễn phí giao hàng" />
+                                    <img src="<?php echo e(asset('frontend/images/icons/policy-icon-2.svg')); ?>" alt="Miễn phí giao hàng" />
                                     <div class="section-policy-padding">
                                         <h3>Miễn phí giao hàng</h3>
                                         <div class="section_policy_title">Cho đơn hàng từ 2 triệu đồng.</div>
@@ -149,17 +156,17 @@
 
                             <div class="item">
                                 <div class="section_policy_content">
-                                    <img src="{{ asset('frontend/images/icons/policy-icon-3.svg') }}" alt="Hỗ trợ 24/7" />
+                                    <img src="<?php echo e(asset('frontend/images/icons/policy-icon-3.svg')); ?>" alt="Hỗ trợ 24/7" />
                                     <div class="section-policy-padding">
                                         <h3>Hỗ trợ 24/7</h3>
-                                        <div class="section_policy_title">Hotline: {{ $setting->phone }}</div>
+                                        <div class="section_policy_title">Hotline: <?php echo e($setting->phone); ?></div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="item">
                                 <div class="section_policy_content">
-                                    <img src="{{ asset('frontend/images/icons/policy-icon-4.svg') }}" alt="Đổi trả hàng" />
+                                    <img src="<?php echo e(asset('frontend/images/icons/policy-icon-4.svg')); ?>" alt="Đổi trả hàng" />
                                     <div class="section-policy-padding">
                                         <h3>Đổi trả hàng</h3>
                                         <div class="section_policy_title">Trong vòng 7 ngày.</div>
@@ -174,8 +181,8 @@
         </div>
     </section>
 
-    @if (count($categoryChosen) > 0)
-    @foreach ($categoryChosen as $category)
+    <?php if(count($categoryChosen) > 0): ?>
+    <?php $__currentLoopData = $categoryChosen; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <section class="awe-section-4">
         <div class="section_group_product section_group_product_1">
             <div class="container">
@@ -183,12 +190,12 @@
                     <div class="col-md-12">
                         <div class="box-shock">
                             <div class="barbox clearfix">
-                                <h2 class="titlecate">{{ $category->name }}</h2>
+                                <h2 class="titlecate"><?php echo e($category->name); ?></h2>
                                 <div class="menu-button-edit">
                                     <i class="fa fa-navicon" aria-hidden="true"></i>
                                 </div>
                                 <ul>
-                                    <li><a href="{{ route('cate-detail', ['slug' => $category->slug]) }}" class="viewmoretext">Xem tất cả</a></li>
+                                    <li><a href="<?php echo e(route('cate-detail', ['slug' => $category->slug])); ?>" class="viewmoretext">Xem tất cả</a></li>
                                 </ul>
                             </div>
                             <div class="row">
@@ -216,41 +223,41 @@
                                                 ->limit(7)
                                                 ->get();
                                         ?>
-                                        @if (count($results) > 0)
-                                            @foreach ($results as $pro)
+                                        <?php if(count($results) > 0): ?>
+                                            <?php $__currentLoopData = $results; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pro): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <div class="item">
                                                     <div class="product-box">
                                                         <div class="product-thumbnail">
-                                                            @if ($pro->discount > 0)
+                                                            <?php if($pro->discount > 0): ?>
                                                                 <div class="sale-flash">SALE</div>
-                                                            @endif
+                                                            <?php endif; ?>
                                                             <div class="product-image-flip">
-                                                                <a href="{{ route('product-detail', ['cate' => $category->cateRoot->slug, 'slug' => $pro->slug]) }}" title="{{ $pro->name }}">
-                                                                    <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $pro->image }}" alt="{{ $pro->name }}" class="img-responsive center-block" />
+                                                                <a href="<?php echo e(route('product-detail', ['cate' => $category->cateRoot->slug, 'slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>">
+                                                                    <img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($pro->image); ?>" alt="<?php echo e($pro->name); ?>" class="img-responsive center-block" />
                                                                 </a>
                                                             </div>
                                                         </div>
                                                         <div class="product-info a-center">
-                                                            <h3 class="product-name"><a href="{{ route('product-detail', ['cate' => $category->cateRoot->slug, 'slug' => $pro->slug]) }}" title="{{ $pro->name }}">{{ $pro->name }}</a></h3>
+                                                            <h3 class="product-name"><a href="<?php echo e(route('product-detail', ['cate' => $category->cateRoot->slug, 'slug' => $pro->slug])); ?>" title="<?php echo e($pro->name); ?>"><?php echo e($pro->name); ?></a></h3>
                                                             <div class="price-box clearfix">
                                                                 <div class="special-price">
                                                                     <span class="price product-price">
-                                                                        {{ number_format($pro->price_sale, 0, 0, '.') }}đ
+                                                                        <?php echo e(number_format($pro->price_sale, 0, 0, '.')); ?>đ
                                                                     </span>
                                                                 </div>
-                                                                @if ($pro->discount > 0)
+                                                                <?php if($pro->discount > 0): ?>
                                                                 <div class="old-price">
                                                                     <span class="price product-price-old">
-                                                                        {{ number_format($pro->price, 0, 0, '.') }}đ
+                                                                        <?php echo e(number_format($pro->price, 0, 0, '.')); ?>đ
                                                                     </span>
                                                                 </div>
-                                                                @endif
+                                                                <?php endif; ?>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            @endforeach
-                                        @endif
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -260,10 +267,10 @@
             </div>
         </div>
     </section>
-    @endforeach
-    @endif
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    <?php endif; ?>
 
-    @if (count($featureArticles) > 0)
+    <?php if(count($featureArticles) > 0): ?>
     <section class="awe-section-10">
         <section class="section_group_product section-news">
             <div class="container">
@@ -273,28 +280,28 @@
                             <div class="box-shock">
                                 <div class="barbox clearfix">
                                     <h2 class="titlecate">Kinh nghiệm hay</h2>
-                                    <a href="{{ route('article') }}" class="viewmoretext">Xem tất cả</a>
+                                    <a href="<?php echo e(route('article')); ?>" class="viewmoretext">Xem tất cả</a>
                                 </div>
                                 <div class="list-blogs-link">
                                     <div class="section_blogs_owl owl-carousel owl-theme not-dqowl">
-                                        @foreach ($featureArticles as $article)
+                                        <?php $__currentLoopData = $featureArticles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $article): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="item">
                                             <article class="blog-item">
                                                 <div class="blog-item-thumbnail">
-                                                    <a href="{{ route('article-detail', ['slug' => $article->slug]) }}">
-                                                        <img src="{{ asset('frontend/images/icons/loaders.svg') }}" data-lazyload="{{ $article->image }}" alt="{{ $article->title }}" class="img-responsive center-block" />
+                                                    <a href="<?php echo e(route('article-detail', ['slug' => $article->slug])); ?>">
+                                                        <img src="<?php echo e(asset('frontend/images/icons/loaders.svg')); ?>" data-lazyload="<?php echo e($article->image); ?>" alt="<?php echo e($article->title); ?>" class="img-responsive center-block" />
                                                     </a>
                                                 </div>
                                                 <div class="blog-item-contens">
-                                                    <h3 class="blog-item-name margin-top-10"><a href="{{ route('article-detail', ['slug' => $article->slug]) }}" title="{{ $article->title }}">{{ $article->title }}</a></h3>
+                                                    <h3 class="blog-item-name margin-top-10"><a href="<?php echo e(route('article-detail', ['slug' => $article->slug])); ?>" title="<?php echo e($article->title); ?>"><?php echo e($article->title); ?></a></h3>
                                                     <div class="post-time">
-                                                        <span>{{ $article->created_at }}</span>
+                                                        <span><?php echo e($article->created_at); ?></span>
                                                     </div>
-                                                    <p class="blog-item-summary margin-bottom-10">{!! $article->intro !!}</p>
+                                                    <p class="blog-item-summary margin-bottom-10"><?php echo $article->intro; ?></p>
                                                 </div>
                                             </article>
                                         </div>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -304,9 +311,9 @@
             </div>
         </section>
     </section>
-    @endif
+    <?php endif; ?>
 
-    @if ($setting->seo_content != '' && $setting->seo_content != null)
+    <?php if($setting->seo_content != '' && $setting->seo_content != null): ?>
     <section class="awe-section-10">
         <section class="section_group_product section-news">
             <div class="container">
@@ -315,7 +322,8 @@
                         <div class="col-md-12">
                             <div class="box-shock">
                                 <div class="list-blogs-link seo-content">
-                                    {!! $setting->seo_content !!}
+                                    <?php echo $setting->seo_content; ?>
+
                                 </div>
                             </div>
                         </div>
@@ -324,10 +332,10 @@
             </div>
         </section>
     </section>
-    @endif
-@stop
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
 
-@section('pageJs')
+<?php $__env->startSection('pageJs'); ?>
     <script type="text/javascript">
         $(function () {
             $('.blog-item-contens p').each(function (v, k) {
@@ -373,4 +381,5 @@
             }
         });
     </script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.user.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
