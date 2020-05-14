@@ -1457,7 +1457,7 @@ footer .site-footer {
 }
 footer .footer-widget h4 {
     display: block;
-    font-size: 14px;
+    font-size: 14px !important;
     text-transform: uppercase;
     font-weight: 600;
 }
@@ -1561,7 +1561,7 @@ footer .footer-widget .contact-info-page li a:hover, footer .footer-widget .cont
 }
 header nav .nav-item.active>a, header nav .nav-item:hover>a {
     /* color: #d0021b; */
-    color: #a90202;
+    color: #a90202 !important;
 }
 .aside-item.collection-category {
     margin-bottom: 20px;
@@ -1580,13 +1580,13 @@ header nav .nav-item.active>a, header nav .nav-item:hover>a {
 }
 .aside-item.collection-category .nav li a {
     font-size: 14px;
-    padding-left: 0;
+    padding-left: 0px !important;
     padding-right: 10px;
     color: #222;
 }
 .aside-item.collection-category .nav li a:hover, .aside-item.collection-category .nav li a:focus {
     /*color: #189eff;*/
-    color: #a90202;
+    color: #a90202 !important;
     background-color: transparent;
 }
 .aside-item.collection-category .nav>li>a {
@@ -3308,8 +3308,8 @@ header nav .nav-item.active>a, header nav .nav-item:hover>a {
     float: left;
 }
 .details-product .details-pro .form-product .form-group .btn-lg:hover, .details-product .details-pro .form-product .form-group .btn-lg:focus {
-    background-color: #0093fe;
-    border-color: #0093fe;
+    background-color: #a90202;
+    border-color: #a90202;
 }
 .details-product .details-pro .form-product .swatch {
     display: table;

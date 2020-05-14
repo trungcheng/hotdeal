@@ -174,6 +174,9 @@
 										@endforeach
 									</div>
 								</div>
+								<div class="social-sharing">
+									<div class="fb-like" data-href="{{ route('product-detail', ['cate' => $category->slug, 'slug' => $product->slug]) }}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 details-pro">
 								<h1 class="title-head">{{ $product->name }}</h1>
@@ -276,8 +279,7 @@
 									</div>
 								</div>
 							</div>
-
-							<div class="col-xs-12 col-sm-12 col-md-12 margin-top-15 margin-bottom-10">
+							<div class="col-xs-12 col-sm-12 col-md-12 margin-top-30 margin-bottom-10">
 								<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 									<ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
 										<li role="presentation" class="active">
@@ -473,7 +475,7 @@
 
 									<div id="myTabContent" class="tab-content">
 										<div role="tabpanel" class="tab-pane fade in active" id="comment" aria-labelledby="comment-tab">
-						                    <div class="fb-comments" data-href="{{ route('product-detail', ['cate' => $category->slug, 'slug' => $product->slug]) }}" data-width="100%" data-numposts="10"></div>
+						                    <div class="fb-comments" data-href="{{ route('product-detail', ['cate' => $category->slug, 'slug' => $product->slug]) }}" data-width="847" data-numposts="10"></div>
 										</div>
 									</div>
 

@@ -177,7 +177,7 @@ class CartController extends Controller
             $emails = [
                 \Auth::user()->email,
                 $data['customer_email'],
-                // \Config::get('mail.from.address')
+                \Config::get('mail.from.address')
             ];
 
             if ($data['customer_email'] == \Auth::user()->email) {

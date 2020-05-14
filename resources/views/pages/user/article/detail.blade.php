@@ -104,12 +104,6 @@
                             <a href="blogs/all/tagged/product-noi-com-dien"><span>product_Nồi cơm điện</span></a>,
                             <a href="blogs/all/tagged/vao-bep"><span>vào bếp</span></a>
                         </div>
-
-                        <div class="col-md-12">
-                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a099baca270babc"></script>
-                            <div class="addthis_inline_share_toolbox_7dnb"></div>
-                        </div>
-
                         <div class="col-md-12">
                             <div id="RelatedProducts">
                                 <div class="related-product collections-container">
@@ -159,6 +153,11 @@
                             </div>
                         </div>--}}
                         <div class="col-md-12">
+                            <div class="addthis_inline_share_toolbox_7dnb">
+                                <div class="fb-like" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="blog_related">
                                 <h2>Bài viết liên quan</h2>
                                 @foreach ($otherArticles as $article)
@@ -173,7 +172,7 @@
                             <div id="article-comments" class="clearfix">
                                 <h5 class="title-form-comment">Bình luận</h5>
                                 <div class="article-comment clearfix">
-                                    <div class="fb-comments" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="100%" data-numposts="10"></div>
+                                    <div class="fb-comments" data-href="{{ route('article-detail', ['slug' => $article->slug]) }}" data-width="847" data-numposts="10"></div>
                                 </div>
                             </div>
                         </div>

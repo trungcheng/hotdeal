@@ -40,6 +40,34 @@
 </head>
 
 <body class="{{ \Route::currentRouteName() == 'home' ? 'bg-index' : '' }}">
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml            : true,
+                version          : 'v7.0'
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=596032051018066&autoLogAppEvents=1"></script>
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat"
+        attribution=setup_tool
+        page_id="1717083925079842"
+        theme_color="#a90202"
+        logged_in_greeting="Xin chào, chúng tôi có thể hỗ trợ gì cho bạn?"
+        logged_out_greeting="Xin chào, chúng tôi có thể hỗ trợ gì cho bạn?">
+    </div>
+
     <div id="box-wrapper">
         @include('layouts.user.header')
         @yield('content')
@@ -136,7 +164,7 @@
     </div>
 
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/jquery.form-validator.min.js') }}" type="text/javascript"></script>
     <script src="{{ mix('frontend/js/bundle.min.js') }}" type="text/javascript"></script>
 
     @section('pageJs')
