@@ -141,6 +141,8 @@ function submitRatingComment() {
 				alert('Đánh giá của bạn đã được gửi đi và chờ phê duyệt!');
 				$('#fRatingComment')[0].reset();
 				$('.lbMsgRt').text('');
+			} else {
+				alert(data.message);
 			}
 		}
 	});

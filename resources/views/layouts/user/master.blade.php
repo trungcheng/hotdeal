@@ -7,8 +7,8 @@
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="robots" content="@yield('robots')" />
-    <meta name="copyright" content="King Bep" />
-    <meta name="author" content="King Bep" />
+    <meta name="copyright" content="King Bếp" />
+    <meta name="author" content="King Bếp" />
     <meta http-equiv="audience" content="General" /> 
     <meta name="resource-type" content="Document" />  
     <meta name="distribution" content="Global" />
@@ -23,14 +23,13 @@
     <meta property="og:image:secure_url" content="@yield('ogImage')">
     <meta property="og:description" content="@yield('ogDesc')">
     <meta property="og:url" content="@yield('ogUrl')">
-    <meta property="og:site_name" content="Kingbep.com">
+    <meta property="og:site_name" content="kingbep.vn">
     <link rel="icon" href="{{ asset('frontend/images/icons/favicon.ico') }}" type="image/x-icon" />
     <link rel="canonical" href="@yield('canonical')" />
     <link rel="alternate" href="@yield('alternate')">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="{{ asset('frontend/css/base.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ mix('frontend/css/all.min.css') }}">
     @section('pageCss')
     @show
     <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
@@ -136,14 +135,9 @@
         </a>
     </div>
 
-    <script src="{{ asset('frontend/js/rx.all.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/option-selectors.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/api.jquery.js') }}" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/appear.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/main.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/custom.js') }}" type="text/javascript"></script>
+    <script src="{{ mix('frontend/js/bundle.min.js') }}" type="text/javascript"></script>
 
     @section('pageJs')
     @show

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Xác nhận đăng ký | {{ config('mail.from.name') }}</title>
+	<title>Xác nhận đăng ký - {{ config('mail.from.name') }}</title>
 	<meta charset="utf-8" />
 	<meta name="robots" content="noodp,noindex,nofollow" />
 </head>

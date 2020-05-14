@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Đặt hàng thành công
+@section('page')Đặt hàng thành công - King Bếp
 @stop
 
 @section('robots')noodp,noindex,nofollow

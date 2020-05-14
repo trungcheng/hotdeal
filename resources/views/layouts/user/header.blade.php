@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-5 col-100-h">
                     <a href="/" class="logo-wrapper">
-                        <img src="{{ $setting->logo }}" alt="Logo KingBep" />
+                        <img src="{{ $setting->logo }}" alt="Logo King Bếp" />
                     </a>
                 </div>
                 <div class="col-100-h col-sm-6 col-xs-7 hidden-lg hidden-md">

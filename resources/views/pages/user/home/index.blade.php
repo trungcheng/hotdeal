@@ -51,7 +51,7 @@
 @stop
 
 @section('content')
-    <h1 class="hidden">KingBep</h1>
+    <h1 class="hidden">King Bếp</h1>
 
     <section class="awe-section-1">
         <div class="container">

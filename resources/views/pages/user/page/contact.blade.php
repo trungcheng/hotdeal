@@ -74,7 +74,7 @@
                 <div class="widget-item info-contact in-fo-page-content">
                     {{--<div class="logos text-xs-left">
                         <a href="/" class="logo-wrapper">
-                            <img src="{{ $setting->logo }}" alt="Logo KingBep" class="img-responsive" />
+                            <img src="{{ $setting->logo }}" alt="Logo King Bếp" class="img-responsive" />
                         </a>
                     </div>
                     <p></p>--}}

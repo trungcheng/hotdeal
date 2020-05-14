@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Khách hàng mới / đăng nhập
+@section('page')Khách hàng mới / đăng nhập - King Bếp
 @stop
 
 @section('description')Khách hàng mới / đăng nhập
@@ -131,7 +131,7 @@
 				<div class="tab">
 					<button id="defaultOpen" class="tablinks" onclick="openCity(event, 'Login')">
 						<span>Đăng nhập</span>
-						<i>Đã là thành viên kingbep</i>
+						<i>Đã là thành viên King Bếp</i>
 					</button>
 					<button class="tablinks" onclick="openCity(event, 'Register')">
 						<span>Tạo tài khoản</span>

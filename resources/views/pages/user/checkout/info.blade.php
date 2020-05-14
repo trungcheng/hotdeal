@@ -5,16 +5,18 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="King Bep - Thanh toán đơn hàng" />
+    <meta name="description" content="King Bếp - Thanh toán đơn hàng" />
     <meta name="robots" content="noodp,noindex,nofollow" />
-    <title>Thanh toán đơn hàng - King Bep</title>
+    <title>Thanh toán đơn hàng - King Bếp</title>
     <link rel="icon" href="{{ asset('frontend/images/icons/favicon.ico') }}" type="image/x-icon" />
-    <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/css/nprogress.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('frontend/css/nprogress.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('frontend/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('frontend/css/checkout.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ mix('frontend/css/checkout.min.css') }}">
+
+    <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}" type="text/javascript"></script>
 </head>
 
 <body class="body--custom-background-color ">
@@ -370,16 +372,8 @@
         </svg>
     </div>
 
-    <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/twine.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/validator.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/nprogress.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/money-helper.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('frontend/js/select2-full.min.js') }}" type="text/javascript"></script>
-
-    <script src="{{ asset('frontend/js/ua-parser.pack.js') }}" type='text/javascript'></script>
-    <script src="{{ asset('frontend/js/checkout.js') }}" type="text/javascript"></script>
+    <script src="{{ mix('frontend/js/bundle.min.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(document).ajaxStart(function() {

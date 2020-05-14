@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')Giỏ hàng
+@section('page')Giỏ hàng - King Bếp
 @stop
 
 @section('description')Giỏ hàng

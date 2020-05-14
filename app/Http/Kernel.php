@@ -81,6 +81,7 @@ class Kernel extends HttpKernel
         'user.guest' => \App\Http\Middleware\User\RedirectIfAuthenticated::class,
         'user.values' => \App\Http\Middleware\User\SetDefaultValues::class,
         'cors' => \App\Http\Middleware\Cors::class,
+        'ipcheck' => \App\Http\Middleware\IpWhiteList::class,
         'jwt.auth' => \App\Http\Middleware\VerifyJWTToken::class
     ];
 }

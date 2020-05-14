@@ -40,9 +40,6 @@
 @stop
 
 @section('pageCss')
-	<link href="{{ asset('frontend/css/lightbox.css') }}" rel="stylesheet" type="text/css" />
-	<link href="{{ asset('frontend/css/product.review.css') }}" rel="stylesheet" type="text/css" />
-
 	<style type="text/css">
 		.area_promotion {
 		    display: block;
@@ -233,7 +230,7 @@
 												</div>
 											</div>
 
-											<button type="submit" class="btn btn-lg btn-gray btn-cart add_to_cart btn_buy add_to_cart" title="Mua ngay">
+											<button type="submit" class="btn btn-lg btn-gray btn-cart" title="Mua ngay">
 												<span>Mua ngay</span>
 											</button>
 										</div>
@@ -878,21 +875,5 @@
 @stop
 
 @section('pageJs')
-	<script src="{{ asset('frontend/js/jquery-zoom.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('frontend/js/jquery-prettyphoto.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('frontend/js/jquery-prettyphotoboot.min.js') }}" type="text/javascript"></script>
-	<script src="{{ asset('frontend/js/product.review.js') }}" type="text/javascript"></script>
-	{{--<script src="{{ asset('frontend/js/sticky-sidebar.js') }}" type="text/javascript"></script>
-	<script type="text/javascript">
-		$(function () {
-			$('#sidebar').stickySidebar({
-	  			headerSelector: 'header',
-	  			navSelector: '.bread-crumb',
-	  			contentSelector: '#content',
-	  			footerSelector: 'footer',
-	  			sidebarTopMargin: 20,
-	  			footerThreshold: 40
-			});
-		});
-	</script>--}}
+
 @stop

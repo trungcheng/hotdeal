@@ -117,7 +117,7 @@
             <div class="inner clearfix">
                 <div class="row">
                     <div class="col-md-12 col-copyright">
-                        <span>Copyright © 2020 <b>kingbep.com</b>. All rights reserved</span>
+                        <span>Copyright © 2020 <b>kingbep.vn</b>. All rights reserved</span>
                     </div>
                 </div>
             </div>

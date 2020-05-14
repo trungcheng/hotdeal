@@ -10,15 +10,14 @@
         \Route::get('tai-khoan/dang-nhap', 'User\Auth\LoginController@showLoginForm')->name('signin');
         \Route::post('tai-khoan/dang-nhap', 'User\Auth\LoginController@login');
         \Route::get('tai-khoan/dang-xuat', 'User\Auth\LoginController@logout')->name('getLogout');
+        \Route::get('tai-khoan/dang-ky', 'User\Auth\RegisterController@showRegistrationForm')->name('signup');
+        \Route::post('tai-khoan/dang-ky', 'User\Auth\RegisterController@register');
         // \Route::get('signin/facebook', 'User\FacebookServiceAuthController@redirect');
         // \Route::get('signin/facebook/callback', 'User\FacebookServiceAuthController@callback');
         // \Route::get('forgot-password', 'User\PasswordController@getForgotPassword');
         // \Route::post('forgot-password', 'User\PasswordController@postForgotPassword');
         // \Route::get('reset-password/{token}', 'User\PasswordController@getResetPassword');
         // \Route::post('reset-password', 'User\PasswordController@postResetPassword');
-        \Route::get('tai-khoan/dang-ky', 'User\Auth\RegisterController@showRegistrationForm')->name('signup');
-        \Route::post('tai-khoan/dang-ky', 'User\Auth\RegisterController@register');
-
         \Route::post('account/ajax_signin', 'User\AuthController@ajaxSignIn')->name('ajax-signin');
         \Route::post('account/ajax_signup', 'User\AuthController@ajaxSignUp')->name('ajax-signup');
 
@@ -52,7 +51,7 @@
         \Route::get('/dieu-khoan-dich-vu', 'User\PageController@termOfService')->name('term-of-service');
         \Route::get('/lien-he', 'User\PageController@contact')->name('contact');
 
-        \Route::post('/rating/post', 'Admin\ReviewController@add')->name('postRating');
+        \Route::post('/rating/post', 'Admin\ReviewController@add')->name('postRating')->middleware('ipcheck');
 
         \Route::get('/{slug}', 'User\ProductController@cateDetail')->name('cate-detail');
         \Route::get('/{cate}/{slug}', 'User\ProductController@productDetail')->name('product-detail');

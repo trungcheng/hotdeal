@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page')404 Not Found
+@section('page')404 - Page Not Found
 @stop
 
 @section('description')
