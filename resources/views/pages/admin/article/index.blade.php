@@ -61,7 +61,7 @@
                                                     <th>Ảnh</th>
                                                     <th style="text-align:center !important;width:20%">Tiêu đề</th>
                                                     <th style="width:30%">Mô tả ngắn</th>
-                                                    <th>Đăng bởi</th>
+                                                    <!-- <th>Đăng bởi</th> -->
                                                     <th>Trạng thái</th>
                                                     <th>Ngày tạo</th>
                                                     <th>Chức năng</th>
@@ -75,7 +75,7 @@
                                                     </td>
                                                     <td>@{{ article.title }}</td>
                                                     <td style="width:30%">@{{ article.intro }}</td>
-                                                    <td>@{{ article.user.username }}</td>
+                                                    <!-- <td>@{{ article.user.username }}</td> -->
                                                     <td>@{{ (article.status == 0) ? 'Ẩn' : 'Hiển thị' }}</td>
                                                     <td>@{{ article.created_at }}</td>
                                                     <td>

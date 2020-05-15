@@ -72,7 +72,7 @@
                                                 <tr role="row" class="@{{ ($odd) ? 'odd' : 'even' }}" ng-repeat="cate in items track by $index">
                                                     <td class="sorting_1">@{{ $index + 1 }}</td>
                                                     <td style="text-align:center !important">
-                                                        <img src="@{{ cate.icon }}" width="50" height="50" />
+                                                        <img src="@{{ (cate.icon != '' && cate.icon != null) ? cate.icon : '/backend/img/no-image.png' }}" width="50" height="50" />
                                                     </td>
                                                     <td style="text-align:center !important">@{{ cate.name }}</td>
                                                     <td style="text-align:center !important">@{{ cate.parent ? cate.parent : 'Không' }}</td>
