@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('UticoCMS')
+        .module('VisciCMS')
         .controller('UserController', UserController);
 
     function UserController($rootScope, $scope, $http, $window, $timeout, PagerService) {
@@ -13,19 +13,19 @@
 
         $scope.pullDownLists = {
             availableOption: [
-              { value: 30, name: '30' },
-              { value: 50, name: '50' },
-              { value: 100, name: '100' },
-              { value: 150, name: '150' }
+                { value: 30, name: '30' },
+                { value: 50, name: '50' },
+                { value: 100, name: '100' },
+                { value: 150, name: '150' }
             ],
-            selectedOption: {value: 30, name: '30'}
+            selectedOption: { value: 30, name: '30' }
         };
 
-        $scope.getResultsPage = function (name, perPage, pageNumber) {
+        $scope.getResultsPage = function(name, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/users/getAllUsers?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/users/getAllUsers?name=' + name, { cache: false })
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -41,7 +41,7 @@
                 });
         }
 
-        $scope.setPage = function (pageSize, currentPage) {
+        $scope.setPage = function(pageSize, currentPage) {
             // if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
             $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
             $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
@@ -51,7 +51,7 @@
             $scope.pullDownLists.selectedOption = { value: pageSize, name: pageSize };
         }
 
-        $scope.loadInit = function () {
+        $scope.loadInit = function() {
             $scope.getResultsPage('all-user', 30, 1);
         }
 
@@ -63,12 +63,12 @@
             }
         }
 
-        $scope.process = function (type) {    
+        $scope.process = function(type) {
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
-            
+
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" user này ?",
+                title: "Bạn chắc chắn muốn " + title + " user này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -76,15 +76,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     method: 'POST',
                     url: app.vars.baseUrl + '/users/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -98,7 +98,7 @@
             });
         }
 
-        $scope.delete = function (user, index) {
+        $scope.delete = function(user, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa user này ?",
                 type: "warning",
@@ -108,15 +108,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     url: app.vars.baseUrl + '/users/delete',
                     method: 'POST',
                     data: {
                         userId: user.id
                     }
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');

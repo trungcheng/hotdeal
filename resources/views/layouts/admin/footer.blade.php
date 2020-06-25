@@ -6,5 +6,5 @@
       Anything you want
   </div> -->
   <!-- Default to the left -->
-  <strong>Copyright &copy; 2019 <a href="#">Utico</a>.</strong> All rights reserved.
+  <strong>Copyright &copy; 2019 <a href="#">VISCI</a>.</strong> All rights reserved.
 </footer>

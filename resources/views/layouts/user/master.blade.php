@@ -1,12 +1,11 @@
 <!DOCTYPE html">
-<html lang="vi">
+<html data-wf-page="5d0b80bd2ab90c35cef3f7a9" data-wf-site="5d0b80bd2ab90c4f90f3f7ac" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>@yield('page') | {{ $setting->getTranslation(app()->getLocale())->name }}</title>
-    
     <meta name="description" content="@yield('description')" />
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="robots" content="index, follow">
@@ -19,320 +18,78 @@
     <meta property="og:url" content="@yield('ogUrl')" />
     <meta property="og:image" content="@yield('ogImage')" />
     <meta property="og:description" content="@yield('ogDesc')" />
-    <meta property="og:site_name" content="{{ $setting->getTranslation('vi')->name }}" />
+    <meta property="og:site_name" content="{{ $setting->getTranslation('en')->name }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0">
     <meta name="format-detection" content="telephone=no">
-    <link rel="shortcut icon" href="{{ asset('frontend/upload/advert/favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/bootstrap.css?') . time() }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox.css?') . time() }}">
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-buttons.css?') . time() }}">
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/jquery.fancybox-thumbs.css?') . time() }}">
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/vinastar.css?') . time() }}" />
-    <link rel="stylesheet" href="{{ asset('frontend/themes/default/css/viewport.css?') . time() }}" />    
+    <link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ asset('frontend/images/webclip.png') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/normalize.css?').time() }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/webflow.css?').time() }}">
+    <link rel="stylesheet"
+        href="{{ asset('frontend/css/visci-re-coded-09-05-4929290c404f89e2b5.webflow.css?').time() }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/custom.css') }}" />
+    <style>
+        a.nav-link:visited {
+            color: #17A53C
+        }
+    </style>
     @section('pageCss')
     @show
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: [
+                    "Be Vietnam:100,100italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic:latin,vietnamese"
+                ]
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        !function(o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n
+                .className += t + "touch")
+        }(window, document);
+    </script>
 </head>
 
 <body>
-    <div id="wrapper_all">
+    <div class="preloader">
+        <div class="preloader-container">
+            <figure class="logo-image"></figure>
+        </div>
+    </div>
+    <div style="opacity:0" class="layout">
         @include('layouts.user.header')
+
+        @yield('home')
 
         @yield('content')
 
         @include('layouts.user.footer')
+
+        @if (\Route::currentRouteName() == 'home')
+        <div class="cookie-bar">
+            <div>
+                <h5 class="title-xs cookie">Cookies</h5>
+                <p class="small-paragraph cookie">Our website uses Cookies for an actual representation of many contents.</p>
+                <p class="small-paragraph cookie"><a href="https://policies.google.com/technologies/cookies" target="_blank">Learn more</a> about their uses.</p>
+            </div>
+            <a href="#" class="button-style cookie w-inline-block">
+                <div class="button-label">Accept</div>
+                <div class="hover-shape"></div>
+            </a>
+        </div>
+        @endif
     </div>
 
-    <a id='backTop'><i class="fa fa-chevron-up"></i></a>
-
-    <script src="{{ asset('frontend/themes/default/js/jquery-1.11.2.min.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.popup.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/owl.carousel.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.bootstrap-responsive-tabs.min.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.smartmenus.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.smartmenus.bootstrap.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.fittext.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.lettering.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.textillate.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.bootstrap.newsbox.min.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.prettyPhoto.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.mousewheel-3.0.6.pack.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.fancybox.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.fancybox-buttons.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.fancybox-media.js') }}"></script>
-    <script src="{{ asset('frontend/themes/default/js/jquery.fancybox-thumbs.js') }}"></script>
-
-    @section('pageJs')
-    @show
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".fancybox-thumbs").fancybox({
-                openEffect: 'elastic',
-                openSpeed: 650,
-                arrows: true,
-                closeEffect: 'elastic',
-                closeSpeed: 650,
-                closeBtn: true,
-                closeClick: false,
-                nextClick: false,
-                prevEffect: 'elastic',
-                prevSpeed: 650,
-                nextEffect: 'elastic',
-                nextSpeed: 650,
-                helpers: {
-                    title: {
-                        type: 'outside'
-                    },
-                    thumbs: {
-                        width: 50,
-                        height: 50
-                    }
-                }
-            });
-        });
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5d0b80bd2ab90c4f90f3f7ac"
+        type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
     </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.fancybox-media').fancybox({
-                openEffect: 'none',
-                closeEffect: 'none',
-                helpers: {
-                    media: {}
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function() {
-            $("area[rel^='prettyPhoto']").prettyPhoto();
-            $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({
-                animation_speed: 'normal',
-                theme: 'light_square',
-                slideshow: 3000,
-                allow_resize: true,
-                autoplay_slideshow: false
-            });
-            $(".gallery1:gt(0) a[rel^='prettyPhoto']").prettyPhoto({
-                animation_speed: 'fast',
-                slideshow: 10000,
-                hideflash: true
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        WebFontConfig = {
-            google: {
-                families: ['Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic:latin,vietnamese']
-            }
-        };
-        (function() {
-            var wf = document.createElement('script');
-            wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
-    <script type="text/javascript">
-        $(window).load(function() {
-            document.cookie = popunder1 = "adf";
-            $('#myModal').vinastar($('#myModal').data());
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#backTop').backTop({
-                'position': 100,
-                'speed': 500,
-                'color': 'red',
-            });
-        });
-    </script>
-    <script>
-        $('.responsive-tabs').responsiveTabs({
-            accordionOn: ['xs', 'sm']
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var owl = $("#owl_carousel");
-            owl.owlCarousel({
-                items: 5, //10 items above 1000px browser width
-                itemsDesktop: [1000, 5], //5 items between 1000px and 901px
-                itemsDesktopSmall: [900, 3], // betweem 900px and 601px
-                itemsTablet: [600, 2], //2 items between 600 and 0
-                itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
-                autoPlay: 4000,
-                autoplayTimeout: 100
-            });
-            $('[data-toggle="tooltip"]').tooltip();
-            $(".owl-next").click(function() {
-                owl.trigger('owl.next');
-            })
-            $(".owl-prev").click(function() {
-                owl.trigger('owl.prev');
-            })
-            $(".play").click(function() {
-                owl.trigger('owl.play', 1000); //owl.play event accept autoPlay speed as second parameter
-            })
-            $(".stop").click(function() {
-                owl.trigger('owl.stop');
-            })
-
-            var owl = $("#owl_slgtaseco");
-
-            owl.owlCarousel({
-                items: 1, //10 items above 1000px browser width
-                itemsDesktop: [1000, 1], //5 items between 1000px and 901px
-                itemsDesktopSmall: [900, 1], // betweem 900px and 601px
-                itemsTablet: [600, 1], //2 items between 600 and 0
-                itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
-                autoPlay: 4000,
-                autoplayTimeout: 100
-            });
-            // Custom Navigation Events
-            $(".next").click(function() {
-                owl.trigger('owl.next');
-            })
-            $(".prev").click(function() {
-                owl.trigger('owl.prev');
-            })
-            $(".play").click(function() {
-                owl.trigger('owl.play', 1000); //owl.play event accept autoPlay speed as second parameter
-            })
-            $(".stop").click(function() {
-                owl.trigger('owl.stop');
-            })
-        });
-
-        $(document).ready(function() {
-            $("#owl_1506").owlCarousel({
-                navigation: true, // Show next and prev buttons
-                slideSpeed: 300,
-                paginationSpeed: 400,
-                singleItem: true
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $('.tlt').textillate({
-            // the default selector to use when detecting multiple texts to animate
-            selector: '.texts',
-            // enable looping
-            loop: true,
-            // sets the minimum display time for each text before it is replaced
-            minDisplayTime: 2000,
-            // sets the initial delay before starting the animation
-            // (note that depending on the in effect you may need to manually apply 
-            // visibility: hidden to the element before running this plugin)
-            initialDelay: 0,
-            // set whether or not to automatically start animating
-            autoStart: true,
-            // custom set of 'in' effects. This effects whether or not the 
-            // character is shown/hidden before or after an animation  
-            inEffects: [],
-            // custom set of 'out' effects
-            outEffects: ['hinge'],
-            // in animation settings
-            in: {
-                // set the effect name
-                effect: 'fadeIn',
-
-                // set the delay factor applied to each consecutive character
-                delayScale: 1.5,
-
-                // set the delay between each character
-                delay: 50,
-
-                // set to true to animate all the characters at the same time
-                sync: false,
-
-                // randomize the character sequence 
-                // (note that shuffle doesn't make sense with sync = true)
-                shuffle: false,
-
-                // reverse the character sequence 
-                // (note that reverse doesn't make sense with sync = true)
-                reverse: false,
-
-                // callback that executes once the animation has finished
-                callback: function() {}
-            },
-            // out animation settings.
-            out: {
-                effect: 'flash',
-                delayScale: 1.5,
-                delay: 50,
-                sync: false,
-                shuffle: false,
-                reverse: false,
-                callback: function() {}
-            },
-            // callback that executes once textillate has finished 
-            callback: function() {},
-            // set the type of token to animate (available types: 'char' and 'word')
-            type: 'char'
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var owl = $(".owl_fie");
-            owl.owlCarousel({
-                autoPlay: 4000,
-                itemsCustom: [
-                    [0, 1],
-                    [450, 2],
-                    [600, 2],
-                    [700, 2],
-                    [1000, 3],
-                    [1200, 3],
-                    [1400, 3],
-                    [1600, 3]
-                ],
-                navigation: true
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(function() {
-            $(".newstb_dv3003").bootstrapNews({
-                newsPerPage: 3,
-                autoplay: true,
-                pauseOnHover: true,
-                direction: 'up',
-                newsTickerInterval: 2000,
-                onToDo: function() {
-                    //console.log(this);
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        $(function() {
-            $(".news_tb").bootstrapNews({
-                newsPerPage: 6,
-                autoplay: true,
-                pauseOnHover: true,
-                direction: 'up',
-                newsTickerInterval: 2000,
-                onToDo: function() {
-                    //console.log(this);
-                }
-            });
-        });
-    </script>
-    <script type='text/javascript'>
-        $(document).ready(function() {
-            $('#carousel_main,#carousel_pri').carousel({
-                interval: 3000
-            })
-        });
-    </script>
-
+    <script src="{{ asset('frontend/js/webflow.js') }}"></script>
+    @yield('pageJs')
 </body>
 
 </html>

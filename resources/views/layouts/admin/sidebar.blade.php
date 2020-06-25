@@ -41,11 +41,24 @@
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a style="margin-left:35px;" data-route="/admin/access/media/photos" href="{{ url('/admin/access/media/photos') }}"><i class="fa fa-camera"></i> Album ảnh</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/access/media/videos" href="{{ url('/admin/access/media/videos') }}"><i class="fa fa-play"></i> Video</a></li>
+                <!-- <li><a style="margin-left:35px;" data-route="/admin/access/media/photos" href="{{ url('/admin/access/media/photos') }}"><i class="fa fa-camera"></i> Album ảnh</a></li> -->
+                <!-- <li><a style="margin-left:35px;" data-route="/admin/access/media/videos" href="{{ url('/admin/access/media/videos') }}"><i class="fa fa-play"></i> Video</a></li> -->
                 <li><a style="margin-left:35px;" data-route="/admin/access/media/partner-logos" href="{{ url('/admin/access/media/partner-logos') }}"><i class="fa fa-user-circle-o"></i> Logo đối tác</a></li>
                 <li><a style="margin-left:35px;" data-route="/admin/access/media/slides" href="{{ url('/admin/access/media/slides') }}"><i class="fa fa-sliders"></i> Slide chính</a></li>
-                <li><a style="margin-left:35px;" data-route="/admin/access/media/slogan-slides" href="{{ url('/admin/access/media/slogan-slides') }}"><i class="fa fa-sliders"></i> Slide khẩu hiệu</a></li>
+                <!-- <li><a style="margin-left:35px;" data-route="/admin/access/media/slogan-slides" href="{{ url('/admin/access/media/slogan-slides') }}"><i class="fa fa-sliders"></i> Slide khẩu hiệu</a></li> -->
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="javascript:void(0)"><i class="fa fa-file-text-o"></i> <span>Quản lý page</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <!-- <li><a style="margin-left:20px;" data-route="/admin/access/page/about" href="{{ url('/admin/access/page/about') }}">Giới thiệu</a></li> -->
+                <li><a style="margin-left:20px;" data-route="/admin/access/page/term-policy" href="{{ url('/admin/access/page/term-policy') }}">Terms & Policies</a></li>
+                <li><a style="margin-left:20px;" data-route="/admin/access/page/faqs" href="{{ url('/admin/access/page/faqs') }}">FAQs</a></li>
             </ul>
         </li>
 

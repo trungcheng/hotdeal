@@ -11,9 +11,8 @@ return [
     |
     */
     'locales' => [
-        'vi',
         'en',
-        'ko'
+        'vi'
     ],
 
     /*
@@ -40,7 +39,7 @@ return [
     | and never fallback to the translator one.
     |
     */
-    'locale' => 'vi',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +76,7 @@ return [
     | set it to false.
     |
     */
-    'fallback_locale' => 'vi',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------

@@ -1,54 +1,77 @@
-<div class="box_dttaseco clearfix w_gr" style="margin-top:40px;">
-    <h3>{{ trans('general.partners') }}</h3>
-    <div id="owl_carousel" class="owl-carousel owl-theme">
-        @foreach (json_decode($setting['partner_logos']) as $logo)
-        <div class="item">
-            <div class="item_w">
-                <a href="{{ $logo->link }}" class="owlitem_img"><img src="{{ $logo->image }}"></a>
+<footer class="footer">
+    <div class="footer-container">
+        <div id="w-node-e83f05af9d87-05af9d85" class="footer-content">
+            <a href="#" class="footer-logo w-nav-brand"><img src="{{ asset('frontend/images/visci-vector-web-white.svg') }}" height="60" alt=""
+                    class="brand-visci footer-logo"><img src="{{ asset('frontend/images/visci-tagline-vector-web-white.svg') }}" height="66"
+                    alt="" class="tagline footer-logo"></a>
+            <address class="footer-sub-content address">
+                <h5 class="heading">Address</h5>
+                <div class="paragraph address">{!! $setting->getTranslation(app()->getLocale())->address !!}</div>
+            </address>
+            <div class="footer-sub-content link">
+                <a href="{{ $setting->facebook_url }}" id="w-node-e83f05af9d91-05af9d85" class="link white w-inline-block">
+                    <div>Facebook</div>
+                </a>
+                <a href="#" id="w-node-e83f05af9d94-05af9d85" class="link white w-inline-block">
+                    <div>Downloads</div>
+                </a>
+                <a href="{{ route('contact') }}" id="w-node-e83f05af9d97-05af9d85" class="link white w-inline-block">
+                    <div>Contact us</div>
+                </a>
+                <a href="{{ route('faqs') }}" id="w-node-e83f05af9d9a-05af9d85" class="link white w-inline-block">
+                    <div>FAQs</div>
+                </a>
             </div>
         </div>
-        @endforeach
-    </div>
-</div>
-<footer id="footer">
-    <div class="footer_w w_gr">
-
-        <div class="addcpn clearfix">
-            <div class="add">
-                <p>
-                    <h3>
-                        <span style="font-size:14px;"><strong><span style="font-family:arial,helvetica,sans-serif;">
-                            {!! $setting->getTranslation(app()->getLocale())->name !!}
-                        </span></strong></span></h3>
-                    <p>
-                        ---------------------------------------------------------------------------------------------------------------------------</p>
-                    <h3>
-                        {!! $setting->getTranslation(app()->getLocale())->address !!}</h3>
-                    <p>
-                        <span style="font-family:arial,helvetica,sans-serif;">
-                            <span style="font-size:12px;">{{ trans('general.mobile') }}: 
-                                <a href="tel:{!! $setting->mobile !!}">{!! $setting->mobile !!}</a>@if ($setting->fax != '')&nbsp;-&nbsp;{{ trans('general.fax') }}:&nbsp;{!! $setting->fax !!}@endif
-                            </span>
-                        </span>
-                    </p>
-                    <p>
-                        <span style="font-family:arial,helvetica,sans-serif;"><span style="font-size:12px;">{{ trans('general.website') }}:&nbsp;<a href="{{ url('') }}">{!! $setting->website !!}</a>&nbsp;-&nbsp;{{ trans('general.email') }}:&nbsp;<a href="mailto:{!! $setting->email !!}">{!! $setting->email !!}</a></span></span></p>
-                    <h2 id="kumop" style="position: fixed;right:-900px; top: -800px; overflow: hidden;width:250px">
-                </p>
-            </div>
-            <div class="footer_tkct">
-                <div class="tkct clearfix">
-                    <ul>
-                        <li><a href="{{ url('') }}">{{ trans('general.home_page') }}</a></li>
-                        <li><a href="{{ url('') }}/thong-tin-tuyen-dung.html">{{ trans('general.recruiter_page') }}</a></li>
-                        <li><a style="border:none" href="{{ route('contact') }}">{{ trans('general.contact') }}</a></li>
-                    </ul>
+        <div id="w-node-e83f05af9d9d-05af9d85" class="footer-content">
+            <div class="footer-sub-content resources-content">
+                <div class="content-heading justify-space">
+                    <div>Resources 🔥</div><a href="#" class="link white small">See all posts</a>
                 </div>
-                <p><span class="tkct_txt">{{ trans('general.user_access_count') }}</span><span style="color:#fff;display:inline-block;margin:0 5px;font-weight:bold;">{{ $user_online_data[2] }}</span></p>
-                <p>{{ trans('general.designed_by') }} <a href="https://utico.vn">Utico</a></p>
-                <a href="//www.dmca.com/Protection/Status.aspx?ID=c6d1e29f-f244-40c8-abdf-49c11e5f1653" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_1_120.png?ID=c6d1e29f-f244-40c8-abdf-49c11e5f1653"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+                <div>
+                    <a href="#" class="footer-feed-link w-inline-block">
+                        <h5 class="heading">Passion or profit: tips to grow your freelancer business</h5>
+                        <div class="b-thing-home-top-date cc-slim white">may 14 2019</div>
+                    </a>
+                    <a href="#" class="footer-feed-link w-inline-block">
+                        <h5 class="heading">Passion or profit: tips to grow your freelancer business</h5>
+                        <div class="b-thing-home-top-date cc-slim white">may 14 2019</div>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-sub-content email">
+                <div>Find out how to bringing about changes towards more subtainable &amp; smarter cities with VISCI -
+                    subscribe to our newsletter now!</div>
+                <div class="email-form-block w-form">
+                    <form id="email-form" name="email-form" data-name="Email Form" class="email-fill-form"><input
+                            type="email" class="email-fill-field w-input" maxlength="256" name="Email-2"
+                            data-name="Email 2" placeholder="Enter your email address here" id="Email-2"
+                            required=""><input type="submit" value="Subscribe" data-wait="Please wait..."
+                            class="cta-button w-button"></form>
+                    <div class="success-message w-form-done">
+                        <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="error-message w-form-fail">
+                        <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                </div>
             </div>
         </div>
-        
+    </div>
+    <div class="footer-seperator"></div>
+    <div class="footer-container copyright">
+        <div id="w-node-e83f05af9dbc-05af9d85" class="footer-content horizontal">
+            <div class="small-paragraph footer-copyright">
+                <div>Copyrights @ 2019 VISCI. All rights reserved.</div>
+            </div><a href="{{ route('term-policy') }}" class="small-paragraph footer-copyright">Terms and Policies</a>
+        </div>
+        <div id="w-node-e83f05af9dc2-05af9d85" class="footer-content align-opposite horizontal">
+            <a href="{{ route('locale', ['locale' => 'en']) }}" class="small-paragraph footer-copyright link w-inline-block">
+                <div>English</div>
+            </a>
+            <a href="{{ route('locale', ['locale' => 'vi']) }}" class="small-paragraph footer-copyright link w-inline-block">
+                <div>Vietnamese</div>
+            </a>
+        </div>
     </div>
 </footer>

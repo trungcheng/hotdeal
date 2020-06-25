@@ -38,7 +38,7 @@
 
                 <form id="form_setting" onsubmit="return false;" action="{{ url('/admin/access/setting/update') }}" enctype="multipart/form-data" method="post">
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="control-label">Logo</label>
                         <input name="logo" type="text" value="{{ ($setting != '') ? $setting->logo : '' }}" size="48" class="form-control" id="xFilePath" />
                         <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('xFilePath')">Tải logo lên</button>
@@ -48,41 +48,41 @@
                         <label class="control-label">Background nền slide khẩu hiệu</label>
                         <input name="bg_slogan_slide" type="text" value="{{ ($setting != '') ? $setting->bg_slogan_slide : '' }}" size="48" class="form-control" id="bg_slogan_slide" />
                         <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('bg_slogan_slide')">Tải background lên</button>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label class="control-label">Tên công ty (Vietnamese)</label>
-                        <input type="text" name="name" value="{{ ($setting != '') ? $setting->name : '' }}" class="form-control" placeholder="Tên công ty...">
+                        <input type="text" name="vi_name" value="{{ ($setting != '') ? $setting->getTranslation('vi')->name : '' }}" class="form-control" placeholder="Tên công ty...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Tên công ty (English)</label>
-                        <input type="text" name="en_name" value="{{ ($setting != '') ? $setting->getTranslation('en')->name : '' }}" class="form-control" placeholder="Company name...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Tên công ty (Koreanese)</label>
-                        <input type="text" name="ko_name" value="{{ ($setting != '') ? $setting->getTranslation('ko')->name : '' }}" class="form-control" placeholder="회사 명...">
+                        <input type="text" name="name" value="{{ ($setting != '') ? $setting->name : '' }}" class="form-control" placeholder="Company name...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Slogan (Vietnamese)</label>
-                        <input type="text" name="slogan" value="{{ ($setting != '') ? $setting->slogan : '' }}" class="form-control" placeholder="Slogan...">
+                        <input type="text" name="vi_slogan" value="{{ ($setting != '') ? $setting->getTranslation('vi')->slogan : '' }}" class="form-control" placeholder="Slogan...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Slogan (English)</label>
-                        <input type="text" name="en_slogan" value="{{ ($setting != '') ? $setting->getTranslation('en')->slogan : '' }}" class="form-control" placeholder="Slogan...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Slogan (Koreanese)</label>
-                        <input type="text" name="ko_slogan" value="{{ ($setting != '') ? $setting->getTranslation('ko')->slogan : '' }}" class="form-control" placeholder="슬로건...">
+                        <input type="text" name="slogan" value="{{ ($setting != '') ? $setting->slogan : '' }}" class="form-control" placeholder="Slogan...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Website</label>
                         <input type="text" name="website" value="{{ ($setting != '') ? $setting->website : '' }}" class="form-control" placeholder="Website...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Google map link</label>
+                        <input type="text" name="google_map_url" value="{{ ($setting != '') ? $setting->google_map_url : '' }}" class="form-control" placeholder="Google map link...">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Facebook link</label>
+                        <input type="text" name="facebook_url" value="{{ ($setting != '') ? $setting->facebook_url : '' }}" class="form-control" placeholder="Facebook link...">
                     </div>
 
                     <div class="form-group">
@@ -102,17 +102,12 @@
 
                     <div class="form-group">
                         <label class="control-label">Địa chỉ (Vietnamese)</label>
-                        <input type="text" name="address" value="{{ ($setting != '') ? $setting->address : '' }}" class="form-control" placeholder="Địa chỉ...">
+                        <input type="text" name="vi_address" value="{{ ($setting != '') ? $setting->getTranslation('vi')->address : '' }}" class="form-control" placeholder="Địa chỉ...">
                     </div>
 
                     <div class="form-group">
                         <label class="control-label">Địa chỉ (English)</label>
-                        <input type="text" name="en_address" value="{{ ($setting != '') ? $setting->getTranslation('en')->address : '' }}" class="form-control" placeholder="Address...">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Địa chỉ (Koreanese)</label>
-                        <input type="text" name="ko_address" value="{{ ($setting != '') ? $setting->getTranslation('ko')->address : '' }}" class="form-control" placeholder="주소...">
+                        <input type="text" name="address" value="{{ ($setting != '') ? $setting->address : '' }}" class="form-control" placeholder="Address...">
                     </div>
 
                     <div class="form-group">

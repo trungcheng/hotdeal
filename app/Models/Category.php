@@ -115,15 +115,12 @@ class Category extends Model
 
         $category = new Category();
         foreach (\Config::get('translatable.locales') as $locale) {
-            $category->translateOrNew($locale)->name = ($locale == 'vi') ? $data['name'] : $data[$locale.'_name'];
-            $category->translateOrNew($locale)->description = ($locale == 'vi') ? $data['description'] : $data[$locale.'_description'];
+            $category->translateOrNew($locale)->name = ($locale == 'en') ? $data['name'] : $data[$locale.'_name'];
+            $category->translateOrNew($locale)->description = ($locale == 'en') ? $data['description'] : $data[$locale.'_description'];
         }
 
-        unset($data['en_name']);
-        unset($data['en_description']);
-        
-        unset($data['ko_name']);
-        unset($data['ko_description']);
+        if (isset($data['vi_name'])) unset($data['vi_name']);
+        if (isset($data['vi_description'])) unset($data['vi_description']);
 
         foreach ($data as $key => $value) {
             if ($key == 'sliders' && count($value) > 0) {
@@ -142,15 +139,12 @@ class Category extends Model
         $data['slug'] = Util::generateSlug($data['name']);
 
         foreach (\Config::get('translatable.locales') as $locale) {
-            $cate->translateOrNew($locale)->name = ($locale == 'vi') ? $data['name'] : $data[$locale.'_name'];
-            $cate->translateOrNew($locale)->description = ($locale == 'vi') ? $data['description'] : $data[$locale.'_description'];
+            $cate->translateOrNew($locale)->name = ($locale == 'en') ? $data['name'] : $data[$locale.'_name'];
+            $cate->translateOrNew($locale)->description = ($locale == 'en') ? $data['description'] : $data[$locale.'_description'];
         }
 
-        unset($data['en_name']);
-        unset($data['en_description']);
-
-        unset($data['ko_name']);
-        unset($data['ko_description']);
+        unset($data['vi_name']);
+        unset($data['vi_description']);
 
         foreach ($data as $key => $value) {
             if ($key == 'sliders' && count($value) > 0) {

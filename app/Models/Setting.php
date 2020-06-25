@@ -16,6 +16,8 @@ class Setting extends Model
         'name',
         'slogan',
         'website',
+        'facebook_url',
+        'google_map_url',
         'email',
         'mobile',
         'fax',

@@ -34,178 +34,464 @@
 @stop
 
 @section('pageCss')
-    
+
+@stop
+
+@section('home')
+<header wp="frontend-editor" style="opacity:0" class="section-hero">
+    <div style="-webkit-transform:translate3d(0, 100VH, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100VH, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100VH, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100VH, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+        class="hero-container">
+        <div data-delay="8000" data-animation="outin" data-autoplay="1" data-easing="linear" data-duration="800"
+            data-infinite="1" class="hero-slider w-slider">
+            <div class="w-slider-mask">
+                <figure class="hero-slider-wrap w-slide">
+                    <div class="hero-content">
+                        <figure class="hero-content-wrap">
+                            <h1 class="hero-heading">Bringing about changes with <span class="text-span">VISCI</span>
+                            </h1>
+                            <a href="#" class="hero-slider-link w-inline-block w-clearfix">
+                                <div class="hero-line"></div>
+                                <p class="hero-link">discover <span
+                                        class="hero-slider-content-sub-heading-text-span">visci</span></p>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="hero-image-wrap">
+                        <figure class="slider-image slider-1"></figure>
+                    </div>
+                </figure>
+                <figure class="hero-slider-wrap w-slide">
+                    <div class="hero-content">
+                        <figure class="hero-content-wrap">
+                            <h1 class="hero-heading">Bringing about changes with <span class="text-span">VISCI</span>
+                            </h1>
+                            <a href="#" class="hero-slider-link w-inline-block w-clearfix">
+                                <div class="hero-line"></div>
+                                <p class="hero-link">discover <span
+                                        class="hero-slider-content-sub-heading-text-span">visci</span></p>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="hero-image-wrap">
+                        <figure class="slider-image slider-2"></figure>
+                    </div>
+                </figure>
+                <figure class="hero-slider-wrap w-slide">
+                    <div class="hero-content">
+                        <figure class="hero-content-wrap">
+                            <h1 class="hero-heading">Bringing about changes with <span class="text-span">VISCI</span>
+                            </h1>
+                            <a href="#" class="hero-slider-link w-inline-block w-clearfix">
+                                <div class="hero-line"></div>
+                                <p class="hero-link">discover <span
+                                        class="hero-slider-content-sub-heading-text-span">visci</span></p>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="hero-image-wrap">
+                        <figure class="slider-image slider-3"></figure>
+                    </div>
+                </figure>
+            </div>
+            <div style="opacity:0" class="button-style arrow previous w-slider-arrow-left">
+                <div class="button-label w-icon-slider-left"></div>
+                <div class="hover-shape"></div>
+            </div>
+            <div style="opacity:0" class="button-style arrow next w-slider-arrow-right">
+                <div class="button-label w-icon-slider-right"></div>
+                <div class="hover-shape"></div>
+            </div>
+            <div class="hero-slider-nav w-slider-nav"></div>
+        </div>
+    </div>
+</header>
 @stop
 
 @section('content')
-    @if (count($slides) > 0)
-    <div class="slider_w">
-        <div id="carousel_pri" class="carousel slide carousel-fade" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                @foreach ($slides as $slide)
-                <div class="item {!! $loop->first ? 'active': '' !!}">
-                    <a href="#"><img src="{{ $slide->image }}" alt="{{ $slide->getTranslation(app()->getLocale())->title }}"></a>
-                    <div class="carousel-caption caption_ed">
-                        <h3>{{ $slide->getTranslation(app()->getLocale())->title }}</h3>
-                    </div>
+<section class="section">
+    <div class="section-container full-slider">
+        <section class="content-heading">
+            <h2 class="heading">Smarthome Solutions</h2>
+        </section>
+        <div class="content-wrap show-grid">
+            <div class="content"><img src="{{ asset('frontend/images/visci_icon_1.svg') }}" alt=""
+                    class="content-wrap image-icon">
+                <div class="content-subheading item">
+                    <h4 class="heading-effect center">Technology 4.0</h4>
+                    <div class="content-sapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                        varius enim in eros elementum tristique.</div>
                 </div>
-                @endforeach
             </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel_pri" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#carousel_pri" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="content"><img src="{{ asset('frontend/images/visci_icon_2.svg') }}" alt=""
+                    class="content-wrap image-icon">
+                <div class="content-subheading item">
+                    <h4 class="heading-effect center">Bring changes to your home</h4>
+                    <div class="content-sapo">We provided the smart and subtainable just for you!</div>
+                </div>
+            </div>
+            <div class="content"><img src="{{ asset('frontend/images/visci_icon_3.svg') }}" alt=""
+                    class="content-wrap image-icon">
+                <div class="content-subheading item">
+                    <h4 class="heading-effect center">Subtainable Developments</h4>
+                    <div class="content-sapo">We favour sustainable solutions. This goes hand in hand with our
+                        commitment to long-term, cost-effective projects that promote a better quality of life.</div>
+                </div>
+            </div>
+            <div class="content"><img src="{{ asset('frontend/images/visci_icon_4.svg') }}" alt=""
+                    class="content-wrap image-icon">
+                <div class="content-subheading item">
+                    <h4 class="heading-effect center">A kid-safe home</h4>
+                    <div class="content-sapo">Keep an eye out for these safety features as you assess a home&#x27;s
+                        child friendliness.</div>
+                </div>
+            </div>
+            <div class="content"><img src="{{ asset('frontend/images/visci_icon_5.svg') }}" alt=""
+                    class="content-wrap image-icon">
+                <div class="content-subheading item">
+                    <h4 class="heading-effect center">Smart in everyway</h4>
+                    <div class="content-sapo">VISCI bringing about changes towards more subtainable &amp; smarter
+                        cities.</div>
+                </div>
+            </div>
+            <div class="content"><img src="{{ asset('frontend/images/visci_icon_6.svg') }}" alt=""
+                    class="content-wrap image-icon">
+                <div class="content-subheading item">
+                    <h4 class="heading-effect center">Understand to undertake</h4>
+                    <div class="content-sapo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                        varius enim in eros elementum tristique.</div>
+                </div>
+            </div>
         </div>
     </div>
-    @endif
-
-    @if (count($sloganSlides) > 0)
-    <div class="slg_taseco" style="background: url({{ $setting->bg_slogan_slide }})">
-        <div class="w_gr slg_tasecow">
-            <div id="owl_slgtaseco" class="owl-carousel owl-theme">
-                @foreach ($sloganSlides as $slide)
-                <div class="item">
-                    <div class="item-slgtaseco">
-                        <div class="item_tasecotlt">
-                            <h3>{!! $slide->getTranslation(app()->getLocale())->title !!}</h3>
-                        </div>
-                        <div class="box_trading">
-                            <div class="box_trading1">
-                                <a class="img_trading" href="#"><img src="{{ $slide->image }}" alt="{{ $slide->getTranslation('vi')->title }}"></a>
-                                <div class="txt_trading">
-                                    {!! $slide->getTranslation(app()->getLocale())->intro !!}
-                                </div>
+</section>
+<section class="section gray-background">
+    <div class="section-container full-slider">
+        <section class="content-heading">
+            <h2 class="heading center">Our Projects</h2>
+            <div class="content-subheading">
+                <h4 class="heading-effect center">19 Solutions<br>280+ Projects on the go</h4>
+                <div class="content-sapo">We have helped and expanded more than 2000 projects around and are proud to be
+                    recommended as an effective business partner.</div>
+            </div>
+        </section>
+        <div class="content-wrap slider">
+            <div data-animation="slide" data-duration="500" data-infinite="1" class="slider w-slider">
+                <div class="w-slider-mask">
+                    <div class="w-slide">
+                        <div class="section-vertical-slider">
+                            <div class="slide-vertical-move">
+                                <h4 class="heading">Sustainability</h4>
+                                <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore magna aliquyam
+                                    erat, sed diam voluptua.</p>
+                                <a href="#" class="hero-slider-link w-inline-block w-clearfix">
+                                    <div class="hero-line white-bg"></div>
+                                    <div class="card-link">Read more</div>
+                                </a>
                             </div>
+                            <img src="{{ asset('frontend/images/Buildings_HOMECOVER.jpg') }}" sizes="100vw" alt="" class="bg-image">
+                        </div>
+                    </div>
+                    <div class="w-slide">
+                        <div class="section-vertical-slider">
+                            <div class="slide-vertical-move">
+                                <h4 class="heading">Sustainability</h4>
+                                <p>Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+                                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+                                    tempor invidunt ut labore et dolore magna aliquyam
+                                    erat, sed diam voluptua.</p>
+                                <a href="#" class="hero-slider-link w-inline-block w-clearfix">
+                                    <div class="hero-line white-bg"></div>
+                                    <div class="card-link">Read more</div>
+                                </a>
+                            </div>
+                            <img src="{{ asset('frontend/images/Buildings_HOMECOVER.jpg') }}" sizes="100vw" alt="" class="bg-image">
                         </div>
                     </div>
                 </div>
-                @endforeach
+                <div class="button-slider-style left-arrow w-slider-arrow-left">
+                    <div class="button-label white w-icon-slider-left"></div>
+                    <div class="hover-shape-left"></div>
+                </div>
+                <div class="button-slider-style right-arrow w-slider-arrow-right">
+                    <div class="button-label white w-icon-slider-right"></div>
+                    <div class="hover-shape-right"></div>
+                </div>
+                <div class="slide-nav w-slider-nav w-round"></div>
             </div>
-            <!--<div class="customNavigation">
-              <a class="btn prev">Previous</a>
-              <a class="btn next">Next</a>
-              <a class="btn play">Autoplay</a>
-              <a class="btn stop">Stop</a>
-            </div>-->
         </div>
     </div>
-    @endif
+</section>
+<section class="section">
+    <div class="section-container logo-fix-height">
+        <section class="content-heading">
+            <h2 class="heading center">Our Partners</h2>
+            <div class="content-subheading">
+                <div class="content-sapo">We have helped and expanded more than 2000 projects around and are proud to be
+                    recommended as an effective business partner.</div>
+            </div>
+        </section>
+    </div>
+    <section class="content-wrap slider-content">
+        <section class="brand-slider-container">
+            <div class="html-embed w-embed">
+                <style>
+                .parent {
+                    width: 100vw;
+                    height: 204px;
+                    margin: 20px auto;
+                    overflow: hidden
+                }
 
-    @if (count($cateTypes) > 0)
-        @foreach ($cateTypes as $cate)
-            @if ($cate->layout == 1)
-                <div class="fie_w">
-                    <div class="w_gr">
-                        <div class="fie_top">
-                            <h1>{{ $cate->getTranslation(app()->getLocale())->name }}</h1>
-                        </div>
-                        @if (count($cate['childCates']) > 0)
-                            <div class="owl-carousel owl-theme owl_fie">
-                                @foreach ($cate['childCates'] as $child)
-                                    <div class="item">
-                                        <div class="thumbnail">
-                                            <a href="{{ route('detail', ['slug' => $child->slug]) }}" class="thumbnail_img">
-                                                <img src="{{ $child->image }}" alt="{{ $child->name }}">
-                                            </a>
-                                            <div class="caption">
-                                                <h3><a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a></h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            @else
-                <div class="box_news2303">
-                    <div class="w_gr box_news2303w clearfix">
-                        <div class="box_newsw">
-                            <div class="box_newsw1">
-                                <div class="head_news_2013">
-                                    <h2><a href="#">{{ $cate->getTranslation(app()->getLocale())->name }}</a></h2>
-                                </div>
-                                @if ($cate['hotNew'] && $cate['firstCate'])
-                                    <div class="hotsiteleft">
-                                        <a class="thumbnail" href="{{ route('detail-article', ['parent' => $cate['firstCate']->slug, 'slug' => $cate['hotNew']->slug]) }}">
-                                            <img src="{{ $cate['hotNew']->image }}">
-                                        </a>
-                                        <h2>
-                                            <a class="title" href="{{ route('detail-article', ['parent' => $cate['firstCate']->slug, 'slug' => $cate['hotNew']->slug]) }}">{{ $cate['hotNew']->getTranslation(app()->getLocale())->title }}</a>
-                                        </h2>
-                                        <h3 class="intro">{!! $cate['hotNew']->getTranslation(app()->getLocale())->intro !!}</h3>
-                                    </div>
-                                @endif
-                            </div>
-                            @if (!empty($cate['listNews']))
-                                <div class="bnews_bootstrap">
-                                    <div class="panel panel-success">
-                                        <div class="panel-body">
-                                            <ul class="news_tb news_tded">
-                                                @foreach ($cate['listNews'] as $new)
-                                                <li class="news-item">
-                                                    <a href="{{ route('detail-article', ['parent' => $new->category->slug, 'slug' => $new->slug]) }}" class="news_item_img">
-                                                        <img src="{{ $new->image }}" />
-                                                    </a>
-                                                    <a href="{{ route('detail-article', ['parent' => $new->category->slug, 'slug' => $new->slug]) }}" class="news_item_txt">
-                                                        {{ $new->getTranslation(app()->getLocale())->title }}
-                                                        <!--<span class="date_newsty"><span class="date_newsty">(10/09/2019)</span></span>-->
-                                                    </a>
-                                                </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                        <div class="panel-footer">
+                .parent .child {
+                    width: 20000px;
+                    display: inline-block;
+                    animation: marquee 60s linear infinite;
+                }
 
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif  
-                        </div>
-                        @if ($cate['hotNew'] && $cate['firstCate'] && !empty($cate['listNews']))
-                            <div class="box_news2303_qc">
-                                <a href="{{ route('detail', ['slug' => $tvHinhanh->slug]) }}" class="thumbnail">
-                                    <img src="{{ $tvHinhanh->image }}" alt="{{ $tvHinhanh->getTranslation('vi')->name }}" class="img-responsive">
-                                    <span class="box_news2303_tlt">{{ $tvHinhanh->getTranslation(app()->getLocale())->name }}</span>
-                                </a>
-                                <a href="{{ route('detail', ['slug' => $video->slug]) }}" class="thumbnail">
-                                    <img src="{{ $video->image }}" alt="{{ $video->getTranslation('vi')->name }}" class="img-responsive">
-                                    <span class="box_news2303_tlt">{{ $video->getTranslation(app()->getLocale())->name }}</span>
-                                </a>
-                            </div>
-                        @endif
-                    </div>
+                @keyframes marquee {
+                    0% {
+                        margin-left: 0;
+                    }
+
+                    100% {
+                        margin-left: calc(-1835px + 608px);
+                    }
+                }
+
+                .parent .child:hover {
+                    -webkit-animation-play-state: paused;
+                    -moz-animation-play-state: paused;
+                    -o-animation-play-state: paused;
+                    animation-play-state: paused;
+                }
+                </style>
+            </div>
+            <div class="parent">
+                <div class="child">
+                    <a href="https://www.washington.edu" target="_blank" class="logo-washington w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-w-university2x.png') }}" width="200" height="200" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://www.nasa.gov" target="_blank" class="logo-nasa w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-nasa2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="http://www.adpc.net/" target="_blank" class="logo-adpc w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-adpc2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="https://nawapi.gov.vn" target="_blank" class="logo-nawapi w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-nawapi2x.png') }}" width="180" height="180" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://servir.adpc.net" target="_blank" class="logo-servirmekong w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-sevirmekong2x.png') }}" width="200" height="200" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://www.usaid.gov" target="_blank" class="logo-usaid w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-usaid2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="https://www.washington.edu" target="_blank" class="logo-washington w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-w-university2x.png') }}" width="200" height="200" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://www.nasa.gov" target="_blank" class="logo-nasa w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-nasa2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="http://www.adpc.net/" target="_blank" class="logo-adpc w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-adpc2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="https://nawapi.gov.vn" target="_blank" class="logo-nawapi w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-nawapi2x.png') }}" width="180" height="180" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://servir.adpc.net" target="_blank" class="logo-servirmekong w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-sevirmekong2x.png') }}" width="200" height="200" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://www.usaid.gov" target="_blank" class="logo-usaid w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-usaid2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="https://www.washington.edu" target="_blank" class="logo-washington w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-w-university2x.png') }}" width="200" height="200" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://www.nasa.gov" target="_blank" class="logo-nasa w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-nasa2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="http://www.adpc.net/" target="_blank" class="logo-adpc w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-adpc2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="https://nawapi.gov.vn" target="_blank" class="logo-nawapi w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-nawapi2x.png') }}" width="180" height="180" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://servir.adpc.net" target="_blank" class="logo-servirmekong w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-sevirmekong2x.png') }}" width="200" height="200" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://www.usaid.gov" target="_blank" class="logo-usaid w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-usaid2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="https://www.washington.edu" target="_blank" class="logo-washington w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-w-university2x.png') }}" width="200" height="200" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://www.nasa.gov" target="_blank" class="logo-nasa w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-nasa2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="http://www.adpc.net/" target="_blank" class="logo-adpc w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-adpc2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
+                    <a href="https://nawapi.gov.vn" target="_blank" class="logo-nawapi w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-nawapi2x.png') }}" width="180" height="180" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://servir.adpc.net" target="_blank" class="logo-servirmekong w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-sevirmekong2x.png') }}" width="200" height="200" alt=""
+                            class="logo-image-slider"></a>
+                    <a href="https://www.usaid.gov" target="_blank" class="logo-usaid w-inline-block"><img
+                            src="{{ asset('frontend/images/logo-usaid2x.png') }}" width="200" height="200" alt="" class="logo-image-slider"></a>
                 </div>
-            @endif
-        @endforeach
-    @endif
+            </div>
+        </section>
+    </section>
+</section>
+<section class="section gray-background">
+    <div class="section-container">
+        <div class="_2-columns-2-to-1">
+            <div id="w-node-d6fcca430ea3-cef3f7a9" class="sticky-top-5vh">
+                <a href="#" class="image-filled-featured w-inline-block">
+                    <img src="{{ asset('frontend/images/cover2.jpg') }}" width="1280" alt="" class="bg-image">
+                    <div class="gradient-bottom"></div>
+                    <div class="thumb-info-small-grid featured-card">
+                        <div class="category-wrapper">
+                            <div>construction</div>
+                            <div class="caption-dot">·</div>
+                            <div>may 29 2019</div>
+                        </div>
+                        <h4 class="heading">Designing landing pages in hours vs. days: an interview with Jamie Syke</h4>
+                        <div class="post-summary">
+                            <div>Like so many things, the race was canceled. Soon after, gyms around the country were
+                                closed. Suddenly, running — a solo activity that can be done outdoors, away from other
+                                people — seems more important than ever, for
+                                both our health and our mood.<br></div>
+                        </div>
+                    </div>
+                    <div class="image-cover-shape"></div>
+                </a>
+            </div>
+            <div id="w-node-d6fcca430eae-cef3f7a9" class="_1-column-2-on-mobile">
+                <a href="#" class="cms-link w-inline-block">
+                    <div class="thumb-info-small-grid">
+                        <div class="image-4-to-3">
+                            <img src="{{ asset('frontend/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg') }}" width="960" alt="" class="bg-image">
+                            <img src="{{ asset('frontend/images/Image-16-10-Ratio.svg') }}" alt="" class="image-ratio">
+                            <div class="image-cover-shape"></div>
+                        </div>
+                        <div>
+                            <div class="category-wrapper">
+                                <div>construction</div>
+                                <div class="caption-dot">·</div>
+                                <div>may 29 2019</div>
+                            </div>
+                            <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="cms-link w-inline-block">
+                    <div class="thumb-info-small-grid">
+                        <div class="image-4-to-3">
+                            <img src="{{ asset('frontend/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg') }}" width="960" alt="" class="bg-image">
+                            <img src="{{ asset('frontend/images/Image-16-10-Ratio.svg') }}" alt="" class="image-ratio">
+                            <div class="image-cover-shape"></div>
+                        </div>
+                        <div>
+                            <div class="category-wrapper">
+                                <div>construction</div>
+                                <div class="caption-dot">·</div>
+                                <div>may 29 2019</div>
+                            </div>
+                            <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="cms-link w-inline-block">
+                    <div class="thumb-info-small-grid">
+                        <div class="image-4-to-3">
+                            <img src="{{ asset('frontend/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg') }}" width="960" alt="" class="bg-image">
+                            <img src="{{ asset('frontend/images/Image-16-10-Ratio.svg') }}" alt="" class="image-ratio">
+                            <div class="image-cover-shape"></div>
+                        </div>
+                        <div>
+                            <div class="category-wrapper">
+                                <div>construction</div>
+                                <div class="caption-dot">·</div>
+                                <div>may 29 2019</div>
+                            </div>
+                            <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="cms-link w-inline-block">
+                    <div class="thumb-info-small-grid">
+                        <div class="image-4-to-3">
+                            <img src="{{ asset('frontend/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg') }}" width="960" alt="" class="bg-image">
+                            <img src="{{ asset('frontend/images/Image-16-10-Ratio.svg') }}" alt="" class="image-ratio">
+                            <div class="image-cover-shape"></div>
+                        </div>
+                        <div>
+                            <div class="category-wrapper">
+                                <div>construction</div>
+                                <div class="caption-dot">·</div>
+                                <div>may 29 2019</div>
+                            </div>
+                            <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="cms-link w-inline-block">
+                    <div class="thumb-info-small-grid">
+                        <div class="image-4-to-3">
+                            <img src="{{ asset('frontend/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg') }}" width="960" alt="" class="bg-image">
+                            <img src="{{ asset('frontend/images/Image-16-10-Ratio.svg') }}" alt="" class="image-ratio">
+                            <div class="image-cover-shape"></div>
+                        </div>
+                        <div>
+                            <div class="category-wrapper">
+                                <div>construction</div>
+                                <div class="caption-dot">·</div>
+                                <div>may 29 2019</div>
+                            </div>
+                            <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="cms-link w-inline-block">
+                    <div class="thumb-info-small-grid">
+                        <div class="image-4-to-3">
+                            <img src="{{ asset('frontend/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg') }}" width="960" alt="" class="bg-image">
+                            <img src="{{ asset('frontend/images/Image-16-10-Ratio.svg') }}" alt="" class="image-ratio">
+                            <div class="image-cover-shape"></div>
+                        </div>
+                        <div>
+                            <div class="category-wrapper">
+                                <div>construction</div>
+                                <div class="caption-dot">·</div>
+                                <div>may 29 2019</div>
+                            </div>
+                            <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="cms-link w-inline-block">
+                    <div class="thumb-info-small-grid">
+                        <div class="image-4-to-3">
+                            <img src="{{ asset('frontend/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg') }}" width="960" alt="" class="bg-image">
+                            <img src="{{ asset('frontend/images/Image-16-10-Ratio.svg') }}" alt="" class="image-ratio">
+                            <div class="image-cover-shape"></div>
+                        </div>
+                        <div>
+                            <div class="category-wrapper">
+                                <div>construction</div>
+                                <div class="caption-dot">·</div>
+                                <div>may 29 2019</div>
+                            </div>
+                            <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
+                        </div>
+                    </div>
+                </a>
+                <a href="news-events.html" class="button-style w-inline-block">
+                    <div class="button-style-w-icon">
+                        <div class="button-label">Browse news and events</div>
+                            <img src="{{ asset('frontend/images/chevron-right.svg') }}" width="120" alt="" class="icon">
+                        </div>
+                    <div class="hover-shape"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 @stop
 
 @section('pageJs')
-    <script type="text/javascript">
-        var title = $('.title').text();
-        title = trimText(title, 20);
-        var intro = $('.intro').text();
-        intro = trimText(intro, 40);
-        $('.title').text(title);
-        $('.intro').text(intro);
 
-        function trimText(str ,wordCount) {
-            var strArray = str.split(' ');
-            var subArray = strArray.slice(0, wordCount);
-            var result = subArray.join(" ");
-            if (strArray.length < wordCount) {
-                return result;
-            } else {
-                return result + '...';
-            }
-        }
-    </script>
 @stop

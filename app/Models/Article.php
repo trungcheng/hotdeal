@@ -122,24 +122,20 @@ class Article extends Model
         $article = new Article();
         foreach (\Config::get('translatable.locales') as $locale) {
             if (isset($data['title'])) {
-                $article->translateOrNew($locale)->title = ($locale == 'vi') ? $data['title'] : $data[$locale.'_title'];
+                $article->translateOrNew($locale)->title = ($locale == 'en') ? $data['title'] : $data[$locale.'_title'];
             }
             if (isset($data['intro'])) {
-                $article->translateOrNew($locale)->intro = ($locale == 'vi') ? $data['intro'] : $data[$locale.'_intro'];
+                $article->translateOrNew($locale)->intro = ($locale == 'en') ? $data['intro'] : $data[$locale.'_intro'];
             }
             if (isset($data['fulltext'])) {
-                $article->translateOrNew($locale)->fulltext = ($locale == 'vi') ? $data['fulltext'] : $data[$locale.'_fulltext'];
+                $article->translateOrNew($locale)->fulltext = ($locale == 'en') ? $data['fulltext'] : $data[$locale.'_fulltext'];
             }
         }
 
-        if (isset($data['en_title'])) unset($data['en_title']);
-        if (isset($data['en_intro'])) unset($data['en_intro']);
-        if (isset($data['en_fulltext'])) unset($data['en_fulltext']);
+        if (isset($data['vi_title'])) unset($data['vi_title']);
+        if (isset($data['vi_intro'])) unset($data['vi_intro']);
+        if (isset($data['vi_fulltext'])) unset($data['vi_fulltext']);
 
-        if (isset($data['ko_title'])) unset($data['ko_title']);
-        if (isset($data['ko_intro'])) unset($data['ko_intro']);
-        if (isset($data['ko_fulltext'])) unset($data['ko_fulltext']);
-        
         $data['type'] = $type;
 
         foreach ($data as $key => $value) {
@@ -156,27 +152,23 @@ class Article extends Model
     
     public static function updateAction($data, $article, $type = NULL)
     {
-        $data['slug'] = Util::generateSlug($data['title']);
+        $data['slug'] = ($type != 'page') ? Util::generateSlug($data['title']) : $article['slug'];
 
         foreach (\Config::get('translatable.locales') as $locale) {
             if (isset($data['title'])) {
-                $article->translateOrNew($locale)->title = ($locale == 'vi') ? $data['title'] : $data[$locale.'_title'];
+                $article->translateOrNew($locale)->title = ($locale == 'en') ? $data['title'] : $data[$locale.'_title'];
             }
             if (isset($data['intro'])) {
-                $article->translateOrNew($locale)->intro = ($locale == 'vi') ? $data['intro'] : $data[$locale.'_intro'];
+                $article->translateOrNew($locale)->intro = ($locale == 'en') ? $data['intro'] : $data[$locale.'_intro'];
             }
             if (isset($data['fulltext'])) {
-                $article->translateOrNew($locale)->fulltext = ($locale == 'vi') ? $data['fulltext'] : $data[$locale.'_fulltext'];
+                $article->translateOrNew($locale)->fulltext = ($locale == 'en') ? $data['fulltext'] : $data[$locale.'_fulltext'];
             }
         }
 
-        if (isset($data['en_title'])) unset($data['en_title']);
-        if (isset($data['en_intro'])) unset($data['en_intro']);
-        if (isset($data['en_fulltext'])) unset($data['en_fulltext']);
-
-        if (isset($data['ko_title'])) unset($data['ko_title']);
-        if (isset($data['ko_intro'])) unset($data['ko_intro']);
-        if (isset($data['ko_fulltext'])) unset($data['ko_fulltext']);
+        if (isset($data['vi_title'])) unset($data['vi_title']);
+        if (isset($data['vi_intro'])) unset($data['vi_intro']);
+        if (isset($data['vi_fulltext'])) unset($data['vi_fulltext']);
 
         $data['type'] = $type;
 

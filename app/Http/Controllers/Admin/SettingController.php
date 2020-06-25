@@ -86,23 +86,19 @@ class SettingController extends Controller
 
             foreach (\Config::get('translatable.locales') as $locale) {
                 if (isset($data['name'])) {
-                    $setting->translateOrNew($locale)->name = ($locale == 'vi') ? $data['name'] : $data[$locale.'_name'];
+                    $setting->translateOrNew($locale)->name = ($locale == 'en') ? $data['name'] : $data[$locale.'_name'];
                 }
                 if (isset($data['slogan'])) {
-                    $setting->translateOrNew($locale)->slogan = ($locale == 'vi') ? $data['slogan'] : $data[$locale.'_slogan'];
+                    $setting->translateOrNew($locale)->slogan = ($locale == 'en') ? $data['slogan'] : $data[$locale.'_slogan'];
                 }
                 if (isset($data['address'])) {
-                    $setting->translateOrNew($locale)->address = ($locale == 'vi') ? $data['address'] : $data[$locale.'_address'];
+                    $setting->translateOrNew($locale)->address = ($locale == 'en') ? $data['address'] : $data[$locale.'_address'];
                 }
             }
     
-            if (isset($data['en_name'])) unset($data['en_name']);
-            if (isset($data['en_slogan'])) unset($data['en_slogan']);
-            if (isset($data['en_address'])) unset($data['en_address']);
-    
-            if (isset($data['ko_name'])) unset($data['ko_name']);
-            if (isset($data['ko_slogan'])) unset($data['ko_slogan']);
-            if (isset($data['ko_address'])) unset($data['ko_address']);
+            if (isset($data['vi_name'])) unset($data['vi_name']);
+            if (isset($data['vi_slogan'])) unset($data['vi_slogan']);
+            if (isset($data['vi_address'])) unset($data['vi_address']);
 
             foreach ($data as $key => $value) {
                 $setting[$key] = $value;

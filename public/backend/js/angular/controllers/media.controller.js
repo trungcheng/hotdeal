@@ -2,26 +2,26 @@
     'use strict';
 
     angular
-        .module('UticoCMS')
+        .module('VisciCMS')
         .controller('MediaController', MediaController);
 
     function MediaController($rootScope, $scope, $http, $window, $timeout, PagerService) {
 
-    	$scope.totalItems = [];
+        $scope.totalItems = [];
         $scope.pager = {};
         $scope.enableSubmit = false;
 
         $scope.pullDownLists = {
             availableOption: [
-              { value: 10, name: '10' },
-              { value: 25, name: '25' },
-              { value: 50, name: '50' },
-              { value: 100, name: '100' }
+                { value: 10, name: '10' },
+                { value: 25, name: '25' },
+                { value: 50, name: '50' },
+                { value: 100, name: '100' }
             ],
-            selectedOption: {value: 10, name: '10'}
+            selectedOption: { value: 10, name: '10' }
         };
 
-        $scope.setPage = function (pageSize, currentPage) {
+        $scope.setPage = function(pageSize, currentPage) {
             if (currentPage < 1 || currentPage > $scope.pager.totalPages) return;
             $scope.pager = PagerService.GetPager($scope.totalItems.length, currentPage, pageSize);
             $scope.items = $scope.totalItems.slice($scope.pager.startIndex, $scope.pager.endIndex + 1);
@@ -33,11 +33,11 @@
 
         // ******************************** PHOTO ********************************* //
 
-        $scope.getPhotoResults = function (name, perPage, pageNumber) {
+        $scope.getPhotoResults = function(name, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/media/photos/getAllPhotos?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/media/photos/getAllPhotos?name=' + name, { cache: false })
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -53,12 +53,12 @@
                 });
         }
 
-        $scope.loadPhotoInit = function () {
+        $scope.loadPhotoInit = function() {
             $scope.getPhotoResults('all-photo', 10, 1);
         }
 
-        $scope.loadInitCatePhoto = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates?ids=19').success(function (res) {
+        $scope.loadInitCatePhoto = function() {
+            $http.get(app.vars.baseUrl + '/categories/getAllParentCates?ids=19').success(function(res) {
                 $scope.parentCates = res.data;
             });
         }
@@ -71,13 +71,13 @@
             }
         }
 
-        $scope.processPhoto = function (type) {
-            
+        $scope.processPhoto = function(type) {
+
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
-            
+
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" album này ?",
+                title: "Bạn chắc chắn muốn " + title + " album này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -85,15 +85,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     method: 'POST',
                     url: app.vars.baseUrl + '/media/photos/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -107,7 +107,7 @@
             });
         }
 
-        $scope.deletePhoto = function (album, index) {
+        $scope.deletePhoto = function(album, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa album này ?",
                 type: "warning",
@@ -117,15 +117,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     url: app.vars.baseUrl + '/media/photos/delete',
                     method: 'POST',
                     data: {
                         articleId: album.id
                     }
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -144,11 +144,11 @@
 
         // ******************************** VIDEO ********************************* //
 
-        $scope.getVideoResults = function (name, perPage, pageNumber) {
+        $scope.getVideoResults = function(name, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/media/videos/getAllVideos?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/media/videos/getAllVideos?name=' + name, { cache: false })
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -164,12 +164,12 @@
                 });
         }
 
-        $scope.loadVideoInit = function () {
+        $scope.loadVideoInit = function() {
             $scope.getVideoResults('all-video', 10, 1);
         }
 
-        $scope.loadInitCateVideo = function () {
-            $http.get(app.vars.baseUrl + '/categories/getAllParentCates?ids=20').success(function (res) {
+        $scope.loadInitCateVideo = function() {
+            $http.get(app.vars.baseUrl + '/categories/getAllParentCates?ids=20').success(function(res) {
                 $scope.parentCates = res.data;
             });
         }
@@ -182,13 +182,13 @@
             }
         }
 
-        $scope.processVideo = function (type) {
-            
+        $scope.processVideo = function(type) {
+
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
-            
+
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" video này ?",
+                title: "Bạn chắc chắn muốn " + title + " video này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -196,15 +196,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     method: 'POST',
                     url: app.vars.baseUrl + '/media/videos/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -218,7 +218,7 @@
             });
         }
 
-        $scope.deleteVideo = function (video, index) {
+        $scope.deleteVideo = function(video, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa video này ?",
                 type: "warning",
@@ -228,15 +228,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     url: app.vars.baseUrl + '/media/videos/delete',
                     method: 'POST',
                     data: {
                         articleId: video.id
                     }
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -257,10 +257,10 @@
 
         // ******************************** PARTNER LOGOS ********************************* //
 
-        $scope.updatePartnerLogo = function () {
-            
+        $scope.updatePartnerLogo = function() {
+
             var formData = new FormData($('#formProcess')[0]);
-            
+
             swal({
                 title: "Bạn chắc chắn muốn cập nhật ?",
                 type: "warning",
@@ -270,15 +270,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     method: 'POST',
                     url: app.vars.baseUrl + '/media/partner-logos/update',
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -299,11 +299,11 @@
 
         // ******************************** SLIDES ********************************* //
 
-        $scope.getSlideResults = function (name, perPage, pageNumber) {
+        $scope.getSlideResults = function(name, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/media/slides/getAllSlides?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/media/slides/getAllSlides?name=' + name, { cache: false })
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -319,7 +319,7 @@
                 });
         }
 
-        $scope.loadSlideInit = function () {
+        $scope.loadSlideInit = function() {
             $scope.getSlideResults('all-slide', 10, 1);
         }
 
@@ -331,13 +331,13 @@
             }
         }
 
-        $scope.processSlide = function (type) {
-            
+        $scope.processSlide = function(type) {
+
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
-            
+
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" slide này ?",
+                title: "Bạn chắc chắn muốn " + title + " slide này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -345,15 +345,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     method: 'POST',
                     url: app.vars.baseUrl + '/media/slides/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -367,7 +367,7 @@
             });
         }
 
-        $scope.deleteSlide = function (slide, index) {
+        $scope.deleteSlide = function(slide, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa slide này ?",
                 type: "warning",
@@ -377,15 +377,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     url: app.vars.baseUrl + '/media/slides/delete',
                     method: 'POST',
                     data: {
                         articleId: slide.id
                     }
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -406,11 +406,11 @@
 
         // ******************************** SLOGAN SLIDES ********************************* //
 
-        $scope.getSloganSlideResults = function (name, perPage, pageNumber) {
+        $scope.getSloganSlideResults = function(name, perPage, pageNumber) {
             $scope.loading = true;
             $scope.loaded = false;
 
-            $http.get(app.vars.baseUrl + '/media/slogan-slides/getAllSloganSlides?name=' + name, {cache: false})
+            $http.get(app.vars.baseUrl + '/media/slogan-slides/getAllSloganSlides?name=' + name, { cache: false })
                 .success(function(response) {
 
                     $scope.loading = false;
@@ -425,7 +425,7 @@
                 });
         }
 
-        $scope.loadSloganSlideInit = function () {
+        $scope.loadSloganSlideInit = function() {
             $scope.getSloganSlideResults('all-slogan-slide', 10, 1);
         }
 
@@ -437,17 +437,17 @@
             }
         }
 
-        $scope.processSloganSlide = function (type) {
-            
+        $scope.processSloganSlide = function(type) {
+
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
 
             formData.append('intro', CKEDITOR.instances.content.document.getBody().getHtml());
             formData.append('en_intro', CKEDITOR.instances.en_content.document.getBody().getHtml());
             formData.append('ko_intro', CKEDITOR.instances.ko_content.document.getBody().getHtml());
-            
+
             swal({
-                title: "Bạn chắc chắn muốn "+ title +" slide này ?",
+                title: "Bạn chắc chắn muốn " + title + " slide này ?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-success",
@@ -455,15 +455,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     method: 'POST',
                     url: app.vars.baseUrl + '/media/slogan-slides/' + type,
                     data: formData,
                     headers: { 'Content-Type': undefined },
                     transformRequest: angular.identity
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');
@@ -477,7 +477,7 @@
             });
         }
 
-        $scope.deleteSloganSlide = function (slide, index) {
+        $scope.deleteSloganSlide = function(slide, index) {
             swal({
                 title: "Bạn chắc chắn muốn xóa slide này ?",
                 type: "warning",
@@ -487,15 +487,15 @@
                 cancelButtonText: "Quay lại",
                 closeOnConfirm: false,
                 showLoaderOnConfirm: true
-            }, function () {
+            }, function() {
                 $http({
                     url: app.vars.baseUrl + '/media/slogan-slides/delete',
                     method: 'POST',
                     data: {
                         articleId: slide.id
                     }
-                }).success(function (response) {
-                    swal({ title: '', text: response.message, type: response.type }, function (isConfirm) {
+                }).success(function(response) {
+                    swal({ title: '', text: response.message, type: response.type }, function(isConfirm) {
                         if (isConfirm) {
                             if (response.status) {
                                 // toastr.success(response.message, 'SUCCESS');

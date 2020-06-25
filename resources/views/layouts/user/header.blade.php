@@ -1,75 +1,108 @@
-<header id="header">
-    <div class="header_top w_gr clearfix">
-        <div class="header_logo">
-            <a href="{{ url('') }}"><img src="{{ url('') }}{{ $setting->logo }}" alt="{{ $setting->name }}" class="img-responsive"></a>
-        </div>
-        <div class="header_slg">
-            <div class="tlt">
-                <ul class="texts" style="display: none">
-                    <li>{{ $setting->getTranslation(app()->getLocale())->name }}</li>
-                </ul>
-            </div>
-        </div>
-        <div class="header_searchw">
-            <div class="header_search">
-                <form method="get" action="{{ route('search') }}">
-                    <div class="form-group">
-                        <input type="text" name="keyword" class="form-control" placeholder="{{ trans('general.search') }}">
-                        <button type="submit" class="btn btn-primary">
-                            <i style="position:relative;top:2px;" class="fa fa-search"></i>
-                        </button>
+<div class="navigation-menu">
+    <div class="menu-wrapper">
+        <div class="w-layout-grid grid-navigation">
+            <a href="{{ route('home') }}" aria-current="page" class="brand-logo w-nav-brand w--current">
+                <img src="{{ asset('frontend/images/visci-vector-web-white.svg') }}" height="60" alt="" class="brand-visci">
+                <img src="{{ asset('frontend/images/visci-tagline-vector-web-white.svg') }}" height="66" alt="" class="tagline">
+            </a>
+            <form action="{{ route('search') }}" method="get" class="search w-form">
+                <input type="search" class="text-field-filled w-input" maxlength="256" name="query" placeholder="Search…" id="search" required="">
+                <input type="submit" value="Search" class="search-button w-button">
+            </form>
+            <div class="grid-navbar">
+                <div data-hover="1" data-delay="300" class="navbar-link w-dropdown">
+                    <div class="navbar-toggle w-dropdown-toggle">
+                        <a href="{{ route('contact') }}" class="navbar-toggle-link w-inline-block">
+                            <div>About us</div>
+                        </a>
+                        <div class="hover-line"></div>
                     </div>
-                </form>
+                    <nav class="navbar-droplist w-dropdown-list"></nav>
+                </div>
+                <div data-hover="1" data-delay="0" class="navbar-link w-dropdown">
+                    <div class="navbar-toggle w-dropdown-toggle">
+                        <a href="{{ route('news-events') }}" class="navbar-toggle-link w-inline-block">
+                            <div>news &amp; events</div><img src="{{ asset('frontend/images/chevron-down.svg') }}" width="20" alt=""
+                                class="icon-nav">
+                        </a>
+                        <div class="hover-line"></div>
+                    </div>
+                    <nav class="navbar-droplist w-dropdown-list">
+                        <div class="droplist-wrap">
+                            <a href="{{ route('news') }}" class="dropdown-link w-dropdown-link">News</a>
+                            <a href="{{ route('newsletter') }}" class="dropdown-link w-dropdown-link">Newsletter</a>
+                            <a href="{{ route('coming-events') }}" class="dropdown-link w-dropdown-link">Coming Events</a>
+                            <a href="{{ route('past-events') }}" class="dropdown-link w-dropdown-link">Past Events</a>
+                        </div>
+                    </nav>
+                </div>
+                <div class="droplist-mobile">
+                    <a href="{{ route('news') }}" class="dropdown-link">News</a>
+                    <a href="{{ route('newsletter') }}" class="dropdown-link">Newsletter</a>
+                    <a href="{{ route('coming-events') }}" class="dropdown-link">Coming events</a>
+                    <a href="{{ route('past-events') }}" class="dropdown-link">Past events</a>
+                </div>
+                <div data-hover="1" data-delay="0" class="navbar-link w-dropdown">
+                    <div class="navbar-toggle w-dropdown-toggle">
+                        <a href="{{ route('projects') }}" class="navbar-toggle-link w-inline-block">
+                            <div>Projects</div>
+                        </a>
+                        <div class="hover-line"></div>
+                    </div>
+                    <nav class="navbar-droplist w-dropdown-list"></nav>
+                </div>
+                <div data-hover="1" data-delay="0" class="navbar-link w-dropdown">
+                    <div class="navbar-toggle w-dropdown-toggle">
+                        <a href="{{ route('partners') }}" class="navbar-toggle-link w-inline-block">
+                            <div>Partners</div>
+                        </a>
+                        <div class="hover-line"></div>
+                    </div>
+                    <nav class="navbar-droplist w-dropdown-list"></nav>
+                </div>
+                <div data-hover="1" data-delay="0" class="navbar-link w-dropdown">
+                    <div class="navbar-toggle w-dropdown-toggle">
+                        <a href="{{ route('media-press') }}" class="navbar-toggle-link w-inline-block">
+                            <div>media &amp; press</div><img src="{{ asset('frontend/images/chevron-down.svg') }}" width="20" alt=""
+                                class="icon-nav">
+                        </a>
+                        <div class="hover-line"></div>
+                    </div>
+                    <nav class="navbar-droplist w-dropdown-list">
+                        <div class="droplist-wrap"><a href="{{ route('media-press') }}" class="dropdown-link w-dropdown-link">Media</a><a
+                                href="{{ route('media-press') }}" class="dropdown-link w-dropdown-link">Press</a></div>
+                    </nav>
+                </div>
+                <div class="droplist-mobile"><a href="{{ route('media-press') }}" class="dropdown-link">media</a><a
+                        href="{{ route('media-press') }}" class="dropdown-link">press</a></div>
+                <div data-hover="1" data-delay="0" class="navbar-link w-dropdown">
+                    <div class="navbar-toggle w-dropdown-toggle">
+                        <a href="{{ route('contact') }}" class="navbar-toggle-link w-inline-block">
+                            <div>contact us</div>
+                        </a>
+                        <div class="hover-line"></div>
+                    </div>
+                    <nav class="navbar-droplist w-dropdown-list"></nav>
+                </div>
             </div>
-            <div class="header_language">
-                <a title="Vietnamese" href="{{ route('locale', ['locale' => 'vi']) }}"><img style="box-shadow: 2px 2px #dcdcdc;margin-right:3px" src="{{ asset('frontend/themes/default/images/vietnam.png') }}" alt="vi"></a>
-                <a title="English" href="{{ route('locale', ['locale' => 'en']) }}"><img style="box-shadow: 2px 2px #dcdcdc;margin-right:3px" src="{{ asset('frontend/themes/default/images/english.png') }}" alt="en"></a>
-                <a title="Koreanese" href="{{ route('locale', ['locale' => 'ko']) }}"><img style="box-shadow: 2px 2px #dcdcdc;" src="{{ asset('frontend/themes/default/images/korean.png') }}" alt="ko"></a>
+            <div class="bottom-nav">
+                <div class="align-center">{!! $setting->getTranslation(app()->getLocale())->address !!}</div>
+                <a data-w-id="a6122c70-9b5b-bdaa-a6d2-83ebf17b58d7" href="#" class="close-search w-inline-block"><img
+                        src="{{ asset('frontend/images/Icon---Close.svg') }}" alt="" class="close-button-label"></a>
             </div>
         </div>
     </div>
-    <div class="nav_w">
-        <div class="navbar navbar-default navbar_ed">
-            <div class="w_gr">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu_rps">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="navbar-collapse collapse" id="menu_rps">
-                    @if (count($categories) > 0)
-                    <ul class="navbar-nav nav">
-                        <li class="menu_ichome"><a href="{{ url('') }}" style="border:none"><i class="fa fa-home fa-2x"></i></a></li>
-                        @foreach ($categories as $cate)
-                        <li>
-                            @if ($cate->childrens)
-                                <a href="#">
-                                    {{ $cate->getTranslation(app()->getLocale())->name }} 
-                                    <span class="caret"></span>
-                                </a>
-                            @else
-                                <a href="{{ route('detail', ['slug' => $cate->slug]) }}">
-                                    {{ $cate->getTranslation(app()->getLocale())->name }} 
-                                </a>
-                            @endif
-                            @if ($cate->childrens)
-                            <ul class="dropdown-menu dropdown-menu_ed">
-                                @foreach ($cate->childrens as $child)
-                                <li>
-                                    <a href="{{ route('detail', ['slug' => $child->slug]) }}">{{ $child->getTranslation(app()->getLocale())->name }}</a>
-                                </li>
-                                @endforeach
-                            </ul>
-                            @endif
-                        </li>
-                        @endforeach
-                        <li><a href="{{ route('contact') }}">{{ trans('general.contact') }}</a></li>
-                    </ul>
-                    @endif
-                </div>
-            </div>
+</div>
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="nav-button">
+            <div class="nav-button-line-top"></div>
+            <div class="nav-button-line-middle"></div>
+            <div class="nav-button-line-bottom"></div>
         </div>
+        <a href="{{ route('home') }}" aria-current="page" class="header-logo w-nav-brand w--current">
+            <img src="{{ asset('frontend/images/visci-vector-web.svg') }}" height="60" alt="" class="brand-visci">
+            <img src="{{ asset('frontend/images/visci-tagline-vector-web.svg') }}" height="66" alt="" class="tagline">
+        </a>
     </div>
-</header>
+</nav>
