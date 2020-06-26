@@ -16,12 +16,45 @@ class WebController extends Controller
 
     public function index()
     {
-        $slides = Article::where('type', 'slide')
-            ->where('status', 1)
-            ->get();
+        // $slides = Article::where('type', 'slide')
+        //     ->where('status', 1)
+        //     ->get();
+        $projects = [];
+        $catProject = Category::where('slug', 'projects')->first();
+        if ($catProject) {
+            $projects = Article::where('cat_id', $catProject->id)
+                ->orderBy('id', 'desc')
+                ->get();
+        }
+
+        $featureEvent = null;
+        $catEvent = Category::where('slug', 'events')->first();
+        if ($catEvent) {
+            $featureEvent = Article::where('is_feature', 1)
+                ->where('cat_id', $catEvent->id)
+                ->orderBy('id', 'desc')
+                ->first();
+        }
+
+        $news = [];
+        $catNew = Category::where('slug', 'news')->first();
+        if ($catNew) {
+            $arrIds = [];
+            $newChilds = Category::where('parent_id', $catNew->id)->get();
+            foreach ($newChilds as $child) {
+                $arrIds[] = $child->id;
+            }
+            $news = Article::whereIn('cat_id', $arrIds)
+                ->orderBy('id', 'desc')
+                ->limit(7)
+                ->get();
+        }
 
         return view('pages.user.home.index', [
-            'slides' => $slides
+            // 'slides' => $slides,
+            'projects' => $projects,
+            'featureEvent' => $featureEvent,
+            'news' => $news
         ]);
     }
 
@@ -61,6 +94,18 @@ class WebController extends Controller
         ]);
     }
 
+    public function about()
+    {
+        $article = Article::where('slug', 'about')->where('type', 'page')->first();
+        if ($article) {
+            return view('pages.user.home.about', [
+                'article' => $article
+            ]);
+        }
+
+        abort(404);
+    }
+
     public function contact()
     {
         return view('pages.user.home.contact', []);
@@ -68,7 +113,45 @@ class WebController extends Controller
 
     public function newsEvents()
     {
-        return view('pages.user.home.news-events', []);
+        $highlightNews = [];
+        $recentlyNews = [];
+        $catNew = Category::where('slug', 'news')->first();
+        if ($catNew) {
+            $arrIds = [];
+            $newChilds = Category::where('parent_id', $catNew->id)->get();
+            foreach ($newChilds as $child) {
+                $arrIds[] = $child->id;
+            }
+            $highlightNews = Article::whereIn('cat_id', $arrIds)
+                ->where('is_feature', 1)
+                ->orderBy('id', 'desc')
+                ->limit(4)
+                ->get();
+
+            $recentlyNews = Article::whereIn('cat_id', $arrIds)
+                ->where('is_feature', 0)
+                ->orderBy('id', 'desc')
+                ->limit(6)
+                ->get();
+
+            $explorerTopics = $newChilds;
+        }
+
+        $events = [];
+        $catEvent = Category::where('slug', 'events')->first();
+        if ($catEvent) {
+            $events = Article::where('cat_id', $catEvent->id)
+                ->orderBy('id', 'desc')
+                ->limit(3)
+                ->get();
+        }
+
+        return view('pages.user.home.news-events', [
+            'highlightNews' => $highlightNews,
+            'recentlyNews' => $recentlyNews,
+            'explorerTopics' => $explorerTopics,
+            'events' => $events
+        ]);
     }
 
     public function news()
@@ -165,5 +248,10 @@ class WebController extends Controller
         }
 
         abort(404);
+    }
+
+    public function detailEvent(Request $request, $slug)
+    {
+
     }
 }

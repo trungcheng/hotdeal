@@ -33,6 +33,15 @@ class SettingController extends Controller
         ]);
     }
 
+    public function contactQuestions()
+    {
+        $setting = Setting::first();
+
+        return view('pages.admin.media.contact-question.index', [
+            'setting' => $setting
+        ]);
+    }
+
     public function updatePartnerLogos(Request $request)
     {
         try {
@@ -51,6 +60,53 @@ class SettingController extends Controller
                     }
 
                     $setting->update(['partner_logos' => json_encode($saveData)]);
+                    
+                    return Response::json([
+                        'status' => true, 
+                        'message' => 'Cập nhật thành công', 
+                        'type' => 'success'
+                    ]);
+                } else {
+                    return Response::json([
+                        'status' => false,
+                        'message' => 'Không tìm thấy cấu hình', 
+                        'type' => 'error'
+                    ]);
+                }
+            }
+            return Response::json([
+                'status' => false,
+                'message' => 'Đã xảy ra lỗi', 
+                'type' => 'error'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e->getMessage()
+            ], 200);
+        }
+    }
+
+    public function updateContactQuestions(Request $request)
+    {
+        try {
+            $data = $request->all();
+            if ($data) {
+                $setting = Setting::find(1);
+                if ($setting) {
+                    $saveData = [];
+                    if (count($data['contact_questions']) > 0) {
+                        foreach ($data['contact_questions'] as $key => $question) {
+                            $saveData[] = [
+                                'question' => $question,
+                                'vi_question' => $data['vi_questions'][$key],
+                                'answer' => $data['answer'][$key],
+                                'vi_answer' => $data['vi_answer'][$key]
+                            ];
+                        }
+                    }
+
+                    $setting->update(['contact_questions' => json_encode($saveData)]);
                     
                     return Response::json([
                         'status' => true, 

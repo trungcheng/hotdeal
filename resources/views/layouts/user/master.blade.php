@@ -74,11 +74,11 @@
         <div class="cookie-bar">
             <div>
                 <h5 class="title-xs cookie">Cookies</h5>
-                <p class="small-paragraph cookie">Our website uses Cookies for an actual representation of many contents.</p>
-                <p class="small-paragraph cookie"><a href="https://policies.google.com/technologies/cookies" target="_blank">Learn more</a> about their uses.</p>
+                <p class="small-paragraph cookie">{{ trans('general.cookie_desc') }}</p>
+                <p class="small-paragraph cookie">{!! trans('general.cookie_learn_more') !!}</p>
             </div>
             <a href="#" class="button-style cookie w-inline-block">
-                <div class="button-label">Accept</div>
+                <div class="button-label">{{ trans('general.cookie_accept') }}</div>
                 <div class="hover-shape"></div>
             </a>
         </div>

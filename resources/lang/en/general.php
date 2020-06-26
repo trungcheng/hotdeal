@@ -1,36 +1,80 @@
 <?php
 
 return [
+    // header
+    'search' => 'Search',
+    'about' => 'About us',
+    'new_event' => 'News & Events',
+    'new' => 'News',
+    'newsletter' => 'Newsletter',
+    'coming_event' => 'Coming events',
+    'past_event' => 'Past events',
+    'project' => 'Projects',
+    'partner' => 'Partners',
+    'media_press' => 'Media & Press',
+    'media' => 'Media',
+    'press' => 'Press',
+    'contact' => 'Contact us',
 
-    'category' => 'Category',
-    'contact' => 'Contact',
-    'search' => 'Search',
-    'partners' => 'Partners',
-    'mobile' => 'Mobile',
-    'fax' => 'Fax',
-    'website' => 'Website',
-    'email' => 'Email',
-    'home_page' => 'Home',
-    'recruiter_page' => 'Recruitment',
-    'user_access_count' => 'Total visits',
-    'other_new' => 'Related News',
-    'contact_title' => 'For convenience, please provide the following information',
-    'contact_fullname' => 'Fullname',
-    'contact_address' => 'Address',
-    'contact_content' => 'Content',
-    'security_code' => 'Security code',
-    'contact_reset' => 'Reset',
-    'contact_send' => 'Submit',
-    'validate' => [
-        'null_name' => 'Please enter your name!',
-        'null_email' => 'Please enter your email!',
-        'null_security' => 'Please enter the security code information!',
-        'invalide_email' => 'Email invalid!',
-        'security_incorrect' => 'Security code incorrect!'
-    ],
-    'album_photo' => 'Photo album',
-    'designed_by' => 'Designed by',
-    'search' => 'Search',
-    'title_search' => 'Search with keyword'
+    // slide
+    'slide_title' => 'Bringing about changes with <span class="text-span">VISCI</span>',
+    'slide_desc' => 'DISCOVER <span class="hero-slider-content-sub-heading-text-span">VISCI</span>',
+
+    // solution
+    'smarthome_solution' => 'Smarthome Solutions',
+    'technology_40' => 'Technology 4.0',
+    'technology_40_desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+    'bring_change' => 'Bring changes to your home',
+    'bring_change_desc' => 'We provided the smart and subtainable just for you!',
+    'subtainable' => 'Subtainable Developments',
+    'subtainable_desc' => 'We favour sustainable solutions. This goes hand in hand with our commitment to long-term, cost-effective projects that promote a better quality of life.',
+    'a_kid' => 'A kid-safe home',
+    'a_kid_desc' => "Keep an eye out for these safety features as you assess a home's child friendliness.",
+    'smart' => 'Smart in everyway',
+    'smart_desc' => 'VISCI bringing about changes towards more subtainable & smarter cities.',
+    'understand' => 'Understand to undertake',
+    'understand_desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.',
+
+    // project
+    'our_project' => 'Our Projects',
+    'project_slogan' => '19 Solutions<br>280+ Projects on the go',
+    'project_desc' => 'We have helped and expanded more than 2000 projects around and are proud to be recommended as an effective business partner.',
+    'project_readmore' => 'Read more',
+
+    // partner
+    'our_partner' => 'Our Partners',
+    'partner_desc' => 'We have helped and expanded more than 2000 projects around and are proud to be recommended as an effective business partner.',
+
+    // news & events
+    'browse_new_event' => 'BROWSE NEWS AND EVENTS',
+
+    // footer
+    'address' => 'Address',
+    'download' => 'Downloads',
+    'contact_us' => 'Contact us',
+    'faqs' => 'FAQs',
+    'resources' => 'Resources',
+    'see_all_post' => 'See all posts',
+    'find_out_mail' => 'Find out how to bringing about changes towards more subtainable & smarter cities with VISCI - subscribe to our newsletter now!',
+    'enter_email' => 'Enter your email address here',
+    'subscribe' => 'Subscribe',
+    'term_policy' => 'Terms and Policies',
+
+    // cookie
+    'cookie_desc' => 'Our website uses Cookies for an actual representation of many contents.',
+    'cookie_learn_more' => '<a href="https://policies.google.com/technologies/cookies" target="_blank">Learn more</a> about their uses.',
+    'cookie_accept' => 'Accept',
+
+    // News - Events
+    'see_all_new' => 'See all news',
+    'highlight' => 'Highlights',
+    'recently' => 'Recently',
+    'explore_topic' => 'Explore Topic',
+    'read_about_us' => 'Read About us',
+    'event' => 'Events',
+    'see_all_event' => 'See all running and coming events',
+    'discover_more' => 'DISCOVER MORE',
+    'see_more_visci' => 'See more about VISCI',
+    'see_more_visci_desc' => 'We have helped and expanded more than 2000 projects around and are proud to be recommended as an effective business partner.',
 
 ];

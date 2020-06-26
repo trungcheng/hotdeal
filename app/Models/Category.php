@@ -136,7 +136,7 @@ class Category extends Model
 
     public static function updateAction($cate, $data)
     {
-        $data['slug'] = Util::generateSlug($data['name']);
+        // $data['slug'] = Util::generateSlug($data['name']);
 
         foreach (\Config::get('translatable.locales') as $locale) {
             $cate->translateOrNew($locale)->name = ($locale == 'en') ? $data['name'] : $data[$locale.'_name'];

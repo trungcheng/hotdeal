@@ -4,7 +4,7 @@
 @stop
 
 @section('pageCss')
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 @stop
 
 @section('content')
@@ -31,15 +31,11 @@
                                 <input type="hidden" id="user_id" name="user_id" value="{{ $authAdminUser->id }}">
                                 <div class="form-group">
                                     <label>Tiêu đề (Vietnamese)</label>
-                                    <input name="title" type="text" class="form-control slug" placeholder="Tiêu đề bài viết...">
+                                    <input name="vi_title" type="text" class="form-control slug" placeholder="Tiêu đề bài viết...">
                                 </div>
                                 <div class="form-group">
                                     <label>Tiêu đề (English)</label>
-                                    <input name="en_title" type="text" class="form-control slug" placeholder="Article title...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tiêu đề (Koreanese)</label>
-                                    <input name="ko_title" type="text" class="form-control slug" placeholder="기사 제목...">
+                                    <input name="title" type="text" class="form-control slug" placeholder="Article title...">
                                 </div>
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
@@ -51,36 +47,77 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label>Loại bài viết</label>
+                                    <select class="form-control cate" name="type" id="type">
+                                        <option value="new">Tin thường</option>
+                                        <option value="event">Tin sự kiện</option>
+                                    </select>
+                                </div>
+                                <div id="event-option" class="hide">
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Event date from</label>
+                                            <div class='input-group date' id="from_date">
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                                <input name="event_date_from" id="start_time_value" type='text' class="form-control" placeholder="Event date from..." />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="pwd">Event date to</label>
+                                            <div class='input-group date' id="to_date">
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                                <input name="event_date_to" id="end_time_value" type='text' class="form-control" placeholder="Event date to..." />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Event venue</label>
+                                            <input type="text" class="form-control" name="event_venue" placeholder="Event venue...">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="pwd">Event type</label>
+                                            <input type="text" class="form-control" name="event_type" placeholder="Event type...">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Event speaker</label>
+                                            <input type="text" class="form-control" name="event_speaker" placeholder="Event speaker...">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="pwd">Event detail information</label>
+                                            <input type="text" class="form-control" name="event_detail_information" placeholder="Event detail information...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label>Ảnh</label>
                                     <input name="image" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn (Vietnamese)</label>
-                                    <textarea class="form-control" id="short_content"></textarea>
+                                    <textarea class="form-control" id="vi_short_content"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn (English)</label>
-                                    <textarea class="form-control" id="en_short_content"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả ngắn (Koreanese)</label>
-                                    <textarea class="form-control" id="ko_short_content"></textarea>
+                                    <textarea class="form-control" id="short_content"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Nội dung (Vietnamese)</label>
-                                    <textarea class="form-control" id="full_content"></textarea>
+                                    <textarea class="form-control" id="vi_full_content"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Nội dung (English)</label>
-                                    <textarea class="form-control" id="en_full_content"></textarea>
+                                    <textarea class="form-control" id="full_content"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Nội dung (Koreanese)</label>
-                                    <textarea class="form-control" id="ko_full_content"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Tin mới</label>
+                                    <label>Tin nổi bật</label>
                                     <select name="is_feature" class="form-control">
                                         <option value="0">Không</option>
                                         <option value="1">Có</option>
@@ -170,12 +207,26 @@
     {!! Html::script('backend/js/angular/controllers/article.controller.js') !!}
     <script type="text/javascript">
         $(function () {
-            CKEDITOR.replace('short_content', { height: 300 }); 
-            CKEDITOR.replace('en_short_content', { height: 300 }); 
-            CKEDITOR.replace('ko_short_content', { height: 300 }); 
+            CKEDITOR.replace('short_content', { height: 200 }); 
+            CKEDITOR.replace('vi_short_content', { height: 200 }); 
             CKEDITOR.replace('full_content'); 
-            CKEDITOR.replace('en_full_content'); 
-            CKEDITOR.replace('ko_full_content'); 
+            CKEDITOR.replace('vi_full_content'); 
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+	        $('#from_date, #to_date').datetimepicker({
+	            format: 'YYYY-MM-DD HH:mm:ss'
+            });
+            $('#type').on('change', function () {
+                if ($(this).val() == 'event') {
+                    $('#event-option').removeClass('hide');
+                } else {
+                    $('#event-option').addClass('hide');
+                }
+            }); 
+		});
+	</script>
 @stop

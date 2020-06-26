@@ -17,9 +17,9 @@ class DashboardController extends Controller
 
     public function index()
     {
-    	$countUsers = User::count();
+    	$countUsers = User::where('role_id', '<>', 1)->count();
     	$countCategories = Category::count();
-    	$countArticles = Article::count();
+    	$countArticles = Article::where('type', '<>', 'page')->count();
     	$countArticleTodays = Article::where('created_at', Carbon::today())->count();
 
     	return view('pages.admin.dashboard.index', [

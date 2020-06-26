@@ -4,7 +4,7 @@
 @stop
 
 @section('pageCss')
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
 @stop
 
 @section('content')
@@ -32,15 +32,11 @@
                                 <input type="hidden" id="id" name="id" value="{{ $article->id }}">
                                 <div class="form-group">
                                     <label>Tiêu đề bài viết (Vietnamese)</label>
-                                    <input value="{{ $article->title }}" name="title" type="text" class="form-control title" placeholder="Tiêu đề bài viết...">
+                                    <input value="{{ $article->getTranslation('vi')->title }}" name="vi_title" type="text" class="form-control title" placeholder="Tiêu đề bài viết...">
                                 </div>
                                 <div class="form-group">
                                     <label>Tiêu đề bài viết (English)</label>
-                                    <input value="{{ $article->getTranslation('en')->title }}" name="en_title" type="text" class="form-control title" placeholder="Article title...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tiêu đề bài viết (Koreanese)</label>
-                                    <input value="{{ $article->getTranslation('ko')->title }}" name="ko_title" type="text" class="form-control title" placeholder="기사 제목...">
+                                    <input value="{{ $article->title }}" name="title" type="text" class="form-control title" placeholder="Article title...">
                                 </div>
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
@@ -52,36 +48,77 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
+                                    <label>Loại bài viết</label>
+                                    <select class="form-control cate" name="type" id="type">
+                                        <option ng-selected="'{{ $article['type'] }}' == 'new'" value="new">Tin thường</option>
+                                        <option ng-selected="'{{ $article['type'] }}' == 'event'" value="event">Tin sự kiện</option>
+                                    </select>
+                                </div>
+                                <div id="event-option" class="{{ $article['type'] == 'new' ? 'hide' : '' }}">
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Event date from</label>
+                                            <div class='input-group date' id="from_date">
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                                <input value="{{ $article['event_date_from'] }}" name="event_date_from" id="start_time_value" type='text' class="form-control" placeholder="Event date from..." />
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="pwd">Event date to</label>
+                                            <div class='input-group date' id="to_date">
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                                <input value="{{ $article['event_date_to'] }}" name="event_date_to" id="end_time_value" type='text' class="form-control" placeholder="Event date to..." />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Event venue</label>
+                                            <input value="{{ $article['event_venue'] }}" type="text" class="form-control" name="event_venue" placeholder="Event venue...">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="pwd">Event type</label>
+                                            <input value="{{ $article['event_type'] }}" type="text" class="form-control" name="event_type" placeholder="Event type...">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Event speaker</label>
+                                            <input value="{{ $article['event_speaker'] }}" type="text" class="form-control" name="event_speaker" placeholder="Event speaker...">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="pwd">Event detail information</label>
+                                            <input value="{{ $article['event_detail_information'] }}" type="text" class="form-control" name="event_detail_information" placeholder="Event detail information...">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label>Ảnh</label>
                                     <input value="{{ $article->image }}" name="image" type="text" size="48" class="form-control" id="xFilePath" />
                                     <button class="btn btn-primary btn-upload" onclick="openPopup()">Tải ảnh lên</button>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn (Vietnamese)</label>
-                                    <textarea class="form-control" id="short_content">{!! $article->intro !!}</textarea>
+                                    <textarea class="form-control" id="vi_short_content">{!! $article->getTranslation('vi')->intro !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả ngắn (English)</label>
-                                    <textarea class="form-control" id="en_short_content">{!! $article->getTranslation('en')->intro !!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả ngắn (Koreanese)</label>
-                                    <textarea class="form-control" id="ko_short_content">{!! $article->getTranslation('ko')->intro !!}</textarea>
+                                    <textarea class="form-control" id="short_content">{!! $article->intro !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả chi tiết (Vietnamese)</label>
-                                    <textarea class="form-control" id="full_content">{!! $article->fulltext !!}</textarea>
+                                    <textarea class="form-control" id="vi_full_content">{!! $article->getTranslation('vi')->fulltext !!}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả chi tiết (English)</label>
-                                    <textarea class="form-control" id="en_full_content">{!! $article->getTranslation('en')->fulltext !!}</textarea>
+                                    <textarea class="form-control" id="full_content">{!! $article->fulltext !!}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Mô tả chi tiết (Koreanese)</label>
-                                    <textarea class="form-control" id="ko_full_content">{!! $article->getTranslation('ko')->fulltext !!}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Tin mới</label>
+                                    <label>Tin nổi bật</label>
                                     <select name="is_feature" class="form-control">
                                         <option {{ ($article->is_feature == 0) ? 'selected' : '' }} value="0">Không</option>
                                         <option {{ ($article->is_feature == 1) ? 'selected' : '' }} value="1">Có</option>
@@ -171,12 +208,26 @@
     {!! Html::script('backend/js/angular/controllers/article.controller.js') !!}
     <script type="text/javascript">
         $(function () {
-            CKEDITOR.replace('short_content', { height: 300 }); 
-            CKEDITOR.replace('en_short_content', { height: 300 }); 
-            CKEDITOR.replace('ko_short_content', { height: 300 }); 
+            CKEDITOR.replace('short_content', { height: 200 }); 
+            CKEDITOR.replace('vi_short_content', { height: 200 }); 
             CKEDITOR.replace('full_content'); 
-            CKEDITOR.replace('en_full_content'); 
-            CKEDITOR.replace('ko_full_content'); 
+            CKEDITOR.replace('vi_full_content'); 
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+	        $('#from_date, #to_date').datetimepicker({
+	            format: 'YYYY-MM-DD HH:mm:ss'
+            });
+            $('#type').on('change', function () {
+                if ($(this).val() == 'event') {
+                    $('#event-option').removeClass('hide');
+                } else {
+                    $('#event-option').addClass('hide');
+                }
+            }); 
+		});
+	</script>
 @stop

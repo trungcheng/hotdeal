@@ -21,13 +21,19 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        $categories = Category::where('status', 1)->orderBy('order', 'asc')->get();
-        $this->categories = Util::buildTree($categories);
-        $this->setting = Setting::find(1);
+        // $categories = Category::where('status', 1)->orderBy('order', 'asc')->get();
+        // $this->categories = Util::buildTree($categories);
+        // $this->setting = Setting::find(1);
+        $this->featureFooterArticles = Article::where('type', 'new')
+            ->where('status', 1)
+            ->orderBy('id', 'desc')
+            ->limit(2)
+            ->get();
 
         view()->composer(['pages.user.*', 'layouts.user.*'], function($view) {
-            $view->with('categories', $this->categories);
-            $view->with('setting', $this->setting);
+            // $view->with('categories', $this->categories);
+            $view->with('setting', Setting::find(1));
+            $view->with('featureFooterArticles', $this->featureFooterArticles);
         });
     }
 

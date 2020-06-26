@@ -9,6 +9,8 @@
 
         \Route::get('/search.html', 'User\WebController@search')->name('search');
 
+        \Route::get('/about-us.html', 'User\WebController@about')->name('about');
+
         \Route::get('/contact-us.html', 'User\WebController@contact')->name('contact');
 
         \Route::get('/news-events.html', 'User\WebController@newsEvents')->name('news-events');
@@ -31,7 +33,9 @@
 
         \Route::get('/faqs.html', 'User\WebController@faqs')->name('faqs');
 
-        \Route::get('/post/{slug}.html', 'User\WebController@detailPost')->name('detail');
+        \Route::get('/post/{slug}.html', 'User\WebController@detailPost')->name('detail-post');
+
+        \Route::get('/event/{slug}.html', 'User\WebController@detailEvent')->name('detail-event');
 
         \Route::get('/lang/{locale}', 'User\WebController@changeLocale')->name('locale');
     });

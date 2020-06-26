@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Util\Util;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
@@ -15,7 +15,7 @@ class Article extends Model
     public $translatedAttributes = ['title', 'intro', 'fulltext'];
 
     protected $fillable = [
-        'user_id', 
+        'user_id',
         'cat_id',
         'title',
         'slug',
@@ -28,21 +28,43 @@ class Article extends Model
         'is_feature',
         'status',
         'type',
+        'event_date_from',
+        'event_date_to',
+        'event_venue',
+        'event_type',
+        'event_speaker',
+        'event_detail_information',
         'seo_title',
         'seo_desc',
         'seo_keyword'
     ];
 
-    public function getCreatedAtAttribute($date) {
-        Carbon::setLocale('vi');
-        $day = $this->convert(Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('Asia/Ho_Chi_Minh')->format('l'));
+    // public function getCreatedAtAttribute($date)
+    // {
+    //     Carbon::setLocale('vi');
+    //     $day = $this->convert(Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('Asia/Ho_Chi_Minh')->format('l'));
 
-        return $day. ', ' .Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('Asia/Ho_Chi_Minh')->format('d/m/Y, H:i');
+    //     return $day . ', ' . Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('Asia/Ho_Chi_Minh')->format('d/m/Y, H:i');
+    // }
+
+    public function getCreatedAtAttribute($date)
+    {
+        if ($date) {
+            return Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('Asia/Ho_Chi_Minh')->format('F d Y');
+        }
     }
 
-    public function convert($weekday) {
+    public function getEventDateFromAttribute($date)
+    {
+        if ($date) {
+            return Carbon::createFromFormat('Y-m-d H:i:s', $date)->copy()->tz('Asia/Ho_Chi_Minh')->format('F d Y');
+        }
+    }
+
+    public function convert($weekday)
+    {
         $weekday = strtolower($weekday);
-        switch($weekday) {
+        switch ($weekday) {
             case 'monday':
                 $weekday = 'Thứ hai';
                 break;
@@ -69,24 +91,26 @@ class Article extends Model
         return $weekday;
     }
 
-    public function user() {
-    	return $this->belongsTo('App\Models\User', 'user_id');
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 
-    public function category() {
-    	return $this->belongsTo('App\Models\Category', 'cat_id');
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category', 'cat_id');
     }
 
     public static $rules = [
         'title' => 'required|min:2',
         'image' => 'required',
         'intro' => 'required',
-        'fulltext' => 'required'
+        'fulltext' => 'required',
     ];
 
     public static $add_media_rules = [
         'title' => 'required|min:2',
-        'image' => 'required'
+        'image' => 'required',
     ];
 
     public static $messages = [
@@ -100,47 +124,53 @@ class Article extends Model
     public static $add_media_messages = [
         'title.required' => 'Tiêu đề không được để trống',
         'title.min' => 'Tiêu đề ít nhất từ 2 ký tự',
-        'image.required' => 'Ảnh không được để trống'
+        'image.required' => 'Ảnh không được để trống',
     ];
 
     public static function init($request)
     {
-        $data = self::where('id', '>', 0)->where('type', 'article');
+        $data = self::where('id', '>', 0)->where('type', '<>', 'page');
         if ($request->name !== 'all-article' && $request->name !== 'undefined') {
             $data->where("title", "LIKE", "%" . $request->name . "%")
                 ->orWhere("intro", "LIKE", "%" . $request->name . "%");
         }
         $data = $data->with(['category', 'user'])->orderBy('id', 'desc')->get();
-        
+
         return $data;
     }
 
-    public static function addAction($data, $type = NULL)
+    public static function addAction($data)
     {
         $data['slug'] = Util::generateSlug($data['title']);
 
         $article = new Article();
         foreach (\Config::get('translatable.locales') as $locale) {
             if (isset($data['title'])) {
-                $article->translateOrNew($locale)->title = ($locale == 'en') ? $data['title'] : $data[$locale.'_title'];
+                $article->translateOrNew($locale)->title = ($locale == 'en') ? $data['title'] : $data[$locale . '_title'];
             }
             if (isset($data['intro'])) {
-                $article->translateOrNew($locale)->intro = ($locale == 'en') ? $data['intro'] : $data[$locale.'_intro'];
+                $article->translateOrNew($locale)->intro = ($locale == 'en') ? $data['intro'] : $data[$locale . '_intro'];
             }
             if (isset($data['fulltext'])) {
-                $article->translateOrNew($locale)->fulltext = ($locale == 'en') ? $data['fulltext'] : $data[$locale.'_fulltext'];
+                $article->translateOrNew($locale)->fulltext = ($locale == 'en') ? $data['fulltext'] : $data[$locale . '_fulltext'];
             }
         }
 
-        if (isset($data['vi_title'])) unset($data['vi_title']);
-        if (isset($data['vi_intro'])) unset($data['vi_intro']);
-        if (isset($data['vi_fulltext'])) unset($data['vi_fulltext']);
+        if (isset($data['vi_title'])) {
+            unset($data['vi_title']);
+        }
 
-        $data['type'] = $type;
+        if (isset($data['vi_intro'])) {
+            unset($data['vi_intro']);
+        }
+
+        if (isset($data['vi_fulltext'])) {
+            unset($data['vi_fulltext']);
+        }
 
         foreach ($data as $key => $value) {
             if ($key == 'photos' && count($value) > 0) {
-                $value = implode(',', array_filter($value, function ($val) { 
+                $value = implode(',', array_filter($value, function ($val) {
                     return !is_null($val) && $val != '';
                 }));
             }
@@ -149,32 +179,40 @@ class Article extends Model
 
         return $article->save();
     }
-    
-    public static function updateAction($data, $article, $type = NULL)
+
+    public static function updateAction($data, $article, $type = null)
     {
         $data['slug'] = ($type != 'page') ? Util::generateSlug($data['title']) : $article['slug'];
 
         foreach (\Config::get('translatable.locales') as $locale) {
             if (isset($data['title'])) {
-                $article->translateOrNew($locale)->title = ($locale == 'en') ? $data['title'] : $data[$locale.'_title'];
+                $article->translateOrNew($locale)->title = ($locale == 'en') ? $data['title'] : $data[$locale . '_title'];
             }
             if (isset($data['intro'])) {
-                $article->translateOrNew($locale)->intro = ($locale == 'en') ? $data['intro'] : $data[$locale.'_intro'];
+                $article->translateOrNew($locale)->intro = ($locale == 'en') ? $data['intro'] : $data[$locale . '_intro'];
             }
             if (isset($data['fulltext'])) {
-                $article->translateOrNew($locale)->fulltext = ($locale == 'en') ? $data['fulltext'] : $data[$locale.'_fulltext'];
+                $article->translateOrNew($locale)->fulltext = ($locale == 'en') ? $data['fulltext'] : $data[$locale . '_fulltext'];
             }
         }
 
-        if (isset($data['vi_title'])) unset($data['vi_title']);
-        if (isset($data['vi_intro'])) unset($data['vi_intro']);
-        if (isset($data['vi_fulltext'])) unset($data['vi_fulltext']);
+        if (isset($data['vi_title'])) {
+            unset($data['vi_title']);
+        }
+
+        if (isset($data['vi_intro'])) {
+            unset($data['vi_intro']);
+        }
+
+        if (isset($data['vi_fulltext'])) {
+            unset($data['vi_fulltext']);
+        }
 
         $data['type'] = $type;
 
         foreach ($data as $key => $value) {
             if ($key == 'photos' && count($value) > 0) {
-                $value = implode(',', array_filter($value, function ($val) { 
+                $value = implode(',', array_filter($value, function ($val) {
                     return !is_null($val) && $val != '';
                 }));
             }

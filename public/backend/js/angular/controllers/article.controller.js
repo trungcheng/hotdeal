@@ -77,12 +77,10 @@
 
             var title = (type == 'add') ? 'thêm' : 'cập nhật';
             var formData = new FormData($('#formProcess')[0]);
+            formData.append('vi_intro', CKEDITOR.instances.vi_short_content.document.getBody().getHtml());
             formData.append('intro', CKEDITOR.instances.short_content.document.getBody().getHtml());
-            formData.append('en_intro', CKEDITOR.instances.en_short_content.document.getBody().getHtml());
-            formData.append('ko_intro', CKEDITOR.instances.ko_short_content.document.getBody().getHtml());
+            formData.append('vi_fulltext', CKEDITOR.instances.vi_full_content.document.getBody().getHtml());
             formData.append('fulltext', CKEDITOR.instances.full_content.document.getBody().getHtml());
-            formData.append('en_fulltext', CKEDITOR.instances.en_full_content.document.getBody().getHtml());
-            formData.append('ko_fulltext', CKEDITOR.instances.ko_full_content.document.getBody().getHtml());
             // CKEDITOR.instances.noidung.getData();
 
             swal({

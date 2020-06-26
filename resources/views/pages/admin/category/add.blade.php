@@ -30,15 +30,11 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Tên danh mục (Vietnamese)</label>
-                                    <input name="name" type="text" class="form-control slug" placeholder="Tên danh mục...">
+                                    <input name="vi_name" type="text" class="form-control slug" placeholder="Tên danh mục...">
                                 </div>
                                 <div class="form-group">
                                     <label>Tên danh mục (English)</label>
-                                    <input name="en_name" type="text" class="form-control slug" placeholder="Category name...">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tên danh mục (Koreanese)</label>
-                                    <input name="ko_name" type="text" class="form-control slug" placeholder="카테고리 이름...">
+                                    <input name="name" type="text" class="form-control slug" placeholder="Category name...">
                                 </div>
                                 <div class="form-group">
                                     <label>Thuộc danh mục</label>
@@ -51,29 +47,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả (Vietnamese)</label>
-                                    <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Mô tả..."></textarea>
+                                    <textarea style="height: 100px;" name="vi_description" class="form-control description" placeholder="Mô tả..."></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Mô tả (English)</label>
-                                    <textarea style="height: 100px;" name="en_description" class="form-control description" placeholder="Description..."></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Mô tả (Koreanese)</label>
-                                    <textarea style="height: 100px;" name="ko_description" class="form-control description" placeholder="설명..."></textarea>
+                                    <textarea style="height: 100px;" name="description" class="form-control description" placeholder="Description..."></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Ảnh đại diện</label>
                                     <input name="image" type="text" size="48" class="form-control" id="image" />
                                     <button type="button" class="btn btn-primary btn-upload" onclick="openPopup('image')">Tải ảnh lên</button>
-                                </div>
-                                <div class="form-group">
-                                    <label>List ảnh slide</label>      
-                                    <button type="button" onclick="add_img();" class="btn btn-success btn-sm btn_img" style="margin-top: 8px;"><i class="fa fa-plus"></i> Thêm Ảnh</button>
-
-                                    <div class="box-img">
-                                        <input type="text" size="48" name="sliders[]" class="form-control list-img" id="xFilePath1" />
-                                        <button class="btn btn-primary btn-upload" onclick="openPopupMulti(1)">Tải ảnh lên</button>
-                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Thứ tự</label>
@@ -88,20 +71,6 @@
                                         <option value="8">8</option>
                                         <option value="9">9</option>
                                         <option value="10">10</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Hiển thị lên trang chủ</label>
-                                    <select class="form-control status" name="is_home">
-                                        <option value="0">Không</option>
-                                        <option value="1">Có</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Dạng hiển thị</label>
-                                    <select class="form-control status" name="layout">
-                                        <option value="1">Slide ngang</option>
-                                        <option value="2">Tin tức</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
