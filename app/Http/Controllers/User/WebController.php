@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Article;
 use App\Util\Util;
+use Carbon\Carbon;
 
 class WebController extends Controller
 {
@@ -20,32 +21,36 @@ class WebController extends Controller
         //     ->where('status', 1)
         //     ->get();
         $projects = [];
-        $catProject = Category::where('slug', 'projects')->first();
+        $catProject = Category::where('slug', 'projects')->where('status', 1)->first();
         if ($catProject) {
             $projects = Article::where('cat_id', $catProject->id)
                 ->orderBy('id', 'desc')
+                ->where('status', 1)
                 ->get();
         }
 
         $featureEvent = null;
-        $catEvent = Category::where('slug', 'events')->first();
+        $catEvent = Category::where('slug', 'events')->where('status', 1)->first();
         if ($catEvent) {
             $featureEvent = Article::where('is_feature', 1)
                 ->where('cat_id', $catEvent->id)
+                ->where('status', 1)
                 ->orderBy('id', 'desc')
                 ->first();
         }
 
         $news = [];
-        $catNew = Category::where('slug', 'news')->first();
+        $catNew = Category::where('slug', 'news')->where('status', 1)->first();
         if ($catNew) {
             $arrIds = [];
-            $newChilds = Category::where('parent_id', $catNew->id)->get();
+            $newChilds = Category::where('parent_id', $catNew->id)->where('status', 1)->get();
             foreach ($newChilds as $child) {
                 $arrIds[] = $child->id;
             }
+            $arrIds[] = $catNew->id;
             $news = Article::whereIn('cat_id', $arrIds)
                 ->orderBy('id', 'desc')
+                ->where('status', 1)
                 ->limit(7)
                 ->get();
         }
@@ -74,23 +79,20 @@ class WebController extends Controller
     {
         $keyword = $request->keyword;
 
-        $cates = Category::where('parent_id', 0)->where('status', 1)->get();
-
         $articles = Article::whereHas('translations', function ($query) use ($keyword) {
             $query->where('locale', \App::getLocale())
                   ->where(function ($q) use ($keyword) {
                         $q->where('title', 'LIKE', '%'.$keyword.'%')
                           ->orWhere('intro', 'LIKE', '%'.$keyword.'%');
                   });
-        })->where('type', 'article')
+        })->where('type', '<>', 'page')
           ->where('status', 1)
           ->orderBy('id', 'desc')
           ->paginate(10);
 
         return view('pages.user.home.search', [
             'keyword' => $keyword,
-            'articles' => $articles,
-            'cates' => $cates
+            'articles' => $articles
         ]);
     }
 
@@ -115,20 +117,24 @@ class WebController extends Controller
     {
         $highlightNews = [];
         $recentlyNews = [];
-        $catNew = Category::where('slug', 'news')->first();
+        $catNew = Category::where('slug', 'news')->where('status', 1)->first();
         if ($catNew) {
             $arrIds = [];
-            $newChilds = Category::where('parent_id', $catNew->id)->get();
+            $newChilds = Category::where('parent_id', $catNew->id)->where('status', 1)->get();
             foreach ($newChilds as $child) {
                 $arrIds[] = $child->id;
             }
+            $arrIds[] = $catNew->id;
             $highlightNews = Article::whereIn('cat_id', $arrIds)
                 ->where('is_feature', 1)
+                ->where('status', 1)
                 ->orderBy('id', 'desc')
                 ->limit(4)
                 ->get();
 
             $recentlyNews = Article::whereIn('cat_id', $arrIds)
+                ->where('created_at', '>=', Carbon::today()->subDays(7))
+                ->where('status', 1)
                 ->where('is_feature', 0)
                 ->orderBy('id', 'desc')
                 ->limit(6)
@@ -141,6 +147,7 @@ class WebController extends Controller
         $catEvent = Category::where('slug', 'events')->first();
         if ($catEvent) {
             $events = Article::where('cat_id', $catEvent->id)
+                ->where('status', 1)
                 ->orderBy('id', 'desc')
                 ->limit(3)
                 ->get();
@@ -156,27 +163,109 @@ class WebController extends Controller
 
     public function news()
     {
-        return view('pages.user.home.news', []);
+        $news = [];
+        $catNew = Category::where('slug', 'news')->where('status', 1)->first();
+        if ($catNew) {
+            $arrIds = [];
+            $newChilds = Category::where('parent_id', $catNew->id)->where('status', 1)->get();
+            foreach ($newChilds as $child) {
+                $arrIds[] = $child->id;
+            }
+            $arrIds[] = $catNew->id;
+
+            $news = Article::whereIn('cat_id', $arrIds)
+                ->where('status', 1)
+                ->orderBy('id', 'desc')
+                ->paginate(10);
+        }
+
+        return view('pages.user.home.news', [
+            'news' => $news,
+            'catNew' => $catNew,
+            'explorerTopics' => $newChilds
+        ]);
     }
 
     public function newsletter()
     {
-        return view('pages.user.home.newsletter', []);
+        $newsletters = [];
+        $catNew = Category::where('slug', 'news')->where('status', 1)->first();
+        if ($catNew) {
+            $arrIds = [];
+            $newChilds = Category::where('parent_id', $catNew->id)->where('status', 1)->get();
+            foreach ($newChilds as $child) {
+                $arrIds[] = $child->id;
+            }
+            $arrIds[] = $catNew->id;
+
+            $newsletters = Article::whereIn('cat_id', $arrIds)
+                ->where('status', 1)
+                ->orderBy('id', 'desc')
+                ->paginate(10);
+        }
+
+        return view('pages.user.home.newsletter', [
+            'newsletters' => $newsletters,
+            'catNew' => $catNew
+        ]);
     }
 
     public function comingEvents()
     {
-        return view('pages.user.home.coming-events', []);
+        $events = [];
+        $catEvent = Category::where('slug', 'events')->where('status', 1)->first();
+        if ($catEvent) {
+            $events = Article::where('cat_id', $catEvent->id)
+                ->where('status', 1)
+                ->whereDate('event_date_from', '>=', Carbon::now())
+                ->orderBy('id', 'desc')
+                ->get();
+        }
+
+        return view('pages.user.home.coming-events', [
+            'events' => $events
+        ]);
     }
 
     public function pastEvents()
     {
-        return view('pages.user.home.past-events', []);
+        $events = [];
+        $catEvent = Category::where('slug', 'events')->where('status', 1)->first();
+        if ($catEvent) {
+            $events = Article::where('cat_id', $catEvent->id)
+                ->where('status', 1)
+                ->whereDate('event_date_from', '<', Carbon::now())
+                ->orderBy('id', 'desc')
+                ->paginate(10);
+        }
+
+        return view('pages.user.home.past-events', [
+            'events' => $events
+        ]);
     }
 
     public function projects()
     {
-        return view('pages.user.home.projects', []);
+        $projects = [];
+        $catProject = Category::where('slug', 'projects')->where('status', 1)->first();
+        if ($catProject) {
+            $recentlyProjects = Article::where('cat_id', $catProject->id)
+                ->where('created_at', '>=', Carbon::today()->subDays(7))
+                ->where('status', 1)
+                ->orderBy('id', 'desc')
+                ->limit(4)
+                ->get();
+
+            $projects = Article::where('cat_id', $catProject->id)
+                ->where('status', 1)
+                ->orderBy('id', 'desc')
+                ->get();
+        }
+
+        return view('pages.user.home.projects', [
+            'projects' => $projects,
+            'recentlyProjects' => $recentlyProjects
+        ]);
     }
 
     public function partners()
@@ -186,7 +275,18 @@ class WebController extends Controller
 
     public function mediaPress()
     {
-        return view('pages.user.home.media-press', []);
+        $medias = [];
+        $catMediaPress = Category::where('slug', 'media-press')->where('status', 1)->first();
+        if ($catMediaPress) {
+            $medias = Article::where('cat_id', $catMediaPress->id)
+                ->where('status', 1)
+                ->orderBy('id', 'desc')
+                ->get();
+        }
+
+        return view('pages.user.home.media-press', [
+            'medias' => $medias
+        ]);
     }
 
     public function termsPolicies()
@@ -215,35 +315,31 @@ class WebController extends Controller
 
     public function detailPost(Request $request, $slug)
     {
-        $category = Category::where('slug', $slug)->first();
-        if ($category) {
-            if ($category->parent_id != 0) {
-                $parentCate = Category::where('id', $category->parent_id)->where('status', 1)->first();
-                $childCates = Category::where('parent_id', $parentCate->id)
-                    ->where('status', 1)
-                    ->orderBy('order', 'asc')
-                    ->get();
-                if ($childCates) {
-                    $buildCates = Category::where('status', 1)->orderBy('order', 'asc')->get();
-                    $childCates = Util::buildTree($buildCates, $parentCate->id);
-                }
-            }
+        $article = Article::where('slug', $slug)
+            ->where('type', 'new')
+            ->where('status', 1)
+            ->first();
 
-            $childs = Category::where('parent_id', $category->id)->where('status', 1)->orderBy('order', 'asc');
-            if ($childs->count() > 0) {
-                $type = 'category';
-                $articles = $childs->paginate(10);
-            } else {
-                $type = 'article';
-                $articles = Article::where('cat_id', $category->id)->where('status', 1)->paginate(10);
+        if ($article) {
+            $relatedNews = [];
+            $catNew = Category::where('slug', 'news')->where('status', 1)->first();
+            if ($catNew) {
+                $arrIds = [];
+                $newChilds = Category::where('parent_id', $catNew->id)->get();
+                foreach ($newChilds as $child) {
+                    $arrIds[] = $child->id;
+                }
+                $arrIds[] = $catNew->id;
+                $relatedNews = Article::whereIn('cat_id', $arrIds)
+                    ->where('status', 1)
+                    ->orderBy('id', 'desc')
+                    ->get()
+                    ->except($article->id);
             }
 
             return view('pages.user.home.detail-post', [
-                'category' => $category,
-                'parentCate' => isset($parentCate) ? $parentCate : null,
-                'childCates' => isset($childCates) ? $childCates : null,
-                'articles' => $articles,
-                'type' => $type
+                'article' => $article,
+                'relatedNews' => $relatedNews
             ]);
         }
 
@@ -252,6 +348,17 @@ class WebController extends Controller
 
     public function detailEvent(Request $request, $slug)
     {
+        $event = Article::where('slug', $slug)
+            ->where('type', 'event')
+            ->where('status', 1)
+            ->first();
 
+        if ($event) {
+            return view('pages.user.home.detail-event', [
+                'event' => $event
+            ]);
+        }
+
+        abort(404);
     }
 }

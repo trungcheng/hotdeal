@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50727
 File Encoding         : 65001
 
-Date: 2020-06-26 23:26:11
+Date: 2020-06-27 20:48:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,7 +54,7 @@ CREATE TABLE `articles` (
 INSERT INTO `articles` VALUES ('1', '1', 'Terms & Policies', 'term-policy', null, null, null, null, null, '0', '0', '1', '0', 'page', null, null, null, null, null, null, 'Terms & Policies', 'Terms & Policies', 'Terms & Policies', '2020-06-25 18:46:13', '2020-06-26 22:17:16');
 INSERT INTO `articles` VALUES ('2', '1', 'FAQs', 'faqs', null, null, null, null, null, '0', '0', '1', '0', 'page', null, null, null, null, null, null, 'FAQs', 'FAQs', 'faqs', '2020-06-25 18:46:27', '2020-06-26 22:17:30');
 INSERT INTO `articles` VALUES ('3', '1', null, 'ecommerce-shopping-cart-design-ideas', null, null, '/backend/uploads/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg', null, null, '0', '1', '1', '6', 'new', null, null, null, null, null, null, 'Ecommerce shopping cart design ideas', 'Like so many things, the race was canceled. Soon after, gyms around the country were closed. Suddenly, running — a solo activity that can be done outdoors, away from other people — seems more important than ever, for both our health and our mood.', 'Ecommerce shopping cart design ideas', '2020-06-26 14:13:18', '2020-06-26 14:13:18');
-INSERT INTO `articles` VALUES ('4', '1', null, 'exploring-the-cafe-royal-cocktail-book', null, null, '/backend/uploads/images/a0b40e71379877_5bc3af2dacb0e.jpg', null, null, '0', '1', '1', '3', 'event', '2020-06-25 15:54:20', '2020-06-27 15:54:25', 'The Oxford Research Centre in the Humanities - Online EventOnline', 'Lectures and seminars', 'Join Homi K. Bhabha (Anne F. Rothenberg Professor of the Humanities at Harvard University); Anthony Russo, Prof. Tran Dai Nghia', 'https://landingpage.visci.org', 'Exploring the Cafe Royal cocktail book', 'Published in 1937 by the head bartender of the Café Royal, William J Tarling, the Café Royal cocktail book has since acted as a beacon for bartenders near and far.  Find out more about the Café Royal cocktail book on our blog.', 'Exploring the Cafe Royal cocktail book', '2020-06-26 14:33:21', '2020-06-26 17:49:16');
+INSERT INTO `articles` VALUES ('4', '1', null, 'exploring-the-cafe-royal-cocktail-book', null, null, '/backend/uploads/images/a0b40e71379877_5bc3af2dacb0e.jpg', null, null, '0', '1', '1', '3', 'event', '2020-06-25 15:54:20', '2020-06-27 15:54:25', 'The Oxford Research Centre in the Humanities - Online EventOnline', 'Lectures and seminars', 'Join Homi K. Bhabha (Anne F. Rothenberg Professor of the Humanities at Harvard University); Anthony Russo, Prof. Tran Dai Nghia', '<a href=\"#\">https://landingpage.visci.org</a>', 'Exploring the Cafe Royal cocktail book', 'Published in 1937 by the head bartender of the Café Royal, William J Tarling, the Café Royal cocktail book has since acted as a beacon for bartenders near and far.  Find out more about the Café Royal cocktail book on our blog.', 'Exploring the Cafe Royal cocktail book', '2020-06-26 14:33:21', '2020-06-26 17:49:16');
 INSERT INTO `articles` VALUES ('5', '1', null, 'ecommerce-shopping-cart-design-ideas', null, null, '/backend/uploads/images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg', null, null, '0', '1', '1', '4', 'new', null, null, null, null, null, null, 'Ecommerce shopping cart design ideas', 'Like so many things, the race was canceled. Soon after, gyms around the country were closed. Suddenly, running — a solo activity that can be done outdoors, away from other people — seems more important than ever, for both our health and our mood.', 'Ecommerce shopping cart design ideas', '2020-06-26 14:13:18', '2020-06-26 14:13:18');
 INSERT INTO `articles` VALUES ('6', '1', null, 'designing-landing-pages-in-hours-vs-days-an-interview-with-jamie-syke', null, null, '/backend/uploads/images/cover2.jpg', null, null, '0', '1', '1', '5', 'new', null, null, null, null, null, null, 'Designing landing pages in hours vs. days: an interview with Jamie Syke', 'Like so many things, the race was canceled. Soon after, gyms around the country were closed. Suddenly, running — a solo activity that can be done outdoors, away from other people — seems more important than ever, for both our health and our mood.', 'Designing landing pages in hours vs. days: an interview with Jamie Syke', '2020-06-26 14:13:18', '2020-06-26 16:17:14');
 INSERT INTO `articles` VALUES ('7', '1', null, 'sustainability', null, null, '/backend/uploads/images/Buildings_HOMECOVER.jpg', null, null, '0', '0', '1', '4', 'new', null, null, null, null, null, null, 'Sustainability', 'Sustainability', 'Sustainability', '2020-06-26 17:45:04', '2020-06-26 17:45:04');
@@ -300,7 +300,7 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '1', 'admin', 'Nguyễn Át Min', 'admin@gmail.com', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', 'e6GApgIjCpOjoOnwP36tl2FYWqptzf4SNsfObACBwY41nqUT9u6FvwlJSMJ8', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
+INSERT INTO `users` VALUES ('1', '1', 'admin', 'Nguyễn Át Min', 'admin@gmail.com', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', 'isbKOyPWieuFKoQuKKJ6B9IgnS0HBViWLS2F2gWLQgztLV1L7ClX8XPYGLt4', '2018-04-08 10:19:28', '2018-07-02 04:01:35');
 INSERT INTO `users` VALUES ('10', '3', 'newton', 'newton', 'newton@gmail.com', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', 'oN8rkq6IrM5PbNb5ktbJ1ALdPducuByOGZNWDwHuKKcom5S2iqWDxKJgnkqy', '2019-08-22 23:14:40', '2019-08-22 23:14:40');
 INSERT INTO `users` VALUES ('11', '3', 'einstein', 'einstein', 'einstein@gmail.com', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', 'oN8rkq6IrM5PbNb5ktbJ1ALdPducuByOGZNWDwHuKKcom5S2iqWDxKJgnkqy', '2019-08-22 23:16:18', '2019-08-22 23:16:18');
 INSERT INTO `users` VALUES ('13', '3', 'galieleo', 'galieleo', 'galieleo@gmail.com', 'http://images.vietid.net/avatars/1524213894304avatar-165885822.png', '$2y$10$dZvjTWSKgd.Zsm68ZK7O2unYS9JzHbv7JwYBYdrPD3x.Iad.cDzIS', '0', '1', 'oN8rkq6IrM5PbNb5ktbJ1ALdPducuByOGZNWDwHuKKcom5S2iqWDxKJgnkqy', '2019-08-23 15:23:25', '2019-08-23 15:23:25');
@@ -315,7 +315,7 @@ CREATE TABLE `user_onlines` (
   `uo_time` int(11) DEFAULT NULL,
   `uo_active` int(11) DEFAULT NULL,
   PRIMARY KEY (`uo_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_onlines
@@ -342,4 +342,16 @@ INSERT INTO `user_onlines` VALUES ('19', '43deraldnma6i1sc40eqd4tsv1', '15758242
 INSERT INTO `user_onlines` VALUES ('20', 'b8tijoiafhacht8gglvra0k5tl', '1575994311', '1');
 INSERT INTO `user_onlines` VALUES ('21', 'nig5t62sjmouuv37jlbns5cnmh', '1593019752', '1');
 INSERT INTO `user_onlines` VALUES ('22', 'b3iijudapmegtb14vbfrt2785q', '1593108648', '1');
-INSERT INTO `user_onlines` VALUES ('23', 'hh1kgu0m956oai51eco3h61dja', '1593188726', '0');
+INSERT INTO `user_onlines` VALUES ('23', 'hh1kgu0m956oai51eco3h61dja', '1593188898', '1');
+INSERT INTO `user_onlines` VALUES ('24', 'fh3ffa3cuoh3fqj5p5lgsvd42k', '1593254294', '1');
+INSERT INTO `user_onlines` VALUES ('25', 't92t9n0itn81g8j4sh41asr360', '1593260396', '1');
+INSERT INTO `user_onlines` VALUES ('26', 'cdodoad41j36vovisq3k72mhdb', '1593259925', '1');
+INSERT INTO `user_onlines` VALUES ('27', '51hhjuij8ntkv89pt3hlpu5ocv', '1593259973', '1');
+INSERT INTO `user_onlines` VALUES ('28', '68cps9diejd8tbgg6lr2od3hm8', '1593260004', '1');
+INSERT INTO `user_onlines` VALUES ('29', 'uklmsvaab80mmsnfrs8su4odo2', '1593260004', '1');
+INSERT INTO `user_onlines` VALUES ('30', '8hct7a6adia0640irpkpgdu6bl', '1593260004', '1');
+INSERT INTO `user_onlines` VALUES ('31', '3ur7se18ln9oqqur9vp6055t1u', '1593260005', '1');
+INSERT INTO `user_onlines` VALUES ('32', 'ihip8jd94a83f7uunpb49nlv0r', '1593260005', '1');
+INSERT INTO `user_onlines` VALUES ('33', 'nkhu6mssl3cbsqna17eq7j8vii', '1593260005', '1');
+INSERT INTO `user_onlines` VALUES ('34', 'c2nbsdbfto54h31sru28q4ga64', '1593260084', '1');
+INSERT INTO `user_onlines` VALUES ('35', 'gaf2bneknl4tv8vc7bdm017db8', '1593264604', '0');

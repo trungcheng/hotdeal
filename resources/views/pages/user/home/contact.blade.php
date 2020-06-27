@@ -30,7 +30,7 @@
 @section('ogUrl'){{ route('contact') }}/
 @stop
 
-@section('ogImage'){{ url('') }}{{ $setting->logo }}
+@section('ogImage'){{ asset('frontend/images/visci-vector-web-white.svg') }}
 @stop
 
 @section('pageCss')
@@ -48,96 +48,56 @@
 @section('content')
 <div class="section hero">
     <div class="container align-center">
-        <h1 class="heading center">Get in touch with us</h1>
+        <h1 class="heading center">{{ trans('general.get_in_touch') }}</h1>
     </div>
-    <div class="lead">You can visit us at<br>National University of Civil Engineering (NUCE) - no 55, Giai Phong Road,
-        Ha Noi Capital, Viet Nam.<br><br>Phone: <a href="#">+ 84 (0) 1 234 56 78<br></a>Email: <a
-            href="#">support@visci.org</a><a href="#"><br></a></div>
+    <div class="lead">{{ trans('general.you_can_visit') }}<br>{{ $setting->getTranslation(app()->getLocale())->address }}<br><br>Phone: <a href="#">{{ $setting->mobile }}<br></a>Email: <a
+            href="#">{{ $setting->email }}</a><a href="#"><br></a></div>
 </div>
 <div class="w-layout-grid grid-team">
+    @if (count(json_decode($setting['contact_questions'])) > 0)
     <div class="team-selection">
         <div class="w-layout-grid accordion-grid">
+            @foreach (json_decode($setting['contact_questions']) as $question)
             <div id="w-node-aca10fb7cbf8-51f3f7bb" data-w-id="0b7e7c0a-2100-b99c-15e0-aca10fb7cbf8"
                 class="accordion-wrapper">
                 <div class="accordion-line"></div>
                 <div class="accordion-trigger">
-                    <h6>How is the product is available?</h6>
+                    @if (app()->getLocale() == 'en')
+                    <h6>{!! $question->question !!}</h6>
+                    @else
+                    <h6>{!! $question->vi_question !!}</h6>
+                    @endif
                     <div class="expand-icon"><img src="{{ asset('frontend/images/chevron-down.svg') }}" alt=""></div>
                 </div>
                 <div class="accordion-content">
-                    <div class="accordion-text">Our products are sold exclusively online on this website. If you
-                        experience difficulty in proceeding with a purchase or you have questions about our products,
-                        you can contact us using the contact form found in the contact us page. We will answer your
-                        query within a few hours.</div>
+                    @if (app()->getLocale() == 'en')
+                    <div class="accordion-text">{!! $question->answer !!}</div>
+                    @else
+                    <div class="accordion-text">{!! $question->vi_answer !!}</div>
+                    @endif
                 </div>
                 <div style="-webkit-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
                     class="hover-line"></div>
             </div>
-            <div id="w-node-91b8d192ff38-51f3f7bb" data-w-id="2315ee41-5c5c-6932-157e-91b8d192ff38"
-                class="accordion-wrapper">
-                <div class="accordion-line"></div>
-                <div class="accordion-trigger">
-                    <h6>How is the product is available?</h6>
-                    <div class="expand-icon"><img src="{{ asset('frontend/images/chevron-down.svg') }}" alt=""></div>
-                </div>
-                <div class="accordion-content">
-                    <div class="accordion-text">Our products are sold exclusively online on this website. If you
-                        experience difficulty in proceeding with a purchase or you have questions about our products,
-                        you can contact us using the contact form found in the contact us page. We will answer your
-                        query within a few hours.</div>
-                </div>
-                <div style="-webkit-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                    class="hover-line"></div>
-            </div>
-            <div id="w-node-a1f8f9ab3050-51f3f7bb" data-w-id="c2909d56-768c-89d9-114d-a1f8f9ab3050"
-                class="accordion-wrapper">
-                <div class="accordion-line"></div>
-                <div class="accordion-trigger">
-                    <h6>How is the product is available?</h6>
-                    <div class="expand-icon"><img src="{{ asset('frontend/images/chevron-down.svg') }}" alt=""></div>
-                </div>
-                <div class="accordion-content">
-                    <div class="accordion-text">Our products are sold exclusively online on this website. If you
-                        experience difficulty in proceeding with a purchase or you have questions about our products,
-                        you can contact us using the contact form found in the contact us page. We will answer your
-                        query within a few hours.</div>
-                </div>
-                <div style="-webkit-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                    class="hover-line"></div>
-            </div>
-            <div id="w-node-110bf0d339ed-51f3f7bb" data-w-id="bb1806d3-720a-6d96-77c7-110bf0d339ed"
-                class="accordion-wrapper">
-                <div class="accordion-line"></div>
-                <div class="accordion-trigger">
-                    <h6>How is the product is available?</h6>
-                    <div class="expand-icon"><img src="{{ asset('frontend/images/chevron-down.svg') }}" alt=""></div>
-                </div>
-                <div class="accordion-content">
-                    <div class="accordion-text">Our products are sold exclusively online on this website. If you
-                        experience difficulty in proceeding with a purchase or you have questions about our products,
-                        you can contact us using the contact form found in the contact us page. We will answer your
-                        query within a few hours.</div>
-                </div>
-                <div style="-webkit-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-102%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                    class="hover-line"></div>
-            </div>
+            @endforeach
         </div>
     </div>
+    @endif
     <div class="team-selection">
-        <h6>Start the conversation</h6>
+        <h6>{{ trans('general.start_conversation') }}</h6>
         <div class="form-block w-form">
             <form id="email-form-2" name="email-form-2" data-name="Email Form 2">
                 <div class="horizontal">
-                    <div class="item-bordered"><label for="name">Name</label><input type="text"
+                    <div class="item-bordered"><label for="name">{{ trans('general.name') }}</label><input type="text"
                             class="text-field-transparent w-input" maxlength="256" name="name" data-name="Name"
-                            placeholder="Enter your name" id="name"></div>
-                    <div class="item-bordered last"><label for="name-2">Email Address</label><input type="email"
+                            placeholder="{{ trans('general.enter_name') }}" id="name"></div>
+                    <div class="item-bordered last"><label for="name-2">{{ trans('general.email') }}</label><input type="email"
                             class="text-field-transparent w-input" maxlength="256" name="name-2" data-name="Name 2"
-                            placeholder="Enter your email address" id="name-2"></div>
+                            placeholder="{{ trans('general.enter_email') }}" id="name-2"></div>
                 </div>
-                <div class="item-bordered one last"><label for="name-3">Message</label><textarea
-                        placeholder="Enter your message" maxlength="5000" id="field" name="field"
-                        class="text-field-transparent w-input"></textarea></div><input type="submit" value="Submit"
+                <div class="item-bordered one last"><label for="name-3">{{ trans('general.message') }}</label><textarea
+                        placeholder="{{ trans('general.enter_message') }}" maxlength="5000" id="field" name="field"
+                        class="text-field-transparent w-input"></textarea></div><input type="submit" value="{{ trans('general.submit') }}"
                     data-wait="Please wait..." class="button-style w-button">
             </form>
             <div class="w-form-done">

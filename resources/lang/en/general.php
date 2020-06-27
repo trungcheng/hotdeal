@@ -2,6 +2,7 @@
 
 return [
     // header
+    'home_page' => 'Home',
     'search' => 'Search',
     'about' => 'About us',
     'new_event' => 'News & Events',
@@ -44,6 +45,7 @@ return [
     // partner
     'our_partner' => 'Our Partners',
     'partner_desc' => 'We have helped and expanded more than 2000 projects around and are proud to be recommended as an effective business partner.',
+    'partner_thank' => 'They are now our partners and we thank them for their support.',
 
     // news & events
     'browse_new_event' => 'BROWSE NEWS AND EVENTS',
@@ -76,5 +78,44 @@ return [
     'discover_more' => 'DISCOVER MORE',
     'see_more_visci' => 'See more about VISCI',
     'see_more_visci_desc' => 'We have helped and expanded more than 2000 projects around and are proud to be recommended as an effective business partner.',
+
+    // Contact
+    'get_in_touch' => 'Get in touch with us',
+    'you_can_visit' => 'You can visit us at',
+    'start_conversation' => 'Start the conversation',
+    'name' => 'Name',
+    'enter_name' => 'Enter your name',
+    'email' => 'Email address',
+    'enter_email' => 'Enter your email address',
+    'message' => 'Message',
+    'enter_message' => 'Enter your message',
+    'submit' => 'Submit',
+    'oops_submit' => 'Oops! Something went wrong while submitting the form.',
+    'success_submit' => 'Thank you! Your submission has been received!',
+
+    // News
+    'previous' => 'Previous',
+    'next' => 'Next',
+
+    // Coming Events
+    'running_coming_event' => 'Running and Coming Events',
+    'browse_past_event' => 'Browse past events',
+
+    // Projects
+    'recently_project' => 'Recently Projects',
+
+    // Search
+    'search_result' => 'Search result for keyword',
+
+    // Detail post
+    'related_new' => 'Related news',
+
+    // Detail event
+    'event_date' => 'Event date',
+    'event_time' => 'Event time',
+    'event_venue' => 'Venue',
+    'event_type' => 'Event Type',
+    'event_speaker' => 'Speaker',
+    'event_detail_information' => 'Detail Information'
 
 ];

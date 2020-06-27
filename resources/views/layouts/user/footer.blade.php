@@ -31,7 +31,7 @@
                 </div>
                 <div>
                     @foreach ($featureFooterArticles as $article)
-                    <a href="#" class="footer-feed-link w-inline-block">
+                    <a href="{{ route('detail-post', ['slug' => $article->slug]) }}" class="footer-feed-link w-inline-block">
                         <h5 class="heading">{{ $article->getTranslation(app()->getLocale())->title }}</h5>
                         <div class="b-thing-home-top-date cc-slim white">{{ $article->created_at }}</div>
                     </a>

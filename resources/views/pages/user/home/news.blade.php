@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page'){{ trans('general.news') }}
+@section('page'){{ trans('general.new') }}
 @stop
 
 @section('description'){{ $setting->seo_desc }}
@@ -30,7 +30,7 @@
 @section('ogUrl'){{ route('news') }}/
 @stop
 
-@section('ogImage'){{ url('') }}{{ $setting->logo }}
+@section('ogImage'){{ asset('frontend/images/visci-vector-web-white.svg') }}
 @stop
 
 @section('pageCss')
@@ -48,306 +48,51 @@
 @section('content')
 <section class="section-container">
     <div class="content-heading align-left no-padding">
-        <h2 class="content-heading-home">News</h2>
-        <div class="content-sapo">Our latest tips, tricks, insights, and resources, hot off the presses.</div>
+        <h2 class="content-heading-home">{{ trans('general.new') }}</h2>
+        <div class="content-sapo">{{ $catNew->getTranslation(app()->getLocale())->description }}</div>
     </div>
+    @if (count($news) > 0)
     <div class="content-wrap margin">
         <div class="w-layout-grid grid">
             <div class="_1st-column-journal pack-1---2">
                 <div class="_1-column-2-on-mobile _2-col-pc">
+                    @foreach ($news as $new)
                     <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
+                        <a href="{{ route('detail-post', ['slug' => $new->slug]) }}" class="cms-link w-inline-block">
                             <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
+                                <div class="image-4-to-3">
+                                    <img src="{{ $new->image }}" width="960" alt="" class="bg-image">
+                                    <img src="{{ asset('frontend/images/Image-16-10-Ratio.svg') }}" alt="" class="image-ratio">
                                     <div class="image-cover-shape"></div>
                                 </div>
                                 <div>
                                     <div class="category-wrapper">
-                                        <div>construction</div>
+                                        <div>{{ $new->category->getTranslation(app()->getLocale())->name }}</div>
                                         <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
+                                        <div>{{ $new->created_at }}</div>
                                     </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
+                                    <h6 class="heading small-post">{{ $new->getTranslation(app()->getLocale())->title }}</h6>
                                     <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
+                                        <div>{!! $new->getTranslation(app()->getLocale())->intro !!}<br></div>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="holderjournal-small-columns full-sapo">
-                        <a href="#" class="cms-link w-inline-block">
-                            <div class="thumb-info-small-grid">
-                                <div class="image-4-to-3"><img src="../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg"
-                                        width="960"
-                                        srcset="../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-500.jpeg 500w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-800.jpeg 800w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1080.jpeg 1080w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4-p-1600.jpeg 1600w, ../images/fd0a94172d3fbd0715ba66ebbc255dd4.jpg 1920w"
-                                        sizes="(max-width: 479px) 87vw, (max-width: 767px) 45vw, (max-width: 991px) 42vw, 36vw"
-                                        alt="" class="bg-image"><img src="../images/Image-16-10-Ratio.svg" alt=""
-                                        class="image-ratio">
-                                    <div class="image-cover-shape"></div>
-                                </div>
-                                <div>
-                                    <div class="category-wrapper">
-                                        <div>construction</div>
-                                        <div class="caption-dot">·</div>
-                                        <div>may 29 2019</div>
-                                    </div>
-                                    <h6 class="heading small-post">Ecommerce shopping cart design ideas</h6>
-                                    <div class="post-summary quick-story">
-                                        <div>Like so many things, the race was canceled. Soon after, gyms around the
-                                            country were closed. Suddenly, running — a solo activity that can be done
-                                            outdoors, away from other people — seems more important than
-                                            ever, for both our health and our mood.<br></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="_w-pagination-wrapper">
-                    <a href="../news-events.html" class="button-style small w-inline-block">
-                        <div class="button-style-w-icon"><img src="../images/chevron-left.svg" width="120" alt=""
+                    <a href="{{ $news->previousPageUrl() }}" class="button-style small w-inline-block">
+                        <div class="button-style-w-icon"><img src="{{ asset('frontend/images/chevron-left.svg') }}" width="120" alt=""
                                 class="b-archive-link__arrow cc-arrow-left">
-                            <div class="button-label">Previous</div>
+                            <div class="button-label">{{ trans('general.previous') }}</div>
                         </div>
                         <div class="hover-shape"></div>
                     </a>
-                    <div class="_w-page-count">2/18</div>
-                    <a href="../news-events.html" class="button-style small w-inline-block">
+                    <div class="_w-page-count">{{ $news->currentPage() }}/{{ $news->lastPage() }}</div>
+                    <a href="{{ $news->nextPageUrl() }}" class="button-style small w-inline-block">
                         <div class="button-style-w-icon">
-                            <div class="button-label">Previous</div><img src="../images/chevron-right.svg" width="22"
+                            <div class="button-label">{{ trans('general.next') }}</div><img src="{{ asset('frontend/images/chevron-right.svg') }}" width="22"
                                 alt="" class="b-archive-link__arrow cc-arrow-right">
                         </div>
                         <div class="hover-shape"></div>
@@ -356,46 +101,29 @@
             </div>
             <div class="_3rd-column-journal">
                 <div class="sticky-3rd-column">
+                    @if (count($explorerTopics) > 0)
                     <div class="holder-journal-columns">
                         <div class="thumb-info-large-grid">
-                            <div class="title-xs">Explore Topic</div>
+                            <div class="title-xs">{{ trans('general.explore_topic') }}</div>
                             <div class="horizontal">
-                                <a href="#" class="tag-wrapper w-inline-block">
-                                    <div class="button-label">Substainable Living</div>
-                                    <div class="hover-shape"></div>
-                                </a>
-                                <a href="#" class="tag-wrapper w-inline-block">
-                                    <div class="button-label">Smart City</div>
-                                    <div class="hover-shape"></div>
-                                </a>
-                                <a href="#" class="tag-wrapper w-inline-block">
-                                    <div class="button-label">Furniture</div>
-                                    <div class="hover-shape"></div>
-                                </a>
-                                <a href="#" class="tag-wrapper w-inline-block">
-                                    <div class="button-label">Building</div>
-                                    <div class="hover-shape"></div>
-                                </a>
-                                <a href="#" class="tag-wrapper w-inline-block">
-                                    <div class="button-label">Smarthome</div>
-                                    <div class="hover-shape"></div>
-                                </a>
-                                <a href="#" class="tag-wrapper w-inline-block">
-                                    <div class="button-label">Construction</div>
-                                    <div class="hover-shape"></div>
-                                </a>
+                            @foreach ($explorerTopics as $topic)
+                            <a href="#" class="tag-wrapper w-inline-block">
+                                <div class="button-label">{{ $topic->getTranslation(app()->getLocale())->name }}</div>
+                                <div class="hover-shape"></div>
+                            </a>
+                            @endforeach
                             </div>
                         </div>
                     </div>
+                    @endif
                     <div class="holder-journal-columns">
                         <div class="grid-about-small">
-                            <div class="intro-brand-wrap"><img src="../images/visci-vector-web.svg" height="" alt=""
+                            <div class="intro-brand-wrap"><img src="{{ asset('frontend/images/visci-vector-web.svg') }}" height="" alt=""
                                     class="brand-visci full"></div>
                             <div id="w-node-eb8358356fd5-66f3f7ba" class="post-summary-center">
-                                <div>VISCI is a group that bringing about changes towards more substainable and smarter
-                                    cities.<br></div>
+                                <div>{{ $setting->getTranslation(app()->getLocale())->slogan }}<br></div>
                                 <a href="#" class="link-block w-inline-block">
-                                    <div>Read About us</div>
+                                    <div>{{ trans('general.read_about_us') }}</div>
                                 </a>
                             </div>
                         </div>
@@ -404,29 +132,29 @@
             </div>
         </div>
     </div>
+    @endif
 </section>
 <div class="section shortlink">
     <div class="section-container">
         <div class="content-heading">
-            <h4 class="heading">See more about VISCI</h4>
-            <div class="content-sapo">We have helped and expanded more than 2000 projects around and are proud to be
-                recommended as an effective business partner.</div>
+            <h4 class="heading">{{ trans('general.see_more_visci') }}</h4>
+            <div class="content-sapo">{{ trans('general.see_more_visci_desc') }}</div>
         </div>
         <div class="b-category-listing content-sapo-large">
-            <a href="#" class="button-style large-categories w-inline-block">
-                <div class="button-label">About us</div>
+            <a href="{{ route('about') }}" class="button-style large-categories w-inline-block">
+                <div class="button-label">{{ trans('general.about') }}</div>
                 <div class="hover-shape"></div>
             </a>
-            <a href="#" class="button-style large-categories w-inline-block">
-                <div class="button-label">projects</div>
+            <a href="{{ route('projects') }}" class="button-style large-categories w-inline-block">
+                <div class="button-label">{{ trans('general.project') }}</div>
                 <div class="hover-shape"></div>
             </a>
-            <a href="#" class="button-style large-categories w-inline-block">
-                <div class="button-label">partners</div>
+            <a href="{{ route('partners') }}" class="button-style large-categories w-inline-block">
+                <div class="button-label">{{ trans('general.partner') }}</div>
                 <div class="hover-shape"></div>
             </a>
-            <a href="#" class="button-style large-categories w-inline-block">
-                <div class="button-label">media &amp; press</div>
+            <a href="{{ route('media-press') }}" class="button-style large-categories w-inline-block">
+                <div class="button-label">{{ trans('general.media_press') }}</div>
                 <div class="hover-shape"></div>
             </a>
         </div>

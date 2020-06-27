@@ -6,7 +6,7 @@
                 <img src="{{ asset('frontend/images/visci-tagline-vector-web-white.svg') }}" height="66" alt="" class="tagline">
             </a>
             <form action="{{ route('search') }}" method="get" class="search w-form">
-                <input type="search" class="text-field-filled w-input" maxlength="256" name="query" placeholder="{{ trans('general.search') }}…" id="search" required="">
+                <input type="search" class="text-field-filled w-input" maxlength="256" name="keyword" placeholder="{{ trans('general.search') }}…" id="search" required="">
                 <input type="submit" value="{{ trans('general.search') }}" class="search-button w-button">
             </form>
             <div class="grid-navbar">

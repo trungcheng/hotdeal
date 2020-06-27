@@ -30,7 +30,7 @@
 @section('ogUrl'){{ route('news-events') }}/
 @stop
 
-@section('ogImage'){{ url('') }}{{ $setting->logo }}
+@section('ogImage'){{ asset('frontend/images/visci-vector-web-white.svg') }}
 @stop
 
 @section('pageCss')
@@ -63,7 +63,7 @@
                     <div class="_1-column">
                         @foreach ($highlightNews as $highlight)
                         <div class="holder-journal-big-columns">
-                            <a href="#" class="image-filled-featured w-inline-block">
+                            <a href="{{ route('detail-post', ['slug' => $highlight->slug]) }}" class="image-filled-featured w-inline-block">
                                 <img src="{{ $highlight->image }}" width="1280" alt="" class="bg-image">
                                 <div class="gradient-bottom"></div>
                                 <div class="thumb-info-small-grid featured-card">
@@ -93,7 +93,7 @@
                 <div id="w-node-44b4c142fd1b-4af3f7b4" class="_1-column-2-on-mobile">
                     @foreach ($recentlyNews as $recent)
                     <div class="holderjournal-small-columns">
-                        <a href="#" class="cms-link w-inline-block">
+                        <a href="{{ route('detail-post', ['slug' => $recent->slug]) }}" class="cms-link w-inline-block">
                             <div class="thumb-info-small-grid">
                                 <div class="image-4-to-3">
                                     <img src="{{ $recent->image }}" width="960" alt="" class="bg-image">
@@ -119,9 +119,9 @@
             </div>
         </div>
         @endif
-        @if (count($explorerTopics) > 0)
         <div class="_3rd-column-journal">
             <div class="sticky-3rd-column">
+                @if (count($explorerTopics) > 0)
                 <div class="holder-journal-columns">
                     <div class="thumb-info-large-grid">
                         <h6 class="heading">{{ trans('general.explore_topic') }}</h6>
@@ -135,12 +135,13 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="holder-journal-columns">
                     <div class="grid-about-small">
                         <div class="intro-brand-wrap"><img src="{{ asset('frontend/images/visci-vector-web.svg') }}" height="" alt=""
                                 class="brand-visci full"></div>
                         <div id="w-node-13c80a42dcfe-4af3f7b4" class="post-summary-center">
-                            <div>{{ $setting->slogan }}<br></div>
+                            <div>{{ $setting->getTranslation(app()->getLocale())->slogan }}<br></div>
                             <a href="{{ route('contact') }}" class="link-block w-inline-block">
                                 <div>{{ trans('general.read_about_us') }}</div>
                             </a>
@@ -149,7 +150,6 @@
                 </div>
             </div>
         </div>
-        @endif
     </div>
 </div>
 @if (count($events) > 0)
@@ -171,7 +171,7 @@
                 </div>
                 <h5 class="heading">{{ $event->getTranslation(app()->getLocale())->title }}</h5>
                 <p>{!! $event->getTranslation(app()->getLocale())->intro !!}</p>
-                <a href="#" class="button-style small w-inline-block">
+                <a href="{{ route('detail-event', ['slug' => $event->slug]) }}" class="button-style small w-inline-block">
                     <div class="button-label">{{ trans('general.discover_more') }}</div>
                     <div class="hover-shape"></div>
                 </a>

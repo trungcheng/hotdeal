@@ -2,6 +2,7 @@
 
 return [
     // header
+    'home_page' => 'Trang chủ',
     'search' => 'Tìm kiếm',
     'about' => 'Giới thiệu',
     'new_event' => 'Tin tức & Sự kiện',
@@ -44,6 +45,7 @@ return [
     // partner
     'our_partner' => 'Đối tác của chúng tôi',
     'partner_desc' => 'Chúng tôi đã giúp đỡ và mở rộng hơn 2000 dự án xung quanh và tự hào được giới thiệu là một đối tác kinh doanh hiệu quả.',
+    'partner_thank' => 'Bây giờ họ là đối tác của chúng tôi và chúng tôi cảm ơn họ đã hỗ trợ.',
 
     // news & events
     'browse_new_event' => 'TIN TỨC VÀ SỰ KIỆN',
@@ -76,5 +78,44 @@ return [
     'discover_more' => 'KHÁM PHÁ THÊM',
     'see_more_visci' => 'Xem nhiều hơn về VISCI',
     'see_more_visci_desc' => 'Chúng tôi đã giúp đỡ và mở rộng hơn 2000 dự án xung quanh và tự hào được giới thiệu là một đối tác kinh doanh hiệu quả.',
+
+    // Contact
+    'get_in_touch' => 'Hãy liên lạc với chúng tôi',
+    'you_can_visit' => 'Bạn có thể ghé thăm chúng tôi tại',
+    'start_conversation' => 'Bắt đầu cuộc trò chuyện',
+    'name' => 'Họ tên',
+    'enter_name' => 'Nhập họ tên',
+    'email' => 'Địa chỉ email',
+    'enter_email' => 'Nhập địa chị email',
+    'message' => 'Nội dung',
+    'enter_message' => 'Nhập nội dung',
+    'submit' => 'Gửi đi',
+    'oops_submit' => 'Đã xảy ra lỗi trong khi gửi biểu mẫu.',
+    'success_submit' => 'Cảm ơn bạn! Nội dung của bạn đã được nhận!',
+
+    // News
+    'previous' => 'Trang trước',
+    'next' => 'Trang sau',
+
+    // Coming Events
+    'running_coming_event' => 'Sự kiện đang và sắp diễn ra',
+    'browse_past_event' => 'Xem các sự kiện đã qua',
+
+    // Projects
+    'recently_project' => 'Dự án gần đây',
+
+    // Search
+    'search_result' => 'Kết quả tìm kiếm với từ khóa',
+
+    // Detail post
+    'related_new' => 'Tin liên quan',
+
+    // Detail event
+    'event_date' => 'Ngày diễn ra',
+    'event_time' => 'Thời gian',
+    'event_venue' => 'Hội họp',
+    'event_type' => 'Loại sự kiện',
+    'event_speaker' => 'Diễn giả',
+    'event_detail_information' => 'Thông tin chi tiết'
 
 ];

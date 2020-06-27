@@ -1,6 +1,6 @@
 @extends('layouts.user.master')
 
-@section('page'){{ trans('general.partners') }}
+@section('page'){{ trans('general.partner') }}
 @stop
 
 @section('description'){{ $setting->seo_desc }}
@@ -30,7 +30,7 @@
 @section('ogUrl'){{ route('partners') }}/
 @stop
 
-@section('ogImage'){{ url('') }}{{ $setting->logo }}
+@section('ogImage'){{ asset('frontend/images/visci-vector-web-white.svg') }}
 @stop
 
 @section('pageCss')
@@ -48,35 +48,19 @@
 @section('content')
 <div class="section hero">
     <div class="container align-center">
-        <h1 class="heading center">Our Partners</h1>
+        <h1 class="heading center">{{ trans('general.our_partner') }}</h1>
     </div>
-    <div class="lead">They are now our partners and we thank them for their support.</div>
+    <div class="lead">{{ trans('general.partner_thank') }}</div>
+    @if (count(json_decode($setting['partner_logos'])) > 0)
     <div class="partner-list">
+        @foreach (json_decode($setting['partner_logos']) as $logo)
         <div class="brand-logo-block show-list">
-            <a href="http://nasa.gov" target="_blank" class="w-inline-block"><img src="images/logo-nasa2x.png"
-                    width="200" alt="" class="brand-img"></a>
+            <a href="{{ $logo->link }}" target="_blank" class="w-inline-block"><img src="{{ $logo->image }}"
+                    width="200" alt="{{ $logo->link }}" class="brand-img"></a>
         </div>
-        <div class="brand-logo-block show-list">
-            <a href="http://nawapi.gov.vn" target="_blank" class="w-inline-block"><img src="images/logo-nawapi2x.png"
-                    width="200" alt="" class="brand-img"></a>
-        </div>
-        <div class="brand-logo-block show-list">
-            <a href="http://adpc.net" target="_blank" class="w-inline-block"><img src="images/logo-adpc2x.png"
-                    width="200" alt="" class="brand-img"></a>
-        </div>
-        <div class="brand-logo-block show-list">
-            <a href="http://servir.adpc.net" target="_blank" class="w-inline-block"><img
-                    src="images/logo-sevirmekong2x.png" width="200" alt="" class="brand-img"></a>
-        </div>
-        <div class="brand-logo-block show-list">
-            <a href="http://washington.edu" target="_blank" class="w-inline-block"><img
-                    src="images/logo-w-university2x.png" width="200" alt="" class="brand-img"></a>
-        </div>
-        <div class="brand-logo-block show-list">
-            <a href="http://usaid.gov" target="_blank" class="w-inline-block"><img src="images/logo-usaid2x.png" alt=""
-                    class="brand-img"></a>
-        </div>
+        @endforeach
     </div>
+    @endif
 </div>
 @stop
 

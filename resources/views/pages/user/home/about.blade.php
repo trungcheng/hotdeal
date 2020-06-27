@@ -30,7 +30,7 @@
 @section('ogUrl'){{ url('/') }}{{ $article->slug }}.html/
 @stop
 
-@section('ogImage'){{ url('') }}{{ $setting->logo }}
+@section('ogImage'){{ asset('frontend/images/visci-vector-web-white.svg') }}
 @stop
 
 @section('pageCss')

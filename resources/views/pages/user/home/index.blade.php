@@ -30,7 +30,7 @@
 @section('ogUrl'){{ route('home') }}/
 @stop
 
-@section('ogImage'){{ url('') }}{{ $setting->logo }}
+@section('ogImage'){{ asset('frontend/images/visci-vector-web-white.svg') }}
 @stop
 
 @section('pageCss')
@@ -175,7 +175,7 @@
                             <div class="slide-vertical-move">
                                 <h4 class="heading">{{ $project->getTranslation(app()->getLocale())->title }}</h4>
                                 <p>{!! $project->getTranslation(app()->getLocale())->intro !!}</p>
-                                <a href="#" class="hero-slider-link w-inline-block w-clearfix">
+                                <a href="{{ route('detail-post', ['slug' => $project->slug]) }}" class="hero-slider-link w-inline-block w-clearfix">
                                     <div class="hero-line white-bg"></div>
                                     <div class="card-link">{{ trans('general.project_readmore') }}</div>
                                 </a>
@@ -262,14 +262,13 @@
         <div class="_2-columns-2-to-1">
             @if ($featureEvent)
             <div id="w-node-d6fcca430ea3-cef3f7a9" class="sticky-top-5vh">
-                <a href="#" class="image-filled-featured w-inline-block">
+                <a href="{{ route('detail-event', ['slug' => $featureEvent->slug]) }}" class="image-filled-featured w-inline-block">
                     <img src="{{ $featureEvent->image }}" width="1280" alt="" class="bg-image">
                     <div class="gradient-bottom"></div>
                     <div class="thumb-info-small-grid featured-card">
                         <div class="category-wrapper">
-                            <!-- <div>construction</div> -->
-                            <!-- <div class="caption-dot">·</div> -->
-                            <!-- <div>may 29 2019</div> -->
+                            <div>{{ $featureEvent->event_type }}</div>
+                            <div class="caption-dot">·</div>
                             <div>{{ $featureEvent->event_date_from }}</div>
                         </div>
                         <h4 class="heading">{{ $featureEvent->getTranslation(app()->getLocale())->title }}</h4>
@@ -284,7 +283,7 @@
             @if (count($news) > 0)
             <div id="w-node-d6fcca430eae-cef3f7a9" class="_1-column-2-on-mobile">
                 @foreach ($news as $new)
-                <a href="#" class="cms-link w-inline-block">
+                <a href="{{ route('detail-post', ['slug' => $new->slug]) }}" class="cms-link w-inline-block">
                     <div class="thumb-info-small-grid">
                         <div class="image-4-to-3">
                             <img src="{{ $new->image }}" width="960" alt="" class="bg-image">
